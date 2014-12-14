@@ -1,0 +1,7 @@
+package main.user_service.create_user;
+
+message Request {}
+
+message Response {
+    optional string user_id = 1;
+}

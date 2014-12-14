@@ -1,0 +1,14 @@
+package main.requests;
+
+import "service/protobufs/common/soa.proto";
+
+import "user_service/create_user.proto";
+import "user_service/valid_user.proto";
+
+
+message UserService {
+    extend soa.ActionRequestParams {
+        optional main.user_service.create_user.Request create_user = 101;
+        optional main.user_service.valid_user.Request valid_user = 102;
+    }
+}

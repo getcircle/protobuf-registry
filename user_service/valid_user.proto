@@ -1,0 +1,9 @@
+package main.user_service.valid_user;
+
+message Request {
+    optional string user_id = 1;
+}
+
+message Response {
+    optional bool exists = 1;
+}
