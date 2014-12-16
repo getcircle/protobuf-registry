@@ -21,15 +21,15 @@ message UserService {
 
 message IdentityService {
     extend soa.ActionRequestParams {
-        optional main.identity_service.create_identity.Request create_identity = 103;
-        optional main.identity_service.get_identity.Request get_identity = 104;
+        optional main.identity_service.create_identity.Request create_identity = 200;
+        optional main.identity_service.get_identity.Request get_identity = 201;
     }
 }
 
 message CredentialService {
     extend soa.ActionRequestParams {
-        optional main.credential_service.create_credentials.Request create_credentials = 105;
-        optional main.credential_service.verify_credentials.Request verify_credentials = 106;
-        optional main.credential_service.update_credentials.Request update_credentials = 107;
+        optional main.credential_service.create_credentials.Request create_credentials = 300;
+        optional main.credential_service.verify_credentials.Request verify_credentials = 301;
+        optional main.credential_service.update_credentials.Request update_credentials = 302;
     }
 }
