@@ -36,10 +36,10 @@ def ensure_init_exists():
 @task
 def clean():
     with python_directory():
-        run("find %s -name '*.py' | xargs rm" % (PACKAGE_NAME,))
+        run("find %s -name '*.py*' | xargs rm" % (PACKAGE_NAME,))
 
 
 @task(post=[ensure_init_exists])
 def compile():
     with common.base_directory():
-        common.compile('python_out', 'python/protobufs/')
+        common.compile('python_out', 'python/')
