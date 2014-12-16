@@ -2,6 +2,10 @@ package main.requests;
 
 import "service/protobufs/common/soa.proto";
 
+import "protobufs/credential_service/create_credentials.proto";
+import "protobufs/credential_service/verify_credentials.proto";
+import "protobufs/credential_service/update_credentials.proto";
+
 import "protobufs/identity_service/create_identity.proto";
 import "protobufs/identity_service/get_identity.proto";
 
@@ -19,5 +23,13 @@ message IdentityService {
     extend soa.ActionRequestParams {
         optional main.identity_service.create_identity.Request create_identity = 103;
         optional main.identity_service.get_identity.Request get_identity = 104;
+    }
+}
+
+message CredentialService {
+    extend soa.ActionRequestParams {
+        optional main.credential_service.create_credentials.Request create_credentials = 105;
+        optional main.credential_service.verify_credentials.Request verify_credentials = 106;
+        optional main.credential_service.update_credentials.Request update_credentials = 107;
     }
 }
