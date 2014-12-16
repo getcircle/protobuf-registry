@@ -3,10 +3,7 @@ import os
 import re
 import subprocess
 
-from invoke import (
-    run,
-    task,
-)
+from invoke import task
 
 PACKAGE_NAME = 'protobufs'
 INIT_FILE = 'python/%s/__init__.py' % (PACKAGE_NAME,)
@@ -24,7 +21,9 @@ class ReleaseException(Exception):
 @contextmanager
 def base_directory():
     current_path = os.getcwd()
-    os.chdir(os.path.dirname(os.path.join(os.path.abspath(__file__), '..')))
+    os.chdir(os.path.abspath(os.path.join(
+        os.path.dirname((os.path.abspath(__file__))), '../'
+    )))
     try:
         yield
     except ReleaseException as e:
