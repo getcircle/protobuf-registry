@@ -11,7 +11,7 @@ version_re = re.compile(r"__version__\s*=\s*['\"](.*?)['\"]")
 
 def get_version():
     base = os.path.abspath(os.path.dirname(__file__))
-    with open(os.path.join(base, 'protobufs/__init__.py')) as initf:
+    with open(os.path.join(base, 'python/protobufs/__init__.py')) as initf:
         for line in initf:
             m = version_re.match(line.strip())
             if not m:
@@ -31,9 +31,10 @@ setup_requirements = [
 
 setup(
     name='protobufs',
+    package_dir={'': 'python'},
     version=get_version(),
     description='python SOA service',
-    packages=find_packages(exclude=[
+    packages=find_packages('python', exclude=[
         "*.tests",
         "*.tests.*",
         "tests.*",
