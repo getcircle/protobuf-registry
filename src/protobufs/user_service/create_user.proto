@@ -1,7 +1,14 @@
 package main.user_service.create_user;
 
-message Request {}
+import "protobufs/identity_service/containers/identity.proto";
+import "protobufs/user_service/containers/user.proto";
+
+message Request {
+    optional string password = 1;
+    optional main.identity_service.containers.identity.Identity identity = 2;
+}
 
 message Response {
-    optional string user_id = 1;
+    optional main.user_service.containers.user.User user = 1;
+    repeated main.identity_service.containers.identity.Identity identities = 2;
 }

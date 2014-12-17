@@ -1,0 +1,24 @@
+package main.user_service.authenticate_user;
+
+import "protobufs/user_service/containers/user.proto";
+
+message Request {
+
+    enum AuthBackend {
+        INTERNAL = 0;
+    }
+
+    message Credentials {
+        optional string key = 1;
+        optional string secret = 2;
+    }
+
+    optional AuthBackend backend = 1;
+    optional Credentials credentials = 2;
+
+}
+
+message Response {
+    optional main.user_service.containers.user.User user = 1;
+    optional bool authenticated = 2 [default = false];
+}

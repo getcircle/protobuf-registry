@@ -1,0 +1,12 @@
+package main.user_service.containers.user;
+
+import "protobufs/identity_service/containers/identity.proto";
+
+message User {
+    optional string id = 1;
+    optional string primary_email = 2;
+    optional bool is_admin = 3;
+    optional bool is_active = 4;
+
+    repeated main.identity_service.containers.identity.Identity identities = 5;
+}

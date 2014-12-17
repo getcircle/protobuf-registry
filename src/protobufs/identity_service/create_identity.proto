@@ -3,12 +3,7 @@ package main.identity_service.create_identity;
 import "protobufs/identity_service/containers/identity.proto";
 
 message Request {
-    optional string user_id = 1;
-    optional string first_name = 2;
-    optional string last_name = 3;
-    optional main.identity_service.containers.identity.Identity.Type type = 4;
-    optional string email = 5;
-    optional string phone_number = 6;
+    optional main.identity_service.containers.identity.Identity identity = 1;
 }
 
 message Response {

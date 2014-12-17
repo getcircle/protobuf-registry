@@ -19,16 +19,18 @@ import protobufs.credential_service.verify_credentials_pb2
 import protobufs.credential_service.update_credentials_pb2
 import protobufs.identity_service.create_identity_pb2
 import protobufs.identity_service.get_identity_pb2
+import protobufs.identity_service.get_identities_pb2
 import protobufs.user_service.create_user_pb2
 import protobufs.user_service.valid_user_pb2
+import protobufs.user_service.authenticate_user_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/request_registry.proto',
   package='main.requests',
-  serialized_pb=_b('\n protobufs/request_registry.proto\x12\rmain.requests\x1a\"service/protobufs/common/soa.proto\x1a\x35protobufs/credential_service/create_credentials.proto\x1a\x35protobufs/credential_service/verify_credentials.proto\x1a\x35protobufs/credential_service/update_credentials.proto\x1a\x30protobufs/identity_service/create_identity.proto\x1a-protobufs/identity_service/get_identity.proto\x1a(protobufs/user_service/create_user.proto\x1a\'protobufs/user_service/valid_user.proto\"\xb9\x01\n\x0bUserService2U\n\x0b\x63reate_user\x12\x18.soa.ActionRequestParams\x18\x65 \x01(\x0b\x32&.main.user_service.create_user.Request2S\n\nvalid_user\x12\x18.soa.ActionRequestParams\x18\x66 \x01(\x0b\x32%.main.user_service.valid_user.Request\"\xd1\x01\n\x0fIdentityService2a\n\x0f\x63reate_identity\x12\x18.soa.ActionRequestParams\x18g \x01(\x0b\x32..main.identity_service.create_identity.Request2[\n\x0cget_identity\x12\x18.soa.ActionRequestParams\x18h \x01(\x0b\x32+.main.identity_service.get_identity.Request\"\xd4\x02\n\x11\x43redentialService2i\n\x12\x63reate_credentials\x12\x18.soa.ActionRequestParams\x18i \x01(\x0b\x32\x33.main.credential_service.create_credentials.Request2i\n\x12verify_credentials\x12\x18.soa.ActionRequestParams\x18j \x01(\x0b\x32\x33.main.credential_service.verify_credentials.Request2i\n\x12update_credentials\x12\x18.soa.ActionRequestParams\x18k \x01(\x0b\x32\x33.main.credential_service.update_credentials.Request')
+  serialized_pb=_b('\n protobufs/request_registry.proto\x12\rmain.requests\x1a\"service/protobufs/common/soa.proto\x1a\x35protobufs/credential_service/create_credentials.proto\x1a\x35protobufs/credential_service/verify_credentials.proto\x1a\x35protobufs/credential_service/update_credentials.proto\x1a\x30protobufs/identity_service/create_identity.proto\x1a-protobufs/identity_service/get_identity.proto\x1a/protobufs/identity_service/get_identities.proto\x1a(protobufs/user_service/create_user.proto\x1a\'protobufs/user_service/valid_user.proto\x1a.protobufs/user_service/authenticate_user.proto\"\x9c\x02\n\x0bUserService2U\n\x0b\x63reate_user\x12\x18.soa.ActionRequestParams\x18\x65 \x01(\x0b\x32&.main.user_service.create_user.Request2S\n\nvalid_user\x12\x18.soa.ActionRequestParams\x18\x66 \x01(\x0b\x32%.main.user_service.valid_user.Request2a\n\x11\x61uthenticate_user\x12\x18.soa.ActionRequestParams\x18g \x01(\x0b\x32,.main.user_service.authenticate_user.Request\"\xb5\x02\n\x0fIdentityService2b\n\x0f\x63reate_identity\x12\x18.soa.ActionRequestParams\x18\xc8\x01 \x01(\x0b\x32..main.identity_service.create_identity.Request2\\\n\x0cget_identity\x12\x18.soa.ActionRequestParams\x18\xc9\x01 \x01(\x0b\x32+.main.identity_service.get_identity.Request2`\n\x0eget_identities\x12\x18.soa.ActionRequestParams\x18\xca\x01 \x01(\x0b\x32-.main.identity_service.get_identities.Request\"\xd7\x02\n\x11\x43redentialService2j\n\x12\x63reate_credentials\x12\x18.soa.ActionRequestParams\x18\xac\x02 \x01(\x0b\x32\x33.main.credential_service.create_credentials.Request2j\n\x12verify_credentials\x12\x18.soa.ActionRequestParams\x18\xad\x02 \x01(\x0b\x32\x33.main.credential_service.verify_credentials.Request2j\n\x12update_credentials\x12\x18.soa.ActionRequestParams\x18\xae\x02 \x01(\x0b\x32\x33.main.credential_service.update_credentials.Request')
   ,
-  dependencies=[service.protobufs.common.soa_pb2.DESCRIPTOR,protobufs.credential_service.create_credentials_pb2.DESCRIPTOR,protobufs.credential_service.verify_credentials_pb2.DESCRIPTOR,protobufs.credential_service.update_credentials_pb2.DESCRIPTOR,protobufs.identity_service.create_identity_pb2.DESCRIPTOR,protobufs.identity_service.get_identity_pb2.DESCRIPTOR,protobufs.user_service.create_user_pb2.DESCRIPTOR,protobufs.user_service.valid_user_pb2.DESCRIPTOR,])
+  dependencies=[service.protobufs.common.soa_pb2.DESCRIPTOR,protobufs.credential_service.create_credentials_pb2.DESCRIPTOR,protobufs.credential_service.verify_credentials_pb2.DESCRIPTOR,protobufs.credential_service.update_credentials_pb2.DESCRIPTOR,protobufs.identity_service.create_identity_pb2.DESCRIPTOR,protobufs.identity_service.get_identity_pb2.DESCRIPTOR,protobufs.identity_service.get_identities_pb2.DESCRIPTOR,protobufs.user_service.create_user_pb2.DESCRIPTOR,protobufs.user_service.valid_user_pb2.DESCRIPTOR,protobufs.user_service.authenticate_user_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -57,6 +59,13 @@ _USERSERVICE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='authenticate_user', full_name='main.requests.UserService.authenticate_user', index=2,
+      number=103, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
   ],
   nested_types=[],
   enum_types=[
@@ -66,8 +75,8 @@ _USERSERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=433,
-  serialized_end=618,
+  serialized_start=530,
+  serialized_end=814,
 )
 
 
@@ -82,14 +91,21 @@ _IDENTITYSERVICE = _descriptor.Descriptor(
   extensions=[
     _descriptor.FieldDescriptor(
       name='create_identity', full_name='main.requests.IdentityService.create_identity', index=0,
-      number=103, type=11, cpp_type=10, label=1,
+      number=200, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='get_identity', full_name='main.requests.IdentityService.get_identity', index=1,
-      number=104, type=11, cpp_type=10, label=1,
+      number=201, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_identities', full_name='main.requests.IdentityService.get_identities', index=2,
+      number=202, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
@@ -103,8 +119,8 @@ _IDENTITYSERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=621,
-  serialized_end=830,
+  serialized_start=817,
+  serialized_end=1126,
 )
 
 
@@ -119,21 +135,21 @@ _CREDENTIALSERVICE = _descriptor.Descriptor(
   extensions=[
     _descriptor.FieldDescriptor(
       name='create_credentials', full_name='main.requests.CredentialService.create_credentials', index=0,
-      number=105, type=11, cpp_type=10, label=1,
+      number=300, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='verify_credentials', full_name='main.requests.CredentialService.verify_credentials', index=1,
-      number=106, type=11, cpp_type=10, label=1,
+      number=301, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='update_credentials', full_name='main.requests.CredentialService.update_credentials', index=2,
-      number=107, type=11, cpp_type=10, label=1,
+      number=302, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
@@ -147,8 +163,8 @@ _CREDENTIALSERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=833,
-  serialized_end=1173,
+  serialized_start=1129,
+  serialized_end=1472,
 )
 
 DESCRIPTOR.message_types_by_name['UserService'] = _USERSERVICE
@@ -180,10 +196,14 @@ _USERSERVICE.extensions_by_name['create_user'].message_type = protobufs.user_ser
 service.protobufs.common.soa_pb2.ActionRequestParams.RegisterExtension(_USERSERVICE.extensions_by_name['create_user'])
 _USERSERVICE.extensions_by_name['valid_user'].message_type = protobufs.user_service.valid_user_pb2._REQUEST
 service.protobufs.common.soa_pb2.ActionRequestParams.RegisterExtension(_USERSERVICE.extensions_by_name['valid_user'])
+_USERSERVICE.extensions_by_name['authenticate_user'].message_type = protobufs.user_service.authenticate_user_pb2._REQUEST
+service.protobufs.common.soa_pb2.ActionRequestParams.RegisterExtension(_USERSERVICE.extensions_by_name['authenticate_user'])
 _IDENTITYSERVICE.extensions_by_name['create_identity'].message_type = protobufs.identity_service.create_identity_pb2._REQUEST
 service.protobufs.common.soa_pb2.ActionRequestParams.RegisterExtension(_IDENTITYSERVICE.extensions_by_name['create_identity'])
 _IDENTITYSERVICE.extensions_by_name['get_identity'].message_type = protobufs.identity_service.get_identity_pb2._REQUEST
 service.protobufs.common.soa_pb2.ActionRequestParams.RegisterExtension(_IDENTITYSERVICE.extensions_by_name['get_identity'])
+_IDENTITYSERVICE.extensions_by_name['get_identities'].message_type = protobufs.identity_service.get_identities_pb2._REQUEST
+service.protobufs.common.soa_pb2.ActionRequestParams.RegisterExtension(_IDENTITYSERVICE.extensions_by_name['get_identities'])
 _CREDENTIALSERVICE.extensions_by_name['create_credentials'].message_type = protobufs.credential_service.create_credentials_pb2._REQUEST
 service.protobufs.common.soa_pb2.ActionRequestParams.RegisterExtension(_CREDENTIALSERVICE.extensions_by_name['create_credentials'])
 _CREDENTIALSERVICE.extensions_by_name['verify_credentials'].message_type = protobufs.credential_service.verify_credentials_pb2._REQUEST

@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/identity_service/containers/identity.proto',
   package='main.identity_service.containers.identity',
-  serialized_pb=_b('\n4protobufs/identity_service/containers/identity.proto\x12)main.identity_service.containers.identity\"\xd1\x01\n\x08Identity\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12\x12\n\nfirst_name\x18\x03 \x01(\t\x12\x11\n\tlast_name\x18\x04 \x01(\t\x12\x46\n\x04type\x18\x05 \x01(\x0e\x32\x38.main.identity_service.containers.identity.Identity.Type\x12\r\n\x05\x65mail\x18\x06 \x01(\t\x12\x14\n\x0cphone_number\x18\x07 \x01(\t\"\x14\n\x04Type\x12\x0c\n\x08INTERNAL\x10\x00')
+  serialized_pb=_b('\n4protobufs/identity_service/containers/identity.proto\x12)main.identity_service.containers.identity\"\xdb\x01\n\x08Identity\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12\x12\n\nfirst_name\x18\x03 \x01(\t\x12\x11\n\tlast_name\x18\x04 \x01(\t\x12P\n\x04type\x18\x05 \x01(\x0e\x32\x38.main.identity_service.containers.identity.Identity.Type:\x08INTERNAL\x12\r\n\x05\x65mail\x18\x06 \x01(\t\x12\x14\n\x0cphone_number\x18\x07 \x01(\t\"\x14\n\x04Type\x12\x0c\n\x08INTERNAL\x10\x00')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -37,8 +37,8 @@ _IDENTITY_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=289,
-  serialized_end=309,
+  serialized_start=299,
+  serialized_end=319,
 )
 _sym_db.RegisterEnumDescriptor(_IDENTITY_TYPE)
 
@@ -81,7 +81,7 @@ _IDENTITY = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='type', full_name='main.identity_service.containers.identity.Identity.type', index=4,
       number=5, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
+      has_default_value=True, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -112,7 +112,7 @@ _IDENTITY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=100,
-  serialized_end=309,
+  serialized_end=319,
 )
 
 _IDENTITY.fields_by_name['type'].enum_type = _IDENTITY_TYPE

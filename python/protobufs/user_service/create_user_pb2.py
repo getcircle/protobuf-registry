@@ -13,13 +13,16 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+import protobufs.identity_service.containers.identity_pb2
+import protobufs.user_service.containers.user_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/user_service/create_user.proto',
   package='main.user_service.create_user',
-  serialized_pb=_b('\n(protobufs/user_service/create_user.proto\x12\x1dmain.user_service.create_user\"\t\n\x07Request\"\x1b\n\x08Response\x12\x0f\n\x07user_id\x18\x01 \x01(\t')
-)
+  serialized_pb=_b('\n(protobufs/user_service/create_user.proto\x12\x1dmain.user_service.create_user\x1a\x34protobufs/identity_service/containers/identity.proto\x1a,protobufs/user_service/containers/user.proto\"b\n\x07Request\x12\x10\n\x08password\x18\x01 \x01(\t\x12\x45\n\x08identity\x18\x02 \x01(\x0b\x32\x33.main.identity_service.containers.identity.Identity\"\x8a\x01\n\x08Response\x12\x35\n\x04user\x18\x01 \x01(\x0b\x32\'.main.user_service.containers.user.User\x12G\n\nidentities\x18\x02 \x03(\x0b\x32\x33.main.identity_service.containers.identity.Identity')
+  ,
+  dependencies=[protobufs.identity_service.containers.identity_pb2.DESCRIPTOR,protobufs.user_service.containers.user_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -32,33 +35,17 @@ _REQUEST = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=75,
-  serialized_end=84,
-)
-
-
-_RESPONSE = _descriptor.Descriptor(
-  name='Response',
-  full_name='main.user_service.create_user.Response',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
     _descriptor.FieldDescriptor(
-      name='user_id', full_name='main.user_service.create_user.Response.user_id', index=0,
+      name='password', full_name='main.user_service.create_user.Request.password', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='identity', full_name='main.user_service.create_user.Request.identity', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -73,10 +60,50 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=86,
-  serialized_end=113,
+  serialized_start=175,
+  serialized_end=273,
 )
 
+
+_RESPONSE = _descriptor.Descriptor(
+  name='Response',
+  full_name='main.user_service.create_user.Response',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='user', full_name='main.user_service.create_user.Response.user', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='identities', full_name='main.user_service.create_user.Response.identities', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=276,
+  serialized_end=414,
+)
+
+_REQUEST.fields_by_name['identity'].message_type = protobufs.identity_service.containers.identity_pb2._IDENTITY
+_RESPONSE.fields_by_name['user'].message_type = protobufs.user_service.containers.user_pb2._USER
+_RESPONSE.fields_by_name['identities'].message_type = protobufs.identity_service.containers.identity_pb2._IDENTITY
 DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
 DESCRIPTOR.message_types_by_name['Response'] = _RESPONSE
 
