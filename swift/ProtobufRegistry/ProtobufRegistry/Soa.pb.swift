@@ -3,8 +3,8 @@
 import Foundation
 import ProtocolBuffers
 
-internal struct SoaRoot {
-  internal static var sharedInstance : SoaRoot {
+public struct SoaRoot {
+  public static var sharedInstance : SoaRoot {
    struct Static {
        static let instance : SoaRoot = SoaRoot()
    }
@@ -16,11 +16,11 @@ internal struct SoaRoot {
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
   }
-  internal func registerAllExtensions(registry:ExtensionRegistry) {
+  public func registerAllExtensions(registry:ExtensionRegistry) {
   }
 }
 
-internal func == (lhs: Control, rhs: Control) -> Bool {
+public func == (lhs: Control, rhs: Control) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -30,7 +30,7 @@ internal func == (lhs: Control, rhs: Control) -> Bool {
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: ActionControl, rhs: ActionControl) -> Bool {
+public func == (lhs: ActionControl, rhs: ActionControl) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -40,7 +40,7 @@ internal func == (lhs: ActionControl, rhs: ActionControl) -> Bool {
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: ActionRequest, rhs: ActionRequest) -> Bool {
+public func == (lhs: ActionRequest, rhs: ActionRequest) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -50,7 +50,7 @@ internal func == (lhs: ActionRequest, rhs: ActionRequest) -> Bool {
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: ActionRequestParams, rhs: ActionRequestParams) -> Bool {
+public func == (lhs: ActionRequestParams, rhs: ActionRequestParams) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -59,7 +59,7 @@ internal func == (lhs: ActionRequestParams, rhs: ActionRequestParams) -> Bool {
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: ActionResponseResult.ErrorDetail, rhs: ActionResponseResult.ErrorDetail) -> Bool {
+public func == (lhs: ActionResponseResult.ErrorDetail, rhs: ActionResponseResult.ErrorDetail) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -70,19 +70,19 @@ internal func == (lhs: ActionResponseResult.ErrorDetail, rhs: ActionResponseResu
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: ActionResponseResult, rhs: ActionResponseResult) -> Bool {
+public func == (lhs: ActionResponseResult, rhs: ActionResponseResult) -> Bool {
   if (lhs === rhs) {
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasSuccess == rhs.hasSuccess) && (!lhs.hasSuccess || lhs.success == rhs.success)
   fieldCheck = fieldCheck && (lhs.errors == rhs.errors)
-  fieldCheck = fieldCheck && (lhs.errorDetails == rhs.errorDetails)
+  fieldCheck = fieldCheck && (lhs.error_details == rhs.error_details)
   fieldCheck = fieldCheck && lhs.isEqualExtensionsInOther(rhs, startInclusive:Int32(100), endExclusive:Int32(536870912))
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: ActionResponse, rhs: ActionResponse) -> Bool {
+public func == (lhs: ActionResponse, rhs: ActionResponse) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -92,7 +92,7 @@ internal func == (lhs: ActionResponse, rhs: ActionResponse) -> Bool {
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: ServiceRequest, rhs: ServiceRequest) -> Bool {
+public func == (lhs: ServiceRequest, rhs: ServiceRequest) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -102,7 +102,7 @@ internal func == (lhs: ServiceRequest, rhs: ServiceRequest) -> Bool {
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: ServiceResponse, rhs: ServiceResponse) -> Bool {
+public func == (lhs: ServiceResponse, rhs: ServiceResponse) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -112,23 +112,23 @@ internal func == (lhs: ServiceResponse, rhs: ServiceResponse) -> Bool {
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-final internal class Control : GeneratedMessage {
-  private(set) var hasToken:Bool = false
-  private(set) var token:String = ""
+final public class Control : GeneratedMessage {
+  public private(set) var hasToken:Bool = false
+  public private(set) var token:String = ""
 
-  private(set) var hasService:Bool = false
-  private(set) var service:String = ""
+  public private(set) var hasService:Bool = false
+  public private(set) var service:String = ""
 
-  required internal init() {
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
     if !hasService {
       return false
     }
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     if hasToken {
       output.writeString(1, value:token)
     }
@@ -137,7 +137,7 @@ final internal class Control : GeneratedMessage {
     }
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -154,43 +154,43 @@ final internal class Control : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> Control {
+  public class func parseFromData(data:[Byte]) -> Control {
     return Control.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> Control {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> Control {
     return Control.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> Control {
+  public class func parseFromInputStream(input:NSInputStream) -> Control {
     return Control.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Control {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Control {
     return Control.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> Control {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> Control {
     return Control.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Control {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Control {
     return Control.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> ControlBuilder {
+  public class func builder() -> ControlBuilder {
     return Control.classBuilder() as ControlBuilder
   }
-  internal func builder() -> ControlBuilder {
+  public func builder() -> ControlBuilder {
     return classBuilder() as ControlBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return ControlBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return Control.builder()
   }
-  internal func toBuilder() -> ControlBuilder {
+  public func toBuilder() -> ControlBuilder {
     return Control.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:Control) -> ControlBuilder {
+  public class func builderWithPrototype(prototype:Control) -> ControlBuilder {
     return Control.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     if hasToken {
       output += "\(indent) token: \(token) \n"
     }
@@ -199,7 +199,7 @@ final internal class Control : GeneratedMessage {
     }
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           if hasToken {
@@ -216,13 +216,13 @@ final internal class Control : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "Control"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "Control"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return Control.self
   }
 
@@ -231,19 +231,19 @@ final internal class Control : GeneratedMessage {
 
 }
 
-final internal class ControlBuilder : GeneratedMessageBuilder {
+final public class ControlBuilder : GeneratedMessageBuilder {
   private var builderResult:Control
 
-  required override internal init () {
+  required override public init () {
      builderResult = Control()
      super.init()
   }
-  var hasToken:Bool {
+  public var hasToken:Bool {
        get {
             return builderResult.hasToken
        }
   }
-  var token:String {
+  public var token:String {
        get {
             return builderResult.token
        }
@@ -252,17 +252,17 @@ final internal class ControlBuilder : GeneratedMessageBuilder {
            builderResult.token = value
        }
   }
-  internal func clearToken() -> ControlBuilder{
+  public func clearToken() -> ControlBuilder{
        builderResult.hasToken = false
        builderResult.token = ""
        return self
   }
-  var hasService:Bool {
+  public var hasService:Bool {
        get {
             return builderResult.hasService
        }
   }
-  var service:String {
+  public var service:String {
        get {
             return builderResult.service
        }
@@ -271,32 +271,32 @@ final internal class ControlBuilder : GeneratedMessageBuilder {
            builderResult.service = value
        }
   }
-  internal func clearService() -> ControlBuilder{
+  public func clearService() -> ControlBuilder{
        builderResult.hasService = false
        builderResult.service = ""
        return self
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> ControlBuilder {
+  public override func clear() -> ControlBuilder {
     builderResult = Control()
     return self
   }
-  internal override func clone() -> ControlBuilder {
+  public override func clone() -> ControlBuilder {
     return Control.builderWithPrototype(builderResult)
   }
-  internal override func build() -> Control {
+  public override func build() -> Control {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> Control {
+  public func buildPartial() -> Control {
     var returnMe:Control = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:Control) -> ControlBuilder {
+  public func mergeFrom(other:Control) -> ControlBuilder {
     if (other == Control()) {
      return self
     }
@@ -309,10 +309,10 @@ final internal class ControlBuilder : GeneratedMessageBuilder {
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->ControlBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->ControlBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ControlBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ControlBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -337,17 +337,17 @@ final internal class ControlBuilder : GeneratedMessageBuilder {
   }
 }
 
-final internal class ActionControl : GeneratedMessage {
-  private(set) var hasService:Bool = false
-  private(set) var service:String = ""
+final public class ActionControl : GeneratedMessage {
+  public private(set) var hasService:Bool = false
+  public private(set) var service:String = ""
 
-  private(set) var hasAction:Bool = false
-  private(set) var action:String = ""
+  public private(set) var hasAction:Bool = false
+  public private(set) var action:String = ""
 
-  required internal init() {
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
     if !hasService {
       return false
     }
@@ -356,7 +356,7 @@ final internal class ActionControl : GeneratedMessage {
     }
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     if hasService {
       output.writeString(1, value:service)
     }
@@ -365,7 +365,7 @@ final internal class ActionControl : GeneratedMessage {
     }
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -382,43 +382,43 @@ final internal class ActionControl : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> ActionControl {
+  public class func parseFromData(data:[Byte]) -> ActionControl {
     return ActionControl.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionControl {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionControl {
     return ActionControl.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> ActionControl {
+  public class func parseFromInputStream(input:NSInputStream) -> ActionControl {
     return ActionControl.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionControl {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionControl {
     return ActionControl.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> ActionControl {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> ActionControl {
     return ActionControl.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionControl {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionControl {
     return ActionControl.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> ActionControlBuilder {
+  public class func builder() -> ActionControlBuilder {
     return ActionControl.classBuilder() as ActionControlBuilder
   }
-  internal func builder() -> ActionControlBuilder {
+  public func builder() -> ActionControlBuilder {
     return classBuilder() as ActionControlBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return ActionControlBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return ActionControl.builder()
   }
-  internal func toBuilder() -> ActionControlBuilder {
+  public func toBuilder() -> ActionControlBuilder {
     return ActionControl.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:ActionControl) -> ActionControlBuilder {
+  public class func builderWithPrototype(prototype:ActionControl) -> ActionControlBuilder {
     return ActionControl.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     if hasService {
       output += "\(indent) service: \(service) \n"
     }
@@ -427,7 +427,7 @@ final internal class ActionControl : GeneratedMessage {
     }
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           if hasService {
@@ -444,13 +444,13 @@ final internal class ActionControl : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "ActionControl"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "ActionControl"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return ActionControl.self
   }
 
@@ -459,19 +459,19 @@ final internal class ActionControl : GeneratedMessage {
 
 }
 
-final internal class ActionControlBuilder : GeneratedMessageBuilder {
+final public class ActionControlBuilder : GeneratedMessageBuilder {
   private var builderResult:ActionControl
 
-  required override internal init () {
+  required override public init () {
      builderResult = ActionControl()
      super.init()
   }
-  var hasService:Bool {
+  public var hasService:Bool {
        get {
             return builderResult.hasService
        }
   }
-  var service:String {
+  public var service:String {
        get {
             return builderResult.service
        }
@@ -480,17 +480,17 @@ final internal class ActionControlBuilder : GeneratedMessageBuilder {
            builderResult.service = value
        }
   }
-  internal func clearService() -> ActionControlBuilder{
+  public func clearService() -> ActionControlBuilder{
        builderResult.hasService = false
        builderResult.service = ""
        return self
   }
-  var hasAction:Bool {
+  public var hasAction:Bool {
        get {
             return builderResult.hasAction
        }
   }
-  var action:String {
+  public var action:String {
        get {
             return builderResult.action
        }
@@ -499,32 +499,32 @@ final internal class ActionControlBuilder : GeneratedMessageBuilder {
            builderResult.action = value
        }
   }
-  internal func clearAction() -> ActionControlBuilder{
+  public func clearAction() -> ActionControlBuilder{
        builderResult.hasAction = false
        builderResult.action = ""
        return self
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> ActionControlBuilder {
+  public override func clear() -> ActionControlBuilder {
     builderResult = ActionControl()
     return self
   }
-  internal override func clone() -> ActionControlBuilder {
+  public override func clone() -> ActionControlBuilder {
     return ActionControl.builderWithPrototype(builderResult)
   }
-  internal override func build() -> ActionControl {
+  public override func build() -> ActionControl {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> ActionControl {
+  public func buildPartial() -> ActionControl {
     var returnMe:ActionControl = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:ActionControl) -> ActionControlBuilder {
+  public func mergeFrom(other:ActionControl) -> ActionControlBuilder {
     if (other == ActionControl()) {
      return self
     }
@@ -537,10 +537,10 @@ final internal class ActionControlBuilder : GeneratedMessageBuilder {
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionControlBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionControlBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionControlBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionControlBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -565,15 +565,15 @@ final internal class ActionControlBuilder : GeneratedMessageBuilder {
   }
 }
 
-final internal class ActionRequest : GeneratedMessage {
-  private(set) var hasControl:Bool = false
-  private(set) var control:ActionControl = ActionControl()
-  private(set) var hasParams:Bool = false
-  private(set) var params:ActionRequestParams = ActionRequestParams()
-  required internal init() {
+final public class ActionRequest : GeneratedMessage {
+  public private(set) var hasControl:Bool = false
+  public private(set) var control:ActionControl = ActionControl()
+  public private(set) var hasParams:Bool = false
+  public private(set) var params:ActionRequestParams = ActionRequestParams()
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
     if !hasControl {
       return false
     }
@@ -587,7 +587,7 @@ final internal class ActionRequest : GeneratedMessage {
     }
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     if hasControl {
       output.writeMessage(1, value:control)
     }
@@ -596,7 +596,7 @@ final internal class ActionRequest : GeneratedMessage {
     }
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -613,43 +613,43 @@ final internal class ActionRequest : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> ActionRequest {
+  public class func parseFromData(data:[Byte]) -> ActionRequest {
     return ActionRequest.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionRequest {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionRequest {
     return ActionRequest.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> ActionRequest {
+  public class func parseFromInputStream(input:NSInputStream) -> ActionRequest {
     return ActionRequest.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionRequest {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionRequest {
     return ActionRequest.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> ActionRequest {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> ActionRequest {
     return ActionRequest.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionRequest {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionRequest {
     return ActionRequest.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> ActionRequestBuilder {
+  public class func builder() -> ActionRequestBuilder {
     return ActionRequest.classBuilder() as ActionRequestBuilder
   }
-  internal func builder() -> ActionRequestBuilder {
+  public func builder() -> ActionRequestBuilder {
     return classBuilder() as ActionRequestBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return ActionRequestBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return ActionRequest.builder()
   }
-  internal func toBuilder() -> ActionRequestBuilder {
+  public func toBuilder() -> ActionRequestBuilder {
     return ActionRequest.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:ActionRequest) -> ActionRequestBuilder {
+  public class func builderWithPrototype(prototype:ActionRequest) -> ActionRequestBuilder {
     return ActionRequest.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     if hasControl {
       output += "\(indent) control {\n"
       control.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -662,7 +662,7 @@ final internal class ActionRequest : GeneratedMessage {
     }
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           if hasControl {
@@ -679,13 +679,13 @@ final internal class ActionRequest : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "ActionRequest"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "ActionRequest"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return ActionRequest.self
   }
 
@@ -694,19 +694,19 @@ final internal class ActionRequest : GeneratedMessage {
 
 }
 
-final internal class ActionRequestBuilder : GeneratedMessageBuilder {
+final public class ActionRequestBuilder : GeneratedMessageBuilder {
   private var builderResult:ActionRequest
 
-  required override internal init () {
+  required override public init () {
      builderResult = ActionRequest()
      super.init()
   }
-  var hasControl:Bool {
+  public var hasControl:Bool {
        get {
            return builderResult.hasControl
        }
   }
-  var control:ActionControl {
+  public var control:ActionControl {
        get {
            return builderResult.control
        }
@@ -715,11 +715,11 @@ final internal class ActionRequestBuilder : GeneratedMessageBuilder {
            builderResult.control = value
        }
   }
-  internal func setControlBuilder(builderForValue:ActionControlBuilder) -> ActionRequestBuilder {
+  public func setControlBuilder(builderForValue:ActionControlBuilder) -> ActionRequestBuilder {
     control = builderForValue.build()
     return self
   }
-  internal func mergeControl(value:ActionControl) -> ActionRequestBuilder {
+  public func mergeControl(value:ActionControl) -> ActionRequestBuilder {
     if (builderResult.hasControl) {
       builderResult.control = ActionControl.builderWithPrototype(builderResult.control).mergeFrom(value).buildPartial()
     } else {
@@ -728,17 +728,17 @@ final internal class ActionRequestBuilder : GeneratedMessageBuilder {
     builderResult.hasControl = true
     return self
   }
-  internal func clearControl() -> ActionRequestBuilder {
+  public func clearControl() -> ActionRequestBuilder {
     builderResult.hasControl = false
     builderResult.control = ActionControl()
     return self
   }
-  var hasParams:Bool {
+  public var hasParams:Bool {
        get {
            return builderResult.hasParams
        }
   }
-  var params:ActionRequestParams {
+  public var params:ActionRequestParams {
        get {
            return builderResult.params
        }
@@ -747,11 +747,11 @@ final internal class ActionRequestBuilder : GeneratedMessageBuilder {
            builderResult.params = value
        }
   }
-  internal func setParamsBuilder(builderForValue:ActionRequestParamsBuilder) -> ActionRequestBuilder {
+  public func setParamsBuilder(builderForValue:ActionRequestParamsBuilder) -> ActionRequestBuilder {
     params = builderForValue.build()
     return self
   }
-  internal func mergeParams(value:ActionRequestParams) -> ActionRequestBuilder {
+  public func mergeParams(value:ActionRequestParams) -> ActionRequestBuilder {
     if (builderResult.hasParams) {
       builderResult.params = ActionRequestParams.builderWithPrototype(builderResult.params).mergeFrom(value).buildPartial()
     } else {
@@ -760,32 +760,32 @@ final internal class ActionRequestBuilder : GeneratedMessageBuilder {
     builderResult.hasParams = true
     return self
   }
-  internal func clearParams() -> ActionRequestBuilder {
+  public func clearParams() -> ActionRequestBuilder {
     builderResult.hasParams = false
     builderResult.params = ActionRequestParams()
     return self
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> ActionRequestBuilder {
+  public override func clear() -> ActionRequestBuilder {
     builderResult = ActionRequest()
     return self
   }
-  internal override func clone() -> ActionRequestBuilder {
+  public override func clone() -> ActionRequestBuilder {
     return ActionRequest.builderWithPrototype(builderResult)
   }
-  internal override func build() -> ActionRequest {
+  public override func build() -> ActionRequest {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> ActionRequest {
+  public func buildPartial() -> ActionRequest {
     var returnMe:ActionRequest = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:ActionRequest) -> ActionRequestBuilder {
+  public func mergeFrom(other:ActionRequest) -> ActionRequestBuilder {
     if (other == ActionRequest()) {
      return self
     }
@@ -798,10 +798,10 @@ final internal class ActionRequestBuilder : GeneratedMessageBuilder {
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionRequestBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionRequestBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionRequestBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionRequestBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -836,21 +836,21 @@ final internal class ActionRequestBuilder : GeneratedMessageBuilder {
   }
 }
 
-final internal class ActionRequestParams : ExtendableMessage {
-  required internal init() {
+final public class ActionRequestParams : ExtendableMessage {
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
     if !extensionsAreInitialized() {
      return false
     }
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     writeExtensionsToCodedOutputStream(output, startInclusive:Int32(100), endExclusive:Int32(536870912))
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -862,47 +862,47 @@ final internal class ActionRequestParams : ExtendableMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> ActionRequestParams {
+  public class func parseFromData(data:[Byte]) -> ActionRequestParams {
     return ActionRequestParams.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionRequestParams {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionRequestParams {
     return ActionRequestParams.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> ActionRequestParams {
+  public class func parseFromInputStream(input:NSInputStream) -> ActionRequestParams {
     return ActionRequestParams.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionRequestParams {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionRequestParams {
     return ActionRequestParams.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> ActionRequestParams {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> ActionRequestParams {
     return ActionRequestParams.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionRequestParams {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionRequestParams {
     return ActionRequestParams.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> ActionRequestParamsBuilder {
+  public class func builder() -> ActionRequestParamsBuilder {
     return ActionRequestParams.classBuilder() as ActionRequestParamsBuilder
   }
-  internal func builder() -> ActionRequestParamsBuilder {
+  public func builder() -> ActionRequestParamsBuilder {
     return classBuilder() as ActionRequestParamsBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return ActionRequestParamsBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return ActionRequestParams.builder()
   }
-  internal func toBuilder() -> ActionRequestParamsBuilder {
+  public func toBuilder() -> ActionRequestParamsBuilder {
     return ActionRequestParams.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:ActionRequestParams) -> ActionRequestParamsBuilder {
+  public class func builderWithPrototype(prototype:ActionRequestParams) -> ActionRequestParamsBuilder {
     return ActionRequestParams.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     writeExtensionDescription(&output, startInclusive:Int32(100), endExclusive:Int32(536870912), indent:indent)
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           hashCode = (hashCode &* 31) &+ Int(hashExtensionsFrom(Int32(100), endExclusive:Int32(536870912)))
@@ -914,13 +914,13 @@ final internal class ActionRequestParams : ExtendableMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "ActionRequestParams"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "ActionRequestParams"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return ActionRequestParams.self
   }
 
@@ -929,34 +929,34 @@ final internal class ActionRequestParams : ExtendableMessage {
 
 }
 
-final internal class ActionRequestParamsBuilder : ExtendableMessageBuilder {
+final public class ActionRequestParamsBuilder : ExtendableMessageBuilder {
   private var builderResult:ActionRequestParams
 
-  required override internal init () {
+  required override public init () {
      builderResult = ActionRequestParams()
      super.init()
   }
-  override internal var internalGetResult:ExtendableMessage {
+  override public var internalGetResult:ExtendableMessage {
        get {
            return builderResult
        }
   }
-  internal override func clear() -> ActionRequestParamsBuilder {
+  public override func clear() -> ActionRequestParamsBuilder {
     builderResult = ActionRequestParams()
     return self
   }
-  internal override func clone() -> ActionRequestParamsBuilder {
+  public override func clone() -> ActionRequestParamsBuilder {
     return ActionRequestParams.builderWithPrototype(builderResult)
   }
-  internal override func build() -> ActionRequestParams {
+  public override func build() -> ActionRequestParams {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> ActionRequestParams {
+  public func buildPartial() -> ActionRequestParams {
     var returnMe:ActionRequestParams = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:ActionRequestParams) -> ActionRequestParamsBuilder {
+  public func mergeFrom(other:ActionRequestParams) -> ActionRequestParamsBuilder {
     if (other == ActionRequestParams()) {
      return self
     }
@@ -964,10 +964,10 @@ final internal class ActionRequestParamsBuilder : ExtendableMessageBuilder {
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionRequestParamsBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionRequestParamsBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionRequestParamsBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionRequestParamsBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -986,28 +986,28 @@ final internal class ActionRequestParamsBuilder : ExtendableMessageBuilder {
   }
 }
 
-final internal class ActionResponseResult : ExtendableMessage {
+final public class ActionResponseResult : ExtendableMessage {
 
 
   //Nested type declaration start
 
-    final internal class ErrorDetail : GeneratedMessage {
-      private(set) var hasError:Bool = false
-      private(set) var error:String = ""
+    final public class ErrorDetail : GeneratedMessage {
+      public private(set) var hasError:Bool = false
+      public private(set) var error:String = ""
 
-      private(set) var hasKey:Bool = false
-      private(set) var key:String = ""
+      public private(set) var hasKey:Bool = false
+      public private(set) var key:String = ""
 
-      private(set) var hasDetail:Bool = false
-      private(set) var detail:String = ""
+      public private(set) var hasDetail:Bool = false
+      public private(set) var detail:String = ""
 
-      required internal init() {
+      required public init() {
            super.init()
       }
-      override internal func isInitialized() -> Bool {
+      override public func isInitialized() -> Bool {
        return true
       }
-      override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+      override public func writeToCodedOutputStream(output:CodedOutputStream) {
         if hasError {
           output.writeString(1, value:error)
         }
@@ -1019,7 +1019,7 @@ final internal class ActionResponseResult : ExtendableMessage {
         }
         unknownFields.writeToCodedOutputStream(output)
       }
-      override internal func serializedSize() -> Int32 {
+      override public func serializedSize() -> Int32 {
         var size:Int32 = memoizedSerializedSize
         if size != -1 {
          return size
@@ -1039,43 +1039,43 @@ final internal class ActionResponseResult : ExtendableMessage {
         memoizedSerializedSize = size
         return size
       }
-      internal class func parseFromData(data:[Byte]) -> ActionResponseResult.ErrorDetail {
+      public class func parseFromData(data:[Byte]) -> ActionResponseResult.ErrorDetail {
         return ActionResponseResult.ErrorDetail.builder().mergeFromData(data).build()
       }
-      internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionResponseResult.ErrorDetail {
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionResponseResult.ErrorDetail {
         return ActionResponseResult.ErrorDetail.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
       }
-      internal class func parseFromInputStream(input:NSInputStream) -> ActionResponseResult.ErrorDetail {
+      public class func parseFromInputStream(input:NSInputStream) -> ActionResponseResult.ErrorDetail {
         return ActionResponseResult.ErrorDetail.builder().mergeFromInputStream(input).build()
       }
-      internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionResponseResult.ErrorDetail {
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionResponseResult.ErrorDetail {
         return ActionResponseResult.ErrorDetail.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
       }
-      internal class func parseFromCodedInputStream(input:CodedInputStream) -> ActionResponseResult.ErrorDetail {
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> ActionResponseResult.ErrorDetail {
         return ActionResponseResult.ErrorDetail.builder().mergeFromCodedInputStream(input).build()
       }
-      internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponseResult.ErrorDetail {
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponseResult.ErrorDetail {
         return ActionResponseResult.ErrorDetail.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
       }
-      internal class func builder() -> ActionResponseResult.ErrorDetailBuilder {
+      public class func builder() -> ActionResponseResult.ErrorDetailBuilder {
         return ActionResponseResult.ErrorDetail.classBuilder() as ActionResponseResult.ErrorDetailBuilder
       }
-      internal func builder() -> ActionResponseResult.ErrorDetailBuilder {
+      public func builder() -> ActionResponseResult.ErrorDetailBuilder {
         return classBuilder() as ActionResponseResult.ErrorDetailBuilder
       }
-      internal override class func classBuilder() -> MessageBuilder {
+      public override class func classBuilder() -> MessageBuilder {
         return ActionResponseResult.ErrorDetailBuilder()
       }
-      internal override func classBuilder() -> MessageBuilder {
+      public override func classBuilder() -> MessageBuilder {
         return ActionResponseResult.ErrorDetail.builder()
       }
-      internal func toBuilder() -> ActionResponseResult.ErrorDetailBuilder {
+      public func toBuilder() -> ActionResponseResult.ErrorDetailBuilder {
         return ActionResponseResult.ErrorDetail.builderWithPrototype(self)
       }
-      internal class func builderWithPrototype(prototype:ActionResponseResult.ErrorDetail) -> ActionResponseResult.ErrorDetailBuilder {
+      public class func builderWithPrototype(prototype:ActionResponseResult.ErrorDetail) -> ActionResponseResult.ErrorDetailBuilder {
         return ActionResponseResult.ErrorDetail.builder().mergeFrom(prototype)
       }
-      override internal func writeDescriptionTo(inout output:String, indent:String) {
+      override public func writeDescriptionTo(inout output:String, indent:String) {
         if hasError {
           output += "\(indent) error: \(error) \n"
         }
@@ -1087,7 +1087,7 @@ final internal class ActionResponseResult : ExtendableMessage {
         }
         unknownFields.writeDescriptionTo(&output, indent:indent)
       }
-      override internal var hashValue:Int {
+      override public var hashValue:Int {
           get {
               var hashCode:Int = 7
               if hasError {
@@ -1107,13 +1107,13 @@ final internal class ActionResponseResult : ExtendableMessage {
 
       //Meta information declaration start
 
-      override internal class func className() -> String {
+      override public class func className() -> String {
           return "ActionResponseResult.ErrorDetail"
       }
-      override internal func className() -> String {
+      override public func className() -> String {
           return "ActionResponseResult.ErrorDetail"
       }
-      override internal func classMetaType() -> GeneratedMessage.Type {
+      override public func classMetaType() -> GeneratedMessage.Type {
           return ActionResponseResult.ErrorDetail.self
       }
 
@@ -1122,19 +1122,19 @@ final internal class ActionResponseResult : ExtendableMessage {
 
     }
 
-    final internal class ErrorDetailBuilder : GeneratedMessageBuilder {
+    final public class ErrorDetailBuilder : GeneratedMessageBuilder {
       private var builderResult:ActionResponseResult.ErrorDetail
 
-      required override internal init () {
+      required override public init () {
          builderResult = ActionResponseResult.ErrorDetail()
          super.init()
       }
-      var hasError:Bool {
+      public var hasError:Bool {
            get {
                 return builderResult.hasError
            }
       }
-      var error:String {
+      public var error:String {
            get {
                 return builderResult.error
            }
@@ -1143,17 +1143,17 @@ final internal class ActionResponseResult : ExtendableMessage {
                builderResult.error = value
            }
       }
-      internal func clearError() -> ActionResponseResult.ErrorDetailBuilder{
+      public func clearError() -> ActionResponseResult.ErrorDetailBuilder{
            builderResult.hasError = false
            builderResult.error = ""
            return self
       }
-      var hasKey:Bool {
+      public var hasKey:Bool {
            get {
                 return builderResult.hasKey
            }
       }
-      var key:String {
+      public var key:String {
            get {
                 return builderResult.key
            }
@@ -1162,17 +1162,17 @@ final internal class ActionResponseResult : ExtendableMessage {
                builderResult.key = value
            }
       }
-      internal func clearKey() -> ActionResponseResult.ErrorDetailBuilder{
+      public func clearKey() -> ActionResponseResult.ErrorDetailBuilder{
            builderResult.hasKey = false
            builderResult.key = ""
            return self
       }
-      var hasDetail:Bool {
+      public var hasDetail:Bool {
            get {
                 return builderResult.hasDetail
            }
       }
-      var detail:String {
+      public var detail:String {
            get {
                 return builderResult.detail
            }
@@ -1181,32 +1181,32 @@ final internal class ActionResponseResult : ExtendableMessage {
                builderResult.detail = value
            }
       }
-      internal func clearDetail() -> ActionResponseResult.ErrorDetailBuilder{
+      public func clearDetail() -> ActionResponseResult.ErrorDetailBuilder{
            builderResult.hasDetail = false
            builderResult.detail = ""
            return self
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> ActionResponseResult.ErrorDetailBuilder {
+      public override func clear() -> ActionResponseResult.ErrorDetailBuilder {
         builderResult = ActionResponseResult.ErrorDetail()
         return self
       }
-      internal override func clone() -> ActionResponseResult.ErrorDetailBuilder {
+      public override func clone() -> ActionResponseResult.ErrorDetailBuilder {
         return ActionResponseResult.ErrorDetail.builderWithPrototype(builderResult)
       }
-      internal override func build() -> ActionResponseResult.ErrorDetail {
+      public override func build() -> ActionResponseResult.ErrorDetail {
            checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> ActionResponseResult.ErrorDetail {
+      public func buildPartial() -> ActionResponseResult.ErrorDetail {
         var returnMe:ActionResponseResult.ErrorDetail = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:ActionResponseResult.ErrorDetail) -> ActionResponseResult.ErrorDetailBuilder {
+      public func mergeFrom(other:ActionResponseResult.ErrorDetail) -> ActionResponseResult.ErrorDetailBuilder {
         if (other == ActionResponseResult.ErrorDetail()) {
          return self
         }
@@ -1222,10 +1222,10 @@ final internal class ActionResponseResult : ExtendableMessage {
         mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionResponseResult.ErrorDetailBuilder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionResponseResult.ErrorDetailBuilder {
            return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponseResult.ErrorDetailBuilder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponseResult.ErrorDetailBuilder {
         var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           var tag = input.readTag()
@@ -1257,21 +1257,21 @@ final internal class ActionResponseResult : ExtendableMessage {
 
   //Nested type declaration end
 
-  private(set) var hasSuccess:Bool = false
-  private(set) var success:Bool = false
+  public private(set) var hasSuccess:Bool = false
+  public private(set) var success:Bool = false
 
-  private(set) var errors:Array<String> = Array<String>()
-  private(set) var errorDetails:Array<ActionResponseResult.ErrorDetail>  = Array<ActionResponseResult.ErrorDetail>()
-  required internal init() {
+  public private(set) var errors:Array<String> = Array<String>()
+  public private(set) var error_details:Array<ActionResponseResult.ErrorDetail>  = Array<ActionResponseResult.ErrorDetail>()
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
     if !extensionsAreInitialized() {
      return false
     }
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     if hasSuccess {
       output.writeBool(1, value:success)
     }
@@ -1280,13 +1280,13 @@ final internal class ActionResponseResult : ExtendableMessage {
         output.writeString(2, value:oneValueerrors)
       }
     }
-    for oneElementerrorDetails in errorDetails {
-        output.writeMessage(3, value:oneElementerrorDetails)
+    for oneElementerror_details in error_details {
+        output.writeMessage(3, value:oneElementerror_details)
     }
     writeExtensionsToCodedOutputStream(output, startInclusive:Int32(100), endExclusive:Int32(536870912))
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -1302,51 +1302,51 @@ final internal class ActionResponseResult : ExtendableMessage {
     }
     size += dataSizeErrors
     size += 1 * Int32(errors.count)
-    for oneElementerrorDetails in errorDetails {
-        size += WireFormat.computeMessageSize(3, value:oneElementerrorDetails)
+    for oneElementerror_details in error_details {
+        size += WireFormat.computeMessageSize(3, value:oneElementerror_details)
     }
     size += extensionsSerializedSize()
     size += unknownFields.serializedSize()
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> ActionResponseResult {
+  public class func parseFromData(data:[Byte]) -> ActionResponseResult {
     return ActionResponseResult.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionResponseResult {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionResponseResult {
     return ActionResponseResult.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> ActionResponseResult {
+  public class func parseFromInputStream(input:NSInputStream) -> ActionResponseResult {
     return ActionResponseResult.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionResponseResult {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionResponseResult {
     return ActionResponseResult.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> ActionResponseResult {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> ActionResponseResult {
     return ActionResponseResult.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponseResult {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponseResult {
     return ActionResponseResult.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> ActionResponseResultBuilder {
+  public class func builder() -> ActionResponseResultBuilder {
     return ActionResponseResult.classBuilder() as ActionResponseResultBuilder
   }
-  internal func builder() -> ActionResponseResultBuilder {
+  public func builder() -> ActionResponseResultBuilder {
     return classBuilder() as ActionResponseResultBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return ActionResponseResultBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return ActionResponseResult.builder()
   }
-  internal func toBuilder() -> ActionResponseResultBuilder {
+  public func toBuilder() -> ActionResponseResultBuilder {
     return ActionResponseResult.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:ActionResponseResult) -> ActionResponseResultBuilder {
+  public class func builderWithPrototype(prototype:ActionResponseResult) -> ActionResponseResultBuilder {
     return ActionResponseResult.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     if hasSuccess {
       output += "\(indent) success: \(success) \n"
     }
@@ -1355,17 +1355,17 @@ final internal class ActionResponseResult : ExtendableMessage {
         output += "\(indent) errors[\(errorsElementIndex)]: \(oneValueerrors)\n"
         errorsElementIndex++
     }
-    var errorDetailsElementIndex:Int = 0
-    for oneElementerrorDetails in errorDetails {
-        output += "\(indent) errorDetails[\(errorDetailsElementIndex)] {\n"
-        oneElementerrorDetails.writeDescriptionTo(&output, indent:"\(indent)  ")
+    var error_detailsElementIndex:Int = 0
+    for oneElementerror_details in error_details {
+        output += "\(indent) error_details[\(error_detailsElementIndex)] {\n"
+        oneElementerror_details.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent)}\n"
-        errorDetailsElementIndex++
+        error_detailsElementIndex++
     }
     writeExtensionDescription(&output, startInclusive:Int32(100), endExclusive:Int32(536870912), indent:indent)
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           if hasSuccess {
@@ -1374,8 +1374,8 @@ final internal class ActionResponseResult : ExtendableMessage {
           for oneValueerrors in errors {
               hashCode = (hashCode &* 31) &+ oneValueerrors.hashValue
           }
-          for oneElementerrorDetails in errorDetails {
-              hashCode = (hashCode &* 31) &+ oneElementerrorDetails.hashValue
+          for oneElementerror_details in error_details {
+              hashCode = (hashCode &* 31) &+ oneElementerror_details.hashValue
           }
           hashCode = (hashCode &* 31) &+ Int(hashExtensionsFrom(Int32(100), endExclusive:Int32(536870912)))
           hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -1386,13 +1386,13 @@ final internal class ActionResponseResult : ExtendableMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "ActionResponseResult"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "ActionResponseResult"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return ActionResponseResult.self
   }
 
@@ -1401,19 +1401,19 @@ final internal class ActionResponseResult : ExtendableMessage {
 
 }
 
-final internal class ActionResponseResultBuilder : ExtendableMessageBuilder {
+final public class ActionResponseResultBuilder : ExtendableMessageBuilder {
   private var builderResult:ActionResponseResult
 
-  required override internal init () {
+  required override public init () {
      builderResult = ActionResponseResult()
      super.init()
   }
-  var hasSuccess:Bool {
+  public var hasSuccess:Bool {
        get {
             return builderResult.hasSuccess
        }
   }
-  var success:Bool {
+  public var success:Bool {
        get {
             return builderResult.success
        }
@@ -1422,12 +1422,12 @@ final internal class ActionResponseResultBuilder : ExtendableMessageBuilder {
            builderResult.success = value
        }
   }
-  internal func clearSuccess() -> ActionResponseResultBuilder{
+  public func clearSuccess() -> ActionResponseResultBuilder{
        builderResult.hasSuccess = false
        builderResult.success = false
        return self
   }
-  var errors:Array<String> {
+  public var errors:Array<String> {
        get {
            return builderResult.errors
        }
@@ -1435,43 +1435,43 @@ final internal class ActionResponseResultBuilder : ExtendableMessageBuilder {
            builderResult.errors = array
        }
   }
-  internal func clearErrors() -> ActionResponseResultBuilder {
+  public func clearErrors() -> ActionResponseResultBuilder {
      builderResult.errors.removeAll(keepCapacity: false)
      return self
   }
-  var errorDetails:Array<ActionResponseResult.ErrorDetail> {
+  public var error_details:Array<ActionResponseResult.ErrorDetail> {
        get {
-           return builderResult.errorDetails
+           return builderResult.error_details
        }
        set (value) {
-           builderResult.errorDetails = value
+           builderResult.error_details = value
        }
   }
-  internal func clearErrorDetails() -> ActionResponseResultBuilder {
-    builderResult.errorDetails.removeAll(keepCapacity: false)
+  public func clearErrorDetails() -> ActionResponseResultBuilder {
+    builderResult.error_details.removeAll(keepCapacity: false)
     return self
   }
-  override internal var internalGetResult:ExtendableMessage {
+  override public var internalGetResult:ExtendableMessage {
        get {
            return builderResult
        }
   }
-  internal override func clear() -> ActionResponseResultBuilder {
+  public override func clear() -> ActionResponseResultBuilder {
     builderResult = ActionResponseResult()
     return self
   }
-  internal override func clone() -> ActionResponseResultBuilder {
+  public override func clone() -> ActionResponseResultBuilder {
     return ActionResponseResult.builderWithPrototype(builderResult)
   }
-  internal override func build() -> ActionResponseResult {
+  public override func build() -> ActionResponseResult {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> ActionResponseResult {
+  public func buildPartial() -> ActionResponseResult {
     var returnMe:ActionResponseResult = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:ActionResponseResult) -> ActionResponseResultBuilder {
+  public func mergeFrom(other:ActionResponseResult) -> ActionResponseResultBuilder {
     if (other == ActionResponseResult()) {
      return self
     }
@@ -1481,17 +1481,17 @@ final internal class ActionResponseResultBuilder : ExtendableMessageBuilder {
     if !other.errors.isEmpty {
         builderResult.errors += other.errors
     }
-    if !other.errorDetails.isEmpty  {
-       builderResult.errorDetails += other.errorDetails
+    if !other.error_details.isEmpty  {
+       builderResult.error_details += other.error_details
     }
     mergeExtensionFields(other)
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionResponseResultBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionResponseResultBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponseResultBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponseResultBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -1509,7 +1509,7 @@ final internal class ActionResponseResultBuilder : ExtendableMessageBuilder {
       case 26 :
         var subBuilder = ActionResponseResult.ErrorDetail.builder()
         input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-        errorDetails += [subBuilder.buildPartial()]
+        error_details += [subBuilder.buildPartial()]
 
       default:
         if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -1521,15 +1521,15 @@ final internal class ActionResponseResultBuilder : ExtendableMessageBuilder {
   }
 }
 
-final internal class ActionResponse : GeneratedMessage {
-  private(set) var hasControl:Bool = false
-  private(set) var control:ActionControl = ActionControl()
-  private(set) var hasResult:Bool = false
-  private(set) var result:ActionResponseResult = ActionResponseResult()
-  required internal init() {
+final public class ActionResponse : GeneratedMessage {
+  public private(set) var hasControl:Bool = false
+  public private(set) var control:ActionControl = ActionControl()
+  public private(set) var hasResult:Bool = false
+  public private(set) var result:ActionResponseResult = ActionResponseResult()
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
     if !hasControl {
       return false
     }
@@ -1543,7 +1543,7 @@ final internal class ActionResponse : GeneratedMessage {
     }
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     if hasControl {
       output.writeMessage(1, value:control)
     }
@@ -1552,7 +1552,7 @@ final internal class ActionResponse : GeneratedMessage {
     }
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -1569,43 +1569,43 @@ final internal class ActionResponse : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> ActionResponse {
+  public class func parseFromData(data:[Byte]) -> ActionResponse {
     return ActionResponse.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionResponse {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ActionResponse {
     return ActionResponse.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> ActionResponse {
+  public class func parseFromInputStream(input:NSInputStream) -> ActionResponse {
     return ActionResponse.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionResponse {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ActionResponse {
     return ActionResponse.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> ActionResponse {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> ActionResponse {
     return ActionResponse.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponse {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponse {
     return ActionResponse.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> ActionResponseBuilder {
+  public class func builder() -> ActionResponseBuilder {
     return ActionResponse.classBuilder() as ActionResponseBuilder
   }
-  internal func builder() -> ActionResponseBuilder {
+  public func builder() -> ActionResponseBuilder {
     return classBuilder() as ActionResponseBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return ActionResponseBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return ActionResponse.builder()
   }
-  internal func toBuilder() -> ActionResponseBuilder {
+  public func toBuilder() -> ActionResponseBuilder {
     return ActionResponse.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:ActionResponse) -> ActionResponseBuilder {
+  public class func builderWithPrototype(prototype:ActionResponse) -> ActionResponseBuilder {
     return ActionResponse.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     if hasControl {
       output += "\(indent) control {\n"
       control.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -1618,7 +1618,7 @@ final internal class ActionResponse : GeneratedMessage {
     }
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           if hasControl {
@@ -1635,13 +1635,13 @@ final internal class ActionResponse : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "ActionResponse"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "ActionResponse"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return ActionResponse.self
   }
 
@@ -1650,19 +1650,19 @@ final internal class ActionResponse : GeneratedMessage {
 
 }
 
-final internal class ActionResponseBuilder : GeneratedMessageBuilder {
+final public class ActionResponseBuilder : GeneratedMessageBuilder {
   private var builderResult:ActionResponse
 
-  required override internal init () {
+  required override public init () {
      builderResult = ActionResponse()
      super.init()
   }
-  var hasControl:Bool {
+  public var hasControl:Bool {
        get {
            return builderResult.hasControl
        }
   }
-  var control:ActionControl {
+  public var control:ActionControl {
        get {
            return builderResult.control
        }
@@ -1671,11 +1671,11 @@ final internal class ActionResponseBuilder : GeneratedMessageBuilder {
            builderResult.control = value
        }
   }
-  internal func setControlBuilder(builderForValue:ActionControlBuilder) -> ActionResponseBuilder {
+  public func setControlBuilder(builderForValue:ActionControlBuilder) -> ActionResponseBuilder {
     control = builderForValue.build()
     return self
   }
-  internal func mergeControl(value:ActionControl) -> ActionResponseBuilder {
+  public func mergeControl(value:ActionControl) -> ActionResponseBuilder {
     if (builderResult.hasControl) {
       builderResult.control = ActionControl.builderWithPrototype(builderResult.control).mergeFrom(value).buildPartial()
     } else {
@@ -1684,17 +1684,17 @@ final internal class ActionResponseBuilder : GeneratedMessageBuilder {
     builderResult.hasControl = true
     return self
   }
-  internal func clearControl() -> ActionResponseBuilder {
+  public func clearControl() -> ActionResponseBuilder {
     builderResult.hasControl = false
     builderResult.control = ActionControl()
     return self
   }
-  var hasResult:Bool {
+  public var hasResult:Bool {
        get {
            return builderResult.hasResult
        }
   }
-  var result:ActionResponseResult {
+  public var result:ActionResponseResult {
        get {
            return builderResult.result
        }
@@ -1703,11 +1703,11 @@ final internal class ActionResponseBuilder : GeneratedMessageBuilder {
            builderResult.result = value
        }
   }
-  internal func setResultBuilder(builderForValue:ActionResponseResultBuilder) -> ActionResponseBuilder {
+  public func setResultBuilder(builderForValue:ActionResponseResultBuilder) -> ActionResponseBuilder {
     result = builderForValue.build()
     return self
   }
-  internal func mergeResult(value:ActionResponseResult) -> ActionResponseBuilder {
+  public func mergeResult(value:ActionResponseResult) -> ActionResponseBuilder {
     if (builderResult.hasResult) {
       builderResult.result = ActionResponseResult.builderWithPrototype(builderResult.result).mergeFrom(value).buildPartial()
     } else {
@@ -1716,32 +1716,32 @@ final internal class ActionResponseBuilder : GeneratedMessageBuilder {
     builderResult.hasResult = true
     return self
   }
-  internal func clearResult() -> ActionResponseBuilder {
+  public func clearResult() -> ActionResponseBuilder {
     builderResult.hasResult = false
     builderResult.result = ActionResponseResult()
     return self
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> ActionResponseBuilder {
+  public override func clear() -> ActionResponseBuilder {
     builderResult = ActionResponse()
     return self
   }
-  internal override func clone() -> ActionResponseBuilder {
+  public override func clone() -> ActionResponseBuilder {
     return ActionResponse.builderWithPrototype(builderResult)
   }
-  internal override func build() -> ActionResponse {
+  public override func build() -> ActionResponse {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> ActionResponse {
+  public func buildPartial() -> ActionResponse {
     var returnMe:ActionResponse = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:ActionResponse) -> ActionResponseBuilder {
+  public func mergeFrom(other:ActionResponse) -> ActionResponseBuilder {
     if (other == ActionResponse()) {
      return self
     }
@@ -1754,10 +1754,10 @@ final internal class ActionResponseBuilder : GeneratedMessageBuilder {
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionResponseBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->ActionResponseBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponseBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ActionResponseBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -1792,14 +1792,14 @@ final internal class ActionResponseBuilder : GeneratedMessageBuilder {
   }
 }
 
-final internal class ServiceRequest : GeneratedMessage {
-  private(set) var hasControl:Bool = false
-  private(set) var control:Control = Control()
-  private(set) var actions:Array<ActionRequest>  = Array<ActionRequest>()
-  required internal init() {
+final public class ServiceRequest : GeneratedMessage {
+  public private(set) var hasControl:Bool = false
+  public private(set) var control:Control = Control()
+  public private(set) var actions:Array<ActionRequest>  = Array<ActionRequest>()
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
     if !hasControl {
       return false
     }
@@ -1818,7 +1818,7 @@ final internal class ServiceRequest : GeneratedMessage {
      }
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     if hasControl {
       output.writeMessage(1, value:control)
     }
@@ -1827,7 +1827,7 @@ final internal class ServiceRequest : GeneratedMessage {
     }
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -1844,43 +1844,43 @@ final internal class ServiceRequest : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> ServiceRequest {
+  public class func parseFromData(data:[Byte]) -> ServiceRequest {
     return ServiceRequest.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ServiceRequest {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ServiceRequest {
     return ServiceRequest.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> ServiceRequest {
+  public class func parseFromInputStream(input:NSInputStream) -> ServiceRequest {
     return ServiceRequest.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ServiceRequest {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ServiceRequest {
     return ServiceRequest.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> ServiceRequest {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> ServiceRequest {
     return ServiceRequest.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ServiceRequest {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ServiceRequest {
     return ServiceRequest.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> ServiceRequestBuilder {
+  public class func builder() -> ServiceRequestBuilder {
     return ServiceRequest.classBuilder() as ServiceRequestBuilder
   }
-  internal func builder() -> ServiceRequestBuilder {
+  public func builder() -> ServiceRequestBuilder {
     return classBuilder() as ServiceRequestBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return ServiceRequestBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return ServiceRequest.builder()
   }
-  internal func toBuilder() -> ServiceRequestBuilder {
+  public func toBuilder() -> ServiceRequestBuilder {
     return ServiceRequest.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:ServiceRequest) -> ServiceRequestBuilder {
+  public class func builderWithPrototype(prototype:ServiceRequest) -> ServiceRequestBuilder {
     return ServiceRequest.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     if hasControl {
       output += "\(indent) control {\n"
       control.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -1895,7 +1895,7 @@ final internal class ServiceRequest : GeneratedMessage {
     }
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           if hasControl {
@@ -1912,13 +1912,13 @@ final internal class ServiceRequest : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "ServiceRequest"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "ServiceRequest"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return ServiceRequest.self
   }
 
@@ -1927,19 +1927,19 @@ final internal class ServiceRequest : GeneratedMessage {
 
 }
 
-final internal class ServiceRequestBuilder : GeneratedMessageBuilder {
+final public class ServiceRequestBuilder : GeneratedMessageBuilder {
   private var builderResult:ServiceRequest
 
-  required override internal init () {
+  required override public init () {
      builderResult = ServiceRequest()
      super.init()
   }
-  var hasControl:Bool {
+  public var hasControl:Bool {
        get {
            return builderResult.hasControl
        }
   }
-  var control:Control {
+  public var control:Control {
        get {
            return builderResult.control
        }
@@ -1948,11 +1948,11 @@ final internal class ServiceRequestBuilder : GeneratedMessageBuilder {
            builderResult.control = value
        }
   }
-  internal func setControlBuilder(builderForValue:ControlBuilder) -> ServiceRequestBuilder {
+  public func setControlBuilder(builderForValue:ControlBuilder) -> ServiceRequestBuilder {
     control = builderForValue.build()
     return self
   }
-  internal func mergeControl(value:Control) -> ServiceRequestBuilder {
+  public func mergeControl(value:Control) -> ServiceRequestBuilder {
     if (builderResult.hasControl) {
       builderResult.control = Control.builderWithPrototype(builderResult.control).mergeFrom(value).buildPartial()
     } else {
@@ -1961,12 +1961,12 @@ final internal class ServiceRequestBuilder : GeneratedMessageBuilder {
     builderResult.hasControl = true
     return self
   }
-  internal func clearControl() -> ServiceRequestBuilder {
+  public func clearControl() -> ServiceRequestBuilder {
     builderResult.hasControl = false
     builderResult.control = Control()
     return self
   }
-  var actions:Array<ActionRequest> {
+  public var actions:Array<ActionRequest> {
        get {
            return builderResult.actions
        }
@@ -1974,31 +1974,31 @@ final internal class ServiceRequestBuilder : GeneratedMessageBuilder {
            builderResult.actions = value
        }
   }
-  internal func clearActions() -> ServiceRequestBuilder {
+  public func clearActions() -> ServiceRequestBuilder {
     builderResult.actions.removeAll(keepCapacity: false)
     return self
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> ServiceRequestBuilder {
+  public override func clear() -> ServiceRequestBuilder {
     builderResult = ServiceRequest()
     return self
   }
-  internal override func clone() -> ServiceRequestBuilder {
+  public override func clone() -> ServiceRequestBuilder {
     return ServiceRequest.builderWithPrototype(builderResult)
   }
-  internal override func build() -> ServiceRequest {
+  public override func build() -> ServiceRequest {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> ServiceRequest {
+  public func buildPartial() -> ServiceRequest {
     var returnMe:ServiceRequest = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:ServiceRequest) -> ServiceRequestBuilder {
+  public func mergeFrom(other:ServiceRequest) -> ServiceRequestBuilder {
     if (other == ServiceRequest()) {
      return self
     }
@@ -2011,10 +2011,10 @@ final internal class ServiceRequestBuilder : GeneratedMessageBuilder {
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->ServiceRequestBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->ServiceRequestBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ServiceRequestBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ServiceRequestBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -2046,14 +2046,14 @@ final internal class ServiceRequestBuilder : GeneratedMessageBuilder {
   }
 }
 
-final internal class ServiceResponse : GeneratedMessage {
-  private(set) var hasControl:Bool = false
-  private(set) var control:Control = Control()
-  private(set) var actions:Array<ActionResponse>  = Array<ActionResponse>()
-  required internal init() {
+final public class ServiceResponse : GeneratedMessage {
+  public private(set) var hasControl:Bool = false
+  public private(set) var control:Control = Control()
+  public private(set) var actions:Array<ActionResponse>  = Array<ActionResponse>()
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
     if !hasControl {
       return false
     }
@@ -2072,7 +2072,7 @@ final internal class ServiceResponse : GeneratedMessage {
      }
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     if hasControl {
       output.writeMessage(1, value:control)
     }
@@ -2081,7 +2081,7 @@ final internal class ServiceResponse : GeneratedMessage {
     }
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -2098,43 +2098,43 @@ final internal class ServiceResponse : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> ServiceResponse {
+  public class func parseFromData(data:[Byte]) -> ServiceResponse {
     return ServiceResponse.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ServiceResponse {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ServiceResponse {
     return ServiceResponse.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> ServiceResponse {
+  public class func parseFromInputStream(input:NSInputStream) -> ServiceResponse {
     return ServiceResponse.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ServiceResponse {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ServiceResponse {
     return ServiceResponse.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> ServiceResponse {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> ServiceResponse {
     return ServiceResponse.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ServiceResponse {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ServiceResponse {
     return ServiceResponse.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> ServiceResponseBuilder {
+  public class func builder() -> ServiceResponseBuilder {
     return ServiceResponse.classBuilder() as ServiceResponseBuilder
   }
-  internal func builder() -> ServiceResponseBuilder {
+  public func builder() -> ServiceResponseBuilder {
     return classBuilder() as ServiceResponseBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return ServiceResponseBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return ServiceResponse.builder()
   }
-  internal func toBuilder() -> ServiceResponseBuilder {
+  public func toBuilder() -> ServiceResponseBuilder {
     return ServiceResponse.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:ServiceResponse) -> ServiceResponseBuilder {
+  public class func builderWithPrototype(prototype:ServiceResponse) -> ServiceResponseBuilder {
     return ServiceResponse.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     if hasControl {
       output += "\(indent) control {\n"
       control.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -2149,7 +2149,7 @@ final internal class ServiceResponse : GeneratedMessage {
     }
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           if hasControl {
@@ -2166,13 +2166,13 @@ final internal class ServiceResponse : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "ServiceResponse"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "ServiceResponse"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return ServiceResponse.self
   }
 
@@ -2181,19 +2181,19 @@ final internal class ServiceResponse : GeneratedMessage {
 
 }
 
-final internal class ServiceResponseBuilder : GeneratedMessageBuilder {
+final public class ServiceResponseBuilder : GeneratedMessageBuilder {
   private var builderResult:ServiceResponse
 
-  required override internal init () {
+  required override public init () {
      builderResult = ServiceResponse()
      super.init()
   }
-  var hasControl:Bool {
+  public var hasControl:Bool {
        get {
            return builderResult.hasControl
        }
   }
-  var control:Control {
+  public var control:Control {
        get {
            return builderResult.control
        }
@@ -2202,11 +2202,11 @@ final internal class ServiceResponseBuilder : GeneratedMessageBuilder {
            builderResult.control = value
        }
   }
-  internal func setControlBuilder(builderForValue:ControlBuilder) -> ServiceResponseBuilder {
+  public func setControlBuilder(builderForValue:ControlBuilder) -> ServiceResponseBuilder {
     control = builderForValue.build()
     return self
   }
-  internal func mergeControl(value:Control) -> ServiceResponseBuilder {
+  public func mergeControl(value:Control) -> ServiceResponseBuilder {
     if (builderResult.hasControl) {
       builderResult.control = Control.builderWithPrototype(builderResult.control).mergeFrom(value).buildPartial()
     } else {
@@ -2215,12 +2215,12 @@ final internal class ServiceResponseBuilder : GeneratedMessageBuilder {
     builderResult.hasControl = true
     return self
   }
-  internal func clearControl() -> ServiceResponseBuilder {
+  public func clearControl() -> ServiceResponseBuilder {
     builderResult.hasControl = false
     builderResult.control = Control()
     return self
   }
-  var actions:Array<ActionResponse> {
+  public var actions:Array<ActionResponse> {
        get {
            return builderResult.actions
        }
@@ -2228,31 +2228,31 @@ final internal class ServiceResponseBuilder : GeneratedMessageBuilder {
            builderResult.actions = value
        }
   }
-  internal func clearActions() -> ServiceResponseBuilder {
+  public func clearActions() -> ServiceResponseBuilder {
     builderResult.actions.removeAll(keepCapacity: false)
     return self
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> ServiceResponseBuilder {
+  public override func clear() -> ServiceResponseBuilder {
     builderResult = ServiceResponse()
     return self
   }
-  internal override func clone() -> ServiceResponseBuilder {
+  public override func clone() -> ServiceResponseBuilder {
     return ServiceResponse.builderWithPrototype(builderResult)
   }
-  internal override func build() -> ServiceResponse {
+  public override func build() -> ServiceResponse {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> ServiceResponse {
+  public func buildPartial() -> ServiceResponse {
     var returnMe:ServiceResponse = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:ServiceResponse) -> ServiceResponseBuilder {
+  public func mergeFrom(other:ServiceResponse) -> ServiceResponseBuilder {
     if (other == ServiceResponse()) {
      return self
     }
@@ -2265,10 +2265,10 @@ final internal class ServiceResponseBuilder : GeneratedMessageBuilder {
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->ServiceResponseBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->ServiceResponseBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ServiceResponseBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ServiceResponseBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -2303,7 +2303,7 @@ final internal class ServiceResponseBuilder : GeneratedMessageBuilder {
 //Class extensions: NSData
 
 
-internal extension Control {
+public extension Control {
     class func parseFromNSData(data:NSData) -> Control {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -2315,7 +2315,7 @@ internal extension Control {
         return Control.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension ActionControl {
+public extension ActionControl {
     class func parseFromNSData(data:NSData) -> ActionControl {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -2327,7 +2327,7 @@ internal extension ActionControl {
         return ActionControl.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension ActionRequest {
+public extension ActionRequest {
     class func parseFromNSData(data:NSData) -> ActionRequest {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -2339,7 +2339,7 @@ internal extension ActionRequest {
         return ActionRequest.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension ActionRequestParams {
+public extension ActionRequestParams {
     class func parseFromNSData(data:NSData) -> ActionRequestParams {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -2351,7 +2351,7 @@ internal extension ActionRequestParams {
         return ActionRequestParams.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension ActionResponseResult.ErrorDetail {
+public extension ActionResponseResult.ErrorDetail {
     class func parseFromNSData(data:NSData) -> ActionResponseResult.ErrorDetail {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -2363,7 +2363,7 @@ internal extension ActionResponseResult.ErrorDetail {
         return ActionResponseResult.ErrorDetail.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension ActionResponseResult {
+public extension ActionResponseResult {
     class func parseFromNSData(data:NSData) -> ActionResponseResult {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -2375,7 +2375,7 @@ internal extension ActionResponseResult {
         return ActionResponseResult.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension ActionResponse {
+public extension ActionResponse {
     class func parseFromNSData(data:NSData) -> ActionResponse {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -2387,7 +2387,7 @@ internal extension ActionResponse {
         return ActionResponse.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension ServiceRequest {
+public extension ServiceRequest {
     class func parseFromNSData(data:NSData) -> ServiceRequest {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -2399,7 +2399,7 @@ internal extension ServiceRequest {
         return ServiceRequest.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension ServiceResponse {
+public extension ServiceResponse {
     class func parseFromNSData(data:NSData) -> ServiceResponse {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)

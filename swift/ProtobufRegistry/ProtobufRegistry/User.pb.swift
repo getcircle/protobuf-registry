@@ -3,8 +3,8 @@
 import Foundation
 import ProtocolBuffers
 
-internal struct UserRoot {
-  internal static var sharedInstance : UserRoot {
+public struct UserRoot {
+  public static var sharedInstance : UserRoot {
    struct Static {
        static let instance : UserRoot = UserRoot()
    }
@@ -17,62 +17,62 @@ internal struct UserRoot {
     registerAllExtensions(extensionRegistry)
     IdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
   }
-  internal func registerAllExtensions(registry:ExtensionRegistry) {
+  public func registerAllExtensions(registry:ExtensionRegistry) {
   }
 }
 
-internal func == (lhs: User, rhs: User) -> Bool {
+public func == (lhs: User, rhs: User) -> Bool {
   if (lhs === rhs) {
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
-  fieldCheck = fieldCheck && (lhs.hasPrimaryEmail == rhs.hasPrimaryEmail) && (!lhs.hasPrimaryEmail || lhs.primaryEmail == rhs.primaryEmail)
-  fieldCheck = fieldCheck && (lhs.hasIsAdmin == rhs.hasIsAdmin) && (!lhs.hasIsAdmin || lhs.isAdmin == rhs.isAdmin)
-  fieldCheck = fieldCheck && (lhs.hasIsActive == rhs.hasIsActive) && (!lhs.hasIsActive || lhs.isActive == rhs.isActive)
+  fieldCheck = fieldCheck && (lhs.hasPrimaryEmail == rhs.hasPrimaryEmail) && (!lhs.hasPrimaryEmail || lhs.primary_email == rhs.primary_email)
+  fieldCheck = fieldCheck && (lhs.hasIsAdmin == rhs.hasIsAdmin) && (!lhs.hasIsAdmin || lhs.is_admin == rhs.is_admin)
+  fieldCheck = fieldCheck && (lhs.hasIsActive == rhs.hasIsActive) && (!lhs.hasIsActive || lhs.is_active == rhs.is_active)
   fieldCheck = fieldCheck && (lhs.identities == rhs.identities)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-final internal class User : GeneratedMessage {
-  private(set) var hasId:Bool = false
-  private(set) var id:String = ""
+final public class User : GeneratedMessage {
+  public private(set) var hasId:Bool = false
+  public private(set) var id:String = ""
 
-  private(set) var hasPrimaryEmail:Bool = false
-  private(set) var primaryEmail:String = ""
+  public private(set) var hasPrimaryEmail:Bool = false
+  public private(set) var primary_email:String = ""
 
-  private(set) var hasIsAdmin:Bool = false
-  private(set) var isAdmin:Bool = false
+  public private(set) var hasIsAdmin:Bool = false
+  public private(set) var is_admin:Bool = false
 
-  private(set) var hasIsActive:Bool = false
-  private(set) var isActive:Bool = false
+  public private(set) var hasIsActive:Bool = false
+  public private(set) var is_active:Bool = false
 
-  private(set) var identities:Array<Identity>  = Array<Identity>()
-  required internal init() {
+  public private(set) var identities:Array<Identity>  = Array<Identity>()
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     if hasId {
       output.writeString(1, value:id)
     }
     if hasPrimaryEmail {
-      output.writeString(2, value:primaryEmail)
+      output.writeString(2, value:primary_email)
     }
     if hasIsAdmin {
-      output.writeBool(3, value:isAdmin)
+      output.writeBool(3, value:is_admin)
     }
     if hasIsActive {
-      output.writeBool(4, value:isActive)
+      output.writeBool(4, value:is_active)
     }
     for oneElementidentities in identities {
         output.writeMessage(5, value:oneElementidentities)
     }
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -83,13 +83,13 @@ final internal class User : GeneratedMessage {
       size += WireFormat.computeStringSize(1, value:id)
     }
     if hasPrimaryEmail {
-      size += WireFormat.computeStringSize(2, value:primaryEmail)
+      size += WireFormat.computeStringSize(2, value:primary_email)
     }
     if hasIsAdmin {
-      size += WireFormat.computeBoolSize(3, value:isAdmin)
+      size += WireFormat.computeBoolSize(3, value:is_admin)
     }
     if hasIsActive {
-      size += WireFormat.computeBoolSize(4, value:isActive)
+      size += WireFormat.computeBoolSize(4, value:is_active)
     }
     for oneElementidentities in identities {
         size += WireFormat.computeMessageSize(5, value:oneElementidentities)
@@ -98,54 +98,54 @@ final internal class User : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> User {
+  public class func parseFromData(data:[Byte]) -> User {
     return User.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> User {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> User {
     return User.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> User {
+  public class func parseFromInputStream(input:NSInputStream) -> User {
     return User.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->User {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->User {
     return User.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> User {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> User {
     return User.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> User {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> User {
     return User.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> UserBuilder {
+  public class func builder() -> UserBuilder {
     return User.classBuilder() as UserBuilder
   }
-  internal func builder() -> UserBuilder {
+  public func builder() -> UserBuilder {
     return classBuilder() as UserBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return UserBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return User.builder()
   }
-  internal func toBuilder() -> UserBuilder {
+  public func toBuilder() -> UserBuilder {
     return User.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:User) -> UserBuilder {
+  public class func builderWithPrototype(prototype:User) -> UserBuilder {
     return User.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     if hasId {
       output += "\(indent) id: \(id) \n"
     }
     if hasPrimaryEmail {
-      output += "\(indent) primaryEmail: \(primaryEmail) \n"
+      output += "\(indent) primary_email: \(primary_email) \n"
     }
     if hasIsAdmin {
-      output += "\(indent) isAdmin: \(isAdmin) \n"
+      output += "\(indent) is_admin: \(is_admin) \n"
     }
     if hasIsActive {
-      output += "\(indent) isActive: \(isActive) \n"
+      output += "\(indent) is_active: \(is_active) \n"
     }
     var identitiesElementIndex:Int = 0
     for oneElementidentities in identities {
@@ -156,20 +156,20 @@ final internal class User : GeneratedMessage {
     }
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           if hasId {
              hashCode = (hashCode &* 31) &+ id.hashValue
           }
           if hasPrimaryEmail {
-             hashCode = (hashCode &* 31) &+ primaryEmail.hashValue
+             hashCode = (hashCode &* 31) &+ primary_email.hashValue
           }
           if hasIsAdmin {
-             hashCode = (hashCode &* 31) &+ isAdmin.hashValue
+             hashCode = (hashCode &* 31) &+ is_admin.hashValue
           }
           if hasIsActive {
-             hashCode = (hashCode &* 31) &+ isActive.hashValue
+             hashCode = (hashCode &* 31) &+ is_active.hashValue
           }
           for oneElementidentities in identities {
               hashCode = (hashCode &* 31) &+ oneElementidentities.hashValue
@@ -182,13 +182,13 @@ final internal class User : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "User"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "User"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return User.self
   }
 
@@ -197,19 +197,19 @@ final internal class User : GeneratedMessage {
 
 }
 
-final internal class UserBuilder : GeneratedMessageBuilder {
+final public class UserBuilder : GeneratedMessageBuilder {
   private var builderResult:User
 
-  required override internal init () {
+  required override public init () {
      builderResult = User()
      super.init()
   }
-  var hasId:Bool {
+  public var hasId:Bool {
        get {
             return builderResult.hasId
        }
   }
-  var id:String {
+  public var id:String {
        get {
             return builderResult.id
        }
@@ -218,69 +218,69 @@ final internal class UserBuilder : GeneratedMessageBuilder {
            builderResult.id = value
        }
   }
-  internal func clearId() -> UserBuilder{
+  public func clearId() -> UserBuilder{
        builderResult.hasId = false
        builderResult.id = ""
        return self
   }
-  var hasPrimaryEmail:Bool {
+  public var hasPrimaryEmail:Bool {
        get {
             return builderResult.hasPrimaryEmail
        }
   }
-  var primaryEmail:String {
+  public var primary_email:String {
        get {
-            return builderResult.primaryEmail
+            return builderResult.primary_email
        }
        set (value) {
            builderResult.hasPrimaryEmail = true
-           builderResult.primaryEmail = value
+           builderResult.primary_email = value
        }
   }
-  internal func clearPrimaryEmail() -> UserBuilder{
+  public func clearPrimaryEmail() -> UserBuilder{
        builderResult.hasPrimaryEmail = false
-       builderResult.primaryEmail = ""
+       builderResult.primary_email = ""
        return self
   }
-  var hasIsAdmin:Bool {
+  public var hasIsAdmin:Bool {
        get {
             return builderResult.hasIsAdmin
        }
   }
-  var isAdmin:Bool {
+  public var is_admin:Bool {
        get {
-            return builderResult.isAdmin
+            return builderResult.is_admin
        }
        set (value) {
            builderResult.hasIsAdmin = true
-           builderResult.isAdmin = value
+           builderResult.is_admin = value
        }
   }
-  internal func clearIsAdmin() -> UserBuilder{
+  public func clearIsAdmin() -> UserBuilder{
        builderResult.hasIsAdmin = false
-       builderResult.isAdmin = false
+       builderResult.is_admin = false
        return self
   }
-  var hasIsActive:Bool {
+  public var hasIsActive:Bool {
        get {
             return builderResult.hasIsActive
        }
   }
-  var isActive:Bool {
+  public var is_active:Bool {
        get {
-            return builderResult.isActive
+            return builderResult.is_active
        }
        set (value) {
            builderResult.hasIsActive = true
-           builderResult.isActive = value
+           builderResult.is_active = value
        }
   }
-  internal func clearIsActive() -> UserBuilder{
+  public func clearIsActive() -> UserBuilder{
        builderResult.hasIsActive = false
-       builderResult.isActive = false
+       builderResult.is_active = false
        return self
   }
-  var identities:Array<Identity> {
+  public var identities:Array<Identity> {
        get {
            return builderResult.identities
        }
@@ -288,31 +288,31 @@ final internal class UserBuilder : GeneratedMessageBuilder {
            builderResult.identities = value
        }
   }
-  internal func clearIdentities() -> UserBuilder {
+  public func clearIdentities() -> UserBuilder {
     builderResult.identities.removeAll(keepCapacity: false)
     return self
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> UserBuilder {
+  public override func clear() -> UserBuilder {
     builderResult = User()
     return self
   }
-  internal override func clone() -> UserBuilder {
+  public override func clone() -> UserBuilder {
     return User.builderWithPrototype(builderResult)
   }
-  internal override func build() -> User {
+  public override func build() -> User {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> User {
+  public func buildPartial() -> User {
     var returnMe:User = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:User) -> UserBuilder {
+  public func mergeFrom(other:User) -> UserBuilder {
     if (other == User()) {
      return self
     }
@@ -320,13 +320,13 @@ final internal class UserBuilder : GeneratedMessageBuilder {
          id = other.id
     }
     if other.hasPrimaryEmail {
-         primaryEmail = other.primaryEmail
+         primary_email = other.primary_email
     }
     if other.hasIsAdmin {
-         isAdmin = other.isAdmin
+         is_admin = other.is_admin
     }
     if other.hasIsActive {
-         isActive = other.isActive
+         is_active = other.is_active
     }
     if !other.identities.isEmpty  {
        builderResult.identities += other.identities
@@ -334,10 +334,10 @@ final internal class UserBuilder : GeneratedMessageBuilder {
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->UserBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -350,13 +350,13 @@ final internal class UserBuilder : GeneratedMessageBuilder {
         id = input.readString()
 
       case 18 :
-        primaryEmail = input.readString()
+        primary_email = input.readString()
 
       case 24 :
-        isAdmin = input.readBool()
+        is_admin = input.readBool()
 
       case 32 :
-        isActive = input.readBool()
+        is_active = input.readBool()
 
       case 42 :
         var subBuilder = Identity.builder()
@@ -376,7 +376,7 @@ final internal class UserBuilder : GeneratedMessageBuilder {
 //Class extensions: NSData
 
 
-internal extension User {
+public extension User {
     class func parseFromNSData(data:NSData) -> User {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)

@@ -535,6 +535,7 @@
 				BFC6CF071A44B58B0081F45B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BFC6CF081A44B58B0081F45B /* Build configuration list for PBXNativeTarget "ProtobufRegistryTests" */ = {
 			isa = XCConfigurationList;
@@ -543,6 +544,7 @@
 				BFC6CF0A1A44B58B0081F45B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -3,75 +3,75 @@
 import Foundation
 import ProtocolBuffers
 
-internal var UserServiceRequestscreateUser:ConcreateExtensionField {
+public var UserServiceRequests_create_user:ConcreateExtensionField {
    get {
-       return RequestRegistryRoot.sharedInstance.UserServiceRequestscreateUserStatic
+       return RequestRegistryRoot.sharedInstance.UserServiceRequests_create_userStatic
    }
 }
-internal var UserServiceRequestsvalidUser:ConcreateExtensionField {
+public var UserServiceRequests_valid_user:ConcreateExtensionField {
    get {
-       return RequestRegistryRoot.sharedInstance.UserServiceRequestsvalidUserStatic
+       return RequestRegistryRoot.sharedInstance.UserServiceRequests_valid_userStatic
    }
 }
-internal var UserServiceRequestsauthenticateUser:ConcreateExtensionField {
+public var UserServiceRequests_authenticate_user:ConcreateExtensionField {
    get {
-       return RequestRegistryRoot.sharedInstance.UserServiceRequestsauthenticateUserStatic
+       return RequestRegistryRoot.sharedInstance.UserServiceRequests_authenticate_userStatic
    }
 }
-internal var IdentityServiceRequestscreateIdentity:ConcreateExtensionField {
+public var IdentityServiceRequests_create_identity:ConcreateExtensionField {
    get {
-       return RequestRegistryRoot.sharedInstance.IdentityServiceRequestscreateIdentityStatic
+       return RequestRegistryRoot.sharedInstance.IdentityServiceRequests_create_identityStatic
    }
 }
-internal var IdentityServiceRequestsgetIdentity:ConcreateExtensionField {
+public var IdentityServiceRequests_get_identity:ConcreateExtensionField {
    get {
-       return RequestRegistryRoot.sharedInstance.IdentityServiceRequestsgetIdentityStatic
+       return RequestRegistryRoot.sharedInstance.IdentityServiceRequests_get_identityStatic
    }
 }
-internal var IdentityServiceRequestsgetIdentities:ConcreateExtensionField {
+public var IdentityServiceRequests_get_identities:ConcreateExtensionField {
    get {
-       return RequestRegistryRoot.sharedInstance.IdentityServiceRequestsgetIdentitiesStatic
+       return RequestRegistryRoot.sharedInstance.IdentityServiceRequests_get_identitiesStatic
    }
 }
-internal struct RequestRegistryRoot {
-  internal static var sharedInstance : RequestRegistryRoot {
+public struct RequestRegistryRoot {
+  public static var sharedInstance : RequestRegistryRoot {
    struct Static {
        static let instance : RequestRegistryRoot = RequestRegistryRoot()
    }
    return Static.instance
   }
-  var UserServiceRequestscreateUserStatic:ConcreateExtensionField
-  var UserServiceRequestsvalidUserStatic:ConcreateExtensionField
-  var UserServiceRequestsauthenticateUserStatic:ConcreateExtensionField
-  var IdentityServiceRequestscreateIdentityStatic:ConcreateExtensionField
-  var IdentityServiceRequestsgetIdentityStatic:ConcreateExtensionField
-  var IdentityServiceRequestsgetIdentitiesStatic:ConcreateExtensionField
+  var UserServiceRequests_create_userStatic:ConcreateExtensionField
+  var UserServiceRequests_valid_userStatic:ConcreateExtensionField
+  var UserServiceRequests_authenticate_userStatic:ConcreateExtensionField
+  var IdentityServiceRequests_create_identityStatic:ConcreateExtensionField
+  var IdentityServiceRequests_get_identityStatic:ConcreateExtensionField
+  var IdentityServiceRequests_get_identitiesStatic:ConcreateExtensionField
   var extensionRegistry:ExtensionRegistry
 
   init() {
-    UserServiceRequestscreateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 101, defaultValue:UserService.CreateUser.Request(), messageOrGroupClass:UserService.CreateUser.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    UserServiceRequestsvalidUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 102, defaultValue:UserService.ValidUser.Request(), messageOrGroupClass:UserService.ValidUser.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    UserServiceRequestsauthenticateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 103, defaultValue:UserService.AuthenticateUser.Request(), messageOrGroupClass:UserService.AuthenticateUser.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    IdentityServiceRequestscreateIdentityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 200, defaultValue:IdentityService.CreateIdentity.Request(), messageOrGroupClass:IdentityService.CreateIdentity.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    IdentityServiceRequestsgetIdentityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 201, defaultValue:IdentityService.GetIdentity.Request(), messageOrGroupClass:IdentityService.GetIdentity.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    IdentityServiceRequestsgetIdentitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 202, defaultValue:IdentityService.GetIdentities.Request(), messageOrGroupClass:IdentityService.GetIdentities.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    UserServiceRequests_create_userStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 101, defaultValue:UserService.CreateUser.Request(), messageOrGroupClass:UserService.CreateUser.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    UserServiceRequests_valid_userStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 102, defaultValue:UserService.ValidUser.Request(), messageOrGroupClass:UserService.ValidUser.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    UserServiceRequests_authenticate_userStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 103, defaultValue:UserService.AuthenticateUser.Request(), messageOrGroupClass:UserService.AuthenticateUser.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    IdentityServiceRequests_create_identityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 200, defaultValue:IdentityService.CreateIdentity.Request(), messageOrGroupClass:IdentityService.CreateIdentity.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    IdentityServiceRequests_get_identityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 201, defaultValue:IdentityService.GetIdentity.Request(), messageOrGroupClass:IdentityService.GetIdentity.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    IdentityServiceRequests_get_identitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 202, defaultValue:IdentityService.GetIdentities.Request(), messageOrGroupClass:IdentityService.GetIdentities.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     IdentityServiceActionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     UserServiceActionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
   }
-  internal func registerAllExtensions(registry:ExtensionRegistry) {
-    registry.addExtension(UserServiceRequestscreateUserStatic)
-    registry.addExtension(UserServiceRequestsvalidUserStatic)
-    registry.addExtension(UserServiceRequestsauthenticateUserStatic)
-    registry.addExtension(IdentityServiceRequestscreateIdentityStatic)
-    registry.addExtension(IdentityServiceRequestsgetIdentityStatic)
-    registry.addExtension(IdentityServiceRequestsgetIdentitiesStatic)
+  public func registerAllExtensions(registry:ExtensionRegistry) {
+    registry.addExtension(UserServiceRequests_create_userStatic)
+    registry.addExtension(UserServiceRequests_valid_userStatic)
+    registry.addExtension(UserServiceRequests_authenticate_userStatic)
+    registry.addExtension(IdentityServiceRequests_create_identityStatic)
+    registry.addExtension(IdentityServiceRequests_get_identityStatic)
+    registry.addExtension(IdentityServiceRequests_get_identitiesStatic)
   }
 }
 
-internal func == (lhs: UserServiceRequests, rhs: UserServiceRequests) -> Bool {
+public func == (lhs: UserServiceRequests, rhs: UserServiceRequests) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -79,7 +79,7 @@ internal func == (lhs: UserServiceRequests, rhs: UserServiceRequests) -> Bool {
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: IdentityServiceRequests, rhs: IdentityServiceRequests) -> Bool {
+public func == (lhs: IdentityServiceRequests, rhs: IdentityServiceRequests) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -87,26 +87,26 @@ internal func == (lhs: IdentityServiceRequests, rhs: IdentityServiceRequests) ->
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-final internal class UserServiceRequests : GeneratedMessage {
-  internal class func createUser() -> ConcreateExtensionField {
-       return UserServiceRequestscreateUser
+final public class UserServiceRequests : GeneratedMessage {
+  public class func create_user() -> ConcreateExtensionField {
+       return UserServiceRequests_create_user
   }
-  internal class func validUser() -> ConcreateExtensionField {
-       return UserServiceRequestsvalidUser
+  public class func valid_user() -> ConcreateExtensionField {
+       return UserServiceRequests_valid_user
   }
-  internal class func authenticateUser() -> ConcreateExtensionField {
-       return UserServiceRequestsauthenticateUser
+  public class func authenticate_user() -> ConcreateExtensionField {
+       return UserServiceRequests_authenticate_user
   }
-  required internal init() {
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -117,46 +117,46 @@ final internal class UserServiceRequests : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> UserServiceRequests {
+  public class func parseFromData(data:[Byte]) -> UserServiceRequests {
     return UserServiceRequests.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserServiceRequests {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserServiceRequests {
     return UserServiceRequests.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> UserServiceRequests {
+  public class func parseFromInputStream(input:NSInputStream) -> UserServiceRequests {
     return UserServiceRequests.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserServiceRequests {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserServiceRequests {
     return UserServiceRequests.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> UserServiceRequests {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> UserServiceRequests {
     return UserServiceRequests.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserServiceRequests {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserServiceRequests {
     return UserServiceRequests.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> UserServiceRequestsBuilder {
+  public class func builder() -> UserServiceRequestsBuilder {
     return UserServiceRequests.classBuilder() as UserServiceRequestsBuilder
   }
-  internal func builder() -> UserServiceRequestsBuilder {
+  public func builder() -> UserServiceRequestsBuilder {
     return classBuilder() as UserServiceRequestsBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return UserServiceRequestsBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return UserServiceRequests.builder()
   }
-  internal func toBuilder() -> UserServiceRequestsBuilder {
+  public func toBuilder() -> UserServiceRequestsBuilder {
     return UserServiceRequests.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:UserServiceRequests) -> UserServiceRequestsBuilder {
+  public class func builderWithPrototype(prototype:UserServiceRequests) -> UserServiceRequestsBuilder {
     return UserServiceRequests.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -167,13 +167,13 @@ final internal class UserServiceRequests : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "UserServiceRequests"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "UserServiceRequests"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return UserServiceRequests.self
   }
 
@@ -182,44 +182,44 @@ final internal class UserServiceRequests : GeneratedMessage {
 
 }
 
-final internal class UserServiceRequestsBuilder : GeneratedMessageBuilder {
+final public class UserServiceRequestsBuilder : GeneratedMessageBuilder {
   private var builderResult:UserServiceRequests
 
-  required override internal init () {
+  required override public init () {
      builderResult = UserServiceRequests()
      super.init()
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> UserServiceRequestsBuilder {
+  public override func clear() -> UserServiceRequestsBuilder {
     builderResult = UserServiceRequests()
     return self
   }
-  internal override func clone() -> UserServiceRequestsBuilder {
+  public override func clone() -> UserServiceRequestsBuilder {
     return UserServiceRequests.builderWithPrototype(builderResult)
   }
-  internal override func build() -> UserServiceRequests {
+  public override func build() -> UserServiceRequests {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> UserServiceRequests {
+  public func buildPartial() -> UserServiceRequests {
     var returnMe:UserServiceRequests = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:UserServiceRequests) -> UserServiceRequestsBuilder {
+  public func mergeFrom(other:UserServiceRequests) -> UserServiceRequestsBuilder {
     if (other == UserServiceRequests()) {
      return self
     }
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->UserServiceRequestsBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserServiceRequestsBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserServiceRequestsBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserServiceRequestsBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -238,26 +238,26 @@ final internal class UserServiceRequestsBuilder : GeneratedMessageBuilder {
   }
 }
 
-final internal class IdentityServiceRequests : GeneratedMessage {
-  internal class func createIdentity() -> ConcreateExtensionField {
-       return IdentityServiceRequestscreateIdentity
+final public class IdentityServiceRequests : GeneratedMessage {
+  public class func create_identity() -> ConcreateExtensionField {
+       return IdentityServiceRequests_create_identity
   }
-  internal class func getIdentity() -> ConcreateExtensionField {
-       return IdentityServiceRequestsgetIdentity
+  public class func get_identity() -> ConcreateExtensionField {
+       return IdentityServiceRequests_get_identity
   }
-  internal class func getIdentities() -> ConcreateExtensionField {
-       return IdentityServiceRequestsgetIdentities
+  public class func get_identities() -> ConcreateExtensionField {
+       return IdentityServiceRequests_get_identities
   }
-  required internal init() {
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -268,46 +268,46 @@ final internal class IdentityServiceRequests : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> IdentityServiceRequests {
+  public class func parseFromData(data:[Byte]) -> IdentityServiceRequests {
     return IdentityServiceRequests.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityServiceRequests {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityServiceRequests {
     return IdentityServiceRequests.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> IdentityServiceRequests {
+  public class func parseFromInputStream(input:NSInputStream) -> IdentityServiceRequests {
     return IdentityServiceRequests.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityServiceRequests {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityServiceRequests {
     return IdentityServiceRequests.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityServiceRequests {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityServiceRequests {
     return IdentityServiceRequests.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityServiceRequests {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityServiceRequests {
     return IdentityServiceRequests.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> IdentityServiceRequestsBuilder {
+  public class func builder() -> IdentityServiceRequestsBuilder {
     return IdentityServiceRequests.classBuilder() as IdentityServiceRequestsBuilder
   }
-  internal func builder() -> IdentityServiceRequestsBuilder {
+  public func builder() -> IdentityServiceRequestsBuilder {
     return classBuilder() as IdentityServiceRequestsBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return IdentityServiceRequestsBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return IdentityServiceRequests.builder()
   }
-  internal func toBuilder() -> IdentityServiceRequestsBuilder {
+  public func toBuilder() -> IdentityServiceRequestsBuilder {
     return IdentityServiceRequests.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:IdentityServiceRequests) -> IdentityServiceRequestsBuilder {
+  public class func builderWithPrototype(prototype:IdentityServiceRequests) -> IdentityServiceRequestsBuilder {
     return IdentityServiceRequests.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -318,13 +318,13 @@ final internal class IdentityServiceRequests : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "IdentityServiceRequests"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "IdentityServiceRequests"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return IdentityServiceRequests.self
   }
 
@@ -333,44 +333,44 @@ final internal class IdentityServiceRequests : GeneratedMessage {
 
 }
 
-final internal class IdentityServiceRequestsBuilder : GeneratedMessageBuilder {
+final public class IdentityServiceRequestsBuilder : GeneratedMessageBuilder {
   private var builderResult:IdentityServiceRequests
 
-  required override internal init () {
+  required override public init () {
      builderResult = IdentityServiceRequests()
      super.init()
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> IdentityServiceRequestsBuilder {
+  public override func clear() -> IdentityServiceRequestsBuilder {
     builderResult = IdentityServiceRequests()
     return self
   }
-  internal override func clone() -> IdentityServiceRequestsBuilder {
+  public override func clone() -> IdentityServiceRequestsBuilder {
     return IdentityServiceRequests.builderWithPrototype(builderResult)
   }
-  internal override func build() -> IdentityServiceRequests {
+  public override func build() -> IdentityServiceRequests {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> IdentityServiceRequests {
+  public func buildPartial() -> IdentityServiceRequests {
     var returnMe:IdentityServiceRequests = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:IdentityServiceRequests) -> IdentityServiceRequestsBuilder {
+  public func mergeFrom(other:IdentityServiceRequests) -> IdentityServiceRequestsBuilder {
     if (other == IdentityServiceRequests()) {
      return self
     }
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityServiceRequestsBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityServiceRequestsBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityServiceRequestsBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityServiceRequestsBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -392,7 +392,7 @@ final internal class IdentityServiceRequestsBuilder : GeneratedMessageBuilder {
 //Class extensions: NSData
 
 
-internal extension UserServiceRequests {
+public extension UserServiceRequests {
     class func parseFromNSData(data:NSData) -> UserServiceRequests {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -404,7 +404,7 @@ internal extension UserServiceRequests {
         return UserServiceRequests.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension IdentityServiceRequests {
+public extension IdentityServiceRequests {
     class func parseFromNSData(data:NSData) -> IdentityServiceRequests {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)

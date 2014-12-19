@@ -3,8 +3,8 @@
 import Foundation
 import ProtocolBuffers
 
-internal struct IdentityServiceActionsRoot {
-  internal static var sharedInstance : IdentityServiceActionsRoot {
+public struct IdentityServiceActionsRoot {
+  public static var sharedInstance : IdentityServiceActionsRoot {
    struct Static {
        static let instance : IdentityServiceActionsRoot = IdentityServiceActionsRoot()
    }
@@ -17,11 +17,11 @@ internal struct IdentityServiceActionsRoot {
     registerAllExtensions(extensionRegistry)
     IdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
   }
-  internal func registerAllExtensions(registry:ExtensionRegistry) {
+  public func registerAllExtensions(registry:ExtensionRegistry) {
   }
 }
 
-internal func == (lhs: IdentityService.GetIdentity, rhs: IdentityService.GetIdentity) -> Bool {
+public func == (lhs: IdentityService.GetIdentity, rhs: IdentityService.GetIdentity) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -29,7 +29,7 @@ internal func == (lhs: IdentityService.GetIdentity, rhs: IdentityService.GetIden
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: IdentityService.GetIdentities, rhs: IdentityService.GetIdentities) -> Bool {
+public func == (lhs: IdentityService.GetIdentities, rhs: IdentityService.GetIdentities) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -37,7 +37,7 @@ internal func == (lhs: IdentityService.GetIdentities, rhs: IdentityService.GetId
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: IdentityService.CreateIdentity, rhs: IdentityService.CreateIdentity) -> Bool {
+public func == (lhs: IdentityService.CreateIdentity, rhs: IdentityService.CreateIdentity) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -45,7 +45,7 @@ internal func == (lhs: IdentityService.CreateIdentity, rhs: IdentityService.Crea
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-internal func == (lhs: IdentityService, rhs: IdentityService) -> Bool {
+public func == (lhs: IdentityService, rhs: IdentityService) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -53,38 +53,38 @@ internal func == (lhs: IdentityService, rhs: IdentityService) -> Bool {
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-final internal class IdentityService : GeneratedMessage {
+final public class IdentityService : GeneratedMessage {
 
 
   //Nested type declaration start
 
-    final internal class GetIdentity : GeneratedMessage {
+    final public class GetIdentity : GeneratedMessage {
 
 
       //Nested type declaration start
 
-        final internal class Request : GeneratedMessage {
-          private(set) var types:Identity.Types = Identity.Types.Internal
-          private(set) var hasTypes:Bool = false
-          private(set) var hasKey:Bool = false
-          private(set) var key:String = ""
+        final public class Request : GeneratedMessage {
+          public private(set) var type:Identity.Types = Identity.Types.Internal
+          public private(set) var hasTypes:Bool = false
+          public private(set) var hasKey:Bool = false
+          public private(set) var key:String = ""
 
-          required internal init() {
+          required public init() {
                super.init()
           }
-          override internal func isInitialized() -> Bool {
+          override public func isInitialized() -> Bool {
            return true
           }
-          override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
             if hasTypes {
-              output.writeEnum(1, value:types.rawValue)
+              output.writeEnum(1, value:type.rawValue)
             }
             if hasKey {
               output.writeString(2, value:key)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
-          override internal func serializedSize() -> Int32 {
+          override public func serializedSize() -> Int32 {
             var size:Int32 = memoizedSerializedSize
             if size != -1 {
              return size
@@ -92,7 +92,7 @@ final internal class IdentityService : GeneratedMessage {
 
             size = 0
             if (hasTypes) {
-              size += WireFormat.computeEnumSize(1, value:types.rawValue)
+              size += WireFormat.computeEnumSize(1, value:type.rawValue)
             }
             if hasKey {
               size += WireFormat.computeStringSize(2, value:key)
@@ -101,56 +101,56 @@ final internal class IdentityService : GeneratedMessage {
             memoizedSerializedSize = size
             return size
           }
-          internal class func parseFromData(data:[Byte]) -> IdentityService.GetIdentity.Request {
+          public class func parseFromData(data:[Byte]) -> IdentityService.GetIdentity.Request {
             return IdentityService.GetIdentity.Request.builder().mergeFromData(data).build()
           }
-          internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.Request {
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.Request {
             return IdentityService.GetIdentity.Request.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentity.Request {
+          public class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentity.Request {
             return IdentityService.GetIdentity.Request.builder().mergeFromInputStream(input).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentity.Request {
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentity.Request {
             return IdentityService.GetIdentity.Request.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentity.Request {
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentity.Request {
             return IdentityService.GetIdentity.Request.builder().mergeFromCodedInputStream(input).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.Request {
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.Request {
             return IdentityService.GetIdentity.Request.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func builder() -> IdentityService.GetIdentity.RequestBuilder {
+          public class func builder() -> IdentityService.GetIdentity.RequestBuilder {
             return IdentityService.GetIdentity.Request.classBuilder() as IdentityService.GetIdentity.RequestBuilder
           }
-          internal func builder() -> IdentityService.GetIdentity.RequestBuilder {
+          public func builder() -> IdentityService.GetIdentity.RequestBuilder {
             return classBuilder() as IdentityService.GetIdentity.RequestBuilder
           }
-          internal override class func classBuilder() -> MessageBuilder {
+          public override class func classBuilder() -> MessageBuilder {
             return IdentityService.GetIdentity.RequestBuilder()
           }
-          internal override func classBuilder() -> MessageBuilder {
+          public override func classBuilder() -> MessageBuilder {
             return IdentityService.GetIdentity.Request.builder()
           }
-          internal func toBuilder() -> IdentityService.GetIdentity.RequestBuilder {
+          public func toBuilder() -> IdentityService.GetIdentity.RequestBuilder {
             return IdentityService.GetIdentity.Request.builderWithPrototype(self)
           }
-          internal class func builderWithPrototype(prototype:IdentityService.GetIdentity.Request) -> IdentityService.GetIdentity.RequestBuilder {
+          public class func builderWithPrototype(prototype:IdentityService.GetIdentity.Request) -> IdentityService.GetIdentity.RequestBuilder {
             return IdentityService.GetIdentity.Request.builder().mergeFrom(prototype)
           }
-          override internal func writeDescriptionTo(inout output:String, indent:String) {
+          override public func writeDescriptionTo(inout output:String, indent:String) {
             if (hasTypes) {
-              output += "\(indent) types: \(types.rawValue)\n"
+              output += "\(indent) type: \(type.rawValue)\n"
             }
             if hasKey {
               output += "\(indent) key: \(key) \n"
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
-          override internal var hashValue:Int {
+          override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
                   if hasTypes {
-                     hashCode = (hashCode &* 31) &+ Int(types.rawValue)
+                     hashCode = (hashCode &* 31) &+ Int(type.rawValue)
                   }
                   if hasKey {
                      hashCode = (hashCode &* 31) &+ key.hashValue
@@ -163,13 +163,13 @@ final internal class IdentityService : GeneratedMessage {
 
           //Meta information declaration start
 
-          override internal class func className() -> String {
+          override public class func className() -> String {
               return "IdentityService.GetIdentity.Request"
           }
-          override internal func className() -> String {
+          override public func className() -> String {
               return "IdentityService.GetIdentity.Request"
           }
-          override internal func classMetaType() -> GeneratedMessage.Type {
+          override public func classMetaType() -> GeneratedMessage.Type {
               return IdentityService.GetIdentity.Request.self
           }
 
@@ -178,38 +178,38 @@ final internal class IdentityService : GeneratedMessage {
 
         }
 
-        final internal class RequestBuilder : GeneratedMessageBuilder {
+        final public class RequestBuilder : GeneratedMessageBuilder {
           private var builderResult:IdentityService.GetIdentity.Request
 
-          required override internal init () {
+          required override public init () {
              builderResult = IdentityService.GetIdentity.Request()
              super.init()
           }
-            var hasTypes:Bool{
+            public var hasTypes:Bool{
                 get {
                     return builderResult.hasTypes
                 }
             }
-            var types:Identity.Types {
+            public var type:Identity.Types {
                 get {
-                    return builderResult.types
+                    return builderResult.type
                 }
                 set (value) {
                     builderResult.hasTypes = true
-                    builderResult.types = value
+                    builderResult.type = value
                 }
             }
-            internal func clearTypes() -> IdentityService.GetIdentity.RequestBuilder {
+            public func clearTypes() -> IdentityService.GetIdentity.RequestBuilder {
                builderResult.hasTypes = false
-               builderResult.types = .Internal
+               builderResult.type = .Internal
                return self
             }
-          var hasKey:Bool {
+          public var hasKey:Bool {
                get {
                     return builderResult.hasKey
                }
           }
-          var key:String {
+          public var key:String {
                get {
                     return builderResult.key
                }
@@ -218,37 +218,37 @@ final internal class IdentityService : GeneratedMessage {
                    builderResult.key = value
                }
           }
-          internal func clearKey() -> IdentityService.GetIdentity.RequestBuilder{
+          public func clearKey() -> IdentityService.GetIdentity.RequestBuilder{
                builderResult.hasKey = false
                builderResult.key = ""
                return self
           }
-          override internal var internalGetResult:GeneratedMessage {
+          override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
                }
           }
-          internal override func clear() -> IdentityService.GetIdentity.RequestBuilder {
+          public override func clear() -> IdentityService.GetIdentity.RequestBuilder {
             builderResult = IdentityService.GetIdentity.Request()
             return self
           }
-          internal override func clone() -> IdentityService.GetIdentity.RequestBuilder {
+          public override func clone() -> IdentityService.GetIdentity.RequestBuilder {
             return IdentityService.GetIdentity.Request.builderWithPrototype(builderResult)
           }
-          internal override func build() -> IdentityService.GetIdentity.Request {
+          public override func build() -> IdentityService.GetIdentity.Request {
                checkInitialized()
                return buildPartial()
           }
-          internal func buildPartial() -> IdentityService.GetIdentity.Request {
+          public func buildPartial() -> IdentityService.GetIdentity.Request {
             var returnMe:IdentityService.GetIdentity.Request = builderResult
             return returnMe
           }
-          internal func mergeFrom(other:IdentityService.GetIdentity.Request) -> IdentityService.GetIdentity.RequestBuilder {
+          public func mergeFrom(other:IdentityService.GetIdentity.Request) -> IdentityService.GetIdentity.RequestBuilder {
             if (other == IdentityService.GetIdentity.Request()) {
              return self
             }
             if other.hasTypes {
-                 types = other.types
+                 type = other.type
             }
             if other.hasKey {
                  key = other.key
@@ -256,10 +256,10 @@ final internal class IdentityService : GeneratedMessage {
             mergeUnknownFields(other.unknownFields)
             return self
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentity.RequestBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentity.RequestBuilder {
                return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.RequestBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.RequestBuilder {
             var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
             while (true) {
               var tag = input.readTag()
@@ -269,11 +269,11 @@ final internal class IdentityService : GeneratedMessage {
                 return self
 
               case 8 :
-                let valueInttypes = input.readEnum()
-                if let enumstypes = Identity.Types(rawValue:valueInttypes){
-                     types = enumstypes
+                let valueInttype = input.readEnum()
+                if let enumstype = Identity.Types(rawValue:valueInttype){
+                     type = enumstype
                 } else {
-                     unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueInttypes))
+                     unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueInttype))
                 }
 
               case 18 :
@@ -297,22 +297,22 @@ final internal class IdentityService : GeneratedMessage {
 
       //Nested type declaration start
 
-        final internal class Response : GeneratedMessage {
-          private(set) var hasIdentity:Bool = false
-          private(set) var identity:Identity = Identity()
-          required internal init() {
+        final public class Response : GeneratedMessage {
+          public private(set) var hasIdentity:Bool = false
+          public private(set) var identity:Identity = Identity()
+          required public init() {
                super.init()
           }
-          override internal func isInitialized() -> Bool {
+          override public func isInitialized() -> Bool {
            return true
           }
-          override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
             if hasIdentity {
               output.writeMessage(1, value:identity)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
-          override internal func serializedSize() -> Int32 {
+          override public func serializedSize() -> Int32 {
             var size:Int32 = memoizedSerializedSize
             if size != -1 {
              return size
@@ -326,43 +326,43 @@ final internal class IdentityService : GeneratedMessage {
             memoizedSerializedSize = size
             return size
           }
-          internal class func parseFromData(data:[Byte]) -> IdentityService.GetIdentity.Response {
+          public class func parseFromData(data:[Byte]) -> IdentityService.GetIdentity.Response {
             return IdentityService.GetIdentity.Response.builder().mergeFromData(data).build()
           }
-          internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.Response {
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.Response {
             return IdentityService.GetIdentity.Response.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentity.Response {
+          public class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentity.Response {
             return IdentityService.GetIdentity.Response.builder().mergeFromInputStream(input).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentity.Response {
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentity.Response {
             return IdentityService.GetIdentity.Response.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentity.Response {
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentity.Response {
             return IdentityService.GetIdentity.Response.builder().mergeFromCodedInputStream(input).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.Response {
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.Response {
             return IdentityService.GetIdentity.Response.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func builder() -> IdentityService.GetIdentity.ResponseBuilder {
+          public class func builder() -> IdentityService.GetIdentity.ResponseBuilder {
             return IdentityService.GetIdentity.Response.classBuilder() as IdentityService.GetIdentity.ResponseBuilder
           }
-          internal func builder() -> IdentityService.GetIdentity.ResponseBuilder {
+          public func builder() -> IdentityService.GetIdentity.ResponseBuilder {
             return classBuilder() as IdentityService.GetIdentity.ResponseBuilder
           }
-          internal override class func classBuilder() -> MessageBuilder {
+          public override class func classBuilder() -> MessageBuilder {
             return IdentityService.GetIdentity.ResponseBuilder()
           }
-          internal override func classBuilder() -> MessageBuilder {
+          public override func classBuilder() -> MessageBuilder {
             return IdentityService.GetIdentity.Response.builder()
           }
-          internal func toBuilder() -> IdentityService.GetIdentity.ResponseBuilder {
+          public func toBuilder() -> IdentityService.GetIdentity.ResponseBuilder {
             return IdentityService.GetIdentity.Response.builderWithPrototype(self)
           }
-          internal class func builderWithPrototype(prototype:IdentityService.GetIdentity.Response) -> IdentityService.GetIdentity.ResponseBuilder {
+          public class func builderWithPrototype(prototype:IdentityService.GetIdentity.Response) -> IdentityService.GetIdentity.ResponseBuilder {
             return IdentityService.GetIdentity.Response.builder().mergeFrom(prototype)
           }
-          override internal func writeDescriptionTo(inout output:String, indent:String) {
+          override public func writeDescriptionTo(inout output:String, indent:String) {
             if hasIdentity {
               output += "\(indent) identity {\n"
               identity.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -370,7 +370,7 @@ final internal class IdentityService : GeneratedMessage {
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
-          override internal var hashValue:Int {
+          override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
                   if hasIdentity {
@@ -384,13 +384,13 @@ final internal class IdentityService : GeneratedMessage {
 
           //Meta information declaration start
 
-          override internal class func className() -> String {
+          override public class func className() -> String {
               return "IdentityService.GetIdentity.Response"
           }
-          override internal func className() -> String {
+          override public func className() -> String {
               return "IdentityService.GetIdentity.Response"
           }
-          override internal func classMetaType() -> GeneratedMessage.Type {
+          override public func classMetaType() -> GeneratedMessage.Type {
               return IdentityService.GetIdentity.Response.self
           }
 
@@ -399,19 +399,19 @@ final internal class IdentityService : GeneratedMessage {
 
         }
 
-        final internal class ResponseBuilder : GeneratedMessageBuilder {
+        final public class ResponseBuilder : GeneratedMessageBuilder {
           private var builderResult:IdentityService.GetIdentity.Response
 
-          required override internal init () {
+          required override public init () {
              builderResult = IdentityService.GetIdentity.Response()
              super.init()
           }
-          var hasIdentity:Bool {
+          public var hasIdentity:Bool {
                get {
                    return builderResult.hasIdentity
                }
           }
-          var identity:Identity {
+          public var identity:Identity {
                get {
                    return builderResult.identity
                }
@@ -420,11 +420,11 @@ final internal class IdentityService : GeneratedMessage {
                    builderResult.identity = value
                }
           }
-          internal func setIdentityBuilder(builderForValue:IdentityBuilder) -> IdentityService.GetIdentity.ResponseBuilder {
+          public func setIdentityBuilder(builderForValue:IdentityBuilder) -> IdentityService.GetIdentity.ResponseBuilder {
             identity = builderForValue.build()
             return self
           }
-          internal func mergeIdentity(value:Identity) -> IdentityService.GetIdentity.ResponseBuilder {
+          public func mergeIdentity(value:Identity) -> IdentityService.GetIdentity.ResponseBuilder {
             if (builderResult.hasIdentity) {
               builderResult.identity = Identity.builderWithPrototype(builderResult.identity).mergeFrom(value).buildPartial()
             } else {
@@ -433,32 +433,32 @@ final internal class IdentityService : GeneratedMessage {
             builderResult.hasIdentity = true
             return self
           }
-          internal func clearIdentity() -> IdentityService.GetIdentity.ResponseBuilder {
+          public func clearIdentity() -> IdentityService.GetIdentity.ResponseBuilder {
             builderResult.hasIdentity = false
             builderResult.identity = Identity()
             return self
           }
-          override internal var internalGetResult:GeneratedMessage {
+          override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
                }
           }
-          internal override func clear() -> IdentityService.GetIdentity.ResponseBuilder {
+          public override func clear() -> IdentityService.GetIdentity.ResponseBuilder {
             builderResult = IdentityService.GetIdentity.Response()
             return self
           }
-          internal override func clone() -> IdentityService.GetIdentity.ResponseBuilder {
+          public override func clone() -> IdentityService.GetIdentity.ResponseBuilder {
             return IdentityService.GetIdentity.Response.builderWithPrototype(builderResult)
           }
-          internal override func build() -> IdentityService.GetIdentity.Response {
+          public override func build() -> IdentityService.GetIdentity.Response {
                checkInitialized()
                return buildPartial()
           }
-          internal func buildPartial() -> IdentityService.GetIdentity.Response {
+          public func buildPartial() -> IdentityService.GetIdentity.Response {
             var returnMe:IdentityService.GetIdentity.Response = builderResult
             return returnMe
           }
-          internal func mergeFrom(other:IdentityService.GetIdentity.Response) -> IdentityService.GetIdentity.ResponseBuilder {
+          public func mergeFrom(other:IdentityService.GetIdentity.Response) -> IdentityService.GetIdentity.ResponseBuilder {
             if (other == IdentityService.GetIdentity.Response()) {
              return self
             }
@@ -468,10 +468,10 @@ final internal class IdentityService : GeneratedMessage {
             mergeUnknownFields(other.unknownFields)
             return self
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentity.ResponseBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentity.ResponseBuilder {
                return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.ResponseBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.ResponseBuilder {
             var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
             while (true) {
               var tag = input.readTag()
@@ -502,16 +502,16 @@ final internal class IdentityService : GeneratedMessage {
 
       //Nested type declaration end
 
-      required internal init() {
+      required public init() {
            super.init()
       }
-      override internal func isInitialized() -> Bool {
+      override public func isInitialized() -> Bool {
        return true
       }
-      override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+      override public func writeToCodedOutputStream(output:CodedOutputStream) {
         unknownFields.writeToCodedOutputStream(output)
       }
-      override internal func serializedSize() -> Int32 {
+      override public func serializedSize() -> Int32 {
         var size:Int32 = memoizedSerializedSize
         if size != -1 {
          return size
@@ -522,46 +522,46 @@ final internal class IdentityService : GeneratedMessage {
         memoizedSerializedSize = size
         return size
       }
-      internal class func parseFromData(data:[Byte]) -> IdentityService.GetIdentity {
+      public class func parseFromData(data:[Byte]) -> IdentityService.GetIdentity {
         return IdentityService.GetIdentity.builder().mergeFromData(data).build()
       }
-      internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity {
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity {
         return IdentityService.GetIdentity.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
       }
-      internal class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentity {
+      public class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentity {
         return IdentityService.GetIdentity.builder().mergeFromInputStream(input).build()
       }
-      internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentity {
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentity {
         return IdentityService.GetIdentity.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
       }
-      internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentity {
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentity {
         return IdentityService.GetIdentity.builder().mergeFromCodedInputStream(input).build()
       }
-      internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity {
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity {
         return IdentityService.GetIdentity.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
       }
-      internal class func builder() -> IdentityService.GetIdentityBuilder {
+      public class func builder() -> IdentityService.GetIdentityBuilder {
         return IdentityService.GetIdentity.classBuilder() as IdentityService.GetIdentityBuilder
       }
-      internal func builder() -> IdentityService.GetIdentityBuilder {
+      public func builder() -> IdentityService.GetIdentityBuilder {
         return classBuilder() as IdentityService.GetIdentityBuilder
       }
-      internal override class func classBuilder() -> MessageBuilder {
+      public override class func classBuilder() -> MessageBuilder {
         return IdentityService.GetIdentityBuilder()
       }
-      internal override func classBuilder() -> MessageBuilder {
+      public override func classBuilder() -> MessageBuilder {
         return IdentityService.GetIdentity.builder()
       }
-      internal func toBuilder() -> IdentityService.GetIdentityBuilder {
+      public func toBuilder() -> IdentityService.GetIdentityBuilder {
         return IdentityService.GetIdentity.builderWithPrototype(self)
       }
-      internal class func builderWithPrototype(prototype:IdentityService.GetIdentity) -> IdentityService.GetIdentityBuilder {
+      public class func builderWithPrototype(prototype:IdentityService.GetIdentity) -> IdentityService.GetIdentityBuilder {
         return IdentityService.GetIdentity.builder().mergeFrom(prototype)
       }
-      override internal func writeDescriptionTo(inout output:String, indent:String) {
+      override public func writeDescriptionTo(inout output:String, indent:String) {
         unknownFields.writeDescriptionTo(&output, indent:indent)
       }
-      override internal var hashValue:Int {
+      override public var hashValue:Int {
           get {
               var hashCode:Int = 7
               hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -572,13 +572,13 @@ final internal class IdentityService : GeneratedMessage {
 
       //Meta information declaration start
 
-      override internal class func className() -> String {
+      override public class func className() -> String {
           return "IdentityService.GetIdentity"
       }
-      override internal func className() -> String {
+      override public func className() -> String {
           return "IdentityService.GetIdentity"
       }
-      override internal func classMetaType() -> GeneratedMessage.Type {
+      override public func classMetaType() -> GeneratedMessage.Type {
           return IdentityService.GetIdentity.self
       }
 
@@ -587,44 +587,44 @@ final internal class IdentityService : GeneratedMessage {
 
     }
 
-    final internal class GetIdentityBuilder : GeneratedMessageBuilder {
+    final public class GetIdentityBuilder : GeneratedMessageBuilder {
       private var builderResult:IdentityService.GetIdentity
 
-      required override internal init () {
+      required override public init () {
          builderResult = IdentityService.GetIdentity()
          super.init()
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> IdentityService.GetIdentityBuilder {
+      public override func clear() -> IdentityService.GetIdentityBuilder {
         builderResult = IdentityService.GetIdentity()
         return self
       }
-      internal override func clone() -> IdentityService.GetIdentityBuilder {
+      public override func clone() -> IdentityService.GetIdentityBuilder {
         return IdentityService.GetIdentity.builderWithPrototype(builderResult)
       }
-      internal override func build() -> IdentityService.GetIdentity {
+      public override func build() -> IdentityService.GetIdentity {
            checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> IdentityService.GetIdentity {
+      public func buildPartial() -> IdentityService.GetIdentity {
         var returnMe:IdentityService.GetIdentity = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:IdentityService.GetIdentity) -> IdentityService.GetIdentityBuilder {
+      public func mergeFrom(other:IdentityService.GetIdentity) -> IdentityService.GetIdentityBuilder {
         if (other == IdentityService.GetIdentity()) {
          return self
         }
         mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentityBuilder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentityBuilder {
            return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentityBuilder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentityBuilder {
         var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           var tag = input.readTag()
@@ -651,28 +651,28 @@ final internal class IdentityService : GeneratedMessage {
 
   //Nested type declaration start
 
-    final internal class GetIdentities : GeneratedMessage {
+    final public class GetIdentities : GeneratedMessage {
 
 
       //Nested type declaration start
 
-        final internal class Request : GeneratedMessage {
-          private(set) var hasUserId:Bool = false
-          private(set) var userId:String = ""
+        final public class Request : GeneratedMessage {
+          public private(set) var hasUserId:Bool = false
+          public private(set) var user_id:String = ""
 
-          required internal init() {
+          required public init() {
                super.init()
           }
-          override internal func isInitialized() -> Bool {
+          override public func isInitialized() -> Bool {
            return true
           }
-          override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
             if hasUserId {
-              output.writeString(1, value:userId)
+              output.writeString(1, value:user_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
-          override internal func serializedSize() -> Int32 {
+          override public func serializedSize() -> Int32 {
             var size:Int32 = memoizedSerializedSize
             if size != -1 {
              return size
@@ -680,59 +680,59 @@ final internal class IdentityService : GeneratedMessage {
 
             size = 0
             if hasUserId {
-              size += WireFormat.computeStringSize(1, value:userId)
+              size += WireFormat.computeStringSize(1, value:user_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
             return size
           }
-          internal class func parseFromData(data:[Byte]) -> IdentityService.GetIdentities.Request {
+          public class func parseFromData(data:[Byte]) -> IdentityService.GetIdentities.Request {
             return IdentityService.GetIdentities.Request.builder().mergeFromData(data).build()
           }
-          internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.Request {
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.Request {
             return IdentityService.GetIdentities.Request.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentities.Request {
+          public class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentities.Request {
             return IdentityService.GetIdentities.Request.builder().mergeFromInputStream(input).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentities.Request {
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentities.Request {
             return IdentityService.GetIdentities.Request.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentities.Request {
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentities.Request {
             return IdentityService.GetIdentities.Request.builder().mergeFromCodedInputStream(input).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.Request {
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.Request {
             return IdentityService.GetIdentities.Request.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func builder() -> IdentityService.GetIdentities.RequestBuilder {
+          public class func builder() -> IdentityService.GetIdentities.RequestBuilder {
             return IdentityService.GetIdentities.Request.classBuilder() as IdentityService.GetIdentities.RequestBuilder
           }
-          internal func builder() -> IdentityService.GetIdentities.RequestBuilder {
+          public func builder() -> IdentityService.GetIdentities.RequestBuilder {
             return classBuilder() as IdentityService.GetIdentities.RequestBuilder
           }
-          internal override class func classBuilder() -> MessageBuilder {
+          public override class func classBuilder() -> MessageBuilder {
             return IdentityService.GetIdentities.RequestBuilder()
           }
-          internal override func classBuilder() -> MessageBuilder {
+          public override func classBuilder() -> MessageBuilder {
             return IdentityService.GetIdentities.Request.builder()
           }
-          internal func toBuilder() -> IdentityService.GetIdentities.RequestBuilder {
+          public func toBuilder() -> IdentityService.GetIdentities.RequestBuilder {
             return IdentityService.GetIdentities.Request.builderWithPrototype(self)
           }
-          internal class func builderWithPrototype(prototype:IdentityService.GetIdentities.Request) -> IdentityService.GetIdentities.RequestBuilder {
+          public class func builderWithPrototype(prototype:IdentityService.GetIdentities.Request) -> IdentityService.GetIdentities.RequestBuilder {
             return IdentityService.GetIdentities.Request.builder().mergeFrom(prototype)
           }
-          override internal func writeDescriptionTo(inout output:String, indent:String) {
+          override public func writeDescriptionTo(inout output:String, indent:String) {
             if hasUserId {
-              output += "\(indent) userId: \(userId) \n"
+              output += "\(indent) user_id: \(user_id) \n"
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
-          override internal var hashValue:Int {
+          override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
                   if hasUserId {
-                     hashCode = (hashCode &* 31) &+ userId.hashValue
+                     hashCode = (hashCode &* 31) &+ user_id.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -742,13 +742,13 @@ final internal class IdentityService : GeneratedMessage {
 
           //Meta information declaration start
 
-          override internal class func className() -> String {
+          override public class func className() -> String {
               return "IdentityService.GetIdentities.Request"
           }
-          override internal func className() -> String {
+          override public func className() -> String {
               return "IdentityService.GetIdentities.Request"
           }
-          override internal func classMetaType() -> GeneratedMessage.Type {
+          override public func classMetaType() -> GeneratedMessage.Type {
               return IdentityService.GetIdentities.Request.self
           }
 
@@ -757,66 +757,66 @@ final internal class IdentityService : GeneratedMessage {
 
         }
 
-        final internal class RequestBuilder : GeneratedMessageBuilder {
+        final public class RequestBuilder : GeneratedMessageBuilder {
           private var builderResult:IdentityService.GetIdentities.Request
 
-          required override internal init () {
+          required override public init () {
              builderResult = IdentityService.GetIdentities.Request()
              super.init()
           }
-          var hasUserId:Bool {
+          public var hasUserId:Bool {
                get {
                     return builderResult.hasUserId
                }
           }
-          var userId:String {
+          public var user_id:String {
                get {
-                    return builderResult.userId
+                    return builderResult.user_id
                }
                set (value) {
                    builderResult.hasUserId = true
-                   builderResult.userId = value
+                   builderResult.user_id = value
                }
           }
-          internal func clearUserId() -> IdentityService.GetIdentities.RequestBuilder{
+          public func clearUserId() -> IdentityService.GetIdentities.RequestBuilder{
                builderResult.hasUserId = false
-               builderResult.userId = ""
+               builderResult.user_id = ""
                return self
           }
-          override internal var internalGetResult:GeneratedMessage {
+          override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
                }
           }
-          internal override func clear() -> IdentityService.GetIdentities.RequestBuilder {
+          public override func clear() -> IdentityService.GetIdentities.RequestBuilder {
             builderResult = IdentityService.GetIdentities.Request()
             return self
           }
-          internal override func clone() -> IdentityService.GetIdentities.RequestBuilder {
+          public override func clone() -> IdentityService.GetIdentities.RequestBuilder {
             return IdentityService.GetIdentities.Request.builderWithPrototype(builderResult)
           }
-          internal override func build() -> IdentityService.GetIdentities.Request {
+          public override func build() -> IdentityService.GetIdentities.Request {
                checkInitialized()
                return buildPartial()
           }
-          internal func buildPartial() -> IdentityService.GetIdentities.Request {
+          public func buildPartial() -> IdentityService.GetIdentities.Request {
             var returnMe:IdentityService.GetIdentities.Request = builderResult
             return returnMe
           }
-          internal func mergeFrom(other:IdentityService.GetIdentities.Request) -> IdentityService.GetIdentities.RequestBuilder {
+          public func mergeFrom(other:IdentityService.GetIdentities.Request) -> IdentityService.GetIdentities.RequestBuilder {
             if (other == IdentityService.GetIdentities.Request()) {
              return self
             }
             if other.hasUserId {
-                 userId = other.userId
+                 user_id = other.user_id
             }
             mergeUnknownFields(other.unknownFields)
             return self
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentities.RequestBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentities.RequestBuilder {
                return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.RequestBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.RequestBuilder {
             var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
             while (true) {
               var tag = input.readTag()
@@ -826,7 +826,7 @@ final internal class IdentityService : GeneratedMessage {
                 return self
 
               case 10 :
-                userId = input.readString()
+                user_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -846,21 +846,21 @@ final internal class IdentityService : GeneratedMessage {
 
       //Nested type declaration start
 
-        final internal class Response : GeneratedMessage {
-          private(set) var identities:Array<Identity>  = Array<Identity>()
-          required internal init() {
+        final public class Response : GeneratedMessage {
+          public private(set) var identities:Array<Identity>  = Array<Identity>()
+          required public init() {
                super.init()
           }
-          override internal func isInitialized() -> Bool {
+          override public func isInitialized() -> Bool {
            return true
           }
-          override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
             for oneElementidentities in identities {
                 output.writeMessage(1, value:oneElementidentities)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
-          override internal func serializedSize() -> Int32 {
+          override public func serializedSize() -> Int32 {
             var size:Int32 = memoizedSerializedSize
             if size != -1 {
              return size
@@ -874,43 +874,43 @@ final internal class IdentityService : GeneratedMessage {
             memoizedSerializedSize = size
             return size
           }
-          internal class func parseFromData(data:[Byte]) -> IdentityService.GetIdentities.Response {
+          public class func parseFromData(data:[Byte]) -> IdentityService.GetIdentities.Response {
             return IdentityService.GetIdentities.Response.builder().mergeFromData(data).build()
           }
-          internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.Response {
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.Response {
             return IdentityService.GetIdentities.Response.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentities.Response {
+          public class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentities.Response {
             return IdentityService.GetIdentities.Response.builder().mergeFromInputStream(input).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentities.Response {
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentities.Response {
             return IdentityService.GetIdentities.Response.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentities.Response {
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentities.Response {
             return IdentityService.GetIdentities.Response.builder().mergeFromCodedInputStream(input).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.Response {
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.Response {
             return IdentityService.GetIdentities.Response.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func builder() -> IdentityService.GetIdentities.ResponseBuilder {
+          public class func builder() -> IdentityService.GetIdentities.ResponseBuilder {
             return IdentityService.GetIdentities.Response.classBuilder() as IdentityService.GetIdentities.ResponseBuilder
           }
-          internal func builder() -> IdentityService.GetIdentities.ResponseBuilder {
+          public func builder() -> IdentityService.GetIdentities.ResponseBuilder {
             return classBuilder() as IdentityService.GetIdentities.ResponseBuilder
           }
-          internal override class func classBuilder() -> MessageBuilder {
+          public override class func classBuilder() -> MessageBuilder {
             return IdentityService.GetIdentities.ResponseBuilder()
           }
-          internal override func classBuilder() -> MessageBuilder {
+          public override func classBuilder() -> MessageBuilder {
             return IdentityService.GetIdentities.Response.builder()
           }
-          internal func toBuilder() -> IdentityService.GetIdentities.ResponseBuilder {
+          public func toBuilder() -> IdentityService.GetIdentities.ResponseBuilder {
             return IdentityService.GetIdentities.Response.builderWithPrototype(self)
           }
-          internal class func builderWithPrototype(prototype:IdentityService.GetIdentities.Response) -> IdentityService.GetIdentities.ResponseBuilder {
+          public class func builderWithPrototype(prototype:IdentityService.GetIdentities.Response) -> IdentityService.GetIdentities.ResponseBuilder {
             return IdentityService.GetIdentities.Response.builder().mergeFrom(prototype)
           }
-          override internal func writeDescriptionTo(inout output:String, indent:String) {
+          override public func writeDescriptionTo(inout output:String, indent:String) {
             var identitiesElementIndex:Int = 0
             for oneElementidentities in identities {
                 output += "\(indent) identities[\(identitiesElementIndex)] {\n"
@@ -920,7 +920,7 @@ final internal class IdentityService : GeneratedMessage {
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
-          override internal var hashValue:Int {
+          override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
                   for oneElementidentities in identities {
@@ -934,13 +934,13 @@ final internal class IdentityService : GeneratedMessage {
 
           //Meta information declaration start
 
-          override internal class func className() -> String {
+          override public class func className() -> String {
               return "IdentityService.GetIdentities.Response"
           }
-          override internal func className() -> String {
+          override public func className() -> String {
               return "IdentityService.GetIdentities.Response"
           }
-          override internal func classMetaType() -> GeneratedMessage.Type {
+          override public func classMetaType() -> GeneratedMessage.Type {
               return IdentityService.GetIdentities.Response.self
           }
 
@@ -949,14 +949,14 @@ final internal class IdentityService : GeneratedMessage {
 
         }
 
-        final internal class ResponseBuilder : GeneratedMessageBuilder {
+        final public class ResponseBuilder : GeneratedMessageBuilder {
           private var builderResult:IdentityService.GetIdentities.Response
 
-          required override internal init () {
+          required override public init () {
              builderResult = IdentityService.GetIdentities.Response()
              super.init()
           }
-          var identities:Array<Identity> {
+          public var identities:Array<Identity> {
                get {
                    return builderResult.identities
                }
@@ -964,31 +964,31 @@ final internal class IdentityService : GeneratedMessage {
                    builderResult.identities = value
                }
           }
-          internal func clearIdentities() -> IdentityService.GetIdentities.ResponseBuilder {
+          public func clearIdentities() -> IdentityService.GetIdentities.ResponseBuilder {
             builderResult.identities.removeAll(keepCapacity: false)
             return self
           }
-          override internal var internalGetResult:GeneratedMessage {
+          override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
                }
           }
-          internal override func clear() -> IdentityService.GetIdentities.ResponseBuilder {
+          public override func clear() -> IdentityService.GetIdentities.ResponseBuilder {
             builderResult = IdentityService.GetIdentities.Response()
             return self
           }
-          internal override func clone() -> IdentityService.GetIdentities.ResponseBuilder {
+          public override func clone() -> IdentityService.GetIdentities.ResponseBuilder {
             return IdentityService.GetIdentities.Response.builderWithPrototype(builderResult)
           }
-          internal override func build() -> IdentityService.GetIdentities.Response {
+          public override func build() -> IdentityService.GetIdentities.Response {
                checkInitialized()
                return buildPartial()
           }
-          internal func buildPartial() -> IdentityService.GetIdentities.Response {
+          public func buildPartial() -> IdentityService.GetIdentities.Response {
             var returnMe:IdentityService.GetIdentities.Response = builderResult
             return returnMe
           }
-          internal func mergeFrom(other:IdentityService.GetIdentities.Response) -> IdentityService.GetIdentities.ResponseBuilder {
+          public func mergeFrom(other:IdentityService.GetIdentities.Response) -> IdentityService.GetIdentities.ResponseBuilder {
             if (other == IdentityService.GetIdentities.Response()) {
              return self
             }
@@ -998,10 +998,10 @@ final internal class IdentityService : GeneratedMessage {
             mergeUnknownFields(other.unknownFields)
             return self
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentities.ResponseBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentities.ResponseBuilder {
                return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.ResponseBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.ResponseBuilder {
             var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
             while (true) {
               var tag = input.readTag()
@@ -1029,16 +1029,16 @@ final internal class IdentityService : GeneratedMessage {
 
       //Nested type declaration end
 
-      required internal init() {
+      required public init() {
            super.init()
       }
-      override internal func isInitialized() -> Bool {
+      override public func isInitialized() -> Bool {
        return true
       }
-      override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+      override public func writeToCodedOutputStream(output:CodedOutputStream) {
         unknownFields.writeToCodedOutputStream(output)
       }
-      override internal func serializedSize() -> Int32 {
+      override public func serializedSize() -> Int32 {
         var size:Int32 = memoizedSerializedSize
         if size != -1 {
          return size
@@ -1049,46 +1049,46 @@ final internal class IdentityService : GeneratedMessage {
         memoizedSerializedSize = size
         return size
       }
-      internal class func parseFromData(data:[Byte]) -> IdentityService.GetIdentities {
+      public class func parseFromData(data:[Byte]) -> IdentityService.GetIdentities {
         return IdentityService.GetIdentities.builder().mergeFromData(data).build()
       }
-      internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities {
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities {
         return IdentityService.GetIdentities.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
       }
-      internal class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentities {
+      public class func parseFromInputStream(input:NSInputStream) -> IdentityService.GetIdentities {
         return IdentityService.GetIdentities.builder().mergeFromInputStream(input).build()
       }
-      internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentities {
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.GetIdentities {
         return IdentityService.GetIdentities.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
       }
-      internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentities {
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.GetIdentities {
         return IdentityService.GetIdentities.builder().mergeFromCodedInputStream(input).build()
       }
-      internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities {
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities {
         return IdentityService.GetIdentities.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
       }
-      internal class func builder() -> IdentityService.GetIdentitiesBuilder {
+      public class func builder() -> IdentityService.GetIdentitiesBuilder {
         return IdentityService.GetIdentities.classBuilder() as IdentityService.GetIdentitiesBuilder
       }
-      internal func builder() -> IdentityService.GetIdentitiesBuilder {
+      public func builder() -> IdentityService.GetIdentitiesBuilder {
         return classBuilder() as IdentityService.GetIdentitiesBuilder
       }
-      internal override class func classBuilder() -> MessageBuilder {
+      public override class func classBuilder() -> MessageBuilder {
         return IdentityService.GetIdentitiesBuilder()
       }
-      internal override func classBuilder() -> MessageBuilder {
+      public override func classBuilder() -> MessageBuilder {
         return IdentityService.GetIdentities.builder()
       }
-      internal func toBuilder() -> IdentityService.GetIdentitiesBuilder {
+      public func toBuilder() -> IdentityService.GetIdentitiesBuilder {
         return IdentityService.GetIdentities.builderWithPrototype(self)
       }
-      internal class func builderWithPrototype(prototype:IdentityService.GetIdentities) -> IdentityService.GetIdentitiesBuilder {
+      public class func builderWithPrototype(prototype:IdentityService.GetIdentities) -> IdentityService.GetIdentitiesBuilder {
         return IdentityService.GetIdentities.builder().mergeFrom(prototype)
       }
-      override internal func writeDescriptionTo(inout output:String, indent:String) {
+      override public func writeDescriptionTo(inout output:String, indent:String) {
         unknownFields.writeDescriptionTo(&output, indent:indent)
       }
-      override internal var hashValue:Int {
+      override public var hashValue:Int {
           get {
               var hashCode:Int = 7
               hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -1099,13 +1099,13 @@ final internal class IdentityService : GeneratedMessage {
 
       //Meta information declaration start
 
-      override internal class func className() -> String {
+      override public class func className() -> String {
           return "IdentityService.GetIdentities"
       }
-      override internal func className() -> String {
+      override public func className() -> String {
           return "IdentityService.GetIdentities"
       }
-      override internal func classMetaType() -> GeneratedMessage.Type {
+      override public func classMetaType() -> GeneratedMessage.Type {
           return IdentityService.GetIdentities.self
       }
 
@@ -1114,44 +1114,44 @@ final internal class IdentityService : GeneratedMessage {
 
     }
 
-    final internal class GetIdentitiesBuilder : GeneratedMessageBuilder {
+    final public class GetIdentitiesBuilder : GeneratedMessageBuilder {
       private var builderResult:IdentityService.GetIdentities
 
-      required override internal init () {
+      required override public init () {
          builderResult = IdentityService.GetIdentities()
          super.init()
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> IdentityService.GetIdentitiesBuilder {
+      public override func clear() -> IdentityService.GetIdentitiesBuilder {
         builderResult = IdentityService.GetIdentities()
         return self
       }
-      internal override func clone() -> IdentityService.GetIdentitiesBuilder {
+      public override func clone() -> IdentityService.GetIdentitiesBuilder {
         return IdentityService.GetIdentities.builderWithPrototype(builderResult)
       }
-      internal override func build() -> IdentityService.GetIdentities {
+      public override func build() -> IdentityService.GetIdentities {
            checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> IdentityService.GetIdentities {
+      public func buildPartial() -> IdentityService.GetIdentities {
         var returnMe:IdentityService.GetIdentities = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:IdentityService.GetIdentities) -> IdentityService.GetIdentitiesBuilder {
+      public func mergeFrom(other:IdentityService.GetIdentities) -> IdentityService.GetIdentitiesBuilder {
         if (other == IdentityService.GetIdentities()) {
          return self
         }
         mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentitiesBuilder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.GetIdentitiesBuilder {
            return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentitiesBuilder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentitiesBuilder {
         var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           var tag = input.readTag()
@@ -1178,27 +1178,27 @@ final internal class IdentityService : GeneratedMessage {
 
   //Nested type declaration start
 
-    final internal class CreateIdentity : GeneratedMessage {
+    final public class CreateIdentity : GeneratedMessage {
 
 
       //Nested type declaration start
 
-        final internal class Request : GeneratedMessage {
-          private(set) var hasIdentity:Bool = false
-          private(set) var identity:Identity = Identity()
-          required internal init() {
+        final public class Request : GeneratedMessage {
+          public private(set) var hasIdentity:Bool = false
+          public private(set) var identity:Identity = Identity()
+          required public init() {
                super.init()
           }
-          override internal func isInitialized() -> Bool {
+          override public func isInitialized() -> Bool {
            return true
           }
-          override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
             if hasIdentity {
               output.writeMessage(1, value:identity)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
-          override internal func serializedSize() -> Int32 {
+          override public func serializedSize() -> Int32 {
             var size:Int32 = memoizedSerializedSize
             if size != -1 {
              return size
@@ -1212,43 +1212,43 @@ final internal class IdentityService : GeneratedMessage {
             memoizedSerializedSize = size
             return size
           }
-          internal class func parseFromData(data:[Byte]) -> IdentityService.CreateIdentity.Request {
+          public class func parseFromData(data:[Byte]) -> IdentityService.CreateIdentity.Request {
             return IdentityService.CreateIdentity.Request.builder().mergeFromData(data).build()
           }
-          internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.Request {
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.Request {
             return IdentityService.CreateIdentity.Request.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream) -> IdentityService.CreateIdentity.Request {
+          public class func parseFromInputStream(input:NSInputStream) -> IdentityService.CreateIdentity.Request {
             return IdentityService.CreateIdentity.Request.builder().mergeFromInputStream(input).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.CreateIdentity.Request {
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.CreateIdentity.Request {
             return IdentityService.CreateIdentity.Request.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.CreateIdentity.Request {
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.CreateIdentity.Request {
             return IdentityService.CreateIdentity.Request.builder().mergeFromCodedInputStream(input).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.Request {
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.Request {
             return IdentityService.CreateIdentity.Request.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func builder() -> IdentityService.CreateIdentity.RequestBuilder {
+          public class func builder() -> IdentityService.CreateIdentity.RequestBuilder {
             return IdentityService.CreateIdentity.Request.classBuilder() as IdentityService.CreateIdentity.RequestBuilder
           }
-          internal func builder() -> IdentityService.CreateIdentity.RequestBuilder {
+          public func builder() -> IdentityService.CreateIdentity.RequestBuilder {
             return classBuilder() as IdentityService.CreateIdentity.RequestBuilder
           }
-          internal override class func classBuilder() -> MessageBuilder {
+          public override class func classBuilder() -> MessageBuilder {
             return IdentityService.CreateIdentity.RequestBuilder()
           }
-          internal override func classBuilder() -> MessageBuilder {
+          public override func classBuilder() -> MessageBuilder {
             return IdentityService.CreateIdentity.Request.builder()
           }
-          internal func toBuilder() -> IdentityService.CreateIdentity.RequestBuilder {
+          public func toBuilder() -> IdentityService.CreateIdentity.RequestBuilder {
             return IdentityService.CreateIdentity.Request.builderWithPrototype(self)
           }
-          internal class func builderWithPrototype(prototype:IdentityService.CreateIdentity.Request) -> IdentityService.CreateIdentity.RequestBuilder {
+          public class func builderWithPrototype(prototype:IdentityService.CreateIdentity.Request) -> IdentityService.CreateIdentity.RequestBuilder {
             return IdentityService.CreateIdentity.Request.builder().mergeFrom(prototype)
           }
-          override internal func writeDescriptionTo(inout output:String, indent:String) {
+          override public func writeDescriptionTo(inout output:String, indent:String) {
             if hasIdentity {
               output += "\(indent) identity {\n"
               identity.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -1256,7 +1256,7 @@ final internal class IdentityService : GeneratedMessage {
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
-          override internal var hashValue:Int {
+          override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
                   if hasIdentity {
@@ -1270,13 +1270,13 @@ final internal class IdentityService : GeneratedMessage {
 
           //Meta information declaration start
 
-          override internal class func className() -> String {
+          override public class func className() -> String {
               return "IdentityService.CreateIdentity.Request"
           }
-          override internal func className() -> String {
+          override public func className() -> String {
               return "IdentityService.CreateIdentity.Request"
           }
-          override internal func classMetaType() -> GeneratedMessage.Type {
+          override public func classMetaType() -> GeneratedMessage.Type {
               return IdentityService.CreateIdentity.Request.self
           }
 
@@ -1285,19 +1285,19 @@ final internal class IdentityService : GeneratedMessage {
 
         }
 
-        final internal class RequestBuilder : GeneratedMessageBuilder {
+        final public class RequestBuilder : GeneratedMessageBuilder {
           private var builderResult:IdentityService.CreateIdentity.Request
 
-          required override internal init () {
+          required override public init () {
              builderResult = IdentityService.CreateIdentity.Request()
              super.init()
           }
-          var hasIdentity:Bool {
+          public var hasIdentity:Bool {
                get {
                    return builderResult.hasIdentity
                }
           }
-          var identity:Identity {
+          public var identity:Identity {
                get {
                    return builderResult.identity
                }
@@ -1306,11 +1306,11 @@ final internal class IdentityService : GeneratedMessage {
                    builderResult.identity = value
                }
           }
-          internal func setIdentityBuilder(builderForValue:IdentityBuilder) -> IdentityService.CreateIdentity.RequestBuilder {
+          public func setIdentityBuilder(builderForValue:IdentityBuilder) -> IdentityService.CreateIdentity.RequestBuilder {
             identity = builderForValue.build()
             return self
           }
-          internal func mergeIdentity(value:Identity) -> IdentityService.CreateIdentity.RequestBuilder {
+          public func mergeIdentity(value:Identity) -> IdentityService.CreateIdentity.RequestBuilder {
             if (builderResult.hasIdentity) {
               builderResult.identity = Identity.builderWithPrototype(builderResult.identity).mergeFrom(value).buildPartial()
             } else {
@@ -1319,32 +1319,32 @@ final internal class IdentityService : GeneratedMessage {
             builderResult.hasIdentity = true
             return self
           }
-          internal func clearIdentity() -> IdentityService.CreateIdentity.RequestBuilder {
+          public func clearIdentity() -> IdentityService.CreateIdentity.RequestBuilder {
             builderResult.hasIdentity = false
             builderResult.identity = Identity()
             return self
           }
-          override internal var internalGetResult:GeneratedMessage {
+          override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
                }
           }
-          internal override func clear() -> IdentityService.CreateIdentity.RequestBuilder {
+          public override func clear() -> IdentityService.CreateIdentity.RequestBuilder {
             builderResult = IdentityService.CreateIdentity.Request()
             return self
           }
-          internal override func clone() -> IdentityService.CreateIdentity.RequestBuilder {
+          public override func clone() -> IdentityService.CreateIdentity.RequestBuilder {
             return IdentityService.CreateIdentity.Request.builderWithPrototype(builderResult)
           }
-          internal override func build() -> IdentityService.CreateIdentity.Request {
+          public override func build() -> IdentityService.CreateIdentity.Request {
                checkInitialized()
                return buildPartial()
           }
-          internal func buildPartial() -> IdentityService.CreateIdentity.Request {
+          public func buildPartial() -> IdentityService.CreateIdentity.Request {
             var returnMe:IdentityService.CreateIdentity.Request = builderResult
             return returnMe
           }
-          internal func mergeFrom(other:IdentityService.CreateIdentity.Request) -> IdentityService.CreateIdentity.RequestBuilder {
+          public func mergeFrom(other:IdentityService.CreateIdentity.Request) -> IdentityService.CreateIdentity.RequestBuilder {
             if (other == IdentityService.CreateIdentity.Request()) {
              return self
             }
@@ -1354,10 +1354,10 @@ final internal class IdentityService : GeneratedMessage {
             mergeUnknownFields(other.unknownFields)
             return self
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.CreateIdentity.RequestBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.CreateIdentity.RequestBuilder {
                return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.RequestBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.RequestBuilder {
             var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
             while (true) {
               var tag = input.readTag()
@@ -1392,22 +1392,22 @@ final internal class IdentityService : GeneratedMessage {
 
       //Nested type declaration start
 
-        final internal class Response : GeneratedMessage {
-          private(set) var hasIdentity:Bool = false
-          private(set) var identity:Identity = Identity()
-          required internal init() {
+        final public class Response : GeneratedMessage {
+          public private(set) var hasIdentity:Bool = false
+          public private(set) var identity:Identity = Identity()
+          required public init() {
                super.init()
           }
-          override internal func isInitialized() -> Bool {
+          override public func isInitialized() -> Bool {
            return true
           }
-          override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
             if hasIdentity {
               output.writeMessage(1, value:identity)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
-          override internal func serializedSize() -> Int32 {
+          override public func serializedSize() -> Int32 {
             var size:Int32 = memoizedSerializedSize
             if size != -1 {
              return size
@@ -1421,43 +1421,43 @@ final internal class IdentityService : GeneratedMessage {
             memoizedSerializedSize = size
             return size
           }
-          internal class func parseFromData(data:[Byte]) -> IdentityService.CreateIdentity.Response {
+          public class func parseFromData(data:[Byte]) -> IdentityService.CreateIdentity.Response {
             return IdentityService.CreateIdentity.Response.builder().mergeFromData(data).build()
           }
-          internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.Response {
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.Response {
             return IdentityService.CreateIdentity.Response.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream) -> IdentityService.CreateIdentity.Response {
+          public class func parseFromInputStream(input:NSInputStream) -> IdentityService.CreateIdentity.Response {
             return IdentityService.CreateIdentity.Response.builder().mergeFromInputStream(input).build()
           }
-          internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.CreateIdentity.Response {
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.CreateIdentity.Response {
             return IdentityService.CreateIdentity.Response.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.CreateIdentity.Response {
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.CreateIdentity.Response {
             return IdentityService.CreateIdentity.Response.builder().mergeFromCodedInputStream(input).build()
           }
-          internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.Response {
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.Response {
             return IdentityService.CreateIdentity.Response.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          internal class func builder() -> IdentityService.CreateIdentity.ResponseBuilder {
+          public class func builder() -> IdentityService.CreateIdentity.ResponseBuilder {
             return IdentityService.CreateIdentity.Response.classBuilder() as IdentityService.CreateIdentity.ResponseBuilder
           }
-          internal func builder() -> IdentityService.CreateIdentity.ResponseBuilder {
+          public func builder() -> IdentityService.CreateIdentity.ResponseBuilder {
             return classBuilder() as IdentityService.CreateIdentity.ResponseBuilder
           }
-          internal override class func classBuilder() -> MessageBuilder {
+          public override class func classBuilder() -> MessageBuilder {
             return IdentityService.CreateIdentity.ResponseBuilder()
           }
-          internal override func classBuilder() -> MessageBuilder {
+          public override func classBuilder() -> MessageBuilder {
             return IdentityService.CreateIdentity.Response.builder()
           }
-          internal func toBuilder() -> IdentityService.CreateIdentity.ResponseBuilder {
+          public func toBuilder() -> IdentityService.CreateIdentity.ResponseBuilder {
             return IdentityService.CreateIdentity.Response.builderWithPrototype(self)
           }
-          internal class func builderWithPrototype(prototype:IdentityService.CreateIdentity.Response) -> IdentityService.CreateIdentity.ResponseBuilder {
+          public class func builderWithPrototype(prototype:IdentityService.CreateIdentity.Response) -> IdentityService.CreateIdentity.ResponseBuilder {
             return IdentityService.CreateIdentity.Response.builder().mergeFrom(prototype)
           }
-          override internal func writeDescriptionTo(inout output:String, indent:String) {
+          override public func writeDescriptionTo(inout output:String, indent:String) {
             if hasIdentity {
               output += "\(indent) identity {\n"
               identity.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -1465,7 +1465,7 @@ final internal class IdentityService : GeneratedMessage {
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
-          override internal var hashValue:Int {
+          override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
                   if hasIdentity {
@@ -1479,13 +1479,13 @@ final internal class IdentityService : GeneratedMessage {
 
           //Meta information declaration start
 
-          override internal class func className() -> String {
+          override public class func className() -> String {
               return "IdentityService.CreateIdentity.Response"
           }
-          override internal func className() -> String {
+          override public func className() -> String {
               return "IdentityService.CreateIdentity.Response"
           }
-          override internal func classMetaType() -> GeneratedMessage.Type {
+          override public func classMetaType() -> GeneratedMessage.Type {
               return IdentityService.CreateIdentity.Response.self
           }
 
@@ -1494,19 +1494,19 @@ final internal class IdentityService : GeneratedMessage {
 
         }
 
-        final internal class ResponseBuilder : GeneratedMessageBuilder {
+        final public class ResponseBuilder : GeneratedMessageBuilder {
           private var builderResult:IdentityService.CreateIdentity.Response
 
-          required override internal init () {
+          required override public init () {
              builderResult = IdentityService.CreateIdentity.Response()
              super.init()
           }
-          var hasIdentity:Bool {
+          public var hasIdentity:Bool {
                get {
                    return builderResult.hasIdentity
                }
           }
-          var identity:Identity {
+          public var identity:Identity {
                get {
                    return builderResult.identity
                }
@@ -1515,11 +1515,11 @@ final internal class IdentityService : GeneratedMessage {
                    builderResult.identity = value
                }
           }
-          internal func setIdentityBuilder(builderForValue:IdentityBuilder) -> IdentityService.CreateIdentity.ResponseBuilder {
+          public func setIdentityBuilder(builderForValue:IdentityBuilder) -> IdentityService.CreateIdentity.ResponseBuilder {
             identity = builderForValue.build()
             return self
           }
-          internal func mergeIdentity(value:Identity) -> IdentityService.CreateIdentity.ResponseBuilder {
+          public func mergeIdentity(value:Identity) -> IdentityService.CreateIdentity.ResponseBuilder {
             if (builderResult.hasIdentity) {
               builderResult.identity = Identity.builderWithPrototype(builderResult.identity).mergeFrom(value).buildPartial()
             } else {
@@ -1528,32 +1528,32 @@ final internal class IdentityService : GeneratedMessage {
             builderResult.hasIdentity = true
             return self
           }
-          internal func clearIdentity() -> IdentityService.CreateIdentity.ResponseBuilder {
+          public func clearIdentity() -> IdentityService.CreateIdentity.ResponseBuilder {
             builderResult.hasIdentity = false
             builderResult.identity = Identity()
             return self
           }
-          override internal var internalGetResult:GeneratedMessage {
+          override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
                }
           }
-          internal override func clear() -> IdentityService.CreateIdentity.ResponseBuilder {
+          public override func clear() -> IdentityService.CreateIdentity.ResponseBuilder {
             builderResult = IdentityService.CreateIdentity.Response()
             return self
           }
-          internal override func clone() -> IdentityService.CreateIdentity.ResponseBuilder {
+          public override func clone() -> IdentityService.CreateIdentity.ResponseBuilder {
             return IdentityService.CreateIdentity.Response.builderWithPrototype(builderResult)
           }
-          internal override func build() -> IdentityService.CreateIdentity.Response {
+          public override func build() -> IdentityService.CreateIdentity.Response {
                checkInitialized()
                return buildPartial()
           }
-          internal func buildPartial() -> IdentityService.CreateIdentity.Response {
+          public func buildPartial() -> IdentityService.CreateIdentity.Response {
             var returnMe:IdentityService.CreateIdentity.Response = builderResult
             return returnMe
           }
-          internal func mergeFrom(other:IdentityService.CreateIdentity.Response) -> IdentityService.CreateIdentity.ResponseBuilder {
+          public func mergeFrom(other:IdentityService.CreateIdentity.Response) -> IdentityService.CreateIdentity.ResponseBuilder {
             if (other == IdentityService.CreateIdentity.Response()) {
              return self
             }
@@ -1563,10 +1563,10 @@ final internal class IdentityService : GeneratedMessage {
             mergeUnknownFields(other.unknownFields)
             return self
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.CreateIdentity.ResponseBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.CreateIdentity.ResponseBuilder {
                return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
           }
-          internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.ResponseBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.ResponseBuilder {
             var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
             while (true) {
               var tag = input.readTag()
@@ -1597,16 +1597,16 @@ final internal class IdentityService : GeneratedMessage {
 
       //Nested type declaration end
 
-      required internal init() {
+      required public init() {
            super.init()
       }
-      override internal func isInitialized() -> Bool {
+      override public func isInitialized() -> Bool {
        return true
       }
-      override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+      override public func writeToCodedOutputStream(output:CodedOutputStream) {
         unknownFields.writeToCodedOutputStream(output)
       }
-      override internal func serializedSize() -> Int32 {
+      override public func serializedSize() -> Int32 {
         var size:Int32 = memoizedSerializedSize
         if size != -1 {
          return size
@@ -1617,46 +1617,46 @@ final internal class IdentityService : GeneratedMessage {
         memoizedSerializedSize = size
         return size
       }
-      internal class func parseFromData(data:[Byte]) -> IdentityService.CreateIdentity {
+      public class func parseFromData(data:[Byte]) -> IdentityService.CreateIdentity {
         return IdentityService.CreateIdentity.builder().mergeFromData(data).build()
       }
-      internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity {
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity {
         return IdentityService.CreateIdentity.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
       }
-      internal class func parseFromInputStream(input:NSInputStream) -> IdentityService.CreateIdentity {
+      public class func parseFromInputStream(input:NSInputStream) -> IdentityService.CreateIdentity {
         return IdentityService.CreateIdentity.builder().mergeFromInputStream(input).build()
       }
-      internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.CreateIdentity {
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService.CreateIdentity {
         return IdentityService.CreateIdentity.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
       }
-      internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.CreateIdentity {
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService.CreateIdentity {
         return IdentityService.CreateIdentity.builder().mergeFromCodedInputStream(input).build()
       }
-      internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity {
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity {
         return IdentityService.CreateIdentity.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
       }
-      internal class func builder() -> IdentityService.CreateIdentityBuilder {
+      public class func builder() -> IdentityService.CreateIdentityBuilder {
         return IdentityService.CreateIdentity.classBuilder() as IdentityService.CreateIdentityBuilder
       }
-      internal func builder() -> IdentityService.CreateIdentityBuilder {
+      public func builder() -> IdentityService.CreateIdentityBuilder {
         return classBuilder() as IdentityService.CreateIdentityBuilder
       }
-      internal override class func classBuilder() -> MessageBuilder {
+      public override class func classBuilder() -> MessageBuilder {
         return IdentityService.CreateIdentityBuilder()
       }
-      internal override func classBuilder() -> MessageBuilder {
+      public override func classBuilder() -> MessageBuilder {
         return IdentityService.CreateIdentity.builder()
       }
-      internal func toBuilder() -> IdentityService.CreateIdentityBuilder {
+      public func toBuilder() -> IdentityService.CreateIdentityBuilder {
         return IdentityService.CreateIdentity.builderWithPrototype(self)
       }
-      internal class func builderWithPrototype(prototype:IdentityService.CreateIdentity) -> IdentityService.CreateIdentityBuilder {
+      public class func builderWithPrototype(prototype:IdentityService.CreateIdentity) -> IdentityService.CreateIdentityBuilder {
         return IdentityService.CreateIdentity.builder().mergeFrom(prototype)
       }
-      override internal func writeDescriptionTo(inout output:String, indent:String) {
+      override public func writeDescriptionTo(inout output:String, indent:String) {
         unknownFields.writeDescriptionTo(&output, indent:indent)
       }
-      override internal var hashValue:Int {
+      override public var hashValue:Int {
           get {
               var hashCode:Int = 7
               hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -1667,13 +1667,13 @@ final internal class IdentityService : GeneratedMessage {
 
       //Meta information declaration start
 
-      override internal class func className() -> String {
+      override public class func className() -> String {
           return "IdentityService.CreateIdentity"
       }
-      override internal func className() -> String {
+      override public func className() -> String {
           return "IdentityService.CreateIdentity"
       }
-      override internal func classMetaType() -> GeneratedMessage.Type {
+      override public func classMetaType() -> GeneratedMessage.Type {
           return IdentityService.CreateIdentity.self
       }
 
@@ -1682,44 +1682,44 @@ final internal class IdentityService : GeneratedMessage {
 
     }
 
-    final internal class CreateIdentityBuilder : GeneratedMessageBuilder {
+    final public class CreateIdentityBuilder : GeneratedMessageBuilder {
       private var builderResult:IdentityService.CreateIdentity
 
-      required override internal init () {
+      required override public init () {
          builderResult = IdentityService.CreateIdentity()
          super.init()
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> IdentityService.CreateIdentityBuilder {
+      public override func clear() -> IdentityService.CreateIdentityBuilder {
         builderResult = IdentityService.CreateIdentity()
         return self
       }
-      internal override func clone() -> IdentityService.CreateIdentityBuilder {
+      public override func clone() -> IdentityService.CreateIdentityBuilder {
         return IdentityService.CreateIdentity.builderWithPrototype(builderResult)
       }
-      internal override func build() -> IdentityService.CreateIdentity {
+      public override func build() -> IdentityService.CreateIdentity {
            checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> IdentityService.CreateIdentity {
+      public func buildPartial() -> IdentityService.CreateIdentity {
         var returnMe:IdentityService.CreateIdentity = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:IdentityService.CreateIdentity) -> IdentityService.CreateIdentityBuilder {
+      public func mergeFrom(other:IdentityService.CreateIdentity) -> IdentityService.CreateIdentityBuilder {
         if (other == IdentityService.CreateIdentity()) {
          return self
         }
         mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.CreateIdentityBuilder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityService.CreateIdentityBuilder {
            return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentityBuilder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentityBuilder {
         var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           var tag = input.readTag()
@@ -1742,16 +1742,16 @@ final internal class IdentityService : GeneratedMessage {
 
   //Nested type declaration end
 
-  required internal init() {
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -1762,46 +1762,46 @@ final internal class IdentityService : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> IdentityService {
+  public class func parseFromData(data:[Byte]) -> IdentityService {
     return IdentityService.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> IdentityService {
     return IdentityService.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> IdentityService {
+  public class func parseFromInputStream(input:NSInputStream) -> IdentityService {
     return IdentityService.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->IdentityService {
     return IdentityService.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> IdentityService {
     return IdentityService.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityService {
     return IdentityService.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> IdentityServiceBuilder {
+  public class func builder() -> IdentityServiceBuilder {
     return IdentityService.classBuilder() as IdentityServiceBuilder
   }
-  internal func builder() -> IdentityServiceBuilder {
+  public func builder() -> IdentityServiceBuilder {
     return classBuilder() as IdentityServiceBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return IdentityServiceBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return IdentityService.builder()
   }
-  internal func toBuilder() -> IdentityServiceBuilder {
+  public func toBuilder() -> IdentityServiceBuilder {
     return IdentityService.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:IdentityService) -> IdentityServiceBuilder {
+  public class func builderWithPrototype(prototype:IdentityService) -> IdentityServiceBuilder {
     return IdentityService.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -1812,13 +1812,13 @@ final internal class IdentityService : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "IdentityService"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "IdentityService"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return IdentityService.self
   }
 
@@ -1827,44 +1827,44 @@ final internal class IdentityService : GeneratedMessage {
 
 }
 
-final internal class IdentityServiceBuilder : GeneratedMessageBuilder {
+final public class IdentityServiceBuilder : GeneratedMessageBuilder {
   private var builderResult:IdentityService
 
-  required override internal init () {
+  required override public init () {
      builderResult = IdentityService()
      super.init()
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> IdentityServiceBuilder {
+  public override func clear() -> IdentityServiceBuilder {
     builderResult = IdentityService()
     return self
   }
-  internal override func clone() -> IdentityServiceBuilder {
+  public override func clone() -> IdentityServiceBuilder {
     return IdentityService.builderWithPrototype(builderResult)
   }
-  internal override func build() -> IdentityService {
+  public override func build() -> IdentityService {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> IdentityService {
+  public func buildPartial() -> IdentityService {
     var returnMe:IdentityService = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:IdentityService) -> IdentityServiceBuilder {
+  public func mergeFrom(other:IdentityService) -> IdentityServiceBuilder {
     if (other == IdentityService()) {
      return self
     }
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityServiceBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityServiceBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityServiceBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityServiceBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -1886,7 +1886,7 @@ final internal class IdentityServiceBuilder : GeneratedMessageBuilder {
 //Class extensions: NSData
 
 
-internal extension IdentityService.GetIdentity {
+public extension IdentityService.GetIdentity {
     class func parseFromNSData(data:NSData) -> IdentityService.GetIdentity {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -1898,7 +1898,7 @@ internal extension IdentityService.GetIdentity {
         return IdentityService.GetIdentity.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension IdentityService.GetIdentities {
+public extension IdentityService.GetIdentities {
     class func parseFromNSData(data:NSData) -> IdentityService.GetIdentities {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -1910,7 +1910,7 @@ internal extension IdentityService.GetIdentities {
         return IdentityService.GetIdentities.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension IdentityService.CreateIdentity {
+public extension IdentityService.CreateIdentity {
     class func parseFromNSData(data:NSData) -> IdentityService.CreateIdentity {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
@@ -1922,7 +1922,7 @@ internal extension IdentityService.CreateIdentity {
         return IdentityService.CreateIdentity.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-internal extension IdentityService {
+public extension IdentityService {
     class func parseFromNSData(data:NSData) -> IdentityService {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)

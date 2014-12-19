@@ -3,8 +3,8 @@
 import Foundation
 import ProtocolBuffers
 
-internal struct IdentityRoot {
-  internal static var sharedInstance : IdentityRoot {
+public struct IdentityRoot {
+  public static var sharedInstance : IdentityRoot {
    struct Static {
        static let instance : IdentityRoot = IdentityRoot()
    }
@@ -16,34 +16,34 @@ internal struct IdentityRoot {
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
   }
-  internal func registerAllExtensions(registry:ExtensionRegistry) {
+  public func registerAllExtensions(registry:ExtensionRegistry) {
   }
 }
 
-internal func == (lhs: Identity, rhs: Identity) -> Bool {
+public func == (lhs: Identity, rhs: Identity) -> Bool {
   if (lhs === rhs) {
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
-  fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
-  fieldCheck = fieldCheck && (lhs.hasFirstName == rhs.hasFirstName) && (!lhs.hasFirstName || lhs.firstName == rhs.firstName)
-  fieldCheck = fieldCheck && (lhs.hasLastName == rhs.hasLastName) && (!lhs.hasLastName || lhs.lastName == rhs.lastName)
-  fieldCheck = fieldCheck && (lhs.hasTypes == rhs.hasTypes) && (!lhs.hasTypes || lhs.types == rhs.types)
+  fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.user_id == rhs.user_id)
+  fieldCheck = fieldCheck && (lhs.hasFirstName == rhs.hasFirstName) && (!lhs.hasFirstName || lhs.first_name == rhs.first_name)
+  fieldCheck = fieldCheck && (lhs.hasLastName == rhs.hasLastName) && (!lhs.hasLastName || lhs.last_name == rhs.last_name)
+  fieldCheck = fieldCheck && (lhs.hasTypes == rhs.hasTypes) && (!lhs.hasTypes || lhs.type == rhs.type)
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
-  fieldCheck = fieldCheck && (lhs.hasPhoneNumber == rhs.hasPhoneNumber) && (!lhs.hasPhoneNumber || lhs.phoneNumber == rhs.phoneNumber)
+  fieldCheck = fieldCheck && (lhs.hasPhoneNumber == rhs.hasPhoneNumber) && (!lhs.hasPhoneNumber || lhs.phone_number == rhs.phone_number)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-final internal class Identity : GeneratedMessage {
+final public class Identity : GeneratedMessage {
 
 
     //Enum type declaration start 
 
-    internal enum Types:Int32 {
+    public enum Types:Int32 {
       case Internal = 0
 
-      internal static func IsValidValue(value:Int32) ->Bool {
+      public static func IsValidValue(value:Int32) ->Bool {
           if let check = Types(rawValue:value) {
               return true
           }
@@ -55,57 +55,57 @@ final internal class Identity : GeneratedMessage {
 
     //Enum type declaration end 
 
-  private(set) var hasId:Bool = false
-  private(set) var id:String = ""
+  public private(set) var hasId:Bool = false
+  public private(set) var id:String = ""
 
-  private(set) var hasUserId:Bool = false
-  private(set) var userId:String = ""
+  public private(set) var hasUserId:Bool = false
+  public private(set) var user_id:String = ""
 
-  private(set) var hasFirstName:Bool = false
-  private(set) var firstName:String = ""
+  public private(set) var hasFirstName:Bool = false
+  public private(set) var first_name:String = ""
 
-  private(set) var hasLastName:Bool = false
-  private(set) var lastName:String = ""
+  public private(set) var hasLastName:Bool = false
+  public private(set) var last_name:String = ""
 
-  private(set) var types:Identity.Types = Identity.Types.Internal
-  private(set) var hasTypes:Bool = false
-  private(set) var hasEmail:Bool = false
-  private(set) var email:String = ""
+  public private(set) var type:Identity.Types = Identity.Types.Internal
+  public private(set) var hasTypes:Bool = false
+  public private(set) var hasEmail:Bool = false
+  public private(set) var email:String = ""
 
-  private(set) var hasPhoneNumber:Bool = false
-  private(set) var phoneNumber:String = ""
+  public private(set) var hasPhoneNumber:Bool = false
+  public private(set) var phone_number:String = ""
 
-  required internal init() {
+  required public init() {
        super.init()
   }
-  override internal func isInitialized() -> Bool {
+  override public func isInitialized() -> Bool {
    return true
   }
-  override internal func writeToCodedOutputStream(output:CodedOutputStream) {
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
     if hasId {
       output.writeString(1, value:id)
     }
     if hasUserId {
-      output.writeString(2, value:userId)
+      output.writeString(2, value:user_id)
     }
     if hasFirstName {
-      output.writeString(3, value:firstName)
+      output.writeString(3, value:first_name)
     }
     if hasLastName {
-      output.writeString(4, value:lastName)
+      output.writeString(4, value:last_name)
     }
     if hasTypes {
-      output.writeEnum(5, value:types.rawValue)
+      output.writeEnum(5, value:type.rawValue)
     }
     if hasEmail {
       output.writeString(6, value:email)
     }
     if hasPhoneNumber {
-      output.writeString(7, value:phoneNumber)
+      output.writeString(7, value:phone_number)
     }
     unknownFields.writeToCodedOutputStream(output)
   }
-  override internal func serializedSize() -> Int32 {
+  override public func serializedSize() -> Int32 {
     var size:Int32 = memoizedSerializedSize
     if size != -1 {
      return size
@@ -116,110 +116,110 @@ final internal class Identity : GeneratedMessage {
       size += WireFormat.computeStringSize(1, value:id)
     }
     if hasUserId {
-      size += WireFormat.computeStringSize(2, value:userId)
+      size += WireFormat.computeStringSize(2, value:user_id)
     }
     if hasFirstName {
-      size += WireFormat.computeStringSize(3, value:firstName)
+      size += WireFormat.computeStringSize(3, value:first_name)
     }
     if hasLastName {
-      size += WireFormat.computeStringSize(4, value:lastName)
+      size += WireFormat.computeStringSize(4, value:last_name)
     }
     if (hasTypes) {
-      size += WireFormat.computeEnumSize(5, value:types.rawValue)
+      size += WireFormat.computeEnumSize(5, value:type.rawValue)
     }
     if hasEmail {
       size += WireFormat.computeStringSize(6, value:email)
     }
     if hasPhoneNumber {
-      size += WireFormat.computeStringSize(7, value:phoneNumber)
+      size += WireFormat.computeStringSize(7, value:phone_number)
     }
     size += unknownFields.serializedSize()
     memoizedSerializedSize = size
     return size
   }
-  internal class func parseFromData(data:[Byte]) -> Identity {
+  public class func parseFromData(data:[Byte]) -> Identity {
     return Identity.builder().mergeFromData(data).build()
   }
-  internal class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> Identity {
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> Identity {
     return Identity.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream) -> Identity {
+  public class func parseFromInputStream(input:NSInputStream) -> Identity {
     return Identity.builder().mergeFromInputStream(input).build()
   }
-  internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Identity {
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Identity {
     return Identity.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream) -> Identity {
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> Identity {
     return Identity.builder().mergeFromCodedInputStream(input).build()
   }
-  internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Identity {
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Identity {
     return Identity.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  internal class func builder() -> IdentityBuilder {
+  public class func builder() -> IdentityBuilder {
     return Identity.classBuilder() as IdentityBuilder
   }
-  internal func builder() -> IdentityBuilder {
+  public func builder() -> IdentityBuilder {
     return classBuilder() as IdentityBuilder
   }
-  internal override class func classBuilder() -> MessageBuilder {
+  public override class func classBuilder() -> MessageBuilder {
     return IdentityBuilder()
   }
-  internal override func classBuilder() -> MessageBuilder {
+  public override func classBuilder() -> MessageBuilder {
     return Identity.builder()
   }
-  internal func toBuilder() -> IdentityBuilder {
+  public func toBuilder() -> IdentityBuilder {
     return Identity.builderWithPrototype(self)
   }
-  internal class func builderWithPrototype(prototype:Identity) -> IdentityBuilder {
+  public class func builderWithPrototype(prototype:Identity) -> IdentityBuilder {
     return Identity.builder().mergeFrom(prototype)
   }
-  override internal func writeDescriptionTo(inout output:String, indent:String) {
+  override public func writeDescriptionTo(inout output:String, indent:String) {
     if hasId {
       output += "\(indent) id: \(id) \n"
     }
     if hasUserId {
-      output += "\(indent) userId: \(userId) \n"
+      output += "\(indent) user_id: \(user_id) \n"
     }
     if hasFirstName {
-      output += "\(indent) firstName: \(firstName) \n"
+      output += "\(indent) first_name: \(first_name) \n"
     }
     if hasLastName {
-      output += "\(indent) lastName: \(lastName) \n"
+      output += "\(indent) last_name: \(last_name) \n"
     }
     if (hasTypes) {
-      output += "\(indent) types: \(types.rawValue)\n"
+      output += "\(indent) type: \(type.rawValue)\n"
     }
     if hasEmail {
       output += "\(indent) email: \(email) \n"
     }
     if hasPhoneNumber {
-      output += "\(indent) phoneNumber: \(phoneNumber) \n"
+      output += "\(indent) phone_number: \(phone_number) \n"
     }
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
-  override internal var hashValue:Int {
+  override public var hashValue:Int {
       get {
           var hashCode:Int = 7
           if hasId {
              hashCode = (hashCode &* 31) &+ id.hashValue
           }
           if hasUserId {
-             hashCode = (hashCode &* 31) &+ userId.hashValue
+             hashCode = (hashCode &* 31) &+ user_id.hashValue
           }
           if hasFirstName {
-             hashCode = (hashCode &* 31) &+ firstName.hashValue
+             hashCode = (hashCode &* 31) &+ first_name.hashValue
           }
           if hasLastName {
-             hashCode = (hashCode &* 31) &+ lastName.hashValue
+             hashCode = (hashCode &* 31) &+ last_name.hashValue
           }
           if hasTypes {
-             hashCode = (hashCode &* 31) &+ Int(types.rawValue)
+             hashCode = (hashCode &* 31) &+ Int(type.rawValue)
           }
           if hasEmail {
              hashCode = (hashCode &* 31) &+ email.hashValue
           }
           if hasPhoneNumber {
-             hashCode = (hashCode &* 31) &+ phoneNumber.hashValue
+             hashCode = (hashCode &* 31) &+ phone_number.hashValue
           }
           hashCode = (hashCode &* 31) &+  unknownFields.hashValue
           return hashCode
@@ -229,13 +229,13 @@ final internal class Identity : GeneratedMessage {
 
   //Meta information declaration start
 
-  override internal class func className() -> String {
+  override public class func className() -> String {
       return "Identity"
   }
-  override internal func className() -> String {
+  override public func className() -> String {
       return "Identity"
   }
-  override internal func classMetaType() -> GeneratedMessage.Type {
+  override public func classMetaType() -> GeneratedMessage.Type {
       return Identity.self
   }
 
@@ -244,19 +244,19 @@ final internal class Identity : GeneratedMessage {
 
 }
 
-final internal class IdentityBuilder : GeneratedMessageBuilder {
+final public class IdentityBuilder : GeneratedMessageBuilder {
   private var builderResult:Identity
 
-  required override internal init () {
+  required override public init () {
      builderResult = Identity()
      super.init()
   }
-  var hasId:Bool {
+  public var hasId:Bool {
        get {
             return builderResult.hasId
        }
   }
-  var id:String {
+  public var id:String {
        get {
             return builderResult.id
        }
@@ -265,93 +265,93 @@ final internal class IdentityBuilder : GeneratedMessageBuilder {
            builderResult.id = value
        }
   }
-  internal func clearId() -> IdentityBuilder{
+  public func clearId() -> IdentityBuilder{
        builderResult.hasId = false
        builderResult.id = ""
        return self
   }
-  var hasUserId:Bool {
+  public var hasUserId:Bool {
        get {
             return builderResult.hasUserId
        }
   }
-  var userId:String {
+  public var user_id:String {
        get {
-            return builderResult.userId
+            return builderResult.user_id
        }
        set (value) {
            builderResult.hasUserId = true
-           builderResult.userId = value
+           builderResult.user_id = value
        }
   }
-  internal func clearUserId() -> IdentityBuilder{
+  public func clearUserId() -> IdentityBuilder{
        builderResult.hasUserId = false
-       builderResult.userId = ""
+       builderResult.user_id = ""
        return self
   }
-  var hasFirstName:Bool {
+  public var hasFirstName:Bool {
        get {
             return builderResult.hasFirstName
        }
   }
-  var firstName:String {
+  public var first_name:String {
        get {
-            return builderResult.firstName
+            return builderResult.first_name
        }
        set (value) {
            builderResult.hasFirstName = true
-           builderResult.firstName = value
+           builderResult.first_name = value
        }
   }
-  internal func clearFirstName() -> IdentityBuilder{
+  public func clearFirstName() -> IdentityBuilder{
        builderResult.hasFirstName = false
-       builderResult.firstName = ""
+       builderResult.first_name = ""
        return self
   }
-  var hasLastName:Bool {
+  public var hasLastName:Bool {
        get {
             return builderResult.hasLastName
        }
   }
-  var lastName:String {
+  public var last_name:String {
        get {
-            return builderResult.lastName
+            return builderResult.last_name
        }
        set (value) {
            builderResult.hasLastName = true
-           builderResult.lastName = value
+           builderResult.last_name = value
        }
   }
-  internal func clearLastName() -> IdentityBuilder{
+  public func clearLastName() -> IdentityBuilder{
        builderResult.hasLastName = false
-       builderResult.lastName = ""
+       builderResult.last_name = ""
        return self
   }
-    var hasTypes:Bool{
+    public var hasTypes:Bool{
         get {
             return builderResult.hasTypes
         }
     }
-    var types:Identity.Types {
+    public var type:Identity.Types {
         get {
-            return builderResult.types
+            return builderResult.type
         }
         set (value) {
             builderResult.hasTypes = true
-            builderResult.types = value
+            builderResult.type = value
         }
     }
-    internal func clearTypes() -> IdentityBuilder {
+    public func clearTypes() -> IdentityBuilder {
        builderResult.hasTypes = false
-       builderResult.types = .Internal
+       builderResult.type = .Internal
        return self
     }
-  var hasEmail:Bool {
+  public var hasEmail:Bool {
        get {
             return builderResult.hasEmail
        }
   }
-  var email:String {
+  public var email:String {
        get {
             return builderResult.email
        }
@@ -360,51 +360,51 @@ final internal class IdentityBuilder : GeneratedMessageBuilder {
            builderResult.email = value
        }
   }
-  internal func clearEmail() -> IdentityBuilder{
+  public func clearEmail() -> IdentityBuilder{
        builderResult.hasEmail = false
        builderResult.email = ""
        return self
   }
-  var hasPhoneNumber:Bool {
+  public var hasPhoneNumber:Bool {
        get {
             return builderResult.hasPhoneNumber
        }
   }
-  var phoneNumber:String {
+  public var phone_number:String {
        get {
-            return builderResult.phoneNumber
+            return builderResult.phone_number
        }
        set (value) {
            builderResult.hasPhoneNumber = true
-           builderResult.phoneNumber = value
+           builderResult.phone_number = value
        }
   }
-  internal func clearPhoneNumber() -> IdentityBuilder{
+  public func clearPhoneNumber() -> IdentityBuilder{
        builderResult.hasPhoneNumber = false
-       builderResult.phoneNumber = ""
+       builderResult.phone_number = ""
        return self
   }
-  override internal var internalGetResult:GeneratedMessage {
+  override public var internalGetResult:GeneratedMessage {
        get {
           return builderResult
        }
   }
-  internal override func clear() -> IdentityBuilder {
+  public override func clear() -> IdentityBuilder {
     builderResult = Identity()
     return self
   }
-  internal override func clone() -> IdentityBuilder {
+  public override func clone() -> IdentityBuilder {
     return Identity.builderWithPrototype(builderResult)
   }
-  internal override func build() -> Identity {
+  public override func build() -> Identity {
        checkInitialized()
        return buildPartial()
   }
-  internal func buildPartial() -> Identity {
+  public func buildPartial() -> Identity {
     var returnMe:Identity = builderResult
     return returnMe
   }
-  internal func mergeFrom(other:Identity) -> IdentityBuilder {
+  public func mergeFrom(other:Identity) -> IdentityBuilder {
     if (other == Identity()) {
      return self
     }
@@ -412,30 +412,30 @@ final internal class IdentityBuilder : GeneratedMessageBuilder {
          id = other.id
     }
     if other.hasUserId {
-         userId = other.userId
+         user_id = other.user_id
     }
     if other.hasFirstName {
-         firstName = other.firstName
+         first_name = other.first_name
     }
     if other.hasLastName {
-         lastName = other.lastName
+         last_name = other.last_name
     }
     if other.hasTypes {
-         types = other.types
+         type = other.type
     }
     if other.hasEmail {
          email = other.email
     }
     if other.hasPhoneNumber {
-         phoneNumber = other.phoneNumber
+         phone_number = other.phone_number
     }
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->IdentityBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> IdentityBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -448,27 +448,27 @@ final internal class IdentityBuilder : GeneratedMessageBuilder {
         id = input.readString()
 
       case 18 :
-        userId = input.readString()
+        user_id = input.readString()
 
       case 26 :
-        firstName = input.readString()
+        first_name = input.readString()
 
       case 34 :
-        lastName = input.readString()
+        last_name = input.readString()
 
       case 40 :
-        let valueInttypes = input.readEnum()
-        if let enumstypes = Identity.Types(rawValue:valueInttypes){
-             types = enumstypes
+        let valueInttype = input.readEnum()
+        if let enumstype = Identity.Types(rawValue:valueInttype){
+             type = enumstype
         } else {
-             unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueInttypes))
+             unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueInttype))
         }
 
       case 50 :
         email = input.readString()
 
       case 58 :
-        phoneNumber = input.readString()
+        phone_number = input.readString()
 
       default:
         if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -483,7 +483,7 @@ final internal class IdentityBuilder : GeneratedMessageBuilder {
 //Class extensions: NSData
 
 
-internal extension Identity {
+public extension Identity {
     class func parseFromNSData(data:NSData) -> Identity {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
