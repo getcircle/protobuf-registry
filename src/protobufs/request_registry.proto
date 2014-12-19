@@ -2,26 +2,21 @@ package main.requests;
 
 import "service/protobufs/common/soa.proto";
 
-import "protobufs/identity_service/create_identity.proto";
-import "protobufs/identity_service/get_identity.proto";
-import "protobufs/identity_service/get_identities.proto";
+import "protobufs/identity_service/identity_service_actions.proto";
+import "protobufs/user_service/user_service_actions.proto";
 
-import "protobufs/user_service/create_user.proto";
-import "protobufs/user_service/valid_user.proto";
-import "protobufs/user_service/authenticate_user.proto";
-
-message UserService {
+message UserServiceRequests {
     extend soa.ActionRequestParams {
-        optional main.user_service.create_user.Request create_user = 101;
-        optional main.user_service.valid_user.Request valid_user = 102;
-        optional main.user_service.authenticate_user.Request authenticate_user = 103;
+        optional main.user_service.actions.UserService.CreateUser.Request create_user = 101;
+        optional main.user_service.actions.UserService.ValidUser.Request valid_user = 102;
+        optional main.user_service.actions.UserService.AuthenticateUser.Request authenticate_user = 103;
     }
 }
 
-message IdentityService {
+message IdentityServiceRequests {
     extend soa.ActionRequestParams {
-        optional main.identity_service.create_identity.Request create_identity = 200;
-        optional main.identity_service.get_identity.Request get_identity = 201;
-        optional main.identity_service.get_identities.Request get_identities = 202;
+        optional main.identity_service.actions.IdentityService.CreateIdentity.Request create_identity = 200;
+        optional main.identity_service.actions.IdentityService.GetIdentity.Request get_identity = 201;
+        optional main.identity_service.actions.IdentityService.GetIdentities.Request get_identities = 202;
     }
 }
