@@ -58,8 +58,8 @@ public struct RequestRegistryRoot {
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-    IdentityServiceActionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-    UserServiceActionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+    IdentityServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+    UserServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
   }
   public func registerAllExtensions(registry:ExtensionRegistry) {
     registry.addExtension(UserServiceRequests_create_userStatic)

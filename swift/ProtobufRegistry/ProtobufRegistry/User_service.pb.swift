@@ -3,10 +3,10 @@
 import Foundation
 import ProtocolBuffers
 
-public struct UserServiceActionsRoot {
-  public static var sharedInstance : UserServiceActionsRoot {
+public struct UserServiceRoot {
+  public static var sharedInstance : UserServiceRoot {
    struct Static {
-       static let instance : UserServiceActionsRoot = UserServiceActionsRoot()
+       static let instance : UserServiceRoot = UserServiceRoot()
    }
    return Static.instance
   }
@@ -15,11 +15,18 @@ public struct UserServiceActionsRoot {
   init() {
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
-    IdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-    UserRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+    IdentityServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
   }
   public func registerAllExtensions(registry:ExtensionRegistry) {
   }
+}
+
+public func == (lhs: UserService.Containers, rhs: UserService.Containers) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
 public func == (lhs: UserService.CreateUser, rhs: UserService.CreateUser) -> Bool {
@@ -59,6 +66,503 @@ final public class UserService : GeneratedMessage {
 
   //Nested type declaration start
 
+    final public class Containers : GeneratedMessage {
+
+
+      //Nested type declaration start
+
+        final public class User : GeneratedMessage {
+          public private(set) var hasId:Bool = false
+          public private(set) var id:String = ""
+
+          public private(set) var hasPrimaryEmail:Bool = false
+          public private(set) var primary_email:String = ""
+
+          public private(set) var hasIsAdmin:Bool = false
+          public private(set) var is_admin:Bool = false
+
+          public private(set) var hasIsActive:Bool = false
+          public private(set) var is_active:Bool = false
+
+          public private(set) var identities:Array<IdentityService.Containers.Identity>  = Array<IdentityService.Containers.Identity>()
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasId {
+              output.writeString(1, value:id)
+            }
+            if hasPrimaryEmail {
+              output.writeString(2, value:primary_email)
+            }
+            if hasIsAdmin {
+              output.writeBool(3, value:is_admin)
+            }
+            if hasIsActive {
+              output.writeBool(4, value:is_active)
+            }
+            for oneElementidentities in identities {
+                output.writeMessage(5, value:oneElementidentities)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasId {
+              size += WireFormat.computeStringSize(1, value:id)
+            }
+            if hasPrimaryEmail {
+              size += WireFormat.computeStringSize(2, value:primary_email)
+            }
+            if hasIsAdmin {
+              size += WireFormat.computeBoolSize(3, value:is_admin)
+            }
+            if hasIsActive {
+              size += WireFormat.computeBoolSize(4, value:is_active)
+            }
+            for oneElementidentities in identities {
+                size += WireFormat.computeMessageSize(5, value:oneElementidentities)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> UserService.Containers.User {
+            return UserService.Containers.User.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.Containers.User {
+            return UserService.Containers.User.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> UserService.Containers.User {
+            return UserService.Containers.User.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.Containers.User {
+            return UserService.Containers.User.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.Containers.User {
+            return UserService.Containers.User.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.Containers.User {
+            return UserService.Containers.User.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> UserService.Containers.UserBuilder {
+            return UserService.Containers.User.classBuilder() as UserService.Containers.UserBuilder
+          }
+          public func builder() -> UserService.Containers.UserBuilder {
+            return classBuilder() as UserService.Containers.UserBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return UserService.Containers.UserBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return UserService.Containers.User.builder()
+          }
+          public func toBuilder() -> UserService.Containers.UserBuilder {
+            return UserService.Containers.User.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:UserService.Containers.User) -> UserService.Containers.UserBuilder {
+            return UserService.Containers.User.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasId {
+              output += "\(indent) id: \(id) \n"
+            }
+            if hasPrimaryEmail {
+              output += "\(indent) primary_email: \(primary_email) \n"
+            }
+            if hasIsAdmin {
+              output += "\(indent) is_admin: \(is_admin) \n"
+            }
+            if hasIsActive {
+              output += "\(indent) is_active: \(is_active) \n"
+            }
+            var identitiesElementIndex:Int = 0
+            for oneElementidentities in identities {
+                output += "\(indent) identities[\(identitiesElementIndex)] {\n"
+                oneElementidentities.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                identitiesElementIndex++
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasId {
+                     hashCode = (hashCode &* 31) &+ id.hashValue
+                  }
+                  if hasPrimaryEmail {
+                     hashCode = (hashCode &* 31) &+ primary_email.hashValue
+                  }
+                  if hasIsAdmin {
+                     hashCode = (hashCode &* 31) &+ is_admin.hashValue
+                  }
+                  if hasIsActive {
+                     hashCode = (hashCode &* 31) &+ is_active.hashValue
+                  }
+                  for oneElementidentities in identities {
+                      hashCode = (hashCode &* 31) &+ oneElementidentities.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "UserService.Containers.User"
+          }
+          override public func className() -> String {
+              return "UserService.Containers.User"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return UserService.Containers.User.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class UserBuilder : GeneratedMessageBuilder {
+          private var builderResult:UserService.Containers.User
+
+          required override public init () {
+             builderResult = UserService.Containers.User()
+             super.init()
+          }
+          public var hasId:Bool {
+               get {
+                    return builderResult.hasId
+               }
+          }
+          public var id:String {
+               get {
+                    return builderResult.id
+               }
+               set (value) {
+                   builderResult.hasId = true
+                   builderResult.id = value
+               }
+          }
+          public func clearId() -> UserService.Containers.UserBuilder{
+               builderResult.hasId = false
+               builderResult.id = ""
+               return self
+          }
+          public var hasPrimaryEmail:Bool {
+               get {
+                    return builderResult.hasPrimaryEmail
+               }
+          }
+          public var primary_email:String {
+               get {
+                    return builderResult.primary_email
+               }
+               set (value) {
+                   builderResult.hasPrimaryEmail = true
+                   builderResult.primary_email = value
+               }
+          }
+          public func clearPrimaryEmail() -> UserService.Containers.UserBuilder{
+               builderResult.hasPrimaryEmail = false
+               builderResult.primary_email = ""
+               return self
+          }
+          public var hasIsAdmin:Bool {
+               get {
+                    return builderResult.hasIsAdmin
+               }
+          }
+          public var is_admin:Bool {
+               get {
+                    return builderResult.is_admin
+               }
+               set (value) {
+                   builderResult.hasIsAdmin = true
+                   builderResult.is_admin = value
+               }
+          }
+          public func clearIsAdmin() -> UserService.Containers.UserBuilder{
+               builderResult.hasIsAdmin = false
+               builderResult.is_admin = false
+               return self
+          }
+          public var hasIsActive:Bool {
+               get {
+                    return builderResult.hasIsActive
+               }
+          }
+          public var is_active:Bool {
+               get {
+                    return builderResult.is_active
+               }
+               set (value) {
+                   builderResult.hasIsActive = true
+                   builderResult.is_active = value
+               }
+          }
+          public func clearIsActive() -> UserService.Containers.UserBuilder{
+               builderResult.hasIsActive = false
+               builderResult.is_active = false
+               return self
+          }
+          public var identities:Array<IdentityService.Containers.Identity> {
+               get {
+                   return builderResult.identities
+               }
+               set (value) {
+                   builderResult.identities = value
+               }
+          }
+          public func clearIdentities() -> UserService.Containers.UserBuilder {
+            builderResult.identities.removeAll(keepCapacity: false)
+            return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> UserService.Containers.UserBuilder {
+            builderResult = UserService.Containers.User()
+            return self
+          }
+          public override func clone() -> UserService.Containers.UserBuilder {
+            return UserService.Containers.User.builderWithPrototype(builderResult)
+          }
+          public override func build() -> UserService.Containers.User {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> UserService.Containers.User {
+            var returnMe:UserService.Containers.User = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:UserService.Containers.User) -> UserService.Containers.UserBuilder {
+            if (other == UserService.Containers.User()) {
+             return self
+            }
+            if other.hasId {
+                 id = other.id
+            }
+            if other.hasPrimaryEmail {
+                 primary_email = other.primary_email
+            }
+            if other.hasIsAdmin {
+                 is_admin = other.is_admin
+            }
+            if other.hasIsActive {
+                 is_active = other.is_active
+            }
+            if !other.identities.isEmpty  {
+               builderResult.identities += other.identities
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.Containers.UserBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.Containers.UserBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                id = input.readString()
+
+              case 18 :
+                primary_email = input.readString()
+
+              case 24 :
+                is_admin = input.readBool()
+
+              case 32 :
+                is_active = input.readBool()
+
+              case 42 :
+                var subBuilder = IdentityService.Containers.Identity.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                identities += [subBuilder.buildPartial()]
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+      required public init() {
+           super.init()
+      }
+      override public func isInitialized() -> Bool {
+       return true
+      }
+      override public func writeToCodedOutputStream(output:CodedOutputStream) {
+        unknownFields.writeToCodedOutputStream(output)
+      }
+      override public func serializedSize() -> Int32 {
+        var size:Int32 = memoizedSerializedSize
+        if size != -1 {
+         return size
+        }
+
+        size = 0
+        size += unknownFields.serializedSize()
+        memoizedSerializedSize = size
+        return size
+      }
+      public class func parseFromData(data:[Byte]) -> UserService.Containers {
+        return UserService.Containers.builder().mergeFromData(data).build()
+      }
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.Containers {
+        return UserService.Containers.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream) -> UserService.Containers {
+        return UserService.Containers.builder().mergeFromInputStream(input).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.Containers {
+        return UserService.Containers.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.Containers {
+        return UserService.Containers.builder().mergeFromCodedInputStream(input).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.Containers {
+        return UserService.Containers.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func builder() -> UserService.ContainersBuilder {
+        return UserService.Containers.classBuilder() as UserService.ContainersBuilder
+      }
+      public func builder() -> UserService.ContainersBuilder {
+        return classBuilder() as UserService.ContainersBuilder
+      }
+      public override class func classBuilder() -> MessageBuilder {
+        return UserService.ContainersBuilder()
+      }
+      public override func classBuilder() -> MessageBuilder {
+        return UserService.Containers.builder()
+      }
+      public func toBuilder() -> UserService.ContainersBuilder {
+        return UserService.Containers.builderWithPrototype(self)
+      }
+      public class func builderWithPrototype(prototype:UserService.Containers) -> UserService.ContainersBuilder {
+        return UserService.Containers.builder().mergeFrom(prototype)
+      }
+      override public func writeDescriptionTo(inout output:String, indent:String) {
+        unknownFields.writeDescriptionTo(&output, indent:indent)
+      }
+      override public var hashValue:Int {
+          get {
+              var hashCode:Int = 7
+              hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+              return hashCode
+          }
+      }
+
+
+      //Meta information declaration start
+
+      override public class func className() -> String {
+          return "UserService.Containers"
+      }
+      override public func className() -> String {
+          return "UserService.Containers"
+      }
+      override public func classMetaType() -> GeneratedMessage.Type {
+          return UserService.Containers.self
+      }
+
+
+      //Meta information declaration end
+
+    }
+
+    final public class ContainersBuilder : GeneratedMessageBuilder {
+      private var builderResult:UserService.Containers
+
+      required override public init () {
+         builderResult = UserService.Containers()
+         super.init()
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> UserService.ContainersBuilder {
+        builderResult = UserService.Containers()
+        return self
+      }
+      public override func clone() -> UserService.ContainersBuilder {
+        return UserService.Containers.builderWithPrototype(builderResult)
+      }
+      public override func build() -> UserService.Containers {
+           checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> UserService.Containers {
+        var returnMe:UserService.Containers = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:UserService.Containers) -> UserService.ContainersBuilder {
+        if (other == UserService.Containers()) {
+         return self
+        }
+        mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.ContainersBuilder {
+           return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.ContainersBuilder {
+        var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          var tag = input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = unknownFieldsBuilder.build()
+            return self
+
+          default:
+            if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+               unknownFields = unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+
+
+  //Nested type declaration end
+
+
+
+  //Nested type declaration start
+
     final public class CreateUser : GeneratedMessage {
 
 
@@ -69,7 +573,7 @@ final public class UserService : GeneratedMessage {
           public private(set) var password:String = ""
 
           public private(set) var hasIdentity:Bool = false
-          public private(set) var identity:Identity = Identity()
+          public private(set) var identity:IdentityService.Containers.Identity = IdentityService.Containers.Identity()
           required public init() {
                super.init()
           }
@@ -212,7 +716,7 @@ final public class UserService : GeneratedMessage {
                    return builderResult.hasIdentity
                }
           }
-          public var identity:Identity {
+          public var identity:IdentityService.Containers.Identity {
                get {
                    return builderResult.identity
                }
@@ -221,13 +725,13 @@ final public class UserService : GeneratedMessage {
                    builderResult.identity = value
                }
           }
-          public func setIdentityBuilder(builderForValue:IdentityBuilder) -> UserService.CreateUser.RequestBuilder {
+          public func setIdentityBuilder(builderForValue:IdentityService.Containers.IdentityBuilder) -> UserService.CreateUser.RequestBuilder {
             identity = builderForValue.build()
             return self
           }
-          public func mergeIdentity(value:Identity) -> UserService.CreateUser.RequestBuilder {
+          public func mergeIdentity(value:IdentityService.Containers.Identity) -> UserService.CreateUser.RequestBuilder {
             if (builderResult.hasIdentity) {
-              builderResult.identity = Identity.builderWithPrototype(builderResult.identity).mergeFrom(value).buildPartial()
+              builderResult.identity = IdentityService.Containers.Identity.builderWithPrototype(builderResult.identity).mergeFrom(value).buildPartial()
             } else {
               builderResult.identity = value
             }
@@ -236,7 +740,7 @@ final public class UserService : GeneratedMessage {
           }
           public func clearIdentity() -> UserService.CreateUser.RequestBuilder {
             builderResult.hasIdentity = false
-            builderResult.identity = Identity()
+            builderResult.identity = IdentityService.Containers.Identity()
             return self
           }
           override public var internalGetResult:GeneratedMessage {
@@ -288,7 +792,7 @@ final public class UserService : GeneratedMessage {
                 password = input.readString()
 
               case 18 :
-                var subBuilder:IdentityBuilder = Identity.builder()
+                var subBuilder:IdentityService.Containers.IdentityBuilder = IdentityService.Containers.Identity.builder()
                 if hasIdentity {
                   subBuilder.mergeFrom(identity)
                 }
@@ -315,8 +819,8 @@ final public class UserService : GeneratedMessage {
 
         final public class Response : GeneratedMessage {
           public private(set) var hasUser:Bool = false
-          public private(set) var user:User = User()
-          public private(set) var identities:Array<Identity>  = Array<Identity>()
+          public private(set) var user:UserService.Containers.User = UserService.Containers.User()
+          public private(set) var identities:Array<IdentityService.Containers.Identity>  = Array<IdentityService.Containers.Identity>()
           required public init() {
                super.init()
           }
@@ -444,7 +948,7 @@ final public class UserService : GeneratedMessage {
                    return builderResult.hasUser
                }
           }
-          public var user:User {
+          public var user:UserService.Containers.User {
                get {
                    return builderResult.user
                }
@@ -453,13 +957,13 @@ final public class UserService : GeneratedMessage {
                    builderResult.user = value
                }
           }
-          public func setUserBuilder(builderForValue:UserBuilder) -> UserService.CreateUser.ResponseBuilder {
+          public func setUserBuilder(builderForValue:UserService.Containers.UserBuilder) -> UserService.CreateUser.ResponseBuilder {
             user = builderForValue.build()
             return self
           }
-          public func mergeUser(value:User) -> UserService.CreateUser.ResponseBuilder {
+          public func mergeUser(value:UserService.Containers.User) -> UserService.CreateUser.ResponseBuilder {
             if (builderResult.hasUser) {
-              builderResult.user = User.builderWithPrototype(builderResult.user).mergeFrom(value).buildPartial()
+              builderResult.user = UserService.Containers.User.builderWithPrototype(builderResult.user).mergeFrom(value).buildPartial()
             } else {
               builderResult.user = value
             }
@@ -468,10 +972,10 @@ final public class UserService : GeneratedMessage {
           }
           public func clearUser() -> UserService.CreateUser.ResponseBuilder {
             builderResult.hasUser = false
-            builderResult.user = User()
+            builderResult.user = UserService.Containers.User()
             return self
           }
-          public var identities:Array<Identity> {
+          public var identities:Array<IdentityService.Containers.Identity> {
                get {
                    return builderResult.identities
                }
@@ -529,7 +1033,7 @@ final public class UserService : GeneratedMessage {
                 return self
 
               case 10 :
-                var subBuilder:UserBuilder = User.builder()
+                var subBuilder:UserService.Containers.UserBuilder = UserService.Containers.User.builder()
                 if hasUser {
                   subBuilder.mergeFrom(user)
                 }
@@ -537,7 +1041,7 @@ final public class UserService : GeneratedMessage {
                 user = subBuilder.buildPartial()
 
               case 18 :
-                var subBuilder = Identity.builder()
+                var subBuilder = IdentityService.Containers.Identity.builder()
                 input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
                 identities += [subBuilder.buildPartial()]
 
@@ -1743,7 +2247,7 @@ final public class UserService : GeneratedMessage {
 
         final public class Response : GeneratedMessage {
           public private(set) var hasUser:Bool = false
-          public private(set) var user:User = User()
+          public private(set) var user:UserService.Containers.User = UserService.Containers.User()
           public private(set) var hasAuthenticated:Bool = false
           public private(set) var authenticated:Bool = false
 
@@ -1885,7 +2389,7 @@ final public class UserService : GeneratedMessage {
                    return builderResult.hasUser
                }
           }
-          public var user:User {
+          public var user:UserService.Containers.User {
                get {
                    return builderResult.user
                }
@@ -1894,13 +2398,13 @@ final public class UserService : GeneratedMessage {
                    builderResult.user = value
                }
           }
-          public func setUserBuilder(builderForValue:UserBuilder) -> UserService.AuthenticateUser.ResponseBuilder {
+          public func setUserBuilder(builderForValue:UserService.Containers.UserBuilder) -> UserService.AuthenticateUser.ResponseBuilder {
             user = builderForValue.build()
             return self
           }
-          public func mergeUser(value:User) -> UserService.AuthenticateUser.ResponseBuilder {
+          public func mergeUser(value:UserService.Containers.User) -> UserService.AuthenticateUser.ResponseBuilder {
             if (builderResult.hasUser) {
-              builderResult.user = User.builderWithPrototype(builderResult.user).mergeFrom(value).buildPartial()
+              builderResult.user = UserService.Containers.User.builderWithPrototype(builderResult.user).mergeFrom(value).buildPartial()
             } else {
               builderResult.user = value
             }
@@ -1909,7 +2413,7 @@ final public class UserService : GeneratedMessage {
           }
           public func clearUser() -> UserService.AuthenticateUser.ResponseBuilder {
             builderResult.hasUser = false
-            builderResult.user = User()
+            builderResult.user = UserService.Containers.User()
             return self
           }
           public var hasAuthenticated:Bool {
@@ -1999,7 +2503,7 @@ final public class UserService : GeneratedMessage {
                 return self
 
               case 10 :
-                var subBuilder:UserBuilder = User.builder()
+                var subBuilder:UserService.Containers.UserBuilder = UserService.Containers.User.builder()
                 if hasUser {
                   subBuilder.mergeFrom(user)
                 }
@@ -2315,6 +2819,18 @@ final public class UserServiceBuilder : GeneratedMessageBuilder {
 //Class extensions: NSData
 
 
+public extension UserService.Containers {
+    class func parseFromNSData(data:NSData) -> UserService.Containers {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.Containers.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.Containers {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.Containers.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
 public extension UserService.CreateUser {
     class func parseFromNSData(data:NSData) -> UserService.CreateUser {
         var bytes = [Byte](count: data.length, repeatedValue: 0)

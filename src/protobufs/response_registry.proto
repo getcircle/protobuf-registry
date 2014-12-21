@@ -2,21 +2,21 @@ package main.responses;
 
 import "service_protobufs/soa.proto";
 
-import "protobufs/identity_service/identity_service_actions.proto";
-import "protobufs/user_service/user_service_actions.proto";
+import "protobufs/identity_service.proto";
+import "protobufs/user_service.proto";
 
 message UserServiceResponses {
     extend soa.ActionResponseResult {
-        optional main.user_service.actions.UserService.CreateUser.Response create_user = 101;
-        optional main.user_service.actions.UserService.ValidUser.Response valid_user = 102;
-        optional main.user_service.actions.UserService.AuthenticateUser.Response authenticate_user = 103;
+        optional main.user_service.UserService.CreateUser.Response create_user = 101;
+        optional main.user_service.UserService.ValidUser.Response valid_user = 102;
+        optional main.user_service.UserService.AuthenticateUser.Response authenticate_user = 103;
     }
 }
 
 message IdentityServiceResponses {
     extend soa.ActionResponseResult {
-        optional main.identity_service.actions.IdentityService.CreateIdentity.Response create_identity = 200;
-        optional main.identity_service.actions.IdentityService.GetIdentity.Response get_identity = 201;
-        optional main.identity_service.actions.IdentityService.GetIdentities.Response get_identities = 202;
+        optional main.identity_service.IdentityService.CreateIdentity.Response create_identity = 200;
+        optional main.identity_service.IdentityService.GetIdentity.Response get_identity = 201;
+        optional main.identity_service.IdentityService.GetIdentities.Response get_identities = 202;
     }
 }

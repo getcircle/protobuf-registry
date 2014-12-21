@@ -14,16 +14,16 @@ _sym_db = _symbol_database.Default()
 
 
 import service_protobufs.soa_pb2
-import protobufs.identity_service.identity_service_actions_pb2
-import protobufs.user_service.user_service_actions_pb2
+import protobufs.identity_service_pb2
+import protobufs.user_service_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/request_registry.proto',
   package='main.requests',
-  serialized_pb=_b('\n protobufs/request_registry.proto\x12\rmain.requests\x1a\x1bservice_protobufs/soa.proto\x1a\x39protobufs/identity_service/identity_service_actions.proto\x1a\x31protobufs/user_service/user_service_actions.proto\"\xdd\x02\n\x13UserServiceRequests2h\n\x0b\x63reate_user\x12\x18.soa.ActionRequestParams\x18\x65 \x01(\x0b\x32\x39.main.user_service.actions.UserService.CreateUser.Request2f\n\nvalid_user\x12\x18.soa.ActionRequestParams\x18\x66 \x01(\x0b\x32\x38.main.user_service.actions.UserService.ValidUser.Request2t\n\x11\x61uthenticate_user\x12\x18.soa.ActionRequestParams\x18g \x01(\x0b\x32?.main.user_service.actions.UserService.AuthenticateUser.Request\"\x82\x03\n\x17IdentityServiceRequests2y\n\x0f\x63reate_identity\x12\x18.soa.ActionRequestParams\x18\xc8\x01 \x01(\x0b\x32\x45.main.identity_service.actions.IdentityService.CreateIdentity.Request2s\n\x0cget_identity\x12\x18.soa.ActionRequestParams\x18\xc9\x01 \x01(\x0b\x32\x42.main.identity_service.actions.IdentityService.GetIdentity.Request2w\n\x0eget_identities\x12\x18.soa.ActionRequestParams\x18\xca\x01 \x01(\x0b\x32\x44.main.identity_service.actions.IdentityService.GetIdentities.Request')
+  serialized_pb=_b('\n protobufs/request_registry.proto\x12\rmain.requests\x1a\x1bservice_protobufs/soa.proto\x1a protobufs/identity_service.proto\x1a\x1cprotobufs/user_service.proto\"\xc5\x02\n\x13UserServiceRequests2`\n\x0b\x63reate_user\x12\x18.soa.ActionRequestParams\x18\x65 \x01(\x0b\x32\x31.main.user_service.UserService.CreateUser.Request2^\n\nvalid_user\x12\x18.soa.ActionRequestParams\x18\x66 \x01(\x0b\x32\x30.main.user_service.UserService.ValidUser.Request2l\n\x11\x61uthenticate_user\x12\x18.soa.ActionRequestParams\x18g \x01(\x0b\x32\x37.main.user_service.UserService.AuthenticateUser.Request\"\xea\x02\n\x17IdentityServiceRequests2q\n\x0f\x63reate_identity\x12\x18.soa.ActionRequestParams\x18\xc8\x01 \x01(\x0b\x32=.main.identity_service.IdentityService.CreateIdentity.Request2k\n\x0cget_identity\x12\x18.soa.ActionRequestParams\x18\xc9\x01 \x01(\x0b\x32:.main.identity_service.IdentityService.GetIdentity.Request2o\n\x0eget_identities\x12\x18.soa.ActionRequestParams\x18\xca\x01 \x01(\x0b\x32<.main.identity_service.IdentityService.GetIdentities.Request')
   ,
-  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.identity_service.identity_service_actions_pb2.DESCRIPTOR,protobufs.user_service.user_service_actions_pb2.DESCRIPTOR,])
+  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.identity_service_pb2.DESCRIPTOR,protobufs.user_service_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -68,8 +68,8 @@ _USERSERVICEREQUESTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=191,
-  serialized_end=540,
+  serialized_start=145,
+  serialized_end=470,
 )
 
 
@@ -112,8 +112,8 @@ _IDENTITYSERVICEREQUESTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=543,
-  serialized_end=929,
+  serialized_start=473,
+  serialized_end=835,
 )
 
 DESCRIPTOR.message_types_by_name['UserServiceRequests'] = _USERSERVICEREQUESTS
@@ -133,17 +133,17 @@ IdentityServiceRequests = _reflection.GeneratedProtocolMessageType('IdentityServ
   ))
 _sym_db.RegisterMessage(IdentityServiceRequests)
 
-_USERSERVICEREQUESTS.extensions_by_name['create_user'].message_type = protobufs.user_service.user_service_actions_pb2._USERSERVICE_CREATEUSER_REQUEST
+_USERSERVICEREQUESTS.extensions_by_name['create_user'].message_type = protobufs.user_service_pb2._USERSERVICE_CREATEUSER_REQUEST
 service_protobufs.soa_pb2.ActionRequestParams.RegisterExtension(_USERSERVICEREQUESTS.extensions_by_name['create_user'])
-_USERSERVICEREQUESTS.extensions_by_name['valid_user'].message_type = protobufs.user_service.user_service_actions_pb2._USERSERVICE_VALIDUSER_REQUEST
+_USERSERVICEREQUESTS.extensions_by_name['valid_user'].message_type = protobufs.user_service_pb2._USERSERVICE_VALIDUSER_REQUEST
 service_protobufs.soa_pb2.ActionRequestParams.RegisterExtension(_USERSERVICEREQUESTS.extensions_by_name['valid_user'])
-_USERSERVICEREQUESTS.extensions_by_name['authenticate_user'].message_type = protobufs.user_service.user_service_actions_pb2._USERSERVICE_AUTHENTICATEUSER_REQUEST
+_USERSERVICEREQUESTS.extensions_by_name['authenticate_user'].message_type = protobufs.user_service_pb2._USERSERVICE_AUTHENTICATEUSER_REQUEST
 service_protobufs.soa_pb2.ActionRequestParams.RegisterExtension(_USERSERVICEREQUESTS.extensions_by_name['authenticate_user'])
-_IDENTITYSERVICEREQUESTS.extensions_by_name['create_identity'].message_type = protobufs.identity_service.identity_service_actions_pb2._IDENTITYSERVICE_CREATEIDENTITY_REQUEST
+_IDENTITYSERVICEREQUESTS.extensions_by_name['create_identity'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_CREATEIDENTITY_REQUEST
 service_protobufs.soa_pb2.ActionRequestParams.RegisterExtension(_IDENTITYSERVICEREQUESTS.extensions_by_name['create_identity'])
-_IDENTITYSERVICEREQUESTS.extensions_by_name['get_identity'].message_type = protobufs.identity_service.identity_service_actions_pb2._IDENTITYSERVICE_GETIDENTITY_REQUEST
+_IDENTITYSERVICEREQUESTS.extensions_by_name['get_identity'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_GETIDENTITY_REQUEST
 service_protobufs.soa_pb2.ActionRequestParams.RegisterExtension(_IDENTITYSERVICEREQUESTS.extensions_by_name['get_identity'])
-_IDENTITYSERVICEREQUESTS.extensions_by_name['get_identities'].message_type = protobufs.identity_service.identity_service_actions_pb2._IDENTITYSERVICE_GETIDENTITIES_REQUEST
+_IDENTITYSERVICEREQUESTS.extensions_by_name['get_identities'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_GETIDENTITIES_REQUEST
 service_protobufs.soa_pb2.ActionRequestParams.RegisterExtension(_IDENTITYSERVICEREQUESTS.extensions_by_name['get_identities'])
 
 # @@protoc_insertion_point(module_scope)

@@ -14,16 +14,16 @@ _sym_db = _symbol_database.Default()
 
 
 import service_protobufs.soa_pb2
-import protobufs.identity_service.identity_service_actions_pb2
-import protobufs.user_service.user_service_actions_pb2
+import protobufs.identity_service_pb2
+import protobufs.user_service_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/response_registry.proto',
   package='main.responses',
-  serialized_pb=_b('\n!protobufs/response_registry.proto\x12\x0emain.responses\x1a\x1bservice_protobufs/soa.proto\x1a\x39protobufs/identity_service/identity_service_actions.proto\x1a\x31protobufs/user_service/user_service_actions.proto\"\xe4\x02\n\x14UserServiceResponses2j\n\x0b\x63reate_user\x12\x19.soa.ActionResponseResult\x18\x65 \x01(\x0b\x32:.main.user_service.actions.UserService.CreateUser.Response2h\n\nvalid_user\x12\x19.soa.ActionResponseResult\x18\x66 \x01(\x0b\x32\x39.main.user_service.actions.UserService.ValidUser.Response2v\n\x11\x61uthenticate_user\x12\x19.soa.ActionResponseResult\x18g \x01(\x0b\x32@.main.user_service.actions.UserService.AuthenticateUser.Response\"\x89\x03\n\x18IdentityServiceResponses2{\n\x0f\x63reate_identity\x12\x19.soa.ActionResponseResult\x18\xc8\x01 \x01(\x0b\x32\x46.main.identity_service.actions.IdentityService.CreateIdentity.Response2u\n\x0cget_identity\x12\x19.soa.ActionResponseResult\x18\xc9\x01 \x01(\x0b\x32\x43.main.identity_service.actions.IdentityService.GetIdentity.Response2y\n\x0eget_identities\x12\x19.soa.ActionResponseResult\x18\xca\x01 \x01(\x0b\x32\x45.main.identity_service.actions.IdentityService.GetIdentities.Response')
+  serialized_pb=_b('\n!protobufs/response_registry.proto\x12\x0emain.responses\x1a\x1bservice_protobufs/soa.proto\x1a protobufs/identity_service.proto\x1a\x1cprotobufs/user_service.proto\"\xcc\x02\n\x14UserServiceResponses2b\n\x0b\x63reate_user\x12\x19.soa.ActionResponseResult\x18\x65 \x01(\x0b\x32\x32.main.user_service.UserService.CreateUser.Response2`\n\nvalid_user\x12\x19.soa.ActionResponseResult\x18\x66 \x01(\x0b\x32\x31.main.user_service.UserService.ValidUser.Response2n\n\x11\x61uthenticate_user\x12\x19.soa.ActionResponseResult\x18g \x01(\x0b\x32\x38.main.user_service.UserService.AuthenticateUser.Response\"\xf1\x02\n\x18IdentityServiceResponses2s\n\x0f\x63reate_identity\x12\x19.soa.ActionResponseResult\x18\xc8\x01 \x01(\x0b\x32>.main.identity_service.IdentityService.CreateIdentity.Response2m\n\x0cget_identity\x12\x19.soa.ActionResponseResult\x18\xc9\x01 \x01(\x0b\x32;.main.identity_service.IdentityService.GetIdentity.Response2q\n\x0eget_identities\x12\x19.soa.ActionResponseResult\x18\xca\x01 \x01(\x0b\x32=.main.identity_service.IdentityService.GetIdentities.Response')
   ,
-  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.identity_service.identity_service_actions_pb2.DESCRIPTOR,protobufs.user_service.user_service_actions_pb2.DESCRIPTOR,])
+  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.identity_service_pb2.DESCRIPTOR,protobufs.user_service_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -68,8 +68,8 @@ _USERSERVICERESPONSES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=193,
-  serialized_end=549,
+  serialized_start=147,
+  serialized_end=479,
 )
 
 
@@ -112,8 +112,8 @@ _IDENTITYSERVICERESPONSES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=552,
-  serialized_end=945,
+  serialized_start=482,
+  serialized_end=851,
 )
 
 DESCRIPTOR.message_types_by_name['UserServiceResponses'] = _USERSERVICERESPONSES
@@ -133,17 +133,17 @@ IdentityServiceResponses = _reflection.GeneratedProtocolMessageType('IdentitySer
   ))
 _sym_db.RegisterMessage(IdentityServiceResponses)
 
-_USERSERVICERESPONSES.extensions_by_name['create_user'].message_type = protobufs.user_service.user_service_actions_pb2._USERSERVICE_CREATEUSER_RESPONSE
+_USERSERVICERESPONSES.extensions_by_name['create_user'].message_type = protobufs.user_service_pb2._USERSERVICE_CREATEUSER_RESPONSE
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_USERSERVICERESPONSES.extensions_by_name['create_user'])
-_USERSERVICERESPONSES.extensions_by_name['valid_user'].message_type = protobufs.user_service.user_service_actions_pb2._USERSERVICE_VALIDUSER_RESPONSE
+_USERSERVICERESPONSES.extensions_by_name['valid_user'].message_type = protobufs.user_service_pb2._USERSERVICE_VALIDUSER_RESPONSE
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_USERSERVICERESPONSES.extensions_by_name['valid_user'])
-_USERSERVICERESPONSES.extensions_by_name['authenticate_user'].message_type = protobufs.user_service.user_service_actions_pb2._USERSERVICE_AUTHENTICATEUSER_RESPONSE
+_USERSERVICERESPONSES.extensions_by_name['authenticate_user'].message_type = protobufs.user_service_pb2._USERSERVICE_AUTHENTICATEUSER_RESPONSE
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_USERSERVICERESPONSES.extensions_by_name['authenticate_user'])
-_IDENTITYSERVICERESPONSES.extensions_by_name['create_identity'].message_type = protobufs.identity_service.identity_service_actions_pb2._IDENTITYSERVICE_CREATEIDENTITY_RESPONSE
+_IDENTITYSERVICERESPONSES.extensions_by_name['create_identity'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_CREATEIDENTITY_RESPONSE
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_IDENTITYSERVICERESPONSES.extensions_by_name['create_identity'])
-_IDENTITYSERVICERESPONSES.extensions_by_name['get_identity'].message_type = protobufs.identity_service.identity_service_actions_pb2._IDENTITYSERVICE_GETIDENTITY_RESPONSE
+_IDENTITYSERVICERESPONSES.extensions_by_name['get_identity'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_GETIDENTITY_RESPONSE
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_IDENTITYSERVICERESPONSES.extensions_by_name['get_identity'])
-_IDENTITYSERVICERESPONSES.extensions_by_name['get_identities'].message_type = protobufs.identity_service.identity_service_actions_pb2._IDENTITYSERVICE_GETIDENTITIES_RESPONSE
+_IDENTITYSERVICERESPONSES.extensions_by_name['get_identities'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_GETIDENTITIES_RESPONSE
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_IDENTITYSERVICERESPONSES.extensions_by_name['get_identities'])
 
 # @@protoc_insertion_point(module_scope)
