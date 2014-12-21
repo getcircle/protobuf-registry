@@ -27,4 +27,8 @@ def clean():
 @task
 def compile():
     with common.base_directory():
-        common.compile('swift_out', '%s/' % (LANGUAGE_DIRECTORY,))
+        common.compile(
+            'swift_out',
+            '%s/' % (LANGUAGE_DIRECTORY,),
+            filters='grep -v ThirdParty | ',
+        )
