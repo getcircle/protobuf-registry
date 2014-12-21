@@ -1747,6 +1747,9 @@ final public class UserService : GeneratedMessage {
           public private(set) var hasAuthenticated:Bool = false
           public private(set) var authenticated:Bool = false
 
+          public private(set) var hasToken:Bool = false
+          public private(set) var token:String = ""
+
           required public init() {
                super.init()
           }
@@ -1759,6 +1762,9 @@ final public class UserService : GeneratedMessage {
             }
             if hasAuthenticated {
               output.writeBool(2, value:authenticated)
+            }
+            if hasToken {
+              output.writeString(3, value:token)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -1774,6 +1780,9 @@ final public class UserService : GeneratedMessage {
             }
             if hasAuthenticated {
               size += WireFormat.computeBoolSize(2, value:authenticated)
+            }
+            if hasToken {
+              size += WireFormat.computeStringSize(3, value:token)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -1824,6 +1833,9 @@ final public class UserService : GeneratedMessage {
             if hasAuthenticated {
               output += "\(indent) authenticated: \(authenticated) \n"
             }
+            if hasToken {
+              output += "\(indent) token: \(token) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -1834,6 +1846,9 @@ final public class UserService : GeneratedMessage {
                   }
                   if hasAuthenticated {
                      hashCode = (hashCode &* 31) &+ authenticated.hashValue
+                  }
+                  if hasToken {
+                     hashCode = (hashCode &* 31) &+ token.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -1916,6 +1931,25 @@ final public class UserService : GeneratedMessage {
                builderResult.authenticated = false
                return self
           }
+          public var hasToken:Bool {
+               get {
+                    return builderResult.hasToken
+               }
+          }
+          public var token:String {
+               get {
+                    return builderResult.token
+               }
+               set (value) {
+                   builderResult.hasToken = true
+                   builderResult.token = value
+               }
+          }
+          public func clearToken() -> UserService.AuthenticateUser.ResponseBuilder{
+               builderResult.hasToken = false
+               builderResult.token = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -1946,6 +1980,9 @@ final public class UserService : GeneratedMessage {
             if other.hasAuthenticated {
                  authenticated = other.authenticated
             }
+            if other.hasToken {
+                 token = other.token
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -1971,6 +2008,9 @@ final public class UserService : GeneratedMessage {
 
               case 16 :
                 authenticated = input.readBool()
+
+              case 26 :
+                token = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

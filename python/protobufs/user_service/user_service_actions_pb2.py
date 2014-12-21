@@ -20,7 +20,7 @@ import protobufs.user_service.containers.user_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/user_service/user_service_actions.proto',
   package='main.user_service.actions',
-  serialized_pb=_b('\n1protobufs/user_service/user_service_actions.proto\x12\x19main.user_service.actions\x1a\x34protobufs/identity_service/containers/identity.proto\x1a,protobufs/user_service/containers/user.proto\"\xdd\x05\n\x0bUserService\x1a\xfd\x01\n\nCreateUser\x1a\x62\n\x07Request\x12\x10\n\x08password\x18\x01 \x01(\t\x12\x45\n\x08identity\x18\x02 \x01(\x0b\x32\x33.main.identity_service.containers.identity.Identity\x1a\x8a\x01\n\x08Response\x12\x35\n\x04user\x18\x01 \x01(\x0b\x32\'.main.user_service.containers.user.User\x12G\n\nidentities\x18\x02 \x03(\x0b\x32\x33.main.identity_service.containers.identity.Identity\x1a\x43\n\tValidUser\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1a\n\x08Response\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x1a\x88\x03\n\x10\x41uthenticateUser\x1a\x92\x02\n\x07Request\x12\\\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32K.main.user_service.actions.UserService.AuthenticateUser.Request.AuthBackend\x12`\n\x0b\x63redentials\x18\x02 \x01(\x0b\x32K.main.user_service.actions.UserService.AuthenticateUser.Request.Credentials\x1a*\n\x0b\x43redentials\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\"\x1b\n\x0b\x41uthBackend\x12\x0c\n\x08INTERNAL\x10\x00\x1a_\n\x08Response\x12\x35\n\x04user\x18\x01 \x01(\x0b\x32\'.main.user_service.containers.user.User\x12\x1c\n\rauthenticated\x18\x02 \x01(\x08:\x05\x66\x61lse')
+  serialized_pb=_b('\n1protobufs/user_service/user_service_actions.proto\x12\x19main.user_service.actions\x1a\x34protobufs/identity_service/containers/identity.proto\x1a,protobufs/user_service/containers/user.proto\"\xec\x05\n\x0bUserService\x1a\xfd\x01\n\nCreateUser\x1a\x62\n\x07Request\x12\x10\n\x08password\x18\x01 \x01(\t\x12\x45\n\x08identity\x18\x02 \x01(\x0b\x32\x33.main.identity_service.containers.identity.Identity\x1a\x8a\x01\n\x08Response\x12\x35\n\x04user\x18\x01 \x01(\x0b\x32\'.main.user_service.containers.user.User\x12G\n\nidentities\x18\x02 \x03(\x0b\x32\x33.main.identity_service.containers.identity.Identity\x1a\x43\n\tValidUser\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1a\n\x08Response\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x1a\x97\x03\n\x10\x41uthenticateUser\x1a\x92\x02\n\x07Request\x12\\\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32K.main.user_service.actions.UserService.AuthenticateUser.Request.AuthBackend\x12`\n\x0b\x63redentials\x18\x02 \x01(\x0b\x32K.main.user_service.actions.UserService.AuthenticateUser.Request.Credentials\x1a*\n\x0b\x43redentials\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\"\x1b\n\x0b\x41uthBackend\x12\x0c\n\x08INTERNAL\x10\x00\x1an\n\x08Response\x12\x35\n\x04user\x18\x01 \x01(\x0b\x32\'.main.user_service.containers.user.User\x12\x1c\n\rauthenticated\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\r\n\x05token\x18\x03 \x01(\t')
   ,
   dependencies=[protobufs.identity_service.containers.identity_pb2.DESCRIPTOR,protobufs.user_service.containers.user_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -314,6 +314,13 @@ _USERSERVICE_AUTHENTICATEUSER_RESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='token', full_name='main.user_service.actions.UserService.AuthenticateUser.Response.token', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -326,7 +333,7 @@ _USERSERVICE_AUTHENTICATEUSER_RESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=819,
-  serialized_end=914,
+  serialized_end=929,
 )
 
 _USERSERVICE_AUTHENTICATEUSER = _descriptor.Descriptor(
@@ -348,7 +355,7 @@ _USERSERVICE_AUTHENTICATEUSER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=522,
-  serialized_end=914,
+  serialized_end=929,
 )
 
 _USERSERVICE = _descriptor.Descriptor(
@@ -370,7 +377,7 @@ _USERSERVICE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=181,
-  serialized_end=914,
+  serialized_end=929,
 )
 
 _USERSERVICE_CREATEUSER_REQUEST.fields_by_name['identity'].message_type = protobufs.identity_service.containers.identity_pb2._IDENTITY
