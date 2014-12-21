@@ -10,7 +10,7 @@ public struct UserRoot {
    }
    return Static.instance
   }
-  var extensionRegistry:ExtensionRegistry
+  public var extensionRegistry:ExtensionRegistry
 
   init() {
     extensionRegistry = ExtensionRegistry()

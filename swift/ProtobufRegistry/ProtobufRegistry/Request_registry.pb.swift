@@ -46,7 +46,7 @@ public struct RequestRegistryRoot {
   var IdentityServiceRequests_create_identityStatic:ConcreateExtensionField
   var IdentityServiceRequests_get_identityStatic:ConcreateExtensionField
   var IdentityServiceRequests_get_identitiesStatic:ConcreateExtensionField
-  var extensionRegistry:ExtensionRegistry
+  public var extensionRegistry:ExtensionRegistry
 
   init() {
     UserServiceRequests_create_userStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 101, defaultValue:UserService.CreateUser.Request(), messageOrGroupClass:UserService.CreateUser.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
