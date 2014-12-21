@@ -18,7 +18,6 @@ def base_directory():
 def compile(out_prefix, out_directory, extra=''):
     command = (
         "find . -type f -name '*.proto' | xargs protoc --proto_path ./src/"
-        " --proto_path ../python-soa-protobuf"
         " --%s %s %s" % (out_prefix, out_directory, extra)
     )
     run(command)

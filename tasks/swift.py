@@ -27,8 +27,4 @@ def clean():
 @task
 def compile():
     with common.base_directory():
-        extra = (
-            '../python-soa-protobuf/service/protobufs/common/soa.proto'
-            #' --proto_path=/Users/mhahn/open_source/protobuf-swift/src/compiler/'
-        )
-        common.compile('swift_out', '%s/' % (LANGUAGE_DIRECTORY,), extra=extra)
+        common.compile('swift_out', '%s/' % (LANGUAGE_DIRECTORY,))
