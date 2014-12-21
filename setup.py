@@ -19,6 +19,7 @@ def get_version():
             return m.groups()[0]
 
 requirements = [
+    'protobuf-soa>=0.1.1',
     'protobuf==2.6.1',
 ]
 
@@ -42,4 +43,7 @@ setup(
     ]),
     install_requires=requirements,
     setup_requires=setup_requirements,
+    dependency_links=[
+        'git+ssh://git@github.com/getcircle/protobuf-soa.git#egg=protobuf-soa-0.1.1',
+    ],
 )

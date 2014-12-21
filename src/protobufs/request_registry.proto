@@ -1,6 +1,6 @@
 package main.requests;
 
-import "protobufs/service/soa.proto";
+import "service_protobufs/soa.proto";
 
 import "protobufs/identity_service/identity_service_actions.proto";
 import "protobufs/user_service/user_service_actions.proto";
