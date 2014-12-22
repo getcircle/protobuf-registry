@@ -2819,6 +2819,18 @@ final public class UserServiceBuilder : GeneratedMessageBuilder {
 //Class extensions: NSData
 
 
+public extension UserService.Containers.User {
+    class func parseFromNSData(data:NSData) -> UserService.Containers.User {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.Containers.User.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.Containers.User {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.Containers.User.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
 public extension UserService.Containers {
     class func parseFromNSData(data:NSData) -> UserService.Containers {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
@@ -2829,6 +2841,30 @@ public extension UserService.Containers {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return UserService.Containers.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.CreateUser.Request {
+    class func parseFromNSData(data:NSData) -> UserService.CreateUser.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.CreateUser.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.CreateUser.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.CreateUser.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.CreateUser.Response {
+    class func parseFromNSData(data:NSData) -> UserService.CreateUser.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.CreateUser.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.CreateUser.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.CreateUser.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension UserService.CreateUser {
@@ -2843,6 +2879,30 @@ public extension UserService.CreateUser {
         return UserService.CreateUser.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
+public extension UserService.ValidUser.Request {
+    class func parseFromNSData(data:NSData) -> UserService.ValidUser.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.ValidUser.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.ValidUser.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.ValidUser.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.ValidUser.Response {
+    class func parseFromNSData(data:NSData) -> UserService.ValidUser.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.ValidUser.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.ValidUser.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.ValidUser.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
 public extension UserService.ValidUser {
     class func parseFromNSData(data:NSData) -> UserService.ValidUser {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
@@ -2853,6 +2913,42 @@ public extension UserService.ValidUser {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return UserService.ValidUser.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.AuthenticateUser.Request.Credentials {
+    class func parseFromNSData(data:NSData) -> UserService.AuthenticateUser.Request.Credentials {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.AuthenticateUser.Request.Credentials.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.AuthenticateUser.Request.Credentials {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.AuthenticateUser.Request.Credentials.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.AuthenticateUser.Request {
+    class func parseFromNSData(data:NSData) -> UserService.AuthenticateUser.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.AuthenticateUser.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.AuthenticateUser.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.AuthenticateUser.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.AuthenticateUser.Response {
+    class func parseFromNSData(data:NSData) -> UserService.AuthenticateUser.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.AuthenticateUser.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.AuthenticateUser.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.AuthenticateUser.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension UserService.AuthenticateUser {

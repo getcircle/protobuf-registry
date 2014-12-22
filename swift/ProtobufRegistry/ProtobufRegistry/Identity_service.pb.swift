@@ -2496,6 +2496,18 @@ final public class IdentityServiceBuilder : GeneratedMessageBuilder {
 //Class extensions: NSData
 
 
+public extension IdentityService.Containers.Identity {
+    class func parseFromNSData(data:NSData) -> IdentityService.Containers.Identity {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.Containers.Identity.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> IdentityService.Containers.Identity {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.Containers.Identity.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
 public extension IdentityService.Containers {
     class func parseFromNSData(data:NSData) -> IdentityService.Containers {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
@@ -2506,6 +2518,30 @@ public extension IdentityService.Containers {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return IdentityService.Containers.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension IdentityService.GetIdentity.Request {
+    class func parseFromNSData(data:NSData) -> IdentityService.GetIdentity.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.GetIdentity.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.GetIdentity.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension IdentityService.GetIdentity.Response {
+    class func parseFromNSData(data:NSData) -> IdentityService.GetIdentity.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.GetIdentity.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentity.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.GetIdentity.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension IdentityService.GetIdentity {
@@ -2520,6 +2556,30 @@ public extension IdentityService.GetIdentity {
         return IdentityService.GetIdentity.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
+public extension IdentityService.GetIdentities.Request {
+    class func parseFromNSData(data:NSData) -> IdentityService.GetIdentities.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.GetIdentities.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.GetIdentities.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension IdentityService.GetIdentities.Response {
+    class func parseFromNSData(data:NSData) -> IdentityService.GetIdentities.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.GetIdentities.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> IdentityService.GetIdentities.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.GetIdentities.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
 public extension IdentityService.GetIdentities {
     class func parseFromNSData(data:NSData) -> IdentityService.GetIdentities {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
@@ -2530,6 +2590,30 @@ public extension IdentityService.GetIdentities {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return IdentityService.GetIdentities.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension IdentityService.CreateIdentity.Request {
+    class func parseFromNSData(data:NSData) -> IdentityService.CreateIdentity.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.CreateIdentity.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.CreateIdentity.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension IdentityService.CreateIdentity.Response {
+    class func parseFromNSData(data:NSData) -> IdentityService.CreateIdentity.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.CreateIdentity.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> IdentityService.CreateIdentity.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return IdentityService.CreateIdentity.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension IdentityService.CreateIdentity {
