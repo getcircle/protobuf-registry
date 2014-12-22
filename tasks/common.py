@@ -15,9 +15,22 @@ def base_directory():
     os.chdir(current_path)
 
 
-def compile(out_prefix, out_directory, extra='', filters=''):
+def compile(
+        out_prefix,
+        out_directory,
+        extra='',
+        filters='',
+        search_directory='.'
+    ):
     command = (
-        "find . -type f -name '*.proto' | %s xargs protoc --proto_path ./src/"
-        " --%s %s %s" % (filters, out_prefix, out_directory, extra)
+        "find %s -type f -name '*.proto' | %s xargs protoc --proto_path ./src/"
+        " --%s %s %s" % (
+            search_directory,
+            filters,
+            out_prefix,
+            out_directory,
+            extra,
+        )
     )
+    print command
     run(command)

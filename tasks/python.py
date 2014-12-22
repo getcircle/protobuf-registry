@@ -35,11 +35,13 @@ def ensure_init_exists():
 
 @task
 def clean():
+    print 'cleaning python...'
     with python_directory():
         run("find %s -name '*.py*' | xargs rm" % (PACKAGE_NAME,))
 
 
-@task(post=[ensure_init_exists])
+@task(post=[ensure_init_exists], default=True)
 def compile():
+    print 'compiling python...'
     with common.base_directory():
-        common.compile('python_out', 'python/')
+        common.compile('python_out', 'python/', search_directory='python')

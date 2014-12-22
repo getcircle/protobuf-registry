@@ -20,12 +20,14 @@ def swift_directory():
 
 @task
 def clean():
+    print 'cleaning swift...'
     with swift_directory():
         run("find . -name '*.swift*' | xargs rm")
 
 
-@task
+@task(default=True)
 def compile():
+    print 'compiling swift...'
     with common.base_directory():
         common.compile(
             'swift_out',
