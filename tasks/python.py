@@ -44,4 +44,4 @@ def clean():
 def compile():
     print 'compiling python...'
     with common.base_directory():
-        common.compile('python_out', 'python/', search_directory='python')
+        common.compile('python_out', 'python/')

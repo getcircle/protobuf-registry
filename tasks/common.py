@@ -20,12 +20,10 @@ def compile(
         out_directory,
         extra='',
         filters='',
-        search_directory='.'
     ):
     command = (
-        "find %s -type f -name '*.proto' | %s xargs protoc --proto_path ./src/"
-        " --%s %s %s" % (
-            search_directory,
+        "find src -type f -name '*.proto' | %s xargs protoc --proto_path"
+        " ./src/ --%s %s %s" % (
             filters,
             out_prefix,
             out_directory,
