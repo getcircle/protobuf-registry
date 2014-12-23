@@ -4,7 +4,7 @@ import "protobufs/identity_service.proto";
 
 message UserService {
 
-    // MARK: - User Service Containers
+    // MARK: - Containers
 
     message Containers {
 
@@ -19,7 +19,7 @@ message UserService {
 
     }
 
-    // MARK: - User Service Actions
+    // MARK: - Actions
 
     message CreateUser {
         message Request {

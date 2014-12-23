@@ -2,7 +2,7 @@ package main.identity_service;
 
 message IdentityService {
 
-    // MARK: - Identity Service Containers
+    // MARK: - Containers
 
     message Containers {
 
@@ -23,7 +23,7 @@ message IdentityService {
 
     }
 
-    // MARK: - Identity Service Actions
+    // MARK: - Actions
 
     message GetIdentity {
         message Request {
