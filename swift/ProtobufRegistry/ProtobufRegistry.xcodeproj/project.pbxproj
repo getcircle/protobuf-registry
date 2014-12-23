@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F627BCA1A48EB26002490D8 /* Note_service.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F627BC91A48EB26002490D8 /* Note_service.pb.swift */; };
 		BFC6CEF51A44B58B0081F45B /* ProtobufRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC6CEF41A44B58B0081F45B /* ProtobufRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC6CEFB1A44B58B0081F45B /* ProtobufRegistry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC6CEEF1A44B58B0081F45B /* ProtobufRegistry.framework */; };
 		BFC6CF021A44B58B0081F45B /* ProtobufRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6CF011A44B58B0081F45B /* ProtobufRegistryTests.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8F627BC91A48EB26002490D8 /* Note_service.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note_service.pb.swift; sourceTree = "<group>"; };
 		BFC6CEEF1A44B58B0081F45B /* ProtobufRegistry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtobufRegistry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC6CEF31A44B58B0081F45B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFC6CEF41A44B58B0081F45B /* ProtobufRegistry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProtobufRegistry.h; sourceTree = "<group>"; };
@@ -132,14 +134,15 @@
 		BFC6CEF11A44B58B0081F45B /* ProtobufRegistry */ = {
 			isa = PBXGroup;
 			children = (
-				BFFB1A321A48CA0F00CCFFC3 /* ProtocolBuffers.xcodeproj */,
 				BFFB198E1A47696200CCFFC3 /* Identity_service.pb.swift */,
-				BFFB198F1A47696200CCFFC3 /* User_service.pb.swift */,
+				8F627BC91A48EB26002490D8 /* Note_service.pb.swift */,
+				BFC6CEF41A44B58B0081F45B /* ProtobufRegistry.h */,
+				BFFB1A321A48CA0F00CCFFC3 /* ProtocolBuffers.xcodeproj */,
 				BFC6CF661A44BE390081F45B /* Request_registry.pb.swift */,
 				BFC6CF671A44BE390081F45B /* Response_registry.pb.swift */,
 				BFC6CF681A44BE390081F45B /* Soa.pb.swift */,
-				BFC6CEF41A44B58B0081F45B /* ProtobufRegistry.h */,
 				BFC6CEF21A44B58B0081F45B /* Supporting Files */,
+				BFFB198F1A47696200CCFFC3 /* User_service.pb.swift */,
 			);
 			path = ProtobufRegistry;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			files = (
 				BFC6CF6F1A44BE390081F45B /* Request_registry.pb.swift in Sources */,
 				BFC6CF711A44BE390081F45B /* Soa.pb.swift in Sources */,
+				8F627BCA1A48EB26002490D8 /* Note_service.pb.swift in Sources */,
 				BFFB19911A47696200CCFFC3 /* User_service.pb.swift in Sources */,
 				BFFB19901A47696200CCFFC3 /* Identity_service.pb.swift in Sources */,
 				BFC6CF701A44BE390081F45B /* Response_registry.pb.swift in Sources */,
