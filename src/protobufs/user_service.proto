@@ -13,8 +13,6 @@ message UserService {
             optional string primary_email = 2;
             optional bool is_admin = 3;
             optional bool is_active = 4;
-
-            repeated main.identity_service.IdentityService.Containers.Identity identities = 5;
         }
 
     }

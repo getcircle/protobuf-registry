@@ -83,7 +83,6 @@ final public class UserService : GeneratedMessage {
           public private(set) var hasIsActive:Bool = false
           public private(set) var is_active:Bool = false
 
-          public private(set) var identities:Array<IdentityService.Containers.Identity>  = Array<IdentityService.Containers.Identity>()
           required public init() {
                super.init()
           }
@@ -102,9 +101,6 @@ final public class UserService : GeneratedMessage {
             }
             if hasIsActive {
               output.writeBool(4, value:is_active)
-            }
-            for oneElementidentities in identities {
-                output.writeMessage(5, value:oneElementidentities)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -126,9 +122,6 @@ final public class UserService : GeneratedMessage {
             }
             if hasIsActive {
               size += WireFormat.computeBoolSize(4, value:is_active)
-            }
-            for oneElementidentities in identities {
-                size += WireFormat.computeMessageSize(5, value:oneElementidentities)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -183,13 +176,6 @@ final public class UserService : GeneratedMessage {
             if hasIsActive {
               output += "\(indent) is_active: \(is_active) \n"
             }
-            var identitiesElementIndex:Int = 0
-            for oneElementidentities in identities {
-                output += "\(indent) identities[\(identitiesElementIndex)] {\n"
-                oneElementidentities.writeDescriptionTo(&output, indent:"\(indent)  ")
-                output += "\(indent)}\n"
-                identitiesElementIndex++
-            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -206,9 +192,6 @@ final public class UserService : GeneratedMessage {
                   }
                   if hasIsActive {
                      hashCode = (hashCode &* 31) &+ is_active.hashValue
-                  }
-                  for oneElementidentities in identities {
-                      hashCode = (hashCode &* 31) &+ oneElementidentities.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -316,18 +299,6 @@ final public class UserService : GeneratedMessage {
                builderResult.is_active = false
                return self
           }
-          public var identities:Array<IdentityService.Containers.Identity> {
-               get {
-                   return builderResult.identities
-               }
-               set (value) {
-                   builderResult.identities = value
-               }
-          }
-          public func clearIdentities() -> UserService.Containers.UserBuilder {
-            builderResult.identities.removeAll(keepCapacity: false)
-            return self
-          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -364,9 +335,6 @@ final public class UserService : GeneratedMessage {
             if other.hasIsActive {
                  is_active = other.is_active
             }
-            if !other.identities.isEmpty  {
-               builderResult.identities += other.identities
-            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -393,11 +361,6 @@ final public class UserService : GeneratedMessage {
 
               case 32 :
                 is_active = input.readBool()
-
-              case 42 :
-                var subBuilder = IdentityService.Containers.Identity.builder()
-                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-                identities += [subBuilder.buildPartial()]
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
