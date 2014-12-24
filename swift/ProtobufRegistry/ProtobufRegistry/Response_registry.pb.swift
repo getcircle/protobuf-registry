@@ -32,6 +32,41 @@ public var IdentityServiceResponses_get_identities:ConcreateExtensionField {
        return ResponseRegistryRoot.sharedInstance.IdentityServiceResponses_get_identitiesStatic
    }
 }
+public var OrganizationServiceResponses_create_organization:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.OrganizationServiceResponses_create_organizationStatic
+   }
+}
+public var OrganizationServiceResponses_create_team:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.OrganizationServiceResponses_create_teamStatic
+   }
+}
+public var OrganizationServiceResponses_add_team_member:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.OrganizationServiceResponses_add_team_memberStatic
+   }
+}
+public var OrganizationServiceResponses_get_team_members:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.OrganizationServiceResponses_get_team_membersStatic
+   }
+}
+public var OrganizationServiceResponses_remove_team_member:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.OrganizationServiceResponses_remove_team_memberStatic
+   }
+}
+public var OrganizationServiceResponses_add_team_members:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.OrganizationServiceResponses_add_team_membersStatic
+   }
+}
+public var OrganizationServiceResponses_remove_team_members:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.OrganizationServiceResponses_remove_team_membersStatic
+   }
+}
 public struct ResponseRegistryRoot {
   public static var sharedInstance : ResponseRegistryRoot {
    struct Static {
@@ -45,6 +80,13 @@ public struct ResponseRegistryRoot {
   var IdentityServiceResponses_create_identityStatic:ConcreateExtensionField
   var IdentityServiceResponses_get_identityStatic:ConcreateExtensionField
   var IdentityServiceResponses_get_identitiesStatic:ConcreateExtensionField
+  var OrganizationServiceResponses_create_organizationStatic:ConcreateExtensionField
+  var OrganizationServiceResponses_create_teamStatic:ConcreateExtensionField
+  var OrganizationServiceResponses_add_team_memberStatic:ConcreateExtensionField
+  var OrganizationServiceResponses_get_team_membersStatic:ConcreateExtensionField
+  var OrganizationServiceResponses_remove_team_memberStatic:ConcreateExtensionField
+  var OrganizationServiceResponses_add_team_membersStatic:ConcreateExtensionField
+  var OrganizationServiceResponses_remove_team_membersStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -54,10 +96,18 @@ public struct ResponseRegistryRoot {
     IdentityServiceResponses_create_identityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 200, defaultValue:IdentityService.CreateIdentity.Response(), messageOrGroupClass:IdentityService.CreateIdentity.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     IdentityServiceResponses_get_identityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 201, defaultValue:IdentityService.GetIdentity.Response(), messageOrGroupClass:IdentityService.GetIdentity.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     IdentityServiceResponses_get_identitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 202, defaultValue:IdentityService.GetIdentities.Response(), messageOrGroupClass:IdentityService.GetIdentities.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    OrganizationServiceResponses_create_organizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 300, defaultValue:OrganizationService.CreateOrganization.Response(), messageOrGroupClass:OrganizationService.CreateOrganization.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    OrganizationServiceResponses_create_teamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 301, defaultValue:OrganizationService.CreateTeam.Response(), messageOrGroupClass:OrganizationService.CreateTeam.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    OrganizationServiceResponses_add_team_memberStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 302, defaultValue:OrganizationService.AddTeamMember.Response(), messageOrGroupClass:OrganizationService.AddTeamMember.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    OrganizationServiceResponses_get_team_membersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 303, defaultValue:OrganizationService.GetTeamMembers.Response(), messageOrGroupClass:OrganizationService.GetTeamMembers.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    OrganizationServiceResponses_remove_team_memberStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 304, defaultValue:OrganizationService.RemoveTeamMember.Response(), messageOrGroupClass:OrganizationService.RemoveTeamMember.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    OrganizationServiceResponses_add_team_membersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 305, defaultValue:OrganizationService.AddTeamMembers.Response(), messageOrGroupClass:OrganizationService.AddTeamMembers.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    OrganizationServiceResponses_remove_team_membersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 306, defaultValue:OrganizationService.RemoveTeamMembers.Response(), messageOrGroupClass:OrganizationService.RemoveTeamMembers.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     IdentityServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+    OrganizationServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     UserServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
   }
   public func registerAllExtensions(registry:ExtensionRegistry) {
@@ -67,6 +117,13 @@ public struct ResponseRegistryRoot {
     registry.addExtension(IdentityServiceResponses_create_identityStatic)
     registry.addExtension(IdentityServiceResponses_get_identityStatic)
     registry.addExtension(IdentityServiceResponses_get_identitiesStatic)
+    registry.addExtension(OrganizationServiceResponses_create_organizationStatic)
+    registry.addExtension(OrganizationServiceResponses_create_teamStatic)
+    registry.addExtension(OrganizationServiceResponses_add_team_memberStatic)
+    registry.addExtension(OrganizationServiceResponses_get_team_membersStatic)
+    registry.addExtension(OrganizationServiceResponses_remove_team_memberStatic)
+    registry.addExtension(OrganizationServiceResponses_add_team_membersStatic)
+    registry.addExtension(OrganizationServiceResponses_remove_team_membersStatic)
   }
 }
 
@@ -79,6 +136,14 @@ public func == (lhs: UserServiceResponses, rhs: UserServiceResponses) -> Bool {
 }
 
 public func == (lhs: IdentityServiceResponses, rhs: IdentityServiceResponses) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
+public func == (lhs: OrganizationServiceResponses, rhs: OrganizationServiceResponses) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -388,6 +453,169 @@ final public class IdentityServiceResponsesBuilder : GeneratedMessageBuilder {
   }
 }
 
+final public class OrganizationServiceResponses : GeneratedMessage {
+  public class func create_organization() -> ConcreateExtensionField {
+       return OrganizationServiceResponses_create_organization
+  }
+  public class func create_team() -> ConcreateExtensionField {
+       return OrganizationServiceResponses_create_team
+  }
+  public class func add_team_member() -> ConcreateExtensionField {
+       return OrganizationServiceResponses_add_team_member
+  }
+  public class func get_team_members() -> ConcreateExtensionField {
+       return OrganizationServiceResponses_get_team_members
+  }
+  public class func remove_team_member() -> ConcreateExtensionField {
+       return OrganizationServiceResponses_remove_team_member
+  }
+  public class func add_team_members() -> ConcreateExtensionField {
+       return OrganizationServiceResponses_add_team_members
+  }
+  public class func remove_team_members() -> ConcreateExtensionField {
+       return OrganizationServiceResponses_remove_team_members
+  }
+  required public init() {
+       super.init()
+  }
+  override public func isInitialized() -> Bool {
+   return true
+  }
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
+    unknownFields.writeToCodedOutputStream(output)
+  }
+  override public func serializedSize() -> Int32 {
+    var size:Int32 = memoizedSerializedSize
+    if size != -1 {
+     return size
+    }
+
+    size = 0
+    size += unknownFields.serializedSize()
+    memoizedSerializedSize = size
+    return size
+  }
+  public class func parseFromData(data:[Byte]) -> OrganizationServiceResponses {
+    return OrganizationServiceResponses.builder().mergeFromData(data).build()
+  }
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> OrganizationServiceResponses {
+    return OrganizationServiceResponses.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFromInputStream(input:NSInputStream) -> OrganizationServiceResponses {
+    return OrganizationServiceResponses.builder().mergeFromInputStream(input).build()
+  }
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->OrganizationServiceResponses {
+    return OrganizationServiceResponses.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> OrganizationServiceResponses {
+    return OrganizationServiceResponses.builder().mergeFromCodedInputStream(input).build()
+  }
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> OrganizationServiceResponses {
+    return OrganizationServiceResponses.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+  }
+  public class func builder() -> OrganizationServiceResponsesBuilder {
+    return OrganizationServiceResponses.classBuilder() as OrganizationServiceResponsesBuilder
+  }
+  public func builder() -> OrganizationServiceResponsesBuilder {
+    return classBuilder() as OrganizationServiceResponsesBuilder
+  }
+  public override class func classBuilder() -> MessageBuilder {
+    return OrganizationServiceResponsesBuilder()
+  }
+  public override func classBuilder() -> MessageBuilder {
+    return OrganizationServiceResponses.builder()
+  }
+  public func toBuilder() -> OrganizationServiceResponsesBuilder {
+    return OrganizationServiceResponses.builderWithPrototype(self)
+  }
+  public class func builderWithPrototype(prototype:OrganizationServiceResponses) -> OrganizationServiceResponsesBuilder {
+    return OrganizationServiceResponses.builder().mergeFrom(prototype)
+  }
+  override public func writeDescriptionTo(inout output:String, indent:String) {
+    unknownFields.writeDescriptionTo(&output, indent:indent)
+  }
+  override public var hashValue:Int {
+      get {
+          var hashCode:Int = 7
+          hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+          return hashCode
+      }
+  }
+
+
+  //Meta information declaration start
+
+  override public class func className() -> String {
+      return "OrganizationServiceResponses"
+  }
+  override public func className() -> String {
+      return "OrganizationServiceResponses"
+  }
+  override public func classMetaType() -> GeneratedMessage.Type {
+      return OrganizationServiceResponses.self
+  }
+
+
+  //Meta information declaration end
+
+}
+
+final public class OrganizationServiceResponsesBuilder : GeneratedMessageBuilder {
+  private var builderResult:OrganizationServiceResponses
+
+  required override public init () {
+     builderResult = OrganizationServiceResponses()
+     super.init()
+  }
+  override public var internalGetResult:GeneratedMessage {
+       get {
+          return builderResult
+       }
+  }
+  public override func clear() -> OrganizationServiceResponsesBuilder {
+    builderResult = OrganizationServiceResponses()
+    return self
+  }
+  public override func clone() -> OrganizationServiceResponsesBuilder {
+    return OrganizationServiceResponses.builderWithPrototype(builderResult)
+  }
+  public override func build() -> OrganizationServiceResponses {
+       checkInitialized()
+       return buildPartial()
+  }
+  public func buildPartial() -> OrganizationServiceResponses {
+    var returnMe:OrganizationServiceResponses = builderResult
+    return returnMe
+  }
+  public func mergeFrom(other:OrganizationServiceResponses) -> OrganizationServiceResponsesBuilder {
+    if (other == OrganizationServiceResponses()) {
+     return self
+    }
+    mergeUnknownFields(other.unknownFields)
+    return self
+  }
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->OrganizationServiceResponsesBuilder {
+       return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+  }
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> OrganizationServiceResponsesBuilder {
+    var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+    while (true) {
+      var tag = input.readTag()
+      switch tag {
+      case 0: 
+        self.unknownFields = unknownFieldsBuilder.build()
+        return self
+
+      default:
+        if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+           unknownFields = unknownFieldsBuilder.build()
+           return self
+        }
+      }
+    }
+  }
+}
+
 //Class extensions: NSData
 
 
@@ -413,6 +641,18 @@ public extension IdentityServiceResponses {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return IdentityServiceResponses.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension OrganizationServiceResponses {
+    class func parseFromNSData(data:NSData) -> OrganizationServiceResponses {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return OrganizationServiceResponses.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> OrganizationServiceResponses {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return OrganizationServiceResponses.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 

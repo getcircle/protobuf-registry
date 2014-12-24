@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/organization_service.proto',
   package='main.organization_service',
-  serialized_pb=_b('\n$protobufs/organization_service.proto\x12\x19main.organization_service\"\xa7\t\n\x13OrganizationService\x1aj\n\nContainers\x1a(\n\x0cOrganization\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x1a\x32\n\x04Team\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08owner_id\x18\x03 \x01(\t\x1a\xa7\x01\n\x12\x43reateOrganization\x1a\'\n\x07Request\x12\x0e\n\x06\x64omain\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x1ah\n\x08Response\x12\\\n\x0corganization\x18\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.Containers.Organization\x1a\xa7\x01\n\x12UpdateOrganization\x1a\'\n\x07Request\x12\x0e\n\x06\x64omain\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x1ah\n\x08Response\x12\\\n\x0corganization\x18\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.Containers.Organization\x1a\xaa\x01\n\nCreateTeam\x1a\x42\n\x07Request\x12\x17\n\x0forganization_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08owner_id\x18\x03 \x01(\t\x1aX\n\x08Response\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\xbf\x01\n\nUpdateTeam\x1aW\n\x07Request\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1aX\n\x08Response\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a/\n\nDeleteTeam\x1a\x15\n\x07Request\x12\n\n\x02id\x18\x01 \x01(\t\x1a\n\n\x08Response\x1aH\n\rAddTeamMember\x1a+\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x1a\n\n\x08Response\x1aK\n\x10\x44\x65leteTeamMember\x1a+\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x1a\n\n\x08Response\x1aJ\n\x0e\x41\x64\x64TeamMembers\x1a,\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12\x10\n\x08user_ids\x18\x02 \x03(\t\x1a\n\n\x08Response\x1aM\n\x11\x44\x65leteTeamMembers\x1a,\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12\x10\n\x08user_ids\x18\x02 \x01(\t\x1a\n\n\x08Response')
+  serialized_pb=_b('\n$protobufs/organization_service.proto\x12\x19main.organization_service\"\x9f\x07\n\x13OrganizationService\x1a\xa1\x01\n\nContainers\x1a\x38\n\x0cOrganization\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\x1aY\n\x04Team\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08owner_id\x18\x03 \x01(\t\x12\x17\n\x0forganization_id\x18\x04 \x01(\t\x12\x0c\n\x04path\x18\x05 \x03(\t\x1a\xa7\x01\n\x12\x43reateOrganization\x1a\'\n\x07Request\x12\x0e\n\x06\x64omain\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x1ah\n\x08Response\x12\\\n\x0corganization\x18\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.Containers.Organization\x1a\xbc\x01\n\nCreateTeam\x1aT\n\x07Request\x12\x17\n\x0forganization_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08owner_id\x18\x03 \x01(\t\x12\x10\n\x08\x63hild_of\x18\x05 \x01(\t\x1aX\n\x08Response\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1aH\n\rAddTeamMember\x1a+\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x1a\n\n\x08Response\x1aK\n\x10RemoveTeamMember\x1a+\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x1a\n\n\x08Response\x1aI\n\x0eGetTeamMembers\x1a\x1a\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x1a\x1b\n\x08Response\x12\x0f\n\x07members\x18\x01 \x03(\t\x1aJ\n\x0e\x41\x64\x64TeamMembers\x1a,\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12\x10\n\x08user_ids\x18\x02 \x03(\t\x1a\n\n\x08Response\x1aM\n\x11RemoveTeamMembers\x1a,\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12\x10\n\x08user_ids\x18\x02 \x03(\t\x1a\n\n\x08Response')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -46,6 +46,13 @@ _ORGANIZATIONSERVICE_CONTAINERS_ORGANIZATION = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='domain', full_name='main.organization_service.OrganizationService.Containers.Organization.domain', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -57,8 +64,8 @@ _ORGANIZATIONSERVICE_CONTAINERS_ORGANIZATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=105,
-  serialized_end=145,
+  serialized_start=106,
+  serialized_end=162,
 )
 
 _ORGANIZATIONSERVICE_CONTAINERS_TEAM = _descriptor.Descriptor(
@@ -89,6 +96,20 @@ _ORGANIZATIONSERVICE_CONTAINERS_TEAM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='organization_id', full_name='main.organization_service.OrganizationService.Containers.Team.organization_id', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='path', full_name='main.organization_service.OrganizationService.Containers.Team.path', index=4,
+      number=5, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -100,8 +121,8 @@ _ORGANIZATIONSERVICE_CONTAINERS_TEAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=147,
-  serialized_end=197,
+  serialized_start=164,
+  serialized_end=253,
 )
 
 _ORGANIZATIONSERVICE_CONTAINERS = _descriptor.Descriptor(
@@ -122,8 +143,8 @@ _ORGANIZATIONSERVICE_CONTAINERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=91,
-  serialized_end=197,
+  serialized_start=92,
+  serialized_end=253,
 )
 
 _ORGANIZATIONSERVICE_CREATEORGANIZATION_REQUEST = _descriptor.Descriptor(
@@ -158,8 +179,8 @@ _ORGANIZATIONSERVICE_CREATEORGANIZATION_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=222,
-  serialized_end=261,
+  serialized_start=278,
+  serialized_end=317,
 )
 
 _ORGANIZATIONSERVICE_CREATEORGANIZATION_RESPONSE = _descriptor.Descriptor(
@@ -187,8 +208,8 @@ _ORGANIZATIONSERVICE_CREATEORGANIZATION_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=367,
+  serialized_start=319,
+  serialized_end=423,
 )
 
 _ORGANIZATIONSERVICE_CREATEORGANIZATION = _descriptor.Descriptor(
@@ -209,95 +230,8 @@ _ORGANIZATIONSERVICE_CREATEORGANIZATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=200,
-  serialized_end=367,
-)
-
-_ORGANIZATIONSERVICE_UPDATEORGANIZATION_REQUEST = _descriptor.Descriptor(
-  name='Request',
-  full_name='main.organization_service.OrganizationService.UpdateOrganization.Request',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='domain', full_name='main.organization_service.OrganizationService.UpdateOrganization.Request.domain', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='name', full_name='main.organization_service.OrganizationService.UpdateOrganization.Request.name', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=222,
-  serialized_end=261,
-)
-
-_ORGANIZATIONSERVICE_UPDATEORGANIZATION_RESPONSE = _descriptor.Descriptor(
-  name='Response',
-  full_name='main.organization_service.OrganizationService.UpdateOrganization.Response',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='organization', full_name='main.organization_service.OrganizationService.UpdateOrganization.Response.organization', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=263,
-  serialized_end=367,
-)
-
-_ORGANIZATIONSERVICE_UPDATEORGANIZATION = _descriptor.Descriptor(
-  name='UpdateOrganization',
-  full_name='main.organization_service.OrganizationService.UpdateOrganization',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[_ORGANIZATIONSERVICE_UPDATEORGANIZATION_REQUEST, _ORGANIZATIONSERVICE_UPDATEORGANIZATION_RESPONSE, ],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=370,
-  serialized_end=537,
+  serialized_start=256,
+  serialized_end=423,
 )
 
 _ORGANIZATIONSERVICE_CREATETEAM_REQUEST = _descriptor.Descriptor(
@@ -328,6 +262,13 @@ _ORGANIZATIONSERVICE_CREATETEAM_REQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='child_of', full_name='main.organization_service.OrganizationService.CreateTeam.Request.child_of', index=3,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -339,8 +280,8 @@ _ORGANIZATIONSERVICE_CREATETEAM_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=554,
-  serialized_end=620,
+  serialized_start=440,
+  serialized_end=524,
 )
 
 _ORGANIZATIONSERVICE_CREATETEAM_RESPONSE = _descriptor.Descriptor(
@@ -368,8 +309,8 @@ _ORGANIZATIONSERVICE_CREATETEAM_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=622,
-  serialized_end=710,
+  serialized_start=526,
+  serialized_end=614,
 )
 
 _ORGANIZATIONSERVICE_CREATETEAM = _descriptor.Descriptor(
@@ -390,161 +331,8 @@ _ORGANIZATIONSERVICE_CREATETEAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=540,
-  serialized_end=710,
-)
-
-_ORGANIZATIONSERVICE_UPDATETEAM_REQUEST = _descriptor.Descriptor(
-  name='Request',
-  full_name='main.organization_service.OrganizationService.UpdateTeam.Request',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='team', full_name='main.organization_service.OrganizationService.UpdateTeam.Request.team', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=727,
-  serialized_end=814,
-)
-
-_ORGANIZATIONSERVICE_UPDATETEAM_RESPONSE = _descriptor.Descriptor(
-  name='Response',
-  full_name='main.organization_service.OrganizationService.UpdateTeam.Response',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='team', full_name='main.organization_service.OrganizationService.UpdateTeam.Response.team', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=622,
-  serialized_end=710,
-)
-
-_ORGANIZATIONSERVICE_UPDATETEAM = _descriptor.Descriptor(
-  name='UpdateTeam',
-  full_name='main.organization_service.OrganizationService.UpdateTeam',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[_ORGANIZATIONSERVICE_UPDATETEAM_REQUEST, _ORGANIZATIONSERVICE_UPDATETEAM_RESPONSE, ],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=713,
-  serialized_end=904,
-)
-
-_ORGANIZATIONSERVICE_DELETETEAM_REQUEST = _descriptor.Descriptor(
-  name='Request',
-  full_name='main.organization_service.OrganizationService.DeleteTeam.Request',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='id', full_name='main.organization_service.OrganizationService.DeleteTeam.Request.id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=920,
-  serialized_end=941,
-)
-
-_ORGANIZATIONSERVICE_DELETETEAM_RESPONSE = _descriptor.Descriptor(
-  name='Response',
-  full_name='main.organization_service.OrganizationService.DeleteTeam.Response',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=263,
-  serialized_end=273,
-)
-
-_ORGANIZATIONSERVICE_DELETETEAM = _descriptor.Descriptor(
-  name='DeleteTeam',
-  full_name='main.organization_service.OrganizationService.DeleteTeam',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[_ORGANIZATIONSERVICE_DELETETEAM_REQUEST, _ORGANIZATIONSERVICE_DELETETEAM_RESPONSE, ],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=906,
-  serialized_end=953,
+  serialized_start=426,
+  serialized_end=614,
 )
 
 _ORGANIZATIONSERVICE_ADDTEAMMEMBER_REQUEST = _descriptor.Descriptor(
@@ -579,8 +367,8 @@ _ORGANIZATIONSERVICE_ADDTEAMMEMBER_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=972,
-  serialized_end=1015,
+  serialized_start=633,
+  serialized_end=676,
 )
 
 _ORGANIZATIONSERVICE_ADDTEAMMEMBER_RESPONSE = _descriptor.Descriptor(
@@ -601,8 +389,8 @@ _ORGANIZATIONSERVICE_ADDTEAMMEMBER_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=273,
+  serialized_start=319,
+  serialized_end=329,
 )
 
 _ORGANIZATIONSERVICE_ADDTEAMMEMBER = _descriptor.Descriptor(
@@ -623,26 +411,26 @@ _ORGANIZATIONSERVICE_ADDTEAMMEMBER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=955,
-  serialized_end=1027,
+  serialized_start=616,
+  serialized_end=688,
 )
 
-_ORGANIZATIONSERVICE_DELETETEAMMEMBER_REQUEST = _descriptor.Descriptor(
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBER_REQUEST = _descriptor.Descriptor(
   name='Request',
-  full_name='main.organization_service.OrganizationService.DeleteTeamMember.Request',
+  full_name='main.organization_service.OrganizationService.RemoveTeamMember.Request',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='team_id', full_name='main.organization_service.OrganizationService.DeleteTeamMember.Request.team_id', index=0,
+      name='team_id', full_name='main.organization_service.OrganizationService.RemoveTeamMember.Request.team_id', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='user_id', full_name='main.organization_service.OrganizationService.DeleteTeamMember.Request.user_id', index=1,
+      name='user_id', full_name='main.organization_service.OrganizationService.RemoveTeamMember.Request.user_id', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -659,13 +447,13 @@ _ORGANIZATIONSERVICE_DELETETEAMMEMBER_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=972,
-  serialized_end=1015,
+  serialized_start=633,
+  serialized_end=676,
 )
 
-_ORGANIZATIONSERVICE_DELETETEAMMEMBER_RESPONSE = _descriptor.Descriptor(
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBER_RESPONSE = _descriptor.Descriptor(
   name='Response',
-  full_name='main.organization_service.OrganizationService.DeleteTeamMember.Response',
+  full_name='main.organization_service.OrganizationService.RemoveTeamMember.Response',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -681,13 +469,13 @@ _ORGANIZATIONSERVICE_DELETETEAMMEMBER_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=273,
+  serialized_start=319,
+  serialized_end=329,
 )
 
-_ORGANIZATIONSERVICE_DELETETEAMMEMBER = _descriptor.Descriptor(
-  name='DeleteTeamMember',
-  full_name='main.organization_service.OrganizationService.DeleteTeamMember',
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBER = _descriptor.Descriptor(
+  name='RemoveTeamMember',
+  full_name='main.organization_service.OrganizationService.RemoveTeamMember',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -695,7 +483,7 @@ _ORGANIZATIONSERVICE_DELETETEAMMEMBER = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_ORGANIZATIONSERVICE_DELETETEAMMEMBER_REQUEST, _ORGANIZATIONSERVICE_DELETETEAMMEMBER_RESPONSE, ],
+  nested_types=[_ORGANIZATIONSERVICE_REMOVETEAMMEMBER_REQUEST, _ORGANIZATIONSERVICE_REMOVETEAMMEMBER_RESPONSE, ],
   enum_types=[
   ],
   options=None,
@@ -703,8 +491,88 @@ _ORGANIZATIONSERVICE_DELETETEAMMEMBER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1029,
-  serialized_end=1104,
+  serialized_start=690,
+  serialized_end=765,
+)
+
+_ORGANIZATIONSERVICE_GETTEAMMEMBERS_REQUEST = _descriptor.Descriptor(
+  name='Request',
+  full_name='main.organization_service.OrganizationService.GetTeamMembers.Request',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='team_id', full_name='main.organization_service.OrganizationService.GetTeamMembers.Request.team_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=633,
+  serialized_end=659,
+)
+
+_ORGANIZATIONSERVICE_GETTEAMMEMBERS_RESPONSE = _descriptor.Descriptor(
+  name='Response',
+  full_name='main.organization_service.OrganizationService.GetTeamMembers.Response',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='members', full_name='main.organization_service.OrganizationService.GetTeamMembers.Response.members', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=813,
+  serialized_end=840,
+)
+
+_ORGANIZATIONSERVICE_GETTEAMMEMBERS = _descriptor.Descriptor(
+  name='GetTeamMembers',
+  full_name='main.organization_service.OrganizationService.GetTeamMembers',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[_ORGANIZATIONSERVICE_GETTEAMMEMBERS_REQUEST, _ORGANIZATIONSERVICE_GETTEAMMEMBERS_RESPONSE, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=767,
+  serialized_end=840,
 )
 
 _ORGANIZATIONSERVICE_ADDTEAMMEMBERS_REQUEST = _descriptor.Descriptor(
@@ -739,8 +607,8 @@ _ORGANIZATIONSERVICE_ADDTEAMMEMBERS_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1124,
-  serialized_end=1168,
+  serialized_start=860,
+  serialized_end=904,
 )
 
 _ORGANIZATIONSERVICE_ADDTEAMMEMBERS_RESPONSE = _descriptor.Descriptor(
@@ -761,8 +629,8 @@ _ORGANIZATIONSERVICE_ADDTEAMMEMBERS_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=273,
+  serialized_start=319,
+  serialized_end=329,
 )
 
 _ORGANIZATIONSERVICE_ADDTEAMMEMBERS = _descriptor.Descriptor(
@@ -783,28 +651,28 @@ _ORGANIZATIONSERVICE_ADDTEAMMEMBERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1106,
-  serialized_end=1180,
+  serialized_start=842,
+  serialized_end=916,
 )
 
-_ORGANIZATIONSERVICE_DELETETEAMMEMBERS_REQUEST = _descriptor.Descriptor(
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBERS_REQUEST = _descriptor.Descriptor(
   name='Request',
-  full_name='main.organization_service.OrganizationService.DeleteTeamMembers.Request',
+  full_name='main.organization_service.OrganizationService.RemoveTeamMembers.Request',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='team_id', full_name='main.organization_service.OrganizationService.DeleteTeamMembers.Request.team_id', index=0,
+      name='team_id', full_name='main.organization_service.OrganizationService.RemoveTeamMembers.Request.team_id', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='user_ids', full_name='main.organization_service.OrganizationService.DeleteTeamMembers.Request.user_ids', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='user_ids', full_name='main.organization_service.OrganizationService.RemoveTeamMembers.Request.user_ids', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -819,13 +687,13 @@ _ORGANIZATIONSERVICE_DELETETEAMMEMBERS_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1203,
-  serialized_end=1247,
+  serialized_start=860,
+  serialized_end=904,
 )
 
-_ORGANIZATIONSERVICE_DELETETEAMMEMBERS_RESPONSE = _descriptor.Descriptor(
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBERS_RESPONSE = _descriptor.Descriptor(
   name='Response',
-  full_name='main.organization_service.OrganizationService.DeleteTeamMembers.Response',
+  full_name='main.organization_service.OrganizationService.RemoveTeamMembers.Response',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -841,13 +709,13 @@ _ORGANIZATIONSERVICE_DELETETEAMMEMBERS_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=273,
+  serialized_start=319,
+  serialized_end=329,
 )
 
-_ORGANIZATIONSERVICE_DELETETEAMMEMBERS = _descriptor.Descriptor(
-  name='DeleteTeamMembers',
-  full_name='main.organization_service.OrganizationService.DeleteTeamMembers',
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBERS = _descriptor.Descriptor(
+  name='RemoveTeamMembers',
+  full_name='main.organization_service.OrganizationService.RemoveTeamMembers',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -855,7 +723,7 @@ _ORGANIZATIONSERVICE_DELETETEAMMEMBERS = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_ORGANIZATIONSERVICE_DELETETEAMMEMBERS_REQUEST, _ORGANIZATIONSERVICE_DELETETEAMMEMBERS_RESPONSE, ],
+  nested_types=[_ORGANIZATIONSERVICE_REMOVETEAMMEMBERS_REQUEST, _ORGANIZATIONSERVICE_REMOVETEAMMEMBERS_RESPONSE, ],
   enum_types=[
   ],
   options=None,
@@ -863,8 +731,8 @@ _ORGANIZATIONSERVICE_DELETETEAMMEMBERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1182,
-  serialized_end=1259,
+  serialized_start=918,
+  serialized_end=995,
 )
 
 _ORGANIZATIONSERVICE = _descriptor.Descriptor(
@@ -877,7 +745,7 @@ _ORGANIZATIONSERVICE = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_ORGANIZATIONSERVICE_CONTAINERS, _ORGANIZATIONSERVICE_CREATEORGANIZATION, _ORGANIZATIONSERVICE_UPDATEORGANIZATION, _ORGANIZATIONSERVICE_CREATETEAM, _ORGANIZATIONSERVICE_UPDATETEAM, _ORGANIZATIONSERVICE_DELETETEAM, _ORGANIZATIONSERVICE_ADDTEAMMEMBER, _ORGANIZATIONSERVICE_DELETETEAMMEMBER, _ORGANIZATIONSERVICE_ADDTEAMMEMBERS, _ORGANIZATIONSERVICE_DELETETEAMMEMBERS, ],
+  nested_types=[_ORGANIZATIONSERVICE_CONTAINERS, _ORGANIZATIONSERVICE_CREATEORGANIZATION, _ORGANIZATIONSERVICE_CREATETEAM, _ORGANIZATIONSERVICE_ADDTEAMMEMBER, _ORGANIZATIONSERVICE_REMOVETEAMMEMBER, _ORGANIZATIONSERVICE_GETTEAMMEMBERS, _ORGANIZATIONSERVICE_ADDTEAMMEMBERS, _ORGANIZATIONSERVICE_REMOVETEAMMEMBERS, ],
   enum_types=[
   ],
   options=None,
@@ -886,7 +754,7 @@ _ORGANIZATIONSERVICE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=68,
-  serialized_end=1259,
+  serialized_end=995,
 )
 
 _ORGANIZATIONSERVICE_CONTAINERS_ORGANIZATION.containing_type = _ORGANIZATIONSERVICE_CONTAINERS
@@ -896,34 +764,25 @@ _ORGANIZATIONSERVICE_CREATEORGANIZATION_REQUEST.containing_type = _ORGANIZATIONS
 _ORGANIZATIONSERVICE_CREATEORGANIZATION_RESPONSE.fields_by_name['organization'].message_type = _ORGANIZATIONSERVICE_CONTAINERS_ORGANIZATION
 _ORGANIZATIONSERVICE_CREATEORGANIZATION_RESPONSE.containing_type = _ORGANIZATIONSERVICE_CREATEORGANIZATION
 _ORGANIZATIONSERVICE_CREATEORGANIZATION.containing_type = _ORGANIZATIONSERVICE
-_ORGANIZATIONSERVICE_UPDATEORGANIZATION_REQUEST.containing_type = _ORGANIZATIONSERVICE_UPDATEORGANIZATION
-_ORGANIZATIONSERVICE_UPDATEORGANIZATION_RESPONSE.fields_by_name['organization'].message_type = _ORGANIZATIONSERVICE_CONTAINERS_ORGANIZATION
-_ORGANIZATIONSERVICE_UPDATEORGANIZATION_RESPONSE.containing_type = _ORGANIZATIONSERVICE_UPDATEORGANIZATION
-_ORGANIZATIONSERVICE_UPDATEORGANIZATION.containing_type = _ORGANIZATIONSERVICE
 _ORGANIZATIONSERVICE_CREATETEAM_REQUEST.containing_type = _ORGANIZATIONSERVICE_CREATETEAM
 _ORGANIZATIONSERVICE_CREATETEAM_RESPONSE.fields_by_name['team'].message_type = _ORGANIZATIONSERVICE_CONTAINERS_TEAM
 _ORGANIZATIONSERVICE_CREATETEAM_RESPONSE.containing_type = _ORGANIZATIONSERVICE_CREATETEAM
 _ORGANIZATIONSERVICE_CREATETEAM.containing_type = _ORGANIZATIONSERVICE
-_ORGANIZATIONSERVICE_UPDATETEAM_REQUEST.fields_by_name['team'].message_type = _ORGANIZATIONSERVICE_CONTAINERS_TEAM
-_ORGANIZATIONSERVICE_UPDATETEAM_REQUEST.containing_type = _ORGANIZATIONSERVICE_UPDATETEAM
-_ORGANIZATIONSERVICE_UPDATETEAM_RESPONSE.fields_by_name['team'].message_type = _ORGANIZATIONSERVICE_CONTAINERS_TEAM
-_ORGANIZATIONSERVICE_UPDATETEAM_RESPONSE.containing_type = _ORGANIZATIONSERVICE_UPDATETEAM
-_ORGANIZATIONSERVICE_UPDATETEAM.containing_type = _ORGANIZATIONSERVICE
-_ORGANIZATIONSERVICE_DELETETEAM_REQUEST.containing_type = _ORGANIZATIONSERVICE_DELETETEAM
-_ORGANIZATIONSERVICE_DELETETEAM_RESPONSE.containing_type = _ORGANIZATIONSERVICE_DELETETEAM
-_ORGANIZATIONSERVICE_DELETETEAM.containing_type = _ORGANIZATIONSERVICE
 _ORGANIZATIONSERVICE_ADDTEAMMEMBER_REQUEST.containing_type = _ORGANIZATIONSERVICE_ADDTEAMMEMBER
 _ORGANIZATIONSERVICE_ADDTEAMMEMBER_RESPONSE.containing_type = _ORGANIZATIONSERVICE_ADDTEAMMEMBER
 _ORGANIZATIONSERVICE_ADDTEAMMEMBER.containing_type = _ORGANIZATIONSERVICE
-_ORGANIZATIONSERVICE_DELETETEAMMEMBER_REQUEST.containing_type = _ORGANIZATIONSERVICE_DELETETEAMMEMBER
-_ORGANIZATIONSERVICE_DELETETEAMMEMBER_RESPONSE.containing_type = _ORGANIZATIONSERVICE_DELETETEAMMEMBER
-_ORGANIZATIONSERVICE_DELETETEAMMEMBER.containing_type = _ORGANIZATIONSERVICE
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBER_REQUEST.containing_type = _ORGANIZATIONSERVICE_REMOVETEAMMEMBER
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBER_RESPONSE.containing_type = _ORGANIZATIONSERVICE_REMOVETEAMMEMBER
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBER.containing_type = _ORGANIZATIONSERVICE
+_ORGANIZATIONSERVICE_GETTEAMMEMBERS_REQUEST.containing_type = _ORGANIZATIONSERVICE_GETTEAMMEMBERS
+_ORGANIZATIONSERVICE_GETTEAMMEMBERS_RESPONSE.containing_type = _ORGANIZATIONSERVICE_GETTEAMMEMBERS
+_ORGANIZATIONSERVICE_GETTEAMMEMBERS.containing_type = _ORGANIZATIONSERVICE
 _ORGANIZATIONSERVICE_ADDTEAMMEMBERS_REQUEST.containing_type = _ORGANIZATIONSERVICE_ADDTEAMMEMBERS
 _ORGANIZATIONSERVICE_ADDTEAMMEMBERS_RESPONSE.containing_type = _ORGANIZATIONSERVICE_ADDTEAMMEMBERS
 _ORGANIZATIONSERVICE_ADDTEAMMEMBERS.containing_type = _ORGANIZATIONSERVICE
-_ORGANIZATIONSERVICE_DELETETEAMMEMBERS_REQUEST.containing_type = _ORGANIZATIONSERVICE_DELETETEAMMEMBERS
-_ORGANIZATIONSERVICE_DELETETEAMMEMBERS_RESPONSE.containing_type = _ORGANIZATIONSERVICE_DELETETEAMMEMBERS
-_ORGANIZATIONSERVICE_DELETETEAMMEMBERS.containing_type = _ORGANIZATIONSERVICE
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBERS_REQUEST.containing_type = _ORGANIZATIONSERVICE_REMOVETEAMMEMBERS
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBERS_RESPONSE.containing_type = _ORGANIZATIONSERVICE_REMOVETEAMMEMBERS
+_ORGANIZATIONSERVICE_REMOVETEAMMEMBERS.containing_type = _ORGANIZATIONSERVICE
 DESCRIPTOR.message_types_by_name['OrganizationService'] = _ORGANIZATIONSERVICE
 
 OrganizationService = _reflection.GeneratedProtocolMessageType('OrganizationService', (_message.Message,), dict(
@@ -970,27 +829,6 @@ OrganizationService = _reflection.GeneratedProtocolMessageType('OrganizationServ
     ))
   ,
 
-  UpdateOrganization = _reflection.GeneratedProtocolMessageType('UpdateOrganization', (_message.Message,), dict(
-
-    Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
-      DESCRIPTOR = _ORGANIZATIONSERVICE_UPDATEORGANIZATION_REQUEST,
-      __module__ = 'protobufs.organization_service_pb2'
-      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.UpdateOrganization.Request)
-      ))
-    ,
-
-    Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
-      DESCRIPTOR = _ORGANIZATIONSERVICE_UPDATEORGANIZATION_RESPONSE,
-      __module__ = 'protobufs.organization_service_pb2'
-      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.UpdateOrganization.Response)
-      ))
-    ,
-    DESCRIPTOR = _ORGANIZATIONSERVICE_UPDATEORGANIZATION,
-    __module__ = 'protobufs.organization_service_pb2'
-    # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.UpdateOrganization)
-    ))
-  ,
-
   CreateTeam = _reflection.GeneratedProtocolMessageType('CreateTeam', (_message.Message,), dict(
 
     Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
@@ -1009,48 +847,6 @@ OrganizationService = _reflection.GeneratedProtocolMessageType('OrganizationServ
     DESCRIPTOR = _ORGANIZATIONSERVICE_CREATETEAM,
     __module__ = 'protobufs.organization_service_pb2'
     # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.CreateTeam)
-    ))
-  ,
-
-  UpdateTeam = _reflection.GeneratedProtocolMessageType('UpdateTeam', (_message.Message,), dict(
-
-    Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
-      DESCRIPTOR = _ORGANIZATIONSERVICE_UPDATETEAM_REQUEST,
-      __module__ = 'protobufs.organization_service_pb2'
-      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.UpdateTeam.Request)
-      ))
-    ,
-
-    Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
-      DESCRIPTOR = _ORGANIZATIONSERVICE_UPDATETEAM_RESPONSE,
-      __module__ = 'protobufs.organization_service_pb2'
-      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.UpdateTeam.Response)
-      ))
-    ,
-    DESCRIPTOR = _ORGANIZATIONSERVICE_UPDATETEAM,
-    __module__ = 'protobufs.organization_service_pb2'
-    # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.UpdateTeam)
-    ))
-  ,
-
-  DeleteTeam = _reflection.GeneratedProtocolMessageType('DeleteTeam', (_message.Message,), dict(
-
-    Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
-      DESCRIPTOR = _ORGANIZATIONSERVICE_DELETETEAM_REQUEST,
-      __module__ = 'protobufs.organization_service_pb2'
-      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.DeleteTeam.Request)
-      ))
-    ,
-
-    Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
-      DESCRIPTOR = _ORGANIZATIONSERVICE_DELETETEAM_RESPONSE,
-      __module__ = 'protobufs.organization_service_pb2'
-      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.DeleteTeam.Response)
-      ))
-    ,
-    DESCRIPTOR = _ORGANIZATIONSERVICE_DELETETEAM,
-    __module__ = 'protobufs.organization_service_pb2'
-    # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.DeleteTeam)
     ))
   ,
 
@@ -1075,24 +871,45 @@ OrganizationService = _reflection.GeneratedProtocolMessageType('OrganizationServ
     ))
   ,
 
-  DeleteTeamMember = _reflection.GeneratedProtocolMessageType('DeleteTeamMember', (_message.Message,), dict(
+  RemoveTeamMember = _reflection.GeneratedProtocolMessageType('RemoveTeamMember', (_message.Message,), dict(
 
     Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
-      DESCRIPTOR = _ORGANIZATIONSERVICE_DELETETEAMMEMBER_REQUEST,
+      DESCRIPTOR = _ORGANIZATIONSERVICE_REMOVETEAMMEMBER_REQUEST,
       __module__ = 'protobufs.organization_service_pb2'
-      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.DeleteTeamMember.Request)
+      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.RemoveTeamMember.Request)
       ))
     ,
 
     Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
-      DESCRIPTOR = _ORGANIZATIONSERVICE_DELETETEAMMEMBER_RESPONSE,
+      DESCRIPTOR = _ORGANIZATIONSERVICE_REMOVETEAMMEMBER_RESPONSE,
       __module__ = 'protobufs.organization_service_pb2'
-      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.DeleteTeamMember.Response)
+      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.RemoveTeamMember.Response)
       ))
     ,
-    DESCRIPTOR = _ORGANIZATIONSERVICE_DELETETEAMMEMBER,
+    DESCRIPTOR = _ORGANIZATIONSERVICE_REMOVETEAMMEMBER,
     __module__ = 'protobufs.organization_service_pb2'
-    # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.DeleteTeamMember)
+    # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.RemoveTeamMember)
+    ))
+  ,
+
+  GetTeamMembers = _reflection.GeneratedProtocolMessageType('GetTeamMembers', (_message.Message,), dict(
+
+    Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
+      DESCRIPTOR = _ORGANIZATIONSERVICE_GETTEAMMEMBERS_REQUEST,
+      __module__ = 'protobufs.organization_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.GetTeamMembers.Request)
+      ))
+    ,
+
+    Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
+      DESCRIPTOR = _ORGANIZATIONSERVICE_GETTEAMMEMBERS_RESPONSE,
+      __module__ = 'protobufs.organization_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.GetTeamMembers.Response)
+      ))
+    ,
+    DESCRIPTOR = _ORGANIZATIONSERVICE_GETTEAMMEMBERS,
+    __module__ = 'protobufs.organization_service_pb2'
+    # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.GetTeamMembers)
     ))
   ,
 
@@ -1117,24 +934,24 @@ OrganizationService = _reflection.GeneratedProtocolMessageType('OrganizationServ
     ))
   ,
 
-  DeleteTeamMembers = _reflection.GeneratedProtocolMessageType('DeleteTeamMembers', (_message.Message,), dict(
+  RemoveTeamMembers = _reflection.GeneratedProtocolMessageType('RemoveTeamMembers', (_message.Message,), dict(
 
     Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
-      DESCRIPTOR = _ORGANIZATIONSERVICE_DELETETEAMMEMBERS_REQUEST,
+      DESCRIPTOR = _ORGANIZATIONSERVICE_REMOVETEAMMEMBERS_REQUEST,
       __module__ = 'protobufs.organization_service_pb2'
-      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.DeleteTeamMembers.Request)
+      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.RemoveTeamMembers.Request)
       ))
     ,
 
     Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
-      DESCRIPTOR = _ORGANIZATIONSERVICE_DELETETEAMMEMBERS_RESPONSE,
+      DESCRIPTOR = _ORGANIZATIONSERVICE_REMOVETEAMMEMBERS_RESPONSE,
       __module__ = 'protobufs.organization_service_pb2'
-      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.DeleteTeamMembers.Response)
+      # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.RemoveTeamMembers.Response)
       ))
     ,
-    DESCRIPTOR = _ORGANIZATIONSERVICE_DELETETEAMMEMBERS,
+    DESCRIPTOR = _ORGANIZATIONSERVICE_REMOVETEAMMEMBERS,
     __module__ = 'protobufs.organization_service_pb2'
-    # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.DeleteTeamMembers)
+    # @@protoc_insertion_point(class_scope:main.organization_service.OrganizationService.RemoveTeamMembers)
     ))
   ,
   DESCRIPTOR = _ORGANIZATIONSERVICE,
@@ -1148,30 +965,24 @@ _sym_db.RegisterMessage(OrganizationService.Containers.Team)
 _sym_db.RegisterMessage(OrganizationService.CreateOrganization)
 _sym_db.RegisterMessage(OrganizationService.CreateOrganization.Request)
 _sym_db.RegisterMessage(OrganizationService.CreateOrganization.Response)
-_sym_db.RegisterMessage(OrganizationService.UpdateOrganization)
-_sym_db.RegisterMessage(OrganizationService.UpdateOrganization.Request)
-_sym_db.RegisterMessage(OrganizationService.UpdateOrganization.Response)
 _sym_db.RegisterMessage(OrganizationService.CreateTeam)
 _sym_db.RegisterMessage(OrganizationService.CreateTeam.Request)
 _sym_db.RegisterMessage(OrganizationService.CreateTeam.Response)
-_sym_db.RegisterMessage(OrganizationService.UpdateTeam)
-_sym_db.RegisterMessage(OrganizationService.UpdateTeam.Request)
-_sym_db.RegisterMessage(OrganizationService.UpdateTeam.Response)
-_sym_db.RegisterMessage(OrganizationService.DeleteTeam)
-_sym_db.RegisterMessage(OrganizationService.DeleteTeam.Request)
-_sym_db.RegisterMessage(OrganizationService.DeleteTeam.Response)
 _sym_db.RegisterMessage(OrganizationService.AddTeamMember)
 _sym_db.RegisterMessage(OrganizationService.AddTeamMember.Request)
 _sym_db.RegisterMessage(OrganizationService.AddTeamMember.Response)
-_sym_db.RegisterMessage(OrganizationService.DeleteTeamMember)
-_sym_db.RegisterMessage(OrganizationService.DeleteTeamMember.Request)
-_sym_db.RegisterMessage(OrganizationService.DeleteTeamMember.Response)
+_sym_db.RegisterMessage(OrganizationService.RemoveTeamMember)
+_sym_db.RegisterMessage(OrganizationService.RemoveTeamMember.Request)
+_sym_db.RegisterMessage(OrganizationService.RemoveTeamMember.Response)
+_sym_db.RegisterMessage(OrganizationService.GetTeamMembers)
+_sym_db.RegisterMessage(OrganizationService.GetTeamMembers.Request)
+_sym_db.RegisterMessage(OrganizationService.GetTeamMembers.Response)
 _sym_db.RegisterMessage(OrganizationService.AddTeamMembers)
 _sym_db.RegisterMessage(OrganizationService.AddTeamMembers.Request)
 _sym_db.RegisterMessage(OrganizationService.AddTeamMembers.Response)
-_sym_db.RegisterMessage(OrganizationService.DeleteTeamMembers)
-_sym_db.RegisterMessage(OrganizationService.DeleteTeamMembers.Request)
-_sym_db.RegisterMessage(OrganizationService.DeleteTeamMembers.Response)
+_sym_db.RegisterMessage(OrganizationService.RemoveTeamMembers)
+_sym_db.RegisterMessage(OrganizationService.RemoveTeamMembers.Request)
+_sym_db.RegisterMessage(OrganizationService.RemoveTeamMembers.Response)
 
 
 # @@protoc_insertion_point(module_scope)
