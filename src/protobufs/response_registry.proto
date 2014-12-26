@@ -26,10 +26,7 @@ message OrganizationServiceResponses {
     extend soa.ActionResponseResult {
         optional main.organization_service.OrganizationService.CreateOrganization.Response create_organization = 300;
         optional main.organization_service.OrganizationService.CreateTeam.Response create_team = 301;
-        optional main.organization_service.OrganizationService.AddTeamMember.Response add_team_member = 302;
-        optional main.organization_service.OrganizationService.GetTeamMembers.Response get_team_members = 303;
-        optional main.organization_service.OrganizationService.RemoveTeamMember.Response remove_team_member = 304;
-        optional main.organization_service.OrganizationService.AddTeamMembers.Response add_team_members = 305;
-        optional main.organization_service.OrganizationService.RemoveTeamMembers.Response remove_team_members = 306;
+        optional main.organization_service.OrganizationService.CreateAddress.Response create_address = 302;
+        optional main.organization_service.OrganizationService.DeleteAddress.Response delete_address = 303;
     }
 }

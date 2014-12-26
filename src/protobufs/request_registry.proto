@@ -26,10 +26,7 @@ message OrganizationServiceRequests {
     extend soa.ActionRequestParams {
         optional main.organization_service.OrganizationService.CreateOrganization.Request create_organization = 300;
         optional main.organization_service.OrganizationService.CreateTeam.Request create_team = 301;
-        optional main.organization_service.OrganizationService.AddTeamMember.Request add_team_member = 302;
-        optional main.organization_service.OrganizationService.GetTeamMembers.Request get_team_members = 303;
-        optional main.organization_service.OrganizationService.RemoveTeamMember.Request remove_team_member = 304;
-        optional main.organization_service.OrganizationService.AddTeamMembers.Request add_team_members = 305;
-        optional main.organization_service.OrganizationService.RemoveTeamMembers.Request remove_team_members = 306;
+        optional main.organization_service.OrganizationService.CreateAddress.Request create_address = 302;
+        optional main.organization_service.OrganizationService.DeleteAddress.Request delete_address = 303;
     }
 }
