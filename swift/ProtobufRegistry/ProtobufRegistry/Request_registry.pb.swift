@@ -42,29 +42,14 @@ public var OrganizationServiceRequests_create_team:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_create_teamStatic
    }
 }
-public var OrganizationServiceRequests_add_team_member:ConcreateExtensionField {
+public var OrganizationServiceRequests_create_address:ConcreateExtensionField {
    get {
-       return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_add_team_memberStatic
+       return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_create_addressStatic
    }
 }
-public var OrganizationServiceRequests_get_team_members:ConcreateExtensionField {
+public var OrganizationServiceRequests_delete_address:ConcreateExtensionField {
    get {
-       return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_get_team_membersStatic
-   }
-}
-public var OrganizationServiceRequests_remove_team_member:ConcreateExtensionField {
-   get {
-       return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_remove_team_memberStatic
-   }
-}
-public var OrganizationServiceRequests_add_team_members:ConcreateExtensionField {
-   get {
-       return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_add_team_membersStatic
-   }
-}
-public var OrganizationServiceRequests_remove_team_members:ConcreateExtensionField {
-   get {
-       return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_remove_team_membersStatic
+       return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_delete_addressStatic
    }
 }
 public struct RequestRegistryRoot {
@@ -82,11 +67,8 @@ public struct RequestRegistryRoot {
   var IdentityServiceRequests_get_identitiesStatic:ConcreateExtensionField
   var OrganizationServiceRequests_create_organizationStatic:ConcreateExtensionField
   var OrganizationServiceRequests_create_teamStatic:ConcreateExtensionField
-  var OrganizationServiceRequests_add_team_memberStatic:ConcreateExtensionField
-  var OrganizationServiceRequests_get_team_membersStatic:ConcreateExtensionField
-  var OrganizationServiceRequests_remove_team_memberStatic:ConcreateExtensionField
-  var OrganizationServiceRequests_add_team_membersStatic:ConcreateExtensionField
-  var OrganizationServiceRequests_remove_team_membersStatic:ConcreateExtensionField
+  var OrganizationServiceRequests_create_addressStatic:ConcreateExtensionField
+  var OrganizationServiceRequests_delete_addressStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -98,11 +80,8 @@ public struct RequestRegistryRoot {
     IdentityServiceRequests_get_identitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 202, defaultValue:IdentityService.GetIdentities.Request(), messageOrGroupClass:IdentityService.GetIdentities.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     OrganizationServiceRequests_create_organizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 300, defaultValue:OrganizationService.CreateOrganization.Request(), messageOrGroupClass:OrganizationService.CreateOrganization.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     OrganizationServiceRequests_create_teamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 301, defaultValue:OrganizationService.CreateTeam.Request(), messageOrGroupClass:OrganizationService.CreateTeam.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    OrganizationServiceRequests_add_team_memberStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 302, defaultValue:OrganizationService.AddTeamMember.Request(), messageOrGroupClass:OrganizationService.AddTeamMember.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    OrganizationServiceRequests_get_team_membersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 303, defaultValue:OrganizationService.GetTeamMembers.Request(), messageOrGroupClass:OrganizationService.GetTeamMembers.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    OrganizationServiceRequests_remove_team_memberStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 304, defaultValue:OrganizationService.RemoveTeamMember.Request(), messageOrGroupClass:OrganizationService.RemoveTeamMember.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    OrganizationServiceRequests_add_team_membersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 305, defaultValue:OrganizationService.AddTeamMembers.Request(), messageOrGroupClass:OrganizationService.AddTeamMembers.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    OrganizationServiceRequests_remove_team_membersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 306, defaultValue:OrganizationService.RemoveTeamMembers.Request(), messageOrGroupClass:OrganizationService.RemoveTeamMembers.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    OrganizationServiceRequests_create_addressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 302, defaultValue:OrganizationService.CreateAddress.Request(), messageOrGroupClass:OrganizationService.CreateAddress.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    OrganizationServiceRequests_delete_addressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 303, defaultValue:OrganizationService.DeleteAddress.Request(), messageOrGroupClass:OrganizationService.DeleteAddress.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -119,11 +98,8 @@ public struct RequestRegistryRoot {
     registry.addExtension(IdentityServiceRequests_get_identitiesStatic)
     registry.addExtension(OrganizationServiceRequests_create_organizationStatic)
     registry.addExtension(OrganizationServiceRequests_create_teamStatic)
-    registry.addExtension(OrganizationServiceRequests_add_team_memberStatic)
-    registry.addExtension(OrganizationServiceRequests_get_team_membersStatic)
-    registry.addExtension(OrganizationServiceRequests_remove_team_memberStatic)
-    registry.addExtension(OrganizationServiceRequests_add_team_membersStatic)
-    registry.addExtension(OrganizationServiceRequests_remove_team_membersStatic)
+    registry.addExtension(OrganizationServiceRequests_create_addressStatic)
+    registry.addExtension(OrganizationServiceRequests_delete_addressStatic)
   }
 }
 
@@ -460,20 +436,11 @@ final public class OrganizationServiceRequests : GeneratedMessage {
   public class func create_team() -> ConcreateExtensionField {
        return OrganizationServiceRequests_create_team
   }
-  public class func add_team_member() -> ConcreateExtensionField {
-       return OrganizationServiceRequests_add_team_member
+  public class func create_address() -> ConcreateExtensionField {
+       return OrganizationServiceRequests_create_address
   }
-  public class func get_team_members() -> ConcreateExtensionField {
-       return OrganizationServiceRequests_get_team_members
-  }
-  public class func remove_team_member() -> ConcreateExtensionField {
-       return OrganizationServiceRequests_remove_team_member
-  }
-  public class func add_team_members() -> ConcreateExtensionField {
-       return OrganizationServiceRequests_add_team_members
-  }
-  public class func remove_team_members() -> ConcreateExtensionField {
-       return OrganizationServiceRequests_remove_team_members
+  public class func delete_address() -> ConcreateExtensionField {
+       return OrganizationServiceRequests_delete_address
   }
   required public init() {
        super.init()
