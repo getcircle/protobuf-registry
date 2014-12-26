@@ -696,6 +696,9 @@ final public class OrganizationService : GeneratedMessage {
       //Nested type declaration start
 
         final public class Address : GeneratedMessage {
+          public private(set) var hasId:Bool = false
+          public private(set) var id:String = ""
+
           public private(set) var hasOrganizationId:Bool = false
           public private(set) var organization_id:String = ""
 
@@ -727,29 +730,32 @@ final public class OrganizationService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasId {
+              output.writeString(1, value:id)
+            }
             if hasOrganizationId {
-              output.writeString(1, value:organization_id)
+              output.writeString(2, value:organization_id)
             }
             if hasName {
-              output.writeString(2, value:name)
+              output.writeString(3, value:name)
             }
             if hasAddress1 {
-              output.writeString(3, value:address_1)
+              output.writeString(4, value:address_1)
             }
             if hasAddress2 {
-              output.writeString(4, value:address_2)
+              output.writeString(5, value:address_2)
             }
             if hasCity {
-              output.writeString(5, value:city)
+              output.writeString(6, value:city)
             }
             if hasRegion {
-              output.writeString(6, value:region)
+              output.writeString(7, value:region)
             }
             if hasPostalCode {
-              output.writeString(7, value:postal_code)
+              output.writeString(8, value:postal_code)
             }
             if hasCountryCode {
-              output.writeString(8, value:country_code)
+              output.writeString(9, value:country_code)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -760,29 +766,32 @@ final public class OrganizationService : GeneratedMessage {
             }
 
             size = 0
+            if hasId {
+              size += WireFormat.computeStringSize(1, value:id)
+            }
             if hasOrganizationId {
-              size += WireFormat.computeStringSize(1, value:organization_id)
+              size += WireFormat.computeStringSize(2, value:organization_id)
             }
             if hasName {
-              size += WireFormat.computeStringSize(2, value:name)
+              size += WireFormat.computeStringSize(3, value:name)
             }
             if hasAddress1 {
-              size += WireFormat.computeStringSize(3, value:address_1)
+              size += WireFormat.computeStringSize(4, value:address_1)
             }
             if hasAddress2 {
-              size += WireFormat.computeStringSize(4, value:address_2)
+              size += WireFormat.computeStringSize(5, value:address_2)
             }
             if hasCity {
-              size += WireFormat.computeStringSize(5, value:city)
+              size += WireFormat.computeStringSize(6, value:city)
             }
             if hasRegion {
-              size += WireFormat.computeStringSize(6, value:region)
+              size += WireFormat.computeStringSize(7, value:region)
             }
             if hasPostalCode {
-              size += WireFormat.computeStringSize(7, value:postal_code)
+              size += WireFormat.computeStringSize(8, value:postal_code)
             }
             if hasCountryCode {
-              size += WireFormat.computeStringSize(8, value:country_code)
+              size += WireFormat.computeStringSize(9, value:country_code)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -825,6 +834,9 @@ final public class OrganizationService : GeneratedMessage {
             return OrganizationService.Containers.Address.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasId {
+              output += "\(indent) id: \(id) \n"
+            }
             if hasOrganizationId {
               output += "\(indent) organization_id: \(organization_id) \n"
             }
@@ -854,6 +866,9 @@ final public class OrganizationService : GeneratedMessage {
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
+                  if hasId {
+                     hashCode = (hashCode &* 31) &+ id.hashValue
+                  }
                   if hasOrganizationId {
                      hashCode = (hashCode &* 31) &+ organization_id.hashValue
                   }
@@ -907,6 +922,25 @@ final public class OrganizationService : GeneratedMessage {
           required override public init () {
              builderResult = OrganizationService.Containers.Address()
              super.init()
+          }
+          public var hasId:Bool {
+               get {
+                    return builderResult.hasId
+               }
+          }
+          public var id:String {
+               get {
+                    return builderResult.id
+               }
+               set (value) {
+                   builderResult.hasId = true
+                   builderResult.id = value
+               }
+          }
+          public func clearId() -> OrganizationService.Containers.AddressBuilder{
+               builderResult.hasId = false
+               builderResult.id = ""
+               return self
           }
           public var hasOrganizationId:Bool {
                get {
@@ -1084,6 +1118,9 @@ final public class OrganizationService : GeneratedMessage {
             if (other == OrganizationService.Containers.Address()) {
              return self
             }
+            if other.hasId {
+                 id = other.id
+            }
             if other.hasOrganizationId {
                  organization_id = other.organization_id
             }
@@ -1124,27 +1161,30 @@ final public class OrganizationService : GeneratedMessage {
                 return self
 
               case 10 :
-                organization_id = input.readString()
+                id = input.readString()
 
               case 18 :
-                name = input.readString()
+                organization_id = input.readString()
 
               case 26 :
-                address_1 = input.readString()
+                name = input.readString()
 
               case 34 :
-                address_2 = input.readString()
+                address_1 = input.readString()
 
               case 42 :
-                city = input.readString()
+                address_2 = input.readString()
 
               case 50 :
-                region = input.readString()
+                city = input.readString()
 
               case 58 :
-                postal_code = input.readString()
+                region = input.readString()
 
               case 66 :
+                postal_code = input.readString()
+
+              case 74 :
                 country_code = input.readString()
 
               default:

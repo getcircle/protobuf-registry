@@ -21,14 +21,15 @@ message OrganizationService {
         }
 
         message Address {
-            optional string organization_id = 1;
-            optional string name = 2;
-            optional string address_1 = 3;
-            optional string address_2 = 4;
-            optional string city = 5;
-            optional string region = 6;
-            optional string postal_code = 7;
-            optional string country_code = 8;
+            optional string id = 1;
+            optional string organization_id = 2;
+            optional string name = 3;
+            optional string address_1 = 4;
+            optional string address_2 = 5;
+            optional string city = 6;
+            optional string region = 7;
+            optional string postal_code = 8;
+            optional string country_code = 9;
         }
 
     }
