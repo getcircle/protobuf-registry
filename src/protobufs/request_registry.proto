@@ -2,7 +2,6 @@ package main.requests;
 
 import "service_protobufs/soa.proto";
 
-import "protobufs/identity_service.proto";
 import "protobufs/organization_service.proto";
 import "protobufs/user_service.proto";
 
@@ -14,19 +13,11 @@ message UserServiceRequests {
     }
 }
 
-message IdentityServiceRequests {
-    extend soa.ActionRequestParams {
-        optional main.identity_service.IdentityService.CreateIdentity.Request create_identity = 200;
-        optional main.identity_service.IdentityService.GetIdentity.Request get_identity = 201;
-        optional main.identity_service.IdentityService.GetIdentities.Request get_identities = 202;
-    }
-}
-
 message OrganizationServiceRequests {
     extend soa.ActionRequestParams {
-        optional main.organization_service.OrganizationService.CreateOrganization.Request create_organization = 300;
-        optional main.organization_service.OrganizationService.CreateTeam.Request create_team = 301;
-        optional main.organization_service.OrganizationService.CreateAddress.Request create_address = 302;
-        optional main.organization_service.OrganizationService.DeleteAddress.Request delete_address = 303;
+        optional main.organization_service.OrganizationService.CreateOrganization.Request create_organization = 200;
+        optional main.organization_service.OrganizationService.CreateTeam.Request create_team = 201;
+        optional main.organization_service.OrganizationService.CreateAddress.Request create_address = 202;
+        optional main.organization_service.OrganizationService.DeleteAddress.Request delete_address = 203;
     }
 }

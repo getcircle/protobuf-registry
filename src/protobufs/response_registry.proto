@@ -2,7 +2,6 @@ package main.responses;
 
 import "service_protobufs/soa.proto";
 
-import "protobufs/identity_service.proto";
 import "protobufs/organization_service.proto";
 import "protobufs/user_service.proto";
 
@@ -14,19 +13,11 @@ message UserServiceResponses {
     }
 }
 
-message IdentityServiceResponses {
-    extend soa.ActionResponseResult {
-        optional main.identity_service.IdentityService.CreateIdentity.Response create_identity = 200;
-        optional main.identity_service.IdentityService.GetIdentity.Response get_identity = 201;
-        optional main.identity_service.IdentityService.GetIdentities.Response get_identities = 202;
-    }
-}
-
 message OrganizationServiceResponses {
     extend soa.ActionResponseResult {
-        optional main.organization_service.OrganizationService.CreateOrganization.Response create_organization = 300;
-        optional main.organization_service.OrganizationService.CreateTeam.Response create_team = 301;
-        optional main.organization_service.OrganizationService.CreateAddress.Response create_address = 302;
-        optional main.organization_service.OrganizationService.DeleteAddress.Response delete_address = 303;
+        optional main.organization_service.OrganizationService.CreateOrganization.Response create_organization = 200;
+        optional main.organization_service.OrganizationService.CreateTeam.Response create_team = 201;
+        optional main.organization_service.OrganizationService.CreateAddress.Response create_address = 202;
+        optional main.organization_service.OrganizationService.DeleteAddress.Response delete_address = 203;
     }
 }

@@ -14,7 +14,6 @@ _sym_db = _symbol_database.Default()
 
 
 import service_protobufs.soa_pb2
-import protobufs.identity_service_pb2
 import protobufs.organization_service_pb2
 import protobufs.user_service_pb2
 
@@ -22,9 +21,9 @@ import protobufs.user_service_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/response_registry.proto',
   package='main.responses',
-  serialized_pb=_b('\n!protobufs/response_registry.proto\x12\x0emain.responses\x1a\x1bservice_protobufs/soa.proto\x1a protobufs/identity_service.proto\x1a$protobufs/organization_service.proto\x1a\x1cprotobufs/user_service.proto\"\xcc\x02\n\x14UserServiceResponses2b\n\x0b\x63reate_user\x12\x19.soa.ActionResponseResult\x18\x65 \x01(\x0b\x32\x32.main.user_service.UserService.CreateUser.Response2`\n\nvalid_user\x12\x19.soa.ActionResponseResult\x18\x66 \x01(\x0b\x32\x31.main.user_service.UserService.ValidUser.Response2n\n\x11\x61uthenticate_user\x12\x19.soa.ActionResponseResult\x18g \x01(\x0b\x32\x38.main.user_service.UserService.AuthenticateUser.Response\"\xf1\x02\n\x18IdentityServiceResponses2s\n\x0f\x63reate_identity\x12\x19.soa.ActionResponseResult\x18\xc8\x01 \x01(\x0b\x32>.main.identity_service.IdentityService.CreateIdentity.Response2m\n\x0cget_identity\x12\x19.soa.ActionResponseResult\x18\xc9\x01 \x01(\x0b\x32;.main.identity_service.IdentityService.GetIdentity.Response2q\n\x0eget_identities\x12\x19.soa.ActionResponseResult\x18\xca\x01 \x01(\x0b\x32=.main.identity_service.IdentityService.GetIdentities.Response\"\x8f\x04\n\x1cOrganizationServiceResponses2\x83\x01\n\x13\x63reate_organization\x12\x19.soa.ActionResponseResult\x18\xac\x02 \x01(\x0b\x32J.main.organization_service.OrganizationService.CreateOrganization.Response2s\n\x0b\x63reate_team\x12\x19.soa.ActionResponseResult\x18\xad\x02 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.CreateTeam.Response2y\n\x0e\x63reate_address\x12\x19.soa.ActionResponseResult\x18\xae\x02 \x01(\x0b\x32\x45.main.organization_service.OrganizationService.CreateAddress.Response2y\n\x0e\x64\x65lete_address\x12\x19.soa.ActionResponseResult\x18\xaf\x02 \x01(\x0b\x32\x45.main.organization_service.OrganizationService.DeleteAddress.Response')
+  serialized_pb=_b('\n!protobufs/response_registry.proto\x12\x0emain.responses\x1a\x1bservice_protobufs/soa.proto\x1a$protobufs/organization_service.proto\x1a\x1cprotobufs/user_service.proto\"\xcc\x02\n\x14UserServiceResponses2b\n\x0b\x63reate_user\x12\x19.soa.ActionResponseResult\x18\x65 \x01(\x0b\x32\x32.main.user_service.UserService.CreateUser.Response2`\n\nvalid_user\x12\x19.soa.ActionResponseResult\x18\x66 \x01(\x0b\x32\x31.main.user_service.UserService.ValidUser.Response2n\n\x11\x61uthenticate_user\x12\x19.soa.ActionResponseResult\x18g \x01(\x0b\x32\x38.main.user_service.UserService.AuthenticateUser.Response\"\x8f\x04\n\x1cOrganizationServiceResponses2\x83\x01\n\x13\x63reate_organization\x12\x19.soa.ActionResponseResult\x18\xc8\x01 \x01(\x0b\x32J.main.organization_service.OrganizationService.CreateOrganization.Response2s\n\x0b\x63reate_team\x12\x19.soa.ActionResponseResult\x18\xc9\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.CreateTeam.Response2y\n\x0e\x63reate_address\x12\x19.soa.ActionResponseResult\x18\xca\x01 \x01(\x0b\x32\x45.main.organization_service.OrganizationService.CreateAddress.Response2y\n\x0e\x64\x65lete_address\x12\x19.soa.ActionResponseResult\x18\xcb\x01 \x01(\x0b\x32\x45.main.organization_service.OrganizationService.DeleteAddress.Response')
   ,
-  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.identity_service_pb2.DESCRIPTOR,protobufs.organization_service_pb2.DESCRIPTOR,protobufs.user_service_pb2.DESCRIPTOR,])
+  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.organization_service_pb2.DESCRIPTOR,protobufs.user_service_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -69,52 +68,8 @@ _USERSERVICERESPONSES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=185,
-  serialized_end=517,
-)
-
-
-_IDENTITYSERVICERESPONSES = _descriptor.Descriptor(
-  name='IdentityServiceResponses',
-  full_name='main.responses.IdentityServiceResponses',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-    _descriptor.FieldDescriptor(
-      name='create_identity', full_name='main.responses.IdentityServiceResponses.create_identity', index=0,
-      number=200, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='get_identity', full_name='main.responses.IdentityServiceResponses.get_identity', index=1,
-      number=201, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='get_identities', full_name='main.responses.IdentityServiceResponses.get_identities', index=2,
-      number=202, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=520,
-  serialized_end=889,
+  serialized_start=151,
+  serialized_end=483,
 )
 
 
@@ -129,28 +84,28 @@ _ORGANIZATIONSERVICERESPONSES = _descriptor.Descriptor(
   extensions=[
     _descriptor.FieldDescriptor(
       name='create_organization', full_name='main.responses.OrganizationServiceResponses.create_organization', index=0,
-      number=300, type=11, cpp_type=10, label=1,
+      number=200, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='create_team', full_name='main.responses.OrganizationServiceResponses.create_team', index=1,
-      number=301, type=11, cpp_type=10, label=1,
+      number=201, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='create_address', full_name='main.responses.OrganizationServiceResponses.create_address', index=2,
-      number=302, type=11, cpp_type=10, label=1,
+      number=202, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='delete_address', full_name='main.responses.OrganizationServiceResponses.delete_address', index=3,
-      number=303, type=11, cpp_type=10, label=1,
+      number=203, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
@@ -164,12 +119,11 @@ _ORGANIZATIONSERVICERESPONSES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=892,
-  serialized_end=1419,
+  serialized_start=486,
+  serialized_end=1013,
 )
 
 DESCRIPTOR.message_types_by_name['UserServiceResponses'] = _USERSERVICERESPONSES
-DESCRIPTOR.message_types_by_name['IdentityServiceResponses'] = _IDENTITYSERVICERESPONSES
 DESCRIPTOR.message_types_by_name['OrganizationServiceResponses'] = _ORGANIZATIONSERVICERESPONSES
 
 UserServiceResponses = _reflection.GeneratedProtocolMessageType('UserServiceResponses', (_message.Message,), dict(
@@ -178,13 +132,6 @@ UserServiceResponses = _reflection.GeneratedProtocolMessageType('UserServiceResp
   # @@protoc_insertion_point(class_scope:main.responses.UserServiceResponses)
   ))
 _sym_db.RegisterMessage(UserServiceResponses)
-
-IdentityServiceResponses = _reflection.GeneratedProtocolMessageType('IdentityServiceResponses', (_message.Message,), dict(
-  DESCRIPTOR = _IDENTITYSERVICERESPONSES,
-  __module__ = 'protobufs.response_registry_pb2'
-  # @@protoc_insertion_point(class_scope:main.responses.IdentityServiceResponses)
-  ))
-_sym_db.RegisterMessage(IdentityServiceResponses)
 
 OrganizationServiceResponses = _reflection.GeneratedProtocolMessageType('OrganizationServiceResponses', (_message.Message,), dict(
   DESCRIPTOR = _ORGANIZATIONSERVICERESPONSES,
@@ -199,12 +146,6 @@ _USERSERVICERESPONSES.extensions_by_name['valid_user'].message_type = protobufs.
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_USERSERVICERESPONSES.extensions_by_name['valid_user'])
 _USERSERVICERESPONSES.extensions_by_name['authenticate_user'].message_type = protobufs.user_service_pb2._USERSERVICE_AUTHENTICATEUSER_RESPONSE
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_USERSERVICERESPONSES.extensions_by_name['authenticate_user'])
-_IDENTITYSERVICERESPONSES.extensions_by_name['create_identity'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_CREATEIDENTITY_RESPONSE
-service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_IDENTITYSERVICERESPONSES.extensions_by_name['create_identity'])
-_IDENTITYSERVICERESPONSES.extensions_by_name['get_identity'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_GETIDENTITY_RESPONSE
-service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_IDENTITYSERVICERESPONSES.extensions_by_name['get_identity'])
-_IDENTITYSERVICERESPONSES.extensions_by_name['get_identities'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_GETIDENTITIES_RESPONSE
-service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_IDENTITYSERVICERESPONSES.extensions_by_name['get_identities'])
 _ORGANIZATIONSERVICERESPONSES.extensions_by_name['create_organization'].message_type = protobufs.organization_service_pb2._ORGANIZATIONSERVICE_CREATEORGANIZATION_RESPONSE
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_ORGANIZATIONSERVICERESPONSES.extensions_by_name['create_organization'])
 _ORGANIZATIONSERVICERESPONSES.extensions_by_name['create_team'].message_type = protobufs.organization_service_pb2._ORGANIZATIONSERVICE_CREATETEAM_RESPONSE

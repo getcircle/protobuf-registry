@@ -13,15 +13,13 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.identity_service_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/user_service.proto',
   package='main.user_service',
-  serialized_pb=_b('\n\x1cprotobufs/user_service.proto\x12\x11main.user_service\x1a protobufs/identity_service.proto\"\xd6\x06\n\x0bUserService\x1a\\\n\nContainers\x1aN\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rprimary_email\x18\x02 \x01(\t\x12\x10\n\x08is_admin\x18\x03 \x01(\x08\x12\x11\n\tis_active\x18\x04 \x01(\x08\x1a\x92\x02\n\nCreateUser\x1ai\n\x07Request\x12\x10\n\x08password\x18\x01 \x01(\t\x12L\n\x08identity\x18\x02 \x01(\x0b\x32:.main.identity_service.IdentityService.Containers.Identity\x1a\x98\x01\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12N\n\nidentities\x18\x02 \x03(\x0b\x32:.main.identity_service.IdentityService.Containers.Identity\x1a\x43\n\tValidUser\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1a\n\x08Response\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x1a\x8e\x03\n\x10\x41uthenticateUser\x1a\x82\x02\n\x07Request\x12T\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32\x43.main.user_service.UserService.AuthenticateUser.Request.AuthBackend\x12X\n\x0b\x63redentials\x18\x02 \x01(\x0b\x32\x43.main.user_service.UserService.AuthenticateUser.Request.Credentials\x1a*\n\x0b\x43redentials\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\"\x1b\n\x0b\x41uthBackend\x12\x0c\n\x08INTERNAL\x10\x00\x1au\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12\x1c\n\rauthenticated\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\r\n\x05token\x18\x03 \x01(\t')
-  ,
-  dependencies=[protobufs.identity_service_pb2.DESCRIPTOR,])
+  serialized_pb=_b('\n\x1cprotobufs/user_service.proto\x12\x11main.user_service\"\xc6\x05\n\x0bUserService\x1a\\\n\nContainers\x1aN\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rprimary_email\x18\x02 \x01(\t\x12\x10\n\x08is_admin\x18\x03 \x01(\x08\x12\x11\n\tis_active\x18\x04 \x01(\x08\x1a\x82\x01\n\nCreateUser\x1a*\n\x07Request\x12\x10\n\x08password\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a\x43\n\tValidUser\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1a\n\x08Response\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x1a\x8e\x03\n\x10\x41uthenticateUser\x1a\x82\x02\n\x07Request\x12T\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32\x43.main.user_service.UserService.AuthenticateUser.Request.AuthBackend\x12X\n\x0b\x63redentials\x18\x02 \x01(\x0b\x32\x43.main.user_service.UserService.AuthenticateUser.Request.Credentials\x1a*\n\x0b\x43redentials\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\"\x1b\n\x0b\x41uthBackend\x12\x0c\n\x08INTERNAL\x10\x00\x1au\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12\x1c\n\rauthenticated\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\r\n\x05token\x18\x03 \x01(\t')
+)
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -39,8 +37,8 @@ _USERSERVICE_AUTHENTICATEUSER_REQUEST_AUTHBACKEND = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=794,
-  serialized_end=821,
+  serialized_start=616,
+  serialized_end=643,
 )
 _sym_db.RegisterEnumDescriptor(_USERSERVICE_AUTHENTICATEUSER_REQUEST_AUTHBACKEND)
 
@@ -91,8 +89,8 @@ _USERSERVICE_CONTAINERS_USER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=115,
-  serialized_end=193,
+  serialized_start=81,
+  serialized_end=159,
 )
 
 _USERSERVICE_CONTAINERS = _descriptor.Descriptor(
@@ -113,8 +111,8 @@ _USERSERVICE_CONTAINERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=101,
-  serialized_end=193,
+  serialized_start=67,
+  serialized_end=159,
 )
 
 _USERSERVICE_CREATEUSER_REQUEST = _descriptor.Descriptor(
@@ -132,9 +130,9 @@ _USERSERVICE_CREATEUSER_REQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='identity', full_name='main.user_service.UserService.CreateUser.Request.identity', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='email', full_name='main.user_service.UserService.CreateUser.Request.email', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -149,8 +147,8 @@ _USERSERVICE_CREATEUSER_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=210,
-  serialized_end=315,
+  serialized_start=176,
+  serialized_end=218,
 )
 
 _USERSERVICE_CREATEUSER_RESPONSE = _descriptor.Descriptor(
@@ -167,13 +165,6 @@ _USERSERVICE_CREATEUSER_RESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='identities', full_name='main.user_service.UserService.CreateUser.Response.identities', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -185,8 +176,8 @@ _USERSERVICE_CREATEUSER_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=318,
-  serialized_end=470,
+  serialized_start=220,
+  serialized_end=292,
 )
 
 _USERSERVICE_CREATEUSER = _descriptor.Descriptor(
@@ -207,8 +198,8 @@ _USERSERVICE_CREATEUSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=196,
-  serialized_end=470,
+  serialized_start=162,
+  serialized_end=292,
 )
 
 _USERSERVICE_VALIDUSER_REQUEST = _descriptor.Descriptor(
@@ -236,8 +227,8 @@ _USERSERVICE_VALIDUSER_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=485,
-  serialized_end=511,
+  serialized_start=307,
+  serialized_end=333,
 )
 
 _USERSERVICE_VALIDUSER_RESPONSE = _descriptor.Descriptor(
@@ -265,8 +256,8 @@ _USERSERVICE_VALIDUSER_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=513,
-  serialized_end=539,
+  serialized_start=335,
+  serialized_end=361,
 )
 
 _USERSERVICE_VALIDUSER = _descriptor.Descriptor(
@@ -287,8 +278,8 @@ _USERSERVICE_VALIDUSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=472,
-  serialized_end=539,
+  serialized_start=294,
+  serialized_end=361,
 )
 
 _USERSERVICE_AUTHENTICATEUSER_REQUEST_CREDENTIALS = _descriptor.Descriptor(
@@ -323,8 +314,8 @@ _USERSERVICE_AUTHENTICATEUSER_REQUEST_CREDENTIALS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=750,
-  serialized_end=792,
+  serialized_start=572,
+  serialized_end=614,
 )
 
 _USERSERVICE_AUTHENTICATEUSER_REQUEST = _descriptor.Descriptor(
@@ -360,8 +351,8 @@ _USERSERVICE_AUTHENTICATEUSER_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=563,
-  serialized_end=821,
+  serialized_start=385,
+  serialized_end=643,
 )
 
 _USERSERVICE_AUTHENTICATEUSER_RESPONSE = _descriptor.Descriptor(
@@ -403,8 +394,8 @@ _USERSERVICE_AUTHENTICATEUSER_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=823,
-  serialized_end=940,
+  serialized_start=645,
+  serialized_end=762,
 )
 
 _USERSERVICE_AUTHENTICATEUSER = _descriptor.Descriptor(
@@ -425,8 +416,8 @@ _USERSERVICE_AUTHENTICATEUSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=542,
-  serialized_end=940,
+  serialized_start=364,
+  serialized_end=762,
 )
 
 _USERSERVICE = _descriptor.Descriptor(
@@ -447,16 +438,14 @@ _USERSERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=86,
-  serialized_end=940,
+  serialized_start=52,
+  serialized_end=762,
 )
 
 _USERSERVICE_CONTAINERS_USER.containing_type = _USERSERVICE_CONTAINERS
 _USERSERVICE_CONTAINERS.containing_type = _USERSERVICE
-_USERSERVICE_CREATEUSER_REQUEST.fields_by_name['identity'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_CONTAINERS_IDENTITY
 _USERSERVICE_CREATEUSER_REQUEST.containing_type = _USERSERVICE_CREATEUSER
 _USERSERVICE_CREATEUSER_RESPONSE.fields_by_name['user'].message_type = _USERSERVICE_CONTAINERS_USER
-_USERSERVICE_CREATEUSER_RESPONSE.fields_by_name['identities'].message_type = protobufs.identity_service_pb2._IDENTITYSERVICE_CONTAINERS_IDENTITY
 _USERSERVICE_CREATEUSER_RESPONSE.containing_type = _USERSERVICE_CREATEUSER
 _USERSERVICE_CREATEUSER.containing_type = _USERSERVICE
 _USERSERVICE_VALIDUSER_REQUEST.containing_type = _USERSERVICE_VALIDUSER
