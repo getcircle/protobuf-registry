@@ -48,6 +48,21 @@ message OrganizationService {
 
     }
 
+    message GetOrganization {
+
+        message Request {
+            oneof lookup_key {
+                string organization_id = 1;
+                string organization_domain = 2;
+            }
+        }
+
+        message Response {
+            optional Containers.Organization organization = 1;
+        }
+
+    }
+
     message CreateTeam {
 
         message Request {

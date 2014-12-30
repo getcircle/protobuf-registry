@@ -22,6 +22,7 @@ message OrganizationServiceResponses {
         optional main.organization_service.OrganizationService.DeleteAddress.Response delete_address = 203;
         optional main.organization_service.OrganizationService.GetAddress.Response get_address = 204;
         optional main.organization_service.OrganizationService.GetTeam.Response get_team = 205;
+        optional main.organization_service.OrganizationService.GetOrganization.Response get_organization = 206;
     }
 }
 
