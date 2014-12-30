@@ -3,13 +3,14 @@ package main.responses;
 import "service_protobufs/soa.proto";
 
 import "protobufs/organization_service.proto";
+import "protobufs/profile_service.proto";
 import "protobufs/user_service.proto";
 
 message UserServiceResponses {
     extend soa.ActionResponseResult {
-        optional main.user_service.UserService.CreateUser.Response create_user = 101;
-        optional main.user_service.UserService.ValidUser.Response valid_user = 102;
-        optional main.user_service.UserService.AuthenticateUser.Response authenticate_user = 103;
+        optional main.user_service.UserService.CreateUser.Response create_user = 100;
+        optional main.user_service.UserService.ValidUser.Response valid_user = 101;
+        optional main.user_service.UserService.AuthenticateUser.Response authenticate_user = 102;
     }
 }
 
@@ -19,5 +20,15 @@ message OrganizationServiceResponses {
         optional main.organization_service.OrganizationService.CreateTeam.Response create_team = 201;
         optional main.organization_service.OrganizationService.CreateAddress.Response create_address = 202;
         optional main.organization_service.OrganizationService.DeleteAddress.Response delete_address = 203;
+        optional main.organization_service.OrganizationService.GetAddress.Response get_address = 204;
+        optional main.organization_service.OrganizationService.GetTeam.Response get_team = 205;
+    }
+}
+
+message ProfileServiceResponses {
+    extend soa.ActionResponseResult {
+        optional main.profile_service.ProfileService.CreateProfile.Response create_profile = 300;
+        optional main.profile_service.ProfileService.GetExtendedProfile.Response get_extended_profile = 301;
+        optional main.profile_service.ProfileService.GetProfile.Response get_profile = 302;
     }
 }

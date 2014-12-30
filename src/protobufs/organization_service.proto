@@ -39,8 +39,7 @@ message OrganizationService {
     message CreateOrganization {
 
         message Request {
-            optional string domain = 1;
-            optional string name = 2;
+            optional Containers.Organization organization = 1;
         }
 
         message Response {
@@ -52,16 +51,25 @@ message OrganizationService {
     message CreateTeam {
 
         message Request {
-            optional string organization_id = 1;
-            optional string name = 2;
-            optional string owner_id = 3;
-            optional string child_of = 5;
+            optional Containers.Team team = 1;
+            optional string child_of = 2;
         }
 
         message Response {
             optional Containers.Team team = 1;
         }
 
+    }
+
+    message GetTeam {
+
+        message Request {
+            optional string team_id = 1;
+        }
+
+        message Response {
+            optional Containers.Team team = 1;
+        }
     }
 
     message CreateAddress {
@@ -83,6 +91,18 @@ message OrganizationService {
         }
 
         message Response {}
+
+    }
+
+    message GetAddress {
+
+        message Request {
+            optional string address_id = 1;
+        }
+
+        message Response {
+            optional Containers.Address address = 1;
+        }
 
     }
 
