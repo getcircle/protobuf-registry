@@ -22,7 +22,7 @@ import protobufs.user_service_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/request_registry.proto',
   package='main.requests',
-  serialized_pb=_b('\n protobufs/request_registry.proto\x12\rmain.requests\x1a\x1bservice_protobufs/soa.proto\x1a$protobufs/organization_service.proto\x1a\x1fprotobufs/profile_service.proto\x1a\x1cprotobufs/user_service.proto\"\xc5\x02\n\x13UserServiceRequests2`\n\x0b\x63reate_user\x12\x18.soa.ActionRequestParams\x18\x64 \x01(\x0b\x32\x31.main.user_service.UserService.CreateUser.Request2^\n\nvalid_user\x12\x18.soa.ActionRequestParams\x18\x65 \x01(\x0b\x32\x30.main.user_service.UserService.ValidUser.Request2l\n\x11\x61uthenticate_user\x12\x18.soa.ActionRequestParams\x18\x66 \x01(\x0b\x32\x37.main.user_service.UserService.AuthenticateUser.Request\"\xe3\x06\n\x1bOrganizationServiceRequests2\x81\x01\n\x13\x63reate_organization\x12\x18.soa.ActionRequestParams\x18\xc8\x01 \x01(\x0b\x32I.main.organization_service.OrganizationService.CreateOrganization.Request2q\n\x0b\x63reate_team\x12\x18.soa.ActionRequestParams\x18\xc9\x01 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.CreateTeam.Request2w\n\x0e\x63reate_address\x12\x18.soa.ActionRequestParams\x18\xca\x01 \x01(\x0b\x32\x44.main.organization_service.OrganizationService.CreateAddress.Request2w\n\x0e\x64\x65lete_address\x12\x18.soa.ActionRequestParams\x18\xcb\x01 \x01(\x0b\x32\x44.main.organization_service.OrganizationService.DeleteAddress.Request2q\n\x0bget_address\x12\x18.soa.ActionRequestParams\x18\xcc\x01 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.GetAddress.Request2k\n\x08get_team\x12\x18.soa.ActionRequestParams\x18\xcd\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.GetTeam.Request2{\n\x10get_organization\x12\x18.soa.ActionRequestParams\x18\xce\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.GetOrganization.Request\"\xea\x02\n\x16ProfileServiceRequests2m\n\x0e\x63reate_profile\x12\x18.soa.ActionRequestParams\x18\xac\x02 \x01(\x0b\x32:.main.profile_service.ProfileService.CreateProfile.Request2x\n\x14get_extended_profile\x12\x18.soa.ActionRequestParams\x18\xad\x02 \x01(\x0b\x32?.main.profile_service.ProfileService.GetExtendedProfile.Request2g\n\x0bget_profile\x12\x18.soa.ActionRequestParams\x18\xae\x02 \x01(\x0b\x32\x37.main.profile_service.ProfileService.GetProfile.Request')
+  serialized_pb=_b('\n protobufs/request_registry.proto\x12\rmain.requests\x1a\x1bservice_protobufs/soa.proto\x1a$protobufs/organization_service.proto\x1a\x1fprotobufs/profile_service.proto\x1a\x1cprotobufs/user_service.proto\"\xc5\x02\n\x13UserServiceRequests2`\n\x0b\x63reate_user\x12\x18.soa.ActionRequestParams\x18\x64 \x01(\x0b\x32\x31.main.user_service.UserService.CreateUser.Request2^\n\nvalid_user\x12\x18.soa.ActionRequestParams\x18\x65 \x01(\x0b\x32\x30.main.user_service.UserService.ValidUser.Request2l\n\x11\x61uthenticate_user\x12\x18.soa.ActionRequestParams\x18\x66 \x01(\x0b\x32\x37.main.user_service.UserService.AuthenticateUser.Request\"\xd2\x07\n\x1bOrganizationServiceRequests2\x81\x01\n\x13\x63reate_organization\x12\x18.soa.ActionRequestParams\x18\xc8\x01 \x01(\x0b\x32I.main.organization_service.OrganizationService.CreateOrganization.Request2q\n\x0b\x63reate_team\x12\x18.soa.ActionRequestParams\x18\xc9\x01 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.CreateTeam.Request2w\n\x0e\x63reate_address\x12\x18.soa.ActionRequestParams\x18\xca\x01 \x01(\x0b\x32\x44.main.organization_service.OrganizationService.CreateAddress.Request2w\n\x0e\x64\x65lete_address\x12\x18.soa.ActionRequestParams\x18\xcb\x01 \x01(\x0b\x32\x44.main.organization_service.OrganizationService.DeleteAddress.Request2q\n\x0bget_address\x12\x18.soa.ActionRequestParams\x18\xcc\x01 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.GetAddress.Request2k\n\x08get_team\x12\x18.soa.ActionRequestParams\x18\xcd\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.GetTeam.Request2{\n\x10get_organization\x12\x18.soa.ActionRequestParams\x18\xce\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.GetOrganization.Request2m\n\tget_teams\x12\x18.soa.ActionRequestParams\x18\xcf\x01 \x01(\x0b\x32?.main.organization_service.OrganizationService.GetTeams.Request\"\xea\x02\n\x16ProfileServiceRequests2m\n\x0e\x63reate_profile\x12\x18.soa.ActionRequestParams\x18\xac\x02 \x01(\x0b\x32:.main.profile_service.ProfileService.CreateProfile.Request2x\n\x14get_extended_profile\x12\x18.soa.ActionRequestParams\x18\xad\x02 \x01(\x0b\x32?.main.profile_service.ProfileService.GetExtendedProfile.Request2g\n\x0bget_profile\x12\x18.soa.ActionRequestParams\x18\xae\x02 \x01(\x0b\x32\x37.main.profile_service.ProfileService.GetProfile.Request')
   ,
   dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.organization_service_pb2.DESCRIPTOR,protobufs.profile_service_pb2.DESCRIPTOR,protobufs.user_service_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -132,6 +132,13 @@ _ORGANIZATIONSERVICEREQUESTS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='get_teams', full_name='main.requests.OrganizationServiceRequests.get_teams', index=7,
+      number=207, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
   ],
   nested_types=[],
   enum_types=[
@@ -142,7 +149,7 @@ _ORGANIZATIONSERVICEREQUESTS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=510,
-  serialized_end=1377,
+  serialized_end=1488,
 )
 
 
@@ -185,8 +192,8 @@ _PROFILESERVICEREQUESTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1380,
-  serialized_end=1742,
+  serialized_start=1491,
+  serialized_end=1853,
 )
 
 DESCRIPTOR.message_types_by_name['UserServiceRequests'] = _USERSERVICEREQUESTS
@@ -234,6 +241,8 @@ _ORGANIZATIONSERVICEREQUESTS.extensions_by_name['get_team'].message_type = proto
 service_protobufs.soa_pb2.ActionRequestParams.RegisterExtension(_ORGANIZATIONSERVICEREQUESTS.extensions_by_name['get_team'])
 _ORGANIZATIONSERVICEREQUESTS.extensions_by_name['get_organization'].message_type = protobufs.organization_service_pb2._ORGANIZATIONSERVICE_GETORGANIZATION_REQUEST
 service_protobufs.soa_pb2.ActionRequestParams.RegisterExtension(_ORGANIZATIONSERVICEREQUESTS.extensions_by_name['get_organization'])
+_ORGANIZATIONSERVICEREQUESTS.extensions_by_name['get_teams'].message_type = protobufs.organization_service_pb2._ORGANIZATIONSERVICE_GETTEAMS_REQUEST
+service_protobufs.soa_pb2.ActionRequestParams.RegisterExtension(_ORGANIZATIONSERVICEREQUESTS.extensions_by_name['get_teams'])
 _PROFILESERVICEREQUESTS.extensions_by_name['create_profile'].message_type = protobufs.profile_service_pb2._PROFILESERVICE_CREATEPROFILE_REQUEST
 service_protobufs.soa_pb2.ActionRequestParams.RegisterExtension(_PROFILESERVICEREQUESTS.extensions_by_name['create_profile'])
 _PROFILESERVICEREQUESTS.extensions_by_name['get_extended_profile'].message_type = protobufs.profile_service_pb2._PROFILESERVICE_GETEXTENDEDPROFILE_REQUEST

@@ -23,6 +23,7 @@ message OrganizationServiceRequests {
         optional main.organization_service.OrganizationService.GetAddress.Request get_address = 204;
         optional main.organization_service.OrganizationService.GetTeam.Request get_team = 205;
         optional main.organization_service.OrganizationService.GetOrganization.Request get_organization = 206;
+        optional main.organization_service.OrganizationService.GetTeams.Request get_teams = 207;
     }
 }
 
