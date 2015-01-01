@@ -46,6 +46,18 @@ message ProfileService {
 
     }
 
+    message UpdateProfile {
+
+        message Request {
+            optional Containers.Profile profile = 1;
+        }
+
+        message Response {
+            optional Containers.Profile profile = 1;
+        }
+
+    }
+
     message GetProfile {
 
         message Request {

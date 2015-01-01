@@ -35,5 +35,6 @@ message ProfileServiceResponses {
         optional main.profile_service.ProfileService.CreateTags.Response create_tags = 303;
         optional main.profile_service.ProfileService.GetTags.Response get_tags = 304;
         optional main.profile_service.ProfileService.AddTags.Response add_tags = 305;
+        optional main.profile_service.ProfileService.UpdateProfile.Response update_profile = 306;
     }
 }
