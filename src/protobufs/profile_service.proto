@@ -132,4 +132,18 @@ message ProfileService {
 
     }
 
+    message GetProfiles {
+
+        message Request {
+            oneof lookup_key {
+                string team_id = 1;
+            }
+        }
+
+        message Response {
+            repeated Containers.Profile profiles = 1;
+        }
+
+    }
+
 }

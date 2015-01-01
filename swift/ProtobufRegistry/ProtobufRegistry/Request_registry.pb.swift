@@ -92,6 +92,11 @@ public var ProfileServiceRequests_update_profile:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_update_profileStatic
    }
 }
+public var ProfileServiceRequests_get_profiles:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_get_profilesStatic
+   }
+}
 public struct RequestRegistryRoot {
   public static var sharedInstance : RequestRegistryRoot {
    struct Static {
@@ -117,6 +122,7 @@ public struct RequestRegistryRoot {
   var ProfileServiceRequests_get_tagsStatic:ConcreateExtensionField
   var ProfileServiceRequests_add_tagsStatic:ConcreateExtensionField
   var ProfileServiceRequests_update_profileStatic:ConcreateExtensionField
+  var ProfileServiceRequests_get_profilesStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -138,6 +144,7 @@ public struct RequestRegistryRoot {
     ProfileServiceRequests_get_tagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 304, defaultValue:ProfileService.GetTags.Request(), messageOrGroupClass:ProfileService.GetTags.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_add_tagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 305, defaultValue:ProfileService.AddTags.Request(), messageOrGroupClass:ProfileService.AddTags.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_update_profileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 306, defaultValue:ProfileService.UpdateProfile.Request(), messageOrGroupClass:ProfileService.UpdateProfile.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ProfileServiceRequests_get_profilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 307, defaultValue:ProfileService.GetProfiles.Request(), messageOrGroupClass:ProfileService.GetProfiles.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -164,6 +171,7 @@ public struct RequestRegistryRoot {
     registry.addExtension(ProfileServiceRequests_get_tagsStatic)
     registry.addExtension(ProfileServiceRequests_add_tagsStatic)
     registry.addExtension(ProfileServiceRequests_update_profileStatic)
+    registry.addExtension(ProfileServiceRequests_get_profilesStatic)
   }
 }
 
@@ -529,6 +537,9 @@ final public class ProfileServiceRequests : GeneratedMessage {
   }
   public class func update_profile() -> ConcreateExtensionField {
        return ProfileServiceRequests_update_profile
+  }
+  public class func get_profiles() -> ConcreateExtensionField {
+       return ProfileServiceRequests_get_profiles
   }
   required public init() {
        super.init()

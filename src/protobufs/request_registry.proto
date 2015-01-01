@@ -36,5 +36,6 @@ message ProfileServiceRequests {
         optional main.profile_service.ProfileService.GetTags.Request get_tags = 304;
         optional main.profile_service.ProfileService.AddTags.Request add_tags = 305;
         optional main.profile_service.ProfileService.UpdateProfile.Request update_profile = 306;
+        optional main.profile_service.ProfileService.GetProfiles.Request get_profiles = 307;
     }
 }
