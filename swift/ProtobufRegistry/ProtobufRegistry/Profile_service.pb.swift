@@ -2687,6 +2687,7 @@ final public class ProfileService : GeneratedMessage {
           public private(set) var team:OrganizationService.Containers.Team = OrganizationService.Containers.Team()
           public private(set) var hasNote:Bool = false
           public private(set) var note:NoteService.Containers.Note = NoteService.Containers.Note()
+          public private(set) var tags:Array<ProfileService.Containers.Tag>  = Array<ProfileService.Containers.Tag>()
           required public init() {
                super.init()
           }
@@ -2708,6 +2709,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasNote {
               output.writeMessage(5, value:note)
+            }
+            for oneElementtags in tags {
+                output.writeMessage(6, value:oneElementtags)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -2732,6 +2736,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasNote {
               size += WireFormat.computeMessageSize(5, value:note)
+            }
+            for oneElementtags in tags {
+                size += WireFormat.computeMessageSize(6, value:oneElementtags)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -2799,6 +2806,13 @@ final public class ProfileService : GeneratedMessage {
               note.writeDescriptionTo(&output, indent:"\(indent)  ")
               output += "\(indent) }\n"
             }
+            var tagsElementIndex:Int = 0
+            for oneElementtags in tags {
+                output += "\(indent) tags[\(tagsElementIndex)] {\n"
+                oneElementtags.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                tagsElementIndex++
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -2818,6 +2832,9 @@ final public class ProfileService : GeneratedMessage {
                   }
                   if hasNote {
                     hashCode = (hashCode &* 31) &+ note.hashValue
+                  }
+                  for oneElementtags in tags {
+                      hashCode = (hashCode &* 31) &+ oneElementtags.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -3009,6 +3026,18 @@ final public class ProfileService : GeneratedMessage {
             builderResult.note = NoteService.Containers.Note()
             return self
           }
+          public var tags:Array<ProfileService.Containers.Tag> {
+               get {
+                   return builderResult.tags
+               }
+               set (value) {
+                   builderResult.tags = value
+               }
+          }
+          public func clearTags() -> ProfileService.GetExtendedProfile.ResponseBuilder {
+            builderResult.tags.removeAll(keepCapacity: false)
+            return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -3047,6 +3076,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if (other.hasNote) {
                 mergeNote(other.note)
+            }
+            if !other.tags.isEmpty  {
+               builderResult.tags += other.tags
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -3102,6 +3134,11 @@ final public class ProfileService : GeneratedMessage {
                 }
                 input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
                 note = subBuilder.buildPartial()
+
+              case 50 :
+                var subBuilder = ProfileService.Containers.Tag.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                tags += [subBuilder.buildPartial()]
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

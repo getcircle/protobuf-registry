@@ -76,6 +76,7 @@ message ProfileService {
             optional Containers.Profile manager = 3;
             optional main.organization_service.OrganizationService.Containers.Team team = 4;
             optional main.note_service.NoteService.Containers.Note note = 5;
+            repeated Containers.Tag tags = 6;
         }
 
     }
