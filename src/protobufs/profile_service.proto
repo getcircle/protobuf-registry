@@ -25,6 +25,11 @@ message ProfileService {
             optional string team_id = 13;
         }
 
+        message Tag {
+            optional string id = 1;
+            optional string name = 2;
+        }
+
     }
 
     // MARK: - Actions
@@ -72,6 +77,45 @@ message ProfileService {
             optional main.organization_service.OrganizationService.Containers.Team team = 4;
             optional main.note_service.NoteService.Containers.Note note = 5;
         }
+
+    }
+
+    message CreateTags {
+
+        message Request {
+            repeated Containers.Tag tags = 1;
+            optional string organization_id = 2;
+        }
+
+        message Response {
+            repeated Containers.Tag tags = 1;
+        }
+
+    }
+
+    message GetTags {
+
+        message Request {
+            oneof lookup_key {
+                string profile_id = 1;
+                string organization_id = 2;
+            }
+        }
+
+        message Response {
+            repeated Containers.Tag tags = 1;
+        }
+
+    }
+
+    message AddTags {
+
+        message Request {
+            optional string profile_id = 1;
+            repeated string tag_ids = 2;
+        }
+
+        message Response {}
 
     }
 

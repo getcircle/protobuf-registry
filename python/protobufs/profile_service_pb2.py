@@ -20,7 +20,7 @@ import protobufs.note_service_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/profile_service.proto',
   package='main.profile_service',
-  serialized_pb=_b('\n\x1fprotobufs/profile_service.proto\x12\x14main.profile_service\x1a$protobufs/organization_service.proto\x1a\x1cprotobufs/note_service.proto\"\xd6\x08\n\x0eProfileService\x1a\x85\x02\n\nContainers\x1a\xf6\x01\n\x07Profile\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\t\x12\x12\n\naddress_id\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\x12\x12\n\nfirst_name\x18\x06 \x01(\t\x12\x11\n\tlast_name\x18\x07 \x01(\t\x12\x12\n\ncell_phone\x18\x08 \x01(\t\x12\x12\n\nwork_phone\x18\t \x01(\t\x12\x11\n\timage_url\x18\n \x01(\t\x12\x10\n\x08location\x18\x0b \x01(\t\x12\r\n\x05\x65mail\x18\x0c \x01(\t\x12\x0f\n\x07team_id\x18\r \x01(\t\x1a\xba\x01\n\rCreateProfile\x1aS\n\x07Request\x12H\n\x07profile\x18\x01 \x01(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x1aT\n\x08Response\x12H\n\x07profile\x18\x01 \x01(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x1a\xa4\x01\n\nGetProfile\x1a@\n\x07Request\x12\x14\n\nprofile_id\x18\x01 \x01(\tH\x00\x12\x11\n\x07user_id\x18\x02 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1aT\n\x08Response\x12H\n\x07profile\x18\x01 \x01(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x1a\xd7\x03\n\x12GetExtendedProfile\x1a@\n\x07Request\x12\x14\n\nprofile_id\x18\x01 \x01(\tH\x00\x12\x11\n\x07user_id\x18\x02 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1a\xfe\x02\n\x08Response\x12H\n\x07profile\x18\x01 \x01(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x12R\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x12H\n\x07manager\x18\x03 \x01(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x12L\n\x04team\x18\x04 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x12<\n\x04note\x18\x05 \x01(\x0b\x32..main.note_service.NoteService.Containers.Note')
+  serialized_pb=_b('\n\x1fprotobufs/profile_service.proto\x12\x14main.profile_service\x1a$protobufs/organization_service.proto\x1a\x1cprotobufs/note_service.proto\"\xa8\x0c\n\x0eProfileService\x1a\xa6\x02\n\nContainers\x1a\xf6\x01\n\x07Profile\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\t\x12\x12\n\naddress_id\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\x12\x12\n\nfirst_name\x18\x06 \x01(\t\x12\x11\n\tlast_name\x18\x07 \x01(\t\x12\x12\n\ncell_phone\x18\x08 \x01(\t\x12\x12\n\nwork_phone\x18\t \x01(\t\x12\x11\n\timage_url\x18\n \x01(\t\x12\x10\n\x08location\x18\x0b \x01(\t\x12\r\n\x05\x65mail\x18\x0c \x01(\t\x12\x0f\n\x07team_id\x18\r \x01(\t\x1a\x1f\n\x03Tag\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x1a\xba\x01\n\rCreateProfile\x1aS\n\x07Request\x12H\n\x07profile\x18\x01 \x01(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x1aT\n\x08Response\x12H\n\x07profile\x18\x01 \x01(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x1a\xa4\x01\n\nGetProfile\x1a@\n\x07Request\x12\x14\n\nprofile_id\x18\x01 \x01(\tH\x00\x12\x11\n\x07user_id\x18\x02 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1aT\n\x08Response\x12H\n\x07profile\x18\x01 \x01(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x1a\xd7\x03\n\x12GetExtendedProfile\x1a@\n\x07Request\x12\x14\n\nprofile_id\x18\x01 \x01(\tH\x00\x12\x11\n\x07user_id\x18\x02 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1a\xfe\x02\n\x08Response\x12H\n\x07profile\x18\x01 \x01(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x12R\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x12H\n\x07manager\x18\x03 \x01(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x12L\n\x04team\x18\x04 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x12<\n\x04note\x18\x05 \x01(\x0b\x32..main.note_service.NoteService.Containers.Note\x1a\xc2\x01\n\nCreateTags\x1a\x65\n\x07Request\x12\x41\n\x04tags\x18\x01 \x03(\x0b\x32\x33.main.profile_service.ProfileService.Containers.Tag\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x1aM\n\x08Response\x12\x41\n\x04tags\x18\x01 \x03(\x0b\x32\x33.main.profile_service.ProfileService.Containers.Tag\x1a\xa2\x01\n\x07GetTags\x1aH\n\x07Request\x12\x14\n\nprofile_id\x18\x01 \x01(\tH\x00\x12\x19\n\x0forganization_id\x18\x02 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1aM\n\x08Response\x12\x41\n\x04tags\x18\x01 \x03(\x0b\x32\x33.main.profile_service.ProfileService.Containers.Tag\x1a\x45\n\x07\x41\x64\x64Tags\x1a.\n\x07Request\x12\x12\n\nprofile_id\x18\x01 \x01(\t\x12\x0f\n\x07tag_ids\x18\x02 \x03(\t\x1a\n\n\x08Response')
   ,
   dependencies=[protobufs.organization_service_pb2.DESCRIPTOR,protobufs.note_service_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -141,6 +141,42 @@ _PROFILESERVICE_CONTAINERS_PROFILE = _descriptor.Descriptor(
   serialized_end=406,
 )
 
+_PROFILESERVICE_CONTAINERS_TAG = _descriptor.Descriptor(
+  name='Tag',
+  full_name='main.profile_service.ProfileService.Containers.Tag',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='main.profile_service.ProfileService.Containers.Tag.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='name', full_name='main.profile_service.ProfileService.Containers.Tag.name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=408,
+  serialized_end=439,
+)
+
 _PROFILESERVICE_CONTAINERS = _descriptor.Descriptor(
   name='Containers',
   full_name='main.profile_service.ProfileService.Containers',
@@ -151,7 +187,7 @@ _PROFILESERVICE_CONTAINERS = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_PROFILESERVICE_CONTAINERS_PROFILE, ],
+  nested_types=[_PROFILESERVICE_CONTAINERS_PROFILE, _PROFILESERVICE_CONTAINERS_TAG, ],
   enum_types=[
   ],
   options=None,
@@ -160,7 +196,7 @@ _PROFILESERVICE_CONTAINERS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=145,
-  serialized_end=406,
+  serialized_end=439,
 )
 
 _PROFILESERVICE_CREATEPROFILE_REQUEST = _descriptor.Descriptor(
@@ -188,8 +224,8 @@ _PROFILESERVICE_CREATEPROFILE_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=426,
-  serialized_end=509,
+  serialized_start=459,
+  serialized_end=542,
 )
 
 _PROFILESERVICE_CREATEPROFILE_RESPONSE = _descriptor.Descriptor(
@@ -217,8 +253,8 @@ _PROFILESERVICE_CREATEPROFILE_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=511,
-  serialized_end=595,
+  serialized_start=544,
+  serialized_end=628,
 )
 
 _PROFILESERVICE_CREATEPROFILE = _descriptor.Descriptor(
@@ -239,8 +275,8 @@ _PROFILESERVICE_CREATEPROFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=409,
-  serialized_end=595,
+  serialized_start=442,
+  serialized_end=628,
 )
 
 _PROFILESERVICE_GETPROFILE_REQUEST = _descriptor.Descriptor(
@@ -278,8 +314,8 @@ _PROFILESERVICE_GETPROFILE_REQUEST = _descriptor.Descriptor(
       name='lookup_key', full_name='main.profile_service.ProfileService.GetProfile.Request.lookup_key',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=612,
-  serialized_end=676,
+  serialized_start=645,
+  serialized_end=709,
 )
 
 _PROFILESERVICE_GETPROFILE_RESPONSE = _descriptor.Descriptor(
@@ -307,8 +343,8 @@ _PROFILESERVICE_GETPROFILE_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=511,
-  serialized_end=595,
+  serialized_start=544,
+  serialized_end=628,
 )
 
 _PROFILESERVICE_GETPROFILE = _descriptor.Descriptor(
@@ -329,8 +365,8 @@ _PROFILESERVICE_GETPROFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=598,
-  serialized_end=762,
+  serialized_start=631,
+  serialized_end=795,
 )
 
 _PROFILESERVICE_GETEXTENDEDPROFILE_REQUEST = _descriptor.Descriptor(
@@ -368,8 +404,8 @@ _PROFILESERVICE_GETEXTENDEDPROFILE_REQUEST = _descriptor.Descriptor(
       name='lookup_key', full_name='main.profile_service.ProfileService.GetExtendedProfile.Request.lookup_key',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=612,
-  serialized_end=676,
+  serialized_start=645,
+  serialized_end=709,
 )
 
 _PROFILESERVICE_GETEXTENDEDPROFILE_RESPONSE = _descriptor.Descriptor(
@@ -425,8 +461,8 @@ _PROFILESERVICE_GETEXTENDEDPROFILE_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=854,
-  serialized_end=1236,
+  serialized_start=887,
+  serialized_end=1269,
 )
 
 _PROFILESERVICE_GETEXTENDEDPROFILE = _descriptor.Descriptor(
@@ -447,8 +483,265 @@ _PROFILESERVICE_GETEXTENDEDPROFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=765,
-  serialized_end=1236,
+  serialized_start=798,
+  serialized_end=1269,
+)
+
+_PROFILESERVICE_CREATETAGS_REQUEST = _descriptor.Descriptor(
+  name='Request',
+  full_name='main.profile_service.ProfileService.CreateTags.Request',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='tags', full_name='main.profile_service.ProfileService.CreateTags.Request.tags', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='organization_id', full_name='main.profile_service.ProfileService.CreateTags.Request.organization_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1286,
+  serialized_end=1387,
+)
+
+_PROFILESERVICE_CREATETAGS_RESPONSE = _descriptor.Descriptor(
+  name='Response',
+  full_name='main.profile_service.ProfileService.CreateTags.Response',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='tags', full_name='main.profile_service.ProfileService.CreateTags.Response.tags', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1389,
+  serialized_end=1466,
+)
+
+_PROFILESERVICE_CREATETAGS = _descriptor.Descriptor(
+  name='CreateTags',
+  full_name='main.profile_service.ProfileService.CreateTags',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[_PROFILESERVICE_CREATETAGS_REQUEST, _PROFILESERVICE_CREATETAGS_RESPONSE, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1272,
+  serialized_end=1466,
+)
+
+_PROFILESERVICE_GETTAGS_REQUEST = _descriptor.Descriptor(
+  name='Request',
+  full_name='main.profile_service.ProfileService.GetTags.Request',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='profile_id', full_name='main.profile_service.ProfileService.GetTags.Request.profile_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='organization_id', full_name='main.profile_service.ProfileService.GetTags.Request.organization_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='lookup_key', full_name='main.profile_service.ProfileService.GetTags.Request.lookup_key',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=1480,
+  serialized_end=1552,
+)
+
+_PROFILESERVICE_GETTAGS_RESPONSE = _descriptor.Descriptor(
+  name='Response',
+  full_name='main.profile_service.ProfileService.GetTags.Response',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='tags', full_name='main.profile_service.ProfileService.GetTags.Response.tags', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1389,
+  serialized_end=1466,
+)
+
+_PROFILESERVICE_GETTAGS = _descriptor.Descriptor(
+  name='GetTags',
+  full_name='main.profile_service.ProfileService.GetTags',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[_PROFILESERVICE_GETTAGS_REQUEST, _PROFILESERVICE_GETTAGS_RESPONSE, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1469,
+  serialized_end=1631,
+)
+
+_PROFILESERVICE_ADDTAGS_REQUEST = _descriptor.Descriptor(
+  name='Request',
+  full_name='main.profile_service.ProfileService.AddTags.Request',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='profile_id', full_name='main.profile_service.ProfileService.AddTags.Request.profile_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='tag_ids', full_name='main.profile_service.ProfileService.AddTags.Request.tag_ids', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1644,
+  serialized_end=1690,
+)
+
+_PROFILESERVICE_ADDTAGS_RESPONSE = _descriptor.Descriptor(
+  name='Response',
+  full_name='main.profile_service.ProfileService.AddTags.Response',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=544,
+  serialized_end=554,
+)
+
+_PROFILESERVICE_ADDTAGS = _descriptor.Descriptor(
+  name='AddTags',
+  full_name='main.profile_service.ProfileService.AddTags',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[_PROFILESERVICE_ADDTAGS_REQUEST, _PROFILESERVICE_ADDTAGS_RESPONSE, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1633,
+  serialized_end=1702,
 )
 
 _PROFILESERVICE = _descriptor.Descriptor(
@@ -461,7 +754,7 @@ _PROFILESERVICE = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_PROFILESERVICE_CONTAINERS, _PROFILESERVICE_CREATEPROFILE, _PROFILESERVICE_GETPROFILE, _PROFILESERVICE_GETEXTENDEDPROFILE, ],
+  nested_types=[_PROFILESERVICE_CONTAINERS, _PROFILESERVICE_CREATEPROFILE, _PROFILESERVICE_GETPROFILE, _PROFILESERVICE_GETEXTENDEDPROFILE, _PROFILESERVICE_CREATETAGS, _PROFILESERVICE_GETTAGS, _PROFILESERVICE_ADDTAGS, ],
   enum_types=[
   ],
   options=None,
@@ -470,10 +763,11 @@ _PROFILESERVICE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=126,
-  serialized_end=1236,
+  serialized_end=1702,
 )
 
 _PROFILESERVICE_CONTAINERS_PROFILE.containing_type = _PROFILESERVICE_CONTAINERS
+_PROFILESERVICE_CONTAINERS_TAG.containing_type = _PROFILESERVICE_CONTAINERS
 _PROFILESERVICE_CONTAINERS.containing_type = _PROFILESERVICE
 _PROFILESERVICE_CREATEPROFILE_REQUEST.fields_by_name['profile'].message_type = _PROFILESERVICE_CONTAINERS_PROFILE
 _PROFILESERVICE_CREATEPROFILE_REQUEST.containing_type = _PROFILESERVICE_CREATEPROFILE
@@ -504,6 +798,24 @@ _PROFILESERVICE_GETEXTENDEDPROFILE_RESPONSE.fields_by_name['team'].message_type 
 _PROFILESERVICE_GETEXTENDEDPROFILE_RESPONSE.fields_by_name['note'].message_type = protobufs.note_service_pb2._NOTESERVICE_CONTAINERS_NOTE
 _PROFILESERVICE_GETEXTENDEDPROFILE_RESPONSE.containing_type = _PROFILESERVICE_GETEXTENDEDPROFILE
 _PROFILESERVICE_GETEXTENDEDPROFILE.containing_type = _PROFILESERVICE
+_PROFILESERVICE_CREATETAGS_REQUEST.fields_by_name['tags'].message_type = _PROFILESERVICE_CONTAINERS_TAG
+_PROFILESERVICE_CREATETAGS_REQUEST.containing_type = _PROFILESERVICE_CREATETAGS
+_PROFILESERVICE_CREATETAGS_RESPONSE.fields_by_name['tags'].message_type = _PROFILESERVICE_CONTAINERS_TAG
+_PROFILESERVICE_CREATETAGS_RESPONSE.containing_type = _PROFILESERVICE_CREATETAGS
+_PROFILESERVICE_CREATETAGS.containing_type = _PROFILESERVICE
+_PROFILESERVICE_GETTAGS_REQUEST.containing_type = _PROFILESERVICE_GETTAGS
+_PROFILESERVICE_GETTAGS_REQUEST.oneofs_by_name['lookup_key'].fields.append(
+  _PROFILESERVICE_GETTAGS_REQUEST.fields_by_name['profile_id'])
+_PROFILESERVICE_GETTAGS_REQUEST.fields_by_name['profile_id'].containing_oneof = _PROFILESERVICE_GETTAGS_REQUEST.oneofs_by_name['lookup_key']
+_PROFILESERVICE_GETTAGS_REQUEST.oneofs_by_name['lookup_key'].fields.append(
+  _PROFILESERVICE_GETTAGS_REQUEST.fields_by_name['organization_id'])
+_PROFILESERVICE_GETTAGS_REQUEST.fields_by_name['organization_id'].containing_oneof = _PROFILESERVICE_GETTAGS_REQUEST.oneofs_by_name['lookup_key']
+_PROFILESERVICE_GETTAGS_RESPONSE.fields_by_name['tags'].message_type = _PROFILESERVICE_CONTAINERS_TAG
+_PROFILESERVICE_GETTAGS_RESPONSE.containing_type = _PROFILESERVICE_GETTAGS
+_PROFILESERVICE_GETTAGS.containing_type = _PROFILESERVICE
+_PROFILESERVICE_ADDTAGS_REQUEST.containing_type = _PROFILESERVICE_ADDTAGS
+_PROFILESERVICE_ADDTAGS_RESPONSE.containing_type = _PROFILESERVICE_ADDTAGS
+_PROFILESERVICE_ADDTAGS.containing_type = _PROFILESERVICE
 DESCRIPTOR.message_types_by_name['ProfileService'] = _PROFILESERVICE
 
 ProfileService = _reflection.GeneratedProtocolMessageType('ProfileService', (_message.Message,), dict(
@@ -514,6 +826,13 @@ ProfileService = _reflection.GeneratedProtocolMessageType('ProfileService', (_me
       DESCRIPTOR = _PROFILESERVICE_CONTAINERS_PROFILE,
       __module__ = 'protobufs.profile_service_pb2'
       # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.Containers.Profile)
+      ))
+    ,
+
+    Tag = _reflection.GeneratedProtocolMessageType('Tag', (_message.Message,), dict(
+      DESCRIPTOR = _PROFILESERVICE_CONTAINERS_TAG,
+      __module__ = 'protobufs.profile_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.Containers.Tag)
       ))
     ,
     DESCRIPTOR = _PROFILESERVICE_CONTAINERS,
@@ -584,6 +903,69 @@ ProfileService = _reflection.GeneratedProtocolMessageType('ProfileService', (_me
     # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.GetExtendedProfile)
     ))
   ,
+
+  CreateTags = _reflection.GeneratedProtocolMessageType('CreateTags', (_message.Message,), dict(
+
+    Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
+      DESCRIPTOR = _PROFILESERVICE_CREATETAGS_REQUEST,
+      __module__ = 'protobufs.profile_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.CreateTags.Request)
+      ))
+    ,
+
+    Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
+      DESCRIPTOR = _PROFILESERVICE_CREATETAGS_RESPONSE,
+      __module__ = 'protobufs.profile_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.CreateTags.Response)
+      ))
+    ,
+    DESCRIPTOR = _PROFILESERVICE_CREATETAGS,
+    __module__ = 'protobufs.profile_service_pb2'
+    # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.CreateTags)
+    ))
+  ,
+
+  GetTags = _reflection.GeneratedProtocolMessageType('GetTags', (_message.Message,), dict(
+
+    Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
+      DESCRIPTOR = _PROFILESERVICE_GETTAGS_REQUEST,
+      __module__ = 'protobufs.profile_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.GetTags.Request)
+      ))
+    ,
+
+    Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
+      DESCRIPTOR = _PROFILESERVICE_GETTAGS_RESPONSE,
+      __module__ = 'protobufs.profile_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.GetTags.Response)
+      ))
+    ,
+    DESCRIPTOR = _PROFILESERVICE_GETTAGS,
+    __module__ = 'protobufs.profile_service_pb2'
+    # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.GetTags)
+    ))
+  ,
+
+  AddTags = _reflection.GeneratedProtocolMessageType('AddTags', (_message.Message,), dict(
+
+    Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
+      DESCRIPTOR = _PROFILESERVICE_ADDTAGS_REQUEST,
+      __module__ = 'protobufs.profile_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.AddTags.Request)
+      ))
+    ,
+
+    Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
+      DESCRIPTOR = _PROFILESERVICE_ADDTAGS_RESPONSE,
+      __module__ = 'protobufs.profile_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.AddTags.Response)
+      ))
+    ,
+    DESCRIPTOR = _PROFILESERVICE_ADDTAGS,
+    __module__ = 'protobufs.profile_service_pb2'
+    # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService.AddTags)
+    ))
+  ,
   DESCRIPTOR = _PROFILESERVICE,
   __module__ = 'protobufs.profile_service_pb2'
   # @@protoc_insertion_point(class_scope:main.profile_service.ProfileService)
@@ -591,6 +973,7 @@ ProfileService = _reflection.GeneratedProtocolMessageType('ProfileService', (_me
 _sym_db.RegisterMessage(ProfileService)
 _sym_db.RegisterMessage(ProfileService.Containers)
 _sym_db.RegisterMessage(ProfileService.Containers.Profile)
+_sym_db.RegisterMessage(ProfileService.Containers.Tag)
 _sym_db.RegisterMessage(ProfileService.CreateProfile)
 _sym_db.RegisterMessage(ProfileService.CreateProfile.Request)
 _sym_db.RegisterMessage(ProfileService.CreateProfile.Response)
@@ -600,6 +983,15 @@ _sym_db.RegisterMessage(ProfileService.GetProfile.Response)
 _sym_db.RegisterMessage(ProfileService.GetExtendedProfile)
 _sym_db.RegisterMessage(ProfileService.GetExtendedProfile.Request)
 _sym_db.RegisterMessage(ProfileService.GetExtendedProfile.Response)
+_sym_db.RegisterMessage(ProfileService.CreateTags)
+_sym_db.RegisterMessage(ProfileService.CreateTags.Request)
+_sym_db.RegisterMessage(ProfileService.CreateTags.Response)
+_sym_db.RegisterMessage(ProfileService.GetTags)
+_sym_db.RegisterMessage(ProfileService.GetTags.Request)
+_sym_db.RegisterMessage(ProfileService.GetTags.Response)
+_sym_db.RegisterMessage(ProfileService.AddTags)
+_sym_db.RegisterMessage(ProfileService.AddTags.Request)
+_sym_db.RegisterMessage(ProfileService.AddTags.Response)
 
 
 # @@protoc_insertion_point(module_scope)

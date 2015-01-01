@@ -32,5 +32,8 @@ message ProfileServiceRequests {
         optional main.profile_service.ProfileService.CreateProfile.Request create_profile = 300;
         optional main.profile_service.ProfileService.GetExtendedProfile.Request get_extended_profile = 301;
         optional main.profile_service.ProfileService.GetProfile.Request get_profile = 302;
+        optional main.profile_service.ProfileService.CreateTags.Request create_tags = 303;
+        optional main.profile_service.ProfileService.GetTags.Request get_tags = 304;
+        optional main.profile_service.ProfileService.AddTags.Request add_tags = 305;
     }
 }

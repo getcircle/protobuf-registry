@@ -72,6 +72,21 @@ public var ProfileServiceRequests_get_profile:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_get_profileStatic
    }
 }
+public var ProfileServiceRequests_create_tags:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_create_tagsStatic
+   }
+}
+public var ProfileServiceRequests_get_tags:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_get_tagsStatic
+   }
+}
+public var ProfileServiceRequests_add_tags:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_add_tagsStatic
+   }
+}
 public struct RequestRegistryRoot {
   public static var sharedInstance : RequestRegistryRoot {
    struct Static {
@@ -93,6 +108,9 @@ public struct RequestRegistryRoot {
   var ProfileServiceRequests_create_profileStatic:ConcreateExtensionField
   var ProfileServiceRequests_get_extended_profileStatic:ConcreateExtensionField
   var ProfileServiceRequests_get_profileStatic:ConcreateExtensionField
+  var ProfileServiceRequests_create_tagsStatic:ConcreateExtensionField
+  var ProfileServiceRequests_get_tagsStatic:ConcreateExtensionField
+  var ProfileServiceRequests_add_tagsStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -110,6 +128,9 @@ public struct RequestRegistryRoot {
     ProfileServiceRequests_create_profileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 300, defaultValue:ProfileService.CreateProfile.Request(), messageOrGroupClass:ProfileService.CreateProfile.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_get_extended_profileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 301, defaultValue:ProfileService.GetExtendedProfile.Request(), messageOrGroupClass:ProfileService.GetExtendedProfile.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_get_profileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 302, defaultValue:ProfileService.GetProfile.Request(), messageOrGroupClass:ProfileService.GetProfile.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ProfileServiceRequests_create_tagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 303, defaultValue:ProfileService.CreateTags.Request(), messageOrGroupClass:ProfileService.CreateTags.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ProfileServiceRequests_get_tagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 304, defaultValue:ProfileService.GetTags.Request(), messageOrGroupClass:ProfileService.GetTags.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ProfileServiceRequests_add_tagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 305, defaultValue:ProfileService.AddTags.Request(), messageOrGroupClass:ProfileService.AddTags.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -132,6 +153,9 @@ public struct RequestRegistryRoot {
     registry.addExtension(ProfileServiceRequests_create_profileStatic)
     registry.addExtension(ProfileServiceRequests_get_extended_profileStatic)
     registry.addExtension(ProfileServiceRequests_get_profileStatic)
+    registry.addExtension(ProfileServiceRequests_create_tagsStatic)
+    registry.addExtension(ProfileServiceRequests_get_tagsStatic)
+    registry.addExtension(ProfileServiceRequests_add_tagsStatic)
   }
 }
 
@@ -485,6 +509,15 @@ final public class ProfileServiceRequests : GeneratedMessage {
   }
   public class func get_profile() -> ConcreateExtensionField {
        return ProfileServiceRequests_get_profile
+  }
+  public class func create_tags() -> ConcreateExtensionField {
+       return ProfileServiceRequests_create_tags
+  }
+  public class func get_tags() -> ConcreateExtensionField {
+       return ProfileServiceRequests_get_tags
+  }
+  public class func add_tags() -> ConcreateExtensionField {
+       return ProfileServiceRequests_add_tags
   }
   required public init() {
        super.init()
