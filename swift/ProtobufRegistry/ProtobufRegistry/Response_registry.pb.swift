@@ -107,6 +107,16 @@ public var ProfileServiceResponses_get_profiles:ConcreateExtensionField {
        return ResponseRegistryRoot.sharedInstance.ProfileServiceResponses_get_profilesStatic
    }
 }
+public var ProfileServiceResponses_get_direct_reports:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.ProfileServiceResponses_get_direct_reportsStatic
+   }
+}
+public var ProfileServiceResponses_get_peers:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.ProfileServiceResponses_get_peersStatic
+   }
+}
 public struct ResponseRegistryRoot {
   public static var sharedInstance : ResponseRegistryRoot {
    struct Static {
@@ -135,6 +145,8 @@ public struct ResponseRegistryRoot {
   var ProfileServiceResponses_add_tagsStatic:ConcreateExtensionField
   var ProfileServiceResponses_update_profileStatic:ConcreateExtensionField
   var ProfileServiceResponses_get_profilesStatic:ConcreateExtensionField
+  var ProfileServiceResponses_get_direct_reportsStatic:ConcreateExtensionField
+  var ProfileServiceResponses_get_peersStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -159,6 +171,8 @@ public struct ResponseRegistryRoot {
     ProfileServiceResponses_add_tagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 305, defaultValue:ProfileService.AddTags.Response(), messageOrGroupClass:ProfileService.AddTags.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceResponses_update_profileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 306, defaultValue:ProfileService.UpdateProfile.Response(), messageOrGroupClass:ProfileService.UpdateProfile.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceResponses_get_profilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 307, defaultValue:ProfileService.GetProfiles.Response(), messageOrGroupClass:ProfileService.GetProfiles.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ProfileServiceResponses_get_direct_reportsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 308, defaultValue:ProfileService.GetDirectReports.Response(), messageOrGroupClass:ProfileService.GetDirectReports.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ProfileServiceResponses_get_peersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 309, defaultValue:ProfileService.GetPeers.Response(), messageOrGroupClass:ProfileService.GetPeers.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -188,6 +202,8 @@ public struct ResponseRegistryRoot {
     registry.addExtension(ProfileServiceResponses_add_tagsStatic)
     registry.addExtension(ProfileServiceResponses_update_profileStatic)
     registry.addExtension(ProfileServiceResponses_get_profilesStatic)
+    registry.addExtension(ProfileServiceResponses_get_direct_reportsStatic)
+    registry.addExtension(ProfileServiceResponses_get_peersStatic)
   }
 }
 
@@ -580,6 +596,12 @@ final public class ProfileServiceResponses : GeneratedMessage {
   }
   public class func get_profiles() -> ConcreateExtensionField {
        return ProfileServiceResponses_get_profiles
+  }
+  public class func get_direct_reports() -> ConcreateExtensionField {
+       return ProfileServiceResponses_get_direct_reports
+  }
+  public class func get_peers() -> ConcreateExtensionField {
+       return ProfileServiceResponses_get_peers
   }
   required public init() {
        super.init()

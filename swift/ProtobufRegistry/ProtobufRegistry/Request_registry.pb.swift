@@ -107,6 +107,16 @@ public var ProfileServiceRequests_get_profiles:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_get_profilesStatic
    }
 }
+public var ProfileServiceRequests_get_direct_reports:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_get_direct_reportsStatic
+   }
+}
+public var ProfileServiceRequests_get_peers:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_get_peersStatic
+   }
+}
 public struct RequestRegistryRoot {
   public static var sharedInstance : RequestRegistryRoot {
    struct Static {
@@ -135,6 +145,8 @@ public struct RequestRegistryRoot {
   var ProfileServiceRequests_add_tagsStatic:ConcreateExtensionField
   var ProfileServiceRequests_update_profileStatic:ConcreateExtensionField
   var ProfileServiceRequests_get_profilesStatic:ConcreateExtensionField
+  var ProfileServiceRequests_get_direct_reportsStatic:ConcreateExtensionField
+  var ProfileServiceRequests_get_peersStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -159,6 +171,8 @@ public struct RequestRegistryRoot {
     ProfileServiceRequests_add_tagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 305, defaultValue:ProfileService.AddTags.Request(), messageOrGroupClass:ProfileService.AddTags.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_update_profileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 306, defaultValue:ProfileService.UpdateProfile.Request(), messageOrGroupClass:ProfileService.UpdateProfile.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_get_profilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 307, defaultValue:ProfileService.GetProfiles.Request(), messageOrGroupClass:ProfileService.GetProfiles.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ProfileServiceRequests_get_direct_reportsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 308, defaultValue:ProfileService.GetDirectReports.Request(), messageOrGroupClass:ProfileService.GetDirectReports.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ProfileServiceRequests_get_peersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 309, defaultValue:ProfileService.GetPeers.Request(), messageOrGroupClass:ProfileService.GetPeers.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -188,6 +202,8 @@ public struct RequestRegistryRoot {
     registry.addExtension(ProfileServiceRequests_add_tagsStatic)
     registry.addExtension(ProfileServiceRequests_update_profileStatic)
     registry.addExtension(ProfileServiceRequests_get_profilesStatic)
+    registry.addExtension(ProfileServiceRequests_get_direct_reportsStatic)
+    registry.addExtension(ProfileServiceRequests_get_peersStatic)
   }
 }
 
@@ -580,6 +596,12 @@ final public class ProfileServiceRequests : GeneratedMessage {
   }
   public class func get_profiles() -> ConcreateExtensionField {
        return ProfileServiceRequests_get_profiles
+  }
+  public class func get_direct_reports() -> ConcreateExtensionField {
+       return ProfileServiceRequests_get_direct_reports
+  }
+  public class func get_peers() -> ConcreateExtensionField {
+       return ProfileServiceRequests_get_peers
   }
   required public init() {
        super.init()
