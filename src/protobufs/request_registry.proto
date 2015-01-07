@@ -11,6 +11,7 @@ message UserServiceRequests {
         optional main.user_service.UserService.CreateUser.Request create_user = 100;
         optional main.user_service.UserService.ValidUser.Request valid_user = 101;
         optional main.user_service.UserService.AuthenticateUser.Request authenticate_user = 102;
+        optional main.user_service.UserService.GetUser.Request get_user = 103;
     }
 }
 
