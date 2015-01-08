@@ -404,6 +404,244 @@ final public class OrganizationService : GeneratedMessage {
 
       //Nested type declaration start
 
+        final public class PathPart : GeneratedMessage {
+          public subscript(key: String) -> AnyObject? {
+                 switch key {
+                 case "id": return id
+                 case "name": return name
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasId:Bool = false
+          public private(set) var id:String = ""
+
+          public private(set) var hasName:Bool = false
+          public private(set) var name:String = ""
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasId {
+              output.writeString(1, value:id)
+            }
+            if hasName {
+              output.writeString(2, value:name)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasId {
+              size += WireFormat.computeStringSize(1, value:id)
+            }
+            if hasName {
+              size += WireFormat.computeStringSize(2, value:name)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> OrganizationService.Containers.PathPart {
+            return OrganizationService.Containers.PathPart.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> OrganizationService.Containers.PathPart {
+            return OrganizationService.Containers.PathPart.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> OrganizationService.Containers.PathPart {
+            return OrganizationService.Containers.PathPart.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->OrganizationService.Containers.PathPart {
+            return OrganizationService.Containers.PathPart.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> OrganizationService.Containers.PathPart {
+            return OrganizationService.Containers.PathPart.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> OrganizationService.Containers.PathPart {
+            return OrganizationService.Containers.PathPart.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> OrganizationService.Containers.PathPartBuilder {
+            return OrganizationService.Containers.PathPart.classBuilder() as OrganizationService.Containers.PathPartBuilder
+          }
+          public func builder() -> OrganizationService.Containers.PathPartBuilder {
+            return classBuilder() as OrganizationService.Containers.PathPartBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return OrganizationService.Containers.PathPartBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return OrganizationService.Containers.PathPart.builder()
+          }
+          public func toBuilder() -> OrganizationService.Containers.PathPartBuilder {
+            return OrganizationService.Containers.PathPart.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:OrganizationService.Containers.PathPart) -> OrganizationService.Containers.PathPartBuilder {
+            return OrganizationService.Containers.PathPart.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasId {
+              output += "\(indent) id: \(id) \n"
+            }
+            if hasName {
+              output += "\(indent) name: \(name) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasId {
+                     hashCode = (hashCode &* 31) &+ id.hashValue
+                  }
+                  if hasName {
+                     hashCode = (hashCode &* 31) &+ name.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "OrganizationService.Containers.PathPart"
+          }
+          override public func className() -> String {
+              return "OrganizationService.Containers.PathPart"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return OrganizationService.Containers.PathPart.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class PathPartBuilder : GeneratedMessageBuilder {
+          private var builderResult:OrganizationService.Containers.PathPart
+
+          required override public init () {
+             builderResult = OrganizationService.Containers.PathPart()
+             super.init()
+          }
+          public var hasId:Bool {
+               get {
+                    return builderResult.hasId
+               }
+          }
+          public var id:String {
+               get {
+                    return builderResult.id
+               }
+               set (value) {
+                   builderResult.hasId = true
+                   builderResult.id = value
+               }
+          }
+          public func clearId() -> OrganizationService.Containers.PathPartBuilder{
+               builderResult.hasId = false
+               builderResult.id = ""
+               return self
+          }
+          public var hasName:Bool {
+               get {
+                    return builderResult.hasName
+               }
+          }
+          public var name:String {
+               get {
+                    return builderResult.name
+               }
+               set (value) {
+                   builderResult.hasName = true
+                   builderResult.name = value
+               }
+          }
+          public func clearName() -> OrganizationService.Containers.PathPartBuilder{
+               builderResult.hasName = false
+               builderResult.name = ""
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> OrganizationService.Containers.PathPartBuilder {
+            builderResult = OrganizationService.Containers.PathPart()
+            return self
+          }
+          public override func clone() -> OrganizationService.Containers.PathPartBuilder {
+            return OrganizationService.Containers.PathPart.builderWithPrototype(builderResult)
+          }
+          public override func build() -> OrganizationService.Containers.PathPart {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> OrganizationService.Containers.PathPart {
+            var returnMe:OrganizationService.Containers.PathPart = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:OrganizationService.Containers.PathPart) -> OrganizationService.Containers.PathPartBuilder {
+            if (other == OrganizationService.Containers.PathPart()) {
+             return self
+            }
+            if other.hasId {
+                 id = other.id
+            }
+            if other.hasName {
+                 name = other.name
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->OrganizationService.Containers.PathPartBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> OrganizationService.Containers.PathPartBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                id = input.readString()
+
+              case 18 :
+                name = input.readString()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+
+
+      //Nested type declaration start
+
         final public class Team : GeneratedMessage {
           public subscript(key: String) -> AnyObject? {
                  switch key {
@@ -431,7 +669,7 @@ final public class OrganizationService : GeneratedMessage {
           public private(set) var hasDepartment:Bool = false
           public private(set) var department:String = ""
 
-          public private(set) var path:Array<String> = Array<String>()
+          public private(set) var path:Array<OrganizationService.Containers.PathPart>  = Array<OrganizationService.Containers.PathPart>()
           required public init() {
                super.init()
           }
@@ -451,10 +689,8 @@ final public class OrganizationService : GeneratedMessage {
             if hasOrganizationId {
               output.writeString(4, value:organization_id)
             }
-            if !path.isEmpty {
-              for oneValuepath in path {
-                output.writeString(5, value:oneValuepath)
-              }
+            for oneElementpath in path {
+                output.writeMessage(5, value:oneElementpath)
             }
             if hasDepartment {
               output.writeString(6, value:department)
@@ -480,12 +716,9 @@ final public class OrganizationService : GeneratedMessage {
             if hasOrganizationId {
               size += WireFormat.computeStringSize(4, value:organization_id)
             }
-            var dataSizePath:Int32 = 0
-            for oneValuepath in path {
-                dataSizePath += WireFormat.computeStringSizeNoTag(oneValuepath)
+            for oneElementpath in path {
+                size += WireFormat.computeMessageSize(5, value:oneElementpath)
             }
-            size += dataSizePath
-            size += 1 * Int32(path.count)
             if hasDepartment {
               size += WireFormat.computeStringSize(6, value:department)
             }
@@ -543,8 +776,10 @@ final public class OrganizationService : GeneratedMessage {
               output += "\(indent) organization_id: \(organization_id) \n"
             }
             var pathElementIndex:Int = 0
-            for oneValuepath in path  {
-                output += "\(indent) path[\(pathElementIndex)]: \(oneValuepath)\n"
+            for oneElementpath in path {
+                output += "\(indent) path[\(pathElementIndex)] {\n"
+                oneElementpath.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
                 pathElementIndex++
             }
             if hasDepartment {
@@ -567,8 +802,8 @@ final public class OrganizationService : GeneratedMessage {
                   if hasOrganizationId {
                      hashCode = (hashCode &* 31) &+ organization_id.hashValue
                   }
-                  for oneValuepath in path {
-                      hashCode = (hashCode &* 31) &+ oneValuepath.hashValue
+                  for oneElementpath in path {
+                      hashCode = (hashCode &* 31) &+ oneElementpath.hashValue
                   }
                   if hasDepartment {
                      hashCode = (hashCode &* 31) &+ department.hashValue
@@ -679,17 +914,17 @@ final public class OrganizationService : GeneratedMessage {
                builderResult.organization_id = ""
                return self
           }
-          public var path:Array<String> {
+          public var path:Array<OrganizationService.Containers.PathPart> {
                get {
                    return builderResult.path
                }
-               set (array) {
-                   builderResult.path = array
+               set (value) {
+                   builderResult.path = value
                }
           }
           public func clearPath() -> OrganizationService.Containers.TeamBuilder {
-             builderResult.path.removeAll(keepCapacity: false)
-             return self
+            builderResult.path.removeAll(keepCapacity: false)
+            return self
           }
           public var hasDepartment:Bool {
                get {
@@ -746,8 +981,8 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasOrganizationId {
                  organization_id = other.organization_id
             }
-            if !other.path.isEmpty {
-                builderResult.path += other.path
+            if !other.path.isEmpty  {
+               builderResult.path += other.path
             }
             if other.hasDepartment {
                  department = other.department
@@ -780,7 +1015,9 @@ final public class OrganizationService : GeneratedMessage {
                 organization_id = input.readString()
 
               case 42 :
-                path += [input.readString()]
+                var subBuilder = OrganizationService.Containers.PathPart.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                path += [subBuilder.buildPartial()]
 
               case 50 :
                 department = input.readString()
@@ -7454,6 +7691,18 @@ public extension OrganizationService.Containers.Organization {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return OrganizationService.Containers.Organization.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension OrganizationService.Containers.PathPart {
+    class func parseFromNSData(data:NSData) -> OrganizationService.Containers.PathPart {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return OrganizationService.Containers.PathPart.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> OrganizationService.Containers.PathPart {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return OrganizationService.Containers.PathPart.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension OrganizationService.Containers.Team {
