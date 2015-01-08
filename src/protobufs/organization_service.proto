@@ -99,6 +99,17 @@ message OrganizationService {
         }
     }
 
+    message GetTeamChildren {
+
+        message Request {
+            optional string team_id = 1;
+        }
+
+        message Response {
+            repeated Containers.Team teams = 1;
+        }
+    }
+
     message CreateAddress {
 
         message Request {

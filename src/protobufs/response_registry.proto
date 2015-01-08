@@ -26,6 +26,7 @@ message OrganizationServiceResponses {
         optional main.organization_service.OrganizationService.GetOrganization.Response get_organization = 206;
         optional main.organization_service.OrganizationService.GetTeams.Response get_teams = 207;
         optional main.organization_service.OrganizationService.GetAddresses.Response get_addresses = 208;
+        optional main.organization_service.OrganizationService.GetTeamChildren.Response get_team_children = 209;
     }
 }
 
