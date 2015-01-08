@@ -409,6 +409,7 @@ final public class OrganizationService : GeneratedMessage {
                  switch key {
                  case "id": return id
                  case "name": return name
+                 case "owner_id": return owner_id
                  default: return nil
                  }
           }
@@ -418,6 +419,9 @@ final public class OrganizationService : GeneratedMessage {
 
           public private(set) var hasName:Bool = false
           public private(set) var name:String = ""
+
+          public private(set) var hasOwnerId:Bool = false
+          public private(set) var owner_id:String = ""
 
           required public init() {
                super.init()
@@ -431,6 +435,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasName {
               output.writeString(2, value:name)
+            }
+            if hasOwnerId {
+              output.writeString(3, value:owner_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -446,6 +453,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasName {
               size += WireFormat.computeStringSize(2, value:name)
+            }
+            if hasOwnerId {
+              size += WireFormat.computeStringSize(3, value:owner_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -494,6 +504,9 @@ final public class OrganizationService : GeneratedMessage {
             if hasName {
               output += "\(indent) name: \(name) \n"
             }
+            if hasOwnerId {
+              output += "\(indent) owner_id: \(owner_id) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -504,6 +517,9 @@ final public class OrganizationService : GeneratedMessage {
                   }
                   if hasName {
                      hashCode = (hashCode &* 31) &+ name.hashValue
+                  }
+                  if hasOwnerId {
+                     hashCode = (hashCode &* 31) &+ owner_id.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -573,6 +589,25 @@ final public class OrganizationService : GeneratedMessage {
                builderResult.name = ""
                return self
           }
+          public var hasOwnerId:Bool {
+               get {
+                    return builderResult.hasOwnerId
+               }
+          }
+          public var owner_id:String {
+               get {
+                    return builderResult.owner_id
+               }
+               set (value) {
+                   builderResult.hasOwnerId = true
+                   builderResult.owner_id = value
+               }
+          }
+          public func clearOwnerId() -> OrganizationService.Containers.PathPartBuilder{
+               builderResult.hasOwnerId = false
+               builderResult.owner_id = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -603,6 +638,9 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasName {
                  name = other.name
             }
+            if other.hasOwnerId {
+                 owner_id = other.owner_id
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -623,6 +661,9 @@ final public class OrganizationService : GeneratedMessage {
 
               case 18 :
                 name = input.readString()
+
+              case 26 :
+                owner_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
