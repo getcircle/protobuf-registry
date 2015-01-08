@@ -4,6 +4,7 @@ import "service_protobufs/soa.proto";
 
 import "protobufs/organization_service.proto";
 import "protobufs/profile_service.proto";
+import "protobufs/search_service.proto";
 import "protobufs/user_service.proto";
 
 message UserServiceRequests {
@@ -42,5 +43,11 @@ message ProfileServiceRequests {
         optional main.profile_service.ProfileService.GetProfiles.Request get_profiles = 307;
         optional main.profile_service.ProfileService.GetDirectReports.Request get_direct_reports = 308;
         optional main.profile_service.ProfileService.GetPeers.Request get_peers = 309;
+    }
+}
+
+message SearchServiceRequests {
+    extend soa.ActionRequestParams {
+        optional main.search_service.SearchService.Search.Request search = 400;
     }
 }

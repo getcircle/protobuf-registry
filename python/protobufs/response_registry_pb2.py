@@ -16,15 +16,16 @@ _sym_db = _symbol_database.Default()
 import service_protobufs.soa_pb2
 import protobufs.organization_service_pb2
 import protobufs.profile_service_pb2
+import protobufs.search_service_pb2
 import protobufs.user_service_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/response_registry.proto',
   package='main.responses',
-  serialized_pb=_b('\n!protobufs/response_registry.proto\x12\x0emain.responses\x1a\x1bservice_protobufs/soa.proto\x1a$protobufs/organization_service.proto\x1a\x1fprotobufs/profile_service.proto\x1a\x1cprotobufs/user_service.proto\"\xaa\x03\n\x14UserServiceResponses2b\n\x0b\x63reate_user\x12\x19.soa.ActionResponseResult\x18\x64 \x01(\x0b\x32\x32.main.user_service.UserService.CreateUser.Response2`\n\nvalid_user\x12\x19.soa.ActionResponseResult\x18\x65 \x01(\x0b\x32\x31.main.user_service.UserService.ValidUser.Response2n\n\x11\x61uthenticate_user\x12\x19.soa.ActionResponseResult\x18\x66 \x01(\x0b\x32\x38.main.user_service.UserService.AuthenticateUser.Response2\\\n\x08get_user\x12\x19.soa.ActionResponseResult\x18g \x01(\x0b\x32/.main.user_service.UserService.GetUser.Response\"\xdc\t\n\x1cOrganizationServiceResponses2\x83\x01\n\x13\x63reate_organization\x12\x19.soa.ActionResponseResult\x18\xc8\x01 \x01(\x0b\x32J.main.organization_service.OrganizationService.CreateOrganization.Response2s\n\x0b\x63reate_team\x12\x19.soa.ActionResponseResult\x18\xc9\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.CreateTeam.Response2y\n\x0e\x63reate_address\x12\x19.soa.ActionResponseResult\x18\xca\x01 \x01(\x0b\x32\x45.main.organization_service.OrganizationService.CreateAddress.Response2y\n\x0e\x64\x65lete_address\x12\x19.soa.ActionResponseResult\x18\xcb\x01 \x01(\x0b\x32\x45.main.organization_service.OrganizationService.DeleteAddress.Response2s\n\x0bget_address\x12\x19.soa.ActionResponseResult\x18\xcc\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.GetAddress.Response2m\n\x08get_team\x12\x19.soa.ActionResponseResult\x18\xcd\x01 \x01(\x0b\x32?.main.organization_service.OrganizationService.GetTeam.Response2}\n\x10get_organization\x12\x19.soa.ActionResponseResult\x18\xce\x01 \x01(\x0b\x32G.main.organization_service.OrganizationService.GetOrganization.Response2o\n\tget_teams\x12\x19.soa.ActionResponseResult\x18\xcf\x01 \x01(\x0b\x32@.main.organization_service.OrganizationService.GetTeams.Response2w\n\rget_addresses\x12\x19.soa.ActionResponseResult\x18\xd0\x01 \x01(\x0b\x32\x44.main.organization_service.OrganizationService.GetAddresses.Response2~\n\x11get_team_children\x12\x19.soa.ActionResponseResult\x18\xd1\x01 \x01(\x0b\x32G.main.organization_service.OrganizationService.GetTeamChildren.Response\"\xe3\x08\n\x17ProfileServiceResponses2o\n\x0e\x63reate_profile\x12\x19.soa.ActionResponseResult\x18\xac\x02 \x01(\x0b\x32;.main.profile_service.ProfileService.CreateProfile.Response2z\n\x14get_extended_profile\x12\x19.soa.ActionResponseResult\x18\xad\x02 \x01(\x0b\x32@.main.profile_service.ProfileService.GetExtendedProfile.Response2i\n\x0bget_profile\x12\x19.soa.ActionResponseResult\x18\xae\x02 \x01(\x0b\x32\x38.main.profile_service.ProfileService.GetProfile.Response2i\n\x0b\x63reate_tags\x12\x19.soa.ActionResponseResult\x18\xaf\x02 \x01(\x0b\x32\x38.main.profile_service.ProfileService.CreateTags.Response2c\n\x08get_tags\x12\x19.soa.ActionResponseResult\x18\xb0\x02 \x01(\x0b\x32\x35.main.profile_service.ProfileService.GetTags.Response2c\n\x08\x61\x64\x64_tags\x12\x19.soa.ActionResponseResult\x18\xb1\x02 \x01(\x0b\x32\x35.main.profile_service.ProfileService.AddTags.Response2o\n\x0eupdate_profile\x12\x19.soa.ActionResponseResult\x18\xb2\x02 \x01(\x0b\x32;.main.profile_service.ProfileService.UpdateProfile.Response2k\n\x0cget_profiles\x12\x19.soa.ActionResponseResult\x18\xb3\x02 \x01(\x0b\x32\x39.main.profile_service.ProfileService.GetProfiles.Response2v\n\x12get_direct_reports\x12\x19.soa.ActionResponseResult\x18\xb4\x02 \x01(\x0b\x32>.main.profile_service.ProfileService.GetDirectReports.Response2e\n\tget_peers\x12\x19.soa.ActionResponseResult\x18\xb5\x02 \x01(\x0b\x32\x36.main.profile_service.ProfileService.GetPeers.Response')
+  serialized_pb=_b('\n!protobufs/response_registry.proto\x12\x0emain.responses\x1a\x1bservice_protobufs/soa.proto\x1a$protobufs/organization_service.proto\x1a\x1fprotobufs/profile_service.proto\x1a\x1eprotobufs/search_service.proto\x1a\x1cprotobufs/user_service.proto\"\xaa\x03\n\x14UserServiceResponses2b\n\x0b\x63reate_user\x12\x19.soa.ActionResponseResult\x18\x64 \x01(\x0b\x32\x32.main.user_service.UserService.CreateUser.Response2`\n\nvalid_user\x12\x19.soa.ActionResponseResult\x18\x65 \x01(\x0b\x32\x31.main.user_service.UserService.ValidUser.Response2n\n\x11\x61uthenticate_user\x12\x19.soa.ActionResponseResult\x18\x66 \x01(\x0b\x32\x38.main.user_service.UserService.AuthenticateUser.Response2\\\n\x08get_user\x12\x19.soa.ActionResponseResult\x18g \x01(\x0b\x32/.main.user_service.UserService.GetUser.Response\"\xdc\t\n\x1cOrganizationServiceResponses2\x83\x01\n\x13\x63reate_organization\x12\x19.soa.ActionResponseResult\x18\xc8\x01 \x01(\x0b\x32J.main.organization_service.OrganizationService.CreateOrganization.Response2s\n\x0b\x63reate_team\x12\x19.soa.ActionResponseResult\x18\xc9\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.CreateTeam.Response2y\n\x0e\x63reate_address\x12\x19.soa.ActionResponseResult\x18\xca\x01 \x01(\x0b\x32\x45.main.organization_service.OrganizationService.CreateAddress.Response2y\n\x0e\x64\x65lete_address\x12\x19.soa.ActionResponseResult\x18\xcb\x01 \x01(\x0b\x32\x45.main.organization_service.OrganizationService.DeleteAddress.Response2s\n\x0bget_address\x12\x19.soa.ActionResponseResult\x18\xcc\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.GetAddress.Response2m\n\x08get_team\x12\x19.soa.ActionResponseResult\x18\xcd\x01 \x01(\x0b\x32?.main.organization_service.OrganizationService.GetTeam.Response2}\n\x10get_organization\x12\x19.soa.ActionResponseResult\x18\xce\x01 \x01(\x0b\x32G.main.organization_service.OrganizationService.GetOrganization.Response2o\n\tget_teams\x12\x19.soa.ActionResponseResult\x18\xcf\x01 \x01(\x0b\x32@.main.organization_service.OrganizationService.GetTeams.Response2w\n\rget_addresses\x12\x19.soa.ActionResponseResult\x18\xd0\x01 \x01(\x0b\x32\x44.main.organization_service.OrganizationService.GetAddresses.Response2~\n\x11get_team_children\x12\x19.soa.ActionResponseResult\x18\xd1\x01 \x01(\x0b\x32G.main.organization_service.OrganizationService.GetTeamChildren.Response\"\xe3\x08\n\x17ProfileServiceResponses2o\n\x0e\x63reate_profile\x12\x19.soa.ActionResponseResult\x18\xac\x02 \x01(\x0b\x32;.main.profile_service.ProfileService.CreateProfile.Response2z\n\x14get_extended_profile\x12\x19.soa.ActionResponseResult\x18\xad\x02 \x01(\x0b\x32@.main.profile_service.ProfileService.GetExtendedProfile.Response2i\n\x0bget_profile\x12\x19.soa.ActionResponseResult\x18\xae\x02 \x01(\x0b\x32\x38.main.profile_service.ProfileService.GetProfile.Response2i\n\x0b\x63reate_tags\x12\x19.soa.ActionResponseResult\x18\xaf\x02 \x01(\x0b\x32\x38.main.profile_service.ProfileService.CreateTags.Response2c\n\x08get_tags\x12\x19.soa.ActionResponseResult\x18\xb0\x02 \x01(\x0b\x32\x35.main.profile_service.ProfileService.GetTags.Response2c\n\x08\x61\x64\x64_tags\x12\x19.soa.ActionResponseResult\x18\xb1\x02 \x01(\x0b\x32\x35.main.profile_service.ProfileService.AddTags.Response2o\n\x0eupdate_profile\x12\x19.soa.ActionResponseResult\x18\xb2\x02 \x01(\x0b\x32;.main.profile_service.ProfileService.UpdateProfile.Response2k\n\x0cget_profiles\x12\x19.soa.ActionResponseResult\x18\xb3\x02 \x01(\x0b\x32\x39.main.profile_service.ProfileService.GetProfiles.Response2v\n\x12get_direct_reports\x12\x19.soa.ActionResponseResult\x18\xb4\x02 \x01(\x0b\x32>.main.profile_service.ProfileService.GetDirectReports.Response2e\n\tget_peers\x12\x19.soa.ActionResponseResult\x18\xb5\x02 \x01(\x0b\x32\x36.main.profile_service.ProfileService.GetPeers.Response\"x\n\x16SearchServiceResponses2^\n\x06search\x12\x19.soa.ActionResponseResult\x18\x90\x03 \x01(\x0b\x32\x32.main.search_service.SearchService.Search.Response')
   ,
-  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.organization_service_pb2.DESCRIPTOR,protobufs.profile_service_pb2.DESCRIPTOR,protobufs.user_service_pb2.DESCRIPTOR,])
+  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.organization_service_pb2.DESCRIPTOR,protobufs.profile_service_pb2.DESCRIPTOR,protobufs.search_service_pb2.DESCRIPTOR,protobufs.user_service_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -76,8 +77,8 @@ _USERSERVICERESPONSES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=184,
-  serialized_end=610,
+  serialized_start=216,
+  serialized_end=642,
 )
 
 
@@ -169,8 +170,8 @@ _ORGANIZATIONSERVICERESPONSES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=613,
-  serialized_end=1857,
+  serialized_start=645,
+  serialized_end=1889,
 )
 
 
@@ -262,13 +263,44 @@ _PROFILESERVICERESPONSES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1860,
-  serialized_end=2983,
+  serialized_start=1892,
+  serialized_end=3015,
+)
+
+
+_SEARCHSERVICERESPONSES = _descriptor.Descriptor(
+  name='SearchServiceResponses',
+  full_name='main.responses.SearchServiceResponses',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='search', full_name='main.responses.SearchServiceResponses.search', index=0,
+      number=400, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3017,
+  serialized_end=3137,
 )
 
 DESCRIPTOR.message_types_by_name['UserServiceResponses'] = _USERSERVICERESPONSES
 DESCRIPTOR.message_types_by_name['OrganizationServiceResponses'] = _ORGANIZATIONSERVICERESPONSES
 DESCRIPTOR.message_types_by_name['ProfileServiceResponses'] = _PROFILESERVICERESPONSES
+DESCRIPTOR.message_types_by_name['SearchServiceResponses'] = _SEARCHSERVICERESPONSES
 
 UserServiceResponses = _reflection.GeneratedProtocolMessageType('UserServiceResponses', (_message.Message,), dict(
   DESCRIPTOR = _USERSERVICERESPONSES,
@@ -290,6 +322,13 @@ ProfileServiceResponses = _reflection.GeneratedProtocolMessageType('ProfileServi
   # @@protoc_insertion_point(class_scope:main.responses.ProfileServiceResponses)
   ))
 _sym_db.RegisterMessage(ProfileServiceResponses)
+
+SearchServiceResponses = _reflection.GeneratedProtocolMessageType('SearchServiceResponses', (_message.Message,), dict(
+  DESCRIPTOR = _SEARCHSERVICERESPONSES,
+  __module__ = 'protobufs.response_registry_pb2'
+  # @@protoc_insertion_point(class_scope:main.responses.SearchServiceResponses)
+  ))
+_sym_db.RegisterMessage(SearchServiceResponses)
 
 _USERSERVICERESPONSES.extensions_by_name['create_user'].message_type = protobufs.user_service_pb2._USERSERVICE_CREATEUSER_RESPONSE
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_USERSERVICERESPONSES.extensions_by_name['create_user'])
@@ -339,5 +378,7 @@ _PROFILESERVICERESPONSES.extensions_by_name['get_direct_reports'].message_type =
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_PROFILESERVICERESPONSES.extensions_by_name['get_direct_reports'])
 _PROFILESERVICERESPONSES.extensions_by_name['get_peers'].message_type = protobufs.profile_service_pb2._PROFILESERVICE_GETPEERS_RESPONSE
 service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_PROFILESERVICERESPONSES.extensions_by_name['get_peers'])
+_SEARCHSERVICERESPONSES.extensions_by_name['search'].message_type = protobufs.search_service_pb2._SEARCHSERVICE_SEARCH_RESPONSE
+service_protobufs.soa_pb2.ActionResponseResult.RegisterExtension(_SEARCHSERVICERESPONSES.extensions_by_name['search'])
 
 # @@protoc_insertion_point(module_scope)

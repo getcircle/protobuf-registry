@@ -122,6 +122,11 @@ public var ProfileServiceResponses_get_peers:ConcreateExtensionField {
        return ResponseRegistryRoot.sharedInstance.ProfileServiceResponses_get_peersStatic
    }
 }
+public var SearchServiceResponses_search:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.SearchServiceResponses_searchStatic
+   }
+}
 public struct ResponseRegistryRoot {
   public static var sharedInstance : ResponseRegistryRoot {
    struct Static {
@@ -153,6 +158,7 @@ public struct ResponseRegistryRoot {
   var ProfileServiceResponses_get_profilesStatic:ConcreateExtensionField
   var ProfileServiceResponses_get_direct_reportsStatic:ConcreateExtensionField
   var ProfileServiceResponses_get_peersStatic:ConcreateExtensionField
+  var SearchServiceResponses_searchStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -180,11 +186,13 @@ public struct ResponseRegistryRoot {
     ProfileServiceResponses_get_profilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 307, defaultValue:ProfileService.GetProfiles.Response(), messageOrGroupClass:ProfileService.GetProfiles.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceResponses_get_direct_reportsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 308, defaultValue:ProfileService.GetDirectReports.Response(), messageOrGroupClass:ProfileService.GetDirectReports.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceResponses_get_peersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 309, defaultValue:ProfileService.GetPeers.Response(), messageOrGroupClass:ProfileService.GetPeers.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    SearchServiceResponses_searchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 400, defaultValue:SearchService.Search.Response(), messageOrGroupClass:SearchService.Search.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     OrganizationServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     ProfileServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+    SearchServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     UserServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
   }
   public func registerAllExtensions(registry:ExtensionRegistry) {
@@ -212,6 +220,7 @@ public struct ResponseRegistryRoot {
     registry.addExtension(ProfileServiceResponses_get_profilesStatic)
     registry.addExtension(ProfileServiceResponses_get_direct_reportsStatic)
     registry.addExtension(ProfileServiceResponses_get_peersStatic)
+    registry.addExtension(SearchServiceResponses_searchStatic)
   }
 }
 
@@ -232,6 +241,14 @@ public func == (lhs: OrganizationServiceResponses, rhs: OrganizationServiceRespo
 }
 
 public func == (lhs: ProfileServiceResponses, rhs: ProfileServiceResponses) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
+public func == (lhs: SearchServiceResponses, rhs: SearchServiceResponses) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -755,6 +772,157 @@ final public class ProfileServiceResponsesBuilder : GeneratedMessageBuilder {
   }
 }
 
+final public class SearchServiceResponses : GeneratedMessage {
+  public subscript(key: String) -> AnyObject? {
+         switch key {
+         default: return nil
+         }
+  }
+
+  public class func search() -> ConcreateExtensionField {
+       return SearchServiceResponses_search
+  }
+  required public init() {
+       super.init()
+  }
+  override public func isInitialized() -> Bool {
+   return true
+  }
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
+    unknownFields.writeToCodedOutputStream(output)
+  }
+  override public func serializedSize() -> Int32 {
+    var size:Int32 = memoizedSerializedSize
+    if size != -1 {
+     return size
+    }
+
+    size = 0
+    size += unknownFields.serializedSize()
+    memoizedSerializedSize = size
+    return size
+  }
+  public class func parseFromData(data:[Byte]) -> SearchServiceResponses {
+    return SearchServiceResponses.builder().mergeFromData(data).build()
+  }
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> SearchServiceResponses {
+    return SearchServiceResponses.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFromInputStream(input:NSInputStream) -> SearchServiceResponses {
+    return SearchServiceResponses.builder().mergeFromInputStream(input).build()
+  }
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->SearchServiceResponses {
+    return SearchServiceResponses.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> SearchServiceResponses {
+    return SearchServiceResponses.builder().mergeFromCodedInputStream(input).build()
+  }
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> SearchServiceResponses {
+    return SearchServiceResponses.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+  }
+  public class func builder() -> SearchServiceResponsesBuilder {
+    return SearchServiceResponses.classBuilder() as SearchServiceResponsesBuilder
+  }
+  public func builder() -> SearchServiceResponsesBuilder {
+    return classBuilder() as SearchServiceResponsesBuilder
+  }
+  public override class func classBuilder() -> MessageBuilder {
+    return SearchServiceResponsesBuilder()
+  }
+  public override func classBuilder() -> MessageBuilder {
+    return SearchServiceResponses.builder()
+  }
+  public func toBuilder() -> SearchServiceResponsesBuilder {
+    return SearchServiceResponses.builderWithPrototype(self)
+  }
+  public class func builderWithPrototype(prototype:SearchServiceResponses) -> SearchServiceResponsesBuilder {
+    return SearchServiceResponses.builder().mergeFrom(prototype)
+  }
+  override public func writeDescriptionTo(inout output:String, indent:String) {
+    unknownFields.writeDescriptionTo(&output, indent:indent)
+  }
+  override public var hashValue:Int {
+      get {
+          var hashCode:Int = 7
+          hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+          return hashCode
+      }
+  }
+
+
+  //Meta information declaration start
+
+  override public class func className() -> String {
+      return "SearchServiceResponses"
+  }
+  override public func className() -> String {
+      return "SearchServiceResponses"
+  }
+  override public func classMetaType() -> GeneratedMessage.Type {
+      return SearchServiceResponses.self
+  }
+
+
+  //Meta information declaration end
+
+}
+
+final public class SearchServiceResponsesBuilder : GeneratedMessageBuilder {
+  private var builderResult:SearchServiceResponses
+
+  required override public init () {
+     builderResult = SearchServiceResponses()
+     super.init()
+  }
+  override public var internalGetResult:GeneratedMessage {
+       get {
+          return builderResult
+       }
+  }
+  public override func clear() -> SearchServiceResponsesBuilder {
+    builderResult = SearchServiceResponses()
+    return self
+  }
+  public override func clone() -> SearchServiceResponsesBuilder {
+    return SearchServiceResponses.builderWithPrototype(builderResult)
+  }
+  public override func build() -> SearchServiceResponses {
+       checkInitialized()
+       return buildPartial()
+  }
+  public func buildPartial() -> SearchServiceResponses {
+    var returnMe:SearchServiceResponses = builderResult
+    return returnMe
+  }
+  public func mergeFrom(other:SearchServiceResponses) -> SearchServiceResponsesBuilder {
+    if (other == SearchServiceResponses()) {
+     return self
+    }
+    mergeUnknownFields(other.unknownFields)
+    return self
+  }
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->SearchServiceResponsesBuilder {
+       return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+  }
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> SearchServiceResponsesBuilder {
+    var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+    while (true) {
+      var tag = input.readTag()
+      switch tag {
+      case 0: 
+        self.unknownFields = unknownFieldsBuilder.build()
+        return self
+
+      default:
+        if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+           unknownFields = unknownFieldsBuilder.build()
+           return self
+        }
+      }
+    }
+  }
+}
+
 //Class extensions: NSData
 
 
@@ -792,6 +960,18 @@ public extension ProfileServiceResponses {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return ProfileServiceResponses.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension SearchServiceResponses {
+    class func parseFromNSData(data:NSData) -> SearchServiceResponses {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return SearchServiceResponses.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> SearchServiceResponses {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return SearchServiceResponses.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 
