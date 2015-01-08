@@ -6517,16 +6517,92 @@ final public class ProfileService : GeneratedMessage {
       //Nested type declaration start
 
         final public class Request : GeneratedMessage {
+
+
+          //OneOf declaration start
+
+          public enum LookupKey {
+            case LookupKeyOneOfNotSet
+
+            public func checkOneOfIsSet() -> Bool {
+                 switch self {
+                 case .LookupKeyOneOfNotSet:
+                      return false
+                 default:
+                      return true
+                 }
+            }
+            case ProfileId(String)
+
+            public static func getProfileId(value:LookupKey) ->String? {
+                 switch value {
+                 case .ProfileId(let enumValue):
+                      return enumValue
+                 default:
+                      return nil
+                 }
+            }
+            case UserId(String)
+
+            public static func getUserId(value:LookupKey) ->String? {
+                 switch value {
+                 case .UserId(let enumValue):
+                      return enumValue
+                 default:
+                      return nil
+                 }
+            }
+          }
+
+
+
+          //OneOf declaration end
+
+          private var storageLookupKey:ProfileService.GetDirectReports.Request.LookupKey =  ProfileService.GetDirectReports.Request.LookupKey.LookupKeyOneOfNotSet
           public subscript(key: String) -> AnyObject? {
                  switch key {
                  case "profile_id": return profile_id
+                 case "user_id": return user_id
                  default: return nil
                  }
           }
 
-          public private(set) var hasProfileId:Bool = false
-          public private(set) var profile_id:String = ""
-
+          public private(set) var hasProfileId:Bool {
+                get {
+                     if ProfileService.GetDirectReports.Request.LookupKey.getProfileId(storageLookupKey) == nil {
+                         return false
+                     }
+                     return true
+                }
+                set(newValue) {
+                }
+          }
+          public private(set) var profile_id:String!{
+               get {
+                    return ProfileService.GetDirectReports.Request.LookupKey.getProfileId(storageLookupKey)
+               }
+               set (newvalue) {
+                    storageLookupKey = ProfileService.GetDirectReports.Request.LookupKey.ProfileId(newvalue)
+               }
+          }
+          public private(set) var hasUserId:Bool {
+                get {
+                     if ProfileService.GetDirectReports.Request.LookupKey.getUserId(storageLookupKey) == nil {
+                         return false
+                     }
+                     return true
+                }
+                set(newValue) {
+                }
+          }
+          public private(set) var user_id:String!{
+               get {
+                    return ProfileService.GetDirectReports.Request.LookupKey.getUserId(storageLookupKey)
+               }
+               set (newvalue) {
+                    storageLookupKey = ProfileService.GetDirectReports.Request.LookupKey.UserId(newvalue)
+               }
+          }
           required public init() {
                super.init()
           }
@@ -6536,6 +6612,9 @@ final public class ProfileService : GeneratedMessage {
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
             if hasProfileId {
               output.writeString(1, value:profile_id)
+            }
+            if hasUserId {
+              output.writeString(2, value:user_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -6548,6 +6627,9 @@ final public class ProfileService : GeneratedMessage {
             size = 0
             if hasProfileId {
               size += WireFormat.computeStringSize(1, value:profile_id)
+            }
+            if hasUserId {
+              size += WireFormat.computeStringSize(2, value:user_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -6593,6 +6675,9 @@ final public class ProfileService : GeneratedMessage {
             if hasProfileId {
               output += "\(indent) profile_id: \(profile_id) \n"
             }
+            if hasUserId {
+              output += "\(indent) user_id: \(user_id) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -6600,6 +6685,9 @@ final public class ProfileService : GeneratedMessage {
                   var hashCode:Int = 7
                   if hasProfileId {
                      hashCode = (hashCode &* 31) &+ profile_id.hashValue
+                  }
+                  if hasUserId {
+                     hashCode = (hashCode &* 31) &+ user_id.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -6650,6 +6738,25 @@ final public class ProfileService : GeneratedMessage {
                builderResult.profile_id = ""
                return self
           }
+          public var hasUserId:Bool {
+               get {
+                    return builderResult.hasUserId
+               }
+          }
+          public var user_id:String {
+               get {
+                    return builderResult.user_id
+               }
+               set (value) {
+                   builderResult.hasUserId = true
+                   builderResult.user_id = value
+               }
+          }
+          public func clearUserId() -> ProfileService.GetDirectReports.RequestBuilder{
+               builderResult.hasUserId = false
+               builderResult.user_id = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -6677,6 +6784,9 @@ final public class ProfileService : GeneratedMessage {
             if other.hasProfileId {
                  profile_id = other.profile_id
             }
+            if other.hasUserId {
+                 user_id = other.user_id
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -6694,6 +6804,9 @@ final public class ProfileService : GeneratedMessage {
 
               case 10 :
                 profile_id = input.readString()
+
+              case 18 :
+                user_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
