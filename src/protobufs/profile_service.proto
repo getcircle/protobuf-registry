@@ -193,4 +193,16 @@ message ProfileService {
 
     }
 
+    message GetUpcomingAnniversaries {
+
+        message Request {
+            optional string organization_id = 1;
+        }
+
+        message Response {
+            repeated Containers.Profile profiles = 1;
+        }
+
+    }
+
 }
