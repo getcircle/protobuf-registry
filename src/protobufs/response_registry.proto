@@ -53,7 +53,7 @@ message SearchServiceResponses {
     }
 }
 
-message LandingServiceRequests {
+message LandingServiceResponses {
     extend soa.ActionResponseResult {
         optional main.landing_service.LandingService.GetCategories.Response get_categories = 500;
     }
