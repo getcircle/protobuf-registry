@@ -24,6 +24,7 @@ message ProfileService {
             optional string email = 12;
             optional string team_id = 13;
             optional string full_name = 14;
+            optional string birth_date = 15;
         }
 
         message Tag {

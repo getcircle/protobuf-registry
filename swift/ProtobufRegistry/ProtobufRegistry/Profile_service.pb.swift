@@ -152,6 +152,7 @@ final public class ProfileService : GeneratedMessage {
                  case "email": return email
                  case "team_id": return team_id
                  case "full_name": return full_name
+                 case "birth_date": return birth_date
                  default: return nil
                  }
           }
@@ -197,6 +198,9 @@ final public class ProfileService : GeneratedMessage {
 
           public private(set) var hasFullName:Bool = false
           public private(set) var full_name:String = ""
+
+          public private(set) var hasBirthDate:Bool = false
+          public private(set) var birth_date:String = ""
 
           required public init() {
                super.init()
@@ -246,6 +250,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasFullName {
               output.writeString(14, value:full_name)
+            }
+            if hasBirthDate {
+              output.writeString(15, value:birth_date)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -297,6 +304,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasFullName {
               size += WireFormat.computeStringSize(14, value:full_name)
+            }
+            if hasBirthDate {
+              size += WireFormat.computeStringSize(15, value:birth_date)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -381,6 +391,9 @@ final public class ProfileService : GeneratedMessage {
             if hasFullName {
               output += "\(indent) full_name: \(full_name) \n"
             }
+            if hasBirthDate {
+              output += "\(indent) birth_date: \(birth_date) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -427,6 +440,9 @@ final public class ProfileService : GeneratedMessage {
                   }
                   if hasFullName {
                      hashCode = (hashCode &* 31) &+ full_name.hashValue
+                  }
+                  if hasBirthDate {
+                     hashCode = (hashCode &* 31) &+ birth_date.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -724,6 +740,25 @@ final public class ProfileService : GeneratedMessage {
                builderResult.full_name = ""
                return self
           }
+          public var hasBirthDate:Bool {
+               get {
+                    return builderResult.hasBirthDate
+               }
+          }
+          public var birth_date:String {
+               get {
+                    return builderResult.birth_date
+               }
+               set (value) {
+                   builderResult.hasBirthDate = true
+                   builderResult.birth_date = value
+               }
+          }
+          public func clearBirthDate() -> ProfileService.Containers.ProfileBuilder{
+               builderResult.hasBirthDate = false
+               builderResult.birth_date = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -790,6 +825,9 @@ final public class ProfileService : GeneratedMessage {
             if other.hasFullName {
                  full_name = other.full_name
             }
+            if other.hasBirthDate {
+                 birth_date = other.birth_date
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -846,6 +884,9 @@ final public class ProfileService : GeneratedMessage {
 
               case 114 :
                 full_name = input.readString()
+
+              case 122 :
+                birth_date = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
