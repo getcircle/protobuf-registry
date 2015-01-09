@@ -127,9 +127,9 @@ public var SearchServiceResponses_search:ConcreateExtensionField {
        return ResponseRegistryRoot.sharedInstance.SearchServiceResponses_searchStatic
    }
 }
-public var LandingServiceRequests_get_categories:ConcreateExtensionField {
+public var LandingServiceResponses_get_categories:ConcreateExtensionField {
    get {
-       return ResponseRegistryRoot.sharedInstance.LandingServiceRequests_get_categoriesStatic
+       return ResponseRegistryRoot.sharedInstance.LandingServiceResponses_get_categoriesStatic
    }
 }
 public struct ResponseRegistryRoot {
@@ -164,7 +164,7 @@ public struct ResponseRegistryRoot {
   var ProfileServiceResponses_get_direct_reportsStatic:ConcreateExtensionField
   var ProfileServiceResponses_get_peersStatic:ConcreateExtensionField
   var SearchServiceResponses_searchStatic:ConcreateExtensionField
-  var LandingServiceRequests_get_categoriesStatic:ConcreateExtensionField
+  var LandingServiceResponses_get_categoriesStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -193,7 +193,7 @@ public struct ResponseRegistryRoot {
     ProfileServiceResponses_get_direct_reportsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 308, defaultValue:ProfileService.GetDirectReports.Response(), messageOrGroupClass:ProfileService.GetDirectReports.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceResponses_get_peersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 309, defaultValue:ProfileService.GetPeers.Response(), messageOrGroupClass:ProfileService.GetPeers.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     SearchServiceResponses_searchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 400, defaultValue:SearchService.Search.Response(), messageOrGroupClass:SearchService.Search.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    LandingServiceRequests_get_categoriesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 500, defaultValue:LandingService.GetCategories.Response(), messageOrGroupClass:LandingService.GetCategories.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    LandingServiceResponses_get_categoriesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 500, defaultValue:LandingService.GetCategories.Response(), messageOrGroupClass:LandingService.GetCategories.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -229,7 +229,7 @@ public struct ResponseRegistryRoot {
     registry.addExtension(ProfileServiceResponses_get_direct_reportsStatic)
     registry.addExtension(ProfileServiceResponses_get_peersStatic)
     registry.addExtension(SearchServiceResponses_searchStatic)
-    registry.addExtension(LandingServiceRequests_get_categoriesStatic)
+    registry.addExtension(LandingServiceResponses_get_categoriesStatic)
   }
 }
 
@@ -265,7 +265,7 @@ public func == (lhs: SearchServiceResponses, rhs: SearchServiceResponses) -> Boo
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: LandingServiceRequests, rhs: LandingServiceRequests) -> Bool {
+public func == (lhs: LandingServiceResponses, rhs: LandingServiceResponses) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -940,7 +940,7 @@ final public class SearchServiceResponsesBuilder : GeneratedMessageBuilder {
   }
 }
 
-final public class LandingServiceRequests : GeneratedMessage {
+final public class LandingServiceResponses : GeneratedMessage {
   public subscript(key: String) -> AnyObject? {
          switch key {
          default: return nil
@@ -948,7 +948,7 @@ final public class LandingServiceRequests : GeneratedMessage {
   }
 
   public class func get_categories() -> ConcreateExtensionField {
-       return LandingServiceRequests_get_categories
+       return LandingServiceResponses_get_categories
   }
   required public init() {
        super.init()
@@ -970,41 +970,41 @@ final public class LandingServiceRequests : GeneratedMessage {
     memoizedSerializedSize = size
     return size
   }
-  public class func parseFromData(data:[Byte]) -> LandingServiceRequests {
-    return LandingServiceRequests.builder().mergeFromData(data).build()
+  public class func parseFromData(data:[Byte]) -> LandingServiceResponses {
+    return LandingServiceResponses.builder().mergeFromData(data).build()
   }
-  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> LandingServiceRequests {
-    return LandingServiceRequests.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> LandingServiceResponses {
+    return LandingServiceResponses.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFromInputStream(input:NSInputStream) -> LandingServiceRequests {
-    return LandingServiceRequests.builder().mergeFromInputStream(input).build()
+  public class func parseFromInputStream(input:NSInputStream) -> LandingServiceResponses {
+    return LandingServiceResponses.builder().mergeFromInputStream(input).build()
   }
-  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->LandingServiceRequests {
-    return LandingServiceRequests.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->LandingServiceResponses {
+    return LandingServiceResponses.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFromCodedInputStream(input:CodedInputStream) -> LandingServiceRequests {
-    return LandingServiceRequests.builder().mergeFromCodedInputStream(input).build()
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> LandingServiceResponses {
+    return LandingServiceResponses.builder().mergeFromCodedInputStream(input).build()
   }
-  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingServiceRequests {
-    return LandingServiceRequests.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingServiceResponses {
+    return LandingServiceResponses.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
   }
-  public class func builder() -> LandingServiceRequestsBuilder {
-    return LandingServiceRequests.classBuilder() as LandingServiceRequestsBuilder
+  public class func builder() -> LandingServiceResponsesBuilder {
+    return LandingServiceResponses.classBuilder() as LandingServiceResponsesBuilder
   }
-  public func builder() -> LandingServiceRequestsBuilder {
-    return classBuilder() as LandingServiceRequestsBuilder
+  public func builder() -> LandingServiceResponsesBuilder {
+    return classBuilder() as LandingServiceResponsesBuilder
   }
   public override class func classBuilder() -> MessageBuilder {
-    return LandingServiceRequestsBuilder()
+    return LandingServiceResponsesBuilder()
   }
   public override func classBuilder() -> MessageBuilder {
-    return LandingServiceRequests.builder()
+    return LandingServiceResponses.builder()
   }
-  public func toBuilder() -> LandingServiceRequestsBuilder {
-    return LandingServiceRequests.builderWithPrototype(self)
+  public func toBuilder() -> LandingServiceResponsesBuilder {
+    return LandingServiceResponses.builderWithPrototype(self)
   }
-  public class func builderWithPrototype(prototype:LandingServiceRequests) -> LandingServiceRequestsBuilder {
-    return LandingServiceRequests.builder().mergeFrom(prototype)
+  public class func builderWithPrototype(prototype:LandingServiceResponses) -> LandingServiceResponsesBuilder {
+    return LandingServiceResponses.builder().mergeFrom(prototype)
   }
   override public func writeDescriptionTo(inout output:String, indent:String) {
     unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -1021,13 +1021,13 @@ final public class LandingServiceRequests : GeneratedMessage {
   //Meta information declaration start
 
   override public class func className() -> String {
-      return "LandingServiceRequests"
+      return "LandingServiceResponses"
   }
   override public func className() -> String {
-      return "LandingServiceRequests"
+      return "LandingServiceResponses"
   }
   override public func classMetaType() -> GeneratedMessage.Type {
-      return LandingServiceRequests.self
+      return LandingServiceResponses.self
   }
 
 
@@ -1035,11 +1035,11 @@ final public class LandingServiceRequests : GeneratedMessage {
 
 }
 
-final public class LandingServiceRequestsBuilder : GeneratedMessageBuilder {
-  private var builderResult:LandingServiceRequests
+final public class LandingServiceResponsesBuilder : GeneratedMessageBuilder {
+  private var builderResult:LandingServiceResponses
 
   required override public init () {
-     builderResult = LandingServiceRequests()
+     builderResult = LandingServiceResponses()
      super.init()
   }
   override public var internalGetResult:GeneratedMessage {
@@ -1047,32 +1047,32 @@ final public class LandingServiceRequestsBuilder : GeneratedMessageBuilder {
           return builderResult
        }
   }
-  public override func clear() -> LandingServiceRequestsBuilder {
-    builderResult = LandingServiceRequests()
+  public override func clear() -> LandingServiceResponsesBuilder {
+    builderResult = LandingServiceResponses()
     return self
   }
-  public override func clone() -> LandingServiceRequestsBuilder {
-    return LandingServiceRequests.builderWithPrototype(builderResult)
+  public override func clone() -> LandingServiceResponsesBuilder {
+    return LandingServiceResponses.builderWithPrototype(builderResult)
   }
-  public override func build() -> LandingServiceRequests {
+  public override func build() -> LandingServiceResponses {
        checkInitialized()
        return buildPartial()
   }
-  public func buildPartial() -> LandingServiceRequests {
-    var returnMe:LandingServiceRequests = builderResult
+  public func buildPartial() -> LandingServiceResponses {
+    var returnMe:LandingServiceResponses = builderResult
     return returnMe
   }
-  public func mergeFrom(other:LandingServiceRequests) -> LandingServiceRequestsBuilder {
-    if (other == LandingServiceRequests()) {
+  public func mergeFrom(other:LandingServiceResponses) -> LandingServiceResponsesBuilder {
+    if (other == LandingServiceResponses()) {
      return self
     }
     mergeUnknownFields(other.unknownFields)
     return self
   }
-  public override func mergeFromCodedInputStream(input:CodedInputStream) ->LandingServiceRequestsBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->LandingServiceResponsesBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
-  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingServiceRequestsBuilder {
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingServiceResponsesBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -1142,16 +1142,16 @@ public extension SearchServiceResponses {
         return SearchServiceResponses.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-public extension LandingServiceRequests {
-    class func parseFromNSData(data:NSData) -> LandingServiceRequests {
+public extension LandingServiceResponses {
+    class func parseFromNSData(data:NSData) -> LandingServiceResponses {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
-        return LandingServiceRequests.builder().mergeFromData(bytes).build()
+        return LandingServiceResponses.builder().mergeFromData(bytes).build()
     }
-    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> LandingServiceRequests {
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> LandingServiceResponses {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
-        return LandingServiceRequests.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+        return LandingServiceResponses.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 
