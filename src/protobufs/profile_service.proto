@@ -174,4 +174,18 @@ message ProfileService {
         }
     }
 
+    message GetProfileStats {
+
+        message Request {
+            oneof lookup_key {
+                string address_id = 1;
+            }
+        }
+
+        message Response {
+            optional int32 count = 1;
+        }
+
+    }
+
 }
