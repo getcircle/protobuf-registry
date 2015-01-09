@@ -156,7 +156,6 @@ final public class ProfileService : GeneratedMessage {
                  case "cell_phone": return cell_phone
                  case "work_phone": return work_phone
                  case "image_url": return image_url
-                 case "location": return location
                  case "email": return email
                  case "team_id": return team_id
                  case "full_name": return full_name
@@ -195,9 +194,6 @@ final public class ProfileService : GeneratedMessage {
 
           public private(set) var hasImageUrl:Bool = false
           public private(set) var image_url:String = ""
-
-          public private(set) var hasLocation:Bool = false
-          public private(set) var location:String = ""
 
           public private(set) var hasEmail:Bool = false
           public private(set) var email:String = ""
@@ -251,23 +247,20 @@ final public class ProfileService : GeneratedMessage {
             if hasImageUrl {
               output.writeString(10, value:image_url)
             }
-            if hasLocation {
-              output.writeString(11, value:location)
-            }
             if hasEmail {
-              output.writeString(12, value:email)
+              output.writeString(11, value:email)
             }
             if hasTeamId {
-              output.writeString(13, value:team_id)
+              output.writeString(12, value:team_id)
             }
             if hasFullName {
-              output.writeString(14, value:full_name)
+              output.writeString(13, value:full_name)
             }
             if hasBirthDate {
-              output.writeString(15, value:birth_date)
+              output.writeString(14, value:birth_date)
             }
             if hasHireDate {
-              output.writeString(16, value:hire_date)
+              output.writeString(15, value:hire_date)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -308,23 +301,20 @@ final public class ProfileService : GeneratedMessage {
             if hasImageUrl {
               size += WireFormat.computeStringSize(10, value:image_url)
             }
-            if hasLocation {
-              size += WireFormat.computeStringSize(11, value:location)
-            }
             if hasEmail {
-              size += WireFormat.computeStringSize(12, value:email)
+              size += WireFormat.computeStringSize(11, value:email)
             }
             if hasTeamId {
-              size += WireFormat.computeStringSize(13, value:team_id)
+              size += WireFormat.computeStringSize(12, value:team_id)
             }
             if hasFullName {
-              size += WireFormat.computeStringSize(14, value:full_name)
+              size += WireFormat.computeStringSize(13, value:full_name)
             }
             if hasBirthDate {
-              size += WireFormat.computeStringSize(15, value:birth_date)
+              size += WireFormat.computeStringSize(14, value:birth_date)
             }
             if hasHireDate {
-              size += WireFormat.computeStringSize(16, value:hire_date)
+              size += WireFormat.computeStringSize(15, value:hire_date)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -397,9 +387,6 @@ final public class ProfileService : GeneratedMessage {
             if hasImageUrl {
               output += "\(indent) image_url: \(image_url) \n"
             }
-            if hasLocation {
-              output += "\(indent) location: \(location) \n"
-            }
             if hasEmail {
               output += "\(indent) email: \(email) \n"
             }
@@ -449,9 +436,6 @@ final public class ProfileService : GeneratedMessage {
                   }
                   if hasImageUrl {
                      hashCode = (hashCode &* 31) &+ image_url.hashValue
-                  }
-                  if hasLocation {
-                     hashCode = (hashCode &* 31) &+ location.hashValue
                   }
                   if hasEmail {
                      hashCode = (hashCode &* 31) &+ email.hashValue
@@ -688,25 +672,6 @@ final public class ProfileService : GeneratedMessage {
                builderResult.image_url = ""
                return self
           }
-          public var hasLocation:Bool {
-               get {
-                    return builderResult.hasLocation
-               }
-          }
-          public var location:String {
-               get {
-                    return builderResult.location
-               }
-               set (value) {
-                   builderResult.hasLocation = true
-                   builderResult.location = value
-               }
-          }
-          public func clearLocation() -> ProfileService.Containers.ProfileBuilder{
-               builderResult.hasLocation = false
-               builderResult.location = ""
-               return self
-          }
           public var hasEmail:Bool {
                get {
                     return builderResult.hasEmail
@@ -856,9 +821,6 @@ final public class ProfileService : GeneratedMessage {
             if other.hasImageUrl {
                  image_url = other.image_url
             }
-            if other.hasLocation {
-                 location = other.location
-            }
             if other.hasEmail {
                  email = other.email
             }
@@ -920,21 +882,18 @@ final public class ProfileService : GeneratedMessage {
                 image_url = input.readString()
 
               case 90 :
-                location = input.readString()
-
-              case 98 :
                 email = input.readString()
 
-              case 106 :
+              case 98 :
                 team_id = input.readString()
 
-              case 114 :
+              case 106 :
                 full_name = input.readString()
 
-              case 122 :
+              case 114 :
                 birth_date = input.readString()
 
-              case 130 :
+              case 122 :
                 hire_date = input.readString()
 
               default:
