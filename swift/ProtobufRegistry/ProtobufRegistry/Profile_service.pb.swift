@@ -153,6 +153,7 @@ final public class ProfileService : GeneratedMessage {
                  case "team_id": return team_id
                  case "full_name": return full_name
                  case "birth_date": return birth_date
+                 case "hire_date": return hire_date
                  default: return nil
                  }
           }
@@ -201,6 +202,9 @@ final public class ProfileService : GeneratedMessage {
 
           public private(set) var hasBirthDate:Bool = false
           public private(set) var birth_date:String = ""
+
+          public private(set) var hasHireDate:Bool = false
+          public private(set) var hire_date:String = ""
 
           required public init() {
                super.init()
@@ -253,6 +257,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasBirthDate {
               output.writeString(15, value:birth_date)
+            }
+            if hasHireDate {
+              output.writeString(16, value:hire_date)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -307,6 +314,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasBirthDate {
               size += WireFormat.computeStringSize(15, value:birth_date)
+            }
+            if hasHireDate {
+              size += WireFormat.computeStringSize(16, value:hire_date)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -394,6 +404,9 @@ final public class ProfileService : GeneratedMessage {
             if hasBirthDate {
               output += "\(indent) birth_date: \(birth_date) \n"
             }
+            if hasHireDate {
+              output += "\(indent) hire_date: \(hire_date) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -443,6 +456,9 @@ final public class ProfileService : GeneratedMessage {
                   }
                   if hasBirthDate {
                      hashCode = (hashCode &* 31) &+ birth_date.hashValue
+                  }
+                  if hasHireDate {
+                     hashCode = (hashCode &* 31) &+ hire_date.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -759,6 +775,25 @@ final public class ProfileService : GeneratedMessage {
                builderResult.birth_date = ""
                return self
           }
+          public var hasHireDate:Bool {
+               get {
+                    return builderResult.hasHireDate
+               }
+          }
+          public var hire_date:String {
+               get {
+                    return builderResult.hire_date
+               }
+               set (value) {
+                   builderResult.hasHireDate = true
+                   builderResult.hire_date = value
+               }
+          }
+          public func clearHireDate() -> ProfileService.Containers.ProfileBuilder{
+               builderResult.hasHireDate = false
+               builderResult.hire_date = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -828,6 +863,9 @@ final public class ProfileService : GeneratedMessage {
             if other.hasBirthDate {
                  birth_date = other.birth_date
             }
+            if other.hasHireDate {
+                 hire_date = other.hire_date
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -887,6 +925,9 @@ final public class ProfileService : GeneratedMessage {
 
               case 122 :
                 birth_date = input.readString()
+
+              case 130 :
+                hire_date = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
