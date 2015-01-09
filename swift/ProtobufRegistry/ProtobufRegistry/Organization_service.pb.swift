@@ -1126,7 +1126,7 @@ final public class OrganizationService : GeneratedMessage {
           public private(set) var country_code:String = ""
 
           public private(set) var hasProfileCount:Bool = false
-          public private(set) var profile_count:String = ""
+          public private(set) var profile_count:Int32 = Int32(0)
 
           required public init() {
                super.init()
@@ -1163,7 +1163,7 @@ final public class OrganizationService : GeneratedMessage {
               output.writeString(9, value:country_code)
             }
             if hasProfileCount {
-              output.writeString(10, value:profile_count)
+              output.writeInt32(10, value:profile_count)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -1202,7 +1202,7 @@ final public class OrganizationService : GeneratedMessage {
               size += WireFormat.computeStringSize(9, value:country_code)
             }
             if hasProfileCount {
-              size += WireFormat.computeStringSize(10, value:profile_count)
+              size += WireFormat.computeInt32Size(10, value:profile_count)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -1516,7 +1516,7 @@ final public class OrganizationService : GeneratedMessage {
                     return builderResult.hasProfileCount
                }
           }
-          public var profile_count:String {
+          public var profile_count:Int32 {
                get {
                     return builderResult.profile_count
                }
@@ -1527,7 +1527,7 @@ final public class OrganizationService : GeneratedMessage {
           }
           public func clearProfileCount() -> OrganizationService.Containers.AddressBuilder{
                builderResult.hasProfileCount = false
-               builderResult.profile_count = ""
+               builderResult.profile_count = Int32(0)
                return self
           }
           override public var internalGetResult:GeneratedMessage {
@@ -1626,8 +1626,8 @@ final public class OrganizationService : GeneratedMessage {
               case 74 :
                 country_code = input.readString()
 
-              case 82 :
-                profile_count = input.readString()
+              case 80 :
+                profile_count = input.readInt32()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
