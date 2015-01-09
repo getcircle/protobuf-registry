@@ -1099,6 +1099,244 @@ final public class ProfileService : GeneratedMessage {
 
       //Nested type declaration end
 
+
+
+      //Nested type declaration start
+
+        final public class Stats : GeneratedMessage {
+          public subscript(key: String) -> AnyObject? {
+                 switch key {
+                 case "id": return id
+                 case "count": return count
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasId:Bool = false
+          public private(set) var id:String = ""
+
+          public private(set) var hasCount:Bool = false
+          public private(set) var count:String = ""
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasId {
+              output.writeString(1, value:id)
+            }
+            if hasCount {
+              output.writeString(2, value:count)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasId {
+              size += WireFormat.computeStringSize(1, value:id)
+            }
+            if hasCount {
+              size += WireFormat.computeStringSize(2, value:count)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> ProfileService.Containers.Stats {
+            return ProfileService.Containers.Stats.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ProfileService.Containers.Stats {
+            return ProfileService.Containers.Stats.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> ProfileService.Containers.Stats {
+            return ProfileService.Containers.Stats.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ProfileService.Containers.Stats {
+            return ProfileService.Containers.Stats.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> ProfileService.Containers.Stats {
+            return ProfileService.Containers.Stats.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ProfileService.Containers.Stats {
+            return ProfileService.Containers.Stats.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> ProfileService.Containers.StatsBuilder {
+            return ProfileService.Containers.Stats.classBuilder() as ProfileService.Containers.StatsBuilder
+          }
+          public func builder() -> ProfileService.Containers.StatsBuilder {
+            return classBuilder() as ProfileService.Containers.StatsBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return ProfileService.Containers.StatsBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return ProfileService.Containers.Stats.builder()
+          }
+          public func toBuilder() -> ProfileService.Containers.StatsBuilder {
+            return ProfileService.Containers.Stats.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:ProfileService.Containers.Stats) -> ProfileService.Containers.StatsBuilder {
+            return ProfileService.Containers.Stats.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasId {
+              output += "\(indent) id: \(id) \n"
+            }
+            if hasCount {
+              output += "\(indent) count: \(count) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasId {
+                     hashCode = (hashCode &* 31) &+ id.hashValue
+                  }
+                  if hasCount {
+                     hashCode = (hashCode &* 31) &+ count.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "ProfileService.Containers.Stats"
+          }
+          override public func className() -> String {
+              return "ProfileService.Containers.Stats"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return ProfileService.Containers.Stats.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class StatsBuilder : GeneratedMessageBuilder {
+          private var builderResult:ProfileService.Containers.Stats
+
+          required override public init () {
+             builderResult = ProfileService.Containers.Stats()
+             super.init()
+          }
+          public var hasId:Bool {
+               get {
+                    return builderResult.hasId
+               }
+          }
+          public var id:String {
+               get {
+                    return builderResult.id
+               }
+               set (value) {
+                   builderResult.hasId = true
+                   builderResult.id = value
+               }
+          }
+          public func clearId() -> ProfileService.Containers.StatsBuilder{
+               builderResult.hasId = false
+               builderResult.id = ""
+               return self
+          }
+          public var hasCount:Bool {
+               get {
+                    return builderResult.hasCount
+               }
+          }
+          public var count:String {
+               get {
+                    return builderResult.count
+               }
+               set (value) {
+                   builderResult.hasCount = true
+                   builderResult.count = value
+               }
+          }
+          public func clearCount() -> ProfileService.Containers.StatsBuilder{
+               builderResult.hasCount = false
+               builderResult.count = ""
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> ProfileService.Containers.StatsBuilder {
+            builderResult = ProfileService.Containers.Stats()
+            return self
+          }
+          public override func clone() -> ProfileService.Containers.StatsBuilder {
+            return ProfileService.Containers.Stats.builderWithPrototype(builderResult)
+          }
+          public override func build() -> ProfileService.Containers.Stats {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> ProfileService.Containers.Stats {
+            var returnMe:ProfileService.Containers.Stats = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:ProfileService.Containers.Stats) -> ProfileService.Containers.StatsBuilder {
+            if (other == ProfileService.Containers.Stats()) {
+             return self
+            }
+            if other.hasId {
+                 id = other.id
+            }
+            if other.hasCount {
+                 count = other.count
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->ProfileService.Containers.StatsBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ProfileService.Containers.StatsBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                id = input.readString()
+
+              case 18 :
+                count = input.readString()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
       public subscript(key: String) -> AnyObject? {
              switch key {
              default: return nil
@@ -7730,63 +7968,13 @@ final public class ProfileService : GeneratedMessage {
       //Nested type declaration start
 
         final public class Request : GeneratedMessage {
-
-
-          //OneOf declaration start
-
-          public enum LookupKey {
-            case LookupKeyOneOfNotSet
-
-            public func checkOneOfIsSet() -> Bool {
-                 switch self {
-                 case .LookupKeyOneOfNotSet:
-                      return false
-                 default:
-                      return true
-                 }
-            }
-            case AddressId(String)
-
-            public static func getAddressId(value:LookupKey) ->String? {
-                 switch value {
-                 case .AddressId(let enumValue):
-                      return enumValue
-                 default:
-                      return nil
-                 }
-            }
-          }
-
-
-
-          //OneOf declaration end
-
-          private var storageLookupKey:ProfileService.GetProfileStats.Request.LookupKey =  ProfileService.GetProfileStats.Request.LookupKey.LookupKeyOneOfNotSet
           public subscript(key: String) -> AnyObject? {
                  switch key {
-                 case "address_id": return address_id
                  default: return nil
                  }
           }
 
-          public private(set) var hasAddressId:Bool {
-                get {
-                     if ProfileService.GetProfileStats.Request.LookupKey.getAddressId(storageLookupKey) == nil {
-                         return false
-                     }
-                     return true
-                }
-                set(newValue) {
-                }
-          }
-          public private(set) var address_id:String!{
-               get {
-                    return ProfileService.GetProfileStats.Request.LookupKey.getAddressId(storageLookupKey)
-               }
-               set (newvalue) {
-                    storageLookupKey = ProfileService.GetProfileStats.Request.LookupKey.AddressId(newvalue)
-               }
-          }
+          public private(set) var address_ids:Array<String> = Array<String>()
           required public init() {
                super.init()
           }
@@ -7794,8 +7982,10 @@ final public class ProfileService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
-            if hasAddressId {
-              output.writeString(1, value:address_id)
+            if !address_ids.isEmpty {
+              for oneValueaddress_ids in address_ids {
+                output.writeString(1, value:oneValueaddress_ids)
+              }
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -7806,9 +7996,12 @@ final public class ProfileService : GeneratedMessage {
             }
 
             size = 0
-            if hasAddressId {
-              size += WireFormat.computeStringSize(1, value:address_id)
+            var dataSizeAddressIds:Int32 = 0
+            for oneValueaddress_ids in address_ids {
+                dataSizeAddressIds += WireFormat.computeStringSizeNoTag(oneValueaddress_ids)
             }
+            size += dataSizeAddressIds
+            size += 1 * Int32(address_ids.count)
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
             return size
@@ -7850,16 +8043,18 @@ final public class ProfileService : GeneratedMessage {
             return ProfileService.GetProfileStats.Request.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
-            if hasAddressId {
-              output += "\(indent) address_id: \(address_id) \n"
+            var address_idsElementIndex:Int = 0
+            for oneValueaddress_ids in address_ids  {
+                output += "\(indent) address_ids[\(address_idsElementIndex)]: \(oneValueaddress_ids)\n"
+                address_idsElementIndex++
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
-                  if hasAddressId {
-                     hashCode = (hashCode &* 31) &+ address_id.hashValue
+                  for oneValueaddress_ids in address_ids {
+                      hashCode = (hashCode &* 31) &+ oneValueaddress_ids.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -7891,24 +8086,17 @@ final public class ProfileService : GeneratedMessage {
              builderResult = ProfileService.GetProfileStats.Request()
              super.init()
           }
-          public var hasAddressId:Bool {
+          public var address_ids:Array<String> {
                get {
-                    return builderResult.hasAddressId
+                   return builderResult.address_ids
+               }
+               set (array) {
+                   builderResult.address_ids = array
                }
           }
-          public var address_id:String {
-               get {
-                    return builderResult.address_id
-               }
-               set (value) {
-                   builderResult.hasAddressId = true
-                   builderResult.address_id = value
-               }
-          }
-          public func clearAddressId() -> ProfileService.GetProfileStats.RequestBuilder{
-               builderResult.hasAddressId = false
-               builderResult.address_id = ""
-               return self
+          public func clearAddressIds() -> ProfileService.GetProfileStats.RequestBuilder {
+             builderResult.address_ids.removeAll(keepCapacity: false)
+             return self
           }
           override public var internalGetResult:GeneratedMessage {
                get {
@@ -7934,8 +8122,8 @@ final public class ProfileService : GeneratedMessage {
             if (other == ProfileService.GetProfileStats.Request()) {
              return self
             }
-            if other.hasAddressId {
-                 address_id = other.address_id
+            if !other.address_ids.isEmpty {
+                builderResult.address_ids += other.address_ids
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -7953,7 +8141,7 @@ final public class ProfileService : GeneratedMessage {
                 return self
 
               case 10 :
-                address_id = input.readString()
+                address_ids += [input.readString()]
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -7976,14 +8164,11 @@ final public class ProfileService : GeneratedMessage {
         final public class Response : GeneratedMessage {
           public subscript(key: String) -> AnyObject? {
                  switch key {
-                 case "count": return count
                  default: return nil
                  }
           }
 
-          public private(set) var hasCount:Bool = false
-          public private(set) var count:Int32 = Int32(0)
-
+          public private(set) var stats:Array<ProfileService.Containers.Stats>  = Array<ProfileService.Containers.Stats>()
           required public init() {
                super.init()
           }
@@ -7991,8 +8176,8 @@ final public class ProfileService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
-            if hasCount {
-              output.writeInt32(1, value:count)
+            for oneElementstats in stats {
+                output.writeMessage(1, value:oneElementstats)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -8003,8 +8188,8 @@ final public class ProfileService : GeneratedMessage {
             }
 
             size = 0
-            if hasCount {
-              size += WireFormat.computeInt32Size(1, value:count)
+            for oneElementstats in stats {
+                size += WireFormat.computeMessageSize(1, value:oneElementstats)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -8047,16 +8232,20 @@ final public class ProfileService : GeneratedMessage {
             return ProfileService.GetProfileStats.Response.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
-            if hasCount {
-              output += "\(indent) count: \(count) \n"
+            var statsElementIndex:Int = 0
+            for oneElementstats in stats {
+                output += "\(indent) stats[\(statsElementIndex)] {\n"
+                oneElementstats.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                statsElementIndex++
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
-                  if hasCount {
-                     hashCode = (hashCode &* 31) &+ count.hashValue
+                  for oneElementstats in stats {
+                      hashCode = (hashCode &* 31) &+ oneElementstats.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -8088,24 +8277,17 @@ final public class ProfileService : GeneratedMessage {
              builderResult = ProfileService.GetProfileStats.Response()
              super.init()
           }
-          public var hasCount:Bool {
+          public var stats:Array<ProfileService.Containers.Stats> {
                get {
-                    return builderResult.hasCount
-               }
-          }
-          public var count:Int32 {
-               get {
-                    return builderResult.count
+                   return builderResult.stats
                }
                set (value) {
-                   builderResult.hasCount = true
-                   builderResult.count = value
+                   builderResult.stats = value
                }
           }
-          public func clearCount() -> ProfileService.GetProfileStats.ResponseBuilder{
-               builderResult.hasCount = false
-               builderResult.count = Int32(0)
-               return self
+          public func clearStats() -> ProfileService.GetProfileStats.ResponseBuilder {
+            builderResult.stats.removeAll(keepCapacity: false)
+            return self
           }
           override public var internalGetResult:GeneratedMessage {
                get {
@@ -8131,8 +8313,8 @@ final public class ProfileService : GeneratedMessage {
             if (other == ProfileService.GetProfileStats.Response()) {
              return self
             }
-            if other.hasCount {
-                 count = other.count
+            if !other.stats.isEmpty  {
+               builderResult.stats += other.stats
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -8149,8 +8331,10 @@ final public class ProfileService : GeneratedMessage {
                 self.unknownFields = unknownFieldsBuilder.build()
                 return self
 
-              case 8 :
-                count = input.readInt32()
+              case 10 :
+                var subBuilder = ProfileService.Containers.Stats.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                stats += [subBuilder.buildPartial()]
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -8489,6 +8673,18 @@ public extension ProfileService.Containers.Tag {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return ProfileService.Containers.Tag.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension ProfileService.Containers.Stats {
+    class func parseFromNSData(data:NSData) -> ProfileService.Containers.Stats {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ProfileService.Containers.Stats.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> ProfileService.Containers.Stats {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ProfileService.Containers.Stats.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension ProfileService.Containers {
