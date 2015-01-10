@@ -216,4 +216,16 @@ message ProfileService {
 
     }
 
+    message GetRecentHires {
+
+        message Request {
+            optional string organization_id = 1;
+        }
+
+        message Response {
+            repeated Containers.Profile profiles = 1;
+        }
+
+    }
+
 }
