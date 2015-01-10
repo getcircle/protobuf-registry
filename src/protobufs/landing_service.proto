@@ -15,6 +15,7 @@ message LandingService {
             BIRTHDAYS = 3;
             LOCATIONS = 4;
             TAGS = 5;
+            PEERS = 6;
         }
 
         message Category {

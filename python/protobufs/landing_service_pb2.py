@@ -20,7 +20,7 @@ import protobufs.profile_service_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/landing_service.proto',
   package='main.landing_service',
-  serialized_pb=_b('\n\x1fprotobufs/landing_service.proto\x12\x14main.landing_service\x1a$protobufs/organization_service.proto\x1a\x1fprotobufs/profile_service.proto\"\xd5\x04\n\x0eLandingService\x1a\xa7\x03\n\nContainers\x1a\xb9\x02\n\x08\x43\x61tegory\x12\r\n\x05title\x18\x01 \x01(\t\x12\x13\n\x0b\x63ontent_key\x18\x02 \x01(\t\x12S\n\rcategory_type\x18\x03 \x01(\x0e\x32<.main.landing_service.LandingService.Containers.CategoryType\x12\x13\n\x0btotal_count\x18\x04 \x01(\t\x12I\n\x08profiles\x18\x05 \x03(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x12T\n\taddresses\x18\x06 \x03(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\"]\n\x0c\x43\x61tegoryType\x12\x12\n\x0e\x44IRECT_REPORTS\x10\x01\x12\x11\n\rANNIVERSARIES\x10\x02\x12\r\n\tBIRTHDAYS\x10\x03\x12\r\n\tLOCATIONS\x10\x04\x12\x08\n\x04TAGS\x10\x05\x1a\x98\x01\n\rGetCategories\x1a-\n\x07Request\x12\x14\n\nprofile_id\x18\x01 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1aX\n\x08Response\x12L\n\ncategories\x18\x01 \x03(\x0b\x32\x38.main.landing_service.LandingService.Containers.Category')
+  serialized_pb=_b('\n\x1fprotobufs/landing_service.proto\x12\x14main.landing_service\x1a$protobufs/organization_service.proto\x1a\x1fprotobufs/profile_service.proto\"\xe0\x04\n\x0eLandingService\x1a\xb2\x03\n\nContainers\x1a\xb9\x02\n\x08\x43\x61tegory\x12\r\n\x05title\x18\x01 \x01(\t\x12\x13\n\x0b\x63ontent_key\x18\x02 \x01(\t\x12S\n\rcategory_type\x18\x03 \x01(\x0e\x32<.main.landing_service.LandingService.Containers.CategoryType\x12\x13\n\x0btotal_count\x18\x04 \x01(\t\x12I\n\x08profiles\x18\x05 \x03(\x0b\x32\x37.main.profile_service.ProfileService.Containers.Profile\x12T\n\taddresses\x18\x06 \x03(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\"h\n\x0c\x43\x61tegoryType\x12\x12\n\x0e\x44IRECT_REPORTS\x10\x01\x12\x11\n\rANNIVERSARIES\x10\x02\x12\r\n\tBIRTHDAYS\x10\x03\x12\r\n\tLOCATIONS\x10\x04\x12\x08\n\x04TAGS\x10\x05\x12\t\n\x05PEERS\x10\x06\x1a\x98\x01\n\rGetCategories\x1a-\n\x07Request\x12\x14\n\nprofile_id\x18\x01 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1aX\n\x08Response\x12L\n\ncategories\x18\x01 \x03(\x0b\x32\x38.main.landing_service.LandingService.Containers.Category')
   ,
   dependencies=[protobufs.organization_service_pb2.DESCRIPTOR,protobufs.profile_service_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -53,11 +53,15 @@ _LANDINGSERVICE_CONTAINERS_CATEGORYTYPE = _descriptor.EnumDescriptor(
       name='TAGS', index=4, number=5,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PEERS', index=5, number=6,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=478,
-  serialized_end=571,
+  serialized_end=582,
 )
 _sym_db.RegisterEnumDescriptor(_LANDINGSERVICE_CONTAINERS_CATEGORYTYPE)
 
@@ -146,7 +150,7 @@ _LANDINGSERVICE_CONTAINERS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=148,
-  serialized_end=571,
+  serialized_end=582,
 )
 
 _LANDINGSERVICE_GETCATEGORIES_REQUEST = _descriptor.Descriptor(
@@ -177,8 +181,8 @@ _LANDINGSERVICE_GETCATEGORIES_REQUEST = _descriptor.Descriptor(
       name='lookup_key', full_name='main.landing_service.LandingService.GetCategories.Request.lookup_key',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=591,
-  serialized_end=636,
+  serialized_start=602,
+  serialized_end=647,
 )
 
 _LANDINGSERVICE_GETCATEGORIES_RESPONSE = _descriptor.Descriptor(
@@ -206,8 +210,8 @@ _LANDINGSERVICE_GETCATEGORIES_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=638,
-  serialized_end=726,
+  serialized_start=649,
+  serialized_end=737,
 )
 
 _LANDINGSERVICE_GETCATEGORIES = _descriptor.Descriptor(
@@ -228,8 +232,8 @@ _LANDINGSERVICE_GETCATEGORIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=574,
-  serialized_end=726,
+  serialized_start=585,
+  serialized_end=737,
 )
 
 _LANDINGSERVICE = _descriptor.Descriptor(
@@ -251,7 +255,7 @@ _LANDINGSERVICE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=129,
-  serialized_end=726,
+  serialized_end=737,
 )
 
 _LANDINGSERVICE_CONTAINERS_CATEGORY.fields_by_name['category_type'].enum_type = _LANDINGSERVICE_CONTAINERS_CATEGORYTYPE

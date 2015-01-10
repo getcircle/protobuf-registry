@@ -459,6 +459,7 @@ final public class LandingService : GeneratedMessage {
           case Birthdays = 3
           case Locations = 4
           case Tags = 5
+          case Peers = 6
 
           public static func IsValidValue(value:Int32) ->Bool {
               if let check = CategoryType(rawValue:value) {
