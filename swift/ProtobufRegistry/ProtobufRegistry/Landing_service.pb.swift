@@ -60,7 +60,7 @@ final public class LandingService : GeneratedMessage {
                  switch key {
                  case "title": return title
                  case "content_key": return content_key
-                 case "category_type": return Int(self.category_type.rawValue)
+                 case "type": return Int(self.type.rawValue)
                  case "total_count": return total_count
                  default: return nil
                  }
@@ -72,8 +72,8 @@ final public class LandingService : GeneratedMessage {
           public private(set) var hasContentKey:Bool = false
           public private(set) var content_key:String = ""
 
-          public private(set) var category_type:LandingService.CategoryType = LandingService.CategoryType.DirectReports
-          public private(set) var hasCategoryType:Bool = false
+          public private(set) var type:LandingService.CategoryType = LandingService.CategoryType.DirectReports
+          public private(set) var hasTypes:Bool = false
           public private(set) var hasTotalCount:Bool = false
           public private(set) var total_count:String = ""
 
@@ -92,8 +92,8 @@ final public class LandingService : GeneratedMessage {
             if hasContentKey {
               output.writeString(2, value:content_key)
             }
-            if hasCategoryType {
-              output.writeEnum(3, value:category_type.rawValue)
+            if hasTypes {
+              output.writeEnum(3, value:type.rawValue)
             }
             if hasTotalCount {
               output.writeString(4, value:total_count)
@@ -119,8 +119,8 @@ final public class LandingService : GeneratedMessage {
             if hasContentKey {
               size += WireFormat.computeStringSize(2, value:content_key)
             }
-            if (hasCategoryType) {
-              size += WireFormat.computeEnumSize(3, value:category_type.rawValue)
+            if (hasTypes) {
+              size += WireFormat.computeEnumSize(3, value:type.rawValue)
             }
             if hasTotalCount {
               size += WireFormat.computeStringSize(4, value:total_count)
@@ -178,8 +178,8 @@ final public class LandingService : GeneratedMessage {
             if hasContentKey {
               output += "\(indent) content_key: \(content_key) \n"
             }
-            if (hasCategoryType) {
-              output += "\(indent) category_type: \(category_type.rawValue)\n"
+            if (hasTypes) {
+              output += "\(indent) type: \(type.rawValue)\n"
             }
             if hasTotalCount {
               output += "\(indent) total_count: \(total_count) \n"
@@ -209,8 +209,8 @@ final public class LandingService : GeneratedMessage {
                   if hasContentKey {
                      hashCode = (hashCode &* 31) &+ content_key.hashValue
                   }
-                  if hasCategoryType {
-                     hashCode = (hashCode &* 31) &+ Int(category_type.rawValue)
+                  if hasTypes {
+                     hashCode = (hashCode &* 31) &+ Int(type.rawValue)
                   }
                   if hasTotalCount {
                      hashCode = (hashCode &* 31) &+ total_count.hashValue
@@ -289,23 +289,23 @@ final public class LandingService : GeneratedMessage {
                builderResult.content_key = ""
                return self
           }
-            public var hasCategoryType:Bool{
+            public var hasTypes:Bool{
                 get {
-                    return builderResult.hasCategoryType
+                    return builderResult.hasTypes
                 }
             }
-            public var category_type:LandingService.CategoryType {
+            public var type:LandingService.CategoryType {
                 get {
-                    return builderResult.category_type
+                    return builderResult.type
                 }
                 set (value) {
-                    builderResult.hasCategoryType = true
-                    builderResult.category_type = value
+                    builderResult.hasTypes = true
+                    builderResult.type = value
                 }
             }
-            public func clearCategoryType() -> LandingService.Containers.CategoryBuilder {
-               builderResult.hasCategoryType = false
-               builderResult.category_type = .DirectReports
+            public func clearTypes() -> LandingService.Containers.CategoryBuilder {
+               builderResult.hasTypes = false
+               builderResult.type = .DirectReports
                return self
             }
           public var hasTotalCount:Bool {
@@ -381,8 +381,8 @@ final public class LandingService : GeneratedMessage {
             if other.hasContentKey {
                  content_key = other.content_key
             }
-            if other.hasCategoryType {
-                 category_type = other.category_type
+            if other.hasTypes {
+                 type = other.type
             }
             if other.hasTotalCount {
                  total_count = other.total_count
@@ -415,11 +415,11 @@ final public class LandingService : GeneratedMessage {
                 content_key = input.readString()
 
               case 24 :
-                let valueIntcategory_type = input.readEnum()
-                if let enumscategory_type = LandingService.CategoryType(rawValue:valueIntcategory_type){
-                     category_type = enumscategory_type
+                let valueInttype = input.readEnum()
+                if let enumstype = LandingService.CategoryType(rawValue:valueInttype){
+                     type = enumstype
                 } else {
-                     unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntcategory_type))
+                     unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueInttype))
                 }
 
               case 34 :
