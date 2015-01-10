@@ -391,7 +391,7 @@ final public class LandingService : GeneratedMessage {
           public private(set) var hasContentKey:Bool = false
           public private(set) var content_key:String = ""
 
-          public private(set) var display_type:LandingService.Containers.DisplayType = LandingService.Containers.DisplayType.Group
+          public private(set) var display_type:LandingService.Containers.DisplayType = LandingService.Containers.DisplayType.Detail
           public private(set) var hasDisplayType:Bool = false
           public private(set) var content:Array<OrganizationService.Containers.Address>  = Array<OrganizationService.Containers.Address>()
           required public init() {
@@ -604,7 +604,7 @@ final public class LandingService : GeneratedMessage {
             }
             public func clearDisplayType() -> LandingService.Containers.AddressCategoryBuilder {
                builderResult.hasDisplayType = false
-               builderResult.display_type = .Group
+               builderResult.display_type = .Detail
                return self
             }
           override public var internalGetResult:GeneratedMessage {
