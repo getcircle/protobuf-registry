@@ -12,6 +12,7 @@ message LandingService {
         LOCATIONS = 4;
         TAGS = 5;
         PEERS = 6;
+        NEW_HIRES = 7;
     }
 
     // MARK: - Containers
