@@ -5,18 +5,18 @@ import "protobufs/profile_service.proto";
 
 message LandingService {
 
+    enum CategoryType {
+        DIRECT_REPORTS = 1;
+        ANNIVERSARIES = 2;
+        BIRTHDAYS = 3;
+        LOCATIONS = 4;
+        TAGS = 5;
+        PEERS = 6;
+    }
+
     // MARK: - Containers
 
     message Containers {
-
-        enum CategoryType {
-            DIRECT_REPORTS = 1;
-            ANNIVERSARIES = 2;
-            BIRTHDAYS = 3;
-            LOCATIONS = 4;
-            TAGS = 5;
-            PEERS = 6;
-        }
 
         message Category {
             optional string title = 1;
