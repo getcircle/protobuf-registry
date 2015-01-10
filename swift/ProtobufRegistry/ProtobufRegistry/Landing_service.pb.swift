@@ -56,6 +56,31 @@ final public class LandingService : GeneratedMessage {
       //Nested type declaration start
 
         final public class Category : GeneratedMessage {
+
+
+            //Enum type declaration start 
+
+            public enum CategoryType:Int32 {
+              case DirectReports = 1
+              case Anniversaries = 2
+              case Birthdays = 3
+              case Locations = 4
+              case Tags = 5
+              case Peers = 6
+              case NewHires = 7
+
+              public static func IsValidValue(value:Int32) ->Bool {
+                  if let check = CategoryType(rawValue:value) {
+                      return true
+                  }
+                  return false
+              }
+            }
+
+
+
+            //Enum type declaration end 
+
           public subscript(key: String) -> AnyObject? {
                  switch key {
                  case "title": return title
@@ -72,7 +97,7 @@ final public class LandingService : GeneratedMessage {
           public private(set) var hasContentKey:Bool = false
           public private(set) var content_key:String = ""
 
-          public private(set) var type:LandingService.CategoryType = LandingService.CategoryType.DirectReports
+          public private(set) var type:LandingService.Containers.Category.CategoryType = LandingService.Containers.Category.CategoryType.DirectReports
           public private(set) var hasTypes:Bool = false
           public private(set) var hasTotalCount:Bool = false
           public private(set) var total_count:String = ""
@@ -294,7 +319,7 @@ final public class LandingService : GeneratedMessage {
                     return builderResult.hasTypes
                 }
             }
-            public var type:LandingService.CategoryType {
+            public var type:LandingService.Containers.Category.CategoryType {
                 get {
                     return builderResult.type
                 }
@@ -416,7 +441,7 @@ final public class LandingService : GeneratedMessage {
 
               case 24 :
                 let valueInttype = input.readEnum()
-                if let enumstype = LandingService.CategoryType(rawValue:valueInttype){
+                if let enumstype = LandingService.Containers.Category.CategoryType(rawValue:valueInttype){
                      type = enumstype
                 } else {
                      unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueInttype))
@@ -1192,31 +1217,6 @@ final public class LandingService : GeneratedMessage {
 
 
   //Nested type declaration end
-
-
-
-    //Enum type declaration start 
-
-    public enum CategoryType:Int32 {
-      case DirectReports = 1
-      case Anniversaries = 2
-      case Birthdays = 3
-      case Locations = 4
-      case Tags = 5
-      case Peers = 6
-      case NewHires = 7
-
-      public static func IsValidValue(value:Int32) ->Bool {
-          if let check = CategoryType(rawValue:value) {
-              return true
-          }
-          return false
-      }
-    }
-
-
-
-    //Enum type declaration end 
 
   public subscript(key: String) -> AnyObject? {
          switch key {
