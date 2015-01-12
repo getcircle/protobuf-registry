@@ -470,9 +470,6 @@ final public class UserServiceResponsesBuilder : GeneratedMessageBuilder {
     return returnMe
   }
   public func mergeFrom(other:UserServiceResponses) -> UserServiceResponsesBuilder {
-    if (other == UserServiceResponses()) {
-     return self
-    }
     mergeUnknownFields(other.unknownFields)
     return self
   }
@@ -648,9 +645,6 @@ final public class OrganizationServiceResponsesBuilder : GeneratedMessageBuilder
     return returnMe
   }
   public func mergeFrom(other:OrganizationServiceResponses) -> OrganizationServiceResponsesBuilder {
-    if (other == OrganizationServiceResponses()) {
-     return self
-    }
     mergeUnknownFields(other.unknownFields)
     return self
   }
@@ -838,9 +832,6 @@ final public class ProfileServiceResponsesBuilder : GeneratedMessageBuilder {
     return returnMe
   }
   public func mergeFrom(other:ProfileServiceResponses) -> ProfileServiceResponsesBuilder {
-    if (other == ProfileServiceResponses()) {
-     return self
-    }
     mergeUnknownFields(other.unknownFields)
     return self
   }
@@ -989,9 +980,6 @@ final public class SearchServiceResponsesBuilder : GeneratedMessageBuilder {
     return returnMe
   }
   public func mergeFrom(other:SearchServiceResponses) -> SearchServiceResponsesBuilder {
-    if (other == SearchServiceResponses()) {
-     return self
-    }
     mergeUnknownFields(other.unknownFields)
     return self
   }
@@ -1140,9 +1128,6 @@ final public class LandingServiceResponsesBuilder : GeneratedMessageBuilder {
     return returnMe
   }
   public func mergeFrom(other:LandingServiceResponses) -> LandingServiceResponsesBuilder {
-    if (other == LandingServiceResponses()) {
-     return self
-    }
     mergeUnknownFields(other.unknownFields)
     return self
   }
