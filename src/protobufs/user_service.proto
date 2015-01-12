@@ -90,4 +90,17 @@ message UserService {
 
     }
 
+    message VerifyVerificationCode {
+
+        message Request {
+            optional string user_id = 1;
+            optional string code = 2;
+        }
+
+        message Response {
+            optional bool verified = 1;
+        }
+
+    }
+
 }

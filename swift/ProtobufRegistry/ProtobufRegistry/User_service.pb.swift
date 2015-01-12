@@ -67,6 +67,14 @@ public func == (lhs: UserService.SendVerificationCode, rhs: UserService.SendVeri
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: UserService.VerifyVerificationCode, rhs: UserService.VerifyVerificationCode) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public func == (lhs: UserService, rhs: UserService) -> Bool {
   if (lhs === rhs) {
     return true
@@ -3891,6 +3899,597 @@ final public class UserService : GeneratedMessage {
 
   //Nested type declaration end
 
+
+
+  //Nested type declaration start
+
+    final public class VerifyVerificationCode : GeneratedMessage {
+
+
+      //Nested type declaration start
+
+        final public class Request : GeneratedMessage {
+          public subscript(key: String) -> AnyObject? {
+                 switch key {
+                 case "user_id": return user_id
+                 case "code": return code
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasUserId:Bool = false
+          public private(set) var user_id:String = ""
+
+          public private(set) var hasCode:Bool = false
+          public private(set) var code:String = ""
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasUserId {
+              output.writeString(1, value:user_id)
+            }
+            if hasCode {
+              output.writeString(2, value:code)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasUserId {
+              size += WireFormat.computeStringSize(1, value:user_id)
+            }
+            if hasCode {
+              size += WireFormat.computeStringSize(2, value:code)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> UserService.VerifyVerificationCode.Request {
+            return UserService.VerifyVerificationCode.Request.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode.Request {
+            return UserService.VerifyVerificationCode.Request.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> UserService.VerifyVerificationCode.Request {
+            return UserService.VerifyVerificationCode.Request.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.VerifyVerificationCode.Request {
+            return UserService.VerifyVerificationCode.Request.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.VerifyVerificationCode.Request {
+            return UserService.VerifyVerificationCode.Request.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode.Request {
+            return UserService.VerifyVerificationCode.Request.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> UserService.VerifyVerificationCode.RequestBuilder {
+            return UserService.VerifyVerificationCode.Request.classBuilder() as UserService.VerifyVerificationCode.RequestBuilder
+          }
+          public func builder() -> UserService.VerifyVerificationCode.RequestBuilder {
+            return classBuilder() as UserService.VerifyVerificationCode.RequestBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return UserService.VerifyVerificationCode.RequestBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return UserService.VerifyVerificationCode.Request.builder()
+          }
+          public func toBuilder() -> UserService.VerifyVerificationCode.RequestBuilder {
+            return UserService.VerifyVerificationCode.Request.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:UserService.VerifyVerificationCode.Request) -> UserService.VerifyVerificationCode.RequestBuilder {
+            return UserService.VerifyVerificationCode.Request.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasUserId {
+              output += "\(indent) user_id: \(user_id) \n"
+            }
+            if hasCode {
+              output += "\(indent) code: \(code) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasUserId {
+                     hashCode = (hashCode &* 31) &+ user_id.hashValue
+                  }
+                  if hasCode {
+                     hashCode = (hashCode &* 31) &+ code.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "UserService.VerifyVerificationCode.Request"
+          }
+          override public func className() -> String {
+              return "UserService.VerifyVerificationCode.Request"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return UserService.VerifyVerificationCode.Request.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class RequestBuilder : GeneratedMessageBuilder {
+          private var builderResult:UserService.VerifyVerificationCode.Request
+
+          required override public init () {
+             builderResult = UserService.VerifyVerificationCode.Request()
+             super.init()
+          }
+          public var hasUserId:Bool {
+               get {
+                    return builderResult.hasUserId
+               }
+          }
+          public var user_id:String {
+               get {
+                    return builderResult.user_id
+               }
+               set (value) {
+                   builderResult.hasUserId = true
+                   builderResult.user_id = value
+               }
+          }
+          public func clearUserId() -> UserService.VerifyVerificationCode.RequestBuilder{
+               builderResult.hasUserId = false
+               builderResult.user_id = ""
+               return self
+          }
+          public var hasCode:Bool {
+               get {
+                    return builderResult.hasCode
+               }
+          }
+          public var code:String {
+               get {
+                    return builderResult.code
+               }
+               set (value) {
+                   builderResult.hasCode = true
+                   builderResult.code = value
+               }
+          }
+          public func clearCode() -> UserService.VerifyVerificationCode.RequestBuilder{
+               builderResult.hasCode = false
+               builderResult.code = ""
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> UserService.VerifyVerificationCode.RequestBuilder {
+            builderResult = UserService.VerifyVerificationCode.Request()
+            return self
+          }
+          public override func clone() -> UserService.VerifyVerificationCode.RequestBuilder {
+            return UserService.VerifyVerificationCode.Request.builderWithPrototype(builderResult)
+          }
+          public override func build() -> UserService.VerifyVerificationCode.Request {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> UserService.VerifyVerificationCode.Request {
+            var returnMe:UserService.VerifyVerificationCode.Request = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:UserService.VerifyVerificationCode.Request) -> UserService.VerifyVerificationCode.RequestBuilder {
+            if (other == UserService.VerifyVerificationCode.Request()) {
+             return self
+            }
+            if other.hasUserId {
+                 user_id = other.user_id
+            }
+            if other.hasCode {
+                 code = other.code
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.VerifyVerificationCode.RequestBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode.RequestBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                user_id = input.readString()
+
+              case 18 :
+                code = input.readString()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+
+
+      //Nested type declaration start
+
+        final public class Response : GeneratedMessage {
+          public subscript(key: String) -> AnyObject? {
+                 switch key {
+                 case "verified": return verified
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasVerified:Bool = false
+          public private(set) var verified:Bool = false
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasVerified {
+              output.writeBool(1, value:verified)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasVerified {
+              size += WireFormat.computeBoolSize(1, value:verified)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> UserService.VerifyVerificationCode.Response {
+            return UserService.VerifyVerificationCode.Response.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode.Response {
+            return UserService.VerifyVerificationCode.Response.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> UserService.VerifyVerificationCode.Response {
+            return UserService.VerifyVerificationCode.Response.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.VerifyVerificationCode.Response {
+            return UserService.VerifyVerificationCode.Response.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.VerifyVerificationCode.Response {
+            return UserService.VerifyVerificationCode.Response.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode.Response {
+            return UserService.VerifyVerificationCode.Response.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> UserService.VerifyVerificationCode.ResponseBuilder {
+            return UserService.VerifyVerificationCode.Response.classBuilder() as UserService.VerifyVerificationCode.ResponseBuilder
+          }
+          public func builder() -> UserService.VerifyVerificationCode.ResponseBuilder {
+            return classBuilder() as UserService.VerifyVerificationCode.ResponseBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return UserService.VerifyVerificationCode.ResponseBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return UserService.VerifyVerificationCode.Response.builder()
+          }
+          public func toBuilder() -> UserService.VerifyVerificationCode.ResponseBuilder {
+            return UserService.VerifyVerificationCode.Response.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:UserService.VerifyVerificationCode.Response) -> UserService.VerifyVerificationCode.ResponseBuilder {
+            return UserService.VerifyVerificationCode.Response.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasVerified {
+              output += "\(indent) verified: \(verified) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasVerified {
+                     hashCode = (hashCode &* 31) &+ verified.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "UserService.VerifyVerificationCode.Response"
+          }
+          override public func className() -> String {
+              return "UserService.VerifyVerificationCode.Response"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return UserService.VerifyVerificationCode.Response.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class ResponseBuilder : GeneratedMessageBuilder {
+          private var builderResult:UserService.VerifyVerificationCode.Response
+
+          required override public init () {
+             builderResult = UserService.VerifyVerificationCode.Response()
+             super.init()
+          }
+          public var hasVerified:Bool {
+               get {
+                    return builderResult.hasVerified
+               }
+          }
+          public var verified:Bool {
+               get {
+                    return builderResult.verified
+               }
+               set (value) {
+                   builderResult.hasVerified = true
+                   builderResult.verified = value
+               }
+          }
+          public func clearVerified() -> UserService.VerifyVerificationCode.ResponseBuilder{
+               builderResult.hasVerified = false
+               builderResult.verified = false
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> UserService.VerifyVerificationCode.ResponseBuilder {
+            builderResult = UserService.VerifyVerificationCode.Response()
+            return self
+          }
+          public override func clone() -> UserService.VerifyVerificationCode.ResponseBuilder {
+            return UserService.VerifyVerificationCode.Response.builderWithPrototype(builderResult)
+          }
+          public override func build() -> UserService.VerifyVerificationCode.Response {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> UserService.VerifyVerificationCode.Response {
+            var returnMe:UserService.VerifyVerificationCode.Response = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:UserService.VerifyVerificationCode.Response) -> UserService.VerifyVerificationCode.ResponseBuilder {
+            if (other == UserService.VerifyVerificationCode.Response()) {
+             return self
+            }
+            if other.hasVerified {
+                 verified = other.verified
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.VerifyVerificationCode.ResponseBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode.ResponseBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 8 :
+                verified = input.readBool()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+      public subscript(key: String) -> AnyObject? {
+             switch key {
+             default: return nil
+             }
+      }
+
+      required public init() {
+           super.init()
+      }
+      override public func isInitialized() -> Bool {
+       return true
+      }
+      override public func writeToCodedOutputStream(output:CodedOutputStream) {
+        unknownFields.writeToCodedOutputStream(output)
+      }
+      override public func serializedSize() -> Int32 {
+        var size:Int32 = memoizedSerializedSize
+        if size != -1 {
+         return size
+        }
+
+        size = 0
+        size += unknownFields.serializedSize()
+        memoizedSerializedSize = size
+        return size
+      }
+      public class func parseFromData(data:[Byte]) -> UserService.VerifyVerificationCode {
+        return UserService.VerifyVerificationCode.builder().mergeFromData(data).build()
+      }
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode {
+        return UserService.VerifyVerificationCode.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream) -> UserService.VerifyVerificationCode {
+        return UserService.VerifyVerificationCode.builder().mergeFromInputStream(input).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.VerifyVerificationCode {
+        return UserService.VerifyVerificationCode.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.VerifyVerificationCode {
+        return UserService.VerifyVerificationCode.builder().mergeFromCodedInputStream(input).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode {
+        return UserService.VerifyVerificationCode.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func builder() -> UserService.VerifyVerificationCodeBuilder {
+        return UserService.VerifyVerificationCode.classBuilder() as UserService.VerifyVerificationCodeBuilder
+      }
+      public func builder() -> UserService.VerifyVerificationCodeBuilder {
+        return classBuilder() as UserService.VerifyVerificationCodeBuilder
+      }
+      public override class func classBuilder() -> MessageBuilder {
+        return UserService.VerifyVerificationCodeBuilder()
+      }
+      public override func classBuilder() -> MessageBuilder {
+        return UserService.VerifyVerificationCode.builder()
+      }
+      public func toBuilder() -> UserService.VerifyVerificationCodeBuilder {
+        return UserService.VerifyVerificationCode.builderWithPrototype(self)
+      }
+      public class func builderWithPrototype(prototype:UserService.VerifyVerificationCode) -> UserService.VerifyVerificationCodeBuilder {
+        return UserService.VerifyVerificationCode.builder().mergeFrom(prototype)
+      }
+      override public func writeDescriptionTo(inout output:String, indent:String) {
+        unknownFields.writeDescriptionTo(&output, indent:indent)
+      }
+      override public var hashValue:Int {
+          get {
+              var hashCode:Int = 7
+              hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+              return hashCode
+          }
+      }
+
+
+      //Meta information declaration start
+
+      override public class func className() -> String {
+          return "UserService.VerifyVerificationCode"
+      }
+      override public func className() -> String {
+          return "UserService.VerifyVerificationCode"
+      }
+      override public func classMetaType() -> GeneratedMessage.Type {
+          return UserService.VerifyVerificationCode.self
+      }
+
+
+      //Meta information declaration end
+
+    }
+
+    final public class VerifyVerificationCodeBuilder : GeneratedMessageBuilder {
+      private var builderResult:UserService.VerifyVerificationCode
+
+      required override public init () {
+         builderResult = UserService.VerifyVerificationCode()
+         super.init()
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> UserService.VerifyVerificationCodeBuilder {
+        builderResult = UserService.VerifyVerificationCode()
+        return self
+      }
+      public override func clone() -> UserService.VerifyVerificationCodeBuilder {
+        return UserService.VerifyVerificationCode.builderWithPrototype(builderResult)
+      }
+      public override func build() -> UserService.VerifyVerificationCode {
+           checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> UserService.VerifyVerificationCode {
+        var returnMe:UserService.VerifyVerificationCode = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:UserService.VerifyVerificationCode) -> UserService.VerifyVerificationCodeBuilder {
+        if (other == UserService.VerifyVerificationCode()) {
+         return self
+        }
+        mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.VerifyVerificationCodeBuilder {
+           return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCodeBuilder {
+        var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          var tag = input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = unknownFieldsBuilder.build()
+            return self
+
+          default:
+            if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+               unknownFields = unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+
+
+  //Nested type declaration end
+
   public subscript(key: String) -> AnyObject? {
          switch key {
          default: return nil
@@ -4255,6 +4854,42 @@ public extension UserService.SendVerificationCode {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return UserService.SendVerificationCode.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.VerifyVerificationCode.Request {
+    class func parseFromNSData(data:NSData) -> UserService.VerifyVerificationCode.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.VerifyVerificationCode.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.VerifyVerificationCode.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.VerifyVerificationCode.Response {
+    class func parseFromNSData(data:NSData) -> UserService.VerifyVerificationCode.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.VerifyVerificationCode.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.VerifyVerificationCode.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.VerifyVerificationCode {
+    class func parseFromNSData(data:NSData) -> UserService.VerifyVerificationCode {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.VerifyVerificationCode.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.VerifyVerificationCode {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.VerifyVerificationCode.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension UserService {
