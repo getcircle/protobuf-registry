@@ -84,7 +84,9 @@ message UserService {
             optional string user_id = 1;
         }
 
-        message Response {}
+        message Response {
+            optional string message_id = 1;
+        }
 
     }
 

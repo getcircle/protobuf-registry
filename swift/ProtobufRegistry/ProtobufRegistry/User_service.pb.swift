@@ -3550,9 +3550,13 @@ final public class UserService : GeneratedMessage {
         final public class Response : GeneratedMessage {
           public subscript(key: String) -> AnyObject? {
                  switch key {
+                 case "message_id": return message_id
                  default: return nil
                  }
           }
+
+          public private(set) var hasMessageId:Bool = false
+          public private(set) var message_id:String = ""
 
           required public init() {
                super.init()
@@ -3561,6 +3565,9 @@ final public class UserService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasMessageId {
+              output.writeString(1, value:message_id)
+            }
             unknownFields.writeToCodedOutputStream(output)
           }
           override public func serializedSize() -> Int32 {
@@ -3570,6 +3577,9 @@ final public class UserService : GeneratedMessage {
             }
 
             size = 0
+            if hasMessageId {
+              size += WireFormat.computeStringSize(1, value:message_id)
+            }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
             return size
@@ -3611,11 +3621,17 @@ final public class UserService : GeneratedMessage {
             return UserService.SendVerificationCode.Response.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasMessageId {
+              output += "\(indent) message_id: \(message_id) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
+                  if hasMessageId {
+                     hashCode = (hashCode &* 31) &+ message_id.hashValue
+                  }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
               }
@@ -3646,6 +3662,25 @@ final public class UserService : GeneratedMessage {
              builderResult = UserService.SendVerificationCode.Response()
              super.init()
           }
+          public var hasMessageId:Bool {
+               get {
+                    return builderResult.hasMessageId
+               }
+          }
+          public var message_id:String {
+               get {
+                    return builderResult.message_id
+               }
+               set (value) {
+                   builderResult.hasMessageId = true
+                   builderResult.message_id = value
+               }
+          }
+          public func clearMessageId() -> UserService.SendVerificationCode.ResponseBuilder{
+               builderResult.hasMessageId = false
+               builderResult.message_id = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -3670,6 +3705,9 @@ final public class UserService : GeneratedMessage {
             if (other == UserService.SendVerificationCode.Response()) {
              return self
             }
+            if other.hasMessageId {
+                 message_id = other.message_id
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -3684,6 +3722,9 @@ final public class UserService : GeneratedMessage {
               case 0: 
                 self.unknownFields = unknownFieldsBuilder.build()
                 return self
+
+              case 10 :
+                message_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
