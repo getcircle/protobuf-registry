@@ -30,6 +30,17 @@ message UserService {
         }
     }
 
+    message UpdateUser {
+
+        message Request {
+            optional Containers.User user = 1;
+        }
+
+        message Response {
+            optional Containers.User user = 1;
+        }
+    }
+
     message GetUser {
         message Request {
             oneof lookup_key {
