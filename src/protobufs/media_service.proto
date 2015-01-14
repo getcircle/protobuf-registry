@@ -22,7 +22,7 @@ message MediaService {
     message UploadImage {
 
         message Request {
-            optional MediaObject object = 1;
+            optional MediaObject media_object = 1;
             optional string key = 2;
         }
 

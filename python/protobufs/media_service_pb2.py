@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/media_service.proto',
   package='main.media_service',
-  serialized_pb=_b('\n\x1dprotobufs/media_service.proto\x12\x12main.media_service\"\xe5\x03\n\x0cMediaService\x1aJ\n\nContainers\x1a<\n\x12UploadInstructions\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x13\n\x0brequest_url\x18\x02 \x01(\t\x1a\xcc\x01\n\x0bUploadImage\x1aT\n\x07Request\x12<\n\x06object\x18\x01 \x01(\x0e\x32,.main.media_service.MediaService.MediaObject\x12\x0b\n\x03key\x18\x02 \x01(\t\x1ag\n\x08Response\x12[\n\x13upload_instructions\x18\x01 \x01(\x0b\x32>.main.media_service.MediaService.Containers.UploadInstructions\x1a\x9d\x01\n\x13\x43ompleteImageUpload\x1ag\n\x07Request\x12<\n\x06object\x18\x01 \x01(\x0e\x32,.main.media_service.MediaService.MediaObject\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x11\n\tupload_id\x18\x03 \x01(\t\x1a\x1d\n\x08Response\x12\x11\n\tmedia_url\x18\x01 \x01(\t\"\x1a\n\x0bMediaObject\x12\x0b\n\x07PROFILE\x10\x01')
+  serialized_pb=_b('\n\x1dprotobufs/media_service.proto\x12\x12main.media_service\"\xeb\x03\n\x0cMediaService\x1aJ\n\nContainers\x1a<\n\x12UploadInstructions\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x13\n\x0brequest_url\x18\x02 \x01(\t\x1a\xd2\x01\n\x0bUploadImage\x1aZ\n\x07Request\x12\x42\n\x0cmedia_object\x18\x01 \x01(\x0e\x32,.main.media_service.MediaService.MediaObject\x12\x0b\n\x03key\x18\x02 \x01(\t\x1ag\n\x08Response\x12[\n\x13upload_instructions\x18\x01 \x01(\x0b\x32>.main.media_service.MediaService.Containers.UploadInstructions\x1a\x9d\x01\n\x13\x43ompleteImageUpload\x1ag\n\x07Request\x12<\n\x06object\x18\x01 \x01(\x0e\x32,.main.media_service.MediaService.MediaObject\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x11\n\tupload_id\x18\x03 \x01(\t\x1a\x1d\n\x08Response\x12\x11\n\tmedia_url\x18\x01 \x01(\t\"\x1a\n\x0bMediaObject\x12\x0b\n\x07PROFILE\x10\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -37,8 +37,8 @@ _MEDIASERVICE_MEDIAOBJECT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=513,
-  serialized_end=539,
+  serialized_start=519,
+  serialized_end=545,
 )
 _sym_db.RegisterEnumDescriptor(_MEDIASERVICE_MEDIAOBJECT)
 
@@ -109,7 +109,7 @@ _MEDIASERVICE_UPLOADIMAGE_REQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='object', full_name='main.media_service.MediaService.UploadImage.Request.object', index=0,
+      name='media_object', full_name='main.media_service.MediaService.UploadImage.Request.media_object', index=0,
       number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
@@ -134,7 +134,7 @@ _MEDIASERVICE_UPLOADIMAGE_REQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=162,
-  serialized_end=246,
+  serialized_end=252,
 )
 
 _MEDIASERVICE_UPLOADIMAGE_RESPONSE = _descriptor.Descriptor(
@@ -162,8 +162,8 @@ _MEDIASERVICE_UPLOADIMAGE_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=248,
-  serialized_end=351,
+  serialized_start=254,
+  serialized_end=357,
 )
 
 _MEDIASERVICE_UPLOADIMAGE = _descriptor.Descriptor(
@@ -185,7 +185,7 @@ _MEDIASERVICE_UPLOADIMAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=147,
-  serialized_end=351,
+  serialized_end=357,
 )
 
 _MEDIASERVICE_COMPLETEIMAGEUPLOAD_REQUEST = _descriptor.Descriptor(
@@ -227,8 +227,8 @@ _MEDIASERVICE_COMPLETEIMAGEUPLOAD_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=377,
-  serialized_end=480,
+  serialized_start=383,
+  serialized_end=486,
 )
 
 _MEDIASERVICE_COMPLETEIMAGEUPLOAD_RESPONSE = _descriptor.Descriptor(
@@ -256,8 +256,8 @@ _MEDIASERVICE_COMPLETEIMAGEUPLOAD_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=482,
-  serialized_end=511,
+  serialized_start=488,
+  serialized_end=517,
 )
 
 _MEDIASERVICE_COMPLETEIMAGEUPLOAD = _descriptor.Descriptor(
@@ -278,8 +278,8 @@ _MEDIASERVICE_COMPLETEIMAGEUPLOAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=354,
-  serialized_end=511,
+  serialized_start=360,
+  serialized_end=517,
 )
 
 _MEDIASERVICE = _descriptor.Descriptor(
@@ -302,12 +302,12 @@ _MEDIASERVICE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=54,
-  serialized_end=539,
+  serialized_end=545,
 )
 
 _MEDIASERVICE_CONTAINERS_UPLOADINSTRUCTIONS.containing_type = _MEDIASERVICE_CONTAINERS
 _MEDIASERVICE_CONTAINERS.containing_type = _MEDIASERVICE
-_MEDIASERVICE_UPLOADIMAGE_REQUEST.fields_by_name['object'].enum_type = _MEDIASERVICE_MEDIAOBJECT
+_MEDIASERVICE_UPLOADIMAGE_REQUEST.fields_by_name['media_object'].enum_type = _MEDIASERVICE_MEDIAOBJECT
 _MEDIASERVICE_UPLOADIMAGE_REQUEST.containing_type = _MEDIASERVICE_UPLOADIMAGE
 _MEDIASERVICE_UPLOADIMAGE_RESPONSE.fields_by_name['upload_instructions'].message_type = _MEDIASERVICE_CONTAINERS_UPLOADINSTRUCTIONS
 _MEDIASERVICE_UPLOADIMAGE_RESPONSE.containing_type = _MEDIASERVICE_UPLOADIMAGE
