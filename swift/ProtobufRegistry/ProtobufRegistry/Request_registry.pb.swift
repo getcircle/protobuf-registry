@@ -167,6 +167,11 @@ public var LandingServiceRequests_get_categories:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.LandingServiceRequests_get_categoriesStatic
    }
 }
+public var MediaServiceRequests_upload_image:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.MediaServiceRequests_upload_imageStatic
+   }
+}
 public struct RequestRegistryRoot {
   public static var sharedInstance : RequestRegistryRoot {
    struct Static {
@@ -207,6 +212,7 @@ public struct RequestRegistryRoot {
   var ProfileServiceRequests_get_recent_hiresStatic:ConcreateExtensionField
   var SearchServiceRequests_searchStatic:ConcreateExtensionField
   var LandingServiceRequests_get_categoriesStatic:ConcreateExtensionField
+  var MediaServiceRequests_upload_imageStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -243,10 +249,12 @@ public struct RequestRegistryRoot {
     ProfileServiceRequests_get_recent_hiresStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 313, defaultValue:ProfileService.GetRecentHires.Request(), messageOrGroupClass:ProfileService.GetRecentHires.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     SearchServiceRequests_searchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 400, defaultValue:SearchService.Search.Request(), messageOrGroupClass:SearchService.Search.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     LandingServiceRequests_get_categoriesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 500, defaultValue:LandingService.GetCategories.Request(), messageOrGroupClass:LandingService.GetCategories.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    MediaServiceRequests_upload_imageStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 600, defaultValue:MediaService.UploadImage.Request(), messageOrGroupClass:MediaService.UploadImage.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     LandingServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+    MediaServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     OrganizationServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     ProfileServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     SearchServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -286,6 +294,7 @@ public struct RequestRegistryRoot {
     registry.addExtension(ProfileServiceRequests_get_recent_hiresStatic)
     registry.addExtension(SearchServiceRequests_searchStatic)
     registry.addExtension(LandingServiceRequests_get_categoriesStatic)
+    registry.addExtension(MediaServiceRequests_upload_imageStatic)
   }
 }
 
@@ -322,6 +331,14 @@ public func == (lhs: SearchServiceRequests, rhs: SearchServiceRequests) -> Bool 
 }
 
 public func == (lhs: LandingServiceRequests, rhs: LandingServiceRequests) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
+public func == (lhs: MediaServiceRequests, rhs: MediaServiceRequests) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -470,6 +487,9 @@ final public class UserServiceRequestsBuilder : GeneratedMessageBuilder {
     return returnMe
   }
   public func mergeFrom(other:UserServiceRequests) -> UserServiceRequestsBuilder {
+    if (other == UserServiceRequests()) {
+     return self
+    }
     mergeUnknownFields(other.unknownFields)
     return self
   }
@@ -645,6 +665,9 @@ final public class OrganizationServiceRequestsBuilder : GeneratedMessageBuilder 
     return returnMe
   }
   public func mergeFrom(other:OrganizationServiceRequests) -> OrganizationServiceRequestsBuilder {
+    if (other == OrganizationServiceRequests()) {
+     return self
+    }
     mergeUnknownFields(other.unknownFields)
     return self
   }
@@ -832,6 +855,9 @@ final public class ProfileServiceRequestsBuilder : GeneratedMessageBuilder {
     return returnMe
   }
   public func mergeFrom(other:ProfileServiceRequests) -> ProfileServiceRequestsBuilder {
+    if (other == ProfileServiceRequests()) {
+     return self
+    }
     mergeUnknownFields(other.unknownFields)
     return self
   }
@@ -980,6 +1006,9 @@ final public class SearchServiceRequestsBuilder : GeneratedMessageBuilder {
     return returnMe
   }
   public func mergeFrom(other:SearchServiceRequests) -> SearchServiceRequestsBuilder {
+    if (other == SearchServiceRequests()) {
+     return self
+    }
     mergeUnknownFields(other.unknownFields)
     return self
   }
@@ -1128,6 +1157,9 @@ final public class LandingServiceRequestsBuilder : GeneratedMessageBuilder {
     return returnMe
   }
   public func mergeFrom(other:LandingServiceRequests) -> LandingServiceRequestsBuilder {
+    if (other == LandingServiceRequests()) {
+     return self
+    }
     mergeUnknownFields(other.unknownFields)
     return self
   }
@@ -1135,6 +1167,157 @@ final public class LandingServiceRequestsBuilder : GeneratedMessageBuilder {
        return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
   }
   public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingServiceRequestsBuilder {
+    var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+    while (true) {
+      var tag = input.readTag()
+      switch tag {
+      case 0: 
+        self.unknownFields = unknownFieldsBuilder.build()
+        return self
+
+      default:
+        if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+           unknownFields = unknownFieldsBuilder.build()
+           return self
+        }
+      }
+    }
+  }
+}
+
+final public class MediaServiceRequests : GeneratedMessage {
+  public subscript(key: String) -> AnyObject? {
+         switch key {
+         default: return nil
+         }
+  }
+
+  public class func upload_image() -> ConcreateExtensionField {
+       return MediaServiceRequests_upload_image
+  }
+  required public init() {
+       super.init()
+  }
+  override public func isInitialized() -> Bool {
+   return true
+  }
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
+    unknownFields.writeToCodedOutputStream(output)
+  }
+  override public func serializedSize() -> Int32 {
+    var size:Int32 = memoizedSerializedSize
+    if size != -1 {
+     return size
+    }
+
+    size = 0
+    size += unknownFields.serializedSize()
+    memoizedSerializedSize = size
+    return size
+  }
+  public class func parseFromData(data:[Byte]) -> MediaServiceRequests {
+    return MediaServiceRequests.builder().mergeFromData(data).build()
+  }
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> MediaServiceRequests {
+    return MediaServiceRequests.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFromInputStream(input:NSInputStream) -> MediaServiceRequests {
+    return MediaServiceRequests.builder().mergeFromInputStream(input).build()
+  }
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->MediaServiceRequests {
+    return MediaServiceRequests.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> MediaServiceRequests {
+    return MediaServiceRequests.builder().mergeFromCodedInputStream(input).build()
+  }
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaServiceRequests {
+    return MediaServiceRequests.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+  }
+  public class func builder() -> MediaServiceRequestsBuilder {
+    return MediaServiceRequests.classBuilder() as MediaServiceRequestsBuilder
+  }
+  public func builder() -> MediaServiceRequestsBuilder {
+    return classBuilder() as MediaServiceRequestsBuilder
+  }
+  public override class func classBuilder() -> MessageBuilder {
+    return MediaServiceRequestsBuilder()
+  }
+  public override func classBuilder() -> MessageBuilder {
+    return MediaServiceRequests.builder()
+  }
+  public func toBuilder() -> MediaServiceRequestsBuilder {
+    return MediaServiceRequests.builderWithPrototype(self)
+  }
+  public class func builderWithPrototype(prototype:MediaServiceRequests) -> MediaServiceRequestsBuilder {
+    return MediaServiceRequests.builder().mergeFrom(prototype)
+  }
+  override public func writeDescriptionTo(inout output:String, indent:String) {
+    unknownFields.writeDescriptionTo(&output, indent:indent)
+  }
+  override public var hashValue:Int {
+      get {
+          var hashCode:Int = 7
+          hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+          return hashCode
+      }
+  }
+
+
+  //Meta information declaration start
+
+  override public class func className() -> String {
+      return "MediaServiceRequests"
+  }
+  override public func className() -> String {
+      return "MediaServiceRequests"
+  }
+  override public func classMetaType() -> GeneratedMessage.Type {
+      return MediaServiceRequests.self
+  }
+
+
+  //Meta information declaration end
+
+}
+
+final public class MediaServiceRequestsBuilder : GeneratedMessageBuilder {
+  private var builderResult:MediaServiceRequests
+
+  required override public init () {
+     builderResult = MediaServiceRequests()
+     super.init()
+  }
+  override public var internalGetResult:GeneratedMessage {
+       get {
+          return builderResult
+       }
+  }
+  public override func clear() -> MediaServiceRequestsBuilder {
+    builderResult = MediaServiceRequests()
+    return self
+  }
+  public override func clone() -> MediaServiceRequestsBuilder {
+    return MediaServiceRequests.builderWithPrototype(builderResult)
+  }
+  public override func build() -> MediaServiceRequests {
+       checkInitialized()
+       return buildPartial()
+  }
+  public func buildPartial() -> MediaServiceRequests {
+    var returnMe:MediaServiceRequests = builderResult
+    return returnMe
+  }
+  public func mergeFrom(other:MediaServiceRequests) -> MediaServiceRequestsBuilder {
+    if (other == MediaServiceRequests()) {
+     return self
+    }
+    mergeUnknownFields(other.unknownFields)
+    return self
+  }
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->MediaServiceRequestsBuilder {
+       return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+  }
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaServiceRequestsBuilder {
     var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
     while (true) {
       var tag = input.readTag()
@@ -1214,6 +1397,18 @@ public extension LandingServiceRequests {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return LandingServiceRequests.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension MediaServiceRequests {
+    class func parseFromNSData(data:NSData) -> MediaServiceRequests {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return MediaServiceRequests.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> MediaServiceRequests {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return MediaServiceRequests.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 
