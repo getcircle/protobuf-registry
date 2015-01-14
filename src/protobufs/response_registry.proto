@@ -70,5 +70,6 @@ message LandingServiceResponses {
 message MediaServiceResponses {
     extend soa.ActionResponseResult {
         optional main.media_service.MediaService.UploadImage.Response upload_image = 600;
+        optional main.media_service.MediaService.CompleteImageUpload.Response complete_image_upload = 601;
     }
 }

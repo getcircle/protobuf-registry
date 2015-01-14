@@ -172,6 +172,11 @@ public var MediaServiceResponses_upload_image:ConcreateExtensionField {
        return ResponseRegistryRoot.sharedInstance.MediaServiceResponses_upload_imageStatic
    }
 }
+public var MediaServiceResponses_complete_image_upload:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.MediaServiceResponses_complete_image_uploadStatic
+   }
+}
 public struct ResponseRegistryRoot {
   public static var sharedInstance : ResponseRegistryRoot {
    struct Static {
@@ -213,6 +218,7 @@ public struct ResponseRegistryRoot {
   var SearchServiceResponses_searchStatic:ConcreateExtensionField
   var LandingServiceResponses_get_categoriesStatic:ConcreateExtensionField
   var MediaServiceResponses_upload_imageStatic:ConcreateExtensionField
+  var MediaServiceResponses_complete_image_uploadStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -250,6 +256,7 @@ public struct ResponseRegistryRoot {
     SearchServiceResponses_searchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 400, defaultValue:SearchService.Search.Response(), messageOrGroupClass:SearchService.Search.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     LandingServiceResponses_get_categoriesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 500, defaultValue:LandingService.GetCategories.Response(), messageOrGroupClass:LandingService.GetCategories.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     MediaServiceResponses_upload_imageStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 600, defaultValue:MediaService.UploadImage.Response(), messageOrGroupClass:MediaService.UploadImage.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    MediaServiceResponses_complete_image_uploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 601, defaultValue:MediaService.CompleteImageUpload.Response(), messageOrGroupClass:MediaService.CompleteImageUpload.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -295,6 +302,7 @@ public struct ResponseRegistryRoot {
     registry.addExtension(SearchServiceResponses_searchStatic)
     registry.addExtension(LandingServiceResponses_get_categoriesStatic)
     registry.addExtension(MediaServiceResponses_upload_imageStatic)
+    registry.addExtension(MediaServiceResponses_complete_image_uploadStatic)
   }
 }
 
@@ -1194,6 +1202,9 @@ final public class MediaServiceResponses : GeneratedMessage {
 
   public class func upload_image() -> ConcreateExtensionField {
        return MediaServiceResponses_upload_image
+  }
+  public class func complete_image_upload() -> ConcreateExtensionField {
+       return MediaServiceResponses_complete_image_upload
   }
   required public init() {
        super.init()

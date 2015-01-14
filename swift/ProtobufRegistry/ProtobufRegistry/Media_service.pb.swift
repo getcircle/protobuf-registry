@@ -35,7 +35,7 @@ public func == (lhs: MediaService.UploadImage, rhs: MediaService.UploadImage) ->
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: MediaService.CompleteUpload, rhs: MediaService.CompleteUpload) -> Bool {
+public func == (lhs: MediaService.CompleteImageUpload, rhs: MediaService.CompleteImageUpload) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -1064,7 +1064,7 @@ final public class MediaService : GeneratedMessage {
 
   //Nested type declaration start
 
-    final public class CompleteUpload : GeneratedMessage {
+    final public class CompleteImageUpload : GeneratedMessage {
 
 
       //Nested type declaration start
@@ -1125,41 +1125,41 @@ final public class MediaService : GeneratedMessage {
             memoizedSerializedSize = size
             return size
           }
-          public class func parseFromData(data:[Byte]) -> MediaService.CompleteUpload.Request {
-            return MediaService.CompleteUpload.Request.builder().mergeFromData(data).build()
+          public class func parseFromData(data:[Byte]) -> MediaService.CompleteImageUpload.Request {
+            return MediaService.CompleteImageUpload.Request.builder().mergeFromData(data).build()
           }
-          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> MediaService.CompleteUpload.Request {
-            return MediaService.CompleteUpload.Request.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload.Request {
+            return MediaService.CompleteImageUpload.Request.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
           }
-          public class func parseFromInputStream(input:NSInputStream) -> MediaService.CompleteUpload.Request {
-            return MediaService.CompleteUpload.Request.builder().mergeFromInputStream(input).build()
+          public class func parseFromInputStream(input:NSInputStream) -> MediaService.CompleteImageUpload.Request {
+            return MediaService.CompleteImageUpload.Request.builder().mergeFromInputStream(input).build()
           }
-          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->MediaService.CompleteUpload.Request {
-            return MediaService.CompleteUpload.Request.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->MediaService.CompleteImageUpload.Request {
+            return MediaService.CompleteImageUpload.Request.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          public class func parseFromCodedInputStream(input:CodedInputStream) -> MediaService.CompleteUpload.Request {
-            return MediaService.CompleteUpload.Request.builder().mergeFromCodedInputStream(input).build()
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> MediaService.CompleteImageUpload.Request {
+            return MediaService.CompleteImageUpload.Request.builder().mergeFromCodedInputStream(input).build()
           }
-          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteUpload.Request {
-            return MediaService.CompleteUpload.Request.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload.Request {
+            return MediaService.CompleteImageUpload.Request.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
           }
-          public class func builder() -> MediaService.CompleteUpload.RequestBuilder {
-            return MediaService.CompleteUpload.Request.classBuilder() as MediaService.CompleteUpload.RequestBuilder
+          public class func builder() -> MediaService.CompleteImageUpload.RequestBuilder {
+            return MediaService.CompleteImageUpload.Request.classBuilder() as MediaService.CompleteImageUpload.RequestBuilder
           }
-          public func builder() -> MediaService.CompleteUpload.RequestBuilder {
-            return classBuilder() as MediaService.CompleteUpload.RequestBuilder
+          public func builder() -> MediaService.CompleteImageUpload.RequestBuilder {
+            return classBuilder() as MediaService.CompleteImageUpload.RequestBuilder
           }
           public override class func classBuilder() -> MessageBuilder {
-            return MediaService.CompleteUpload.RequestBuilder()
+            return MediaService.CompleteImageUpload.RequestBuilder()
           }
           public override func classBuilder() -> MessageBuilder {
-            return MediaService.CompleteUpload.Request.builder()
+            return MediaService.CompleteImageUpload.Request.builder()
           }
-          public func toBuilder() -> MediaService.CompleteUpload.RequestBuilder {
-            return MediaService.CompleteUpload.Request.builderWithPrototype(self)
+          public func toBuilder() -> MediaService.CompleteImageUpload.RequestBuilder {
+            return MediaService.CompleteImageUpload.Request.builderWithPrototype(self)
           }
-          public class func builderWithPrototype(prototype:MediaService.CompleteUpload.Request) -> MediaService.CompleteUpload.RequestBuilder {
-            return MediaService.CompleteUpload.Request.builder().mergeFrom(prototype)
+          public class func builderWithPrototype(prototype:MediaService.CompleteImageUpload.Request) -> MediaService.CompleteImageUpload.RequestBuilder {
+            return MediaService.CompleteImageUpload.Request.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
             if (hasObject) {
@@ -1194,13 +1194,13 @@ final public class MediaService : GeneratedMessage {
           //Meta information declaration start
 
           override public class func className() -> String {
-              return "MediaService.CompleteUpload.Request"
+              return "MediaService.CompleteImageUpload.Request"
           }
           override public func className() -> String {
-              return "MediaService.CompleteUpload.Request"
+              return "MediaService.CompleteImageUpload.Request"
           }
           override public func classMetaType() -> GeneratedMessage.Type {
-              return MediaService.CompleteUpload.Request.self
+              return MediaService.CompleteImageUpload.Request.self
           }
 
 
@@ -1209,10 +1209,10 @@ final public class MediaService : GeneratedMessage {
         }
 
         final public class RequestBuilder : GeneratedMessageBuilder {
-          private var builderResult:MediaService.CompleteUpload.Request
+          private var builderResult:MediaService.CompleteImageUpload.Request
 
           required override public init () {
-             builderResult = MediaService.CompleteUpload.Request()
+             builderResult = MediaService.CompleteImageUpload.Request()
              super.init()
           }
             public var hasObject:Bool{
@@ -1229,7 +1229,7 @@ final public class MediaService : GeneratedMessage {
                     builderResult.object = value
                 }
             }
-            public func clearObject() -> MediaService.CompleteUpload.RequestBuilder {
+            public func clearObject() -> MediaService.CompleteImageUpload.RequestBuilder {
                builderResult.hasObject = false
                builderResult.object = .Profile
                return self
@@ -1248,7 +1248,7 @@ final public class MediaService : GeneratedMessage {
                    builderResult.key = value
                }
           }
-          public func clearKey() -> MediaService.CompleteUpload.RequestBuilder{
+          public func clearKey() -> MediaService.CompleteImageUpload.RequestBuilder{
                builderResult.hasKey = false
                builderResult.key = ""
                return self
@@ -1267,7 +1267,7 @@ final public class MediaService : GeneratedMessage {
                    builderResult.upload_id = value
                }
           }
-          public func clearUploadId() -> MediaService.CompleteUpload.RequestBuilder{
+          public func clearUploadId() -> MediaService.CompleteImageUpload.RequestBuilder{
                builderResult.hasUploadId = false
                builderResult.upload_id = ""
                return self
@@ -1277,23 +1277,23 @@ final public class MediaService : GeneratedMessage {
                   return builderResult
                }
           }
-          public override func clear() -> MediaService.CompleteUpload.RequestBuilder {
-            builderResult = MediaService.CompleteUpload.Request()
+          public override func clear() -> MediaService.CompleteImageUpload.RequestBuilder {
+            builderResult = MediaService.CompleteImageUpload.Request()
             return self
           }
-          public override func clone() -> MediaService.CompleteUpload.RequestBuilder {
-            return MediaService.CompleteUpload.Request.builderWithPrototype(builderResult)
+          public override func clone() -> MediaService.CompleteImageUpload.RequestBuilder {
+            return MediaService.CompleteImageUpload.Request.builderWithPrototype(builderResult)
           }
-          public override func build() -> MediaService.CompleteUpload.Request {
+          public override func build() -> MediaService.CompleteImageUpload.Request {
                checkInitialized()
                return buildPartial()
           }
-          public func buildPartial() -> MediaService.CompleteUpload.Request {
-            var returnMe:MediaService.CompleteUpload.Request = builderResult
+          public func buildPartial() -> MediaService.CompleteImageUpload.Request {
+            var returnMe:MediaService.CompleteImageUpload.Request = builderResult
             return returnMe
           }
-          public func mergeFrom(other:MediaService.CompleteUpload.Request) -> MediaService.CompleteUpload.RequestBuilder {
-            if (other == MediaService.CompleteUpload.Request()) {
+          public func mergeFrom(other:MediaService.CompleteImageUpload.Request) -> MediaService.CompleteImageUpload.RequestBuilder {
+            if (other == MediaService.CompleteImageUpload.Request()) {
              return self
             }
             if other.hasObject {
@@ -1308,10 +1308,10 @@ final public class MediaService : GeneratedMessage {
             mergeUnknownFields(other.unknownFields)
             return self
           }
-          public override func mergeFromCodedInputStream(input:CodedInputStream) ->MediaService.CompleteUpload.RequestBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->MediaService.CompleteImageUpload.RequestBuilder {
                return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
           }
-          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteUpload.RequestBuilder {
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload.RequestBuilder {
             var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
             while (true) {
               var tag = input.readTag()
@@ -1333,6 +1333,203 @@ final public class MediaService : GeneratedMessage {
 
               case 26 :
                 upload_id = input.readString()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+
+
+      //Nested type declaration start
+
+        final public class Response : GeneratedMessage {
+          public subscript(key: String) -> AnyObject? {
+                 switch key {
+                 case "media_url": return media_url
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasMediaUrl:Bool = false
+          public private(set) var media_url:String = ""
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasMediaUrl {
+              output.writeString(1, value:media_url)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasMediaUrl {
+              size += WireFormat.computeStringSize(1, value:media_url)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> MediaService.CompleteImageUpload.Response {
+            return MediaService.CompleteImageUpload.Response.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload.Response {
+            return MediaService.CompleteImageUpload.Response.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> MediaService.CompleteImageUpload.Response {
+            return MediaService.CompleteImageUpload.Response.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->MediaService.CompleteImageUpload.Response {
+            return MediaService.CompleteImageUpload.Response.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> MediaService.CompleteImageUpload.Response {
+            return MediaService.CompleteImageUpload.Response.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload.Response {
+            return MediaService.CompleteImageUpload.Response.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> MediaService.CompleteImageUpload.ResponseBuilder {
+            return MediaService.CompleteImageUpload.Response.classBuilder() as MediaService.CompleteImageUpload.ResponseBuilder
+          }
+          public func builder() -> MediaService.CompleteImageUpload.ResponseBuilder {
+            return classBuilder() as MediaService.CompleteImageUpload.ResponseBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return MediaService.CompleteImageUpload.ResponseBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return MediaService.CompleteImageUpload.Response.builder()
+          }
+          public func toBuilder() -> MediaService.CompleteImageUpload.ResponseBuilder {
+            return MediaService.CompleteImageUpload.Response.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:MediaService.CompleteImageUpload.Response) -> MediaService.CompleteImageUpload.ResponseBuilder {
+            return MediaService.CompleteImageUpload.Response.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasMediaUrl {
+              output += "\(indent) media_url: \(media_url) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasMediaUrl {
+                     hashCode = (hashCode &* 31) &+ media_url.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "MediaService.CompleteImageUpload.Response"
+          }
+          override public func className() -> String {
+              return "MediaService.CompleteImageUpload.Response"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return MediaService.CompleteImageUpload.Response.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class ResponseBuilder : GeneratedMessageBuilder {
+          private var builderResult:MediaService.CompleteImageUpload.Response
+
+          required override public init () {
+             builderResult = MediaService.CompleteImageUpload.Response()
+             super.init()
+          }
+          public var hasMediaUrl:Bool {
+               get {
+                    return builderResult.hasMediaUrl
+               }
+          }
+          public var media_url:String {
+               get {
+                    return builderResult.media_url
+               }
+               set (value) {
+                   builderResult.hasMediaUrl = true
+                   builderResult.media_url = value
+               }
+          }
+          public func clearMediaUrl() -> MediaService.CompleteImageUpload.ResponseBuilder{
+               builderResult.hasMediaUrl = false
+               builderResult.media_url = ""
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> MediaService.CompleteImageUpload.ResponseBuilder {
+            builderResult = MediaService.CompleteImageUpload.Response()
+            return self
+          }
+          public override func clone() -> MediaService.CompleteImageUpload.ResponseBuilder {
+            return MediaService.CompleteImageUpload.Response.builderWithPrototype(builderResult)
+          }
+          public override func build() -> MediaService.CompleteImageUpload.Response {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> MediaService.CompleteImageUpload.Response {
+            var returnMe:MediaService.CompleteImageUpload.Response = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:MediaService.CompleteImageUpload.Response) -> MediaService.CompleteImageUpload.ResponseBuilder {
+            if (other == MediaService.CompleteImageUpload.Response()) {
+             return self
+            }
+            if other.hasMediaUrl {
+                 media_url = other.media_url
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->MediaService.CompleteImageUpload.ResponseBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload.ResponseBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                media_url = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -1374,41 +1571,41 @@ final public class MediaService : GeneratedMessage {
         memoizedSerializedSize = size
         return size
       }
-      public class func parseFromData(data:[Byte]) -> MediaService.CompleteUpload {
-        return MediaService.CompleteUpload.builder().mergeFromData(data).build()
+      public class func parseFromData(data:[Byte]) -> MediaService.CompleteImageUpload {
+        return MediaService.CompleteImageUpload.builder().mergeFromData(data).build()
       }
-      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> MediaService.CompleteUpload {
-        return MediaService.CompleteUpload.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload {
+        return MediaService.CompleteImageUpload.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
       }
-      public class func parseFromInputStream(input:NSInputStream) -> MediaService.CompleteUpload {
-        return MediaService.CompleteUpload.builder().mergeFromInputStream(input).build()
+      public class func parseFromInputStream(input:NSInputStream) -> MediaService.CompleteImageUpload {
+        return MediaService.CompleteImageUpload.builder().mergeFromInputStream(input).build()
       }
-      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->MediaService.CompleteUpload {
-        return MediaService.CompleteUpload.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->MediaService.CompleteImageUpload {
+        return MediaService.CompleteImageUpload.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
       }
-      public class func parseFromCodedInputStream(input:CodedInputStream) -> MediaService.CompleteUpload {
-        return MediaService.CompleteUpload.builder().mergeFromCodedInputStream(input).build()
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> MediaService.CompleteImageUpload {
+        return MediaService.CompleteImageUpload.builder().mergeFromCodedInputStream(input).build()
       }
-      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteUpload {
-        return MediaService.CompleteUpload.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload {
+        return MediaService.CompleteImageUpload.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
       }
-      public class func builder() -> MediaService.CompleteUploadBuilder {
-        return MediaService.CompleteUpload.classBuilder() as MediaService.CompleteUploadBuilder
+      public class func builder() -> MediaService.CompleteImageUploadBuilder {
+        return MediaService.CompleteImageUpload.classBuilder() as MediaService.CompleteImageUploadBuilder
       }
-      public func builder() -> MediaService.CompleteUploadBuilder {
-        return classBuilder() as MediaService.CompleteUploadBuilder
+      public func builder() -> MediaService.CompleteImageUploadBuilder {
+        return classBuilder() as MediaService.CompleteImageUploadBuilder
       }
       public override class func classBuilder() -> MessageBuilder {
-        return MediaService.CompleteUploadBuilder()
+        return MediaService.CompleteImageUploadBuilder()
       }
       public override func classBuilder() -> MessageBuilder {
-        return MediaService.CompleteUpload.builder()
+        return MediaService.CompleteImageUpload.builder()
       }
-      public func toBuilder() -> MediaService.CompleteUploadBuilder {
-        return MediaService.CompleteUpload.builderWithPrototype(self)
+      public func toBuilder() -> MediaService.CompleteImageUploadBuilder {
+        return MediaService.CompleteImageUpload.builderWithPrototype(self)
       }
-      public class func builderWithPrototype(prototype:MediaService.CompleteUpload) -> MediaService.CompleteUploadBuilder {
-        return MediaService.CompleteUpload.builder().mergeFrom(prototype)
+      public class func builderWithPrototype(prototype:MediaService.CompleteImageUpload) -> MediaService.CompleteImageUploadBuilder {
+        return MediaService.CompleteImageUpload.builder().mergeFrom(prototype)
       }
       override public func writeDescriptionTo(inout output:String, indent:String) {
         unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -1425,13 +1622,13 @@ final public class MediaService : GeneratedMessage {
       //Meta information declaration start
 
       override public class func className() -> String {
-          return "MediaService.CompleteUpload"
+          return "MediaService.CompleteImageUpload"
       }
       override public func className() -> String {
-          return "MediaService.CompleteUpload"
+          return "MediaService.CompleteImageUpload"
       }
       override public func classMetaType() -> GeneratedMessage.Type {
-          return MediaService.CompleteUpload.self
+          return MediaService.CompleteImageUpload.self
       }
 
 
@@ -1439,11 +1636,11 @@ final public class MediaService : GeneratedMessage {
 
     }
 
-    final public class CompleteUploadBuilder : GeneratedMessageBuilder {
-      private var builderResult:MediaService.CompleteUpload
+    final public class CompleteImageUploadBuilder : GeneratedMessageBuilder {
+      private var builderResult:MediaService.CompleteImageUpload
 
       required override public init () {
-         builderResult = MediaService.CompleteUpload()
+         builderResult = MediaService.CompleteImageUpload()
          super.init()
       }
       override public var internalGetResult:GeneratedMessage {
@@ -1451,32 +1648,32 @@ final public class MediaService : GeneratedMessage {
               return builderResult
            }
       }
-      public override func clear() -> MediaService.CompleteUploadBuilder {
-        builderResult = MediaService.CompleteUpload()
+      public override func clear() -> MediaService.CompleteImageUploadBuilder {
+        builderResult = MediaService.CompleteImageUpload()
         return self
       }
-      public override func clone() -> MediaService.CompleteUploadBuilder {
-        return MediaService.CompleteUpload.builderWithPrototype(builderResult)
+      public override func clone() -> MediaService.CompleteImageUploadBuilder {
+        return MediaService.CompleteImageUpload.builderWithPrototype(builderResult)
       }
-      public override func build() -> MediaService.CompleteUpload {
+      public override func build() -> MediaService.CompleteImageUpload {
            checkInitialized()
            return buildPartial()
       }
-      public func buildPartial() -> MediaService.CompleteUpload {
-        var returnMe:MediaService.CompleteUpload = builderResult
+      public func buildPartial() -> MediaService.CompleteImageUpload {
+        var returnMe:MediaService.CompleteImageUpload = builderResult
         return returnMe
       }
-      public func mergeFrom(other:MediaService.CompleteUpload) -> MediaService.CompleteUploadBuilder {
-        if (other == MediaService.CompleteUpload()) {
+      public func mergeFrom(other:MediaService.CompleteImageUpload) -> MediaService.CompleteImageUploadBuilder {
+        if (other == MediaService.CompleteImageUpload()) {
          return self
         }
         mergeUnknownFields(other.unknownFields)
         return self
       }
-      public override func mergeFromCodedInputStream(input:CodedInputStream) ->MediaService.CompleteUploadBuilder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->MediaService.CompleteImageUploadBuilder {
            return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteUploadBuilder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUploadBuilder {
         var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           var tag = input.readTag()
@@ -1728,28 +1925,40 @@ public extension MediaService.UploadImage {
         return MediaService.UploadImage.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-public extension MediaService.CompleteUpload.Request {
-    class func parseFromNSData(data:NSData) -> MediaService.CompleteUpload.Request {
+public extension MediaService.CompleteImageUpload.Request {
+    class func parseFromNSData(data:NSData) -> MediaService.CompleteImageUpload.Request {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
-        return MediaService.CompleteUpload.Request.builder().mergeFromData(bytes).build()
+        return MediaService.CompleteImageUpload.Request.builder().mergeFromData(bytes).build()
     }
-    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteUpload.Request {
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload.Request {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
-        return MediaService.CompleteUpload.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+        return MediaService.CompleteImageUpload.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
-public extension MediaService.CompleteUpload {
-    class func parseFromNSData(data:NSData) -> MediaService.CompleteUpload {
+public extension MediaService.CompleteImageUpload.Response {
+    class func parseFromNSData(data:NSData) -> MediaService.CompleteImageUpload.Response {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
-        return MediaService.CompleteUpload.builder().mergeFromData(bytes).build()
+        return MediaService.CompleteImageUpload.Response.builder().mergeFromData(bytes).build()
     }
-    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteUpload {
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload.Response {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
-        return MediaService.CompleteUpload.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+        return MediaService.CompleteImageUpload.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension MediaService.CompleteImageUpload {
+    class func parseFromNSData(data:NSData) -> MediaService.CompleteImageUpload {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return MediaService.CompleteImageUpload.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> MediaService.CompleteImageUpload {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return MediaService.CompleteImageUpload.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension MediaService {

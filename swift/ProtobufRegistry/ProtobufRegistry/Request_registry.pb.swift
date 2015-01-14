@@ -172,6 +172,11 @@ public var MediaServiceRequests_upload_image:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.MediaServiceRequests_upload_imageStatic
    }
 }
+public var MediaServiceRequests_complete_image_upload:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.MediaServiceRequests_complete_image_uploadStatic
+   }
+}
 public struct RequestRegistryRoot {
   public static var sharedInstance : RequestRegistryRoot {
    struct Static {
@@ -213,6 +218,7 @@ public struct RequestRegistryRoot {
   var SearchServiceRequests_searchStatic:ConcreateExtensionField
   var LandingServiceRequests_get_categoriesStatic:ConcreateExtensionField
   var MediaServiceRequests_upload_imageStatic:ConcreateExtensionField
+  var MediaServiceRequests_complete_image_uploadStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -250,6 +256,7 @@ public struct RequestRegistryRoot {
     SearchServiceRequests_searchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 400, defaultValue:SearchService.Search.Request(), messageOrGroupClass:SearchService.Search.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     LandingServiceRequests_get_categoriesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 500, defaultValue:LandingService.GetCategories.Request(), messageOrGroupClass:LandingService.GetCategories.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     MediaServiceRequests_upload_imageStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 600, defaultValue:MediaService.UploadImage.Request(), messageOrGroupClass:MediaService.UploadImage.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    MediaServiceRequests_complete_image_uploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 601, defaultValue:MediaService.CompleteImageUpload.Request(), messageOrGroupClass:MediaService.CompleteImageUpload.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -295,6 +302,7 @@ public struct RequestRegistryRoot {
     registry.addExtension(SearchServiceRequests_searchStatic)
     registry.addExtension(LandingServiceRequests_get_categoriesStatic)
     registry.addExtension(MediaServiceRequests_upload_imageStatic)
+    registry.addExtension(MediaServiceRequests_complete_image_uploadStatic)
   }
 }
 
@@ -1194,6 +1202,9 @@ final public class MediaServiceRequests : GeneratedMessage {
 
   public class func upload_image() -> ConcreateExtensionField {
        return MediaServiceRequests_upload_image
+  }
+  public class func complete_image_upload() -> ConcreateExtensionField {
+       return MediaServiceRequests_complete_image_upload
   }
   required public init() {
        super.init()
