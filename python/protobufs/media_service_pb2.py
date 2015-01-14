@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/media_service.proto',
   package='main.media_service',
-  serialized_pb=_b('\n\x1dprotobufs/media_service.proto\x12\x12main.media_service\"\xea\x03\n\x0cMediaService\x1aI\n\nContainers\x1a;\n\x12UploadInstructions\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x12\n\nupload_url\x18\x02 \x01(\t\x1a\xd2\x01\n\x0bUploadImage\x1aZ\n\x07Request\x12\x42\n\x0cmedia_object\x18\x01 \x01(\x0e\x32,.main.media_service.MediaService.MediaObject\x12\x0b\n\x03key\x18\x02 \x01(\t\x1ag\n\x08Response\x12[\n\x13upload_instructions\x18\x01 \x01(\x0b\x32>.main.media_service.MediaService.Containers.UploadInstructions\x1a\x9d\x01\n\x13\x43ompleteImageUpload\x1ag\n\x07Request\x12<\n\x06object\x18\x01 \x01(\x0e\x32,.main.media_service.MediaService.MediaObject\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x11\n\tupload_id\x18\x03 \x01(\t\x1a\x1d\n\x08Response\x12\x11\n\tmedia_url\x18\x01 \x01(\t\"\x1a\n\x0bMediaObject\x12\x0b\n\x07PROFILE\x10\x01')
+  serialized_pb=_b('\n\x1dprotobufs/media_service.proto\x12\x12main.media_service\"\xf0\x03\n\x0cMediaService\x1aI\n\nContainers\x1a;\n\x12UploadInstructions\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x12\n\nupload_url\x18\x02 \x01(\t\x1a\xd2\x01\n\x0bUploadImage\x1aZ\n\x07Request\x12\x42\n\x0cmedia_object\x18\x01 \x01(\x0e\x32,.main.media_service.MediaService.MediaObject\x12\x0b\n\x03key\x18\x02 \x01(\t\x1ag\n\x08Response\x12[\n\x13upload_instructions\x18\x01 \x01(\x0b\x32>.main.media_service.MediaService.Containers.UploadInstructions\x1a\xa3\x01\n\x13\x43ompleteImageUpload\x1am\n\x07Request\x12\x42\n\x0cmedia_object\x18\x01 \x01(\x0e\x32,.main.media_service.MediaService.MediaObject\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x11\n\tupload_id\x18\x03 \x01(\t\x1a\x1d\n\x08Response\x12\x11\n\tmedia_url\x18\x01 \x01(\t\"\x1a\n\x0bMediaObject\x12\x0b\n\x07PROFILE\x10\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -37,8 +37,8 @@ _MEDIASERVICE_MEDIAOBJECT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=518,
-  serialized_end=544,
+  serialized_start=524,
+  serialized_end=550,
 )
 _sym_db.RegisterEnumDescriptor(_MEDIASERVICE_MEDIAOBJECT)
 
@@ -196,7 +196,7 @@ _MEDIASERVICE_COMPLETEIMAGEUPLOAD_REQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='object', full_name='main.media_service.MediaService.CompleteImageUpload.Request.object', index=0,
+      name='media_object', full_name='main.media_service.MediaService.CompleteImageUpload.Request.media_object', index=0,
       number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
@@ -228,7 +228,7 @@ _MEDIASERVICE_COMPLETEIMAGEUPLOAD_REQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=382,
-  serialized_end=485,
+  serialized_end=491,
 )
 
 _MEDIASERVICE_COMPLETEIMAGEUPLOAD_RESPONSE = _descriptor.Descriptor(
@@ -256,8 +256,8 @@ _MEDIASERVICE_COMPLETEIMAGEUPLOAD_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=487,
-  serialized_end=516,
+  serialized_start=493,
+  serialized_end=522,
 )
 
 _MEDIASERVICE_COMPLETEIMAGEUPLOAD = _descriptor.Descriptor(
@@ -279,7 +279,7 @@ _MEDIASERVICE_COMPLETEIMAGEUPLOAD = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=359,
-  serialized_end=516,
+  serialized_end=522,
 )
 
 _MEDIASERVICE = _descriptor.Descriptor(
@@ -302,7 +302,7 @@ _MEDIASERVICE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=54,
-  serialized_end=544,
+  serialized_end=550,
 )
 
 _MEDIASERVICE_CONTAINERS_UPLOADINSTRUCTIONS.containing_type = _MEDIASERVICE_CONTAINERS
@@ -312,7 +312,7 @@ _MEDIASERVICE_UPLOADIMAGE_REQUEST.containing_type = _MEDIASERVICE_UPLOADIMAGE
 _MEDIASERVICE_UPLOADIMAGE_RESPONSE.fields_by_name['upload_instructions'].message_type = _MEDIASERVICE_CONTAINERS_UPLOADINSTRUCTIONS
 _MEDIASERVICE_UPLOADIMAGE_RESPONSE.containing_type = _MEDIASERVICE_UPLOADIMAGE
 _MEDIASERVICE_UPLOADIMAGE.containing_type = _MEDIASERVICE
-_MEDIASERVICE_COMPLETEIMAGEUPLOAD_REQUEST.fields_by_name['object'].enum_type = _MEDIASERVICE_MEDIAOBJECT
+_MEDIASERVICE_COMPLETEIMAGEUPLOAD_REQUEST.fields_by_name['media_object'].enum_type = _MEDIASERVICE_MEDIAOBJECT
 _MEDIASERVICE_COMPLETEIMAGEUPLOAD_REQUEST.containing_type = _MEDIASERVICE_COMPLETEIMAGEUPLOAD
 _MEDIASERVICE_COMPLETEIMAGEUPLOAD_RESPONSE.containing_type = _MEDIASERVICE_COMPLETEIMAGEUPLOAD
 _MEDIASERVICE_COMPLETEIMAGEUPLOAD.containing_type = _MEDIASERVICE

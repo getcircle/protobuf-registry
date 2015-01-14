@@ -1072,15 +1072,15 @@ final public class MediaService : GeneratedMessage {
         final public class Request : GeneratedMessage {
           public subscript(key: String) -> AnyObject? {
                  switch key {
-                 case "object": return Int(self.object.rawValue)
+                 case "media_object": return Int(self.media_object.rawValue)
                  case "key": return key
                  case "upload_id": return upload_id
                  default: return nil
                  }
           }
 
-          public private(set) var object:MediaService.MediaObject = MediaService.MediaObject.Profile
-          public private(set) var hasObject:Bool = false
+          public private(set) var media_object:MediaService.MediaObject = MediaService.MediaObject.Profile
+          public private(set) var hasMediaObject:Bool = false
           public private(set) var hasKey:Bool = false
           public private(set) var key:String = ""
 
@@ -1094,8 +1094,8 @@ final public class MediaService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
-            if hasObject {
-              output.writeEnum(1, value:object.rawValue)
+            if hasMediaObject {
+              output.writeEnum(1, value:media_object.rawValue)
             }
             if hasKey {
               output.writeString(2, value:key)
@@ -1112,8 +1112,8 @@ final public class MediaService : GeneratedMessage {
             }
 
             size = 0
-            if (hasObject) {
-              size += WireFormat.computeEnumSize(1, value:object.rawValue)
+            if (hasMediaObject) {
+              size += WireFormat.computeEnumSize(1, value:media_object.rawValue)
             }
             if hasKey {
               size += WireFormat.computeStringSize(2, value:key)
@@ -1162,8 +1162,8 @@ final public class MediaService : GeneratedMessage {
             return MediaService.CompleteImageUpload.Request.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
-            if (hasObject) {
-              output += "\(indent) object: \(object.rawValue)\n"
+            if (hasMediaObject) {
+              output += "\(indent) media_object: \(media_object.rawValue)\n"
             }
             if hasKey {
               output += "\(indent) key: \(key) \n"
@@ -1176,8 +1176,8 @@ final public class MediaService : GeneratedMessage {
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
-                  if hasObject {
-                     hashCode = (hashCode &* 31) &+ Int(object.rawValue)
+                  if hasMediaObject {
+                     hashCode = (hashCode &* 31) &+ Int(media_object.rawValue)
                   }
                   if hasKey {
                      hashCode = (hashCode &* 31) &+ key.hashValue
@@ -1215,23 +1215,23 @@ final public class MediaService : GeneratedMessage {
              builderResult = MediaService.CompleteImageUpload.Request()
              super.init()
           }
-            public var hasObject:Bool{
+            public var hasMediaObject:Bool{
                 get {
-                    return builderResult.hasObject
+                    return builderResult.hasMediaObject
                 }
             }
-            public var object:MediaService.MediaObject {
+            public var media_object:MediaService.MediaObject {
                 get {
-                    return builderResult.object
+                    return builderResult.media_object
                 }
                 set (value) {
-                    builderResult.hasObject = true
-                    builderResult.object = value
+                    builderResult.hasMediaObject = true
+                    builderResult.media_object = value
                 }
             }
-            public func clearObject() -> MediaService.CompleteImageUpload.RequestBuilder {
-               builderResult.hasObject = false
-               builderResult.object = .Profile
+            public func clearMediaObject() -> MediaService.CompleteImageUpload.RequestBuilder {
+               builderResult.hasMediaObject = false
+               builderResult.media_object = .Profile
                return self
             }
           public var hasKey:Bool {
@@ -1296,8 +1296,8 @@ final public class MediaService : GeneratedMessage {
             if (other == MediaService.CompleteImageUpload.Request()) {
              return self
             }
-            if other.hasObject {
-                 object = other.object
+            if other.hasMediaObject {
+                 media_object = other.media_object
             }
             if other.hasKey {
                  key = other.key
@@ -1321,11 +1321,11 @@ final public class MediaService : GeneratedMessage {
                 return self
 
               case 8 :
-                let valueIntobject = input.readEnum()
-                if let enumsobject = MediaService.MediaObject(rawValue:valueIntobject){
-                     object = enumsobject
+                let valueIntmedia_object = input.readEnum()
+                if let enumsmedia_object = MediaService.MediaObject(rawValue:valueIntmedia_object){
+                     media_object = enumsmedia_object
                 } else {
-                     unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntobject))
+                     unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntmedia_object))
                 }
 
               case 18 :
