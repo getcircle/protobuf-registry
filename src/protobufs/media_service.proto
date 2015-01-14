@@ -12,7 +12,7 @@ message MediaService {
 
         message UploadInstructions {
             optional string upload_id = 1;
-            optional string request_url = 2;
+            optional string upload_url = 2;
         }
 
     }

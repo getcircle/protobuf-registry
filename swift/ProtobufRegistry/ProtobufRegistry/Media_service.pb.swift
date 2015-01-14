@@ -65,7 +65,7 @@ final public class MediaService : GeneratedMessage {
           public subscript(key: String) -> AnyObject? {
                  switch key {
                  case "upload_id": return upload_id
-                 case "request_url": return request_url
+                 case "upload_url": return upload_url
                  default: return nil
                  }
           }
@@ -73,8 +73,8 @@ final public class MediaService : GeneratedMessage {
           public private(set) var hasUploadId:Bool = false
           public private(set) var upload_id:String = ""
 
-          public private(set) var hasRequestUrl:Bool = false
-          public private(set) var request_url:String = ""
+          public private(set) var hasUploadUrl:Bool = false
+          public private(set) var upload_url:String = ""
 
           required public init() {
                super.init()
@@ -86,8 +86,8 @@ final public class MediaService : GeneratedMessage {
             if hasUploadId {
               output.writeString(1, value:upload_id)
             }
-            if hasRequestUrl {
-              output.writeString(2, value:request_url)
+            if hasUploadUrl {
+              output.writeString(2, value:upload_url)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -101,8 +101,8 @@ final public class MediaService : GeneratedMessage {
             if hasUploadId {
               size += WireFormat.computeStringSize(1, value:upload_id)
             }
-            if hasRequestUrl {
-              size += WireFormat.computeStringSize(2, value:request_url)
+            if hasUploadUrl {
+              size += WireFormat.computeStringSize(2, value:upload_url)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -148,8 +148,8 @@ final public class MediaService : GeneratedMessage {
             if hasUploadId {
               output += "\(indent) upload_id: \(upload_id) \n"
             }
-            if hasRequestUrl {
-              output += "\(indent) request_url: \(request_url) \n"
+            if hasUploadUrl {
+              output += "\(indent) upload_url: \(upload_url) \n"
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
@@ -159,8 +159,8 @@ final public class MediaService : GeneratedMessage {
                   if hasUploadId {
                      hashCode = (hashCode &* 31) &+ upload_id.hashValue
                   }
-                  if hasRequestUrl {
-                     hashCode = (hashCode &* 31) &+ request_url.hashValue
+                  if hasUploadUrl {
+                     hashCode = (hashCode &* 31) &+ upload_url.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -211,23 +211,23 @@ final public class MediaService : GeneratedMessage {
                builderResult.upload_id = ""
                return self
           }
-          public var hasRequestUrl:Bool {
+          public var hasUploadUrl:Bool {
                get {
-                    return builderResult.hasRequestUrl
+                    return builderResult.hasUploadUrl
                }
           }
-          public var request_url:String {
+          public var upload_url:String {
                get {
-                    return builderResult.request_url
+                    return builderResult.upload_url
                }
                set (value) {
-                   builderResult.hasRequestUrl = true
-                   builderResult.request_url = value
+                   builderResult.hasUploadUrl = true
+                   builderResult.upload_url = value
                }
           }
-          public func clearRequestUrl() -> MediaService.Containers.UploadInstructionsBuilder{
-               builderResult.hasRequestUrl = false
-               builderResult.request_url = ""
+          public func clearUploadUrl() -> MediaService.Containers.UploadInstructionsBuilder{
+               builderResult.hasUploadUrl = false
+               builderResult.upload_url = ""
                return self
           }
           override public var internalGetResult:GeneratedMessage {
@@ -257,8 +257,8 @@ final public class MediaService : GeneratedMessage {
             if other.hasUploadId {
                  upload_id = other.upload_id
             }
-            if other.hasRequestUrl {
-                 request_url = other.request_url
+            if other.hasUploadUrl {
+                 upload_url = other.upload_url
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -279,7 +279,7 @@ final public class MediaService : GeneratedMessage {
                 upload_id = input.readString()
 
               case 18 :
-                request_url = input.readString()
+                upload_url = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
