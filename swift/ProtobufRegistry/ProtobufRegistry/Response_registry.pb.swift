@@ -167,9 +167,9 @@ public var LandingServiceResponses_get_categories:ConcreateExtensionField {
        return ResponseRegistryRoot.sharedInstance.LandingServiceResponses_get_categoriesStatic
    }
 }
-public var MediaServiceResponses_upload_image:ConcreateExtensionField {
+public var MediaServiceResponses_start_image_upload:ConcreateExtensionField {
    get {
-       return ResponseRegistryRoot.sharedInstance.MediaServiceResponses_upload_imageStatic
+       return ResponseRegistryRoot.sharedInstance.MediaServiceResponses_start_image_uploadStatic
    }
 }
 public var MediaServiceResponses_complete_image_upload:ConcreateExtensionField {
@@ -217,7 +217,7 @@ public struct ResponseRegistryRoot {
   var ProfileServiceResponses_get_recent_hiresStatic:ConcreateExtensionField
   var SearchServiceResponses_searchStatic:ConcreateExtensionField
   var LandingServiceResponses_get_categoriesStatic:ConcreateExtensionField
-  var MediaServiceResponses_upload_imageStatic:ConcreateExtensionField
+  var MediaServiceResponses_start_image_uploadStatic:ConcreateExtensionField
   var MediaServiceResponses_complete_image_uploadStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
@@ -255,7 +255,7 @@ public struct ResponseRegistryRoot {
     ProfileServiceResponses_get_recent_hiresStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 313, defaultValue:ProfileService.GetRecentHires.Response(), messageOrGroupClass:ProfileService.GetRecentHires.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     SearchServiceResponses_searchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 400, defaultValue:SearchService.Search.Response(), messageOrGroupClass:SearchService.Search.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     LandingServiceResponses_get_categoriesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 500, defaultValue:LandingService.GetCategories.Response(), messageOrGroupClass:LandingService.GetCategories.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    MediaServiceResponses_upload_imageStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 600, defaultValue:MediaService.UploadImage.Response(), messageOrGroupClass:MediaService.UploadImage.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    MediaServiceResponses_start_image_uploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 600, defaultValue:MediaService.StartImageUpload.Response(), messageOrGroupClass:MediaService.StartImageUpload.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     MediaServiceResponses_complete_image_uploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 601, defaultValue:MediaService.CompleteImageUpload.Response(), messageOrGroupClass:MediaService.CompleteImageUpload.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
@@ -301,7 +301,7 @@ public struct ResponseRegistryRoot {
     registry.addExtension(ProfileServiceResponses_get_recent_hiresStatic)
     registry.addExtension(SearchServiceResponses_searchStatic)
     registry.addExtension(LandingServiceResponses_get_categoriesStatic)
-    registry.addExtension(MediaServiceResponses_upload_imageStatic)
+    registry.addExtension(MediaServiceResponses_start_image_uploadStatic)
     registry.addExtension(MediaServiceResponses_complete_image_uploadStatic)
   }
 }
@@ -1200,8 +1200,8 @@ final public class MediaServiceResponses : GeneratedMessage {
          }
   }
 
-  public class func upload_image() -> ConcreateExtensionField {
-       return MediaServiceResponses_upload_image
+  public class func start_image_upload() -> ConcreateExtensionField {
+       return MediaServiceResponses_start_image_upload
   }
   public class func complete_image_upload() -> ConcreateExtensionField {
        return MediaServiceResponses_complete_image_upload

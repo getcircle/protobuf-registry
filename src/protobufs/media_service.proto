@@ -19,7 +19,7 @@ message MediaService {
 
     // MARK: - Actions
 
-    message UploadImage {
+    message StartImageUpload {
 
         message Request {
             optional MediaObject media_object = 1;
