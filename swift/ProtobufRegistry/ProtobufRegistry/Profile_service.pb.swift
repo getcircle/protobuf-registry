@@ -932,7 +932,6 @@ final public class ProfileService : GeneratedMessage {
                  switch key {
                  case "id": return id
                  case "name": return name
-                 case "organization_id": return organization_id
                  default: return nil
                  }
           }
@@ -942,9 +941,6 @@ final public class ProfileService : GeneratedMessage {
 
           public private(set) var hasName:Bool = false
           public private(set) var name:String = ""
-
-          public private(set) var hasOrganizationId:Bool = false
-          public private(set) var organization_id:String = ""
 
           required public init() {
                super.init()
@@ -958,9 +954,6 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasName {
               output.writeString(2, value:name)
-            }
-            if hasOrganizationId {
-              output.writeString(3, value:organization_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -976,9 +969,6 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasName {
               size += WireFormat.computeStringSize(2, value:name)
-            }
-            if hasOrganizationId {
-              size += WireFormat.computeStringSize(3, value:organization_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -1027,9 +1017,6 @@ final public class ProfileService : GeneratedMessage {
             if hasName {
               output += "\(indent) name: \(name) \n"
             }
-            if hasOrganizationId {
-              output += "\(indent) organization_id: \(organization_id) \n"
-            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -1040,9 +1027,6 @@ final public class ProfileService : GeneratedMessage {
                   }
                   if hasName {
                      hashCode = (hashCode &* 31) &+ name.hashValue
-                  }
-                  if hasOrganizationId {
-                     hashCode = (hashCode &* 31) &+ organization_id.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -1112,25 +1096,6 @@ final public class ProfileService : GeneratedMessage {
                builderResult.name = ""
                return self
           }
-          public var hasOrganizationId:Bool {
-               get {
-                    return builderResult.hasOrganizationId
-               }
-          }
-          public var organization_id:String {
-               get {
-                    return builderResult.organization_id
-               }
-               set (value) {
-                   builderResult.hasOrganizationId = true
-                   builderResult.organization_id = value
-               }
-          }
-          public func clearOrganizationId() -> ProfileService.Containers.TagBuilder{
-               builderResult.hasOrganizationId = false
-               builderResult.organization_id = ""
-               return self
-          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -1158,9 +1123,6 @@ final public class ProfileService : GeneratedMessage {
             if other.hasName {
                  name = other.name
             }
-            if other.hasOrganizationId {
-                 organization_id = other.organization_id
-            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -1181,9 +1143,6 @@ final public class ProfileService : GeneratedMessage {
 
               case 18 :
                 name = input.readString()
-
-              case 26 :
-                organization_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
