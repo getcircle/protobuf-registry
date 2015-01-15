@@ -30,6 +30,7 @@ message ProfileService {
         message Tag {
             optional string id = 1;
             optional string name = 2;
+            optional string organization_id = 3;
         }
 
         message Stats {
