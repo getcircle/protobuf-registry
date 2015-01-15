@@ -66,6 +66,7 @@ final public class MediaService : GeneratedMessage {
                  switch key {
                  case "upload_id": return upload_id
                  case "upload_url": return upload_url
+                 case "upload_key": return upload_key
                  default: return nil
                  }
           }
@@ -75,6 +76,9 @@ final public class MediaService : GeneratedMessage {
 
           public private(set) var hasUploadUrl:Bool = false
           public private(set) var upload_url:String = ""
+
+          public private(set) var hasUploadKey:Bool = false
+          public private(set) var upload_key:String = ""
 
           required public init() {
                super.init()
@@ -88,6 +92,9 @@ final public class MediaService : GeneratedMessage {
             }
             if hasUploadUrl {
               output.writeString(2, value:upload_url)
+            }
+            if hasUploadKey {
+              output.writeString(3, value:upload_key)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -103,6 +110,9 @@ final public class MediaService : GeneratedMessage {
             }
             if hasUploadUrl {
               size += WireFormat.computeStringSize(2, value:upload_url)
+            }
+            if hasUploadKey {
+              size += WireFormat.computeStringSize(3, value:upload_key)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -151,6 +161,9 @@ final public class MediaService : GeneratedMessage {
             if hasUploadUrl {
               output += "\(indent) upload_url: \(upload_url) \n"
             }
+            if hasUploadKey {
+              output += "\(indent) upload_key: \(upload_key) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -161,6 +174,9 @@ final public class MediaService : GeneratedMessage {
                   }
                   if hasUploadUrl {
                      hashCode = (hashCode &* 31) &+ upload_url.hashValue
+                  }
+                  if hasUploadKey {
+                     hashCode = (hashCode &* 31) &+ upload_key.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -230,6 +246,25 @@ final public class MediaService : GeneratedMessage {
                builderResult.upload_url = ""
                return self
           }
+          public var hasUploadKey:Bool {
+               get {
+                    return builderResult.hasUploadKey
+               }
+          }
+          public var upload_key:String {
+               get {
+                    return builderResult.upload_key
+               }
+               set (value) {
+                   builderResult.hasUploadKey = true
+                   builderResult.upload_key = value
+               }
+          }
+          public func clearUploadKey() -> MediaService.Containers.UploadInstructionsBuilder{
+               builderResult.hasUploadKey = false
+               builderResult.upload_key = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -257,6 +292,9 @@ final public class MediaService : GeneratedMessage {
             if other.hasUploadUrl {
                  upload_url = other.upload_url
             }
+            if other.hasUploadKey {
+                 upload_key = other.upload_key
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -277,6 +315,9 @@ final public class MediaService : GeneratedMessage {
 
               case 18 :
                 upload_url = input.readString()
+
+              case 26 :
+                upload_key = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -1057,17 +1098,14 @@ final public class MediaService : GeneratedMessage {
         final public class Request : GeneratedMessage {
           public subscript(key: String) -> AnyObject? {
                  switch key {
-                 case "media_object": return Int(self.media_object.rawValue)
-                 case "key": return key
+                 case "upload_key": return upload_key
                  case "upload_id": return upload_id
                  default: return nil
                  }
           }
 
-          public private(set) var media_object:MediaService.MediaObject = MediaService.MediaObject.Profile
-          public private(set) var hasMediaObject:Bool = false
-          public private(set) var hasKey:Bool = false
-          public private(set) var key:String = ""
+          public private(set) var hasUploadKey:Bool = false
+          public private(set) var upload_key:String = ""
 
           public private(set) var hasUploadId:Bool = false
           public private(set) var upload_id:String = ""
@@ -1079,14 +1117,11 @@ final public class MediaService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
-            if hasMediaObject {
-              output.writeEnum(1, value:media_object.rawValue)
-            }
-            if hasKey {
-              output.writeString(2, value:key)
+            if hasUploadKey {
+              output.writeString(1, value:upload_key)
             }
             if hasUploadId {
-              output.writeString(3, value:upload_id)
+              output.writeString(2, value:upload_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -1097,14 +1132,11 @@ final public class MediaService : GeneratedMessage {
             }
 
             size = 0
-            if (hasMediaObject) {
-              size += WireFormat.computeEnumSize(1, value:media_object.rawValue)
-            }
-            if hasKey {
-              size += WireFormat.computeStringSize(2, value:key)
+            if hasUploadKey {
+              size += WireFormat.computeStringSize(1, value:upload_key)
             }
             if hasUploadId {
-              size += WireFormat.computeStringSize(3, value:upload_id)
+              size += WireFormat.computeStringSize(2, value:upload_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -1147,11 +1179,8 @@ final public class MediaService : GeneratedMessage {
             return MediaService.CompleteImageUpload.Request.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
-            if (hasMediaObject) {
-              output += "\(indent) media_object: \(media_object.rawValue)\n"
-            }
-            if hasKey {
-              output += "\(indent) key: \(key) \n"
+            if hasUploadKey {
+              output += "\(indent) upload_key: \(upload_key) \n"
             }
             if hasUploadId {
               output += "\(indent) upload_id: \(upload_id) \n"
@@ -1161,11 +1190,8 @@ final public class MediaService : GeneratedMessage {
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
-                  if hasMediaObject {
-                     hashCode = (hashCode &* 31) &+ Int(media_object.rawValue)
-                  }
-                  if hasKey {
-                     hashCode = (hashCode &* 31) &+ key.hashValue
+                  if hasUploadKey {
+                     hashCode = (hashCode &* 31) &+ upload_key.hashValue
                   }
                   if hasUploadId {
                      hashCode = (hashCode &* 31) &+ upload_id.hashValue
@@ -1200,42 +1226,23 @@ final public class MediaService : GeneratedMessage {
              builderResult = MediaService.CompleteImageUpload.Request()
              super.init()
           }
-            public var hasMediaObject:Bool{
-                get {
-                    return builderResult.hasMediaObject
-                }
-            }
-            public var media_object:MediaService.MediaObject {
-                get {
-                    return builderResult.media_object
-                }
-                set (value) {
-                    builderResult.hasMediaObject = true
-                    builderResult.media_object = value
-                }
-            }
-            public func clearMediaObject() -> MediaService.CompleteImageUpload.RequestBuilder {
-               builderResult.hasMediaObject = false
-               builderResult.media_object = .Profile
-               return self
-            }
-          public var hasKey:Bool {
+          public var hasUploadKey:Bool {
                get {
-                    return builderResult.hasKey
+                    return builderResult.hasUploadKey
                }
           }
-          public var key:String {
+          public var upload_key:String {
                get {
-                    return builderResult.key
+                    return builderResult.upload_key
                }
                set (value) {
-                   builderResult.hasKey = true
-                   builderResult.key = value
+                   builderResult.hasUploadKey = true
+                   builderResult.upload_key = value
                }
           }
-          public func clearKey() -> MediaService.CompleteImageUpload.RequestBuilder{
-               builderResult.hasKey = false
-               builderResult.key = ""
+          public func clearUploadKey() -> MediaService.CompleteImageUpload.RequestBuilder{
+               builderResult.hasUploadKey = false
+               builderResult.upload_key = ""
                return self
           }
           public var hasUploadId:Bool {
@@ -1278,11 +1285,8 @@ final public class MediaService : GeneratedMessage {
             return returnMe
           }
           public func mergeFrom(other:MediaService.CompleteImageUpload.Request) -> MediaService.CompleteImageUpload.RequestBuilder {
-            if other.hasMediaObject {
-                 media_object = other.media_object
-            }
-            if other.hasKey {
-                 key = other.key
+            if other.hasUploadKey {
+                 upload_key = other.upload_key
             }
             if other.hasUploadId {
                  upload_id = other.upload_id
@@ -1302,18 +1306,10 @@ final public class MediaService : GeneratedMessage {
                 self.unknownFields = unknownFieldsBuilder.build()
                 return self
 
-              case 8 :
-                let valueIntmedia_object = input.readEnum()
-                if let enumsmedia_object = MediaService.MediaObject(rawValue:valueIntmedia_object){
-                     media_object = enumsmedia_object
-                } else {
-                     unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntmedia_object))
-                }
+              case 10 :
+                upload_key = input.readString()
 
               case 18 :
-                key = input.readString()
-
-              case 26 :
                 upload_id = input.readString()
 
               default:
