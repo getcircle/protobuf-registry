@@ -6169,6 +6169,16 @@ final public class ProfileService : GeneratedMessage {
                       return nil
                  }
             }
+            case TagId(String)
+
+            public static func getTagId(value:LookupKey) ->String? {
+                 switch value {
+                 case .TagId(let enumValue):
+                      return enumValue
+                 default:
+                      return nil
+                 }
+            }
           }
 
 
@@ -6180,6 +6190,7 @@ final public class ProfileService : GeneratedMessage {
                  switch key {
                  case "team_id": return team_id
                  case "organization_id": return organization_id
+                 case "tag_id": return tag_id
                  default: return nil
                  }
           }
@@ -6220,6 +6231,24 @@ final public class ProfileService : GeneratedMessage {
                     storageLookupKey = ProfileService.GetProfiles.Request.LookupKey.OrganizationId(newvalue)
                }
           }
+          public private(set) var hasTagId:Bool {
+                get {
+                     if ProfileService.GetProfiles.Request.LookupKey.getTagId(storageLookupKey) == nil {
+                         return false
+                     }
+                     return true
+                }
+                set(newValue) {
+                }
+          }
+          public private(set) var tag_id:String!{
+               get {
+                    return ProfileService.GetProfiles.Request.LookupKey.getTagId(storageLookupKey)
+               }
+               set (newvalue) {
+                    storageLookupKey = ProfileService.GetProfiles.Request.LookupKey.TagId(newvalue)
+               }
+          }
           required public init() {
                super.init()
           }
@@ -6232,6 +6261,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasOrganizationId {
               output.writeString(2, value:organization_id)
+            }
+            if hasTagId {
+              output.writeString(3, value:tag_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -6247,6 +6279,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasOrganizationId {
               size += WireFormat.computeStringSize(2, value:organization_id)
+            }
+            if hasTagId {
+              size += WireFormat.computeStringSize(3, value:tag_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -6295,6 +6330,9 @@ final public class ProfileService : GeneratedMessage {
             if hasOrganizationId {
               output += "\(indent) organization_id: \(organization_id) \n"
             }
+            if hasTagId {
+              output += "\(indent) tag_id: \(tag_id) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -6305,6 +6343,9 @@ final public class ProfileService : GeneratedMessage {
                   }
                   if hasOrganizationId {
                      hashCode = (hashCode &* 31) &+ organization_id.hashValue
+                  }
+                  if hasTagId {
+                     hashCode = (hashCode &* 31) &+ tag_id.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -6374,6 +6415,25 @@ final public class ProfileService : GeneratedMessage {
                builderResult.organization_id = ""
                return self
           }
+          public var hasTagId:Bool {
+               get {
+                    return builderResult.hasTagId
+               }
+          }
+          public var tag_id:String {
+               get {
+                    return builderResult.tag_id
+               }
+               set (value) {
+                   builderResult.hasTagId = true
+                   builderResult.tag_id = value
+               }
+          }
+          public func clearTagId() -> ProfileService.GetProfiles.RequestBuilder{
+               builderResult.hasTagId = false
+               builderResult.tag_id = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -6401,6 +6461,9 @@ final public class ProfileService : GeneratedMessage {
             if other.hasOrganizationId {
                  organization_id = other.organization_id
             }
+            if other.hasTagId {
+                 tag_id = other.tag_id
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -6421,6 +6484,9 @@ final public class ProfileService : GeneratedMessage {
 
               case 18 :
                 organization_id = input.readString()
+
+              case 26 :
+                tag_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
