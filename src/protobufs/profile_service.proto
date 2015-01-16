@@ -237,7 +237,7 @@ message ProfileService {
         }
 
         message Response {
-            repeated Containers.Profile profiles = 1;
+            repeated Containers.Tag tags = 1;
         }
 
     }
