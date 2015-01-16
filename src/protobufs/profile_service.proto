@@ -146,6 +146,7 @@ message ProfileService {
             oneof lookup_key {
                 string team_id = 1;
                 string organization_id = 2;
+                string tag_id = 3;
             }
         }
 
