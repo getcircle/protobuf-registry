@@ -10390,7 +10390,7 @@ final public class ProfileService : GeneratedMessage {
                  }
           }
 
-          public private(set) var profiles:Array<ProfileService.Containers.Profile>  = Array<ProfileService.Containers.Profile>()
+          public private(set) var tags:Array<ProfileService.Containers.Tag>  = Array<ProfileService.Containers.Tag>()
           required public init() {
                super.init()
           }
@@ -10398,8 +10398,8 @@ final public class ProfileService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
-            for oneElementprofiles in profiles {
-                output.writeMessage(1, value:oneElementprofiles)
+            for oneElementtags in tags {
+                output.writeMessage(1, value:oneElementtags)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -10410,8 +10410,8 @@ final public class ProfileService : GeneratedMessage {
             }
 
             size = 0
-            for oneElementprofiles in profiles {
-                size += WireFormat.computeMessageSize(1, value:oneElementprofiles)
+            for oneElementtags in tags {
+                size += WireFormat.computeMessageSize(1, value:oneElementtags)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -10454,20 +10454,20 @@ final public class ProfileService : GeneratedMessage {
             return ProfileService.GetTrendingTags.Response.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
-            var profilesElementIndex:Int = 0
-            for oneElementprofiles in profiles {
-                output += "\(indent) profiles[\(profilesElementIndex)] {\n"
-                oneElementprofiles.writeDescriptionTo(&output, indent:"\(indent)  ")
+            var tagsElementIndex:Int = 0
+            for oneElementtags in tags {
+                output += "\(indent) tags[\(tagsElementIndex)] {\n"
+                oneElementtags.writeDescriptionTo(&output, indent:"\(indent)  ")
                 output += "\(indent)}\n"
-                profilesElementIndex++
+                tagsElementIndex++
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
-                  for oneElementprofiles in profiles {
-                      hashCode = (hashCode &* 31) &+ oneElementprofiles.hashValue
+                  for oneElementtags in tags {
+                      hashCode = (hashCode &* 31) &+ oneElementtags.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -10499,16 +10499,16 @@ final public class ProfileService : GeneratedMessage {
              builderResult = ProfileService.GetTrendingTags.Response()
              super.init()
           }
-          public var profiles:Array<ProfileService.Containers.Profile> {
+          public var tags:Array<ProfileService.Containers.Tag> {
                get {
-                   return builderResult.profiles
+                   return builderResult.tags
                }
                set (value) {
-                   builderResult.profiles = value
+                   builderResult.tags = value
                }
           }
-          public func clearProfiles() -> ProfileService.GetTrendingTags.ResponseBuilder {
-            builderResult.profiles.removeAll(keepCapacity: false)
+          public func clearTags() -> ProfileService.GetTrendingTags.ResponseBuilder {
+            builderResult.tags.removeAll(keepCapacity: false)
             return self
           }
           override public var internalGetResult:GeneratedMessage {
@@ -10532,8 +10532,8 @@ final public class ProfileService : GeneratedMessage {
             return returnMe
           }
           public func mergeFrom(other:ProfileService.GetTrendingTags.Response) -> ProfileService.GetTrendingTags.ResponseBuilder {
-            if !other.profiles.isEmpty  {
-               builderResult.profiles += other.profiles
+            if !other.tags.isEmpty  {
+               builderResult.tags += other.tags
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -10551,9 +10551,9 @@ final public class ProfileService : GeneratedMessage {
                 return self
 
               case 10 :
-                var subBuilder = ProfileService.Containers.Profile.builder()
+                var subBuilder = ProfileService.Containers.Tag.builder()
                 input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-                profiles += [subBuilder.buildPartial()]
+                tags += [subBuilder.buildPartial()]
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
