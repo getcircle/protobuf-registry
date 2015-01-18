@@ -187,6 +187,11 @@ public var NoteServiceRequests_create_note:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.NoteServiceRequests_create_noteStatic
    }
 }
+public var NoteServiceRequests_get_notes:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.NoteServiceRequests_get_notesStatic
+   }
+}
 public struct RequestRegistryRoot {
   public static var sharedInstance : RequestRegistryRoot {
    struct Static {
@@ -231,6 +236,7 @@ public struct RequestRegistryRoot {
   var MediaServiceRequests_start_image_uploadStatic:ConcreateExtensionField
   var MediaServiceRequests_complete_image_uploadStatic:ConcreateExtensionField
   var NoteServiceRequests_create_noteStatic:ConcreateExtensionField
+  var NoteServiceRequests_get_notesStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -271,6 +277,7 @@ public struct RequestRegistryRoot {
     MediaServiceRequests_start_image_uploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 600, defaultValue:MediaService.StartImageUpload.Request(), messageOrGroupClass:MediaService.StartImageUpload.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     MediaServiceRequests_complete_image_uploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 601, defaultValue:MediaService.CompleteImageUpload.Request(), messageOrGroupClass:MediaService.CompleteImageUpload.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     NoteServiceRequests_create_noteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 700, defaultValue:NoteService.CreateNote.Request(), messageOrGroupClass:NoteService.CreateNote.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    NoteServiceRequests_get_notesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 701, defaultValue:NoteService.GetNotes.Request(), messageOrGroupClass:NoteService.GetNotes.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -320,6 +327,7 @@ public struct RequestRegistryRoot {
     registry.addExtension(MediaServiceRequests_start_image_uploadStatic)
     registry.addExtension(MediaServiceRequests_complete_image_uploadStatic)
     registry.addExtension(NoteServiceRequests_create_noteStatic)
+    registry.addExtension(NoteServiceRequests_get_notesStatic)
   }
 }
 
@@ -1366,6 +1374,9 @@ final public class NoteServiceRequests : GeneratedMessage {
 
   public class func create_note() -> ConcreateExtensionField {
        return NoteServiceRequests_create_note
+  }
+  public class func get_notes() -> ConcreateExtensionField {
+       return NoteServiceRequests_get_notes
   }
   required public init() {
        super.init()

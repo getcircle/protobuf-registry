@@ -29,4 +29,16 @@ message NoteService {
         }
     }
 
+    message GetNotes {
+
+        message Request {
+            optional string owner_profile_id = 1;
+            optional string for_profile_id = 2;
+        }
+
+        message Response {
+            repeated Containers.Note notes = 1;
+        }
+    }
+
 }

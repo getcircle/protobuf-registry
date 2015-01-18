@@ -79,5 +79,6 @@ message MediaServiceResponses {
 message NoteServiceResponses {
     extend soa.ActionResponseResult {
         optional main.note_service.NoteService.CreateNote.Response create_note = 700;
+        optional main.note_service.NoteService.GetNotes.Response get_notes = 701;
     }
 }
