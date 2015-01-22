@@ -76,6 +76,9 @@ final public class LandingService : GeneratedMessage {
               case Tags = 5
               case Peers = 6
               case NewHires = 7
+              case Departments = 8
+              case Executives = 9
+              case Organization = 10
 
               public static func IsValidValue(value:Int32) ->Bool {
                   if let check = CategoryType(rawValue:value) {
@@ -1407,10 +1410,16 @@ final public class LandingService : GeneratedMessage {
         final public class Response : GeneratedMessage {
           override public subscript (key: String) -> AnyObject? {
                  switch key {
+                 case "owner": return owner
+                 case "organization": return organization
                  default: return nil
                  }
           }
 
+          public private(set) var hasOwner:Bool = false
+          public private(set) var owner:ProfileService.Containers.Profile = ProfileService.Containers.Profile()
+          public private(set) var hasOrganization:Bool = false
+          public private(set) var organization:OrganizationService.Containers.Organization = OrganizationService.Containers.Organization()
           public private(set) var categories:Array<LandingService.Containers.Category>  = Array<LandingService.Containers.Category>()
           required public init() {
                super.init()
@@ -1421,6 +1430,12 @@ final public class LandingService : GeneratedMessage {
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
             for oneElementcategories in categories {
                 output.writeMessage(1, value:oneElementcategories)
+            }
+            if hasOwner {
+              output.writeMessage(2, value:owner)
+            }
+            if hasOrganization {
+              output.writeMessage(3, value:organization)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -1433,6 +1448,12 @@ final public class LandingService : GeneratedMessage {
             size = 0
             for oneElementcategories in categories {
                 size += WireFormat.computeMessageSize(1, value:oneElementcategories)
+            }
+            if hasOwner {
+              size += WireFormat.computeMessageSize(2, value:owner)
+            }
+            if hasOrganization {
+              size += WireFormat.computeMessageSize(3, value:organization)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -1482,6 +1503,16 @@ final public class LandingService : GeneratedMessage {
                 output += "\(indent)}\n"
                 categoriesElementIndex++
             }
+            if hasOwner {
+              output += "\(indent) owner {\n"
+              owner.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
+            }
+            if hasOrganization {
+              output += "\(indent) organization {\n"
+              organization.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -1489,6 +1520,12 @@ final public class LandingService : GeneratedMessage {
                   var hashCode:Int = 7
                   for oneElementcategories in categories {
                       hashCode = (hashCode &* 31) &+ oneElementcategories.hashValue
+                  }
+                  if hasOwner {
+                    hashCode = (hashCode &* 31) &+ owner.hashValue
+                  }
+                  if hasOrganization {
+                    hashCode = (hashCode &* 31) &+ organization.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -1532,6 +1569,70 @@ final public class LandingService : GeneratedMessage {
             builderResult.categories.removeAll(keepCapacity: false)
             return self
           }
+          public var hasOwner:Bool {
+               get {
+                   return builderResult.hasOwner
+               }
+          }
+          public var owner:ProfileService.Containers.Profile {
+               get {
+                   return builderResult.owner
+               }
+               set (value) {
+                   builderResult.hasOwner = true
+                   builderResult.owner = value
+               }
+          }
+          public func setOwnerBuilder(builderForValue:ProfileService.Containers.ProfileBuilder) -> LandingService.GetOrganizationCategories.ResponseBuilder {
+            owner = builderForValue.build()
+            return self
+          }
+          public func mergeOwner(value:ProfileService.Containers.Profile) -> LandingService.GetOrganizationCategories.ResponseBuilder {
+            if (builderResult.hasOwner) {
+              builderResult.owner = ProfileService.Containers.Profile.builderWithPrototype(builderResult.owner).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.owner = value
+            }
+            builderResult.hasOwner = true
+            return self
+          }
+          public func clearOwner() -> LandingService.GetOrganizationCategories.ResponseBuilder {
+            builderResult.hasOwner = false
+            builderResult.owner = ProfileService.Containers.Profile()
+            return self
+          }
+          public var hasOrganization:Bool {
+               get {
+                   return builderResult.hasOrganization
+               }
+          }
+          public var organization:OrganizationService.Containers.Organization {
+               get {
+                   return builderResult.organization
+               }
+               set (value) {
+                   builderResult.hasOrganization = true
+                   builderResult.organization = value
+               }
+          }
+          public func setOrganizationBuilder(builderForValue:OrganizationService.Containers.OrganizationBuilder) -> LandingService.GetOrganizationCategories.ResponseBuilder {
+            organization = builderForValue.build()
+            return self
+          }
+          public func mergeOrganization(value:OrganizationService.Containers.Organization) -> LandingService.GetOrganizationCategories.ResponseBuilder {
+            if (builderResult.hasOrganization) {
+              builderResult.organization = OrganizationService.Containers.Organization.builderWithPrototype(builderResult.organization).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.organization = value
+            }
+            builderResult.hasOrganization = true
+            return self
+          }
+          public func clearOrganization() -> LandingService.GetOrganizationCategories.ResponseBuilder {
+            builderResult.hasOrganization = false
+            builderResult.organization = OrganizationService.Containers.Organization()
+            return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -1556,6 +1657,12 @@ final public class LandingService : GeneratedMessage {
             if !other.categories.isEmpty  {
                builderResult.categories += other.categories
             }
+            if (other.hasOwner) {
+                mergeOwner(other.owner)
+            }
+            if (other.hasOrganization) {
+                mergeOrganization(other.organization)
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -1575,6 +1682,22 @@ final public class LandingService : GeneratedMessage {
                 var subBuilder = LandingService.Containers.Category.builder()
                 input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
                 categories += [subBuilder.buildPartial()]
+
+              case 18 :
+                var subBuilder:ProfileService.Containers.ProfileBuilder = ProfileService.Containers.Profile.builder()
+                if hasOwner {
+                  subBuilder.mergeFrom(owner)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                owner = subBuilder.buildPartial()
+
+              case 26 :
+                var subBuilder:OrganizationService.Containers.OrganizationBuilder = OrganizationService.Containers.Organization.builder()
+                if hasOrganization {
+                  subBuilder.mergeFrom(organization)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                organization = subBuilder.buildPartial()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

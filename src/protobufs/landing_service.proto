@@ -19,6 +19,9 @@ message LandingService {
                 TAGS = 5;
                 PEERS = 6;
                 NEW_HIRES = 7;
+                DEPARTMENTS = 8;
+                EXECUTIVES = 9;
+                ORGANIZATION = 10;
             }
 
             optional string title = 1;
@@ -53,12 +56,8 @@ message LandingService {
 
         message Response {
             repeated Containers.Category categories = 1;
-            // repeated main.profile_service.ProfileService.Containers.Tag trending_tags = 1;
-            // repeated main.organization_service.OrganizationService.Containers.Address addresses = 2;
-            // repeated main.organization_service.OrganizationService.Containers.Team departments = 3;
-            // repeated main.profile_service.ProfileService.Containers.Profile executives = 4;
-            // optional main.profile_service.ProfileService.Containers.Profile owner = 5;
-            // optional main.organization_service.OrganizationService.Containers.Organization organization = 6;
+            optional main.profile_service.ProfileService.Containers.Profile owner = 2;
+            optional main.organization_service.OrganizationService.Containers.Organization organization = 3;
         }
     }
 
