@@ -67,7 +67,7 @@ message SearchServiceRequests {
 message LandingServiceRequests {
     extend soa.ActionRequestParams {
         optional main.landing_service.LandingService.GetCategories.Request get_categories = 500;
-        optional main.landing_service.LandingService.GetExtendedOrganization.Request get_extended_organization = 501;
+        optional main.landing_service.LandingService.GetOrganizationCategories.Request get_organization_categories = 501;
     }
 }
 

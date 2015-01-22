@@ -18,6 +18,7 @@ message OrganizationService {
             optional string owner_id = 3;
         }
 
+        // XXX owner_id needs to be switched to profile_id
         message Team {
             optional string id = 1;
             optional string name = 2;
