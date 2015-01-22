@@ -116,6 +116,7 @@ final public class LandingService : GeneratedMessage {
           public private(set) var profiles:Array<ProfileService.Containers.Profile>  = Array<ProfileService.Containers.Profile>()
           public private(set) var addresses:Array<OrganizationService.Containers.Address>  = Array<OrganizationService.Containers.Address>()
           public private(set) var tags:Array<ProfileService.Containers.Tag>  = Array<ProfileService.Containers.Tag>()
+          public private(set) var teams:Array<OrganizationService.Containers.Team>  = Array<OrganizationService.Containers.Team>()
           required public init() {
                super.init()
           }
@@ -143,6 +144,9 @@ final public class LandingService : GeneratedMessage {
             }
             for oneElementtags in tags {
                 output.writeMessage(7, value:oneElementtags)
+            }
+            for oneElementteams in teams {
+                output.writeMessage(8, value:oneElementteams)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -173,6 +177,9 @@ final public class LandingService : GeneratedMessage {
             }
             for oneElementtags in tags {
                 size += WireFormat.computeMessageSize(7, value:oneElementtags)
+            }
+            for oneElementteams in teams {
+                size += WireFormat.computeMessageSize(8, value:oneElementteams)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -248,6 +255,13 @@ final public class LandingService : GeneratedMessage {
                 output += "\(indent)}\n"
                 tagsElementIndex++
             }
+            var teamsElementIndex:Int = 0
+            for oneElementteams in teams {
+                output += "\(indent) teams[\(teamsElementIndex)] {\n"
+                oneElementteams.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                teamsElementIndex++
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -273,6 +287,9 @@ final public class LandingService : GeneratedMessage {
                   }
                   for oneElementtags in tags {
                       hashCode = (hashCode &* 31) &+ oneElementtags.hashValue
+                  }
+                  for oneElementteams in teams {
+                      hashCode = (hashCode &* 31) &+ oneElementteams.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -416,6 +433,18 @@ final public class LandingService : GeneratedMessage {
             builderResult.tags.removeAll(keepCapacity: false)
             return self
           }
+          public var teams:Array<OrganizationService.Containers.Team> {
+               get {
+                   return builderResult.teams
+               }
+               set (value) {
+                   builderResult.teams = value
+               }
+          }
+          public func clearTeams() -> LandingService.Containers.CategoryBuilder {
+            builderResult.teams.removeAll(keepCapacity: false)
+            return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -457,6 +486,9 @@ final public class LandingService : GeneratedMessage {
             }
             if !other.tags.isEmpty  {
                builderResult.tags += other.tags
+            }
+            if !other.teams.isEmpty  {
+               builderResult.teams += other.teams
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -504,6 +536,11 @@ final public class LandingService : GeneratedMessage {
                 var subBuilder = ProfileService.Containers.Tag.builder()
                 input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
                 tags += [subBuilder.buildPartial()]
+
+              case 66 :
+                var subBuilder = OrganizationService.Containers.Team.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                teams += [subBuilder.buildPartial()]
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
