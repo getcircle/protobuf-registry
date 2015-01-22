@@ -66,6 +66,7 @@ message SearchServiceResponses {
 message LandingServiceResponses {
     extend soa.ActionResponseResult {
         optional main.landing_service.LandingService.GetCategories.Response get_categories = 500;
+        optional main.landing_service.LandingService.GetExtendedOrganization.Response get_extended_organization = 501;
     }
 }
 

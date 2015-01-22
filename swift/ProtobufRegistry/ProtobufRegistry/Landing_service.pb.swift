@@ -37,6 +37,14 @@ public func == (lhs: LandingService.GetCategories, rhs: LandingService.GetCatego
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: LandingService.GetExtendedOrganization, rhs: LandingService.GetExtendedOrganization) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public func == (lhs: LandingService, rhs: LandingService) -> Bool {
   if (lhs === rhs) {
     return true
@@ -1240,6 +1248,774 @@ final public class LandingService : GeneratedMessage {
 
   //Nested type declaration end
 
+
+
+  //Nested type declaration start
+
+    final public class GetExtendedOrganization : GeneratedMessage {
+
+
+      //Nested type declaration start
+
+        final public class Request : GeneratedMessage {
+          override public subscript (key: String) -> AnyObject? {
+                 switch key {
+                 case "organization_id": return organization_id
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasOrganizationId:Bool = false
+          public private(set) var organization_id:String = ""
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasOrganizationId {
+              output.writeString(1, value:organization_id)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasOrganizationId {
+              size += WireFormat.computeStringSize(1, value:organization_id)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> LandingService.GetExtendedOrganization.Request {
+            return LandingService.GetExtendedOrganization.Request.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization.Request {
+            return LandingService.GetExtendedOrganization.Request.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> LandingService.GetExtendedOrganization.Request {
+            return LandingService.GetExtendedOrganization.Request.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->LandingService.GetExtendedOrganization.Request {
+            return LandingService.GetExtendedOrganization.Request.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> LandingService.GetExtendedOrganization.Request {
+            return LandingService.GetExtendedOrganization.Request.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization.Request {
+            return LandingService.GetExtendedOrganization.Request.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> LandingService.GetExtendedOrganization.RequestBuilder {
+            return LandingService.GetExtendedOrganization.Request.classBuilder() as LandingService.GetExtendedOrganization.RequestBuilder
+          }
+          public func builder() -> LandingService.GetExtendedOrganization.RequestBuilder {
+            return classBuilder() as LandingService.GetExtendedOrganization.RequestBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return LandingService.GetExtendedOrganization.RequestBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return LandingService.GetExtendedOrganization.Request.builder()
+          }
+          public func toBuilder() -> LandingService.GetExtendedOrganization.RequestBuilder {
+            return LandingService.GetExtendedOrganization.Request.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:LandingService.GetExtendedOrganization.Request) -> LandingService.GetExtendedOrganization.RequestBuilder {
+            return LandingService.GetExtendedOrganization.Request.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasOrganizationId {
+              output += "\(indent) organization_id: \(organization_id) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasOrganizationId {
+                     hashCode = (hashCode &* 31) &+ organization_id.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "LandingService.GetExtendedOrganization.Request"
+          }
+          override public func className() -> String {
+              return "LandingService.GetExtendedOrganization.Request"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return LandingService.GetExtendedOrganization.Request.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class RequestBuilder : GeneratedMessageBuilder {
+          private var builderResult:LandingService.GetExtendedOrganization.Request
+
+          required override public init () {
+             builderResult = LandingService.GetExtendedOrganization.Request()
+             super.init()
+          }
+          public var hasOrganizationId:Bool {
+               get {
+                    return builderResult.hasOrganizationId
+               }
+          }
+          public var organization_id:String {
+               get {
+                    return builderResult.organization_id
+               }
+               set (value) {
+                   builderResult.hasOrganizationId = true
+                   builderResult.organization_id = value
+               }
+          }
+          public func clearOrganizationId() -> LandingService.GetExtendedOrganization.RequestBuilder{
+               builderResult.hasOrganizationId = false
+               builderResult.organization_id = ""
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> LandingService.GetExtendedOrganization.RequestBuilder {
+            builderResult = LandingService.GetExtendedOrganization.Request()
+            return self
+          }
+          public override func clone() -> LandingService.GetExtendedOrganization.RequestBuilder {
+            return LandingService.GetExtendedOrganization.Request.builderWithPrototype(builderResult)
+          }
+          public override func build() -> LandingService.GetExtendedOrganization.Request {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> LandingService.GetExtendedOrganization.Request {
+            var returnMe:LandingService.GetExtendedOrganization.Request = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:LandingService.GetExtendedOrganization.Request) -> LandingService.GetExtendedOrganization.RequestBuilder {
+            if other.hasOrganizationId {
+                 organization_id = other.organization_id
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->LandingService.GetExtendedOrganization.RequestBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization.RequestBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                organization_id = input.readString()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+
+
+      //Nested type declaration start
+
+        final public class Response : GeneratedMessage {
+          override public subscript (key: String) -> AnyObject? {
+                 switch key {
+                 case "owner": return owner
+                 case "organization": return organization
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasOwner:Bool = false
+          public private(set) var owner:ProfileService.Containers.Profile = ProfileService.Containers.Profile()
+          public private(set) var hasOrganization:Bool = false
+          public private(set) var organization:OrganizationService.Containers.Organization = OrganizationService.Containers.Organization()
+          public private(set) var trending_tags:Array<ProfileService.Containers.Tag>  = Array<ProfileService.Containers.Tag>()
+          public private(set) var addresses:Array<OrganizationService.Containers.Address>  = Array<OrganizationService.Containers.Address>()
+          public private(set) var departments:Array<OrganizationService.Containers.Team>  = Array<OrganizationService.Containers.Team>()
+          public private(set) var executives:Array<ProfileService.Containers.Profile>  = Array<ProfileService.Containers.Profile>()
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            for oneElementtrending_tags in trending_tags {
+                output.writeMessage(1, value:oneElementtrending_tags)
+            }
+            for oneElementaddresses in addresses {
+                output.writeMessage(2, value:oneElementaddresses)
+            }
+            for oneElementdepartments in departments {
+                output.writeMessage(3, value:oneElementdepartments)
+            }
+            for oneElementexecutives in executives {
+                output.writeMessage(4, value:oneElementexecutives)
+            }
+            if hasOwner {
+              output.writeMessage(5, value:owner)
+            }
+            if hasOrganization {
+              output.writeMessage(6, value:organization)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            for oneElementtrending_tags in trending_tags {
+                size += WireFormat.computeMessageSize(1, value:oneElementtrending_tags)
+            }
+            for oneElementaddresses in addresses {
+                size += WireFormat.computeMessageSize(2, value:oneElementaddresses)
+            }
+            for oneElementdepartments in departments {
+                size += WireFormat.computeMessageSize(3, value:oneElementdepartments)
+            }
+            for oneElementexecutives in executives {
+                size += WireFormat.computeMessageSize(4, value:oneElementexecutives)
+            }
+            if hasOwner {
+              size += WireFormat.computeMessageSize(5, value:owner)
+            }
+            if hasOrganization {
+              size += WireFormat.computeMessageSize(6, value:organization)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> LandingService.GetExtendedOrganization.Response {
+            return LandingService.GetExtendedOrganization.Response.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization.Response {
+            return LandingService.GetExtendedOrganization.Response.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> LandingService.GetExtendedOrganization.Response {
+            return LandingService.GetExtendedOrganization.Response.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->LandingService.GetExtendedOrganization.Response {
+            return LandingService.GetExtendedOrganization.Response.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> LandingService.GetExtendedOrganization.Response {
+            return LandingService.GetExtendedOrganization.Response.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization.Response {
+            return LandingService.GetExtendedOrganization.Response.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            return LandingService.GetExtendedOrganization.Response.classBuilder() as LandingService.GetExtendedOrganization.ResponseBuilder
+          }
+          public func builder() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            return classBuilder() as LandingService.GetExtendedOrganization.ResponseBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return LandingService.GetExtendedOrganization.ResponseBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return LandingService.GetExtendedOrganization.Response.builder()
+          }
+          public func toBuilder() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            return LandingService.GetExtendedOrganization.Response.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:LandingService.GetExtendedOrganization.Response) -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            return LandingService.GetExtendedOrganization.Response.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            var trending_tagsElementIndex:Int = 0
+            for oneElementtrending_tags in trending_tags {
+                output += "\(indent) trending_tags[\(trending_tagsElementIndex)] {\n"
+                oneElementtrending_tags.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                trending_tagsElementIndex++
+            }
+            var addressesElementIndex:Int = 0
+            for oneElementaddresses in addresses {
+                output += "\(indent) addresses[\(addressesElementIndex)] {\n"
+                oneElementaddresses.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                addressesElementIndex++
+            }
+            var departmentsElementIndex:Int = 0
+            for oneElementdepartments in departments {
+                output += "\(indent) departments[\(departmentsElementIndex)] {\n"
+                oneElementdepartments.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                departmentsElementIndex++
+            }
+            var executivesElementIndex:Int = 0
+            for oneElementexecutives in executives {
+                output += "\(indent) executives[\(executivesElementIndex)] {\n"
+                oneElementexecutives.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                executivesElementIndex++
+            }
+            if hasOwner {
+              output += "\(indent) owner {\n"
+              owner.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
+            }
+            if hasOrganization {
+              output += "\(indent) organization {\n"
+              organization.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  for oneElementtrending_tags in trending_tags {
+                      hashCode = (hashCode &* 31) &+ oneElementtrending_tags.hashValue
+                  }
+                  for oneElementaddresses in addresses {
+                      hashCode = (hashCode &* 31) &+ oneElementaddresses.hashValue
+                  }
+                  for oneElementdepartments in departments {
+                      hashCode = (hashCode &* 31) &+ oneElementdepartments.hashValue
+                  }
+                  for oneElementexecutives in executives {
+                      hashCode = (hashCode &* 31) &+ oneElementexecutives.hashValue
+                  }
+                  if hasOwner {
+                    hashCode = (hashCode &* 31) &+ owner.hashValue
+                  }
+                  if hasOrganization {
+                    hashCode = (hashCode &* 31) &+ organization.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "LandingService.GetExtendedOrganization.Response"
+          }
+          override public func className() -> String {
+              return "LandingService.GetExtendedOrganization.Response"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return LandingService.GetExtendedOrganization.Response.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class ResponseBuilder : GeneratedMessageBuilder {
+          private var builderResult:LandingService.GetExtendedOrganization.Response
+
+          required override public init () {
+             builderResult = LandingService.GetExtendedOrganization.Response()
+             super.init()
+          }
+          public var trending_tags:Array<ProfileService.Containers.Tag> {
+               get {
+                   return builderResult.trending_tags
+               }
+               set (value) {
+                   builderResult.trending_tags = value
+               }
+          }
+          public func clearTrendingTags() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            builderResult.trending_tags.removeAll(keepCapacity: false)
+            return self
+          }
+          public var addresses:Array<OrganizationService.Containers.Address> {
+               get {
+                   return builderResult.addresses
+               }
+               set (value) {
+                   builderResult.addresses = value
+               }
+          }
+          public func clearAddresses() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            builderResult.addresses.removeAll(keepCapacity: false)
+            return self
+          }
+          public var departments:Array<OrganizationService.Containers.Team> {
+               get {
+                   return builderResult.departments
+               }
+               set (value) {
+                   builderResult.departments = value
+               }
+          }
+          public func clearDepartments() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            builderResult.departments.removeAll(keepCapacity: false)
+            return self
+          }
+          public var executives:Array<ProfileService.Containers.Profile> {
+               get {
+                   return builderResult.executives
+               }
+               set (value) {
+                   builderResult.executives = value
+               }
+          }
+          public func clearExecutives() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            builderResult.executives.removeAll(keepCapacity: false)
+            return self
+          }
+          public var hasOwner:Bool {
+               get {
+                   return builderResult.hasOwner
+               }
+          }
+          public var owner:ProfileService.Containers.Profile {
+               get {
+                   return builderResult.owner
+               }
+               set (value) {
+                   builderResult.hasOwner = true
+                   builderResult.owner = value
+               }
+          }
+          public func setOwnerBuilder(builderForValue:ProfileService.Containers.ProfileBuilder) -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            owner = builderForValue.build()
+            return self
+          }
+          public func mergeOwner(value:ProfileService.Containers.Profile) -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            if (builderResult.hasOwner) {
+              builderResult.owner = ProfileService.Containers.Profile.builderWithPrototype(builderResult.owner).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.owner = value
+            }
+            builderResult.hasOwner = true
+            return self
+          }
+          public func clearOwner() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            builderResult.hasOwner = false
+            builderResult.owner = ProfileService.Containers.Profile()
+            return self
+          }
+          public var hasOrganization:Bool {
+               get {
+                   return builderResult.hasOrganization
+               }
+          }
+          public var organization:OrganizationService.Containers.Organization {
+               get {
+                   return builderResult.organization
+               }
+               set (value) {
+                   builderResult.hasOrganization = true
+                   builderResult.organization = value
+               }
+          }
+          public func setOrganizationBuilder(builderForValue:OrganizationService.Containers.OrganizationBuilder) -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            organization = builderForValue.build()
+            return self
+          }
+          public func mergeOrganization(value:OrganizationService.Containers.Organization) -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            if (builderResult.hasOrganization) {
+              builderResult.organization = OrganizationService.Containers.Organization.builderWithPrototype(builderResult.organization).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.organization = value
+            }
+            builderResult.hasOrganization = true
+            return self
+          }
+          public func clearOrganization() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            builderResult.hasOrganization = false
+            builderResult.organization = OrganizationService.Containers.Organization()
+            return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            builderResult = LandingService.GetExtendedOrganization.Response()
+            return self
+          }
+          public override func clone() -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            return LandingService.GetExtendedOrganization.Response.builderWithPrototype(builderResult)
+          }
+          public override func build() -> LandingService.GetExtendedOrganization.Response {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> LandingService.GetExtendedOrganization.Response {
+            var returnMe:LandingService.GetExtendedOrganization.Response = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:LandingService.GetExtendedOrganization.Response) -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            if !other.trending_tags.isEmpty  {
+               builderResult.trending_tags += other.trending_tags
+            }
+            if !other.addresses.isEmpty  {
+               builderResult.addresses += other.addresses
+            }
+            if !other.departments.isEmpty  {
+               builderResult.departments += other.departments
+            }
+            if !other.executives.isEmpty  {
+               builderResult.executives += other.executives
+            }
+            if (other.hasOwner) {
+                mergeOwner(other.owner)
+            }
+            if (other.hasOrganization) {
+                mergeOrganization(other.organization)
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->LandingService.GetExtendedOrganization.ResponseBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization.ResponseBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                var subBuilder = ProfileService.Containers.Tag.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                trending_tags += [subBuilder.buildPartial()]
+
+              case 18 :
+                var subBuilder = OrganizationService.Containers.Address.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                addresses += [subBuilder.buildPartial()]
+
+              case 26 :
+                var subBuilder = OrganizationService.Containers.Team.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                departments += [subBuilder.buildPartial()]
+
+              case 34 :
+                var subBuilder = ProfileService.Containers.Profile.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                executives += [subBuilder.buildPartial()]
+
+              case 42 :
+                var subBuilder:ProfileService.Containers.ProfileBuilder = ProfileService.Containers.Profile.builder()
+                if hasOwner {
+                  subBuilder.mergeFrom(owner)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                owner = subBuilder.buildPartial()
+
+              case 50 :
+                var subBuilder:OrganizationService.Containers.OrganizationBuilder = OrganizationService.Containers.Organization.builder()
+                if hasOrganization {
+                  subBuilder.mergeFrom(organization)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                organization = subBuilder.buildPartial()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+      override public subscript (key: String) -> AnyObject? {
+             switch key {
+             default: return nil
+             }
+      }
+
+      required public init() {
+           super.init()
+      }
+      override public func isInitialized() -> Bool {
+       return true
+      }
+      override public func writeToCodedOutputStream(output:CodedOutputStream) {
+        unknownFields.writeToCodedOutputStream(output)
+      }
+      override public func serializedSize() -> Int32 {
+        var size:Int32 = memoizedSerializedSize
+        if size != -1 {
+         return size
+        }
+
+        size = 0
+        size += unknownFields.serializedSize()
+        memoizedSerializedSize = size
+        return size
+      }
+      public class func parseFromData(data:[Byte]) -> LandingService.GetExtendedOrganization {
+        return LandingService.GetExtendedOrganization.builder().mergeFromData(data).build()
+      }
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization {
+        return LandingService.GetExtendedOrganization.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream) -> LandingService.GetExtendedOrganization {
+        return LandingService.GetExtendedOrganization.builder().mergeFromInputStream(input).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->LandingService.GetExtendedOrganization {
+        return LandingService.GetExtendedOrganization.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> LandingService.GetExtendedOrganization {
+        return LandingService.GetExtendedOrganization.builder().mergeFromCodedInputStream(input).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization {
+        return LandingService.GetExtendedOrganization.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func builder() -> LandingService.GetExtendedOrganizationBuilder {
+        return LandingService.GetExtendedOrganization.classBuilder() as LandingService.GetExtendedOrganizationBuilder
+      }
+      public func builder() -> LandingService.GetExtendedOrganizationBuilder {
+        return classBuilder() as LandingService.GetExtendedOrganizationBuilder
+      }
+      public override class func classBuilder() -> MessageBuilder {
+        return LandingService.GetExtendedOrganizationBuilder()
+      }
+      public override func classBuilder() -> MessageBuilder {
+        return LandingService.GetExtendedOrganization.builder()
+      }
+      public func toBuilder() -> LandingService.GetExtendedOrganizationBuilder {
+        return LandingService.GetExtendedOrganization.builderWithPrototype(self)
+      }
+      public class func builderWithPrototype(prototype:LandingService.GetExtendedOrganization) -> LandingService.GetExtendedOrganizationBuilder {
+        return LandingService.GetExtendedOrganization.builder().mergeFrom(prototype)
+      }
+      override public func writeDescriptionTo(inout output:String, indent:String) {
+        unknownFields.writeDescriptionTo(&output, indent:indent)
+      }
+      override public var hashValue:Int {
+          get {
+              var hashCode:Int = 7
+              hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+              return hashCode
+          }
+      }
+
+
+      //Meta information declaration start
+
+      override public class func className() -> String {
+          return "LandingService.GetExtendedOrganization"
+      }
+      override public func className() -> String {
+          return "LandingService.GetExtendedOrganization"
+      }
+      override public func classMetaType() -> GeneratedMessage.Type {
+          return LandingService.GetExtendedOrganization.self
+      }
+
+
+      //Meta information declaration end
+
+    }
+
+    final public class GetExtendedOrganizationBuilder : GeneratedMessageBuilder {
+      private var builderResult:LandingService.GetExtendedOrganization
+
+      required override public init () {
+         builderResult = LandingService.GetExtendedOrganization()
+         super.init()
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> LandingService.GetExtendedOrganizationBuilder {
+        builderResult = LandingService.GetExtendedOrganization()
+        return self
+      }
+      public override func clone() -> LandingService.GetExtendedOrganizationBuilder {
+        return LandingService.GetExtendedOrganization.builderWithPrototype(builderResult)
+      }
+      public override func build() -> LandingService.GetExtendedOrganization {
+           checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> LandingService.GetExtendedOrganization {
+        var returnMe:LandingService.GetExtendedOrganization = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:LandingService.GetExtendedOrganization) -> LandingService.GetExtendedOrganizationBuilder {
+        mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->LandingService.GetExtendedOrganizationBuilder {
+           return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganizationBuilder {
+        var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          var tag = input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = unknownFieldsBuilder.build()
+            return self
+
+          default:
+            if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+               unknownFields = unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+
+
+  //Nested type declaration end
+
   override public subscript (key: String) -> AnyObject? {
          switch key {
          default: return nil
@@ -1445,6 +2221,42 @@ public extension LandingService.GetCategories {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return LandingService.GetCategories.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension LandingService.GetExtendedOrganization.Request {
+    class func parseFromNSData(data:NSData) -> LandingService.GetExtendedOrganization.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return LandingService.GetExtendedOrganization.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return LandingService.GetExtendedOrganization.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension LandingService.GetExtendedOrganization.Response {
+    class func parseFromNSData(data:NSData) -> LandingService.GetExtendedOrganization.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return LandingService.GetExtendedOrganization.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return LandingService.GetExtendedOrganization.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension LandingService.GetExtendedOrganization {
+    class func parseFromNSData(data:NSData) -> LandingService.GetExtendedOrganization {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return LandingService.GetExtendedOrganization.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> LandingService.GetExtendedOrganization {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return LandingService.GetExtendedOrganization.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension LandingService {

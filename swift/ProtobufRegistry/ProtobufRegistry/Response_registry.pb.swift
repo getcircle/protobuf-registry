@@ -172,6 +172,11 @@ public var LandingServiceResponses_get_categories:ConcreateExtensionField {
        return ResponseRegistryRoot.sharedInstance.LandingServiceResponses_get_categoriesStatic
    }
 }
+public var LandingServiceResponses_get_extended_organization:ConcreateExtensionField {
+   get {
+       return ResponseRegistryRoot.sharedInstance.LandingServiceResponses_get_extended_organizationStatic
+   }
+}
 public var MediaServiceResponses_start_image_upload:ConcreateExtensionField {
    get {
        return ResponseRegistryRoot.sharedInstance.MediaServiceResponses_start_image_uploadStatic
@@ -233,6 +238,7 @@ public struct ResponseRegistryRoot {
   var ProfileServiceResponses_get_active_tagsStatic:ConcreateExtensionField
   var SearchServiceResponses_searchStatic:ConcreateExtensionField
   var LandingServiceResponses_get_categoriesStatic:ConcreateExtensionField
+  var LandingServiceResponses_get_extended_organizationStatic:ConcreateExtensionField
   var MediaServiceResponses_start_image_uploadStatic:ConcreateExtensionField
   var MediaServiceResponses_complete_image_uploadStatic:ConcreateExtensionField
   var NoteServiceResponses_create_noteStatic:ConcreateExtensionField
@@ -274,6 +280,7 @@ public struct ResponseRegistryRoot {
     ProfileServiceResponses_get_active_tagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 314, defaultValue:ProfileService.GetActiveTags.Response(), messageOrGroupClass:ProfileService.GetActiveTags.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     SearchServiceResponses_searchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 400, defaultValue:SearchService.Search.Response(), messageOrGroupClass:SearchService.Search.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     LandingServiceResponses_get_categoriesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 500, defaultValue:LandingService.GetCategories.Response(), messageOrGroupClass:LandingService.GetCategories.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    LandingServiceResponses_get_extended_organizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 501, defaultValue:LandingService.GetExtendedOrganization.Response(), messageOrGroupClass:LandingService.GetExtendedOrganization.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     MediaServiceResponses_start_image_uploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 600, defaultValue:MediaService.StartImageUpload.Response(), messageOrGroupClass:MediaService.StartImageUpload.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     MediaServiceResponses_complete_image_uploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 601, defaultValue:MediaService.CompleteImageUpload.Response(), messageOrGroupClass:MediaService.CompleteImageUpload.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     NoteServiceResponses_create_noteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionResponseResult.self, fieldNumber: 700, defaultValue:NoteService.CreateNote.Response(), messageOrGroupClass:NoteService.CreateNote.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -324,6 +331,7 @@ public struct ResponseRegistryRoot {
     registry.addExtension(ProfileServiceResponses_get_active_tagsStatic)
     registry.addExtension(SearchServiceResponses_searchStatic)
     registry.addExtension(LandingServiceResponses_get_categoriesStatic)
+    registry.addExtension(LandingServiceResponses_get_extended_organizationStatic)
     registry.addExtension(MediaServiceResponses_start_image_uploadStatic)
     registry.addExtension(MediaServiceResponses_complete_image_uploadStatic)
     registry.addExtension(NoteServiceResponses_create_noteStatic)
@@ -1075,6 +1083,9 @@ final public class LandingServiceResponses : GeneratedMessage {
 
   public class func get_categories() -> ConcreateExtensionField {
        return LandingServiceResponses_get_categories
+  }
+  public class func get_extended_organization() -> ConcreateExtensionField {
+       return LandingServiceResponses_get_extended_organization
   }
   required public init() {
        super.init()
