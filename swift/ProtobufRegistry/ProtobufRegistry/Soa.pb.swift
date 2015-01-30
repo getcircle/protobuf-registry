@@ -38,7 +38,7 @@ public func == (lhs: Paginator, rhs: Paginator) -> Bool {
   fieldCheck = fieldCheck && (lhs.hasPreviousPage == rhs.hasPreviousPage) && (!lhs.hasPreviousPage || lhs.previous_page == rhs.previous_page)
   fieldCheck = fieldCheck && (lhs.hasCount == rhs.hasCount) && (!lhs.hasCount || lhs.count == rhs.count)
   fieldCheck = fieldCheck && (lhs.hasPageSize == rhs.hasPageSize) && (!lhs.hasPageSize || lhs.page_size == rhs.page_size)
-  fieldCheck = fieldCheck && (lhs.hasPageNumber == rhs.hasPageNumber) && (!lhs.hasPageNumber || lhs.page_number == rhs.page_number)
+  fieldCheck = fieldCheck && (lhs.hasPage == rhs.hasPage) && (!lhs.hasPage || lhs.page == rhs.page)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -359,7 +359,7 @@ final public class Paginator : GeneratedMessage {
          case "previous_page": return previous_page
          case "count": return count
          case "page_size": return page_size
-         case "page_number": return page_number
+         case "page": return page
          default: return nil
          }
   }
@@ -376,8 +376,8 @@ final public class Paginator : GeneratedMessage {
   public private(set) var hasPageSize:Bool = false
   public private(set) var page_size:String = ""
 
-  public private(set) var hasPageNumber:Bool = false
-  public private(set) var page_number:String = ""
+  public private(set) var hasPage:Bool = false
+  public private(set) var page:String = ""
 
   required public init() {
        super.init()
@@ -398,8 +398,8 @@ final public class Paginator : GeneratedMessage {
     if hasPageSize {
       output.writeString(4, value:page_size)
     }
-    if hasPageNumber {
-      output.writeString(5, value:page_number)
+    if hasPage {
+      output.writeString(5, value:page)
     }
     unknownFields.writeToCodedOutputStream(output)
   }
@@ -422,8 +422,8 @@ final public class Paginator : GeneratedMessage {
     if hasPageSize {
       size += WireFormat.computeStringSize(4, value:page_size)
     }
-    if hasPageNumber {
-      size += WireFormat.computeStringSize(5, value:page_number)
+    if hasPage {
+      size += WireFormat.computeStringSize(5, value:page)
     }
     size += unknownFields.serializedSize()
     memoizedSerializedSize = size
@@ -478,8 +478,8 @@ final public class Paginator : GeneratedMessage {
     if hasPageSize {
       output += "\(indent) page_size: \(page_size) \n"
     }
-    if hasPageNumber {
-      output += "\(indent) page_number: \(page_number) \n"
+    if hasPage {
+      output += "\(indent) page: \(page) \n"
     }
     unknownFields.writeDescriptionTo(&output, indent:indent)
   }
@@ -498,8 +498,8 @@ final public class Paginator : GeneratedMessage {
           if hasPageSize {
              hashCode = (hashCode &* 31) &+ page_size.hashValue
           }
-          if hasPageNumber {
-             hashCode = (hashCode &* 31) &+ page_number.hashValue
+          if hasPage {
+             hashCode = (hashCode &* 31) &+ page.hashValue
           }
           hashCode = (hashCode &* 31) &+  unknownFields.hashValue
           return hashCode
@@ -607,23 +607,23 @@ final public class PaginatorBuilder : GeneratedMessageBuilder {
        builderResult.page_size = ""
        return self
   }
-  public var hasPageNumber:Bool {
+  public var hasPage:Bool {
        get {
-            return builderResult.hasPageNumber
+            return builderResult.hasPage
        }
   }
-  public var page_number:String {
+  public var page:String {
        get {
-            return builderResult.page_number
+            return builderResult.page
        }
        set (value) {
-           builderResult.hasPageNumber = true
-           builderResult.page_number = value
+           builderResult.hasPage = true
+           builderResult.page = value
        }
   }
-  public func clearPageNumber() -> PaginatorBuilder{
-       builderResult.hasPageNumber = false
-       builderResult.page_number = ""
+  public func clearPage() -> PaginatorBuilder{
+       builderResult.hasPage = false
+       builderResult.page = ""
        return self
   }
   override public var internalGetResult:GeneratedMessage {
@@ -659,8 +659,8 @@ final public class PaginatorBuilder : GeneratedMessageBuilder {
     if other.hasPageSize {
          page_size = other.page_size
     }
-    if other.hasPageNumber {
-         page_number = other.page_number
+    if other.hasPage {
+         page = other.page
     }
     mergeUnknownFields(other.unknownFields)
     return self
@@ -690,7 +690,7 @@ final public class PaginatorBuilder : GeneratedMessageBuilder {
         page_size = input.readString()
 
       case 42 :
-        page_number = input.readString()
+        page = input.readString()
 
       default:
         if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
