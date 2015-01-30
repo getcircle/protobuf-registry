@@ -126,7 +126,7 @@ public func == (lhs: ServiceResponse, rhs: ServiceResponse) -> Bool {
 }
 
 final public class Control : GeneratedMessage {
-  override public subscript (key: String) -> AnyObject? {
+  override public subscript (key: String) -> Any? {
          switch key {
          case "token": return token
          case "service": return service
@@ -353,7 +353,7 @@ final public class ControlBuilder : GeneratedMessageBuilder {
 }
 
 final public class Paginator : GeneratedMessage {
-  override public subscript (key: String) -> AnyObject? {
+  override public subscript (key: String) -> Any? {
          switch key {
          case "next_page": return next_page
          case "previous_page": return previous_page
@@ -703,7 +703,7 @@ final public class PaginatorBuilder : GeneratedMessageBuilder {
 }
 
 final public class ActionControl : GeneratedMessage {
-  override public subscript (key: String) -> AnyObject? {
+  override public subscript (key: String) -> Any? {
          switch key {
          case "service": return service
          case "action": return action
@@ -990,7 +990,7 @@ final public class ActionControlBuilder : GeneratedMessageBuilder {
 }
 
 final public class ActionRequest : GeneratedMessage {
-  override public subscript (key: String) -> AnyObject? {
+  override public subscript (key: String) -> Any? {
          switch key {
          case "control": return control
          case "params": return params
@@ -1260,7 +1260,7 @@ final public class ActionRequestBuilder : GeneratedMessageBuilder {
 }
 
 final public class ActionRequestParams : ExtendableMessage {
-  override public subscript (key: String) -> AnyObject? {
+  override public subscript (key: String) -> Any? {
          switch key {
          default: return nil
          }
@@ -1418,7 +1418,7 @@ final public class ActionResponseResult : ExtendableMessage {
   //Nested type declaration start
 
     final public class ErrorDetail : GeneratedMessage {
-      override public subscript (key: String) -> AnyObject? {
+      override public subscript (key: String) -> Any? {
              switch key {
              case "error": return error
              case "key": return key
@@ -1689,7 +1689,7 @@ final public class ActionResponseResult : ExtendableMessage {
 
   //Nested type declaration end
 
-  override public subscript (key: String) -> AnyObject? {
+  override public subscript (key: String) -> Any? {
          switch key {
          case "success": return success
          default: return nil
@@ -1958,7 +1958,7 @@ final public class ActionResponseResultBuilder : ExtendableMessageBuilder {
 }
 
 final public class ActionResponse : GeneratedMessage {
-  override public subscript (key: String) -> AnyObject? {
+  override public subscript (key: String) -> Any? {
          switch key {
          case "control": return control
          case "result": return result
@@ -2228,7 +2228,7 @@ final public class ActionResponseBuilder : GeneratedMessageBuilder {
 }
 
 final public class ServiceRequest : GeneratedMessage {
-  override public subscript (key: String) -> AnyObject? {
+  override public subscript (key: String) -> Any? {
          switch key {
          case "control": return control
          default: return nil
@@ -2480,7 +2480,7 @@ final public class ServiceRequestBuilder : GeneratedMessageBuilder {
 }
 
 final public class ServiceResponse : GeneratedMessage {
-  override public subscript (key: String) -> AnyObject? {
+  override public subscript (key: String) -> Any? {
          switch key {
          case "control": return control
          default: return nil
