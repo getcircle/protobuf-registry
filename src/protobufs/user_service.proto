@@ -3,6 +3,11 @@ package main.user_service;
 
 message UserService {
 
+    enum IdentityType {
+        INTERNAL = 0;
+        LINKEDIN = 1;
+    }
+
     // MARK: - Containers
 
     message Containers {
@@ -111,6 +116,18 @@ message UserService {
 
         message Response {
             optional bool verified = 1;
+        }
+
+    }
+
+    message GetAuthorizationInstructions {
+
+        message Request {
+            optional IdentityType identity = 1;
+        }
+
+        message Response {
+            optional string authorization_url = 2;
         }
 
     }
