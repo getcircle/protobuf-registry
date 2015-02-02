@@ -780,7 +780,7 @@ final public class UserService : GeneratedMessage {
           public private(set) var access_token:String = ""
 
           public private(set) var hasExpiresAt:Bool = false
-          public private(set) var expires_at:UInt32 = UInt32(0)
+          public private(set) var expires_at:String = ""
 
           public private(set) var hasProviderUid:Bool = false
           public private(set) var provider_uid:String = ""
@@ -808,7 +808,7 @@ final public class UserService : GeneratedMessage {
               output.writeString(5, value:access_token)
             }
             if hasExpiresAt {
-              output.writeUInt32(6, value:expires_at)
+              output.writeString(6, value:expires_at)
             }
             if hasProviderUid {
               output.writeString(7, value:provider_uid)
@@ -838,7 +838,7 @@ final public class UserService : GeneratedMessage {
               size += WireFormat.computeStringSize(5, value:access_token)
             }
             if hasExpiresAt {
-              size += WireFormat.computeUInt32Size(6, value:expires_at)
+              size += WireFormat.computeStringSize(6, value:expires_at)
             }
             if hasProviderUid {
               size += WireFormat.computeStringSize(7, value:provider_uid)
@@ -1061,7 +1061,7 @@ final public class UserService : GeneratedMessage {
                     return builderResult.hasExpiresAt
                }
           }
-          public var expires_at:UInt32 {
+          public var expires_at:String {
                get {
                     return builderResult.expires_at
                }
@@ -1072,7 +1072,7 @@ final public class UserService : GeneratedMessage {
           }
           public func clearExpiresAt() -> UserService.Containers.IdentityBuilder{
                builderResult.hasExpiresAt = false
-               builderResult.expires_at = UInt32(0)
+               builderResult.expires_at = ""
                return self
           }
           public var hasProviderUid:Bool {
@@ -1171,8 +1171,8 @@ final public class UserService : GeneratedMessage {
               case 42 :
                 access_token = input.readString()
 
-              case 48 :
-                expires_at = input.readUInt32()
+              case 50 :
+                expires_at = input.readString()
 
               case 58 :
                 provider_uid = input.readString()
