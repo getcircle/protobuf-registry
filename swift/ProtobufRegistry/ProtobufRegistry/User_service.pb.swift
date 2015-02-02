@@ -761,6 +761,7 @@ final public class UserService : GeneratedMessage {
                  case "access_token": return access_token
                  case "expires_at": return expires_at
                  case "provider_uid": return provider_uid
+                 case "user_id": return user_id
                  default: return nil
                  }
           }
@@ -784,6 +785,9 @@ final public class UserService : GeneratedMessage {
 
           public private(set) var hasProviderUid:Bool = false
           public private(set) var provider_uid:String = ""
+
+          public private(set) var hasUserId:Bool = false
+          public private(set) var user_id:String = ""
 
           required public init() {
                super.init()
@@ -812,6 +816,9 @@ final public class UserService : GeneratedMessage {
             }
             if hasProviderUid {
               output.writeString(7, value:provider_uid)
+            }
+            if hasUserId {
+              output.writeString(8, value:user_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -842,6 +849,9 @@ final public class UserService : GeneratedMessage {
             }
             if hasProviderUid {
               size += WireFormat.computeStringSize(7, value:provider_uid)
+            }
+            if hasUserId {
+              size += WireFormat.computeStringSize(8, value:user_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -905,6 +915,9 @@ final public class UserService : GeneratedMessage {
             if hasProviderUid {
               output += "\(indent) provider_uid: \(provider_uid) \n"
             }
+            if hasUserId {
+              output += "\(indent) user_id: \(user_id) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -930,6 +943,9 @@ final public class UserService : GeneratedMessage {
                   }
                   if hasProviderUid {
                      hashCode = (hashCode &* 31) &+ provider_uid.hashValue
+                  }
+                  if hasUserId {
+                     hashCode = (hashCode &* 31) &+ user_id.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -1094,6 +1110,25 @@ final public class UserService : GeneratedMessage {
                builderResult.provider_uid = ""
                return self
           }
+          public var hasUserId:Bool {
+               get {
+                    return builderResult.hasUserId
+               }
+          }
+          public var user_id:String {
+               get {
+                    return builderResult.user_id
+               }
+               set (value) {
+                   builderResult.hasUserId = true
+                   builderResult.user_id = value
+               }
+          }
+          public func clearUserId() -> UserService.Containers.IdentityBuilder{
+               builderResult.hasUserId = false
+               builderResult.user_id = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -1136,6 +1171,9 @@ final public class UserService : GeneratedMessage {
             if other.hasProviderUid {
                  provider_uid = other.provider_uid
             }
+            if other.hasUserId {
+                 user_id = other.user_id
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -1176,6 +1214,9 @@ final public class UserService : GeneratedMessage {
 
               case 58 :
                 provider_uid = input.readString()
+
+              case 66 :
+                user_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
