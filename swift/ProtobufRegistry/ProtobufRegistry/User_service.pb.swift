@@ -6309,7 +6309,6 @@ final public class UserService : GeneratedMessage {
                  switch key {
                  case "provider": return Int(self.provider.rawValue)
                  case "oauth2_details": return oauth2_details
-                 case "user": return user
                  default: return nil
                  }
           }
@@ -6318,8 +6317,6 @@ final public class UserService : GeneratedMessage {
           public private(set) var hasProvider:Bool = false
           public private(set) var hasOauth2Details:Bool = false
           public private(set) var oauth2_details:UserService.Containers.OAuth2Details = UserService.Containers.OAuth2Details()
-          public private(set) var hasUser:Bool = false
-          public private(set) var user:UserService.Containers.User = UserService.Containers.User()
           required public init() {
                super.init()
           }
@@ -6332,9 +6329,6 @@ final public class UserService : GeneratedMessage {
             }
             if hasOauth2Details {
               output.writeMessage(2, value:oauth2_details)
-            }
-            if hasUser {
-              output.writeMessage(3, value:user)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -6350,9 +6344,6 @@ final public class UserService : GeneratedMessage {
             }
             if hasOauth2Details {
               size += WireFormat.computeMessageSize(2, value:oauth2_details)
-            }
-            if hasUser {
-              size += WireFormat.computeMessageSize(3, value:user)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -6403,11 +6394,6 @@ final public class UserService : GeneratedMessage {
               oauth2_details.writeDescriptionTo(&output, indent:"\(indent)  ")
               output += "\(indent) }\n"
             }
-            if hasUser {
-              output += "\(indent) user {\n"
-              user.writeDescriptionTo(&output, indent:"\(indent)  ")
-              output += "\(indent) }\n"
-            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -6418,9 +6404,6 @@ final public class UserService : GeneratedMessage {
                   }
                   if hasOauth2Details {
                     hashCode = (hashCode &* 31) &+ oauth2_details.hashValue
-                  }
-                  if hasUser {
-                    hashCode = (hashCode &* 31) &+ user.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -6503,38 +6486,6 @@ final public class UserService : GeneratedMessage {
             builderResult.oauth2_details = UserService.Containers.OAuth2Details()
             return self
           }
-          public var hasUser:Bool {
-               get {
-                   return builderResult.hasUser
-               }
-          }
-          public var user:UserService.Containers.User {
-               get {
-                   return builderResult.user
-               }
-               set (value) {
-                   builderResult.hasUser = true
-                   builderResult.user = value
-               }
-          }
-          public func setUserBuilder(builderForValue:UserService.Containers.UserBuilder) -> UserService.CompleteAuthorization.RequestBuilder {
-            user = builderForValue.build()
-            return self
-          }
-          public func mergeUser(value:UserService.Containers.User) -> UserService.CompleteAuthorization.RequestBuilder {
-            if (builderResult.hasUser) {
-              builderResult.user = UserService.Containers.User.builderWithPrototype(builderResult.user).mergeFrom(value).buildPartial()
-            } else {
-              builderResult.user = value
-            }
-            builderResult.hasUser = true
-            return self
-          }
-          public func clearUser() -> UserService.CompleteAuthorization.RequestBuilder {
-            builderResult.hasUser = false
-            builderResult.user = UserService.Containers.User()
-            return self
-          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -6561,9 +6512,6 @@ final public class UserService : GeneratedMessage {
             }
             if (other.hasOauth2Details) {
                 mergeOauth2Details(other.oauth2_details)
-            }
-            if (other.hasUser) {
-                mergeUser(other.user)
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -6595,14 +6543,6 @@ final public class UserService : GeneratedMessage {
                 }
                 input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
                 oauth2_details = subBuilder.buildPartial()
-
-              case 26 :
-                var subBuilder:UserService.Containers.UserBuilder = UserService.Containers.User.builder()
-                if hasUser {
-                  subBuilder.mergeFrom(user)
-                }
-                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-                user = subBuilder.buildPartial()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

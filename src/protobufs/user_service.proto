@@ -152,7 +152,6 @@ message UserService {
         message Request {
             optional Provider provider = 1;
             optional Containers.OAuth2Details oauth2_details = 2;
-            optional Containers.User user = 3;
         }
 
         message Response {
