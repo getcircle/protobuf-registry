@@ -1018,7 +1018,6 @@ final public class ProfileService : GeneratedMessage {
                  switch key {
                  case "key": return key
                  case "value": return value
-                 case "order": return order
                  default: return nil
                  }
           }
@@ -1028,9 +1027,6 @@ final public class ProfileService : GeneratedMessage {
 
           public private(set) var hasValue:Bool = false
           public private(set) var value:String = ""
-
-          public private(set) var hasOrder:Bool = false
-          public private(set) var order:UInt32 = UInt32(0)
 
           required public init() {
                super.init()
@@ -1044,9 +1040,6 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasValue {
               output.writeString(2, value:value)
-            }
-            if hasOrder {
-              output.writeUInt32(3, value:order)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -1062,9 +1055,6 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasValue {
               size += WireFormat.computeStringSize(2, value:value)
-            }
-            if hasOrder {
-              size += WireFormat.computeUInt32Size(3, value:order)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -1113,9 +1103,6 @@ final public class ProfileService : GeneratedMessage {
             if hasValue {
               output += "\(indent) value: \(value) \n"
             }
-            if hasOrder {
-              output += "\(indent) order: \(order) \n"
-            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -1126,9 +1113,6 @@ final public class ProfileService : GeneratedMessage {
                   }
                   if hasValue {
                      hashCode = (hashCode &* 31) &+ value.hashValue
-                  }
-                  if hasOrder {
-                     hashCode = (hashCode &* 31) &+ order.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -1198,25 +1182,6 @@ final public class ProfileService : GeneratedMessage {
                builderResult.value = ""
                return self
           }
-          public var hasOrder:Bool {
-               get {
-                    return builderResult.hasOrder
-               }
-          }
-          public var order:UInt32 {
-               get {
-                    return builderResult.order
-               }
-               set (value) {
-                   builderResult.hasOrder = true
-                   builderResult.order = value
-               }
-          }
-          public func clearOrder() -> ProfileService.Containers.ProfileItemBuilder{
-               builderResult.hasOrder = false
-               builderResult.order = UInt32(0)
-               return self
-          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -1244,9 +1209,6 @@ final public class ProfileService : GeneratedMessage {
             if other.hasValue {
                  value = other.value
             }
-            if other.hasOrder {
-                 order = other.order
-            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -1267,9 +1229,6 @@ final public class ProfileService : GeneratedMessage {
 
               case 18 :
                 value = input.readString()
-
-              case 24 :
-                order = input.readUInt32()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

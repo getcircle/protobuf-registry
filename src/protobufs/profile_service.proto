@@ -32,7 +32,6 @@ message ProfileService {
         message ProfileItem {
             optional string key = 1;
             optional string value = 2;
-            optional uint32 order = 3;
         }
 
         message Skill {
