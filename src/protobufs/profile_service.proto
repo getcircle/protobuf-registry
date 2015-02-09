@@ -69,10 +69,8 @@ message ProfileService {
     message GetProfile {
 
         message Request {
-            oneof lookup_key {
-                string profile_id = 1;
-                string user_id = 2;
-            }
+            optional string profile_id = 1;
+            optional string user_id = 2;
         }
 
         message Response {
@@ -84,10 +82,8 @@ message ProfileService {
     message GetExtendedProfile {
 
         message Request {
-            oneof lookup_key {
-                string profile_id = 1;
-                string user_id = 2;
-            }
+            optional string profile_id = 1;
+            optional string user_id = 2;
         }
 
         message Response {
@@ -117,10 +113,8 @@ message ProfileService {
     message GetSkills {
 
         message Request {
-            oneof lookup_key {
-                string profile_id = 1;
-                string organization_id = 2;
-            }
+            optional string profile_id = 1;
+            optional string organization_id = 2;
         }
 
         message Response {
@@ -159,10 +153,8 @@ message ProfileService {
     message GetDirectReports {
 
         message Request {
-            oneof lookup_key {
-                string profile_id = 1;
-                string user_id = 2;
-            }
+            optional string profile_id = 1;
+            optional string user_id = 2;
         }
 
         message Response {
