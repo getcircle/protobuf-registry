@@ -7027,6 +7027,7 @@ final public class UserService : GeneratedMessage {
     public enum Provider:Int32 {
       case Internal = 0
       case Linkedin = 1
+      case Google = 2
 
       public static func IsValidValue(value:Int32) ->Bool {
           if let check = Provider(rawValue:value) {

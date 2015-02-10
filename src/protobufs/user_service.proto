@@ -6,6 +6,7 @@ message UserService {
     enum Provider {
         INTERNAL = 0;
         LINKEDIN = 1;
+        GOOGLE = 2;
     }
 
     // MARK: - Containers
