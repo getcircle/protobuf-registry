@@ -27,6 +27,11 @@ message UserService {
             optional string state = 2;
         }
 
+        message OAuthSDKDetails {
+            optional string code = 1;
+            optional string access_token = 2;
+        }
+
         message Identity {
             optional string id = 1;
             optional Provider provider = 2;
@@ -154,6 +159,7 @@ message UserService {
         message Request {
             optional Provider provider = 1;
             optional Containers.OAuth2Details oauth2_details = 2;
+            optional Containers.OAuthSDKDetails oauth_sdk_details = 3;
         }
 
         message Response {

@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/user_service.proto',
   package='main.user_service',
-  serialized_pb=_b('\n\x1cprotobufs/user_service.proto\x12\x11main.user_service\"\xce\x0f\n\x0bUserService\x1a\x87\x03\n\nContainers\x1a\x83\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rprimary_email\x18\x02 \x01(\t\x12\x10\n\x08is_admin\x18\x03 \x01(\x08\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x14\n\x0cphone_number\x18\x05 \x01(\t\x12\x1d\n\x15phone_number_verified\x18\x06 \x01(\x08\x1a,\n\rOAuth2Details\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\r\n\x05state\x18\x02 \x01(\t\x1a\xc4\x01\n\x08Identity\x12\n\n\x02id\x18\x01 \x01(\t\x12\x39\n\x08provider\x18\x02 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x12\x11\n\tfull_name\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x05 \x01(\t\x12\x12\n\nexpires_at\x18\x06 \x01(\t\x12\x14\n\x0cprovider_uid\x18\x07 \x01(\t\x12\x0f\n\x07user_id\x18\x08 \x01(\t\x1a\x82\x01\n\nCreateUser\x1a*\n\x07Request\x12\x10\n\x08password\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a\x9f\x01\n\nUpdateUser\x1aG\n\x07Request\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a}\n\x07GetUser\x1a(\n\x07Request\x12\x0f\n\x05\x65mail\x18\x01 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a\x43\n\tValidUser\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1a\n\x08Response\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x1a\x8e\x03\n\x10\x41uthenticateUser\x1a\x82\x02\n\x07Request\x12T\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32\x43.main.user_service.UserService.AuthenticateUser.Request.AuthBackend\x12X\n\x0b\x63redentials\x18\x02 \x01(\x0b\x32\x43.main.user_service.UserService.AuthenticateUser.Request.Credentials\x1a*\n\x0b\x43redentials\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\"\x1b\n\x0b\x41uthBackend\x12\x0c\n\x08INTERNAL\x10\x00\x1au\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12\x1c\n\rauthenticated\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\r\n\x05token\x18\x03 \x01(\t\x1aR\n\x14SendVerificationCode\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1e\n\x08Response\x12\x12\n\nmessage_id\x18\x01 \x01(\t\x1a`\n\x16VerifyVerificationCode\x1a(\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x1a\x1c\n\x08Response\x12\x10\n\x08verified\x18\x01 \x01(\x08\x1a\x8b\x01\n\x1cGetAuthorizationInstructions\x1a\x44\n\x07Request\x12\x39\n\x08provider\x18\x01 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x1a%\n\x08Response\x12\x19\n\x11\x61uthorization_url\x18\x02 \x01(\t\x1a\xc0\x02\n\x15\x43ompleteAuthorization\x1a\x95\x01\n\x07Request\x12\x39\n\x08provider\x18\x01 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x12O\n\x0eoauth2_details\x18\x02 \x01(\x0b\x32\x37.main.user_service.UserService.Containers.OAuth2Details\x1a\x8e\x01\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12\x44\n\x08identity\x18\x02 \x01(\x0b\x32\x32.main.user_service.UserService.Containers.Identity\"2\n\x08Provider\x12\x0c\n\x08INTERNAL\x10\x00\x12\x0c\n\x08LINKEDIN\x10\x01\x12\n\n\x06GOOGLE\x10\x02')
+  serialized_pb=_b('\n\x1cprotobufs/user_service.proto\x12\x11main.user_service\"\xdb\x10\n\x0bUserService\x1a\xbe\x03\n\nContainers\x1a\x83\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rprimary_email\x18\x02 \x01(\t\x12\x10\n\x08is_admin\x18\x03 \x01(\x08\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x14\n\x0cphone_number\x18\x05 \x01(\t\x12\x1d\n\x15phone_number_verified\x18\x06 \x01(\x08\x1a,\n\rOAuth2Details\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\r\n\x05state\x18\x02 \x01(\t\x1a\x35\n\x0fOAuthSDKDetails\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t\x1a\xc4\x01\n\x08Identity\x12\n\n\x02id\x18\x01 \x01(\t\x12\x39\n\x08provider\x18\x02 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x12\x11\n\tfull_name\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x05 \x01(\t\x12\x12\n\nexpires_at\x18\x06 \x01(\t\x12\x14\n\x0cprovider_uid\x18\x07 \x01(\t\x12\x0f\n\x07user_id\x18\x08 \x01(\t\x1a\x82\x01\n\nCreateUser\x1a*\n\x07Request\x12\x10\n\x08password\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a\x9f\x01\n\nUpdateUser\x1aG\n\x07Request\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a}\n\x07GetUser\x1a(\n\x07Request\x12\x0f\n\x05\x65mail\x18\x01 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a\x43\n\tValidUser\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1a\n\x08Response\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x1a\x8e\x03\n\x10\x41uthenticateUser\x1a\x82\x02\n\x07Request\x12T\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32\x43.main.user_service.UserService.AuthenticateUser.Request.AuthBackend\x12X\n\x0b\x63redentials\x18\x02 \x01(\x0b\x32\x43.main.user_service.UserService.AuthenticateUser.Request.Credentials\x1a*\n\x0b\x43redentials\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\"\x1b\n\x0b\x41uthBackend\x12\x0c\n\x08INTERNAL\x10\x00\x1au\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12\x1c\n\rauthenticated\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\r\n\x05token\x18\x03 \x01(\t\x1aR\n\x14SendVerificationCode\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1e\n\x08Response\x12\x12\n\nmessage_id\x18\x01 \x01(\t\x1a`\n\x16VerifyVerificationCode\x1a(\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x1a\x1c\n\x08Response\x12\x10\n\x08verified\x18\x01 \x01(\x08\x1a\x8b\x01\n\x1cGetAuthorizationInstructions\x1a\x44\n\x07Request\x12\x39\n\x08provider\x18\x01 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x1a%\n\x08Response\x12\x19\n\x11\x61uthorization_url\x18\x02 \x01(\t\x1a\x96\x03\n\x15\x43ompleteAuthorization\x1a\xeb\x01\n\x07Request\x12\x39\n\x08provider\x18\x01 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x12O\n\x0eoauth2_details\x18\x02 \x01(\x0b\x32\x37.main.user_service.UserService.Containers.OAuth2Details\x12T\n\x11oauth_sdk_details\x18\x03 \x01(\x0b\x32\x39.main.user_service.UserService.Containers.OAuthSDKDetails\x1a\x8e\x01\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12\x44\n\x08identity\x18\x02 \x01(\x0b\x32\x32.main.user_service.UserService.Containers.Identity\"2\n\x08Provider\x12\x0c\n\x08INTERNAL\x10\x00\x12\x0c\n\x08LINKEDIN\x10\x01\x12\n\n\x06GOOGLE\x10\x02')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -37,8 +37,8 @@ _USERSERVICE_AUTHENTICATEUSER_REQUEST_AUTHBACKEND = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1205,
-  serialized_end=1232,
+  serialized_start=1260,
+  serialized_end=1287,
 )
 _sym_db.RegisterEnumDescriptor(_USERSERVICE_AUTHENTICATEUSER_REQUEST_AUTHBACKEND)
 
@@ -63,8 +63,8 @@ _USERSERVICE_PROVIDER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2000,
-  serialized_end=2050,
+  serialized_start=2141,
+  serialized_end=2191,
 )
 _sym_db.RegisterEnumDescriptor(_USERSERVICE_PROVIDER)
 
@@ -169,6 +169,42 @@ _USERSERVICE_CONTAINERS_OAUTH2DETAILS = _descriptor.Descriptor(
   serialized_end=260,
 )
 
+_USERSERVICE_CONTAINERS_OAUTHSDKDETAILS = _descriptor.Descriptor(
+  name='OAuthSDKDetails',
+  full_name='main.user_service.UserService.Containers.OAuthSDKDetails',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='main.user_service.UserService.Containers.OAuthSDKDetails.code', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='access_token', full_name='main.user_service.UserService.Containers.OAuthSDKDetails.access_token', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=262,
+  serialized_end=315,
+)
+
 _USERSERVICE_CONTAINERS_IDENTITY = _descriptor.Descriptor(
   name='Identity',
   full_name='main.user_service.UserService.Containers.Identity',
@@ -243,8 +279,8 @@ _USERSERVICE_CONTAINERS_IDENTITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=459,
+  serialized_start=318,
+  serialized_end=514,
 )
 
 _USERSERVICE_CONTAINERS = _descriptor.Descriptor(
@@ -257,7 +293,7 @@ _USERSERVICE_CONTAINERS = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_USERSERVICE_CONTAINERS_USER, _USERSERVICE_CONTAINERS_OAUTH2DETAILS, _USERSERVICE_CONTAINERS_IDENTITY, ],
+  nested_types=[_USERSERVICE_CONTAINERS_USER, _USERSERVICE_CONTAINERS_OAUTH2DETAILS, _USERSERVICE_CONTAINERS_OAUTHSDKDETAILS, _USERSERVICE_CONTAINERS_IDENTITY, ],
   enum_types=[
   ],
   options=None,
@@ -266,7 +302,7 @@ _USERSERVICE_CONTAINERS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=68,
-  serialized_end=459,
+  serialized_end=514,
 )
 
 _USERSERVICE_CREATEUSER_REQUEST = _descriptor.Descriptor(
@@ -301,8 +337,8 @@ _USERSERVICE_CREATEUSER_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=476,
-  serialized_end=518,
+  serialized_start=531,
+  serialized_end=573,
 )
 
 _USERSERVICE_CREATEUSER_RESPONSE = _descriptor.Descriptor(
@@ -330,8 +366,8 @@ _USERSERVICE_CREATEUSER_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=520,
-  serialized_end=592,
+  serialized_start=575,
+  serialized_end=647,
 )
 
 _USERSERVICE_CREATEUSER = _descriptor.Descriptor(
@@ -352,8 +388,8 @@ _USERSERVICE_CREATEUSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=462,
-  serialized_end=592,
+  serialized_start=517,
+  serialized_end=647,
 )
 
 _USERSERVICE_UPDATEUSER_REQUEST = _descriptor.Descriptor(
@@ -381,8 +417,8 @@ _USERSERVICE_UPDATEUSER_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=609,
-  serialized_end=680,
+  serialized_start=664,
+  serialized_end=735,
 )
 
 _USERSERVICE_UPDATEUSER_RESPONSE = _descriptor.Descriptor(
@@ -410,8 +446,8 @@ _USERSERVICE_UPDATEUSER_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=520,
-  serialized_end=592,
+  serialized_start=575,
+  serialized_end=647,
 )
 
 _USERSERVICE_UPDATEUSER = _descriptor.Descriptor(
@@ -432,8 +468,8 @@ _USERSERVICE_UPDATEUSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=595,
-  serialized_end=754,
+  serialized_start=650,
+  serialized_end=809,
 )
 
 _USERSERVICE_GETUSER_REQUEST = _descriptor.Descriptor(
@@ -464,8 +500,8 @@ _USERSERVICE_GETUSER_REQUEST = _descriptor.Descriptor(
       name='lookup_key', full_name='main.user_service.UserService.GetUser.Request.lookup_key',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=767,
-  serialized_end=807,
+  serialized_start=822,
+  serialized_end=862,
 )
 
 _USERSERVICE_GETUSER_RESPONSE = _descriptor.Descriptor(
@@ -493,8 +529,8 @@ _USERSERVICE_GETUSER_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=520,
-  serialized_end=592,
+  serialized_start=575,
+  serialized_end=647,
 )
 
 _USERSERVICE_GETUSER = _descriptor.Descriptor(
@@ -515,8 +551,8 @@ _USERSERVICE_GETUSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=756,
-  serialized_end=881,
+  serialized_start=811,
+  serialized_end=936,
 )
 
 _USERSERVICE_VALIDUSER_REQUEST = _descriptor.Descriptor(
@@ -544,8 +580,8 @@ _USERSERVICE_VALIDUSER_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=896,
-  serialized_end=922,
+  serialized_start=951,
+  serialized_end=977,
 )
 
 _USERSERVICE_VALIDUSER_RESPONSE = _descriptor.Descriptor(
@@ -573,8 +609,8 @@ _USERSERVICE_VALIDUSER_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=924,
-  serialized_end=950,
+  serialized_start=979,
+  serialized_end=1005,
 )
 
 _USERSERVICE_VALIDUSER = _descriptor.Descriptor(
@@ -595,8 +631,8 @@ _USERSERVICE_VALIDUSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=883,
-  serialized_end=950,
+  serialized_start=938,
+  serialized_end=1005,
 )
 
 _USERSERVICE_AUTHENTICATEUSER_REQUEST_CREDENTIALS = _descriptor.Descriptor(
@@ -631,8 +667,8 @@ _USERSERVICE_AUTHENTICATEUSER_REQUEST_CREDENTIALS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1161,
-  serialized_end=1203,
+  serialized_start=1216,
+  serialized_end=1258,
 )
 
 _USERSERVICE_AUTHENTICATEUSER_REQUEST = _descriptor.Descriptor(
@@ -668,8 +704,8 @@ _USERSERVICE_AUTHENTICATEUSER_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=974,
-  serialized_end=1232,
+  serialized_start=1029,
+  serialized_end=1287,
 )
 
 _USERSERVICE_AUTHENTICATEUSER_RESPONSE = _descriptor.Descriptor(
@@ -711,8 +747,8 @@ _USERSERVICE_AUTHENTICATEUSER_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1234,
-  serialized_end=1351,
+  serialized_start=1289,
+  serialized_end=1406,
 )
 
 _USERSERVICE_AUTHENTICATEUSER = _descriptor.Descriptor(
@@ -733,8 +769,8 @@ _USERSERVICE_AUTHENTICATEUSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=953,
-  serialized_end=1351,
+  serialized_start=1008,
+  serialized_end=1406,
 )
 
 _USERSERVICE_SENDVERIFICATIONCODE_REQUEST = _descriptor.Descriptor(
@@ -762,8 +798,8 @@ _USERSERVICE_SENDVERIFICATIONCODE_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=896,
-  serialized_end=922,
+  serialized_start=951,
+  serialized_end=977,
 )
 
 _USERSERVICE_SENDVERIFICATIONCODE_RESPONSE = _descriptor.Descriptor(
@@ -791,8 +827,8 @@ _USERSERVICE_SENDVERIFICATIONCODE_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1405,
-  serialized_end=1435,
+  serialized_start=1460,
+  serialized_end=1490,
 )
 
 _USERSERVICE_SENDVERIFICATIONCODE = _descriptor.Descriptor(
@@ -813,8 +849,8 @@ _USERSERVICE_SENDVERIFICATIONCODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1353,
-  serialized_end=1435,
+  serialized_start=1408,
+  serialized_end=1490,
 )
 
 _USERSERVICE_VERIFYVERIFICATIONCODE_REQUEST = _descriptor.Descriptor(
@@ -849,8 +885,8 @@ _USERSERVICE_VERIFYVERIFICATIONCODE_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1463,
-  serialized_end=1503,
+  serialized_start=1518,
+  serialized_end=1558,
 )
 
 _USERSERVICE_VERIFYVERIFICATIONCODE_RESPONSE = _descriptor.Descriptor(
@@ -878,8 +914,8 @@ _USERSERVICE_VERIFYVERIFICATIONCODE_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1505,
-  serialized_end=1533,
+  serialized_start=1560,
+  serialized_end=1588,
 )
 
 _USERSERVICE_VERIFYVERIFICATIONCODE = _descriptor.Descriptor(
@@ -900,8 +936,8 @@ _USERSERVICE_VERIFYVERIFICATIONCODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1437,
-  serialized_end=1533,
+  serialized_start=1492,
+  serialized_end=1588,
 )
 
 _USERSERVICE_GETAUTHORIZATIONINSTRUCTIONS_REQUEST = _descriptor.Descriptor(
@@ -929,8 +965,8 @@ _USERSERVICE_GETAUTHORIZATIONINSTRUCTIONS_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1568,
-  serialized_end=1636,
+  serialized_start=1623,
+  serialized_end=1691,
 )
 
 _USERSERVICE_GETAUTHORIZATIONINSTRUCTIONS_RESPONSE = _descriptor.Descriptor(
@@ -958,8 +994,8 @@ _USERSERVICE_GETAUTHORIZATIONINSTRUCTIONS_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1638,
-  serialized_end=1675,
+  serialized_start=1693,
+  serialized_end=1730,
 )
 
 _USERSERVICE_GETAUTHORIZATIONINSTRUCTIONS = _descriptor.Descriptor(
@@ -980,8 +1016,8 @@ _USERSERVICE_GETAUTHORIZATIONINSTRUCTIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1536,
-  serialized_end=1675,
+  serialized_start=1591,
+  serialized_end=1730,
 )
 
 _USERSERVICE_COMPLETEAUTHORIZATION_REQUEST = _descriptor.Descriptor(
@@ -1005,6 +1041,13 @@ _USERSERVICE_COMPLETEAUTHORIZATION_REQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='oauth_sdk_details', full_name='main.user_service.UserService.CompleteAuthorization.Request.oauth_sdk_details', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -1016,8 +1059,8 @@ _USERSERVICE_COMPLETEAUTHORIZATION_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1704,
-  serialized_end=1853,
+  serialized_start=1759,
+  serialized_end=1994,
 )
 
 _USERSERVICE_COMPLETEAUTHORIZATION_RESPONSE = _descriptor.Descriptor(
@@ -1052,8 +1095,8 @@ _USERSERVICE_COMPLETEAUTHORIZATION_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1856,
-  serialized_end=1998,
+  serialized_start=1997,
+  serialized_end=2139,
 )
 
 _USERSERVICE_COMPLETEAUTHORIZATION = _descriptor.Descriptor(
@@ -1074,8 +1117,8 @@ _USERSERVICE_COMPLETEAUTHORIZATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1678,
-  serialized_end=1998,
+  serialized_start=1733,
+  serialized_end=2139,
 )
 
 _USERSERVICE = _descriptor.Descriptor(
@@ -1098,11 +1141,12 @@ _USERSERVICE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=52,
-  serialized_end=2050,
+  serialized_end=2191,
 )
 
 _USERSERVICE_CONTAINERS_USER.containing_type = _USERSERVICE_CONTAINERS
 _USERSERVICE_CONTAINERS_OAUTH2DETAILS.containing_type = _USERSERVICE_CONTAINERS
+_USERSERVICE_CONTAINERS_OAUTHSDKDETAILS.containing_type = _USERSERVICE_CONTAINERS
 _USERSERVICE_CONTAINERS_IDENTITY.fields_by_name['provider'].enum_type = _USERSERVICE_PROVIDER
 _USERSERVICE_CONTAINERS_IDENTITY.containing_type = _USERSERVICE_CONTAINERS
 _USERSERVICE_CONTAINERS.containing_type = _USERSERVICE
@@ -1145,6 +1189,7 @@ _USERSERVICE_GETAUTHORIZATIONINSTRUCTIONS_RESPONSE.containing_type = _USERSERVIC
 _USERSERVICE_GETAUTHORIZATIONINSTRUCTIONS.containing_type = _USERSERVICE
 _USERSERVICE_COMPLETEAUTHORIZATION_REQUEST.fields_by_name['provider'].enum_type = _USERSERVICE_PROVIDER
 _USERSERVICE_COMPLETEAUTHORIZATION_REQUEST.fields_by_name['oauth2_details'].message_type = _USERSERVICE_CONTAINERS_OAUTH2DETAILS
+_USERSERVICE_COMPLETEAUTHORIZATION_REQUEST.fields_by_name['oauth_sdk_details'].message_type = _USERSERVICE_CONTAINERS_OAUTHSDKDETAILS
 _USERSERVICE_COMPLETEAUTHORIZATION_REQUEST.containing_type = _USERSERVICE_COMPLETEAUTHORIZATION
 _USERSERVICE_COMPLETEAUTHORIZATION_RESPONSE.fields_by_name['user'].message_type = _USERSERVICE_CONTAINERS_USER
 _USERSERVICE_COMPLETEAUTHORIZATION_RESPONSE.fields_by_name['identity'].message_type = _USERSERVICE_CONTAINERS_IDENTITY
@@ -1168,6 +1213,13 @@ UserService = _reflection.GeneratedProtocolMessageType('UserService', (_message.
       DESCRIPTOR = _USERSERVICE_CONTAINERS_OAUTH2DETAILS,
       __module__ = 'protobufs.user_service_pb2'
       # @@protoc_insertion_point(class_scope:main.user_service.UserService.Containers.OAuth2Details)
+      ))
+    ,
+
+    OAuthSDKDetails = _reflection.GeneratedProtocolMessageType('OAuthSDKDetails', (_message.Message,), dict(
+      DESCRIPTOR = _USERSERVICE_CONTAINERS_OAUTHSDKDETAILS,
+      __module__ = 'protobufs.user_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.user_service.UserService.Containers.OAuthSDKDetails)
       ))
     ,
 
@@ -1386,6 +1438,7 @@ _sym_db.RegisterMessage(UserService)
 _sym_db.RegisterMessage(UserService.Containers)
 _sym_db.RegisterMessage(UserService.Containers.User)
 _sym_db.RegisterMessage(UserService.Containers.OAuth2Details)
+_sym_db.RegisterMessage(UserService.Containers.OAuthSDKDetails)
 _sym_db.RegisterMessage(UserService.Containers.Identity)
 _sym_db.RegisterMessage(UserService.CreateUser)
 _sym_db.RegisterMessage(UserService.CreateUser.Request)
