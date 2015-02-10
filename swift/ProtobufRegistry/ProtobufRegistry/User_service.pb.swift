@@ -755,7 +755,7 @@ final public class UserService : GeneratedMessage {
           override public subscript (key: String) -> Any? {
                  switch key {
                  case "code": return code
-                 case "access_token": return access_token
+                 case "id_token": return id_token
                  default: return nil
                  }
           }
@@ -763,8 +763,8 @@ final public class UserService : GeneratedMessage {
           public private(set) var hasCode:Bool = false
           public private(set) var code:String = ""
 
-          public private(set) var hasAccessToken:Bool = false
-          public private(set) var access_token:String = ""
+          public private(set) var hasIdToken:Bool = false
+          public private(set) var id_token:String = ""
 
           required public init() {
                super.init()
@@ -776,8 +776,8 @@ final public class UserService : GeneratedMessage {
             if hasCode {
               output.writeString(1, value:code)
             }
-            if hasAccessToken {
-              output.writeString(2, value:access_token)
+            if hasIdToken {
+              output.writeString(2, value:id_token)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -791,8 +791,8 @@ final public class UserService : GeneratedMessage {
             if hasCode {
               size += WireFormat.computeStringSize(1, value:code)
             }
-            if hasAccessToken {
-              size += WireFormat.computeStringSize(2, value:access_token)
+            if hasIdToken {
+              size += WireFormat.computeStringSize(2, value:id_token)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -838,8 +838,8 @@ final public class UserService : GeneratedMessage {
             if hasCode {
               output += "\(indent) code: \(code) \n"
             }
-            if hasAccessToken {
-              output += "\(indent) access_token: \(access_token) \n"
+            if hasIdToken {
+              output += "\(indent) id_token: \(id_token) \n"
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
@@ -849,8 +849,8 @@ final public class UserService : GeneratedMessage {
                   if hasCode {
                      hashCode = (hashCode &* 31) &+ code.hashValue
                   }
-                  if hasAccessToken {
-                     hashCode = (hashCode &* 31) &+ access_token.hashValue
+                  if hasIdToken {
+                     hashCode = (hashCode &* 31) &+ id_token.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -901,23 +901,23 @@ final public class UserService : GeneratedMessage {
                builderResult.code = ""
                return self
           }
-          public var hasAccessToken:Bool {
+          public var hasIdToken:Bool {
                get {
-                    return builderResult.hasAccessToken
+                    return builderResult.hasIdToken
                }
           }
-          public var access_token:String {
+          public var id_token:String {
                get {
-                    return builderResult.access_token
+                    return builderResult.id_token
                }
                set (value) {
-                   builderResult.hasAccessToken = true
-                   builderResult.access_token = value
+                   builderResult.hasIdToken = true
+                   builderResult.id_token = value
                }
           }
-          public func clearAccessToken() -> UserService.Containers.OAuthSDKDetailsBuilder{
-               builderResult.hasAccessToken = false
-               builderResult.access_token = ""
+          public func clearIdToken() -> UserService.Containers.OAuthSDKDetailsBuilder{
+               builderResult.hasIdToken = false
+               builderResult.id_token = ""
                return self
           }
           override public var internalGetResult:GeneratedMessage {
@@ -944,8 +944,8 @@ final public class UserService : GeneratedMessage {
             if other.hasCode {
                  code = other.code
             }
-            if other.hasAccessToken {
-                 access_token = other.access_token
+            if other.hasIdToken {
+                 id_token = other.id_token
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -966,7 +966,7 @@ final public class UserService : GeneratedMessage {
                 code = input.readString()
 
               case 18 :
-                access_token = input.readString()
+                id_token = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

@@ -29,7 +29,7 @@ message UserService {
 
         message OAuthSDKDetails {
             optional string code = 1;
-            optional string access_token = 2;
+            optional string id_token = 2;
         }
 
         message Identity {
