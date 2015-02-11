@@ -4194,6 +4194,7 @@ final public class UserService : GeneratedMessage {
 
             public enum AuthBackend:Int32 {
               case Internal = 0
+              case Google = 1
 
               public static func IsValidValue(value:Int32) ->Bool {
                   if let check = AuthBackend(rawValue:value) {

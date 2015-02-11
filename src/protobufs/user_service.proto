@@ -97,6 +97,7 @@ message UserService {
 
             enum AuthBackend {
                 INTERNAL = 0;
+                GOOGLE = 1;
             }
 
             message Credentials {
