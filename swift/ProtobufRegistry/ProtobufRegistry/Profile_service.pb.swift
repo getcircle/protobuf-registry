@@ -16,6 +16,7 @@ public struct ProfileServiceRoot {
     registerAllExtensions(extensionRegistry)
     OrganizationServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     NoteServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+    UserServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
   }
   public func registerAllExtensions(registry:ExtensionRegistry) {
   }
@@ -3886,6 +3887,7 @@ final public class ProfileService : GeneratedMessage {
           public private(set) var team:OrganizationService.Containers.Team = OrganizationService.Containers.Team()
           public private(set) var notes:Array<NoteService.Containers.Note>  = Array<NoteService.Containers.Note>()
           public private(set) var skills:Array<ProfileService.Containers.Skill>  = Array<ProfileService.Containers.Skill>()
+          public private(set) var identities:Array<UserService.Containers.Identity>  = Array<UserService.Containers.Identity>()
           required public init() {
                super.init()
           }
@@ -3910,6 +3912,9 @@ final public class ProfileService : GeneratedMessage {
             }
             for oneElementskills in skills {
                 output.writeMessage(6, value:oneElementskills)
+            }
+            for oneElementidentities in identities {
+                output.writeMessage(7, value:oneElementidentities)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -3937,6 +3942,9 @@ final public class ProfileService : GeneratedMessage {
             }
             for oneElementskills in skills {
                 size += WireFormat.computeMessageSize(6, value:oneElementskills)
+            }
+            for oneElementidentities in identities {
+                size += WireFormat.computeMessageSize(7, value:oneElementidentities)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -4013,6 +4021,13 @@ final public class ProfileService : GeneratedMessage {
                 output += "\(indent)}\n"
                 skillsElementIndex++
             }
+            var identitiesElementIndex:Int = 0
+            for oneElementidentities in identities {
+                output += "\(indent) identities[\(identitiesElementIndex)] {\n"
+                oneElementidentities.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                identitiesElementIndex++
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -4035,6 +4050,9 @@ final public class ProfileService : GeneratedMessage {
                   }
                   for oneElementskills in skills {
                       hashCode = (hashCode &* 31) &+ oneElementskills.hashValue
+                  }
+                  for oneElementidentities in identities {
+                      hashCode = (hashCode &* 31) &+ oneElementidentities.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -4218,6 +4236,18 @@ final public class ProfileService : GeneratedMessage {
             builderResult.skills.removeAll(keepCapacity: false)
             return self
           }
+          public var identities:Array<UserService.Containers.Identity> {
+               get {
+                   return builderResult.identities
+               }
+               set (value) {
+                   builderResult.identities = value
+               }
+          }
+          public func clearIdentities() -> ProfileService.GetExtendedProfile.ResponseBuilder {
+            builderResult.identities.removeAll(keepCapacity: false)
+            return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -4256,6 +4286,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if !other.skills.isEmpty  {
                builderResult.skills += other.skills
+            }
+            if !other.identities.isEmpty  {
+               builderResult.identities += other.identities
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -4313,6 +4346,11 @@ final public class ProfileService : GeneratedMessage {
                 var subBuilder = ProfileService.Containers.Skill.builder()
                 input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
                 skills += [subBuilder.buildPartial()]
+
+              case 58 :
+                var subBuilder = UserService.Containers.Identity.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                identities += [subBuilder.buildPartial()]
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

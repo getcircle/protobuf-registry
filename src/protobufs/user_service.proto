@@ -1,6 +1,5 @@
 package main.user_service;
 
-
 message UserService {
 
     enum Provider {
