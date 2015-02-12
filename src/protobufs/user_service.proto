@@ -169,4 +169,16 @@ message UserService {
 
     }
 
+    message GetIdentities {
+
+        message Request {
+            optional string user_id = 1;
+        }
+
+        message Response {
+            repeated Containers.Identity identities = 1;
+        }
+
+    }
+
 }

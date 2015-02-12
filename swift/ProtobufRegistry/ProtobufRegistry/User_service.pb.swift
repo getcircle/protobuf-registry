@@ -99,6 +99,14 @@ public func == (lhs: UserService.CompleteAuthorization, rhs: UserService.Complet
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: UserService.GetIdentities, rhs: UserService.GetIdentities) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public func == (lhs: UserService, rhs: UserService) -> Bool {
   if (lhs === rhs) {
     return true
@@ -7318,6 +7326,543 @@ final public class UserService : GeneratedMessage {
 
 
 
+  //Nested type declaration start
+
+    final public class GetIdentities : GeneratedMessage {
+
+
+      //Nested type declaration start
+
+        final public class Request : GeneratedMessage {
+          override public subscript (key: String) -> Any? {
+                 switch key {
+                 case "user_id": return user_id
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasUserId:Bool = false
+          public private(set) var user_id:String = ""
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasUserId {
+              output.writeString(1, value:user_id)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasUserId {
+              size += WireFormat.computeStringSize(1, value:user_id)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> UserService.GetIdentities.Request {
+            return UserService.GetIdentities.Request.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities.Request {
+            return UserService.GetIdentities.Request.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> UserService.GetIdentities.Request {
+            return UserService.GetIdentities.Request.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.GetIdentities.Request {
+            return UserService.GetIdentities.Request.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.GetIdentities.Request {
+            return UserService.GetIdentities.Request.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities.Request {
+            return UserService.GetIdentities.Request.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> UserService.GetIdentities.RequestBuilder {
+            return UserService.GetIdentities.Request.classBuilder() as UserService.GetIdentities.RequestBuilder
+          }
+          public func builder() -> UserService.GetIdentities.RequestBuilder {
+            return classBuilder() as UserService.GetIdentities.RequestBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return UserService.GetIdentities.RequestBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return UserService.GetIdentities.Request.builder()
+          }
+          public func toBuilder() -> UserService.GetIdentities.RequestBuilder {
+            return UserService.GetIdentities.Request.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:UserService.GetIdentities.Request) -> UserService.GetIdentities.RequestBuilder {
+            return UserService.GetIdentities.Request.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasUserId {
+              output += "\(indent) user_id: \(user_id) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasUserId {
+                     hashCode = (hashCode &* 31) &+ user_id.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "UserService.GetIdentities.Request"
+          }
+          override public func className() -> String {
+              return "UserService.GetIdentities.Request"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return UserService.GetIdentities.Request.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class RequestBuilder : GeneratedMessageBuilder {
+          private var builderResult:UserService.GetIdentities.Request
+
+          required override public init () {
+             builderResult = UserService.GetIdentities.Request()
+             super.init()
+          }
+          public var hasUserId:Bool {
+               get {
+                    return builderResult.hasUserId
+               }
+          }
+          public var user_id:String {
+               get {
+                    return builderResult.user_id
+               }
+               set (value) {
+                   builderResult.hasUserId = true
+                   builderResult.user_id = value
+               }
+          }
+          public func clearUserId() -> UserService.GetIdentities.RequestBuilder{
+               builderResult.hasUserId = false
+               builderResult.user_id = ""
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> UserService.GetIdentities.RequestBuilder {
+            builderResult = UserService.GetIdentities.Request()
+            return self
+          }
+          public override func clone() -> UserService.GetIdentities.RequestBuilder {
+            return UserService.GetIdentities.Request.builderWithPrototype(builderResult)
+          }
+          public override func build() -> UserService.GetIdentities.Request {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> UserService.GetIdentities.Request {
+            var returnMe:UserService.GetIdentities.Request = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:UserService.GetIdentities.Request) -> UserService.GetIdentities.RequestBuilder {
+            if other.hasUserId {
+                 user_id = other.user_id
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.GetIdentities.RequestBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities.RequestBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                user_id = input.readString()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+
+
+      //Nested type declaration start
+
+        final public class Response : GeneratedMessage {
+          override public subscript (key: String) -> Any? {
+                 switch key {
+                 default: return nil
+                 }
+          }
+
+          public private(set) var identities:Array<UserService.Containers.Identity>  = Array<UserService.Containers.Identity>()
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            for oneElementidentities in identities {
+                output.writeMessage(1, value:oneElementidentities)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            for oneElementidentities in identities {
+                size += WireFormat.computeMessageSize(1, value:oneElementidentities)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> UserService.GetIdentities.Response {
+            return UserService.GetIdentities.Response.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities.Response {
+            return UserService.GetIdentities.Response.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> UserService.GetIdentities.Response {
+            return UserService.GetIdentities.Response.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.GetIdentities.Response {
+            return UserService.GetIdentities.Response.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.GetIdentities.Response {
+            return UserService.GetIdentities.Response.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities.Response {
+            return UserService.GetIdentities.Response.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> UserService.GetIdentities.ResponseBuilder {
+            return UserService.GetIdentities.Response.classBuilder() as UserService.GetIdentities.ResponseBuilder
+          }
+          public func builder() -> UserService.GetIdentities.ResponseBuilder {
+            return classBuilder() as UserService.GetIdentities.ResponseBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return UserService.GetIdentities.ResponseBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return UserService.GetIdentities.Response.builder()
+          }
+          public func toBuilder() -> UserService.GetIdentities.ResponseBuilder {
+            return UserService.GetIdentities.Response.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:UserService.GetIdentities.Response) -> UserService.GetIdentities.ResponseBuilder {
+            return UserService.GetIdentities.Response.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            var identitiesElementIndex:Int = 0
+            for oneElementidentities in identities {
+                output += "\(indent) identities[\(identitiesElementIndex)] {\n"
+                oneElementidentities.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                identitiesElementIndex++
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  for oneElementidentities in identities {
+                      hashCode = (hashCode &* 31) &+ oneElementidentities.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "UserService.GetIdentities.Response"
+          }
+          override public func className() -> String {
+              return "UserService.GetIdentities.Response"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return UserService.GetIdentities.Response.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class ResponseBuilder : GeneratedMessageBuilder {
+          private var builderResult:UserService.GetIdentities.Response
+
+          required override public init () {
+             builderResult = UserService.GetIdentities.Response()
+             super.init()
+          }
+          public var identities:Array<UserService.Containers.Identity> {
+               get {
+                   return builderResult.identities
+               }
+               set (value) {
+                   builderResult.identities = value
+               }
+          }
+          public func clearIdentities() -> UserService.GetIdentities.ResponseBuilder {
+            builderResult.identities.removeAll(keepCapacity: false)
+            return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> UserService.GetIdentities.ResponseBuilder {
+            builderResult = UserService.GetIdentities.Response()
+            return self
+          }
+          public override func clone() -> UserService.GetIdentities.ResponseBuilder {
+            return UserService.GetIdentities.Response.builderWithPrototype(builderResult)
+          }
+          public override func build() -> UserService.GetIdentities.Response {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> UserService.GetIdentities.Response {
+            var returnMe:UserService.GetIdentities.Response = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:UserService.GetIdentities.Response) -> UserService.GetIdentities.ResponseBuilder {
+            if !other.identities.isEmpty  {
+               builderResult.identities += other.identities
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.GetIdentities.ResponseBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities.ResponseBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                var subBuilder = UserService.Containers.Identity.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                identities += [subBuilder.buildPartial()]
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+      override public subscript (key: String) -> Any? {
+             switch key {
+             default: return nil
+             }
+      }
+
+      required public init() {
+           super.init()
+      }
+      override public func isInitialized() -> Bool {
+       return true
+      }
+      override public func writeToCodedOutputStream(output:CodedOutputStream) {
+        unknownFields.writeToCodedOutputStream(output)
+      }
+      override public func serializedSize() -> Int32 {
+        var size:Int32 = memoizedSerializedSize
+        if size != -1 {
+         return size
+        }
+
+        size = 0
+        size += unknownFields.serializedSize()
+        memoizedSerializedSize = size
+        return size
+      }
+      public class func parseFromData(data:[Byte]) -> UserService.GetIdentities {
+        return UserService.GetIdentities.builder().mergeFromData(data).build()
+      }
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities {
+        return UserService.GetIdentities.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream) -> UserService.GetIdentities {
+        return UserService.GetIdentities.builder().mergeFromInputStream(input).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.GetIdentities {
+        return UserService.GetIdentities.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.GetIdentities {
+        return UserService.GetIdentities.builder().mergeFromCodedInputStream(input).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities {
+        return UserService.GetIdentities.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func builder() -> UserService.GetIdentitiesBuilder {
+        return UserService.GetIdentities.classBuilder() as UserService.GetIdentitiesBuilder
+      }
+      public func builder() -> UserService.GetIdentitiesBuilder {
+        return classBuilder() as UserService.GetIdentitiesBuilder
+      }
+      public override class func classBuilder() -> MessageBuilder {
+        return UserService.GetIdentitiesBuilder()
+      }
+      public override func classBuilder() -> MessageBuilder {
+        return UserService.GetIdentities.builder()
+      }
+      public func toBuilder() -> UserService.GetIdentitiesBuilder {
+        return UserService.GetIdentities.builderWithPrototype(self)
+      }
+      public class func builderWithPrototype(prototype:UserService.GetIdentities) -> UserService.GetIdentitiesBuilder {
+        return UserService.GetIdentities.builder().mergeFrom(prototype)
+      }
+      override public func writeDescriptionTo(inout output:String, indent:String) {
+        unknownFields.writeDescriptionTo(&output, indent:indent)
+      }
+      override public var hashValue:Int {
+          get {
+              var hashCode:Int = 7
+              hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+              return hashCode
+          }
+      }
+
+
+      //Meta information declaration start
+
+      override public class func className() -> String {
+          return "UserService.GetIdentities"
+      }
+      override public func className() -> String {
+          return "UserService.GetIdentities"
+      }
+      override public func classMetaType() -> GeneratedMessage.Type {
+          return UserService.GetIdentities.self
+      }
+
+
+      //Meta information declaration end
+
+    }
+
+    final public class GetIdentitiesBuilder : GeneratedMessageBuilder {
+      private var builderResult:UserService.GetIdentities
+
+      required override public init () {
+         builderResult = UserService.GetIdentities()
+         super.init()
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> UserService.GetIdentitiesBuilder {
+        builderResult = UserService.GetIdentities()
+        return self
+      }
+      public override func clone() -> UserService.GetIdentitiesBuilder {
+        return UserService.GetIdentities.builderWithPrototype(builderResult)
+      }
+      public override func build() -> UserService.GetIdentities {
+           checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> UserService.GetIdentities {
+        var returnMe:UserService.GetIdentities = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:UserService.GetIdentities) -> UserService.GetIdentitiesBuilder {
+        mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.GetIdentitiesBuilder {
+           return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.GetIdentitiesBuilder {
+        var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          var tag = input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = unknownFieldsBuilder.build()
+            return self
+
+          default:
+            if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+               unknownFields = unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+
+
+  //Nested type declaration end
+
+
+
     //Enum type declaration start 
 
     public enum Provider:Int32 {
@@ -7878,6 +8423,42 @@ public extension UserService.CompleteAuthorization {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return UserService.CompleteAuthorization.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.GetIdentities.Request {
+    class func parseFromNSData(data:NSData) -> UserService.GetIdentities.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.GetIdentities.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.GetIdentities.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.GetIdentities.Response {
+    class func parseFromNSData(data:NSData) -> UserService.GetIdentities.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.GetIdentities.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.GetIdentities.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.GetIdentities {
+    class func parseFromNSData(data:NSData) -> UserService.GetIdentities {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.GetIdentities.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.GetIdentities {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.GetIdentities.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension UserService {
