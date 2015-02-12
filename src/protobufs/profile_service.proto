@@ -101,6 +101,7 @@ message ProfileService {
             repeated main.note_service.NoteService.Containers.Note notes = 5;
             repeated Containers.Skill skills = 6;
             repeated main.user_service.UserService.Containers.Identity identities = 7;
+            repeated Containers.Profile direct_reports = 8;
         }
 
     }
