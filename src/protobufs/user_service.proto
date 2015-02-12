@@ -165,6 +165,7 @@ message UserService {
         message Response {
             optional Containers.User user = 1;
             optional Containers.Identity identity = 2;
+            optional bool created = 3;
         }
 
     }

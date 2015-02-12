@@ -6912,6 +6912,7 @@ final public class UserService : GeneratedMessage {
                  switch key {
                  case "user": return user
                  case "identity": return identity
+                 case "created": return created
                  default: return nil
                  }
           }
@@ -6920,6 +6921,9 @@ final public class UserService : GeneratedMessage {
           public private(set) var user:UserService.Containers.User = UserService.Containers.User()
           public private(set) var hasIdentity:Bool = false
           public private(set) var identity:UserService.Containers.Identity = UserService.Containers.Identity()
+          public private(set) var hasCreated:Bool = false
+          public private(set) var created:Bool = false
+
           required public init() {
                super.init()
           }
@@ -6932,6 +6936,9 @@ final public class UserService : GeneratedMessage {
             }
             if hasIdentity {
               output.writeMessage(2, value:identity)
+            }
+            if hasCreated {
+              output.writeBool(3, value:created)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -6947,6 +6954,9 @@ final public class UserService : GeneratedMessage {
             }
             if hasIdentity {
               size += WireFormat.computeMessageSize(2, value:identity)
+            }
+            if hasCreated {
+              size += WireFormat.computeBoolSize(3, value:created)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -6999,6 +7009,9 @@ final public class UserService : GeneratedMessage {
               identity.writeDescriptionTo(&output, indent:"\(indent)  ")
               output += "\(indent) }\n"
             }
+            if hasCreated {
+              output += "\(indent) created: \(created) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -7009,6 +7022,9 @@ final public class UserService : GeneratedMessage {
                   }
                   if hasIdentity {
                     hashCode = (hashCode &* 31) &+ identity.hashValue
+                  }
+                  if hasCreated {
+                     hashCode = (hashCode &* 31) &+ created.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -7104,6 +7120,25 @@ final public class UserService : GeneratedMessage {
             builderResult.identity = UserService.Containers.Identity()
             return self
           }
+          public var hasCreated:Bool {
+               get {
+                    return builderResult.hasCreated
+               }
+          }
+          public var created:Bool {
+               get {
+                    return builderResult.created
+               }
+               set (value) {
+                   builderResult.hasCreated = true
+                   builderResult.created = value
+               }
+          }
+          public func clearCreated() -> UserService.CompleteAuthorization.ResponseBuilder{
+               builderResult.hasCreated = false
+               builderResult.created = false
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -7130,6 +7165,9 @@ final public class UserService : GeneratedMessage {
             }
             if (other.hasIdentity) {
                 mergeIdentity(other.identity)
+            }
+            if other.hasCreated {
+                 created = other.created
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -7161,6 +7199,9 @@ final public class UserService : GeneratedMessage {
                 }
                 input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
                 identity = subBuilder.buildPartial()
+
+              case 24 :
+                created = input.readBool()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
