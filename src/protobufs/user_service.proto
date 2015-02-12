@@ -111,8 +111,9 @@ message UserService {
 
         message Response {
             optional Containers.User user = 1;
-            optional bool authenticated = 2 [default = false];
+            optional bool authenticated = 2;
             optional string token = 3;
+            optional bool new_user = 4;
         }
 
     }
@@ -165,7 +166,7 @@ message UserService {
         message Response {
             optional Containers.User user = 1;
             optional Containers.Identity identity = 2;
-            optional bool created = 3;
+            optional bool new_user = 3;
         }
 
     }

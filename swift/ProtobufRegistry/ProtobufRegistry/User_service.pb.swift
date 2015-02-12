@@ -4479,6 +4479,7 @@ final public class UserService : GeneratedMessage {
                  case "user": return user
                  case "authenticated": return authenticated
                  case "token": return token
+                 case "new_user": return new_user
                  default: return nil
                  }
           }
@@ -4490,6 +4491,9 @@ final public class UserService : GeneratedMessage {
 
           public private(set) var hasToken:Bool = false
           public private(set) var token:String = ""
+
+          public private(set) var hasNewUser:Bool = false
+          public private(set) var new_user:Bool = false
 
           required public init() {
                super.init()
@@ -4506,6 +4510,9 @@ final public class UserService : GeneratedMessage {
             }
             if hasToken {
               output.writeString(3, value:token)
+            }
+            if hasNewUser {
+              output.writeBool(4, value:new_user)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -4524,6 +4531,9 @@ final public class UserService : GeneratedMessage {
             }
             if hasToken {
               size += WireFormat.computeStringSize(3, value:token)
+            }
+            if hasNewUser {
+              size += WireFormat.computeBoolSize(4, value:new_user)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -4577,6 +4587,9 @@ final public class UserService : GeneratedMessage {
             if hasToken {
               output += "\(indent) token: \(token) \n"
             }
+            if hasNewUser {
+              output += "\(indent) new_user: \(new_user) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -4590,6 +4603,9 @@ final public class UserService : GeneratedMessage {
                   }
                   if hasToken {
                      hashCode = (hashCode &* 31) &+ token.hashValue
+                  }
+                  if hasNewUser {
+                     hashCode = (hashCode &* 31) &+ new_user.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -4691,6 +4707,25 @@ final public class UserService : GeneratedMessage {
                builderResult.token = ""
                return self
           }
+          public var hasNewUser:Bool {
+               get {
+                    return builderResult.hasNewUser
+               }
+          }
+          public var new_user:Bool {
+               get {
+                    return builderResult.new_user
+               }
+               set (value) {
+                   builderResult.hasNewUser = true
+                   builderResult.new_user = value
+               }
+          }
+          public func clearNewUser() -> UserService.AuthenticateUser.ResponseBuilder{
+               builderResult.hasNewUser = false
+               builderResult.new_user = false
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -4721,6 +4756,9 @@ final public class UserService : GeneratedMessage {
             if other.hasToken {
                  token = other.token
             }
+            if other.hasNewUser {
+                 new_user = other.new_user
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -4749,6 +4787,9 @@ final public class UserService : GeneratedMessage {
 
               case 26 :
                 token = input.readString()
+
+              case 32 :
+                new_user = input.readBool()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -6912,7 +6953,7 @@ final public class UserService : GeneratedMessage {
                  switch key {
                  case "user": return user
                  case "identity": return identity
-                 case "created": return created
+                 case "new_user": return new_user
                  default: return nil
                  }
           }
@@ -6921,8 +6962,8 @@ final public class UserService : GeneratedMessage {
           public private(set) var user:UserService.Containers.User = UserService.Containers.User()
           public private(set) var hasIdentity:Bool = false
           public private(set) var identity:UserService.Containers.Identity = UserService.Containers.Identity()
-          public private(set) var hasCreated:Bool = false
-          public private(set) var created:Bool = false
+          public private(set) var hasNewUser:Bool = false
+          public private(set) var new_user:Bool = false
 
           required public init() {
                super.init()
@@ -6937,8 +6978,8 @@ final public class UserService : GeneratedMessage {
             if hasIdentity {
               output.writeMessage(2, value:identity)
             }
-            if hasCreated {
-              output.writeBool(3, value:created)
+            if hasNewUser {
+              output.writeBool(3, value:new_user)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -6955,8 +6996,8 @@ final public class UserService : GeneratedMessage {
             if hasIdentity {
               size += WireFormat.computeMessageSize(2, value:identity)
             }
-            if hasCreated {
-              size += WireFormat.computeBoolSize(3, value:created)
+            if hasNewUser {
+              size += WireFormat.computeBoolSize(3, value:new_user)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -7009,8 +7050,8 @@ final public class UserService : GeneratedMessage {
               identity.writeDescriptionTo(&output, indent:"\(indent)  ")
               output += "\(indent) }\n"
             }
-            if hasCreated {
-              output += "\(indent) created: \(created) \n"
+            if hasNewUser {
+              output += "\(indent) new_user: \(new_user) \n"
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
@@ -7023,8 +7064,8 @@ final public class UserService : GeneratedMessage {
                   if hasIdentity {
                     hashCode = (hashCode &* 31) &+ identity.hashValue
                   }
-                  if hasCreated {
-                     hashCode = (hashCode &* 31) &+ created.hashValue
+                  if hasNewUser {
+                     hashCode = (hashCode &* 31) &+ new_user.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -7120,23 +7161,23 @@ final public class UserService : GeneratedMessage {
             builderResult.identity = UserService.Containers.Identity()
             return self
           }
-          public var hasCreated:Bool {
+          public var hasNewUser:Bool {
                get {
-                    return builderResult.hasCreated
+                    return builderResult.hasNewUser
                }
           }
-          public var created:Bool {
+          public var new_user:Bool {
                get {
-                    return builderResult.created
+                    return builderResult.new_user
                }
                set (value) {
-                   builderResult.hasCreated = true
-                   builderResult.created = value
+                   builderResult.hasNewUser = true
+                   builderResult.new_user = value
                }
           }
-          public func clearCreated() -> UserService.CompleteAuthorization.ResponseBuilder{
-               builderResult.hasCreated = false
-               builderResult.created = false
+          public func clearNewUser() -> UserService.CompleteAuthorization.ResponseBuilder{
+               builderResult.hasNewUser = false
+               builderResult.new_user = false
                return self
           }
           override public var internalGetResult:GeneratedMessage {
@@ -7166,8 +7207,8 @@ final public class UserService : GeneratedMessage {
             if (other.hasIdentity) {
                 mergeIdentity(other.identity)
             }
-            if other.hasCreated {
-                 created = other.created
+            if other.hasNewUser {
+                 new_user = other.new_user
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -7201,7 +7242,7 @@ final public class UserService : GeneratedMessage {
                 identity = subBuilder.buildPartial()
 
               case 24 :
-                created = input.readBool()
+                new_user = input.readBool()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
