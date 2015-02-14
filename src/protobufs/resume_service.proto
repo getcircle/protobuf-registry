@@ -1,0 +1,84 @@
+package main.resume_service;
+
+message ResumeService {
+
+    // MARK: - Containers
+
+    message Containers {
+
+        message Resume {
+            optional string user_id = 1;
+            repeated Education educations = 2;
+            repeated Position positions = 3;
+        }
+
+        message Education {
+            optional string id = 1;
+            optional string school_name = 2;
+            optional string start_date = 3;
+            optional string end_date = 4;
+            optional string notes = 5;
+            optional string user_id = 6;
+        }
+
+        message Position {
+            optional string id = 1;
+            optional string title = 2;
+            optional string start_date = 3;
+            optional string end_date = 4;
+            optional string summary = 5;
+            optional Company company = 6;
+            optional string user_id = 7;
+        }
+
+        message Company {
+            optional string id = 1;
+            optional string name = 2;
+            optional string linkedin_id = 3;
+        }
+
+    }
+
+    // MARK: - Actions
+
+    message BulkCreateEducation {
+        message Request {
+            repeated Containers.Education educations = 1;
+        }
+
+        message Response {
+            repeated Containers.Education educations = 1;
+        }
+    }
+
+    message BulkCreatePositions {
+        message Request {
+            repeated Containers.Position positions = 1;
+        }
+
+        message Response {
+            repeated Containers.Position positions = 1;
+        }
+    }
+
+    message CreateCompany {
+        message Request {
+            optional Containers.Company company = 1;
+        }
+
+        message Response {
+            optional Containers.Company company = 1;
+        }
+    }
+
+    message GetResume {
+        message Request {
+            optional string user_id = 1;
+        }
+
+        message Response {
+            optional Containers.Resume resume = 1;
+        }
+    }
+
+}
