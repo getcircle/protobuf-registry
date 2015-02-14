@@ -227,9 +227,9 @@ public var NoteServiceRequests_update_note:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.NoteServiceRequests_update_noteStatic
    }
 }
-public var ResumeServiceRequests_bulk_create_education:ConcreateExtensionField {
+public var ResumeServiceRequests_bulk_create_educations:ConcreateExtensionField {
    get {
-       return RequestRegistryRoot.sharedInstance.ResumeServiceRequests_bulk_create_educationStatic
+       return RequestRegistryRoot.sharedInstance.ResumeServiceRequests_bulk_create_educationsStatic
    }
 }
 public var ResumeServiceRequests_bulk_create_positions:ConcreateExtensionField {
@@ -299,7 +299,7 @@ public struct RequestRegistryRoot {
   var NoteServiceRequests_get_notesStatic:ConcreateExtensionField
   var NoteServiceRequests_delete_noteStatic:ConcreateExtensionField
   var NoteServiceRequests_update_noteStatic:ConcreateExtensionField
-  var ResumeServiceRequests_bulk_create_educationStatic:ConcreateExtensionField
+  var ResumeServiceRequests_bulk_create_educationsStatic:ConcreateExtensionField
   var ResumeServiceRequests_bulk_create_positionsStatic:ConcreateExtensionField
   var ResumeServiceRequests_create_companyStatic:ConcreateExtensionField
   var ResumeServiceRequests_get_resumeStatic:ConcreateExtensionField
@@ -351,7 +351,7 @@ public struct RequestRegistryRoot {
     NoteServiceRequests_get_notesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 701, defaultValue:NoteService.GetNotes.Request(), messageOrGroupClass:NoteService.GetNotes.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     NoteServiceRequests_delete_noteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 702, defaultValue:NoteService.DeleteNote.Request(), messageOrGroupClass:NoteService.DeleteNote.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     NoteServiceRequests_update_noteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 703, defaultValue:NoteService.UpdateNote.Request(), messageOrGroupClass:NoteService.UpdateNote.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-    ResumeServiceRequests_bulk_create_educationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 800, defaultValue:ResumeService.BulkCreateEducation.Request(), messageOrGroupClass:ResumeService.BulkCreateEducation.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ResumeServiceRequests_bulk_create_educationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 800, defaultValue:ResumeService.BulkCreateEducation.Request(), messageOrGroupClass:ResumeService.BulkCreateEducation.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ResumeServiceRequests_bulk_create_positionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 801, defaultValue:ResumeService.BulkCreatePositions.Request(), messageOrGroupClass:ResumeService.BulkCreatePositions.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ResumeServiceRequests_create_companyStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 802, defaultValue:ResumeService.CreateCompany.Request(), messageOrGroupClass:ResumeService.CreateCompany.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ResumeServiceRequests_get_resumeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 803, defaultValue:ResumeService.GetResume.Request(), messageOrGroupClass:ResumeService.GetResume.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -413,7 +413,7 @@ public struct RequestRegistryRoot {
     registry.addExtension(NoteServiceRequests_get_notesStatic)
     registry.addExtension(NoteServiceRequests_delete_noteStatic)
     registry.addExtension(NoteServiceRequests_update_noteStatic)
-    registry.addExtension(ResumeServiceRequests_bulk_create_educationStatic)
+    registry.addExtension(ResumeServiceRequests_bulk_create_educationsStatic)
     registry.addExtension(ResumeServiceRequests_bulk_create_positionsStatic)
     registry.addExtension(ResumeServiceRequests_create_companyStatic)
     registry.addExtension(ResumeServiceRequests_get_resumeStatic)
@@ -1641,8 +1641,8 @@ final public class ResumeServiceRequests : GeneratedMessage {
          }
   }
 
-  public class func bulk_create_education() -> ConcreateExtensionField {
-       return ResumeServiceRequests_bulk_create_education
+  public class func bulk_create_educations() -> ConcreateExtensionField {
+       return ResumeServiceRequests_bulk_create_educations
   }
   public class func bulk_create_positions() -> ConcreateExtensionField {
        return ResumeServiceRequests_bulk_create_positions

@@ -93,7 +93,7 @@ message NoteServiceResponses {
 
 message ResumeServiceResponses {
     extend soa.ActionResponseResult {
-        optional main.resume_service.ResumeService.BulkCreateEducation.Response bulk_create_education = 800;
+        optional main.resume_service.ResumeService.BulkCreateEducation.Response bulk_create_educations = 800;
         optional main.resume_service.ResumeService.BulkCreatePositions.Response bulk_create_positions = 801;
         optional main.resume_service.ResumeService.CreateCompany.Response create_company = 802;
         optional main.resume_service.ResumeService.GetResume.Response get_resume = 803;
