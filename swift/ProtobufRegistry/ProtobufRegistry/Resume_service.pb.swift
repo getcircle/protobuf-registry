@@ -51,6 +51,14 @@ public func == (lhs: ResumeService.CreateCompany, rhs: ResumeService.CreateCompa
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: ResumeService.BulkCreateCompanies, rhs: ResumeService.BulkCreateCompanies) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public func == (lhs: ResumeService.GetResume, rhs: ResumeService.GetResume) -> Bool {
   if (lhs === rhs) {
     return true
@@ -3747,6 +3755,539 @@ final public class ResumeService : GeneratedMessage {
 
   //Nested type declaration start
 
+    final public class BulkCreateCompanies : GeneratedMessage {
+
+
+      //Nested type declaration start
+
+        final public class Request : GeneratedMessage {
+          override public subscript (key: String) -> Any? {
+                 switch key {
+                 default: return nil
+                 }
+          }
+
+          public private(set) var companies:Array<ResumeService.Containers.Company>  = Array<ResumeService.Containers.Company>()
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            for oneElementcompanies in companies {
+                output.writeMessage(1, value:oneElementcompanies)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            for oneElementcompanies in companies {
+                size += WireFormat.computeMessageSize(1, value:oneElementcompanies)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> ResumeService.BulkCreateCompanies.Request {
+            return ResumeService.BulkCreateCompanies.Request.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies.Request {
+            return ResumeService.BulkCreateCompanies.Request.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> ResumeService.BulkCreateCompanies.Request {
+            return ResumeService.BulkCreateCompanies.Request.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ResumeService.BulkCreateCompanies.Request {
+            return ResumeService.BulkCreateCompanies.Request.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> ResumeService.BulkCreateCompanies.Request {
+            return ResumeService.BulkCreateCompanies.Request.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies.Request {
+            return ResumeService.BulkCreateCompanies.Request.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> ResumeService.BulkCreateCompanies.RequestBuilder {
+            return ResumeService.BulkCreateCompanies.Request.classBuilder() as ResumeService.BulkCreateCompanies.RequestBuilder
+          }
+          public func builder() -> ResumeService.BulkCreateCompanies.RequestBuilder {
+            return classBuilder() as ResumeService.BulkCreateCompanies.RequestBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return ResumeService.BulkCreateCompanies.RequestBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return ResumeService.BulkCreateCompanies.Request.builder()
+          }
+          public func toBuilder() -> ResumeService.BulkCreateCompanies.RequestBuilder {
+            return ResumeService.BulkCreateCompanies.Request.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:ResumeService.BulkCreateCompanies.Request) -> ResumeService.BulkCreateCompanies.RequestBuilder {
+            return ResumeService.BulkCreateCompanies.Request.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            var companiesElementIndex:Int = 0
+            for oneElementcompanies in companies {
+                output += "\(indent) companies[\(companiesElementIndex)] {\n"
+                oneElementcompanies.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                companiesElementIndex++
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  for oneElementcompanies in companies {
+                      hashCode = (hashCode &* 31) &+ oneElementcompanies.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "ResumeService.BulkCreateCompanies.Request"
+          }
+          override public func className() -> String {
+              return "ResumeService.BulkCreateCompanies.Request"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return ResumeService.BulkCreateCompanies.Request.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class RequestBuilder : GeneratedMessageBuilder {
+          private var builderResult:ResumeService.BulkCreateCompanies.Request
+
+          required override public init () {
+             builderResult = ResumeService.BulkCreateCompanies.Request()
+             super.init()
+          }
+          public var companies:Array<ResumeService.Containers.Company> {
+               get {
+                   return builderResult.companies
+               }
+               set (value) {
+                   builderResult.companies = value
+               }
+          }
+          public func clearCompanies() -> ResumeService.BulkCreateCompanies.RequestBuilder {
+            builderResult.companies.removeAll(keepCapacity: false)
+            return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> ResumeService.BulkCreateCompanies.RequestBuilder {
+            builderResult = ResumeService.BulkCreateCompanies.Request()
+            return self
+          }
+          public override func clone() -> ResumeService.BulkCreateCompanies.RequestBuilder {
+            return ResumeService.BulkCreateCompanies.Request.builderWithPrototype(builderResult)
+          }
+          public override func build() -> ResumeService.BulkCreateCompanies.Request {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> ResumeService.BulkCreateCompanies.Request {
+            var returnMe:ResumeService.BulkCreateCompanies.Request = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:ResumeService.BulkCreateCompanies.Request) -> ResumeService.BulkCreateCompanies.RequestBuilder {
+            if !other.companies.isEmpty  {
+               builderResult.companies += other.companies
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->ResumeService.BulkCreateCompanies.RequestBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies.RequestBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                var subBuilder = ResumeService.Containers.Company.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                companies += [subBuilder.buildPartial()]
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+
+
+      //Nested type declaration start
+
+        final public class Response : GeneratedMessage {
+          override public subscript (key: String) -> Any? {
+                 switch key {
+                 default: return nil
+                 }
+          }
+
+          public private(set) var companies:Array<ResumeService.Containers.Company>  = Array<ResumeService.Containers.Company>()
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            for oneElementcompanies in companies {
+                output.writeMessage(1, value:oneElementcompanies)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            for oneElementcompanies in companies {
+                size += WireFormat.computeMessageSize(1, value:oneElementcompanies)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> ResumeService.BulkCreateCompanies.Response {
+            return ResumeService.BulkCreateCompanies.Response.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies.Response {
+            return ResumeService.BulkCreateCompanies.Response.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> ResumeService.BulkCreateCompanies.Response {
+            return ResumeService.BulkCreateCompanies.Response.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ResumeService.BulkCreateCompanies.Response {
+            return ResumeService.BulkCreateCompanies.Response.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> ResumeService.BulkCreateCompanies.Response {
+            return ResumeService.BulkCreateCompanies.Response.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies.Response {
+            return ResumeService.BulkCreateCompanies.Response.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> ResumeService.BulkCreateCompanies.ResponseBuilder {
+            return ResumeService.BulkCreateCompanies.Response.classBuilder() as ResumeService.BulkCreateCompanies.ResponseBuilder
+          }
+          public func builder() -> ResumeService.BulkCreateCompanies.ResponseBuilder {
+            return classBuilder() as ResumeService.BulkCreateCompanies.ResponseBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return ResumeService.BulkCreateCompanies.ResponseBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return ResumeService.BulkCreateCompanies.Response.builder()
+          }
+          public func toBuilder() -> ResumeService.BulkCreateCompanies.ResponseBuilder {
+            return ResumeService.BulkCreateCompanies.Response.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:ResumeService.BulkCreateCompanies.Response) -> ResumeService.BulkCreateCompanies.ResponseBuilder {
+            return ResumeService.BulkCreateCompanies.Response.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            var companiesElementIndex:Int = 0
+            for oneElementcompanies in companies {
+                output += "\(indent) companies[\(companiesElementIndex)] {\n"
+                oneElementcompanies.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                companiesElementIndex++
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  for oneElementcompanies in companies {
+                      hashCode = (hashCode &* 31) &+ oneElementcompanies.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "ResumeService.BulkCreateCompanies.Response"
+          }
+          override public func className() -> String {
+              return "ResumeService.BulkCreateCompanies.Response"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return ResumeService.BulkCreateCompanies.Response.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class ResponseBuilder : GeneratedMessageBuilder {
+          private var builderResult:ResumeService.BulkCreateCompanies.Response
+
+          required override public init () {
+             builderResult = ResumeService.BulkCreateCompanies.Response()
+             super.init()
+          }
+          public var companies:Array<ResumeService.Containers.Company> {
+               get {
+                   return builderResult.companies
+               }
+               set (value) {
+                   builderResult.companies = value
+               }
+          }
+          public func clearCompanies() -> ResumeService.BulkCreateCompanies.ResponseBuilder {
+            builderResult.companies.removeAll(keepCapacity: false)
+            return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> ResumeService.BulkCreateCompanies.ResponseBuilder {
+            builderResult = ResumeService.BulkCreateCompanies.Response()
+            return self
+          }
+          public override func clone() -> ResumeService.BulkCreateCompanies.ResponseBuilder {
+            return ResumeService.BulkCreateCompanies.Response.builderWithPrototype(builderResult)
+          }
+          public override func build() -> ResumeService.BulkCreateCompanies.Response {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> ResumeService.BulkCreateCompanies.Response {
+            var returnMe:ResumeService.BulkCreateCompanies.Response = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:ResumeService.BulkCreateCompanies.Response) -> ResumeService.BulkCreateCompanies.ResponseBuilder {
+            if !other.companies.isEmpty  {
+               builderResult.companies += other.companies
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->ResumeService.BulkCreateCompanies.ResponseBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies.ResponseBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                var subBuilder = ResumeService.Containers.Company.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                companies += [subBuilder.buildPartial()]
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+      override public subscript (key: String) -> Any? {
+             switch key {
+             default: return nil
+             }
+      }
+
+      required public init() {
+           super.init()
+      }
+      override public func isInitialized() -> Bool {
+       return true
+      }
+      override public func writeToCodedOutputStream(output:CodedOutputStream) {
+        unknownFields.writeToCodedOutputStream(output)
+      }
+      override public func serializedSize() -> Int32 {
+        var size:Int32 = memoizedSerializedSize
+        if size != -1 {
+         return size
+        }
+
+        size = 0
+        size += unknownFields.serializedSize()
+        memoizedSerializedSize = size
+        return size
+      }
+      public class func parseFromData(data:[Byte]) -> ResumeService.BulkCreateCompanies {
+        return ResumeService.BulkCreateCompanies.builder().mergeFromData(data).build()
+      }
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies {
+        return ResumeService.BulkCreateCompanies.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream) -> ResumeService.BulkCreateCompanies {
+        return ResumeService.BulkCreateCompanies.builder().mergeFromInputStream(input).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ResumeService.BulkCreateCompanies {
+        return ResumeService.BulkCreateCompanies.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> ResumeService.BulkCreateCompanies {
+        return ResumeService.BulkCreateCompanies.builder().mergeFromCodedInputStream(input).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies {
+        return ResumeService.BulkCreateCompanies.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func builder() -> ResumeService.BulkCreateCompaniesBuilder {
+        return ResumeService.BulkCreateCompanies.classBuilder() as ResumeService.BulkCreateCompaniesBuilder
+      }
+      public func builder() -> ResumeService.BulkCreateCompaniesBuilder {
+        return classBuilder() as ResumeService.BulkCreateCompaniesBuilder
+      }
+      public override class func classBuilder() -> MessageBuilder {
+        return ResumeService.BulkCreateCompaniesBuilder()
+      }
+      public override func classBuilder() -> MessageBuilder {
+        return ResumeService.BulkCreateCompanies.builder()
+      }
+      public func toBuilder() -> ResumeService.BulkCreateCompaniesBuilder {
+        return ResumeService.BulkCreateCompanies.builderWithPrototype(self)
+      }
+      public class func builderWithPrototype(prototype:ResumeService.BulkCreateCompanies) -> ResumeService.BulkCreateCompaniesBuilder {
+        return ResumeService.BulkCreateCompanies.builder().mergeFrom(prototype)
+      }
+      override public func writeDescriptionTo(inout output:String, indent:String) {
+        unknownFields.writeDescriptionTo(&output, indent:indent)
+      }
+      override public var hashValue:Int {
+          get {
+              var hashCode:Int = 7
+              hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+              return hashCode
+          }
+      }
+
+
+      //Meta information declaration start
+
+      override public class func className() -> String {
+          return "ResumeService.BulkCreateCompanies"
+      }
+      override public func className() -> String {
+          return "ResumeService.BulkCreateCompanies"
+      }
+      override public func classMetaType() -> GeneratedMessage.Type {
+          return ResumeService.BulkCreateCompanies.self
+      }
+
+
+      //Meta information declaration end
+
+    }
+
+    final public class BulkCreateCompaniesBuilder : GeneratedMessageBuilder {
+      private var builderResult:ResumeService.BulkCreateCompanies
+
+      required override public init () {
+         builderResult = ResumeService.BulkCreateCompanies()
+         super.init()
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> ResumeService.BulkCreateCompaniesBuilder {
+        builderResult = ResumeService.BulkCreateCompanies()
+        return self
+      }
+      public override func clone() -> ResumeService.BulkCreateCompaniesBuilder {
+        return ResumeService.BulkCreateCompanies.builderWithPrototype(builderResult)
+      }
+      public override func build() -> ResumeService.BulkCreateCompanies {
+           checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> ResumeService.BulkCreateCompanies {
+        var returnMe:ResumeService.BulkCreateCompanies = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:ResumeService.BulkCreateCompanies) -> ResumeService.BulkCreateCompaniesBuilder {
+        mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->ResumeService.BulkCreateCompaniesBuilder {
+           return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompaniesBuilder {
+        var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          var tag = input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = unknownFieldsBuilder.build()
+            return self
+
+          default:
+            if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+               unknownFields = unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+
+
+  //Nested type declaration end
+
+
+
+  //Nested type declaration start
+
     final public class GetResume : GeneratedMessage {
 
 
@@ -4628,6 +5169,42 @@ public extension ResumeService.CreateCompany {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return ResumeService.CreateCompany.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension ResumeService.BulkCreateCompanies.Request {
+    class func parseFromNSData(data:NSData) -> ResumeService.BulkCreateCompanies.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ResumeService.BulkCreateCompanies.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ResumeService.BulkCreateCompanies.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension ResumeService.BulkCreateCompanies.Response {
+    class func parseFromNSData(data:NSData) -> ResumeService.BulkCreateCompanies.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ResumeService.BulkCreateCompanies.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ResumeService.BulkCreateCompanies.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension ResumeService.BulkCreateCompanies {
+    class func parseFromNSData(data:NSData) -> ResumeService.BulkCreateCompanies {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ResumeService.BulkCreateCompanies.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> ResumeService.BulkCreateCompanies {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ResumeService.BulkCreateCompanies.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension ResumeService.GetResume.Request {

@@ -247,6 +247,11 @@ public var ResumeServiceRequests_get_resume:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.ResumeServiceRequests_get_resumeStatic
    }
 }
+public var ResumeServiceRequests_bulk_create_companies:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.ResumeServiceRequests_bulk_create_companiesStatic
+   }
+}
 public struct RequestRegistryRoot {
   public static var sharedInstance : RequestRegistryRoot {
    struct Static {
@@ -303,6 +308,7 @@ public struct RequestRegistryRoot {
   var ResumeServiceRequests_bulk_create_positionsStatic:ConcreateExtensionField
   var ResumeServiceRequests_create_companyStatic:ConcreateExtensionField
   var ResumeServiceRequests_get_resumeStatic:ConcreateExtensionField
+  var ResumeServiceRequests_bulk_create_companiesStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -355,6 +361,7 @@ public struct RequestRegistryRoot {
     ResumeServiceRequests_bulk_create_positionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 801, defaultValue:ResumeService.BulkCreatePositions.Request(), messageOrGroupClass:ResumeService.BulkCreatePositions.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ResumeServiceRequests_create_companyStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 802, defaultValue:ResumeService.CreateCompany.Request(), messageOrGroupClass:ResumeService.CreateCompany.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ResumeServiceRequests_get_resumeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 803, defaultValue:ResumeService.GetResume.Request(), messageOrGroupClass:ResumeService.GetResume.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ResumeServiceRequests_bulk_create_companiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 804, defaultValue:ResumeService.BulkCreateCompanies.Request(), messageOrGroupClass:ResumeService.BulkCreateCompanies.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -417,6 +424,7 @@ public struct RequestRegistryRoot {
     registry.addExtension(ResumeServiceRequests_bulk_create_positionsStatic)
     registry.addExtension(ResumeServiceRequests_create_companyStatic)
     registry.addExtension(ResumeServiceRequests_get_resumeStatic)
+    registry.addExtension(ResumeServiceRequests_bulk_create_companiesStatic)
   }
 }
 
@@ -1652,6 +1660,9 @@ final public class ResumeServiceRequests : GeneratedMessage {
   }
   public class func get_resume() -> ConcreateExtensionField {
        return ResumeServiceRequests_get_resume
+  }
+  public class func bulk_create_companies() -> ConcreateExtensionField {
+       return ResumeServiceRequests_bulk_create_companies
   }
   required public init() {
        super.init()

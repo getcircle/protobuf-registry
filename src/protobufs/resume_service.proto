@@ -80,6 +80,16 @@ message ResumeService {
         }
     }
 
+    message BulkCreateCompanies {
+        message Request {
+            repeated Containers.Company companies = 1;
+        }
+
+        message Response {
+            repeated Containers.Company companies = 1;
+        }
+    }
+
     message GetResume {
         message Request {
             optional string user_id = 1;

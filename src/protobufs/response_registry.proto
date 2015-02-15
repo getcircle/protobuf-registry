@@ -97,5 +97,6 @@ message ResumeServiceResponses {
         optional main.resume_service.ResumeService.BulkCreatePositions.Response bulk_create_positions = 801;
         optional main.resume_service.ResumeService.CreateCompany.Response create_company = 802;
         optional main.resume_service.ResumeService.GetResume.Response get_resume = 803;
+        optional main.resume_service.ResumeService.BulkCreateCompanies.Response bulk_create_companies = 804;
     }
 }
