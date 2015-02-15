@@ -77,6 +77,282 @@ final public class ResumeService : GeneratedMessage {
 
       //Nested type declaration start
 
+        final public class ApproximateDate : GeneratedMessage {
+          override public subscript (key: String) -> Any? {
+                 switch key {
+                 case "year": return year
+                 case "month": return month
+                 case "day": return day
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasYear:Bool = false
+          public private(set) var year:UInt32 = UInt32(0)
+
+          public private(set) var hasMonth:Bool = false
+          public private(set) var month:UInt32 = UInt32(0)
+
+          public private(set) var hasDay:Bool = false
+          public private(set) var day:UInt32 = UInt32(0)
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasYear {
+              output.writeUInt32(1, value:year)
+            }
+            if hasMonth {
+              output.writeUInt32(2, value:month)
+            }
+            if hasDay {
+              output.writeUInt32(3, value:day)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasYear {
+              size += WireFormat.computeUInt32Size(1, value:year)
+            }
+            if hasMonth {
+              size += WireFormat.computeUInt32Size(2, value:month)
+            }
+            if hasDay {
+              size += WireFormat.computeUInt32Size(3, value:day)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> ResumeService.Containers.ApproximateDate {
+            return ResumeService.Containers.ApproximateDate.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ResumeService.Containers.ApproximateDate {
+            return ResumeService.Containers.ApproximateDate.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> ResumeService.Containers.ApproximateDate {
+            return ResumeService.Containers.ApproximateDate.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ResumeService.Containers.ApproximateDate {
+            return ResumeService.Containers.ApproximateDate.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> ResumeService.Containers.ApproximateDate {
+            return ResumeService.Containers.ApproximateDate.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ResumeService.Containers.ApproximateDate {
+            return ResumeService.Containers.ApproximateDate.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> ResumeService.Containers.ApproximateDateBuilder {
+            return ResumeService.Containers.ApproximateDate.classBuilder() as ResumeService.Containers.ApproximateDateBuilder
+          }
+          public func builder() -> ResumeService.Containers.ApproximateDateBuilder {
+            return classBuilder() as ResumeService.Containers.ApproximateDateBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return ResumeService.Containers.ApproximateDateBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return ResumeService.Containers.ApproximateDate.builder()
+          }
+          public func toBuilder() -> ResumeService.Containers.ApproximateDateBuilder {
+            return ResumeService.Containers.ApproximateDate.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:ResumeService.Containers.ApproximateDate) -> ResumeService.Containers.ApproximateDateBuilder {
+            return ResumeService.Containers.ApproximateDate.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasYear {
+              output += "\(indent) year: \(year) \n"
+            }
+            if hasMonth {
+              output += "\(indent) month: \(month) \n"
+            }
+            if hasDay {
+              output += "\(indent) day: \(day) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasYear {
+                     hashCode = (hashCode &* 31) &+ year.hashValue
+                  }
+                  if hasMonth {
+                     hashCode = (hashCode &* 31) &+ month.hashValue
+                  }
+                  if hasDay {
+                     hashCode = (hashCode &* 31) &+ day.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "ResumeService.Containers.ApproximateDate"
+          }
+          override public func className() -> String {
+              return "ResumeService.Containers.ApproximateDate"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return ResumeService.Containers.ApproximateDate.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class ApproximateDateBuilder : GeneratedMessageBuilder {
+          private var builderResult:ResumeService.Containers.ApproximateDate
+
+          required override public init () {
+             builderResult = ResumeService.Containers.ApproximateDate()
+             super.init()
+          }
+          public var hasYear:Bool {
+               get {
+                    return builderResult.hasYear
+               }
+          }
+          public var year:UInt32 {
+               get {
+                    return builderResult.year
+               }
+               set (value) {
+                   builderResult.hasYear = true
+                   builderResult.year = value
+               }
+          }
+          public func clearYear() -> ResumeService.Containers.ApproximateDateBuilder{
+               builderResult.hasYear = false
+               builderResult.year = UInt32(0)
+               return self
+          }
+          public var hasMonth:Bool {
+               get {
+                    return builderResult.hasMonth
+               }
+          }
+          public var month:UInt32 {
+               get {
+                    return builderResult.month
+               }
+               set (value) {
+                   builderResult.hasMonth = true
+                   builderResult.month = value
+               }
+          }
+          public func clearMonth() -> ResumeService.Containers.ApproximateDateBuilder{
+               builderResult.hasMonth = false
+               builderResult.month = UInt32(0)
+               return self
+          }
+          public var hasDay:Bool {
+               get {
+                    return builderResult.hasDay
+               }
+          }
+          public var day:UInt32 {
+               get {
+                    return builderResult.day
+               }
+               set (value) {
+                   builderResult.hasDay = true
+                   builderResult.day = value
+               }
+          }
+          public func clearDay() -> ResumeService.Containers.ApproximateDateBuilder{
+               builderResult.hasDay = false
+               builderResult.day = UInt32(0)
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> ResumeService.Containers.ApproximateDateBuilder {
+            builderResult = ResumeService.Containers.ApproximateDate()
+            return self
+          }
+          public override func clone() -> ResumeService.Containers.ApproximateDateBuilder {
+            return ResumeService.Containers.ApproximateDate.builderWithPrototype(builderResult)
+          }
+          public override func build() -> ResumeService.Containers.ApproximateDate {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> ResumeService.Containers.ApproximateDate {
+            var returnMe:ResumeService.Containers.ApproximateDate = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:ResumeService.Containers.ApproximateDate) -> ResumeService.Containers.ApproximateDateBuilder {
+            if other.hasYear {
+                 year = other.year
+            }
+            if other.hasMonth {
+                 month = other.month
+            }
+            if other.hasDay {
+                 day = other.day
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->ResumeService.Containers.ApproximateDateBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ResumeService.Containers.ApproximateDateBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 8 :
+                year = input.readUInt32()
+
+              case 16 :
+                month = input.readUInt32()
+
+              case 24 :
+                day = input.readUInt32()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+
+
+      //Nested type declaration start
+
         final public class Resume : GeneratedMessage {
           override public subscript (key: String) -> Any? {
                  switch key {
@@ -365,11 +641,9 @@ final public class ResumeService : GeneratedMessage {
           public private(set) var school_name:String = ""
 
           public private(set) var hasStartDate:Bool = false
-          public private(set) var start_date:String = ""
-
+          public private(set) var start_date:ResumeService.Containers.ApproximateDate = ResumeService.Containers.ApproximateDate()
           public private(set) var hasEndDate:Bool = false
-          public private(set) var end_date:String = ""
-
+          public private(set) var end_date:ResumeService.Containers.ApproximateDate = ResumeService.Containers.ApproximateDate()
           public private(set) var hasNotes:Bool = false
           public private(set) var notes:String = ""
 
@@ -390,10 +664,10 @@ final public class ResumeService : GeneratedMessage {
               output.writeString(2, value:school_name)
             }
             if hasStartDate {
-              output.writeString(3, value:start_date)
+              output.writeMessage(3, value:start_date)
             }
             if hasEndDate {
-              output.writeString(4, value:end_date)
+              output.writeMessage(4, value:end_date)
             }
             if hasNotes {
               output.writeString(5, value:notes)
@@ -417,10 +691,10 @@ final public class ResumeService : GeneratedMessage {
               size += WireFormat.computeStringSize(2, value:school_name)
             }
             if hasStartDate {
-              size += WireFormat.computeStringSize(3, value:start_date)
+              size += WireFormat.computeMessageSize(3, value:start_date)
             }
             if hasEndDate {
-              size += WireFormat.computeStringSize(4, value:end_date)
+              size += WireFormat.computeMessageSize(4, value:end_date)
             }
             if hasNotes {
               size += WireFormat.computeStringSize(5, value:notes)
@@ -476,10 +750,14 @@ final public class ResumeService : GeneratedMessage {
               output += "\(indent) school_name: \(school_name) \n"
             }
             if hasStartDate {
-              output += "\(indent) start_date: \(start_date) \n"
+              output += "\(indent) start_date {\n"
+              start_date.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
             }
             if hasEndDate {
-              output += "\(indent) end_date: \(end_date) \n"
+              output += "\(indent) end_date {\n"
+              end_date.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
             }
             if hasNotes {
               output += "\(indent) notes: \(notes) \n"
@@ -499,10 +777,10 @@ final public class ResumeService : GeneratedMessage {
                      hashCode = (hashCode &* 31) &+ school_name.hashValue
                   }
                   if hasStartDate {
-                     hashCode = (hashCode &* 31) &+ start_date.hashValue
+                    hashCode = (hashCode &* 31) &+ start_date.hashValue
                   }
                   if hasEndDate {
-                     hashCode = (hashCode &* 31) &+ end_date.hashValue
+                    hashCode = (hashCode &* 31) &+ end_date.hashValue
                   }
                   if hasNotes {
                      hashCode = (hashCode &* 31) &+ notes.hashValue
@@ -580,41 +858,67 @@ final public class ResumeService : GeneratedMessage {
           }
           public var hasStartDate:Bool {
                get {
-                    return builderResult.hasStartDate
+                   return builderResult.hasStartDate
                }
           }
-          public var start_date:String {
+          public var start_date:ResumeService.Containers.ApproximateDate {
                get {
-                    return builderResult.start_date
+                   return builderResult.start_date
                }
                set (value) {
                    builderResult.hasStartDate = true
                    builderResult.start_date = value
                }
           }
-          public func clearStartDate() -> ResumeService.Containers.EducationBuilder{
-               builderResult.hasStartDate = false
-               builderResult.start_date = ""
-               return self
+          public func setStartDateBuilder(builderForValue:ResumeService.Containers.ApproximateDateBuilder) -> ResumeService.Containers.EducationBuilder {
+            start_date = builderForValue.build()
+            return self
+          }
+          public func mergeStartDate(value:ResumeService.Containers.ApproximateDate) -> ResumeService.Containers.EducationBuilder {
+            if (builderResult.hasStartDate) {
+              builderResult.start_date = ResumeService.Containers.ApproximateDate.builderWithPrototype(builderResult.start_date).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.start_date = value
+            }
+            builderResult.hasStartDate = true
+            return self
+          }
+          public func clearStartDate() -> ResumeService.Containers.EducationBuilder {
+            builderResult.hasStartDate = false
+            builderResult.start_date = ResumeService.Containers.ApproximateDate()
+            return self
           }
           public var hasEndDate:Bool {
                get {
-                    return builderResult.hasEndDate
+                   return builderResult.hasEndDate
                }
           }
-          public var end_date:String {
+          public var end_date:ResumeService.Containers.ApproximateDate {
                get {
-                    return builderResult.end_date
+                   return builderResult.end_date
                }
                set (value) {
                    builderResult.hasEndDate = true
                    builderResult.end_date = value
                }
           }
-          public func clearEndDate() -> ResumeService.Containers.EducationBuilder{
-               builderResult.hasEndDate = false
-               builderResult.end_date = ""
-               return self
+          public func setEndDateBuilder(builderForValue:ResumeService.Containers.ApproximateDateBuilder) -> ResumeService.Containers.EducationBuilder {
+            end_date = builderForValue.build()
+            return self
+          }
+          public func mergeEndDate(value:ResumeService.Containers.ApproximateDate) -> ResumeService.Containers.EducationBuilder {
+            if (builderResult.hasEndDate) {
+              builderResult.end_date = ResumeService.Containers.ApproximateDate.builderWithPrototype(builderResult.end_date).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.end_date = value
+            }
+            builderResult.hasEndDate = true
+            return self
+          }
+          public func clearEndDate() -> ResumeService.Containers.EducationBuilder {
+            builderResult.hasEndDate = false
+            builderResult.end_date = ResumeService.Containers.ApproximateDate()
+            return self
           }
           public var hasNotes:Bool {
                get {
@@ -681,11 +985,11 @@ final public class ResumeService : GeneratedMessage {
             if other.hasSchoolName {
                  school_name = other.school_name
             }
-            if other.hasStartDate {
-                 start_date = other.start_date
+            if (other.hasStartDate) {
+                mergeStartDate(other.start_date)
             }
-            if other.hasEndDate {
-                 end_date = other.end_date
+            if (other.hasEndDate) {
+                mergeEndDate(other.end_date)
             }
             if other.hasNotes {
                  notes = other.notes
@@ -715,10 +1019,20 @@ final public class ResumeService : GeneratedMessage {
                 school_name = input.readString()
 
               case 26 :
-                start_date = input.readString()
+                var subBuilder:ResumeService.Containers.ApproximateDateBuilder = ResumeService.Containers.ApproximateDate.builder()
+                if hasStartDate {
+                  subBuilder.mergeFrom(start_date)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                start_date = subBuilder.buildPartial()
 
               case 34 :
-                end_date = input.readString()
+                var subBuilder:ResumeService.Containers.ApproximateDateBuilder = ResumeService.Containers.ApproximateDate.builder()
+                if hasEndDate {
+                  subBuilder.mergeFrom(end_date)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                end_date = subBuilder.buildPartial()
 
               case 42 :
                 notes = input.readString()
@@ -765,11 +1079,9 @@ final public class ResumeService : GeneratedMessage {
           public private(set) var title:String = ""
 
           public private(set) var hasStartDate:Bool = false
-          public private(set) var start_date:String = ""
-
+          public private(set) var start_date:ResumeService.Containers.ApproximateDate = ResumeService.Containers.ApproximateDate()
           public private(set) var hasEndDate:Bool = false
-          public private(set) var end_date:String = ""
-
+          public private(set) var end_date:ResumeService.Containers.ApproximateDate = ResumeService.Containers.ApproximateDate()
           public private(set) var hasSummary:Bool = false
           public private(set) var summary:String = ""
 
@@ -792,10 +1104,10 @@ final public class ResumeService : GeneratedMessage {
               output.writeString(2, value:title)
             }
             if hasStartDate {
-              output.writeString(3, value:start_date)
+              output.writeMessage(3, value:start_date)
             }
             if hasEndDate {
-              output.writeString(4, value:end_date)
+              output.writeMessage(4, value:end_date)
             }
             if hasSummary {
               output.writeString(5, value:summary)
@@ -822,10 +1134,10 @@ final public class ResumeService : GeneratedMessage {
               size += WireFormat.computeStringSize(2, value:title)
             }
             if hasStartDate {
-              size += WireFormat.computeStringSize(3, value:start_date)
+              size += WireFormat.computeMessageSize(3, value:start_date)
             }
             if hasEndDate {
-              size += WireFormat.computeStringSize(4, value:end_date)
+              size += WireFormat.computeMessageSize(4, value:end_date)
             }
             if hasSummary {
               size += WireFormat.computeStringSize(5, value:summary)
@@ -884,10 +1196,14 @@ final public class ResumeService : GeneratedMessage {
               output += "\(indent) title: \(title) \n"
             }
             if hasStartDate {
-              output += "\(indent) start_date: \(start_date) \n"
+              output += "\(indent) start_date {\n"
+              start_date.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
             }
             if hasEndDate {
-              output += "\(indent) end_date: \(end_date) \n"
+              output += "\(indent) end_date {\n"
+              end_date.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
             }
             if hasSummary {
               output += "\(indent) summary: \(summary) \n"
@@ -912,10 +1228,10 @@ final public class ResumeService : GeneratedMessage {
                      hashCode = (hashCode &* 31) &+ title.hashValue
                   }
                   if hasStartDate {
-                     hashCode = (hashCode &* 31) &+ start_date.hashValue
+                    hashCode = (hashCode &* 31) &+ start_date.hashValue
                   }
                   if hasEndDate {
-                     hashCode = (hashCode &* 31) &+ end_date.hashValue
+                    hashCode = (hashCode &* 31) &+ end_date.hashValue
                   }
                   if hasSummary {
                      hashCode = (hashCode &* 31) &+ summary.hashValue
@@ -996,41 +1312,67 @@ final public class ResumeService : GeneratedMessage {
           }
           public var hasStartDate:Bool {
                get {
-                    return builderResult.hasStartDate
+                   return builderResult.hasStartDate
                }
           }
-          public var start_date:String {
+          public var start_date:ResumeService.Containers.ApproximateDate {
                get {
-                    return builderResult.start_date
+                   return builderResult.start_date
                }
                set (value) {
                    builderResult.hasStartDate = true
                    builderResult.start_date = value
                }
           }
-          public func clearStartDate() -> ResumeService.Containers.PositionBuilder{
-               builderResult.hasStartDate = false
-               builderResult.start_date = ""
-               return self
+          public func setStartDateBuilder(builderForValue:ResumeService.Containers.ApproximateDateBuilder) -> ResumeService.Containers.PositionBuilder {
+            start_date = builderForValue.build()
+            return self
+          }
+          public func mergeStartDate(value:ResumeService.Containers.ApproximateDate) -> ResumeService.Containers.PositionBuilder {
+            if (builderResult.hasStartDate) {
+              builderResult.start_date = ResumeService.Containers.ApproximateDate.builderWithPrototype(builderResult.start_date).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.start_date = value
+            }
+            builderResult.hasStartDate = true
+            return self
+          }
+          public func clearStartDate() -> ResumeService.Containers.PositionBuilder {
+            builderResult.hasStartDate = false
+            builderResult.start_date = ResumeService.Containers.ApproximateDate()
+            return self
           }
           public var hasEndDate:Bool {
                get {
-                    return builderResult.hasEndDate
+                   return builderResult.hasEndDate
                }
           }
-          public var end_date:String {
+          public var end_date:ResumeService.Containers.ApproximateDate {
                get {
-                    return builderResult.end_date
+                   return builderResult.end_date
                }
                set (value) {
                    builderResult.hasEndDate = true
                    builderResult.end_date = value
                }
           }
-          public func clearEndDate() -> ResumeService.Containers.PositionBuilder{
-               builderResult.hasEndDate = false
-               builderResult.end_date = ""
-               return self
+          public func setEndDateBuilder(builderForValue:ResumeService.Containers.ApproximateDateBuilder) -> ResumeService.Containers.PositionBuilder {
+            end_date = builderForValue.build()
+            return self
+          }
+          public func mergeEndDate(value:ResumeService.Containers.ApproximateDate) -> ResumeService.Containers.PositionBuilder {
+            if (builderResult.hasEndDate) {
+              builderResult.end_date = ResumeService.Containers.ApproximateDate.builderWithPrototype(builderResult.end_date).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.end_date = value
+            }
+            builderResult.hasEndDate = true
+            return self
+          }
+          public func clearEndDate() -> ResumeService.Containers.PositionBuilder {
+            builderResult.hasEndDate = false
+            builderResult.end_date = ResumeService.Containers.ApproximateDate()
+            return self
           }
           public var hasSummary:Bool {
                get {
@@ -1129,11 +1471,11 @@ final public class ResumeService : GeneratedMessage {
             if other.hasTitle {
                  title = other.title
             }
-            if other.hasStartDate {
-                 start_date = other.start_date
+            if (other.hasStartDate) {
+                mergeStartDate(other.start_date)
             }
-            if other.hasEndDate {
-                 end_date = other.end_date
+            if (other.hasEndDate) {
+                mergeEndDate(other.end_date)
             }
             if other.hasSummary {
                  summary = other.summary
@@ -1166,10 +1508,20 @@ final public class ResumeService : GeneratedMessage {
                 title = input.readString()
 
               case 26 :
-                start_date = input.readString()
+                var subBuilder:ResumeService.Containers.ApproximateDateBuilder = ResumeService.Containers.ApproximateDate.builder()
+                if hasStartDate {
+                  subBuilder.mergeFrom(start_date)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                start_date = subBuilder.buildPartial()
 
               case 34 :
-                end_date = input.readString()
+                var subBuilder:ResumeService.Containers.ApproximateDateBuilder = ResumeService.Containers.ApproximateDate.builder()
+                if hasEndDate {
+                  subBuilder.mergeFrom(end_date)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                end_date = subBuilder.buildPartial()
 
               case 42 :
                 summary = input.readString()
@@ -3975,6 +4327,18 @@ final public class ResumeServiceBuilder : GeneratedMessageBuilder {
 //Class extensions: NSData
 
 
+public extension ResumeService.Containers.ApproximateDate {
+    class func parseFromNSData(data:NSData) -> ResumeService.Containers.ApproximateDate {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ResumeService.Containers.ApproximateDate.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> ResumeService.Containers.ApproximateDate {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ResumeService.Containers.ApproximateDate.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
 public extension ResumeService.Containers.Resume {
     class func parseFromNSData(data:NSData) -> ResumeService.Containers.Resume {
         var bytes = [Byte](count: data.length, repeatedValue: 0)

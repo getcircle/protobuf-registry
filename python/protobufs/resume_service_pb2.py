@@ -18,12 +18,55 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/resume_service.proto',
   package='main.resume_service',
-  serialized_pb=_b('\n\x1eprotobufs/resume_service.proto\x12\x13main.resume_service\"\xfa\t\n\rResumeService\x1a\xa6\x04\n\nContainers\x1a\xb1\x01\n\x06Resume\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12K\n\neducations\x18\x02 \x03(\x0b\x32\x37.main.resume_service.ResumeService.Containers.Education\x12I\n\tpositions\x18\x03 \x03(\x0b\x32\x36.main.resume_service.ResumeService.Containers.Position\x1ar\n\tEducation\x12\n\n\x02id\x18\x01 \x01(\t\x12\x13\n\x0bschool_name\x18\x02 \x01(\t\x12\x12\n\nstart_date\x18\x03 \x01(\t\x12\x10\n\x08\x65nd_date\x18\x04 \x01(\t\x12\r\n\x05notes\x18\x05 \x01(\t\x12\x0f\n\x07user_id\x18\x06 \x01(\t\x1a\xb5\x01\n\x08Position\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x12\n\nstart_date\x18\x03 \x01(\t\x12\x10\n\x08\x65nd_date\x18\x04 \x01(\t\x12\x0f\n\x07summary\x18\x05 \x01(\t\x12\x46\n\x07\x63ompany\x18\x06 \x01(\x0b\x32\x35.main.resume_service.ResumeService.Containers.Company\x12\x0f\n\x07user_id\x18\x07 \x01(\t\x1a\x38\n\x07\x43ompany\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0blinkedin_id\x18\x03 \x01(\t\x1a\xc6\x01\n\x13\x42ulkCreateEducation\x1aV\n\x07Request\x12K\n\neducations\x18\x01 \x03(\x0b\x32\x37.main.resume_service.ResumeService.Containers.Education\x1aW\n\x08Response\x12K\n\neducations\x18\x01 \x03(\x0b\x32\x37.main.resume_service.ResumeService.Containers.Education\x1a\xc2\x01\n\x13\x42ulkCreatePositions\x1aT\n\x07Request\x12I\n\tpositions\x18\x01 \x03(\x0b\x32\x36.main.resume_service.ResumeService.Containers.Position\x1aU\n\x08Response\x12I\n\tpositions\x18\x01 \x03(\x0b\x32\x36.main.resume_service.ResumeService.Containers.Position\x1a\xb6\x01\n\rCreateCompany\x1aQ\n\x07Request\x12\x46\n\x07\x63ompany\x18\x01 \x01(\x0b\x32\x35.main.resume_service.ResumeService.Containers.Company\x1aR\n\x08Response\x12\x46\n\x07\x63ompany\x18\x01 \x01(\x0b\x32\x35.main.resume_service.ResumeService.Containers.Company\x1ay\n\tGetResume\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1aP\n\x08Response\x12\x44\n\x06resume\x18\x01 \x01(\x0b\x32\x34.main.resume_service.ResumeService.Containers.Resume')
+  serialized_pb=_b('\n\x1eprotobufs/resume_service.proto\x12\x13main.resume_service\"\xb4\x0c\n\rResumeService\x1a\xe0\x06\n\nContainers\x1a;\n\x0f\x41pproximateDate\x12\x0c\n\x04year\x18\x01 \x01(\r\x12\r\n\x05month\x18\x02 \x01(\r\x12\x0b\n\x03\x64\x61y\x18\x03 \x01(\r\x1a\xb1\x01\n\x06Resume\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12K\n\neducations\x18\x02 \x03(\x0b\x32\x37.main.resume_service.ResumeService.Containers.Education\x12I\n\tpositions\x18\x03 \x03(\x0b\x32\x36.main.resume_service.ResumeService.Containers.Position\x1a\xf0\x01\n\tEducation\x12\n\n\x02id\x18\x01 \x01(\t\x12\x13\n\x0bschool_name\x18\x02 \x01(\t\x12Q\n\nstart_date\x18\x03 \x01(\x0b\x32=.main.resume_service.ResumeService.Containers.ApproximateDate\x12O\n\x08\x65nd_date\x18\x04 \x01(\x0b\x32=.main.resume_service.ResumeService.Containers.ApproximateDate\x12\r\n\x05notes\x18\x05 \x01(\t\x12\x0f\n\x07user_id\x18\x06 \x01(\t\x1a\xb3\x02\n\x08Position\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12Q\n\nstart_date\x18\x03 \x01(\x0b\x32=.main.resume_service.ResumeService.Containers.ApproximateDate\x12O\n\x08\x65nd_date\x18\x04 \x01(\x0b\x32=.main.resume_service.ResumeService.Containers.ApproximateDate\x12\x0f\n\x07summary\x18\x05 \x01(\t\x12\x46\n\x07\x63ompany\x18\x06 \x01(\x0b\x32\x35.main.resume_service.ResumeService.Containers.Company\x12\x0f\n\x07user_id\x18\x07 \x01(\t\x1a\x38\n\x07\x43ompany\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0blinkedin_id\x18\x03 \x01(\t\x1a\xc6\x01\n\x13\x42ulkCreateEducation\x1aV\n\x07Request\x12K\n\neducations\x18\x01 \x03(\x0b\x32\x37.main.resume_service.ResumeService.Containers.Education\x1aW\n\x08Response\x12K\n\neducations\x18\x01 \x03(\x0b\x32\x37.main.resume_service.ResumeService.Containers.Education\x1a\xc2\x01\n\x13\x42ulkCreatePositions\x1aT\n\x07Request\x12I\n\tpositions\x18\x01 \x03(\x0b\x32\x36.main.resume_service.ResumeService.Containers.Position\x1aU\n\x08Response\x12I\n\tpositions\x18\x01 \x03(\x0b\x32\x36.main.resume_service.ResumeService.Containers.Position\x1a\xb6\x01\n\rCreateCompany\x1aQ\n\x07Request\x12\x46\n\x07\x63ompany\x18\x01 \x01(\x0b\x32\x35.main.resume_service.ResumeService.Containers.Company\x1aR\n\x08Response\x12\x46\n\x07\x63ompany\x18\x01 \x01(\x0b\x32\x35.main.resume_service.ResumeService.Containers.Company\x1ay\n\tGetResume\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1aP\n\x08Response\x12\x44\n\x06resume\x18\x01 \x01(\x0b\x32\x34.main.resume_service.ResumeService.Containers.Resume')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
+
+_RESUMESERVICE_CONTAINERS_APPROXIMATEDATE = _descriptor.Descriptor(
+  name='ApproximateDate',
+  full_name='main.resume_service.ResumeService.Containers.ApproximateDate',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='year', full_name='main.resume_service.ResumeService.Containers.ApproximateDate.year', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='month', full_name='main.resume_service.ResumeService.Containers.ApproximateDate.month', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='day', full_name='main.resume_service.ResumeService.Containers.ApproximateDate.day', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=88,
+  serialized_end=147,
+)
 
 _RESUMESERVICE_CONTAINERS_RESUME = _descriptor.Descriptor(
   name='Resume',
@@ -64,8 +107,8 @@ _RESUMESERVICE_CONTAINERS_RESUME = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=89,
-  serialized_end=266,
+  serialized_start=150,
+  serialized_end=327,
 )
 
 _RESUMESERVICE_CONTAINERS_EDUCATION = _descriptor.Descriptor(
@@ -91,15 +134,15 @@ _RESUMESERVICE_CONTAINERS_EDUCATION = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='start_date', full_name='main.resume_service.ResumeService.Containers.Education.start_date', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='end_date', full_name='main.resume_service.ResumeService.Containers.Education.end_date', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -128,8 +171,8 @@ _RESUMESERVICE_CONTAINERS_EDUCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=268,
-  serialized_end=382,
+  serialized_start=330,
+  serialized_end=570,
 )
 
 _RESUMESERVICE_CONTAINERS_POSITION = _descriptor.Descriptor(
@@ -155,15 +198,15 @@ _RESUMESERVICE_CONTAINERS_POSITION = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='start_date', full_name='main.resume_service.ResumeService.Containers.Position.start_date', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='end_date', full_name='main.resume_service.ResumeService.Containers.Position.end_date', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -199,8 +242,8 @@ _RESUMESERVICE_CONTAINERS_POSITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=385,
-  serialized_end=566,
+  serialized_start=573,
+  serialized_end=880,
 )
 
 _RESUMESERVICE_CONTAINERS_COMPANY = _descriptor.Descriptor(
@@ -242,8 +285,8 @@ _RESUMESERVICE_CONTAINERS_COMPANY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=568,
-  serialized_end=624,
+  serialized_start=882,
+  serialized_end=938,
 )
 
 _RESUMESERVICE_CONTAINERS = _descriptor.Descriptor(
@@ -256,7 +299,7 @@ _RESUMESERVICE_CONTAINERS = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_RESUMESERVICE_CONTAINERS_RESUME, _RESUMESERVICE_CONTAINERS_EDUCATION, _RESUMESERVICE_CONTAINERS_POSITION, _RESUMESERVICE_CONTAINERS_COMPANY, ],
+  nested_types=[_RESUMESERVICE_CONTAINERS_APPROXIMATEDATE, _RESUMESERVICE_CONTAINERS_RESUME, _RESUMESERVICE_CONTAINERS_EDUCATION, _RESUMESERVICE_CONTAINERS_POSITION, _RESUMESERVICE_CONTAINERS_COMPANY, ],
   enum_types=[
   ],
   options=None,
@@ -265,7 +308,7 @@ _RESUMESERVICE_CONTAINERS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=74,
-  serialized_end=624,
+  serialized_end=938,
 )
 
 _RESUMESERVICE_BULKCREATEEDUCATION_REQUEST = _descriptor.Descriptor(
@@ -293,8 +336,8 @@ _RESUMESERVICE_BULKCREATEEDUCATION_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=650,
-  serialized_end=736,
+  serialized_start=964,
+  serialized_end=1050,
 )
 
 _RESUMESERVICE_BULKCREATEEDUCATION_RESPONSE = _descriptor.Descriptor(
@@ -322,8 +365,8 @@ _RESUMESERVICE_BULKCREATEEDUCATION_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=738,
-  serialized_end=825,
+  serialized_start=1052,
+  serialized_end=1139,
 )
 
 _RESUMESERVICE_BULKCREATEEDUCATION = _descriptor.Descriptor(
@@ -344,8 +387,8 @@ _RESUMESERVICE_BULKCREATEEDUCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=627,
-  serialized_end=825,
+  serialized_start=941,
+  serialized_end=1139,
 )
 
 _RESUMESERVICE_BULKCREATEPOSITIONS_REQUEST = _descriptor.Descriptor(
@@ -373,8 +416,8 @@ _RESUMESERVICE_BULKCREATEPOSITIONS_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=851,
-  serialized_end=935,
+  serialized_start=1165,
+  serialized_end=1249,
 )
 
 _RESUMESERVICE_BULKCREATEPOSITIONS_RESPONSE = _descriptor.Descriptor(
@@ -402,8 +445,8 @@ _RESUMESERVICE_BULKCREATEPOSITIONS_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=937,
-  serialized_end=1022,
+  serialized_start=1251,
+  serialized_end=1336,
 )
 
 _RESUMESERVICE_BULKCREATEPOSITIONS = _descriptor.Descriptor(
@@ -424,8 +467,8 @@ _RESUMESERVICE_BULKCREATEPOSITIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=828,
-  serialized_end=1022,
+  serialized_start=1142,
+  serialized_end=1336,
 )
 
 _RESUMESERVICE_CREATECOMPANY_REQUEST = _descriptor.Descriptor(
@@ -453,8 +496,8 @@ _RESUMESERVICE_CREATECOMPANY_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1042,
-  serialized_end=1123,
+  serialized_start=1356,
+  serialized_end=1437,
 )
 
 _RESUMESERVICE_CREATECOMPANY_RESPONSE = _descriptor.Descriptor(
@@ -482,8 +525,8 @@ _RESUMESERVICE_CREATECOMPANY_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1125,
-  serialized_end=1207,
+  serialized_start=1439,
+  serialized_end=1521,
 )
 
 _RESUMESERVICE_CREATECOMPANY = _descriptor.Descriptor(
@@ -504,8 +547,8 @@ _RESUMESERVICE_CREATECOMPANY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1025,
-  serialized_end=1207,
+  serialized_start=1339,
+  serialized_end=1521,
 )
 
 _RESUMESERVICE_GETRESUME_REQUEST = _descriptor.Descriptor(
@@ -533,8 +576,8 @@ _RESUMESERVICE_GETRESUME_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1222,
-  serialized_end=1248,
+  serialized_start=1536,
+  serialized_end=1562,
 )
 
 _RESUMESERVICE_GETRESUME_RESPONSE = _descriptor.Descriptor(
@@ -562,8 +605,8 @@ _RESUMESERVICE_GETRESUME_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1250,
-  serialized_end=1330,
+  serialized_start=1564,
+  serialized_end=1644,
 )
 
 _RESUMESERVICE_GETRESUME = _descriptor.Descriptor(
@@ -584,8 +627,8 @@ _RESUMESERVICE_GETRESUME = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1209,
-  serialized_end=1330,
+  serialized_start=1523,
+  serialized_end=1644,
 )
 
 _RESUMESERVICE = _descriptor.Descriptor(
@@ -607,13 +650,18 @@ _RESUMESERVICE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=56,
-  serialized_end=1330,
+  serialized_end=1644,
 )
 
+_RESUMESERVICE_CONTAINERS_APPROXIMATEDATE.containing_type = _RESUMESERVICE_CONTAINERS
 _RESUMESERVICE_CONTAINERS_RESUME.fields_by_name['educations'].message_type = _RESUMESERVICE_CONTAINERS_EDUCATION
 _RESUMESERVICE_CONTAINERS_RESUME.fields_by_name['positions'].message_type = _RESUMESERVICE_CONTAINERS_POSITION
 _RESUMESERVICE_CONTAINERS_RESUME.containing_type = _RESUMESERVICE_CONTAINERS
+_RESUMESERVICE_CONTAINERS_EDUCATION.fields_by_name['start_date'].message_type = _RESUMESERVICE_CONTAINERS_APPROXIMATEDATE
+_RESUMESERVICE_CONTAINERS_EDUCATION.fields_by_name['end_date'].message_type = _RESUMESERVICE_CONTAINERS_APPROXIMATEDATE
 _RESUMESERVICE_CONTAINERS_EDUCATION.containing_type = _RESUMESERVICE_CONTAINERS
+_RESUMESERVICE_CONTAINERS_POSITION.fields_by_name['start_date'].message_type = _RESUMESERVICE_CONTAINERS_APPROXIMATEDATE
+_RESUMESERVICE_CONTAINERS_POSITION.fields_by_name['end_date'].message_type = _RESUMESERVICE_CONTAINERS_APPROXIMATEDATE
 _RESUMESERVICE_CONTAINERS_POSITION.fields_by_name['company'].message_type = _RESUMESERVICE_CONTAINERS_COMPANY
 _RESUMESERVICE_CONTAINERS_POSITION.containing_type = _RESUMESERVICE_CONTAINERS
 _RESUMESERVICE_CONTAINERS_COMPANY.containing_type = _RESUMESERVICE_CONTAINERS
@@ -642,6 +690,13 @@ DESCRIPTOR.message_types_by_name['ResumeService'] = _RESUMESERVICE
 ResumeService = _reflection.GeneratedProtocolMessageType('ResumeService', (_message.Message,), dict(
 
   Containers = _reflection.GeneratedProtocolMessageType('Containers', (_message.Message,), dict(
+
+    ApproximateDate = _reflection.GeneratedProtocolMessageType('ApproximateDate', (_message.Message,), dict(
+      DESCRIPTOR = _RESUMESERVICE_CONTAINERS_APPROXIMATEDATE,
+      __module__ = 'protobufs.resume_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.resume_service.ResumeService.Containers.ApproximateDate)
+      ))
+    ,
 
     Resume = _reflection.GeneratedProtocolMessageType('Resume', (_message.Message,), dict(
       DESCRIPTOR = _RESUMESERVICE_CONTAINERS_RESUME,
@@ -765,6 +820,7 @@ ResumeService = _reflection.GeneratedProtocolMessageType('ResumeService', (_mess
   ))
 _sym_db.RegisterMessage(ResumeService)
 _sym_db.RegisterMessage(ResumeService.Containers)
+_sym_db.RegisterMessage(ResumeService.Containers.ApproximateDate)
 _sym_db.RegisterMessage(ResumeService.Containers.Resume)
 _sym_db.RegisterMessage(ResumeService.Containers.Education)
 _sym_db.RegisterMessage(ResumeService.Containers.Position)

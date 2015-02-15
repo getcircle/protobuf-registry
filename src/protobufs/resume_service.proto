@@ -6,6 +6,12 @@ message ResumeService {
 
     message Containers {
 
+        message ApproximateDate {
+            optional uint32 year = 1;
+            optional uint32 month = 2;
+            optional uint32 day = 3;
+        }
+
         message Resume {
             optional string user_id = 1;
             repeated Education educations = 2;
@@ -15,8 +21,8 @@ message ResumeService {
         message Education {
             optional string id = 1;
             optional string school_name = 2;
-            optional string start_date = 3;
-            optional string end_date = 4;
+            optional ApproximateDate start_date = 3;
+            optional ApproximateDate end_date = 4;
             optional string notes = 5;
             optional string user_id = 6;
         }
@@ -24,8 +30,8 @@ message ResumeService {
         message Position {
             optional string id = 1;
             optional string title = 2;
-            optional string start_date = 3;
-            optional string end_date = 4;
+            optional ApproximateDate start_date = 3;
+            optional ApproximateDate end_date = 4;
             optional string summary = 5;
             optional Company company = 6;
             optional string user_id = 7;
