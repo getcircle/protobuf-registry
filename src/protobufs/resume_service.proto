@@ -26,6 +26,8 @@ message ResumeService {
             optional string notes = 5;
             optional string user_id = 6;
             optional string activities = 7;
+            optional string field_of_study = 8;
+            optional string degree = 9;
         }
 
         message Position {

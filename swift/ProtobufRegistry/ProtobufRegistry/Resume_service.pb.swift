@@ -631,6 +631,8 @@ final public class ResumeService : GeneratedMessage {
                  case "notes": return notes
                  case "user_id": return user_id
                  case "activities": return activities
+                 case "field_of_study": return field_of_study
+                 case "degree": return degree
                  default: return nil
                  }
           }
@@ -653,6 +655,12 @@ final public class ResumeService : GeneratedMessage {
 
           public private(set) var hasActivities:Bool = false
           public private(set) var activities:String = ""
+
+          public private(set) var hasFieldOfStudy:Bool = false
+          public private(set) var field_of_study:String = ""
+
+          public private(set) var hasDegree:Bool = false
+          public private(set) var degree:String = ""
 
           required public init() {
                super.init()
@@ -681,6 +689,12 @@ final public class ResumeService : GeneratedMessage {
             }
             if hasActivities {
               output.writeString(7, value:activities)
+            }
+            if hasFieldOfStudy {
+              output.writeString(8, value:field_of_study)
+            }
+            if hasDegree {
+              output.writeString(9, value:degree)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -711,6 +725,12 @@ final public class ResumeService : GeneratedMessage {
             }
             if hasActivities {
               size += WireFormat.computeStringSize(7, value:activities)
+            }
+            if hasFieldOfStudy {
+              size += WireFormat.computeStringSize(8, value:field_of_study)
+            }
+            if hasDegree {
+              size += WireFormat.computeStringSize(9, value:degree)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -778,6 +798,12 @@ final public class ResumeService : GeneratedMessage {
             if hasActivities {
               output += "\(indent) activities: \(activities) \n"
             }
+            if hasFieldOfStudy {
+              output += "\(indent) field_of_study: \(field_of_study) \n"
+            }
+            if hasDegree {
+              output += "\(indent) degree: \(degree) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -803,6 +829,12 @@ final public class ResumeService : GeneratedMessage {
                   }
                   if hasActivities {
                      hashCode = (hashCode &* 31) &+ activities.hashValue
+                  }
+                  if hasFieldOfStudy {
+                     hashCode = (hashCode &* 31) &+ field_of_study.hashValue
+                  }
+                  if hasDegree {
+                     hashCode = (hashCode &* 31) &+ degree.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -993,6 +1025,44 @@ final public class ResumeService : GeneratedMessage {
                builderResult.activities = ""
                return self
           }
+          public var hasFieldOfStudy:Bool {
+               get {
+                    return builderResult.hasFieldOfStudy
+               }
+          }
+          public var field_of_study:String {
+               get {
+                    return builderResult.field_of_study
+               }
+               set (value) {
+                   builderResult.hasFieldOfStudy = true
+                   builderResult.field_of_study = value
+               }
+          }
+          public func clearFieldOfStudy() -> ResumeService.Containers.EducationBuilder{
+               builderResult.hasFieldOfStudy = false
+               builderResult.field_of_study = ""
+               return self
+          }
+          public var hasDegree:Bool {
+               get {
+                    return builderResult.hasDegree
+               }
+          }
+          public var degree:String {
+               get {
+                    return builderResult.degree
+               }
+               set (value) {
+                   builderResult.hasDegree = true
+                   builderResult.degree = value
+               }
+          }
+          public func clearDegree() -> ResumeService.Containers.EducationBuilder{
+               builderResult.hasDegree = false
+               builderResult.degree = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -1034,6 +1104,12 @@ final public class ResumeService : GeneratedMessage {
             }
             if other.hasActivities {
                  activities = other.activities
+            }
+            if other.hasFieldOfStudy {
+                 field_of_study = other.field_of_study
+            }
+            if other.hasDegree {
+                 degree = other.degree
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -1080,6 +1156,12 @@ final public class ResumeService : GeneratedMessage {
 
               case 58 :
                 activities = input.readString()
+
+              case 66 :
+                field_of_study = input.readString()
+
+              case 74 :
+                degree = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
