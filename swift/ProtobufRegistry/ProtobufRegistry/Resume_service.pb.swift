@@ -630,6 +630,7 @@ final public class ResumeService : GeneratedMessage {
                  case "end_date": return end_date
                  case "notes": return notes
                  case "user_id": return user_id
+                 case "activities": return activities
                  default: return nil
                  }
           }
@@ -649,6 +650,9 @@ final public class ResumeService : GeneratedMessage {
 
           public private(set) var hasUserId:Bool = false
           public private(set) var user_id:String = ""
+
+          public private(set) var hasActivities:Bool = false
+          public private(set) var activities:String = ""
 
           required public init() {
                super.init()
@@ -674,6 +678,9 @@ final public class ResumeService : GeneratedMessage {
             }
             if hasUserId {
               output.writeString(6, value:user_id)
+            }
+            if hasActivities {
+              output.writeString(7, value:activities)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -701,6 +708,9 @@ final public class ResumeService : GeneratedMessage {
             }
             if hasUserId {
               size += WireFormat.computeStringSize(6, value:user_id)
+            }
+            if hasActivities {
+              size += WireFormat.computeStringSize(7, value:activities)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -765,6 +775,9 @@ final public class ResumeService : GeneratedMessage {
             if hasUserId {
               output += "\(indent) user_id: \(user_id) \n"
             }
+            if hasActivities {
+              output += "\(indent) activities: \(activities) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -787,6 +800,9 @@ final public class ResumeService : GeneratedMessage {
                   }
                   if hasUserId {
                      hashCode = (hashCode &* 31) &+ user_id.hashValue
+                  }
+                  if hasActivities {
+                     hashCode = (hashCode &* 31) &+ activities.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -958,6 +974,25 @@ final public class ResumeService : GeneratedMessage {
                builderResult.user_id = ""
                return self
           }
+          public var hasActivities:Bool {
+               get {
+                    return builderResult.hasActivities
+               }
+          }
+          public var activities:String {
+               get {
+                    return builderResult.activities
+               }
+               set (value) {
+                   builderResult.hasActivities = true
+                   builderResult.activities = value
+               }
+          }
+          public func clearActivities() -> ResumeService.Containers.EducationBuilder{
+               builderResult.hasActivities = false
+               builderResult.activities = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -996,6 +1031,9 @@ final public class ResumeService : GeneratedMessage {
             }
             if other.hasUserId {
                  user_id = other.user_id
+            }
+            if other.hasActivities {
+                 activities = other.activities
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -1039,6 +1077,9 @@ final public class ResumeService : GeneratedMessage {
 
               case 50 :
                 user_id = input.readString()
+
+              case 58 :
+                activities = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
