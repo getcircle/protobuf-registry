@@ -79,16 +79,6 @@ message UserService {
         }
     }
 
-    message BulkUpdateUsers {
-        message Request {
-            repeated Containers.User users = 1;
-        }
-
-        message Response {
-            repeated Containers.User users = 1;
-        }
-    }
-
     message GetUser {
         message Request {
             oneof lookup_key {
