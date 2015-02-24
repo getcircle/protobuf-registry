@@ -52,6 +52,16 @@ public var UserServiceRequests_get_identities:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.UserServiceRequests_get_identitiesStatic
    }
 }
+public var UserServiceRequests_bulk_create_users:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.UserServiceRequests_bulk_create_usersStatic
+   }
+}
+public var UserServiceRequests_bulk_update_users:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.UserServiceRequests_bulk_update_usersStatic
+   }
+}
 public var OrganizationServiceRequests_create_organization:ConcreateExtensionField {
    get {
        return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_create_organizationStatic
@@ -182,6 +192,16 @@ public var ProfileServiceRequests_get_active_skills:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_get_active_skillsStatic
    }
 }
+public var ProfileServiceRequests_bulk_create_profiles:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_bulk_create_profilesStatic
+   }
+}
+public var ProfileServiceRequests_bulk_update_profiles:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_bulk_update_profilesStatic
+   }
+}
 public var SearchServiceRequests_search:ConcreateExtensionField {
    get {
        return RequestRegistryRoot.sharedInstance.SearchServiceRequests_searchStatic
@@ -269,6 +289,8 @@ public struct RequestRegistryRoot {
   var UserServiceRequests_get_authorization_instructionsStatic:ConcreateExtensionField
   var UserServiceRequests_complete_authorizationStatic:ConcreateExtensionField
   var UserServiceRequests_get_identitiesStatic:ConcreateExtensionField
+  var UserServiceRequests_bulk_create_usersStatic:ConcreateExtensionField
+  var UserServiceRequests_bulk_update_usersStatic:ConcreateExtensionField
   var OrganizationServiceRequests_create_organizationStatic:ConcreateExtensionField
   var OrganizationServiceRequests_create_teamStatic:ConcreateExtensionField
   var OrganizationServiceRequests_create_addressStatic:ConcreateExtensionField
@@ -295,6 +317,8 @@ public struct RequestRegistryRoot {
   var ProfileServiceRequests_get_upcoming_birthdaysStatic:ConcreateExtensionField
   var ProfileServiceRequests_get_recent_hiresStatic:ConcreateExtensionField
   var ProfileServiceRequests_get_active_skillsStatic:ConcreateExtensionField
+  var ProfileServiceRequests_bulk_create_profilesStatic:ConcreateExtensionField
+  var ProfileServiceRequests_bulk_update_profilesStatic:ConcreateExtensionField
   var SearchServiceRequests_searchStatic:ConcreateExtensionField
   var LandingServiceRequests_get_categoriesStatic:ConcreateExtensionField
   var LandingServiceRequests_get_organization_categoriesStatic:ConcreateExtensionField
@@ -322,6 +346,8 @@ public struct RequestRegistryRoot {
     UserServiceRequests_get_authorization_instructionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 107, defaultValue:UserService.GetAuthorizationInstructions.Request(), messageOrGroupClass:UserService.GetAuthorizationInstructions.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     UserServiceRequests_complete_authorizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 108, defaultValue:UserService.CompleteAuthorization.Request(), messageOrGroupClass:UserService.CompleteAuthorization.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     UserServiceRequests_get_identitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 109, defaultValue:UserService.GetIdentities.Request(), messageOrGroupClass:UserService.GetIdentities.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    UserServiceRequests_bulk_create_usersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 110, defaultValue:UserService.BulkCreateUsers.Response(), messageOrGroupClass:UserService.BulkCreateUsers.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    UserServiceRequests_bulk_update_usersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 111, defaultValue:UserService.BulkUpdateUsers.Response(), messageOrGroupClass:UserService.BulkUpdateUsers.Response.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     OrganizationServiceRequests_create_organizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 200, defaultValue:OrganizationService.CreateOrganization.Request(), messageOrGroupClass:OrganizationService.CreateOrganization.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     OrganizationServiceRequests_create_teamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 201, defaultValue:OrganizationService.CreateTeam.Request(), messageOrGroupClass:OrganizationService.CreateTeam.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     OrganizationServiceRequests_create_addressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 202, defaultValue:OrganizationService.CreateAddress.Request(), messageOrGroupClass:OrganizationService.CreateAddress.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -348,6 +374,8 @@ public struct RequestRegistryRoot {
     ProfileServiceRequests_get_upcoming_birthdaysStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 312, defaultValue:ProfileService.GetUpcomingBirthdays.Request(), messageOrGroupClass:ProfileService.GetUpcomingBirthdays.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_get_recent_hiresStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 313, defaultValue:ProfileService.GetRecentHires.Request(), messageOrGroupClass:ProfileService.GetRecentHires.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_get_active_skillsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 314, defaultValue:ProfileService.GetActiveSkills.Request(), messageOrGroupClass:ProfileService.GetActiveSkills.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ProfileServiceRequests_bulk_create_profilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 315, defaultValue:ProfileService.BulkCreateProfiles.Request(), messageOrGroupClass:ProfileService.BulkCreateProfiles.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    ProfileServiceRequests_bulk_update_profilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 316, defaultValue:ProfileService.BulkUpdateProfiles.Request(), messageOrGroupClass:ProfileService.BulkUpdateProfiles.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     SearchServiceRequests_searchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 400, defaultValue:SearchService.Search.Request(), messageOrGroupClass:SearchService.Search.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     LandingServiceRequests_get_categoriesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 500, defaultValue:LandingService.GetCategories.Request(), messageOrGroupClass:LandingService.GetCategories.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     LandingServiceRequests_get_organization_categoriesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 501, defaultValue:LandingService.GetOrganizationCategories.Request(), messageOrGroupClass:LandingService.GetOrganizationCategories.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -385,6 +413,8 @@ public struct RequestRegistryRoot {
     registry.addExtension(UserServiceRequests_get_authorization_instructionsStatic)
     registry.addExtension(UserServiceRequests_complete_authorizationStatic)
     registry.addExtension(UserServiceRequests_get_identitiesStatic)
+    registry.addExtension(UserServiceRequests_bulk_create_usersStatic)
+    registry.addExtension(UserServiceRequests_bulk_update_usersStatic)
     registry.addExtension(OrganizationServiceRequests_create_organizationStatic)
     registry.addExtension(OrganizationServiceRequests_create_teamStatic)
     registry.addExtension(OrganizationServiceRequests_create_addressStatic)
@@ -411,6 +441,8 @@ public struct RequestRegistryRoot {
     registry.addExtension(ProfileServiceRequests_get_upcoming_birthdaysStatic)
     registry.addExtension(ProfileServiceRequests_get_recent_hiresStatic)
     registry.addExtension(ProfileServiceRequests_get_active_skillsStatic)
+    registry.addExtension(ProfileServiceRequests_bulk_create_profilesStatic)
+    registry.addExtension(ProfileServiceRequests_bulk_update_profilesStatic)
     registry.addExtension(SearchServiceRequests_searchStatic)
     registry.addExtension(LandingServiceRequests_get_categoriesStatic)
     registry.addExtension(LandingServiceRequests_get_organization_categoriesStatic)
@@ -528,6 +560,12 @@ final public class UserServiceRequests : GeneratedMessage {
   }
   public class func get_identities() -> ConcreateExtensionField {
        return UserServiceRequests_get_identities
+  }
+  public class func bulk_create_users() -> ConcreateExtensionField {
+       return UserServiceRequests_bulk_create_users
+  }
+  public class func bulk_update_users() -> ConcreateExtensionField {
+       return UserServiceRequests_bulk_update_users
   }
   required public init() {
        super.init()
@@ -896,6 +934,12 @@ final public class ProfileServiceRequests : GeneratedMessage {
   }
   public class func get_active_skills() -> ConcreateExtensionField {
        return ProfileServiceRequests_get_active_skills
+  }
+  public class func bulk_create_profiles() -> ConcreateExtensionField {
+       return ProfileServiceRequests_bulk_create_profiles
+  }
+  public class func bulk_update_profiles() -> ConcreateExtensionField {
+       return ProfileServiceRequests_bulk_update_profiles
   }
   required public init() {
        super.init()

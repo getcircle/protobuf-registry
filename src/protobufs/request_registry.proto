@@ -23,6 +23,8 @@ message UserServiceRequests {
         optional main.user_service.UserService.GetAuthorizationInstructions.Request get_authorization_instructions = 107;
         optional main.user_service.UserService.CompleteAuthorization.Request complete_authorization = 108;
         optional main.user_service.UserService.GetIdentities.Request get_identities = 109;
+        optional main.user_service.UserService.BulkCreateUsers.Response bulk_create_users = 110;
+        optional main.user_service.UserService.BulkUpdateUsers.Response bulk_update_users = 111;
     }
 }
 
@@ -59,6 +61,8 @@ message ProfileServiceRequests {
         optional main.profile_service.ProfileService.GetUpcomingBirthdays.Request get_upcoming_birthdays = 312;
         optional main.profile_service.ProfileService.GetRecentHires.Request get_recent_hires = 313;
         optional main.profile_service.ProfileService.GetActiveSkills.Request get_active_skills = 314;
+        optional main.profile_service.ProfileService.BulkCreateProfiles.Request bulk_create_profiles = 315;
+        optional main.profile_service.ProfileService.BulkUpdateProfiles.Request bulk_update_profiles = 316;
     }
 }
 
