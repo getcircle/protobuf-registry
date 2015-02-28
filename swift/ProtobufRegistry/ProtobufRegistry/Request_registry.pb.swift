@@ -267,6 +267,26 @@ public var ResumeServiceRequests_bulk_create_companies:ConcreateExtensionField {
        return RequestRegistryRoot.sharedInstance.ResumeServiceRequests_bulk_create_companiesStatic
    }
 }
+public var AppreciationServiceRequests_create_appreciation:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.AppreciationServiceRequests_create_appreciationStatic
+   }
+}
+public var AppreciationServiceRequests_get_appreciation:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.AppreciationServiceRequests_get_appreciationStatic
+   }
+}
+public var AppreciationServiceRequests_delete_appreciation:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.AppreciationServiceRequests_delete_appreciationStatic
+   }
+}
+public var AppreciationServiceRequests_update_appreciation:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.AppreciationServiceRequests_update_appreciationStatic
+   }
+}
 public struct RequestRegistryRoot {
   public static var sharedInstance : RequestRegistryRoot {
    struct Static {
@@ -327,6 +347,10 @@ public struct RequestRegistryRoot {
   var ResumeServiceRequests_create_companyStatic:ConcreateExtensionField
   var ResumeServiceRequests_get_resumeStatic:ConcreateExtensionField
   var ResumeServiceRequests_bulk_create_companiesStatic:ConcreateExtensionField
+  var AppreciationServiceRequests_create_appreciationStatic:ConcreateExtensionField
+  var AppreciationServiceRequests_get_appreciationStatic:ConcreateExtensionField
+  var AppreciationServiceRequests_delete_appreciationStatic:ConcreateExtensionField
+  var AppreciationServiceRequests_update_appreciationStatic:ConcreateExtensionField
   public var extensionRegistry:ExtensionRegistry
 
   init() {
@@ -383,9 +407,14 @@ public struct RequestRegistryRoot {
     ResumeServiceRequests_create_companyStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 802, defaultValue:ResumeService.CreateCompany.Request(), messageOrGroupClass:ResumeService.CreateCompany.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ResumeServiceRequests_get_resumeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 803, defaultValue:ResumeService.GetResume.Request(), messageOrGroupClass:ResumeService.GetResume.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ResumeServiceRequests_bulk_create_companiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 804, defaultValue:ResumeService.BulkCreateCompanies.Request(), messageOrGroupClass:ResumeService.BulkCreateCompanies.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    AppreciationServiceRequests_create_appreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 900, defaultValue:AppreciationService.CreateAppreciation.Request(), messageOrGroupClass:AppreciationService.CreateAppreciation.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    AppreciationServiceRequests_get_appreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 901, defaultValue:AppreciationService.GetAppreciation.Request(), messageOrGroupClass:AppreciationService.GetAppreciation.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    AppreciationServiceRequests_delete_appreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 902, defaultValue:AppreciationService.DeleteAppreciation.Request(), messageOrGroupClass:AppreciationService.DeleteAppreciation.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    AppreciationServiceRequests_update_appreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 903, defaultValue:AppreciationService.UpdateAppreciation.Request(), messageOrGroupClass:AppreciationService.UpdateAppreciation.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     extensionRegistry = ExtensionRegistry()
     registerAllExtensions(extensionRegistry)
     SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+    AppreciationServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     LandingServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     MediaServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     NoteServiceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -449,6 +478,10 @@ public struct RequestRegistryRoot {
     registry.addExtension(ResumeServiceRequests_create_companyStatic)
     registry.addExtension(ResumeServiceRequests_get_resumeStatic)
     registry.addExtension(ResumeServiceRequests_bulk_create_companiesStatic)
+    registry.addExtension(AppreciationServiceRequests_create_appreciationStatic)
+    registry.addExtension(AppreciationServiceRequests_get_appreciationStatic)
+    registry.addExtension(AppreciationServiceRequests_delete_appreciationStatic)
+    registry.addExtension(AppreciationServiceRequests_update_appreciationStatic)
   }
 }
 
@@ -509,6 +542,14 @@ public func == (lhs: NoteServiceRequests, rhs: NoteServiceRequests) -> Bool {
 }
 
 public func == (lhs: ResumeServiceRequests, rhs: ResumeServiceRequests) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
+public func == (lhs: AppreciationServiceRequests, rhs: AppreciationServiceRequests) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -1835,6 +1876,163 @@ final public class ResumeServiceRequestsBuilder : GeneratedMessageBuilder {
   }
 }
 
+final public class AppreciationServiceRequests : GeneratedMessage {
+  override public subscript (key: String) -> Any? {
+         switch key {
+         default: return nil
+         }
+  }
+
+  public class func create_appreciation() -> ConcreateExtensionField {
+       return AppreciationServiceRequests_create_appreciation
+  }
+  public class func get_appreciation() -> ConcreateExtensionField {
+       return AppreciationServiceRequests_get_appreciation
+  }
+  public class func delete_appreciation() -> ConcreateExtensionField {
+       return AppreciationServiceRequests_delete_appreciation
+  }
+  public class func update_appreciation() -> ConcreateExtensionField {
+       return AppreciationServiceRequests_update_appreciation
+  }
+  required public init() {
+       super.init()
+  }
+  override public func isInitialized() -> Bool {
+   return true
+  }
+  override public func writeToCodedOutputStream(output:CodedOutputStream) {
+    unknownFields.writeToCodedOutputStream(output)
+  }
+  override public func serializedSize() -> Int32 {
+    var size:Int32 = memoizedSerializedSize
+    if size != -1 {
+     return size
+    }
+
+    size = 0
+    size += unknownFields.serializedSize()
+    memoizedSerializedSize = size
+    return size
+  }
+  public class func parseFromData(data:[Byte]) -> AppreciationServiceRequests {
+    return AppreciationServiceRequests.builder().mergeFromData(data).build()
+  }
+  public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> AppreciationServiceRequests {
+    return AppreciationServiceRequests.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFromInputStream(input:NSInputStream) -> AppreciationServiceRequests {
+    return AppreciationServiceRequests.builder().mergeFromInputStream(input).build()
+  }
+  public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->AppreciationServiceRequests {
+    return AppreciationServiceRequests.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFromCodedInputStream(input:CodedInputStream) -> AppreciationServiceRequests {
+    return AppreciationServiceRequests.builder().mergeFromCodedInputStream(input).build()
+  }
+  public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> AppreciationServiceRequests {
+    return AppreciationServiceRequests.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+  }
+  public class func builder() -> AppreciationServiceRequestsBuilder {
+    return AppreciationServiceRequests.classBuilder() as AppreciationServiceRequestsBuilder
+  }
+  public func builder() -> AppreciationServiceRequestsBuilder {
+    return classBuilder() as AppreciationServiceRequestsBuilder
+  }
+  public override class func classBuilder() -> MessageBuilder {
+    return AppreciationServiceRequestsBuilder()
+  }
+  public override func classBuilder() -> MessageBuilder {
+    return AppreciationServiceRequests.builder()
+  }
+  public func toBuilder() -> AppreciationServiceRequestsBuilder {
+    return AppreciationServiceRequests.builderWithPrototype(self)
+  }
+  public class func builderWithPrototype(prototype:AppreciationServiceRequests) -> AppreciationServiceRequestsBuilder {
+    return AppreciationServiceRequests.builder().mergeFrom(prototype)
+  }
+  override public func writeDescriptionTo(inout output:String, indent:String) {
+    unknownFields.writeDescriptionTo(&output, indent:indent)
+  }
+  override public var hashValue:Int {
+      get {
+          var hashCode:Int = 7
+          hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+          return hashCode
+      }
+  }
+
+
+  //Meta information declaration start
+
+  override public class func className() -> String {
+      return "AppreciationServiceRequests"
+  }
+  override public func className() -> String {
+      return "AppreciationServiceRequests"
+  }
+  override public func classMetaType() -> GeneratedMessage.Type {
+      return AppreciationServiceRequests.self
+  }
+
+
+  //Meta information declaration end
+
+}
+
+final public class AppreciationServiceRequestsBuilder : GeneratedMessageBuilder {
+  private var builderResult:AppreciationServiceRequests
+
+  required override public init () {
+     builderResult = AppreciationServiceRequests()
+     super.init()
+  }
+  override public var internalGetResult:GeneratedMessage {
+       get {
+          return builderResult
+       }
+  }
+  public override func clear() -> AppreciationServiceRequestsBuilder {
+    builderResult = AppreciationServiceRequests()
+    return self
+  }
+  public override func clone() -> AppreciationServiceRequestsBuilder {
+    return AppreciationServiceRequests.builderWithPrototype(builderResult)
+  }
+  public override func build() -> AppreciationServiceRequests {
+       checkInitialized()
+       return buildPartial()
+  }
+  public func buildPartial() -> AppreciationServiceRequests {
+    var returnMe:AppreciationServiceRequests = builderResult
+    return returnMe
+  }
+  public func mergeFrom(other:AppreciationServiceRequests) -> AppreciationServiceRequestsBuilder {
+    mergeUnknownFields(other.unknownFields)
+    return self
+  }
+  public override func mergeFromCodedInputStream(input:CodedInputStream) ->AppreciationServiceRequestsBuilder {
+       return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+  }
+  public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> AppreciationServiceRequestsBuilder {
+    var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+    while (true) {
+      var tag = input.readTag()
+      switch tag {
+      case 0: 
+        self.unknownFields = unknownFieldsBuilder.build()
+        return self
+
+      default:
+        if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+           unknownFields = unknownFieldsBuilder.build()
+           return self
+        }
+      }
+    }
+  }
+}
+
 //Class extensions: NSData
 
 
@@ -1932,6 +2130,18 @@ public extension ResumeServiceRequests {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return ResumeServiceRequests.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension AppreciationServiceRequests {
+    class func parseFromNSData(data:NSData) -> AppreciationServiceRequests {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return AppreciationServiceRequests.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> AppreciationServiceRequests {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return AppreciationServiceRequests.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 
