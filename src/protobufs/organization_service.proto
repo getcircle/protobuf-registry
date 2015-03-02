@@ -47,6 +47,7 @@ message OrganizationService {
             optional string id = 1;
             optional string name = 2;
             optional Address address = 3;
+            optional string organization_id = 4;
         }
 
     }

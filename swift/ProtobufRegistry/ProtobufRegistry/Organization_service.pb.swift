@@ -1771,6 +1771,7 @@ final public class OrganizationService : GeneratedMessage {
                  case "id": return id
                  case "name": return name
                  case "address": return address
+                 case "organization_id": return organization_id
                  default: return nil
                  }
           }
@@ -1783,6 +1784,9 @@ final public class OrganizationService : GeneratedMessage {
 
           public private(set) var hasAddress:Bool = false
           public private(set) var address:OrganizationService.Containers.Address = OrganizationService.Containers.Address()
+          public private(set) var hasOrganizationId:Bool = false
+          public private(set) var organization_id:String = ""
+
           required public init() {
                super.init()
           }
@@ -1798,6 +1802,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasAddress {
               output.writeMessage(3, value:address)
+            }
+            if hasOrganizationId {
+              output.writeString(4, value:organization_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -1816,6 +1823,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasAddress {
               size += WireFormat.computeMessageSize(3, value:address)
+            }
+            if hasOrganizationId {
+              size += WireFormat.computeStringSize(4, value:organization_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -1869,6 +1879,9 @@ final public class OrganizationService : GeneratedMessage {
               address.writeDescriptionTo(&output, indent:"\(indent)  ")
               output += "\(indent) }\n"
             }
+            if hasOrganizationId {
+              output += "\(indent) organization_id: \(organization_id) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -1882,6 +1895,9 @@ final public class OrganizationService : GeneratedMessage {
                   }
                   if hasAddress {
                     hashCode = (hashCode &* 31) &+ address.hashValue
+                  }
+                  if hasOrganizationId {
+                     hashCode = (hashCode &* 31) &+ organization_id.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -1983,6 +1999,25 @@ final public class OrganizationService : GeneratedMessage {
             builderResult.address = OrganizationService.Containers.Address()
             return self
           }
+          public var hasOrganizationId:Bool {
+               get {
+                    return builderResult.hasOrganizationId
+               }
+          }
+          public var organization_id:String {
+               get {
+                    return builderResult.organization_id
+               }
+               set (value) {
+                   builderResult.hasOrganizationId = true
+                   builderResult.organization_id = value
+               }
+          }
+          public func clearOrganizationId() -> OrganizationService.Containers.LocationBuilder{
+               builderResult.hasOrganizationId = false
+               builderResult.organization_id = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -2013,6 +2048,9 @@ final public class OrganizationService : GeneratedMessage {
             if (other.hasAddress) {
                 mergeAddress(other.address)
             }
+            if other.hasOrganizationId {
+                 organization_id = other.organization_id
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -2041,6 +2079,9 @@ final public class OrganizationService : GeneratedMessage {
                 }
                 input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
                 address = subBuilder.buildPartial()
+
+              case 34 :
+                organization_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
