@@ -109,7 +109,6 @@ message OrganizationService {
 
         message Request {
             optional string organization_id = 1;
-            repeated string ids = 2;
         }
 
         message Response {
