@@ -4672,6 +4672,7 @@ final public class OrganizationService : GeneratedMessage {
           public private(set) var hasOrganizationId:Bool = false
           public private(set) var organization_id:String = ""
 
+          public private(set) var ids:Array<String> = Array<String>()
           required public init() {
                super.init()
           }
@@ -4681,6 +4682,11 @@ final public class OrganizationService : GeneratedMessage {
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
             if hasOrganizationId {
               output.writeString(1, value:organization_id)
+            }
+            if !ids.isEmpty {
+              for oneValueids in ids {
+                output.writeString(2, value:oneValueids)
+              }
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -4694,6 +4700,12 @@ final public class OrganizationService : GeneratedMessage {
             if hasOrganizationId {
               size += WireFormat.computeStringSize(1, value:organization_id)
             }
+            var dataSizeIds:Int32 = 0
+            for oneValueids in ids {
+                dataSizeIds += WireFormat.computeStringSizeNoTag(oneValueids)
+            }
+            size += dataSizeIds
+            size += 1 * Int32(ids.count)
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
             return size
@@ -4738,6 +4750,11 @@ final public class OrganizationService : GeneratedMessage {
             if hasOrganizationId {
               output += "\(indent) organization_id: \(organization_id) \n"
             }
+            var idsElementIndex:Int = 0
+            for oneValueids in ids  {
+                output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
+                idsElementIndex++
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -4745,6 +4762,9 @@ final public class OrganizationService : GeneratedMessage {
                   var hashCode:Int = 7
                   if hasOrganizationId {
                      hashCode = (hashCode &* 31) &+ organization_id.hashValue
+                  }
+                  for oneValueids in ids {
+                      hashCode = (hashCode &* 31) &+ oneValueids.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -4795,6 +4815,18 @@ final public class OrganizationService : GeneratedMessage {
                builderResult.organization_id = ""
                return self
           }
+          public var ids:Array<String> {
+               get {
+                   return builderResult.ids
+               }
+               set (array) {
+                   builderResult.ids = array
+               }
+          }
+          public func clearIds() -> OrganizationService.GetTeams.RequestBuilder {
+             builderResult.ids.removeAll(keepCapacity: false)
+             return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -4819,6 +4851,9 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasOrganizationId {
                  organization_id = other.organization_id
             }
+            if !other.ids.isEmpty {
+                builderResult.ids += other.ids
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -4836,6 +4871,9 @@ final public class OrganizationService : GeneratedMessage {
 
               case 10 :
                 organization_id = input.readString()
+
+              case 18 :
+                ids += [input.readString()]
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
