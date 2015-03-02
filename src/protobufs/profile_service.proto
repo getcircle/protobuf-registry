@@ -48,6 +48,10 @@ message ProfileService {
             optional string count = 2;
         }
 
+        message ProfileArray {
+            repeated Profile items = 1;
+        }
+
     }
 
     // MARK: - Actions

@@ -1814,6 +1814,196 @@ final public class ProfileService : GeneratedMessage {
 
       //Nested type declaration end
 
+
+
+      //Nested type declaration start
+
+        final public class ProfileArray : GeneratedMessage {
+          override public subscript (key: String) -> Any? {
+                 switch key {
+                 default: return nil
+                 }
+          }
+
+          public private(set) var items:Array<ProfileService.Containers.Profile>  = Array<ProfileService.Containers.Profile>()
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            for oneElementitems in items {
+                output.writeMessage(1, value:oneElementitems)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            for oneElementitems in items {
+                size += WireFormat.computeMessageSize(1, value:oneElementitems)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> ProfileService.Containers.ProfileArray {
+            return ProfileService.Containers.ProfileArray.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> ProfileService.Containers.ProfileArray {
+            return ProfileService.Containers.ProfileArray.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> ProfileService.Containers.ProfileArray {
+            return ProfileService.Containers.ProfileArray.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->ProfileService.Containers.ProfileArray {
+            return ProfileService.Containers.ProfileArray.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> ProfileService.Containers.ProfileArray {
+            return ProfileService.Containers.ProfileArray.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ProfileService.Containers.ProfileArray {
+            return ProfileService.Containers.ProfileArray.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> ProfileService.Containers.ProfileArrayBuilder {
+            return ProfileService.Containers.ProfileArray.classBuilder() as ProfileService.Containers.ProfileArrayBuilder
+          }
+          public func builder() -> ProfileService.Containers.ProfileArrayBuilder {
+            return classBuilder() as ProfileService.Containers.ProfileArrayBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return ProfileService.Containers.ProfileArrayBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return ProfileService.Containers.ProfileArray.builder()
+          }
+          public func toBuilder() -> ProfileService.Containers.ProfileArrayBuilder {
+            return ProfileService.Containers.ProfileArray.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:ProfileService.Containers.ProfileArray) -> ProfileService.Containers.ProfileArrayBuilder {
+            return ProfileService.Containers.ProfileArray.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            var itemsElementIndex:Int = 0
+            for oneElementitems in items {
+                output += "\(indent) items[\(itemsElementIndex)] {\n"
+                oneElementitems.writeDescriptionTo(&output, indent:"\(indent)  ")
+                output += "\(indent)}\n"
+                itemsElementIndex++
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  for oneElementitems in items {
+                      hashCode = (hashCode &* 31) &+ oneElementitems.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "ProfileService.Containers.ProfileArray"
+          }
+          override public func className() -> String {
+              return "ProfileService.Containers.ProfileArray"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return ProfileService.Containers.ProfileArray.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class ProfileArrayBuilder : GeneratedMessageBuilder {
+          private var builderResult:ProfileService.Containers.ProfileArray
+
+          required override public init () {
+             builderResult = ProfileService.Containers.ProfileArray()
+             super.init()
+          }
+          public var items:Array<ProfileService.Containers.Profile> {
+               get {
+                   return builderResult.items
+               }
+               set (value) {
+                   builderResult.items = value
+               }
+          }
+          public func clearItems() -> ProfileService.Containers.ProfileArrayBuilder {
+            builderResult.items.removeAll(keepCapacity: false)
+            return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> ProfileService.Containers.ProfileArrayBuilder {
+            builderResult = ProfileService.Containers.ProfileArray()
+            return self
+          }
+          public override func clone() -> ProfileService.Containers.ProfileArrayBuilder {
+            return ProfileService.Containers.ProfileArray.builderWithPrototype(builderResult)
+          }
+          public override func build() -> ProfileService.Containers.ProfileArray {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> ProfileService.Containers.ProfileArray {
+            var returnMe:ProfileService.Containers.ProfileArray = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:ProfileService.Containers.ProfileArray) -> ProfileService.Containers.ProfileArrayBuilder {
+            if !other.items.isEmpty  {
+               builderResult.items += other.items
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->ProfileService.Containers.ProfileArrayBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> ProfileService.Containers.ProfileArrayBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                var subBuilder = ProfileService.Containers.Profile.builder()
+                input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+                items += [subBuilder.buildPartial()]
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
       override public subscript (key: String) -> Any? {
              switch key {
              default: return nil
@@ -12254,6 +12444,18 @@ public extension ProfileService.Containers.Stats {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return ProfileService.Containers.Stats.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension ProfileService.Containers.ProfileArray {
+    class func parseFromNSData(data:NSData) -> ProfileService.Containers.ProfileArray {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ProfileService.Containers.ProfileArray.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> ProfileService.Containers.ProfileArray {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return ProfileService.Containers.ProfileArray.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension ProfileService.Containers {
