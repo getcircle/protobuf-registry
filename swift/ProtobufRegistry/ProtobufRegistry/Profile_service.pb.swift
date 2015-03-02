@@ -205,6 +205,7 @@ final public class ProfileService : GeneratedMessage {
                  case "hire_date": return hire_date
                  case "verified": return verified
                  case "about": return about
+                 case "location_id": return location_id
                  default: return nil
                  }
           }
@@ -259,6 +260,9 @@ final public class ProfileService : GeneratedMessage {
 
           public private(set) var hasAbout:Bool = false
           public private(set) var about:String = ""
+
+          public private(set) var hasLocationId:Bool = false
+          public private(set) var location_id:String = ""
 
           public private(set) var items:Array<ProfileService.Containers.ProfileItem>  = Array<ProfileService.Containers.ProfileItem>()
           required public init() {
@@ -322,6 +326,9 @@ final public class ProfileService : GeneratedMessage {
             if hasAbout {
               output.writeString(18, value:about)
             }
+            if hasLocationId {
+              output.writeString(19, value:location_id)
+            }
             unknownFields.writeToCodedOutputStream(output)
           }
           override public func serializedSize() -> Int32 {
@@ -384,6 +391,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasAbout {
               size += WireFormat.computeStringSize(18, value:about)
+            }
+            if hasLocationId {
+              size += WireFormat.computeStringSize(19, value:location_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -484,6 +494,9 @@ final public class ProfileService : GeneratedMessage {
             if hasAbout {
               output += "\(indent) about: \(about) \n"
             }
+            if hasLocationId {
+              output += "\(indent) location_id: \(location_id) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -542,6 +555,9 @@ final public class ProfileService : GeneratedMessage {
                   }
                   if hasAbout {
                      hashCode = (hashCode &* 31) &+ about.hashValue
+                  }
+                  if hasLocationId {
+                     hashCode = (hashCode &* 31) &+ location_id.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -908,6 +924,25 @@ final public class ProfileService : GeneratedMessage {
                builderResult.about = ""
                return self
           }
+          public var hasLocationId:Bool {
+               get {
+                    return builderResult.hasLocationId
+               }
+          }
+          public var location_id:String {
+               get {
+                    return builderResult.location_id
+               }
+               set (value) {
+                   builderResult.hasLocationId = true
+                   builderResult.location_id = value
+               }
+          }
+          public func clearLocationId() -> ProfileService.Containers.ProfileBuilder{
+               builderResult.hasLocationId = false
+               builderResult.location_id = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -983,6 +1018,9 @@ final public class ProfileService : GeneratedMessage {
             if other.hasAbout {
                  about = other.about
             }
+            if other.hasLocationId {
+                 location_id = other.location_id
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -1053,6 +1091,9 @@ final public class ProfileService : GeneratedMessage {
 
               case 146 :
                 about = input.readString()
+
+              case 154 :
+                location_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -4998,6 +5039,7 @@ final public class ProfileService : GeneratedMessage {
                  case "manager": return manager
                  case "team": return team
                  case "resume": return resume
+                 case "location": return location
                  default: return nil
                  }
           }
@@ -5012,6 +5054,8 @@ final public class ProfileService : GeneratedMessage {
           public private(set) var team:OrganizationService.Containers.Team = OrganizationService.Containers.Team()
           public private(set) var hasResume:Bool = false
           public private(set) var resume:ResumeService.Containers.Resume = ResumeService.Containers.Resume()
+          public private(set) var hasLocation:Bool = false
+          public private(set) var location:OrganizationService.Containers.Location = OrganizationService.Containers.Location()
           public private(set) var notes:Array<NoteService.Containers.Note>  = Array<NoteService.Containers.Note>()
           public private(set) var skills:Array<ProfileService.Containers.Skill>  = Array<ProfileService.Containers.Skill>()
           public private(set) var identities:Array<UserService.Containers.Identity>  = Array<UserService.Containers.Identity>()
@@ -5050,6 +5094,9 @@ final public class ProfileService : GeneratedMessage {
             if hasResume {
               output.writeMessage(9, value:resume)
             }
+            if hasLocation {
+              output.writeMessage(10, value:location)
+            }
             unknownFields.writeToCodedOutputStream(output)
           }
           override public func serializedSize() -> Int32 {
@@ -5085,6 +5132,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasResume {
               size += WireFormat.computeMessageSize(9, value:resume)
+            }
+            if hasLocation {
+              size += WireFormat.computeMessageSize(10, value:location)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -5180,6 +5230,11 @@ final public class ProfileService : GeneratedMessage {
               resume.writeDescriptionTo(&output, indent:"\(indent)  ")
               output += "\(indent) }\n"
             }
+            if hasLocation {
+              output += "\(indent) location {\n"
+              location.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -5211,6 +5266,9 @@ final public class ProfileService : GeneratedMessage {
                   }
                   if hasResume {
                     hashCode = (hashCode &* 31) &+ resume.hashValue
+                  }
+                  if hasLocation {
+                    hashCode = (hashCode &* 31) &+ location.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -5450,6 +5508,38 @@ final public class ProfileService : GeneratedMessage {
             builderResult.resume = ResumeService.Containers.Resume()
             return self
           }
+          public var hasLocation:Bool {
+               get {
+                   return builderResult.hasLocation
+               }
+          }
+          public var location:OrganizationService.Containers.Location {
+               get {
+                   return builderResult.location
+               }
+               set (value) {
+                   builderResult.hasLocation = true
+                   builderResult.location = value
+               }
+          }
+          public func setLocationBuilder(builderForValue:OrganizationService.Containers.LocationBuilder) -> ProfileService.GetExtendedProfile.ResponseBuilder {
+            location = builderForValue.build()
+            return self
+          }
+          public func mergeLocation(value:OrganizationService.Containers.Location) -> ProfileService.GetExtendedProfile.ResponseBuilder {
+            if (builderResult.hasLocation) {
+              builderResult.location = OrganizationService.Containers.Location.builderWithPrototype(builderResult.location).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.location = value
+            }
+            builderResult.hasLocation = true
+            return self
+          }
+          public func clearLocation() -> ProfileService.GetExtendedProfile.ResponseBuilder {
+            builderResult.hasLocation = false
+            builderResult.location = OrganizationService.Containers.Location()
+            return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -5497,6 +5587,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if (other.hasResume) {
                 mergeResume(other.resume)
+            }
+            if (other.hasLocation) {
+                mergeLocation(other.location)
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -5572,6 +5665,14 @@ final public class ProfileService : GeneratedMessage {
                 }
                 input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
                 resume = subBuilder.buildPartial()
+
+              case 82 :
+                var subBuilder:OrganizationService.Containers.LocationBuilder = OrganizationService.Containers.Location.builder()
+                if hasLocation {
+                  subBuilder.mergeFrom(location)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                location = subBuilder.buildPartial()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -7440,6 +7541,7 @@ final public class ProfileService : GeneratedMessage {
                  case "organization_id": return organization_id
                  case "skill_id": return skill_id
                  case "address_id": return address_id
+                 case "location_id": return location_id
                  default: return nil
                  }
           }
@@ -7455,6 +7557,9 @@ final public class ProfileService : GeneratedMessage {
 
           public private(set) var hasAddressId:Bool = false
           public private(set) var address_id:String = ""
+
+          public private(set) var hasLocationId:Bool = false
+          public private(set) var location_id:String = ""
 
           public private(set) var ids:Array<String> = Array<String>()
           required public init() {
@@ -7480,6 +7585,9 @@ final public class ProfileService : GeneratedMessage {
               for oneValueids in ids {
                 output.writeString(5, value:oneValueids)
               }
+            }
+            if hasLocationId {
+              output.writeString(6, value:location_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -7508,6 +7616,9 @@ final public class ProfileService : GeneratedMessage {
             }
             size += dataSizeIds
             size += 1 * Int32(ids.count)
+            if hasLocationId {
+              size += WireFormat.computeStringSize(6, value:location_id)
+            }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
             return size
@@ -7566,6 +7677,9 @@ final public class ProfileService : GeneratedMessage {
                 output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
                 idsElementIndex++
             }
+            if hasLocationId {
+              output += "\(indent) location_id: \(location_id) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -7585,6 +7699,9 @@ final public class ProfileService : GeneratedMessage {
                   }
                   for oneValueids in ids {
                       hashCode = (hashCode &* 31) &+ oneValueids.hashValue
+                  }
+                  if hasLocationId {
+                     hashCode = (hashCode &* 31) &+ location_id.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -7704,6 +7821,25 @@ final public class ProfileService : GeneratedMessage {
              builderResult.ids.removeAll(keepCapacity: false)
              return self
           }
+          public var hasLocationId:Bool {
+               get {
+                    return builderResult.hasLocationId
+               }
+          }
+          public var location_id:String {
+               get {
+                    return builderResult.location_id
+               }
+               set (value) {
+                   builderResult.hasLocationId = true
+                   builderResult.location_id = value
+               }
+          }
+          public func clearLocationId() -> ProfileService.GetProfiles.RequestBuilder{
+               builderResult.hasLocationId = false
+               builderResult.location_id = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -7740,6 +7876,9 @@ final public class ProfileService : GeneratedMessage {
             if !other.ids.isEmpty {
                 builderResult.ids += other.ids
             }
+            if other.hasLocationId {
+                 location_id = other.location_id
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -7769,6 +7908,9 @@ final public class ProfileService : GeneratedMessage {
 
               case 42 :
                 ids += [input.readString()]
+
+              case 50 :
+                location_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
