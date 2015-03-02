@@ -9761,14 +9761,10 @@ final public class OrganizationService : GeneratedMessage {
         final public class Request : GeneratedMessage {
           override public subscript (key: String) -> Any? {
                  switch key {
-                 case "organization_id": return organization_id
                  case "location_id": return location_id
                  default: return nil
                  }
           }
-
-          public private(set) var hasOrganizationId:Bool = false
-          public private(set) var organization_id:String = ""
 
           public private(set) var hasLocationId:Bool = false
           public private(set) var location_id:String = ""
@@ -9780,11 +9776,8 @@ final public class OrganizationService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
-            if hasOrganizationId {
-              output.writeString(1, value:organization_id)
-            }
             if hasLocationId {
-              output.writeString(2, value:location_id)
+              output.writeString(1, value:location_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -9795,11 +9788,8 @@ final public class OrganizationService : GeneratedMessage {
             }
 
             size = 0
-            if hasOrganizationId {
-              size += WireFormat.computeStringSize(1, value:organization_id)
-            }
             if hasLocationId {
-              size += WireFormat.computeStringSize(2, value:location_id)
+              size += WireFormat.computeStringSize(1, value:location_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -9842,9 +9832,6 @@ final public class OrganizationService : GeneratedMessage {
             return OrganizationService.GetExtendedLocation.Request.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
-            if hasOrganizationId {
-              output += "\(indent) organization_id: \(organization_id) \n"
-            }
             if hasLocationId {
               output += "\(indent) location_id: \(location_id) \n"
             }
@@ -9853,9 +9840,6 @@ final public class OrganizationService : GeneratedMessage {
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
-                  if hasOrganizationId {
-                     hashCode = (hashCode &* 31) &+ organization_id.hashValue
-                  }
                   if hasLocationId {
                      hashCode = (hashCode &* 31) &+ location_id.hashValue
                   }
@@ -9888,25 +9872,6 @@ final public class OrganizationService : GeneratedMessage {
           required override public init () {
              builderResult = OrganizationService.GetExtendedLocation.Request()
              super.init()
-          }
-          public var hasOrganizationId:Bool {
-               get {
-                    return builderResult.hasOrganizationId
-               }
-          }
-          public var organization_id:String {
-               get {
-                    return builderResult.organization_id
-               }
-               set (value) {
-                   builderResult.hasOrganizationId = true
-                   builderResult.organization_id = value
-               }
-          }
-          public func clearOrganizationId() -> OrganizationService.GetExtendedLocation.RequestBuilder{
-               builderResult.hasOrganizationId = false
-               builderResult.organization_id = ""
-               return self
           }
           public var hasLocationId:Bool {
                get {
@@ -9948,9 +9913,6 @@ final public class OrganizationService : GeneratedMessage {
             return returnMe
           }
           public func mergeFrom(other:OrganizationService.GetExtendedLocation.Request) -> OrganizationService.GetExtendedLocation.RequestBuilder {
-            if other.hasOrganizationId {
-                 organization_id = other.organization_id
-            }
             if other.hasLocationId {
                  location_id = other.location_id
             }
@@ -9970,9 +9932,6 @@ final public class OrganizationService : GeneratedMessage {
                 return self
 
               case 10 :
-                organization_id = input.readString()
-
-              case 18 :
                 location_id = input.readString()
 
               default:

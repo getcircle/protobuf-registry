@@ -43,7 +43,7 @@ message OrganizationServiceResponses {
         optional main.organization_service.OrganizationService.GetTopLevelTeam.Response get_top_level_team = 210;
         optional main.organization_service.OrganizationService.CreateLocation.Response create_location = 211;
         optional main.organization_service.OrganizationService.UpdateLocation.Response update_location = 212;
-        optional main.organization_service.OrganizationService.GetExtendedLocation.Response get_extended_location = 215;
+        optional main.organization_service.OrganizationService.GetExtendedLocation.Response get_extended_location = 213;
     }
 }
 
