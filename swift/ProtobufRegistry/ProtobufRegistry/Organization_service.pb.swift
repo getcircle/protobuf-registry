@@ -1770,7 +1770,7 @@ final public class OrganizationService : GeneratedMessage {
                  switch key {
                  case "id": return id
                  case "name": return name
-                 case "address": return address
+                 case "address_id": return address_id
                  case "organization_id": return organization_id
                  default: return nil
                  }
@@ -1782,8 +1782,9 @@ final public class OrganizationService : GeneratedMessage {
           public private(set) var hasName:Bool = false
           public private(set) var name:String = ""
 
-          public private(set) var hasAddress:Bool = false
-          public private(set) var address:OrganizationService.Containers.Address = OrganizationService.Containers.Address()
+          public private(set) var hasAddressId:Bool = false
+          public private(set) var address_id:String = ""
+
           public private(set) var hasOrganizationId:Bool = false
           public private(set) var organization_id:String = ""
 
@@ -1800,8 +1801,8 @@ final public class OrganizationService : GeneratedMessage {
             if hasName {
               output.writeString(2, value:name)
             }
-            if hasAddress {
-              output.writeMessage(3, value:address)
+            if hasAddressId {
+              output.writeString(3, value:address_id)
             }
             if hasOrganizationId {
               output.writeString(4, value:organization_id)
@@ -1821,8 +1822,8 @@ final public class OrganizationService : GeneratedMessage {
             if hasName {
               size += WireFormat.computeStringSize(2, value:name)
             }
-            if hasAddress {
-              size += WireFormat.computeMessageSize(3, value:address)
+            if hasAddressId {
+              size += WireFormat.computeStringSize(3, value:address_id)
             }
             if hasOrganizationId {
               size += WireFormat.computeStringSize(4, value:organization_id)
@@ -1874,10 +1875,8 @@ final public class OrganizationService : GeneratedMessage {
             if hasName {
               output += "\(indent) name: \(name) \n"
             }
-            if hasAddress {
-              output += "\(indent) address {\n"
-              address.writeDescriptionTo(&output, indent:"\(indent)  ")
-              output += "\(indent) }\n"
+            if hasAddressId {
+              output += "\(indent) address_id: \(address_id) \n"
             }
             if hasOrganizationId {
               output += "\(indent) organization_id: \(organization_id) \n"
@@ -1893,8 +1892,8 @@ final public class OrganizationService : GeneratedMessage {
                   if hasName {
                      hashCode = (hashCode &* 31) &+ name.hashValue
                   }
-                  if hasAddress {
-                    hashCode = (hashCode &* 31) &+ address.hashValue
+                  if hasAddressId {
+                     hashCode = (hashCode &* 31) &+ address_id.hashValue
                   }
                   if hasOrganizationId {
                      hashCode = (hashCode &* 31) &+ organization_id.hashValue
@@ -1967,37 +1966,24 @@ final public class OrganizationService : GeneratedMessage {
                builderResult.name = ""
                return self
           }
-          public var hasAddress:Bool {
+          public var hasAddressId:Bool {
                get {
-                   return builderResult.hasAddress
+                    return builderResult.hasAddressId
                }
           }
-          public var address:OrganizationService.Containers.Address {
+          public var address_id:String {
                get {
-                   return builderResult.address
+                    return builderResult.address_id
                }
                set (value) {
-                   builderResult.hasAddress = true
-                   builderResult.address = value
+                   builderResult.hasAddressId = true
+                   builderResult.address_id = value
                }
           }
-          public func setAddressBuilder(builderForValue:OrganizationService.Containers.AddressBuilder) -> OrganizationService.Containers.LocationBuilder {
-            address = builderForValue.build()
-            return self
-          }
-          public func mergeAddress(value:OrganizationService.Containers.Address) -> OrganizationService.Containers.LocationBuilder {
-            if (builderResult.hasAddress) {
-              builderResult.address = OrganizationService.Containers.Address.builderWithPrototype(builderResult.address).mergeFrom(value).buildPartial()
-            } else {
-              builderResult.address = value
-            }
-            builderResult.hasAddress = true
-            return self
-          }
-          public func clearAddress() -> OrganizationService.Containers.LocationBuilder {
-            builderResult.hasAddress = false
-            builderResult.address = OrganizationService.Containers.Address()
-            return self
+          public func clearAddressId() -> OrganizationService.Containers.LocationBuilder{
+               builderResult.hasAddressId = false
+               builderResult.address_id = ""
+               return self
           }
           public var hasOrganizationId:Bool {
                get {
@@ -2045,8 +2031,8 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasName {
                  name = other.name
             }
-            if (other.hasAddress) {
-                mergeAddress(other.address)
+            if other.hasAddressId {
+                 address_id = other.address_id
             }
             if other.hasOrganizationId {
                  organization_id = other.organization_id
@@ -2073,12 +2059,7 @@ final public class OrganizationService : GeneratedMessage {
                 name = input.readString()
 
               case 26 :
-                var subBuilder:OrganizationService.Containers.AddressBuilder = OrganizationService.Containers.Address.builder()
-                if hasAddress {
-                  subBuilder.mergeFrom(address)
-                }
-                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-                address = subBuilder.buildPartial()
+                address_id = input.readString()
 
               case 34 :
                 organization_id = input.readString()
@@ -11193,6 +11174,7 @@ final public class OrganizationService : GeneratedMessage {
           override public subscript (key: String) -> Any? {
                  switch key {
                  case "location": return location
+                 case "address": return address
                  case "member_profiles_payload": return member_profiles_payload
                  default: return nil
                  }
@@ -11200,6 +11182,8 @@ final public class OrganizationService : GeneratedMessage {
 
           public private(set) var hasLocation:Bool = false
           public private(set) var location:OrganizationService.Containers.Location = OrganizationService.Containers.Location()
+          public private(set) var hasAddress:Bool = false
+          public private(set) var address:OrganizationService.Containers.Address = OrganizationService.Containers.Address()
           public private(set) var hasMemberProfilesPayload:Bool = false
           public private(set) var member_profiles_payload:String = ""
 
@@ -11214,11 +11198,14 @@ final public class OrganizationService : GeneratedMessage {
             if hasLocation {
               output.writeMessage(1, value:location)
             }
+            if hasAddress {
+              output.writeMessage(2, value:address)
+            }
             if hasMemberProfilesPayload {
-              output.writeString(2, value:member_profiles_payload)
+              output.writeString(3, value:member_profiles_payload)
             }
             for oneElementteams in teams {
-                output.writeMessage(3, value:oneElementteams)
+                output.writeMessage(4, value:oneElementteams)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -11232,11 +11219,14 @@ final public class OrganizationService : GeneratedMessage {
             if hasLocation {
               size += WireFormat.computeMessageSize(1, value:location)
             }
+            if hasAddress {
+              size += WireFormat.computeMessageSize(2, value:address)
+            }
             if hasMemberProfilesPayload {
-              size += WireFormat.computeStringSize(2, value:member_profiles_payload)
+              size += WireFormat.computeStringSize(3, value:member_profiles_payload)
             }
             for oneElementteams in teams {
-                size += WireFormat.computeMessageSize(3, value:oneElementteams)
+                size += WireFormat.computeMessageSize(4, value:oneElementteams)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -11284,6 +11274,11 @@ final public class OrganizationService : GeneratedMessage {
               location.writeDescriptionTo(&output, indent:"\(indent)  ")
               output += "\(indent) }\n"
             }
+            if hasAddress {
+              output += "\(indent) address {\n"
+              address.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
+            }
             if hasMemberProfilesPayload {
               output += "\(indent) member_profiles_payload: \(member_profiles_payload) \n"
             }
@@ -11301,6 +11296,9 @@ final public class OrganizationService : GeneratedMessage {
                   var hashCode:Int = 7
                   if hasLocation {
                     hashCode = (hashCode &* 31) &+ location.hashValue
+                  }
+                  if hasAddress {
+                    hashCode = (hashCode &* 31) &+ address.hashValue
                   }
                   if hasMemberProfilesPayload {
                      hashCode = (hashCode &* 31) &+ member_profiles_payload.hashValue
@@ -11370,6 +11368,38 @@ final public class OrganizationService : GeneratedMessage {
             builderResult.location = OrganizationService.Containers.Location()
             return self
           }
+          public var hasAddress:Bool {
+               get {
+                   return builderResult.hasAddress
+               }
+          }
+          public var address:OrganizationService.Containers.Address {
+               get {
+                   return builderResult.address
+               }
+               set (value) {
+                   builderResult.hasAddress = true
+                   builderResult.address = value
+               }
+          }
+          public func setAddressBuilder(builderForValue:OrganizationService.Containers.AddressBuilder) -> OrganizationService.GetExtendedLocation.ResponseBuilder {
+            address = builderForValue.build()
+            return self
+          }
+          public func mergeAddress(value:OrganizationService.Containers.Address) -> OrganizationService.GetExtendedLocation.ResponseBuilder {
+            if (builderResult.hasAddress) {
+              builderResult.address = OrganizationService.Containers.Address.builderWithPrototype(builderResult.address).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.address = value
+            }
+            builderResult.hasAddress = true
+            return self
+          }
+          public func clearAddress() -> OrganizationService.GetExtendedLocation.ResponseBuilder {
+            builderResult.hasAddress = false
+            builderResult.address = OrganizationService.Containers.Address()
+            return self
+          }
           public var hasMemberProfilesPayload:Bool {
                get {
                     return builderResult.hasMemberProfilesPayload
@@ -11425,6 +11455,9 @@ final public class OrganizationService : GeneratedMessage {
             if (other.hasLocation) {
                 mergeLocation(other.location)
             }
+            if (other.hasAddress) {
+                mergeAddress(other.address)
+            }
             if other.hasMemberProfilesPayload {
                  member_profiles_payload = other.member_profiles_payload
             }
@@ -11455,9 +11488,17 @@ final public class OrganizationService : GeneratedMessage {
                 location = subBuilder.buildPartial()
 
               case 18 :
-                member_profiles_payload = input.readString()
+                var subBuilder:OrganizationService.Containers.AddressBuilder = OrganizationService.Containers.Address.builder()
+                if hasAddress {
+                  subBuilder.mergeFrom(address)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                address = subBuilder.buildPartial()
 
               case 26 :
+                member_profiles_payload = input.readString()
+
+              case 34 :
                 var subBuilder = OrganizationService.Containers.Team.builder()
                 input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
                 teams += [subBuilder.buildPartial()]
