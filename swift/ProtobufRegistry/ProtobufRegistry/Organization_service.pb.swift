@@ -1772,6 +1772,7 @@ final public class OrganizationService : GeneratedMessage {
                  case "name": return name
                  case "address_id": return address_id
                  case "organization_id": return organization_id
+                 case "profile_count": return profile_count
                  default: return nil
                  }
           }
@@ -1787,6 +1788,9 @@ final public class OrganizationService : GeneratedMessage {
 
           public private(set) var hasOrganizationId:Bool = false
           public private(set) var organization_id:String = ""
+
+          public private(set) var hasProfileCount:Bool = false
+          public private(set) var profile_count:UInt32 = UInt32(0)
 
           required public init() {
                super.init()
@@ -1806,6 +1810,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasOrganizationId {
               output.writeString(4, value:organization_id)
+            }
+            if hasProfileCount {
+              output.writeUInt32(5, value:profile_count)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -1827,6 +1834,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasOrganizationId {
               size += WireFormat.computeStringSize(4, value:organization_id)
+            }
+            if hasProfileCount {
+              size += WireFormat.computeUInt32Size(5, value:profile_count)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -1881,6 +1891,9 @@ final public class OrganizationService : GeneratedMessage {
             if hasOrganizationId {
               output += "\(indent) organization_id: \(organization_id) \n"
             }
+            if hasProfileCount {
+              output += "\(indent) profile_count: \(profile_count) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -1897,6 +1910,9 @@ final public class OrganizationService : GeneratedMessage {
                   }
                   if hasOrganizationId {
                      hashCode = (hashCode &* 31) &+ organization_id.hashValue
+                  }
+                  if hasProfileCount {
+                     hashCode = (hashCode &* 31) &+ profile_count.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -2004,6 +2020,25 @@ final public class OrganizationService : GeneratedMessage {
                builderResult.organization_id = ""
                return self
           }
+          public var hasProfileCount:Bool {
+               get {
+                    return builderResult.hasProfileCount
+               }
+          }
+          public var profile_count:UInt32 {
+               get {
+                    return builderResult.profile_count
+               }
+               set (value) {
+                   builderResult.hasProfileCount = true
+                   builderResult.profile_count = value
+               }
+          }
+          public func clearProfileCount() -> OrganizationService.Containers.LocationBuilder{
+               builderResult.hasProfileCount = false
+               builderResult.profile_count = UInt32(0)
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -2037,6 +2072,9 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasOrganizationId {
                  organization_id = other.organization_id
             }
+            if other.hasProfileCount {
+                 profile_count = other.profile_count
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -2063,6 +2101,9 @@ final public class OrganizationService : GeneratedMessage {
 
               case 34 :
                 organization_id = input.readString()
+
+              case 40 :
+                profile_count = input.readUInt32()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
