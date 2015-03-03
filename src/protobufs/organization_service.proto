@@ -230,4 +230,16 @@ message OrganizationService {
 
     }
 
+    message GetLocations {
+
+        message Request {
+            optional string organization_id = 1;
+        }
+
+        message Response {
+            repeated Containers.Location locations = 1;
+        }
+
+    }
+
 }

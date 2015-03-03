@@ -127,6 +127,11 @@ public var OrganizationServiceRequests_get_extended_location:ConcreateExtensionF
        return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_get_extended_locationStatic
    }
 }
+public var OrganizationServiceRequests_get_locations:ConcreateExtensionField {
+   get {
+       return RequestRegistryRoot.sharedInstance.OrganizationServiceRequests_get_locationsStatic
+   }
+}
 public var ProfileServiceRequests_create_profile:ConcreateExtensionField {
    get {
        return RequestRegistryRoot.sharedInstance.ProfileServiceRequests_create_profileStatic
@@ -334,6 +339,7 @@ public struct RequestRegistryRoot {
   var OrganizationServiceRequests_create_locationStatic:ConcreateExtensionField
   var OrganizationServiceRequests_update_locationStatic:ConcreateExtensionField
   var OrganizationServiceRequests_get_extended_locationStatic:ConcreateExtensionField
+  var OrganizationServiceRequests_get_locationsStatic:ConcreateExtensionField
   var ProfileServiceRequests_create_profileStatic:ConcreateExtensionField
   var ProfileServiceRequests_get_extended_profileStatic:ConcreateExtensionField
   var ProfileServiceRequests_get_profileStatic:ConcreateExtensionField
@@ -397,6 +403,7 @@ public struct RequestRegistryRoot {
     OrganizationServiceRequests_create_locationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 211, defaultValue:OrganizationService.CreateLocation.Request(), messageOrGroupClass:OrganizationService.CreateLocation.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     OrganizationServiceRequests_update_locationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 212, defaultValue:OrganizationService.UpdateLocation.Request(), messageOrGroupClass:OrganizationService.UpdateLocation.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     OrganizationServiceRequests_get_extended_locationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 213, defaultValue:OrganizationService.GetExtendedLocation.Request(), messageOrGroupClass:OrganizationService.GetExtendedLocation.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+    OrganizationServiceRequests_get_locationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 214, defaultValue:OrganizationService.GetLocations.Request(), messageOrGroupClass:OrganizationService.GetLocations.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_create_profileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 300, defaultValue:ProfileService.CreateProfile.Request(), messageOrGroupClass:ProfileService.CreateProfile.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_get_extended_profileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 301, defaultValue:ProfileService.GetExtendedProfile.Request(), messageOrGroupClass:ProfileService.GetExtendedProfile.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
     ProfileServiceRequests_get_profileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:ActionRequestParams.self, fieldNumber: 302, defaultValue:ProfileService.GetProfile.Request(), messageOrGroupClass:ProfileService.GetProfile.Request.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -471,6 +478,7 @@ public struct RequestRegistryRoot {
     registry.addExtension(OrganizationServiceRequests_create_locationStatic)
     registry.addExtension(OrganizationServiceRequests_update_locationStatic)
     registry.addExtension(OrganizationServiceRequests_get_extended_locationStatic)
+    registry.addExtension(OrganizationServiceRequests_get_locationsStatic)
     registry.addExtension(ProfileServiceRequests_create_profileStatic)
     registry.addExtension(ProfileServiceRequests_get_extended_profileStatic)
     registry.addExtension(ProfileServiceRequests_get_profileStatic)
@@ -807,6 +815,9 @@ final public class OrganizationServiceRequests : GeneratedMessage {
   }
   public class func get_extended_location() -> ConcreateExtensionField {
        return OrganizationServiceRequests_get_extended_location
+  }
+  public class func get_locations() -> ConcreateExtensionField {
+       return OrganizationServiceRequests_get_locations
   }
   required public init() {
        super.init()
