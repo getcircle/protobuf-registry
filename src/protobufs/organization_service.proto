@@ -235,7 +235,7 @@ message OrganizationService {
         message Request {
             optional string location_id = 1;
             optional string name = 2;
-            optional string organization = 3;
+            optional string organization_id = 3;
         }
 
         message Response {

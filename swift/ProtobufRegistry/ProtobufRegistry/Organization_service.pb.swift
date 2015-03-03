@@ -10477,7 +10477,7 @@ final public class OrganizationService : GeneratedMessage {
                  switch key {
                  case "location_id": return location_id
                  case "name": return name
-                 case "organization": return organization
+                 case "organization_id": return organization_id
                  default: return nil
                  }
           }
@@ -10488,8 +10488,8 @@ final public class OrganizationService : GeneratedMessage {
           public private(set) var hasName:Bool = false
           public private(set) var name:String = ""
 
-          public private(set) var hasOrganization:Bool = false
-          public private(set) var organization:String = ""
+          public private(set) var hasOrganizationId:Bool = false
+          public private(set) var organization_id:String = ""
 
           required public init() {
                super.init()
@@ -10504,8 +10504,8 @@ final public class OrganizationService : GeneratedMessage {
             if hasName {
               output.writeString(2, value:name)
             }
-            if hasOrganization {
-              output.writeString(3, value:organization)
+            if hasOrganizationId {
+              output.writeString(3, value:organization_id)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -10522,8 +10522,8 @@ final public class OrganizationService : GeneratedMessage {
             if hasName {
               size += WireFormat.computeStringSize(2, value:name)
             }
-            if hasOrganization {
-              size += WireFormat.computeStringSize(3, value:organization)
+            if hasOrganizationId {
+              size += WireFormat.computeStringSize(3, value:organization_id)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -10572,8 +10572,8 @@ final public class OrganizationService : GeneratedMessage {
             if hasName {
               output += "\(indent) name: \(name) \n"
             }
-            if hasOrganization {
-              output += "\(indent) organization: \(organization) \n"
+            if hasOrganizationId {
+              output += "\(indent) organization_id: \(organization_id) \n"
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
@@ -10586,8 +10586,8 @@ final public class OrganizationService : GeneratedMessage {
                   if hasName {
                      hashCode = (hashCode &* 31) &+ name.hashValue
                   }
-                  if hasOrganization {
-                     hashCode = (hashCode &* 31) &+ organization.hashValue
+                  if hasOrganizationId {
+                     hashCode = (hashCode &* 31) &+ organization_id.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -10657,23 +10657,23 @@ final public class OrganizationService : GeneratedMessage {
                builderResult.name = ""
                return self
           }
-          public var hasOrganization:Bool {
+          public var hasOrganizationId:Bool {
                get {
-                    return builderResult.hasOrganization
+                    return builderResult.hasOrganizationId
                }
           }
-          public var organization:String {
+          public var organization_id:String {
                get {
-                    return builderResult.organization
+                    return builderResult.organization_id
                }
                set (value) {
-                   builderResult.hasOrganization = true
-                   builderResult.organization = value
+                   builderResult.hasOrganizationId = true
+                   builderResult.organization_id = value
                }
           }
-          public func clearOrganization() -> OrganizationService.GetLocation.RequestBuilder{
-               builderResult.hasOrganization = false
-               builderResult.organization = ""
+          public func clearOrganizationId() -> OrganizationService.GetLocation.RequestBuilder{
+               builderResult.hasOrganizationId = false
+               builderResult.organization_id = ""
                return self
           }
           override public var internalGetResult:GeneratedMessage {
@@ -10703,8 +10703,8 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasName {
                  name = other.name
             }
-            if other.hasOrganization {
-                 organization = other.organization
+            if other.hasOrganizationId {
+                 organization_id = other.organization_id
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -10728,7 +10728,7 @@ final public class OrganizationService : GeneratedMessage {
                 name = input.readString()
 
               case 26 :
-                organization = input.readString()
+                organization_id = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
