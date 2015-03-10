@@ -1127,6 +1127,7 @@ final public class OrganizationService : GeneratedMessage {
                  case "profile_count": return profile_count
                  case "latitude": return latitude
                  case "longitude": return longitude
+                 case "timezone": return timezone
                  default: return nil
                  }
           }
@@ -1166,6 +1167,9 @@ final public class OrganizationService : GeneratedMessage {
 
           public private(set) var hasLongitude:Bool = false
           public private(set) var longitude:String = ""
+
+          public private(set) var hasTimezone:Bool = false
+          public private(set) var timezone:String = ""
 
           required public init() {
                super.init()
@@ -1209,6 +1213,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasLongitude {
               output.writeString(12, value:longitude)
+            }
+            if hasTimezone {
+              output.writeString(13, value:timezone)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -1254,6 +1261,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasLongitude {
               size += WireFormat.computeStringSize(12, value:longitude)
+            }
+            if hasTimezone {
+              size += WireFormat.computeStringSize(13, value:timezone)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -1332,6 +1342,9 @@ final public class OrganizationService : GeneratedMessage {
             if hasLongitude {
               output += "\(indent) longitude: \(longitude) \n"
             }
+            if hasTimezone {
+              output += "\(indent) timezone: \(timezone) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -1372,6 +1385,9 @@ final public class OrganizationService : GeneratedMessage {
                   }
                   if hasLongitude {
                      hashCode = (hashCode &* 31) &+ longitude.hashValue
+                  }
+                  if hasTimezone {
+                     hashCode = (hashCode &* 31) &+ timezone.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -1631,6 +1647,25 @@ final public class OrganizationService : GeneratedMessage {
                builderResult.longitude = ""
                return self
           }
+          public var hasTimezone:Bool {
+               get {
+                    return builderResult.hasTimezone
+               }
+          }
+          public var timezone:String {
+               get {
+                    return builderResult.timezone
+               }
+               set (value) {
+                   builderResult.hasTimezone = true
+                   builderResult.timezone = value
+               }
+          }
+          public func clearTimezone() -> OrganizationService.Containers.AddressBuilder{
+               builderResult.hasTimezone = false
+               builderResult.timezone = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -1688,6 +1723,9 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasLongitude {
                  longitude = other.longitude
             }
+            if other.hasTimezone {
+                 timezone = other.timezone
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -1738,6 +1776,9 @@ final public class OrganizationService : GeneratedMessage {
 
               case 98 :
                 longitude = input.readString()
+
+              case 106 :
+                timezone = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

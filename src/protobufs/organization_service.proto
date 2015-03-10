@@ -41,6 +41,7 @@ message OrganizationService {
             optional string profile_count = 10;
             optional string latitude = 11;
             optional string longitude = 12;
+            optional string timezone = 13;
         }
 
         message Location {
