@@ -216,21 +216,6 @@ message OrganizationService {
 
     }
 
-    message GetExtendedLocation {
-
-        message Request {
-            optional string location_id = 1;
-        }
-
-        message Response {
-            optional Containers.Location location = 1;
-            // NB: we can't use the profile container due to a circular import
-            optional string member_profiles_payload = 2;
-            repeated Containers.Team teams = 3;
-        }
-
-    }
-
     message GetLocation {
 
         message Request {
