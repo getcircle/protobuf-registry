@@ -51,6 +51,7 @@ message OrganizationService {
             optional Address address = 3;
             optional string organization_id = 4;
             optional uint32 profile_count = 5;
+            optional string image_url = 6;
         }
 
     }
