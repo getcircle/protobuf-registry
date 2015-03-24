@@ -2302,7 +2302,7 @@ final public class OrganizationService : GeneratedMessage {
           override public subscript (key: String) -> Any? {
                  switch key {
                  case "depth": return depth
-                 case "team": return team
+                 case "parent_team_id": return parent_team_id
                  default: return nil
                  }
           }
@@ -2310,8 +2310,9 @@ final public class OrganizationService : GeneratedMessage {
           public private(set) var hasDepth:Bool = false
           public private(set) var depth:UInt32 = UInt32(0)
 
-          public private(set) var hasTeam:Bool = false
-          public private(set) var team:OrganizationService.Containers.Team = OrganizationService.Containers.Team()
+          public private(set) var hasParentTeamId:Bool = false
+          public private(set) var parent_team_id:String = ""
+
           public private(set) var teams:Array<OrganizationService.Containers.Team>  = Array<OrganizationService.Containers.Team>()
           required public init() {
                super.init()
@@ -2323,8 +2324,8 @@ final public class OrganizationService : GeneratedMessage {
             if hasDepth {
               output.writeUInt32(1, value:depth)
             }
-            if hasTeam {
-              output.writeMessage(2, value:team)
+            if hasParentTeamId {
+              output.writeString(2, value:parent_team_id)
             }
             for oneElementteams in teams {
                 output.writeMessage(3, value:oneElementteams)
@@ -2341,8 +2342,8 @@ final public class OrganizationService : GeneratedMessage {
             if hasDepth {
               size += WireFormat.computeUInt32Size(1, value:depth)
             }
-            if hasTeam {
-              size += WireFormat.computeMessageSize(2, value:team)
+            if hasParentTeamId {
+              size += WireFormat.computeStringSize(2, value:parent_team_id)
             }
             for oneElementteams in teams {
                 size += WireFormat.computeMessageSize(3, value:oneElementteams)
@@ -2391,10 +2392,8 @@ final public class OrganizationService : GeneratedMessage {
             if hasDepth {
               output += "\(indent) depth: \(depth) \n"
             }
-            if hasTeam {
-              output += "\(indent) team {\n"
-              team.writeDescriptionTo(&output, indent:"\(indent)  ")
-              output += "\(indent) }\n"
+            if hasParentTeamId {
+              output += "\(indent) parent_team_id: \(parent_team_id) \n"
             }
             var teamsElementIndex:Int = 0
             for oneElementteams in teams {
@@ -2411,8 +2410,8 @@ final public class OrganizationService : GeneratedMessage {
                   if hasDepth {
                      hashCode = (hashCode &* 31) &+ depth.hashValue
                   }
-                  if hasTeam {
-                    hashCode = (hashCode &* 31) &+ team.hashValue
+                  if hasParentTeamId {
+                     hashCode = (hashCode &* 31) &+ parent_team_id.hashValue
                   }
                   for oneElementteams in teams {
                       hashCode = (hashCode &* 31) &+ oneElementteams.hashValue
@@ -2466,37 +2465,24 @@ final public class OrganizationService : GeneratedMessage {
                builderResult.depth = UInt32(0)
                return self
           }
-          public var hasTeam:Bool {
+          public var hasParentTeamId:Bool {
                get {
-                   return builderResult.hasTeam
+                    return builderResult.hasParentTeamId
                }
           }
-          public var team:OrganizationService.Containers.Team {
+          public var parent_team_id:String {
                get {
-                   return builderResult.team
+                    return builderResult.parent_team_id
                }
                set (value) {
-                   builderResult.hasTeam = true
-                   builderResult.team = value
+                   builderResult.hasParentTeamId = true
+                   builderResult.parent_team_id = value
                }
           }
-          public func setTeamBuilder(builderForValue:OrganizationService.Containers.TeamBuilder) -> OrganizationService.Containers.TeamDescendantsBuilder {
-            team = builderForValue.build()
-            return self
-          }
-          public func mergeTeam(value:OrganizationService.Containers.Team) -> OrganizationService.Containers.TeamDescendantsBuilder {
-            if (builderResult.hasTeam) {
-              builderResult.team = OrganizationService.Containers.Team.builderWithPrototype(builderResult.team).mergeFrom(value).buildPartial()
-            } else {
-              builderResult.team = value
-            }
-            builderResult.hasTeam = true
-            return self
-          }
-          public func clearTeam() -> OrganizationService.Containers.TeamDescendantsBuilder {
-            builderResult.hasTeam = false
-            builderResult.team = OrganizationService.Containers.Team()
-            return self
+          public func clearParentTeamId() -> OrganizationService.Containers.TeamDescendantsBuilder{
+               builderResult.hasParentTeamId = false
+               builderResult.parent_team_id = ""
+               return self
           }
           public var teams:Array<OrganizationService.Containers.Team> {
                get {
@@ -2534,8 +2520,8 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasDepth {
                  depth = other.depth
             }
-            if (other.hasTeam) {
-                mergeTeam(other.team)
+            if other.hasParentTeamId {
+                 parent_team_id = other.parent_team_id
             }
             if !other.teams.isEmpty  {
                builderResult.teams += other.teams
@@ -2559,12 +2545,7 @@ final public class OrganizationService : GeneratedMessage {
                 depth = input.readUInt32()
 
               case 18 :
-                var subBuilder:OrganizationService.Containers.TeamBuilder = OrganizationService.Containers.Team.builder()
-                if hasTeam {
-                  subBuilder.mergeFrom(team)
-                }
-                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-                team = subBuilder.buildPartial()
+                parent_team_id = input.readString()
 
               case 26 :
                 var subBuilder = OrganizationService.Containers.Team.builder()
