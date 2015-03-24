@@ -55,6 +55,12 @@ message OrganizationService {
             optional string image_url = 6;
         }
 
+        message TeamDescendants {
+            optional uint32 depth = 1;
+            optional Team team = 2;
+            repeated Team teams = 3;
+        }
+
     }
 
     // MARK: - Actions
@@ -131,7 +137,7 @@ message OrganizationService {
         }
 
         message Response {
-            repeated Containers.Team teams = 1;
+            repeated Containers.TeamDescendants descendants = 1;
         }
     }
 
