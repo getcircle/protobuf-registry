@@ -5474,18 +5474,15 @@ final public class OrganizationService : GeneratedMessage {
         final public class Request : GeneratedMessage {
           override public subscript (key: String) -> Any? {
                  switch key {
-                 case "team_id": return team_id
                  case "depth": return depth
                  default: return nil
                  }
           }
 
-          public private(set) var hasTeamId:Bool = false
-          public private(set) var team_id:String = ""
-
           public private(set) var hasDepth:Bool = false
           public private(set) var depth:UInt32 = UInt32(0)
 
+          public private(set) var team_ids:Array<String> = Array<String>()
           public private(set) var attributes:Array<String> = Array<String>()
           required public init() {
                super.init()
@@ -5494,8 +5491,10 @@ final public class OrganizationService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
-            if hasTeamId {
-              output.writeString(1, value:team_id)
+            if !team_ids.isEmpty {
+              for oneValueteam_ids in team_ids {
+                output.writeString(1, value:oneValueteam_ids)
+              }
             }
             if !attributes.isEmpty {
               for oneValueattributes in attributes {
@@ -5514,9 +5513,12 @@ final public class OrganizationService : GeneratedMessage {
             }
 
             size = 0
-            if hasTeamId {
-              size += WireFormat.computeStringSize(1, value:team_id)
+            var dataSizeTeamIds:Int32 = 0
+            for oneValueteam_ids in team_ids {
+                dataSizeTeamIds += WireFormat.computeStringSizeNoTag(oneValueteam_ids)
             }
+            size += dataSizeTeamIds
+            size += 1 * Int32(team_ids.count)
             var dataSizeAttributes:Int32 = 0
             for oneValueattributes in attributes {
                 dataSizeAttributes += WireFormat.computeStringSizeNoTag(oneValueattributes)
@@ -5567,8 +5569,10 @@ final public class OrganizationService : GeneratedMessage {
             return OrganizationService.GetTeamDescendants.Request.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
-            if hasTeamId {
-              output += "\(indent) team_id: \(team_id) \n"
+            var team_idsElementIndex:Int = 0
+            for oneValueteam_ids in team_ids  {
+                output += "\(indent) team_ids[\(team_idsElementIndex)]: \(oneValueteam_ids)\n"
+                team_idsElementIndex++
             }
             var attributesElementIndex:Int = 0
             for oneValueattributes in attributes  {
@@ -5583,8 +5587,8 @@ final public class OrganizationService : GeneratedMessage {
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
-                  if hasTeamId {
-                     hashCode = (hashCode &* 31) &+ team_id.hashValue
+                  for oneValueteam_ids in team_ids {
+                      hashCode = (hashCode &* 31) &+ oneValueteam_ids.hashValue
                   }
                   for oneValueattributes in attributes {
                       hashCode = (hashCode &* 31) &+ oneValueattributes.hashValue
@@ -5622,24 +5626,17 @@ final public class OrganizationService : GeneratedMessage {
              builderResult = OrganizationService.GetTeamDescendants.Request()
              super.init()
           }
-          public var hasTeamId:Bool {
+          public var team_ids:Array<String> {
                get {
-                    return builderResult.hasTeamId
+                   return builderResult.team_ids
+               }
+               set (array) {
+                   builderResult.team_ids = array
                }
           }
-          public var team_id:String {
-               get {
-                    return builderResult.team_id
-               }
-               set (value) {
-                   builderResult.hasTeamId = true
-                   builderResult.team_id = value
-               }
-          }
-          public func clearTeamId() -> OrganizationService.GetTeamDescendants.RequestBuilder{
-               builderResult.hasTeamId = false
-               builderResult.team_id = ""
-               return self
+          public func clearTeamIds() -> OrganizationService.GetTeamDescendants.RequestBuilder {
+             builderResult.team_ids.removeAll(keepCapacity: false)
+             return self
           }
           public var attributes:Array<String> {
                get {
@@ -5693,8 +5690,8 @@ final public class OrganizationService : GeneratedMessage {
             return returnMe
           }
           public func mergeFrom(other:OrganizationService.GetTeamDescendants.Request) -> OrganizationService.GetTeamDescendants.RequestBuilder {
-            if other.hasTeamId {
-                 team_id = other.team_id
+            if !other.team_ids.isEmpty {
+                builderResult.team_ids += other.team_ids
             }
             if !other.attributes.isEmpty {
                 builderResult.attributes += other.attributes
@@ -5718,7 +5715,7 @@ final public class OrganizationService : GeneratedMessage {
                 return self
 
               case 10 :
-                team_id = input.readString()
+                team_ids += [input.readString()]
 
               case 18 :
                 attributes += [input.readString()]

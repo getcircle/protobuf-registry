@@ -125,7 +125,7 @@ message OrganizationService {
     message GetTeamDescendants {
 
         message Request {
-            optional string team_id = 1;
+            repeated string team_ids = 1;
             repeated string attributes = 2;
             optional uint32 depth = 3;
         }
