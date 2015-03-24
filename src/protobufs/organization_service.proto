@@ -57,7 +57,7 @@ message OrganizationService {
 
         message TeamDescendants {
             optional uint32 depth = 1;
-            optional Team team = 2;
+            optional string parent_team_id = 2;
             repeated Team teams = 3;
         }
 
