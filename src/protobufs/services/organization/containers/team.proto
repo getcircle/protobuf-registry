@@ -1,0 +1,17 @@
+package main.services.organization.containers.team;
+
+message PathPart {
+    optional string id = 1;
+    optional string name = 2;
+    optional string owner_id = 3;
+}
+
+message Team {
+    optional string id = 1;
+    optional string name = 2;
+    optional string profile_owner_id = 3;
+    optional string organization_id = 4;
+    repeated PathPart path = 5;
+    optional string department = 6;
+    optional uint32 profile_count = 7;
+}

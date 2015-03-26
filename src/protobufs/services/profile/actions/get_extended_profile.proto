@@ -1,0 +1,14 @@
+import "protobufs/services/organization/containers/team.proto";
+import "protobufs/services/profile/containers/profile.proto";
+
+message RequestV1 {
+    optional uint32 version = 1;
+    optional string profile_id = 2;
+    optional string user_id = 3;
+}
+
+message ResponseV1 {
+    optional uint32 version = 1;
+    optional main.services.organization.containers.team.Team team = 2;
+    optional main.services.profile.containers.profile.Profile profile = 3;
+}
