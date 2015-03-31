@@ -2021,6 +2021,241 @@ final public class UserService : GeneratedMessage {
 
       //Nested type declaration end
 
+
+
+      //Nested type declaration start
+
+        final public class AccessRequest : GeneratedMessage {
+          override public subscript (key: String) -> Any? {
+                 switch key {
+                 case "id": return id
+                 case "user_id": return user_id
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasId:Bool = false
+          public private(set) var id:String = ""
+
+          public private(set) var hasUserId:Bool = false
+          public private(set) var user_id:String = ""
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasId {
+              output.writeString(1, value:id)
+            }
+            if hasUserId {
+              output.writeString(2, value:user_id)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasId {
+              size += WireFormat.computeStringSize(1, value:id)
+            }
+            if hasUserId {
+              size += WireFormat.computeStringSize(2, value:user_id)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> UserService.Containers.AccessRequest {
+            return UserService.Containers.AccessRequest.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.Containers.AccessRequest {
+            return UserService.Containers.AccessRequest.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> UserService.Containers.AccessRequest {
+            return UserService.Containers.AccessRequest.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.Containers.AccessRequest {
+            return UserService.Containers.AccessRequest.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.Containers.AccessRequest {
+            return UserService.Containers.AccessRequest.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.Containers.AccessRequest {
+            return UserService.Containers.AccessRequest.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> UserService.Containers.AccessRequestBuilder {
+            return UserService.Containers.AccessRequest.classBuilder() as UserService.Containers.AccessRequestBuilder
+          }
+          public func builder() -> UserService.Containers.AccessRequestBuilder {
+            return classBuilder() as UserService.Containers.AccessRequestBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return UserService.Containers.AccessRequestBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return UserService.Containers.AccessRequest.builder()
+          }
+          public func toBuilder() -> UserService.Containers.AccessRequestBuilder {
+            return UserService.Containers.AccessRequest.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:UserService.Containers.AccessRequest) -> UserService.Containers.AccessRequestBuilder {
+            return UserService.Containers.AccessRequest.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasId {
+              output += "\(indent) id: \(id) \n"
+            }
+            if hasUserId {
+              output += "\(indent) user_id: \(user_id) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasId {
+                     hashCode = (hashCode &* 31) &+ id.hashValue
+                  }
+                  if hasUserId {
+                     hashCode = (hashCode &* 31) &+ user_id.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "UserService.Containers.AccessRequest"
+          }
+          override public func className() -> String {
+              return "UserService.Containers.AccessRequest"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return UserService.Containers.AccessRequest.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class AccessRequestBuilder : GeneratedMessageBuilder {
+          private var builderResult:UserService.Containers.AccessRequest
+
+          required override public init () {
+             builderResult = UserService.Containers.AccessRequest()
+             super.init()
+          }
+          public var hasId:Bool {
+               get {
+                    return builderResult.hasId
+               }
+          }
+          public var id:String {
+               get {
+                    return builderResult.id
+               }
+               set (value) {
+                   builderResult.hasId = true
+                   builderResult.id = value
+               }
+          }
+          public func clearId() -> UserService.Containers.AccessRequestBuilder{
+               builderResult.hasId = false
+               builderResult.id = ""
+               return self
+          }
+          public var hasUserId:Bool {
+               get {
+                    return builderResult.hasUserId
+               }
+          }
+          public var user_id:String {
+               get {
+                    return builderResult.user_id
+               }
+               set (value) {
+                   builderResult.hasUserId = true
+                   builderResult.user_id = value
+               }
+          }
+          public func clearUserId() -> UserService.Containers.AccessRequestBuilder{
+               builderResult.hasUserId = false
+               builderResult.user_id = ""
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> UserService.Containers.AccessRequestBuilder {
+            builderResult = UserService.Containers.AccessRequest()
+            return self
+          }
+          public override func clone() -> UserService.Containers.AccessRequestBuilder {
+            return UserService.Containers.AccessRequest.builderWithPrototype(builderResult)
+          }
+          public override func build() -> UserService.Containers.AccessRequest {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> UserService.Containers.AccessRequest {
+            var returnMe:UserService.Containers.AccessRequest = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:UserService.Containers.AccessRequest) -> UserService.Containers.AccessRequestBuilder {
+            if other.hasId {
+                 id = other.id
+            }
+            if other.hasUserId {
+                 user_id = other.user_id
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.Containers.AccessRequestBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.Containers.AccessRequestBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                id = input.readString()
+
+              case 18 :
+                user_id = input.readString()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
       override public subscript (key: String) -> Any? {
              switch key {
              default: return nil
@@ -9807,10 +10042,13 @@ final public class UserService : GeneratedMessage {
         final public class Response : GeneratedMessage {
           override public subscript (key: String) -> Any? {
                  switch key {
+                 case "access_request": return access_request
                  default: return nil
                  }
           }
 
+          public private(set) var hasAccessRequest:Bool = false
+          public private(set) var access_request:UserService.Containers.AccessRequest = UserService.Containers.AccessRequest()
           required public init() {
                super.init()
           }
@@ -9818,6 +10056,9 @@ final public class UserService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasAccessRequest {
+              output.writeMessage(1, value:access_request)
+            }
             unknownFields.writeToCodedOutputStream(output)
           }
           override public func serializedSize() -> Int32 {
@@ -9827,6 +10068,9 @@ final public class UserService : GeneratedMessage {
             }
 
             size = 0
+            if hasAccessRequest {
+              size += WireFormat.computeMessageSize(1, value:access_request)
+            }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
             return size
@@ -9868,11 +10112,19 @@ final public class UserService : GeneratedMessage {
             return UserService.RequestAccess.Response.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasAccessRequest {
+              output += "\(indent) access_request {\n"
+              access_request.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
+                  if hasAccessRequest {
+                    hashCode = (hashCode &* 31) &+ access_request.hashValue
+                  }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
               }
@@ -9903,6 +10155,38 @@ final public class UserService : GeneratedMessage {
              builderResult = UserService.RequestAccess.Response()
              super.init()
           }
+          public var hasAccessRequest:Bool {
+               get {
+                   return builderResult.hasAccessRequest
+               }
+          }
+          public var access_request:UserService.Containers.AccessRequest {
+               get {
+                   return builderResult.access_request
+               }
+               set (value) {
+                   builderResult.hasAccessRequest = true
+                   builderResult.access_request = value
+               }
+          }
+          public func setAccessRequestBuilder(builderForValue:UserService.Containers.AccessRequestBuilder) -> UserService.RequestAccess.ResponseBuilder {
+            access_request = builderForValue.build()
+            return self
+          }
+          public func mergeAccessRequest(value:UserService.Containers.AccessRequest) -> UserService.RequestAccess.ResponseBuilder {
+            if (builderResult.hasAccessRequest) {
+              builderResult.access_request = UserService.Containers.AccessRequest.builderWithPrototype(builderResult.access_request).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.access_request = value
+            }
+            builderResult.hasAccessRequest = true
+            return self
+          }
+          public func clearAccessRequest() -> UserService.RequestAccess.ResponseBuilder {
+            builderResult.hasAccessRequest = false
+            builderResult.access_request = UserService.Containers.AccessRequest()
+            return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -9924,6 +10208,9 @@ final public class UserService : GeneratedMessage {
             return returnMe
           }
           public func mergeFrom(other:UserService.RequestAccess.Response) -> UserService.RequestAccess.ResponseBuilder {
+            if (other.hasAccessRequest) {
+                mergeAccessRequest(other.access_request)
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -9938,6 +10225,14 @@ final public class UserService : GeneratedMessage {
               case 0: 
                 self.unknownFields = unknownFieldsBuilder.build()
                 return self
+
+              case 10 :
+                var subBuilder:UserService.Containers.AccessRequestBuilder = UserService.Containers.AccessRequest.builder()
+                if hasAccessRequest {
+                  subBuilder.mergeFrom(access_request)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                access_request = subBuilder.buildPartial()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -10327,6 +10622,18 @@ public extension UserService.Containers.Device {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return UserService.Containers.Device.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.Containers.AccessRequest {
+    class func parseFromNSData(data:NSData) -> UserService.Containers.AccessRequest {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.Containers.AccessRequest.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.Containers.AccessRequest {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.Containers.AccessRequest.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension UserService.Containers {
