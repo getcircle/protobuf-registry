@@ -216,4 +216,14 @@ message UserService {
 
     }
 
+    message RequestAccess {
+
+        message Request {
+            optional string user_id = 1;
+        }
+
+        message Response {}
+
+    }
+
 }

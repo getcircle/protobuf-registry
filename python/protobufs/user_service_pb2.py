@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/user_service.proto',
   package='main.user_service',
-  serialized_pb=_b('\n\x1cprotobufs/user_service.proto\x12\x11main.user_service\"\x94\x16\n\x0bUserService\x1a\xf7\x04\n\nContainers\x1a\x95\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rprimary_email\x18\x02 \x01(\t\x12\x10\n\x08is_admin\x18\x03 \x01(\x08\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x14\n\x0cphone_number\x18\x05 \x01(\t\x12\x1d\n\x15phone_number_verified\x18\x06 \x01(\x08\x12\x10\n\x08password\x18\x07 \x01(\t\x1a,\n\rOAuth2Details\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\r\n\x05state\x18\x02 \x01(\t\x1a\x31\n\x0fOAuthSDKDetails\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\x10\n\x08id_token\x18\x02 \x01(\t\x1a\xdb\x01\n\x08Identity\x12\n\n\x02id\x18\x01 \x01(\t\x12\x39\n\x08provider\x18\x02 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x12\x11\n\tfull_name\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x05 \x01(\t\x12\x12\n\nexpires_at\x18\x06 \x01(\t\x12\x14\n\x0cprovider_uid\x18\x07 \x01(\t\x12\x0f\n\x07user_id\x18\x08 \x01(\t\x12\x15\n\rrefresh_token\x18\t \x01(\t\x1a\x91\x01\n\x06\x44\x65vice\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1a\n\x12notification_token\x18\x02 \x01(\t\x12\x10\n\x08platform\x18\x03 \x01(\t\x12\x12\n\nos_version\x18\x04 \x01(\t\x12\x13\n\x0b\x61pp_version\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65vice_uuid\x18\x06 \x01(\t\x12\x0f\n\x07user_id\x18\x07 \x01(\t\x1a\x82\x01\n\nCreateUser\x1a*\n\x07Request\x12\x10\n\x08password\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a\xa6\x01\n\x0f\x42ulkCreateUsers\x1aH\n\x07Request\x12=\n\x05users\x18\x01 \x03(\x0b\x32..main.user_service.UserService.Containers.User\x1aI\n\x08Response\x12=\n\x05users\x18\x01 \x03(\x0b\x32..main.user_service.UserService.Containers.User\x1a\x9f\x01\n\nUpdateUser\x1aG\n\x07Request\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a}\n\x07GetUser\x1a(\n\x07Request\x12\x0f\n\x05\x65mail\x18\x01 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a\x43\n\tValidUser\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1a\n\x08Response\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x1a\xa6\x03\n\x10\x41uthenticateUser\x1a\x8e\x02\n\x07Request\x12T\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32\x43.main.user_service.UserService.AuthenticateUser.Request.AuthBackend\x12X\n\x0b\x63redentials\x18\x02 \x01(\x0b\x32\x43.main.user_service.UserService.AuthenticateUser.Request.Credentials\x1a*\n\x0b\x43redentials\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\"\'\n\x0b\x41uthBackend\x12\x0c\n\x08INTERNAL\x10\x00\x12\n\n\x06GOOGLE\x10\x01\x1a\x80\x01\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12\x15\n\rauthenticated\x18\x02 \x01(\x08\x12\r\n\x05token\x18\x03 \x01(\t\x12\x10\n\x08new_user\x18\x04 \x01(\x08\x1aR\n\x14SendVerificationCode\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1e\n\x08Response\x12\x12\n\nmessage_id\x18\x01 \x01(\t\x1a`\n\x16VerifyVerificationCode\x1a(\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x1a\x1c\n\x08Response\x12\x10\n\x08verified\x18\x01 \x01(\x08\x1a\x8b\x01\n\x1cGetAuthorizationInstructions\x1a\x44\n\x07Request\x12\x39\n\x08provider\x18\x01 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x1a%\n\x08Response\x12\x19\n\x11\x61uthorization_url\x18\x02 \x01(\t\x1a\xa8\x03\n\x15\x43ompleteAuthorization\x1a\xeb\x01\n\x07Request\x12\x39\n\x08provider\x18\x01 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x12O\n\x0eoauth2_details\x18\x02 \x01(\x0b\x32\x37.main.user_service.UserService.Containers.OAuth2Details\x12T\n\x11oauth_sdk_details\x18\x03 \x01(\x0b\x32\x39.main.user_service.UserService.Containers.OAuthSDKDetails\x1a\xa0\x01\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12\x44\n\x08identity\x18\x02 \x01(\x0b\x32\x32.main.user_service.UserService.Containers.Identity\x12\x10\n\x08new_user\x18\x03 \x01(\x08\x1a\x7f\n\rGetIdentities\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1aR\n\x08Response\x12\x46\n\nidentities\x18\x01 \x03(\x0b\x32\x32.main.user_service.UserService.Containers.Identity\x1a\xa9\x01\n\x0cRecordDevice\x1aK\n\x07Request\x12@\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x30.main.user_service.UserService.Containers.Device\x1aL\n\x08Response\x12@\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x30.main.user_service.UserService.Containers.Device\"2\n\x08Provider\x12\x0c\n\x08INTERNAL\x10\x00\x12\x0c\n\x08LINKEDIN\x10\x01\x12\n\n\x06GOOGLE\x10\x02')
+  serialized_pb=_b('\n\x1cprotobufs/user_service.proto\x12\x11main.user_service\"\xcd\x16\n\x0bUserService\x1a\xf7\x04\n\nContainers\x1a\x95\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rprimary_email\x18\x02 \x01(\t\x12\x10\n\x08is_admin\x18\x03 \x01(\x08\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x14\n\x0cphone_number\x18\x05 \x01(\t\x12\x1d\n\x15phone_number_verified\x18\x06 \x01(\x08\x12\x10\n\x08password\x18\x07 \x01(\t\x1a,\n\rOAuth2Details\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\r\n\x05state\x18\x02 \x01(\t\x1a\x31\n\x0fOAuthSDKDetails\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\x10\n\x08id_token\x18\x02 \x01(\t\x1a\xdb\x01\n\x08Identity\x12\n\n\x02id\x18\x01 \x01(\t\x12\x39\n\x08provider\x18\x02 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x12\x11\n\tfull_name\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x05 \x01(\t\x12\x12\n\nexpires_at\x18\x06 \x01(\t\x12\x14\n\x0cprovider_uid\x18\x07 \x01(\t\x12\x0f\n\x07user_id\x18\x08 \x01(\t\x12\x15\n\rrefresh_token\x18\t \x01(\t\x1a\x91\x01\n\x06\x44\x65vice\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1a\n\x12notification_token\x18\x02 \x01(\t\x12\x10\n\x08platform\x18\x03 \x01(\t\x12\x12\n\nos_version\x18\x04 \x01(\t\x12\x13\n\x0b\x61pp_version\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65vice_uuid\x18\x06 \x01(\t\x12\x0f\n\x07user_id\x18\x07 \x01(\t\x1a\x82\x01\n\nCreateUser\x1a*\n\x07Request\x12\x10\n\x08password\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a\xa6\x01\n\x0f\x42ulkCreateUsers\x1aH\n\x07Request\x12=\n\x05users\x18\x01 \x03(\x0b\x32..main.user_service.UserService.Containers.User\x1aI\n\x08Response\x12=\n\x05users\x18\x01 \x03(\x0b\x32..main.user_service.UserService.Containers.User\x1a\x9f\x01\n\nUpdateUser\x1aG\n\x07Request\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a}\n\x07GetUser\x1a(\n\x07Request\x12\x0f\n\x05\x65mail\x18\x01 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1aH\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x1a\x43\n\tValidUser\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1a\n\x08Response\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x1a\xa6\x03\n\x10\x41uthenticateUser\x1a\x8e\x02\n\x07Request\x12T\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32\x43.main.user_service.UserService.AuthenticateUser.Request.AuthBackend\x12X\n\x0b\x63redentials\x18\x02 \x01(\x0b\x32\x43.main.user_service.UserService.AuthenticateUser.Request.Credentials\x1a*\n\x0b\x43redentials\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\"\'\n\x0b\x41uthBackend\x12\x0c\n\x08INTERNAL\x10\x00\x12\n\n\x06GOOGLE\x10\x01\x1a\x80\x01\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12\x15\n\rauthenticated\x18\x02 \x01(\x08\x12\r\n\x05token\x18\x03 \x01(\t\x12\x10\n\x08new_user\x18\x04 \x01(\x08\x1aR\n\x14SendVerificationCode\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\x1e\n\x08Response\x12\x12\n\nmessage_id\x18\x01 \x01(\t\x1a`\n\x16VerifyVerificationCode\x1a(\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x1a\x1c\n\x08Response\x12\x10\n\x08verified\x18\x01 \x01(\x08\x1a\x8b\x01\n\x1cGetAuthorizationInstructions\x1a\x44\n\x07Request\x12\x39\n\x08provider\x18\x01 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x1a%\n\x08Response\x12\x19\n\x11\x61uthorization_url\x18\x02 \x01(\t\x1a\xa8\x03\n\x15\x43ompleteAuthorization\x1a\xeb\x01\n\x07Request\x12\x39\n\x08provider\x18\x01 \x01(\x0e\x32\'.main.user_service.UserService.Provider\x12O\n\x0eoauth2_details\x18\x02 \x01(\x0b\x32\x37.main.user_service.UserService.Containers.OAuth2Details\x12T\n\x11oauth_sdk_details\x18\x03 \x01(\x0b\x32\x39.main.user_service.UserService.Containers.OAuthSDKDetails\x1a\xa0\x01\n\x08Response\x12<\n\x04user\x18\x01 \x01(\x0b\x32..main.user_service.UserService.Containers.User\x12\x44\n\x08identity\x18\x02 \x01(\x0b\x32\x32.main.user_service.UserService.Containers.Identity\x12\x10\n\x08new_user\x18\x03 \x01(\x08\x1a\x7f\n\rGetIdentities\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1aR\n\x08Response\x12\x46\n\nidentities\x18\x01 \x03(\x0b\x32\x32.main.user_service.UserService.Containers.Identity\x1a\xa9\x01\n\x0cRecordDevice\x1aK\n\x07Request\x12@\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x30.main.user_service.UserService.Containers.Device\x1aL\n\x08Response\x12@\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x30.main.user_service.UserService.Containers.Device\x1a\x37\n\rRequestAccess\x1a\x1a\n\x07Request\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x1a\n\n\x08Response\"2\n\x08Provider\x12\x0c\n\x08INTERNAL\x10\x00\x12\x0c\n\x08LINKEDIN\x10\x01\x12\n\n\x06GOOGLE\x10\x02')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -67,8 +67,8 @@ _USERSERVICE_PROVIDER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2838,
-  serialized_end=2888,
+  serialized_start=2895,
+  serialized_end=2945,
 )
 _sym_db.RegisterEnumDescriptor(_USERSERVICE_PROVIDER)
 
@@ -1464,6 +1464,79 @@ _USERSERVICE_RECORDDEVICE = _descriptor.Descriptor(
   serialized_end=2836,
 )
 
+_USERSERVICE_REQUESTACCESS_REQUEST = _descriptor.Descriptor(
+  name='Request',
+  full_name='main.user_service.UserService.RequestAccess.Request',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='user_id', full_name='main.user_service.UserService.RequestAccess.Request.user_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1305,
+  serialized_end=1331,
+)
+
+_USERSERVICE_REQUESTACCESS_RESPONSE = _descriptor.Descriptor(
+  name='Response',
+  full_name='main.user_service.UserService.RequestAccess.Response',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=760,
+  serialized_end=770,
+)
+
+_USERSERVICE_REQUESTACCESS = _descriptor.Descriptor(
+  name='RequestAccess',
+  full_name='main.user_service.UserService.RequestAccess',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[_USERSERVICE_REQUESTACCESS_REQUEST, _USERSERVICE_REQUESTACCESS_RESPONSE, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2838,
+  serialized_end=2893,
+)
+
 _USERSERVICE = _descriptor.Descriptor(
   name='UserService',
   full_name='main.user_service.UserService',
@@ -1474,7 +1547,7 @@ _USERSERVICE = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_USERSERVICE_CONTAINERS, _USERSERVICE_CREATEUSER, _USERSERVICE_BULKCREATEUSERS, _USERSERVICE_UPDATEUSER, _USERSERVICE_GETUSER, _USERSERVICE_VALIDUSER, _USERSERVICE_AUTHENTICATEUSER, _USERSERVICE_SENDVERIFICATIONCODE, _USERSERVICE_VERIFYVERIFICATIONCODE, _USERSERVICE_GETAUTHORIZATIONINSTRUCTIONS, _USERSERVICE_COMPLETEAUTHORIZATION, _USERSERVICE_GETIDENTITIES, _USERSERVICE_RECORDDEVICE, ],
+  nested_types=[_USERSERVICE_CONTAINERS, _USERSERVICE_CREATEUSER, _USERSERVICE_BULKCREATEUSERS, _USERSERVICE_UPDATEUSER, _USERSERVICE_GETUSER, _USERSERVICE_VALIDUSER, _USERSERVICE_AUTHENTICATEUSER, _USERSERVICE_SENDVERIFICATIONCODE, _USERSERVICE_VERIFYVERIFICATIONCODE, _USERSERVICE_GETAUTHORIZATIONINSTRUCTIONS, _USERSERVICE_COMPLETEAUTHORIZATION, _USERSERVICE_GETIDENTITIES, _USERSERVICE_RECORDDEVICE, _USERSERVICE_REQUESTACCESS, ],
   enum_types=[
     _USERSERVICE_PROVIDER,
   ],
@@ -1484,7 +1557,7 @@ _USERSERVICE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=52,
-  serialized_end=2888,
+  serialized_end=2945,
 )
 
 _USERSERVICE_CONTAINERS_USER.containing_type = _USERSERVICE_CONTAINERS
@@ -1553,6 +1626,9 @@ _USERSERVICE_RECORDDEVICE_REQUEST.containing_type = _USERSERVICE_RECORDDEVICE
 _USERSERVICE_RECORDDEVICE_RESPONSE.fields_by_name['device'].message_type = _USERSERVICE_CONTAINERS_DEVICE
 _USERSERVICE_RECORDDEVICE_RESPONSE.containing_type = _USERSERVICE_RECORDDEVICE
 _USERSERVICE_RECORDDEVICE.containing_type = _USERSERVICE
+_USERSERVICE_REQUESTACCESS_REQUEST.containing_type = _USERSERVICE_REQUESTACCESS
+_USERSERVICE_REQUESTACCESS_RESPONSE.containing_type = _USERSERVICE_REQUESTACCESS
+_USERSERVICE_REQUESTACCESS.containing_type = _USERSERVICE
 _USERSERVICE_PROVIDER.containing_type = _USERSERVICE
 DESCRIPTOR.message_types_by_name['UserService'] = _USERSERVICE
 
@@ -1858,6 +1934,27 @@ UserService = _reflection.GeneratedProtocolMessageType('UserService', (_message.
     # @@protoc_insertion_point(class_scope:main.user_service.UserService.RecordDevice)
     ))
   ,
+
+  RequestAccess = _reflection.GeneratedProtocolMessageType('RequestAccess', (_message.Message,), dict(
+
+    Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
+      DESCRIPTOR = _USERSERVICE_REQUESTACCESS_REQUEST,
+      __module__ = 'protobufs.user_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.user_service.UserService.RequestAccess.Request)
+      ))
+    ,
+
+    Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
+      DESCRIPTOR = _USERSERVICE_REQUESTACCESS_RESPONSE,
+      __module__ = 'protobufs.user_service_pb2'
+      # @@protoc_insertion_point(class_scope:main.user_service.UserService.RequestAccess.Response)
+      ))
+    ,
+    DESCRIPTOR = _USERSERVICE_REQUESTACCESS,
+    __module__ = 'protobufs.user_service_pb2'
+    # @@protoc_insertion_point(class_scope:main.user_service.UserService.RequestAccess)
+    ))
+  ,
   DESCRIPTOR = _USERSERVICE,
   __module__ = 'protobufs.user_service_pb2'
   # @@protoc_insertion_point(class_scope:main.user_service.UserService)
@@ -1906,6 +2003,9 @@ _sym_db.RegisterMessage(UserService.GetIdentities.Response)
 _sym_db.RegisterMessage(UserService.RecordDevice)
 _sym_db.RegisterMessage(UserService.RecordDevice.Request)
 _sym_db.RegisterMessage(UserService.RecordDevice.Response)
+_sym_db.RegisterMessage(UserService.RequestAccess)
+_sym_db.RegisterMessage(UserService.RequestAccess.Request)
+_sym_db.RegisterMessage(UserService.RequestAccess.Response)
 
 
 # @@protoc_insertion_point(module_scope)

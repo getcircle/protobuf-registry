@@ -123,6 +123,14 @@ public func == (lhs: UserService.RecordDevice, rhs: UserService.RecordDevice) ->
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: UserService.RequestAccess, rhs: UserService.RequestAccess) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public func == (lhs: UserService, rhs: UserService) -> Bool {
   if (lhs === rhs) {
     return true
@@ -9595,6 +9603,506 @@ final public class UserService : GeneratedMessage {
 
 
 
+  //Nested type declaration start
+
+    final public class RequestAccess : GeneratedMessage {
+
+
+      //Nested type declaration start
+
+        final public class Request : GeneratedMessage {
+          override public subscript (key: String) -> Any? {
+                 switch key {
+                 case "user_id": return user_id
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasUserId:Bool = false
+          public private(set) var user_id:String = ""
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasUserId {
+              output.writeString(1, value:user_id)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasUserId {
+              size += WireFormat.computeStringSize(1, value:user_id)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> UserService.RequestAccess.Request {
+            return UserService.RequestAccess.Request.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess.Request {
+            return UserService.RequestAccess.Request.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> UserService.RequestAccess.Request {
+            return UserService.RequestAccess.Request.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.RequestAccess.Request {
+            return UserService.RequestAccess.Request.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.RequestAccess.Request {
+            return UserService.RequestAccess.Request.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess.Request {
+            return UserService.RequestAccess.Request.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> UserService.RequestAccess.RequestBuilder {
+            return UserService.RequestAccess.Request.classBuilder() as UserService.RequestAccess.RequestBuilder
+          }
+          public func builder() -> UserService.RequestAccess.RequestBuilder {
+            return classBuilder() as UserService.RequestAccess.RequestBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return UserService.RequestAccess.RequestBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return UserService.RequestAccess.Request.builder()
+          }
+          public func toBuilder() -> UserService.RequestAccess.RequestBuilder {
+            return UserService.RequestAccess.Request.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:UserService.RequestAccess.Request) -> UserService.RequestAccess.RequestBuilder {
+            return UserService.RequestAccess.Request.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasUserId {
+              output += "\(indent) user_id: \(user_id) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasUserId {
+                     hashCode = (hashCode &* 31) &+ user_id.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "UserService.RequestAccess.Request"
+          }
+          override public func className() -> String {
+              return "UserService.RequestAccess.Request"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return UserService.RequestAccess.Request.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class RequestBuilder : GeneratedMessageBuilder {
+          private var builderResult:UserService.RequestAccess.Request
+
+          required override public init () {
+             builderResult = UserService.RequestAccess.Request()
+             super.init()
+          }
+          public var hasUserId:Bool {
+               get {
+                    return builderResult.hasUserId
+               }
+          }
+          public var user_id:String {
+               get {
+                    return builderResult.user_id
+               }
+               set (value) {
+                   builderResult.hasUserId = true
+                   builderResult.user_id = value
+               }
+          }
+          public func clearUserId() -> UserService.RequestAccess.RequestBuilder{
+               builderResult.hasUserId = false
+               builderResult.user_id = ""
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> UserService.RequestAccess.RequestBuilder {
+            builderResult = UserService.RequestAccess.Request()
+            return self
+          }
+          public override func clone() -> UserService.RequestAccess.RequestBuilder {
+            return UserService.RequestAccess.Request.builderWithPrototype(builderResult)
+          }
+          public override func build() -> UserService.RequestAccess.Request {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> UserService.RequestAccess.Request {
+            var returnMe:UserService.RequestAccess.Request = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:UserService.RequestAccess.Request) -> UserService.RequestAccess.RequestBuilder {
+            if other.hasUserId {
+                 user_id = other.user_id
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.RequestAccess.RequestBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess.RequestBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                user_id = input.readString()
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+
+
+      //Nested type declaration start
+
+        final public class Response : GeneratedMessage {
+          override public subscript (key: String) -> Any? {
+                 switch key {
+                 default: return nil
+                 }
+          }
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> UserService.RequestAccess.Response {
+            return UserService.RequestAccess.Response.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess.Response {
+            return UserService.RequestAccess.Response.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> UserService.RequestAccess.Response {
+            return UserService.RequestAccess.Response.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.RequestAccess.Response {
+            return UserService.RequestAccess.Response.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.RequestAccess.Response {
+            return UserService.RequestAccess.Response.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess.Response {
+            return UserService.RequestAccess.Response.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> UserService.RequestAccess.ResponseBuilder {
+            return UserService.RequestAccess.Response.classBuilder() as UserService.RequestAccess.ResponseBuilder
+          }
+          public func builder() -> UserService.RequestAccess.ResponseBuilder {
+            return classBuilder() as UserService.RequestAccess.ResponseBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return UserService.RequestAccess.ResponseBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return UserService.RequestAccess.Response.builder()
+          }
+          public func toBuilder() -> UserService.RequestAccess.ResponseBuilder {
+            return UserService.RequestAccess.Response.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:UserService.RequestAccess.Response) -> UserService.RequestAccess.ResponseBuilder {
+            return UserService.RequestAccess.Response.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "UserService.RequestAccess.Response"
+          }
+          override public func className() -> String {
+              return "UserService.RequestAccess.Response"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return UserService.RequestAccess.Response.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class ResponseBuilder : GeneratedMessageBuilder {
+          private var builderResult:UserService.RequestAccess.Response
+
+          required override public init () {
+             builderResult = UserService.RequestAccess.Response()
+             super.init()
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> UserService.RequestAccess.ResponseBuilder {
+            builderResult = UserService.RequestAccess.Response()
+            return self
+          }
+          public override func clone() -> UserService.RequestAccess.ResponseBuilder {
+            return UserService.RequestAccess.Response.builderWithPrototype(builderResult)
+          }
+          public override func build() -> UserService.RequestAccess.Response {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> UserService.RequestAccess.Response {
+            var returnMe:UserService.RequestAccess.Response = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:UserService.RequestAccess.Response) -> UserService.RequestAccess.ResponseBuilder {
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.RequestAccess.ResponseBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess.ResponseBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+      override public subscript (key: String) -> Any? {
+             switch key {
+             default: return nil
+             }
+      }
+
+      required public init() {
+           super.init()
+      }
+      override public func isInitialized() -> Bool {
+       return true
+      }
+      override public func writeToCodedOutputStream(output:CodedOutputStream) {
+        unknownFields.writeToCodedOutputStream(output)
+      }
+      override public func serializedSize() -> Int32 {
+        var size:Int32 = memoizedSerializedSize
+        if size != -1 {
+         return size
+        }
+
+        size = 0
+        size += unknownFields.serializedSize()
+        memoizedSerializedSize = size
+        return size
+      }
+      public class func parseFromData(data:[Byte]) -> UserService.RequestAccess {
+        return UserService.RequestAccess.builder().mergeFromData(data).build()
+      }
+      public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess {
+        return UserService.RequestAccess.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream) -> UserService.RequestAccess {
+        return UserService.RequestAccess.builder().mergeFromInputStream(input).build()
+      }
+      public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->UserService.RequestAccess {
+        return UserService.RequestAccess.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream) -> UserService.RequestAccess {
+        return UserService.RequestAccess.builder().mergeFromCodedInputStream(input).build()
+      }
+      public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess {
+        return UserService.RequestAccess.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+      }
+      public class func builder() -> UserService.RequestAccessBuilder {
+        return UserService.RequestAccess.classBuilder() as UserService.RequestAccessBuilder
+      }
+      public func builder() -> UserService.RequestAccessBuilder {
+        return classBuilder() as UserService.RequestAccessBuilder
+      }
+      public override class func classBuilder() -> MessageBuilder {
+        return UserService.RequestAccessBuilder()
+      }
+      public override func classBuilder() -> MessageBuilder {
+        return UserService.RequestAccess.builder()
+      }
+      public func toBuilder() -> UserService.RequestAccessBuilder {
+        return UserService.RequestAccess.builderWithPrototype(self)
+      }
+      public class func builderWithPrototype(prototype:UserService.RequestAccess) -> UserService.RequestAccessBuilder {
+        return UserService.RequestAccess.builder().mergeFrom(prototype)
+      }
+      override public func writeDescriptionTo(inout output:String, indent:String) {
+        unknownFields.writeDescriptionTo(&output, indent:indent)
+      }
+      override public var hashValue:Int {
+          get {
+              var hashCode:Int = 7
+              hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+              return hashCode
+          }
+      }
+
+
+      //Meta information declaration start
+
+      override public class func className() -> String {
+          return "UserService.RequestAccess"
+      }
+      override public func className() -> String {
+          return "UserService.RequestAccess"
+      }
+      override public func classMetaType() -> GeneratedMessage.Type {
+          return UserService.RequestAccess.self
+      }
+
+
+      //Meta information declaration end
+
+    }
+
+    final public class RequestAccessBuilder : GeneratedMessageBuilder {
+      private var builderResult:UserService.RequestAccess
+
+      required override public init () {
+         builderResult = UserService.RequestAccess()
+         super.init()
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> UserService.RequestAccessBuilder {
+        builderResult = UserService.RequestAccess()
+        return self
+      }
+      public override func clone() -> UserService.RequestAccessBuilder {
+        return UserService.RequestAccess.builderWithPrototype(builderResult)
+      }
+      public override func build() -> UserService.RequestAccess {
+           checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> UserService.RequestAccess {
+        var returnMe:UserService.RequestAccess = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:UserService.RequestAccess) -> UserService.RequestAccessBuilder {
+        mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) ->UserService.RequestAccessBuilder {
+           return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> UserService.RequestAccessBuilder {
+        var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          var tag = input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = unknownFieldsBuilder.build()
+            return self
+
+          default:
+            if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+               unknownFields = unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+
+
+  //Nested type declaration end
+
+
+
     //Enum type declaration start 
 
     public enum Provider:Int32 {
@@ -10275,6 +10783,42 @@ public extension UserService.RecordDevice {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return UserService.RecordDevice.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.RequestAccess.Request {
+    class func parseFromNSData(data:NSData) -> UserService.RequestAccess.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.RequestAccess.Request.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess.Request {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.RequestAccess.Request.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.RequestAccess.Response {
+    class func parseFromNSData(data:NSData) -> UserService.RequestAccess.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.RequestAccess.Response.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess.Response {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.RequestAccess.Response.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension UserService.RequestAccess {
+    class func parseFromNSData(data:NSData) -> UserService.RequestAccess {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.RequestAccess.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> UserService.RequestAccess {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return UserService.RequestAccess.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension UserService {
