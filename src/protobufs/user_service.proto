@@ -54,6 +54,11 @@ message UserService {
             optional string user_id = 7;
         }
 
+        message AccessRequest {
+            optional string id = 1;
+            optional string user_id = 2;
+        }
+
     }
 
     // MARK: - Actions
@@ -222,7 +227,9 @@ message UserService {
             optional string user_id = 1;
         }
 
-        message Response {}
+        message Response {
+            optional Containers.AccessRequest access_request = 1;
+        }
 
     }
 
