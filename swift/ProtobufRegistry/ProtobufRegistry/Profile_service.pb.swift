@@ -213,6 +213,7 @@ final public class ProfileService : GeneratedMessage {
                  case "location_id": return location_id
                  case "nickname": return nickname
                  case "seating_info": return seating_info
+                 case "email": return email
                  default: return nil
                  }
           }
@@ -267,6 +268,9 @@ final public class ProfileService : GeneratedMessage {
 
           public private(set) var hasSeatingInfo:Bool = false
           public private(set) var seating_info:String = ""
+
+          public private(set) var hasEmail:Bool = false
+          public private(set) var email:String = ""
 
           public private(set) var items:Array<ProfileService.Containers.ProfileItem>  = Array<ProfileService.Containers.ProfileItem>()
           public private(set) var contact_methods:Array<ProfileService.Containers.ContactMethod>  = Array<ProfileService.Containers.ContactMethod>()
@@ -334,6 +338,9 @@ final public class ProfileService : GeneratedMessage {
             if hasSeatingInfo {
               output.writeString(19, value:seating_info)
             }
+            if hasEmail {
+              output.writeString(20, value:email)
+            }
             unknownFields.writeToCodedOutputStream(output)
           }
           override public func serializedSize() -> Int32 {
@@ -399,6 +406,9 @@ final public class ProfileService : GeneratedMessage {
             }
             if hasSeatingInfo {
               size += WireFormat.computeStringSize(19, value:seating_info)
+            }
+            if hasEmail {
+              size += WireFormat.computeStringSize(20, value:email)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -506,6 +516,9 @@ final public class ProfileService : GeneratedMessage {
             if hasSeatingInfo {
               output += "\(indent) seating_info: \(seating_info) \n"
             }
+            if hasEmail {
+              output += "\(indent) email: \(email) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -567,6 +580,9 @@ final public class ProfileService : GeneratedMessage {
                   }
                   if hasSeatingInfo {
                      hashCode = (hashCode &* 31) &+ seating_info.hashValue
+                  }
+                  if hasEmail {
+                     hashCode = (hashCode &* 31) &+ email.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -945,6 +961,25 @@ final public class ProfileService : GeneratedMessage {
                builderResult.seating_info = ""
                return self
           }
+          public var hasEmail:Bool {
+               get {
+                    return builderResult.hasEmail
+               }
+          }
+          public var email:String {
+               get {
+                    return builderResult.email
+               }
+               set (value) {
+                   builderResult.hasEmail = true
+                   builderResult.email = value
+               }
+          }
+          public func clearEmail() -> ProfileService.Containers.ProfileBuilder{
+               builderResult.hasEmail = false
+               builderResult.email = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -1023,6 +1058,9 @@ final public class ProfileService : GeneratedMessage {
             if other.hasSeatingInfo {
                  seating_info = other.seating_info
             }
+            if other.hasEmail {
+                 email = other.email
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -1098,6 +1136,9 @@ final public class ProfileService : GeneratedMessage {
 
               case 154 :
                 seating_info = input.readString()
+
+              case 162 :
+                email = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

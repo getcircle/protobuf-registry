@@ -49,6 +49,7 @@ message ProfileService {
             optional string nickname = 17;
             repeated ContactMethod contact_methods = 18;
             optional string seating_info = 19;
+            optional string email = 20;
         }
 
         message ProfileItem {
