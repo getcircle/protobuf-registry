@@ -201,7 +201,7 @@ message UserService {
     message DeleteIdentity {
 
         message Request {
-            optional Provider provider = 1;
+            optional string id = 1;
             optional string user_id = 2;
         }
 

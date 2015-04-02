@@ -8781,14 +8781,15 @@ final public class UserService : GeneratedMessage {
         final public class Request : GeneratedMessage {
           override public subscript (key: String) -> Any? {
                  switch key {
-                 case "provider": return Int(self.provider.rawValue)
+                 case "id": return id
                  case "user_id": return user_id
                  default: return nil
                  }
           }
 
-          public private(set) var provider:UserService.Provider = UserService.Provider.Internal
-          public private(set) var hasProvider:Bool = false
+          public private(set) var hasId:Bool = false
+          public private(set) var id:String = ""
+
           public private(set) var hasUserId:Bool = false
           public private(set) var user_id:String = ""
 
@@ -8799,8 +8800,8 @@ final public class UserService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
-            if hasProvider {
-              output.writeEnum(1, value:provider.rawValue)
+            if hasId {
+              output.writeString(1, value:id)
             }
             if hasUserId {
               output.writeString(2, value:user_id)
@@ -8814,8 +8815,8 @@ final public class UserService : GeneratedMessage {
             }
 
             size = 0
-            if (hasProvider) {
-              size += WireFormat.computeEnumSize(1, value:provider.rawValue)
+            if hasId {
+              size += WireFormat.computeStringSize(1, value:id)
             }
             if hasUserId {
               size += WireFormat.computeStringSize(2, value:user_id)
@@ -8861,8 +8862,8 @@ final public class UserService : GeneratedMessage {
             return UserService.DeleteIdentity.Request.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
-            if (hasProvider) {
-              output += "\(indent) provider: \(provider.rawValue)\n"
+            if hasId {
+              output += "\(indent) id: \(id) \n"
             }
             if hasUserId {
               output += "\(indent) user_id: \(user_id) \n"
@@ -8872,8 +8873,8 @@ final public class UserService : GeneratedMessage {
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
-                  if hasProvider {
-                     hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
+                  if hasId {
+                     hashCode = (hashCode &* 31) &+ id.hashValue
                   }
                   if hasUserId {
                      hashCode = (hashCode &* 31) &+ user_id.hashValue
@@ -8908,25 +8909,25 @@ final public class UserService : GeneratedMessage {
              builderResult = UserService.DeleteIdentity.Request()
              super.init()
           }
-            public var hasProvider:Bool{
-                get {
-                    return builderResult.hasProvider
-                }
-            }
-            public var provider:UserService.Provider {
-                get {
-                    return builderResult.provider
-                }
-                set (value) {
-                    builderResult.hasProvider = true
-                    builderResult.provider = value
-                }
-            }
-            public func clearProvider() -> UserService.DeleteIdentity.RequestBuilder {
-               builderResult.hasProvider = false
-               builderResult.provider = .Internal
+          public var hasId:Bool {
+               get {
+                    return builderResult.hasId
+               }
+          }
+          public var id:String {
+               get {
+                    return builderResult.id
+               }
+               set (value) {
+                   builderResult.hasId = true
+                   builderResult.id = value
+               }
+          }
+          public func clearId() -> UserService.DeleteIdentity.RequestBuilder{
+               builderResult.hasId = false
+               builderResult.id = ""
                return self
-            }
+          }
           public var hasUserId:Bool {
                get {
                     return builderResult.hasUserId
@@ -8967,8 +8968,8 @@ final public class UserService : GeneratedMessage {
             return returnMe
           }
           public func mergeFrom(other:UserService.DeleteIdentity.Request) -> UserService.DeleteIdentity.RequestBuilder {
-            if other.hasProvider {
-                 provider = other.provider
+            if other.hasId {
+                 id = other.id
             }
             if other.hasUserId {
                  user_id = other.user_id
@@ -8988,13 +8989,8 @@ final public class UserService : GeneratedMessage {
                 self.unknownFields = unknownFieldsBuilder.build()
                 return self
 
-              case 8 :
-                let valueIntprovider = input.readEnum()
-                if let enumsprovider = UserService.Provider(rawValue:valueIntprovider){
-                     provider = enumsprovider
-                } else {
-                     unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntprovider))
-                }
+              case 10 :
+                id = input.readString()
 
               case 18 :
                 user_id = input.readString()
