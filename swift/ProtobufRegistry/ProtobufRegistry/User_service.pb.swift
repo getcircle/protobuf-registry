@@ -8781,18 +8781,13 @@ final public class UserService : GeneratedMessage {
         final public class Request : GeneratedMessage {
           override public subscript (key: String) -> Any? {
                  switch key {
-                 case "id": return id
-                 case "user_id": return user_id
+                 case "identity": return identity
                  default: return nil
                  }
           }
 
-          public private(set) var hasId:Bool = false
-          public private(set) var id:String = ""
-
-          public private(set) var hasUserId:Bool = false
-          public private(set) var user_id:String = ""
-
+          public private(set) var hasIdentity:Bool = false
+          public private(set) var identity:UserService.Containers.Identity = UserService.Containers.Identity()
           required public init() {
                super.init()
           }
@@ -8800,11 +8795,8 @@ final public class UserService : GeneratedMessage {
            return true
           }
           override public func writeToCodedOutputStream(output:CodedOutputStream) {
-            if hasId {
-              output.writeString(1, value:id)
-            }
-            if hasUserId {
-              output.writeString(2, value:user_id)
+            if hasIdentity {
+              output.writeMessage(1, value:identity)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -8815,11 +8807,8 @@ final public class UserService : GeneratedMessage {
             }
 
             size = 0
-            if hasId {
-              size += WireFormat.computeStringSize(1, value:id)
-            }
-            if hasUserId {
-              size += WireFormat.computeStringSize(2, value:user_id)
+            if hasIdentity {
+              size += WireFormat.computeMessageSize(1, value:identity)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -8862,22 +8851,18 @@ final public class UserService : GeneratedMessage {
             return UserService.DeleteIdentity.Request.builder().mergeFrom(prototype)
           }
           override public func writeDescriptionTo(inout output:String, indent:String) {
-            if hasId {
-              output += "\(indent) id: \(id) \n"
-            }
-            if hasUserId {
-              output += "\(indent) user_id: \(user_id) \n"
+            if hasIdentity {
+              output += "\(indent) identity {\n"
+              identity.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
               get {
                   var hashCode:Int = 7
-                  if hasId {
-                     hashCode = (hashCode &* 31) &+ id.hashValue
-                  }
-                  if hasUserId {
-                     hashCode = (hashCode &* 31) &+ user_id.hashValue
+                  if hasIdentity {
+                    hashCode = (hashCode &* 31) &+ identity.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -8909,43 +8894,37 @@ final public class UserService : GeneratedMessage {
              builderResult = UserService.DeleteIdentity.Request()
              super.init()
           }
-          public var hasId:Bool {
+          public var hasIdentity:Bool {
                get {
-                    return builderResult.hasId
+                   return builderResult.hasIdentity
                }
           }
-          public var id:String {
+          public var identity:UserService.Containers.Identity {
                get {
-                    return builderResult.id
+                   return builderResult.identity
                }
                set (value) {
-                   builderResult.hasId = true
-                   builderResult.id = value
+                   builderResult.hasIdentity = true
+                   builderResult.identity = value
                }
           }
-          public func clearId() -> UserService.DeleteIdentity.RequestBuilder{
-               builderResult.hasId = false
-               builderResult.id = ""
-               return self
+          public func setIdentityBuilder(builderForValue:UserService.Containers.IdentityBuilder) -> UserService.DeleteIdentity.RequestBuilder {
+            identity = builderForValue.build()
+            return self
           }
-          public var hasUserId:Bool {
-               get {
-                    return builderResult.hasUserId
-               }
+          public func mergeIdentity(value:UserService.Containers.Identity) -> UserService.DeleteIdentity.RequestBuilder {
+            if (builderResult.hasIdentity) {
+              builderResult.identity = UserService.Containers.Identity.builderWithPrototype(builderResult.identity).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.identity = value
+            }
+            builderResult.hasIdentity = true
+            return self
           }
-          public var user_id:String {
-               get {
-                    return builderResult.user_id
-               }
-               set (value) {
-                   builderResult.hasUserId = true
-                   builderResult.user_id = value
-               }
-          }
-          public func clearUserId() -> UserService.DeleteIdentity.RequestBuilder{
-               builderResult.hasUserId = false
-               builderResult.user_id = ""
-               return self
+          public func clearIdentity() -> UserService.DeleteIdentity.RequestBuilder {
+            builderResult.hasIdentity = false
+            builderResult.identity = UserService.Containers.Identity()
+            return self
           }
           override public var internalGetResult:GeneratedMessage {
                get {
@@ -8968,11 +8947,8 @@ final public class UserService : GeneratedMessage {
             return returnMe
           }
           public func mergeFrom(other:UserService.DeleteIdentity.Request) -> UserService.DeleteIdentity.RequestBuilder {
-            if other.hasId {
-                 id = other.id
-            }
-            if other.hasUserId {
-                 user_id = other.user_id
+            if (other.hasIdentity) {
+                mergeIdentity(other.identity)
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -8990,10 +8966,12 @@ final public class UserService : GeneratedMessage {
                 return self
 
               case 10 :
-                id = input.readString()
-
-              case 18 :
-                user_id = input.readString()
+                var subBuilder:UserService.Containers.IdentityBuilder = UserService.Containers.Identity.builder()
+                if hasIdentity {
+                  subBuilder.mergeFrom(identity)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                identity = subBuilder.buildPartial()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

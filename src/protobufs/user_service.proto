@@ -201,8 +201,7 @@ message UserService {
     message DeleteIdentity {
 
         message Request {
-            optional string id = 1;
-            optional string user_id = 2;
+            optional Containers.Identity identity = 1;
         }
 
         message Response {}
