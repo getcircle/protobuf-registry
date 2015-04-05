@@ -808,6 +808,7 @@ final public class OrganizationService : GeneratedMessage {
                  case "organization_id": return organization_id
                  case "department": return department
                  case "profile_count": return profile_count
+                 case "color": return color
                  default: return nil
                  }
           }
@@ -829,6 +830,9 @@ final public class OrganizationService : GeneratedMessage {
 
           public private(set) var hasProfileCount:Bool = false
           public private(set) var profile_count:UInt32 = UInt32(0)
+
+          public private(set) var hasColor:Bool = false
+          public private(set) var color:String = ""
 
           public private(set) var path:Array<OrganizationService.Containers.PathPart>  = Array<OrganizationService.Containers.PathPart>()
           required public init() {
@@ -859,6 +863,9 @@ final public class OrganizationService : GeneratedMessage {
             if hasProfileCount {
               output.writeUInt32(7, value:profile_count)
             }
+            if hasColor {
+              output.writeString(8, value:color)
+            }
             unknownFields.writeToCodedOutputStream(output)
           }
           override public func serializedSize() -> Int32 {
@@ -888,6 +895,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasProfileCount {
               size += WireFormat.computeUInt32Size(7, value:profile_count)
+            }
+            if hasColor {
+              size += WireFormat.computeStringSize(8, value:color)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -955,6 +965,9 @@ final public class OrganizationService : GeneratedMessage {
             if hasProfileCount {
               output += "\(indent) profile_count: \(profile_count) \n"
             }
+            if hasColor {
+              output += "\(indent) color: \(color) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -980,6 +993,9 @@ final public class OrganizationService : GeneratedMessage {
                   }
                   if hasProfileCount {
                      hashCode = (hashCode &* 31) &+ profile_count.hashValue
+                  }
+                  if hasColor {
+                     hashCode = (hashCode &* 31) &+ color.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -1137,6 +1153,25 @@ final public class OrganizationService : GeneratedMessage {
                builderResult.profile_count = UInt32(0)
                return self
           }
+          public var hasColor:Bool {
+               get {
+                    return builderResult.hasColor
+               }
+          }
+          public var color:String {
+               get {
+                    return builderResult.color
+               }
+               set (value) {
+                   builderResult.hasColor = true
+                   builderResult.color = value
+               }
+          }
+          public func clearColor() -> OrganizationService.Containers.TeamBuilder{
+               builderResult.hasColor = false
+               builderResult.color = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -1179,6 +1214,9 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasProfileCount {
                  profile_count = other.profile_count
             }
+            if other.hasColor {
+                 color = other.color
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -1216,6 +1254,9 @@ final public class OrganizationService : GeneratedMessage {
 
               case 56 :
                 profile_count = input.readUInt32()
+
+              case 66 :
+                color = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

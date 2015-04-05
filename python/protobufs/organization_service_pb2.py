@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/organization_service.proto',
   package='main.organization_service',
-  serialized_pb=_b('\n$protobufs/organization_service.proto\x12\x19main.organization_service\"\xce\x1c\n\x13OrganizationService\x1a\xb4\x07\n\nContainers\x1a_\n\x0cOrganization\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\x12\x11\n\timage_url\x18\x04 \x01(\t\x12\x12\n\ntint_color\x18\x05 \x01(\t\x1a\x36\n\x08PathPart\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08owner_id\x18\x03 \x01(\t\x1a\xc8\x01\n\x04Team\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08owner_id\x18\x03 \x01(\t\x12\x17\n\x0forganization_id\x18\x04 \x01(\t\x12P\n\x04path\x18\x05 \x03(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.PathPart\x12\x12\n\ndepartment\x18\x06 \x01(\t\x12\x15\n\rprofile_count\x18\x07 \x01(\r\x1a\xf9\x01\n\x07\x41\x64\x64ress\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x11\n\taddress_1\x18\x04 \x01(\t\x12\x11\n\taddress_2\x18\x05 \x01(\t\x12\x0c\n\x04\x63ity\x18\x06 \x01(\t\x12\x0e\n\x06region\x18\x07 \x01(\t\x12\x13\n\x0bpostal_code\x18\x08 \x01(\t\x12\x14\n\x0c\x63ountry_code\x18\t \x01(\t\x12\x15\n\rprofile_count\x18\n \x01(\t\x12\x10\n\x08latitude\x18\x0b \x01(\t\x12\x11\n\tlongitude\x18\x0c \x01(\t\x12\x10\n\x08timezone\x18\r \x01(\t\x1a\xbb\x01\n\x08Location\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12R\n\x07\x61\x64\x64ress\x18\x03 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x12\x17\n\x0forganization_id\x18\x04 \x01(\t\x12\x15\n\rprofile_count\x18\x05 \x01(\r\x12\x11\n\timage_url\x18\x06 \x01(\t\x1a\x87\x01\n\x0fTeamDescendants\x12\r\n\x05\x64\x65pth\x18\x01 \x01(\r\x12\x16\n\x0eparent_team_id\x18\x02 \x01(\t\x12M\n\x05teams\x18\x03 \x03(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\xe7\x01\n\x12\x43reateOrganization\x1ag\n\x07Request\x12\\\n\x0corganization\x18\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.Containers.Organization\x1ah\n\x08Response\x12\\\n\x0corganization\x18\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.Containers.Organization\x1a\xbc\x01\n\x0fGetOrganization\x1a?\n\x07Request\x12\x17\n\x0forganization_id\x18\x01 \x01(\t\x12\x1b\n\x13organization_domain\x18\x02 \x01(\t\x1ah\n\x08Response\x12\\\n\x0corganization\x18\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.Containers.Organization\x1a\xd1\x01\n\nCreateTeam\x1ai\n\x07Request\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x12\x10\n\x08\x63hild_of\x18\x02 \x01(\t\x1aX\n\x08Response\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\xa6\x01\n\x07GetTeam\x1a\x41\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x1aX\n\x08Response\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\x9e\x01\n\x08GetTeams\x1a\x37\n\x07Request\x12\x17\n\x0forganization_id\x18\x01 \x01(\t\x12\x13\n\x0blocation_id\x18\x02 \x01(\t\x1aY\n\x08Response\x12M\n\x05teams\x18\x01 \x03(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\xc0\x01\n\x12GetTeamDescendants\x1a>\n\x07Request\x12\x10\n\x08team_ids\x18\x01 \x03(\t\x12\x12\n\nattributes\x18\x02 \x03(\t\x12\r\n\x05\x64\x65pth\x18\x03 \x01(\r\x1aj\n\x08Response\x12^\n\x0b\x64\x65scendants\x18\x01 \x03(\x0b\x32I.main.organization_service.OrganizationService.Containers.TeamDescendants\x1a\x8f\x01\n\x0fGetTopLevelTeam\x1a\"\n\x07Request\x12\x17\n\x0forganization_id\x18\x01 \x01(\t\x1aX\n\x08Response\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\xce\x01\n\rCreateAddress\x1a]\n\x07Request\x12R\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x1a^\n\x08Response\x12R\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x1a:\n\rDeleteAddress\x1a\x1d\n\x07Request\x12\x12\n\naddress_id\x18\x01 \x01(\t\x1a\n\n\x08Response\x1a\xb2\x01\n\nGetAddress\x1a\x44\n\x07Request\x12\x12\n\naddress_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x1a^\n\x08Response\x12R\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x1a\xa4\x01\n\x0cGetAddresses\x1a\x32\n\x07Request\x12\x19\n\x0forganization_id\x18\x01 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1a`\n\x08Response\x12T\n\taddresses\x18\x01 \x03(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x1a\xd3\x01\n\x0e\x43reateLocation\x1a_\n\x07Request\x12T\n\x08location\x18\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location\x1a`\n\x08Response\x12T\n\x08location\x18\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location\x1a\xd3\x01\n\x0eUpdateLocation\x1a_\n\x07Request\x12T\n\x08location\x18\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location\x1a`\n\x08Response\x12T\n\x08location\x18\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location\x1a\xb6\x01\n\x0bGetLocation\x1a\x45\n\x07Request\x12\x13\n\x0blocation_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x1a`\n\x08Response\x12T\n\x08location\x18\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location\x1a\x95\x01\n\x0cGetLocations\x1a\"\n\x07Request\x12\x17\n\x0forganization_id\x18\x01 \x01(\t\x1a\x61\n\x08Response\x12U\n\tlocations\x18\x01 \x03(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location')
+  serialized_pb=_b('\n$protobufs/organization_service.proto\x12\x19main.organization_service\"\xdd\x1c\n\x13OrganizationService\x1a\xc3\x07\n\nContainers\x1a_\n\x0cOrganization\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\x12\x11\n\timage_url\x18\x04 \x01(\t\x12\x12\n\ntint_color\x18\x05 \x01(\t\x1a\x36\n\x08PathPart\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08owner_id\x18\x03 \x01(\t\x1a\xd7\x01\n\x04Team\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08owner_id\x18\x03 \x01(\t\x12\x17\n\x0forganization_id\x18\x04 \x01(\t\x12P\n\x04path\x18\x05 \x03(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.PathPart\x12\x12\n\ndepartment\x18\x06 \x01(\t\x12\x15\n\rprofile_count\x18\x07 \x01(\r\x12\r\n\x05\x63olor\x18\x08 \x01(\t\x1a\xf9\x01\n\x07\x41\x64\x64ress\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x11\n\taddress_1\x18\x04 \x01(\t\x12\x11\n\taddress_2\x18\x05 \x01(\t\x12\x0c\n\x04\x63ity\x18\x06 \x01(\t\x12\x0e\n\x06region\x18\x07 \x01(\t\x12\x13\n\x0bpostal_code\x18\x08 \x01(\t\x12\x14\n\x0c\x63ountry_code\x18\t \x01(\t\x12\x15\n\rprofile_count\x18\n \x01(\t\x12\x10\n\x08latitude\x18\x0b \x01(\t\x12\x11\n\tlongitude\x18\x0c \x01(\t\x12\x10\n\x08timezone\x18\r \x01(\t\x1a\xbb\x01\n\x08Location\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12R\n\x07\x61\x64\x64ress\x18\x03 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x12\x17\n\x0forganization_id\x18\x04 \x01(\t\x12\x15\n\rprofile_count\x18\x05 \x01(\r\x12\x11\n\timage_url\x18\x06 \x01(\t\x1a\x87\x01\n\x0fTeamDescendants\x12\r\n\x05\x64\x65pth\x18\x01 \x01(\r\x12\x16\n\x0eparent_team_id\x18\x02 \x01(\t\x12M\n\x05teams\x18\x03 \x03(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\xe7\x01\n\x12\x43reateOrganization\x1ag\n\x07Request\x12\\\n\x0corganization\x18\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.Containers.Organization\x1ah\n\x08Response\x12\\\n\x0corganization\x18\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.Containers.Organization\x1a\xbc\x01\n\x0fGetOrganization\x1a?\n\x07Request\x12\x17\n\x0forganization_id\x18\x01 \x01(\t\x12\x1b\n\x13organization_domain\x18\x02 \x01(\t\x1ah\n\x08Response\x12\\\n\x0corganization\x18\x01 \x01(\x0b\x32\x46.main.organization_service.OrganizationService.Containers.Organization\x1a\xd1\x01\n\nCreateTeam\x1ai\n\x07Request\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x12\x10\n\x08\x63hild_of\x18\x02 \x01(\t\x1aX\n\x08Response\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\xa6\x01\n\x07GetTeam\x1a\x41\n\x07Request\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x1aX\n\x08Response\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\x9e\x01\n\x08GetTeams\x1a\x37\n\x07Request\x12\x17\n\x0forganization_id\x18\x01 \x01(\t\x12\x13\n\x0blocation_id\x18\x02 \x01(\t\x1aY\n\x08Response\x12M\n\x05teams\x18\x01 \x03(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\xc0\x01\n\x12GetTeamDescendants\x1a>\n\x07Request\x12\x10\n\x08team_ids\x18\x01 \x03(\t\x12\x12\n\nattributes\x18\x02 \x03(\t\x12\r\n\x05\x64\x65pth\x18\x03 \x01(\r\x1aj\n\x08Response\x12^\n\x0b\x64\x65scendants\x18\x01 \x03(\x0b\x32I.main.organization_service.OrganizationService.Containers.TeamDescendants\x1a\x8f\x01\n\x0fGetTopLevelTeam\x1a\"\n\x07Request\x12\x17\n\x0forganization_id\x18\x01 \x01(\t\x1aX\n\x08Response\x12L\n\x04team\x18\x01 \x01(\x0b\x32>.main.organization_service.OrganizationService.Containers.Team\x1a\xce\x01\n\rCreateAddress\x1a]\n\x07Request\x12R\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x1a^\n\x08Response\x12R\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x1a:\n\rDeleteAddress\x1a\x1d\n\x07Request\x12\x12\n\naddress_id\x18\x01 \x01(\t\x1a\n\n\x08Response\x1a\xb2\x01\n\nGetAddress\x1a\x44\n\x07Request\x12\x12\n\naddress_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x1a^\n\x08Response\x12R\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x1a\xa4\x01\n\x0cGetAddresses\x1a\x32\n\x07Request\x12\x19\n\x0forganization_id\x18\x01 \x01(\tH\x00\x42\x0c\n\nlookup_key\x1a`\n\x08Response\x12T\n\taddresses\x18\x01 \x03(\x0b\x32\x41.main.organization_service.OrganizationService.Containers.Address\x1a\xd3\x01\n\x0e\x43reateLocation\x1a_\n\x07Request\x12T\n\x08location\x18\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location\x1a`\n\x08Response\x12T\n\x08location\x18\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location\x1a\xd3\x01\n\x0eUpdateLocation\x1a_\n\x07Request\x12T\n\x08location\x18\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location\x1a`\n\x08Response\x12T\n\x08location\x18\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location\x1a\xb6\x01\n\x0bGetLocation\x1a\x45\n\x07Request\x12\x13\n\x0blocation_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x1a`\n\x08Response\x12T\n\x08location\x18\x01 \x01(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location\x1a\x95\x01\n\x0cGetLocations\x1a\"\n\x07Request\x12\x17\n\x0forganization_id\x18\x01 \x01(\t\x1a\x61\n\x08Response\x12U\n\tlocations\x18\x01 \x03(\x0b\x32\x42.main.organization_service.OrganizationService.Containers.Location')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -181,6 +181,13 @@ _ORGANIZATIONSERVICE_CONTAINERS_TEAM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='color', full_name='main.organization_service.OrganizationService.Containers.Team.color', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -193,7 +200,7 @@ _ORGANIZATIONSERVICE_CONTAINERS_TEAM = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=260,
-  serialized_end=460,
+  serialized_end=475,
 )
 
 _ORGANIZATIONSERVICE_CONTAINERS_ADDRESS = _descriptor.Descriptor(
@@ -305,8 +312,8 @@ _ORGANIZATIONSERVICE_CONTAINERS_ADDRESS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=463,
-  serialized_end=712,
+  serialized_start=478,
+  serialized_end=727,
 )
 
 _ORGANIZATIONSERVICE_CONTAINERS_LOCATION = _descriptor.Descriptor(
@@ -369,8 +376,8 @@ _ORGANIZATIONSERVICE_CONTAINERS_LOCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=715,
-  serialized_end=902,
+  serialized_start=730,
+  serialized_end=917,
 )
 
 _ORGANIZATIONSERVICE_CONTAINERS_TEAMDESCENDANTS = _descriptor.Descriptor(
@@ -412,8 +419,8 @@ _ORGANIZATIONSERVICE_CONTAINERS_TEAMDESCENDANTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=905,
-  serialized_end=1040,
+  serialized_start=920,
+  serialized_end=1055,
 )
 
 _ORGANIZATIONSERVICE_CONTAINERS = _descriptor.Descriptor(
@@ -435,7 +442,7 @@ _ORGANIZATIONSERVICE_CONTAINERS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=92,
-  serialized_end=1040,
+  serialized_end=1055,
 )
 
 _ORGANIZATIONSERVICE_CREATEORGANIZATION_REQUEST = _descriptor.Descriptor(
@@ -463,8 +470,8 @@ _ORGANIZATIONSERVICE_CREATEORGANIZATION_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1065,
-  serialized_end=1168,
+  serialized_start=1080,
+  serialized_end=1183,
 )
 
 _ORGANIZATIONSERVICE_CREATEORGANIZATION_RESPONSE = _descriptor.Descriptor(
@@ -492,8 +499,8 @@ _ORGANIZATIONSERVICE_CREATEORGANIZATION_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1170,
-  serialized_end=1274,
+  serialized_start=1185,
+  serialized_end=1289,
 )
 
 _ORGANIZATIONSERVICE_CREATEORGANIZATION = _descriptor.Descriptor(
@@ -514,8 +521,8 @@ _ORGANIZATIONSERVICE_CREATEORGANIZATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1043,
-  serialized_end=1274,
+  serialized_start=1058,
+  serialized_end=1289,
 )
 
 _ORGANIZATIONSERVICE_GETORGANIZATION_REQUEST = _descriptor.Descriptor(
@@ -550,8 +557,8 @@ _ORGANIZATIONSERVICE_GETORGANIZATION_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1296,
-  serialized_end=1359,
+  serialized_start=1311,
+  serialized_end=1374,
 )
 
 _ORGANIZATIONSERVICE_GETORGANIZATION_RESPONSE = _descriptor.Descriptor(
@@ -579,8 +586,8 @@ _ORGANIZATIONSERVICE_GETORGANIZATION_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1170,
-  serialized_end=1274,
+  serialized_start=1185,
+  serialized_end=1289,
 )
 
 _ORGANIZATIONSERVICE_GETORGANIZATION = _descriptor.Descriptor(
@@ -601,8 +608,8 @@ _ORGANIZATIONSERVICE_GETORGANIZATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1277,
-  serialized_end=1465,
+  serialized_start=1292,
+  serialized_end=1480,
 )
 
 _ORGANIZATIONSERVICE_CREATETEAM_REQUEST = _descriptor.Descriptor(
@@ -637,8 +644,8 @@ _ORGANIZATIONSERVICE_CREATETEAM_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1482,
-  serialized_end=1587,
+  serialized_start=1497,
+  serialized_end=1602,
 )
 
 _ORGANIZATIONSERVICE_CREATETEAM_RESPONSE = _descriptor.Descriptor(
@@ -666,8 +673,8 @@ _ORGANIZATIONSERVICE_CREATETEAM_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1589,
-  serialized_end=1677,
+  serialized_start=1604,
+  serialized_end=1692,
 )
 
 _ORGANIZATIONSERVICE_CREATETEAM = _descriptor.Descriptor(
@@ -688,8 +695,8 @@ _ORGANIZATIONSERVICE_CREATETEAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1468,
-  serialized_end=1677,
+  serialized_start=1483,
+  serialized_end=1692,
 )
 
 _ORGANIZATIONSERVICE_GETTEAM_REQUEST = _descriptor.Descriptor(
@@ -731,8 +738,8 @@ _ORGANIZATIONSERVICE_GETTEAM_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1691,
-  serialized_end=1756,
+  serialized_start=1706,
+  serialized_end=1771,
 )
 
 _ORGANIZATIONSERVICE_GETTEAM_RESPONSE = _descriptor.Descriptor(
@@ -760,8 +767,8 @@ _ORGANIZATIONSERVICE_GETTEAM_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1589,
-  serialized_end=1677,
+  serialized_start=1604,
+  serialized_end=1692,
 )
 
 _ORGANIZATIONSERVICE_GETTEAM = _descriptor.Descriptor(
@@ -782,8 +789,8 @@ _ORGANIZATIONSERVICE_GETTEAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1680,
-  serialized_end=1846,
+  serialized_start=1695,
+  serialized_end=1861,
 )
 
 _ORGANIZATIONSERVICE_GETTEAMS_REQUEST = _descriptor.Descriptor(
@@ -818,8 +825,8 @@ _ORGANIZATIONSERVICE_GETTEAMS_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1861,
-  serialized_end=1916,
+  serialized_start=1876,
+  serialized_end=1931,
 )
 
 _ORGANIZATIONSERVICE_GETTEAMS_RESPONSE = _descriptor.Descriptor(
@@ -847,8 +854,8 @@ _ORGANIZATIONSERVICE_GETTEAMS_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1918,
-  serialized_end=2007,
+  serialized_start=1933,
+  serialized_end=2022,
 )
 
 _ORGANIZATIONSERVICE_GETTEAMS = _descriptor.Descriptor(
@@ -869,8 +876,8 @@ _ORGANIZATIONSERVICE_GETTEAMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1849,
-  serialized_end=2007,
+  serialized_start=1864,
+  serialized_end=2022,
 )
 
 _ORGANIZATIONSERVICE_GETTEAMDESCENDANTS_REQUEST = _descriptor.Descriptor(
@@ -912,8 +919,8 @@ _ORGANIZATIONSERVICE_GETTEAMDESCENDANTS_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2032,
-  serialized_end=2094,
+  serialized_start=2047,
+  serialized_end=2109,
 )
 
 _ORGANIZATIONSERVICE_GETTEAMDESCENDANTS_RESPONSE = _descriptor.Descriptor(
@@ -941,8 +948,8 @@ _ORGANIZATIONSERVICE_GETTEAMDESCENDANTS_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2096,
-  serialized_end=2202,
+  serialized_start=2111,
+  serialized_end=2217,
 )
 
 _ORGANIZATIONSERVICE_GETTEAMDESCENDANTS = _descriptor.Descriptor(
@@ -963,8 +970,8 @@ _ORGANIZATIONSERVICE_GETTEAMDESCENDANTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2010,
-  serialized_end=2202,
+  serialized_start=2025,
+  serialized_end=2217,
 )
 
 _ORGANIZATIONSERVICE_GETTOPLEVELTEAM_REQUEST = _descriptor.Descriptor(
@@ -992,8 +999,8 @@ _ORGANIZATIONSERVICE_GETTOPLEVELTEAM_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1296,
-  serialized_end=1330,
+  serialized_start=1311,
+  serialized_end=1345,
 )
 
 _ORGANIZATIONSERVICE_GETTOPLEVELTEAM_RESPONSE = _descriptor.Descriptor(
@@ -1021,8 +1028,8 @@ _ORGANIZATIONSERVICE_GETTOPLEVELTEAM_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1589,
-  serialized_end=1677,
+  serialized_start=1604,
+  serialized_end=1692,
 )
 
 _ORGANIZATIONSERVICE_GETTOPLEVELTEAM = _descriptor.Descriptor(
@@ -1043,8 +1050,8 @@ _ORGANIZATIONSERVICE_GETTOPLEVELTEAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2205,
-  serialized_end=2348,
+  serialized_start=2220,
+  serialized_end=2363,
 )
 
 _ORGANIZATIONSERVICE_CREATEADDRESS_REQUEST = _descriptor.Descriptor(
@@ -1072,8 +1079,8 @@ _ORGANIZATIONSERVICE_CREATEADDRESS_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2368,
-  serialized_end=2461,
+  serialized_start=2383,
+  serialized_end=2476,
 )
 
 _ORGANIZATIONSERVICE_CREATEADDRESS_RESPONSE = _descriptor.Descriptor(
@@ -1101,8 +1108,8 @@ _ORGANIZATIONSERVICE_CREATEADDRESS_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2463,
-  serialized_end=2557,
+  serialized_start=2478,
+  serialized_end=2572,
 )
 
 _ORGANIZATIONSERVICE_CREATEADDRESS = _descriptor.Descriptor(
@@ -1123,8 +1130,8 @@ _ORGANIZATIONSERVICE_CREATEADDRESS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2351,
-  serialized_end=2557,
+  serialized_start=2366,
+  serialized_end=2572,
 )
 
 _ORGANIZATIONSERVICE_DELETEADDRESS_REQUEST = _descriptor.Descriptor(
@@ -1152,8 +1159,8 @@ _ORGANIZATIONSERVICE_DELETEADDRESS_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2576,
-  serialized_end=2605,
+  serialized_start=2591,
+  serialized_end=2620,
 )
 
 _ORGANIZATIONSERVICE_DELETEADDRESS_RESPONSE = _descriptor.Descriptor(
@@ -1174,8 +1181,8 @@ _ORGANIZATIONSERVICE_DELETEADDRESS_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1170,
-  serialized_end=1180,
+  serialized_start=1185,
+  serialized_end=1195,
 )
 
 _ORGANIZATIONSERVICE_DELETEADDRESS = _descriptor.Descriptor(
@@ -1196,8 +1203,8 @@ _ORGANIZATIONSERVICE_DELETEADDRESS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2559,
-  serialized_end=2617,
+  serialized_start=2574,
+  serialized_end=2632,
 )
 
 _ORGANIZATIONSERVICE_GETADDRESS_REQUEST = _descriptor.Descriptor(
@@ -1239,8 +1246,8 @@ _ORGANIZATIONSERVICE_GETADDRESS_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2634,
-  serialized_end=2702,
+  serialized_start=2649,
+  serialized_end=2717,
 )
 
 _ORGANIZATIONSERVICE_GETADDRESS_RESPONSE = _descriptor.Descriptor(
@@ -1268,8 +1275,8 @@ _ORGANIZATIONSERVICE_GETADDRESS_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2463,
-  serialized_end=2557,
+  serialized_start=2478,
+  serialized_end=2572,
 )
 
 _ORGANIZATIONSERVICE_GETADDRESS = _descriptor.Descriptor(
@@ -1290,8 +1297,8 @@ _ORGANIZATIONSERVICE_GETADDRESS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2620,
-  serialized_end=2798,
+  serialized_start=2635,
+  serialized_end=2813,
 )
 
 _ORGANIZATIONSERVICE_GETADDRESSES_REQUEST = _descriptor.Descriptor(
@@ -1322,8 +1329,8 @@ _ORGANIZATIONSERVICE_GETADDRESSES_REQUEST = _descriptor.Descriptor(
       name='lookup_key', full_name='main.organization_service.OrganizationService.GetAddresses.Request.lookup_key',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=2817,
-  serialized_end=2867,
+  serialized_start=2832,
+  serialized_end=2882,
 )
 
 _ORGANIZATIONSERVICE_GETADDRESSES_RESPONSE = _descriptor.Descriptor(
@@ -1351,8 +1358,8 @@ _ORGANIZATIONSERVICE_GETADDRESSES_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2869,
-  serialized_end=2965,
+  serialized_start=2884,
+  serialized_end=2980,
 )
 
 _ORGANIZATIONSERVICE_GETADDRESSES = _descriptor.Descriptor(
@@ -1373,8 +1380,8 @@ _ORGANIZATIONSERVICE_GETADDRESSES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2801,
-  serialized_end=2965,
+  serialized_start=2816,
+  serialized_end=2980,
 )
 
 _ORGANIZATIONSERVICE_CREATELOCATION_REQUEST = _descriptor.Descriptor(
@@ -1402,8 +1409,8 @@ _ORGANIZATIONSERVICE_CREATELOCATION_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2986,
-  serialized_end=3081,
+  serialized_start=3001,
+  serialized_end=3096,
 )
 
 _ORGANIZATIONSERVICE_CREATELOCATION_RESPONSE = _descriptor.Descriptor(
@@ -1431,8 +1438,8 @@ _ORGANIZATIONSERVICE_CREATELOCATION_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3083,
-  serialized_end=3179,
+  serialized_start=3098,
+  serialized_end=3194,
 )
 
 _ORGANIZATIONSERVICE_CREATELOCATION = _descriptor.Descriptor(
@@ -1453,8 +1460,8 @@ _ORGANIZATIONSERVICE_CREATELOCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2968,
-  serialized_end=3179,
+  serialized_start=2983,
+  serialized_end=3194,
 )
 
 _ORGANIZATIONSERVICE_UPDATELOCATION_REQUEST = _descriptor.Descriptor(
@@ -1482,8 +1489,8 @@ _ORGANIZATIONSERVICE_UPDATELOCATION_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2986,
-  serialized_end=3081,
+  serialized_start=3001,
+  serialized_end=3096,
 )
 
 _ORGANIZATIONSERVICE_UPDATELOCATION_RESPONSE = _descriptor.Descriptor(
@@ -1511,8 +1518,8 @@ _ORGANIZATIONSERVICE_UPDATELOCATION_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3083,
-  serialized_end=3179,
+  serialized_start=3098,
+  serialized_end=3194,
 )
 
 _ORGANIZATIONSERVICE_UPDATELOCATION = _descriptor.Descriptor(
@@ -1533,8 +1540,8 @@ _ORGANIZATIONSERVICE_UPDATELOCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3182,
-  serialized_end=3393,
+  serialized_start=3197,
+  serialized_end=3408,
 )
 
 _ORGANIZATIONSERVICE_GETLOCATION_REQUEST = _descriptor.Descriptor(
@@ -1576,8 +1583,8 @@ _ORGANIZATIONSERVICE_GETLOCATION_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3411,
-  serialized_end=3480,
+  serialized_start=3426,
+  serialized_end=3495,
 )
 
 _ORGANIZATIONSERVICE_GETLOCATION_RESPONSE = _descriptor.Descriptor(
@@ -1605,8 +1612,8 @@ _ORGANIZATIONSERVICE_GETLOCATION_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3083,
-  serialized_end=3179,
+  serialized_start=3098,
+  serialized_end=3194,
 )
 
 _ORGANIZATIONSERVICE_GETLOCATION = _descriptor.Descriptor(
@@ -1627,8 +1634,8 @@ _ORGANIZATIONSERVICE_GETLOCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3396,
-  serialized_end=3578,
+  serialized_start=3411,
+  serialized_end=3593,
 )
 
 _ORGANIZATIONSERVICE_GETLOCATIONS_REQUEST = _descriptor.Descriptor(
@@ -1656,8 +1663,8 @@ _ORGANIZATIONSERVICE_GETLOCATIONS_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1296,
-  serialized_end=1330,
+  serialized_start=1311,
+  serialized_end=1345,
 )
 
 _ORGANIZATIONSERVICE_GETLOCATIONS_RESPONSE = _descriptor.Descriptor(
@@ -1685,8 +1692,8 @@ _ORGANIZATIONSERVICE_GETLOCATIONS_RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3633,
-  serialized_end=3730,
+  serialized_start=3648,
+  serialized_end=3745,
 )
 
 _ORGANIZATIONSERVICE_GETLOCATIONS = _descriptor.Descriptor(
@@ -1707,8 +1714,8 @@ _ORGANIZATIONSERVICE_GETLOCATIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3581,
-  serialized_end=3730,
+  serialized_start=3596,
+  serialized_end=3745,
 )
 
 _ORGANIZATIONSERVICE = _descriptor.Descriptor(
@@ -1730,7 +1737,7 @@ _ORGANIZATIONSERVICE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=68,
-  serialized_end=3730,
+  serialized_end=3745,
 )
 
 _ORGANIZATIONSERVICE_CONTAINERS_ORGANIZATION.containing_type = _ORGANIZATIONSERVICE_CONTAINERS

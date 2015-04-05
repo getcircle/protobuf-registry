@@ -29,6 +29,7 @@ message OrganizationService {
             repeated PathPart path = 5;
             optional string department = 6;
             optional uint32 profile_count = 7;
+            optional string color = 8;
         }
 
         message Address {
