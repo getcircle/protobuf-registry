@@ -172,6 +172,7 @@ final public class OrganizationService : GeneratedMessage {
                  case "name": return name
                  case "domain": return domain
                  case "image_url": return image_url
+                 case "tint_color": return tint_color
                  default: return nil
                  }
           }
@@ -187,6 +188,9 @@ final public class OrganizationService : GeneratedMessage {
 
           public private(set) var hasImageUrl:Bool = false
           public private(set) var image_url:String = ""
+
+          public private(set) var hasTintColor:Bool = false
+          public private(set) var tint_color:String = ""
 
           required public init() {
                super.init()
@@ -206,6 +210,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasImageUrl {
               output.writeString(4, value:image_url)
+            }
+            if hasTintColor {
+              output.writeString(5, value:tint_color)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -227,6 +234,9 @@ final public class OrganizationService : GeneratedMessage {
             }
             if hasImageUrl {
               size += WireFormat.computeStringSize(4, value:image_url)
+            }
+            if hasTintColor {
+              size += WireFormat.computeStringSize(5, value:tint_color)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -281,6 +291,9 @@ final public class OrganizationService : GeneratedMessage {
             if hasImageUrl {
               output += "\(indent) image_url: \(image_url) \n"
             }
+            if hasTintColor {
+              output += "\(indent) tint_color: \(tint_color) \n"
+            }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
           override public var hashValue:Int {
@@ -297,6 +310,9 @@ final public class OrganizationService : GeneratedMessage {
                   }
                   if hasImageUrl {
                      hashCode = (hashCode &* 31) &+ image_url.hashValue
+                  }
+                  if hasTintColor {
+                     hashCode = (hashCode &* 31) &+ tint_color.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -404,6 +420,25 @@ final public class OrganizationService : GeneratedMessage {
                builderResult.image_url = ""
                return self
           }
+          public var hasTintColor:Bool {
+               get {
+                    return builderResult.hasTintColor
+               }
+          }
+          public var tint_color:String {
+               get {
+                    return builderResult.tint_color
+               }
+               set (value) {
+                   builderResult.hasTintColor = true
+                   builderResult.tint_color = value
+               }
+          }
+          public func clearTintColor() -> OrganizationService.Containers.OrganizationBuilder{
+               builderResult.hasTintColor = false
+               builderResult.tint_color = ""
+               return self
+          }
           override public var internalGetResult:GeneratedMessage {
                get {
                   return builderResult
@@ -437,6 +472,9 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasImageUrl {
                  image_url = other.image_url
             }
+            if other.hasTintColor {
+                 tint_color = other.tint_color
+            }
             mergeUnknownFields(other.unknownFields)
             return self
           }
@@ -463,6 +501,9 @@ final public class OrganizationService : GeneratedMessage {
 
               case 34 :
                 image_url = input.readString()
+
+              case 42 :
+                tint_color = input.readString()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
