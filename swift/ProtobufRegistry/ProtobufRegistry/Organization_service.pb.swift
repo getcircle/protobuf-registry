@@ -832,8 +832,7 @@ final public class OrganizationService : GeneratedMessage {
           public private(set) var profile_count:UInt32 = UInt32(0)
 
           public private(set) var hasColor:Bool = false
-          public private(set) var color:String = ""
-
+          public private(set) var color:OrganizationService.Containers.Color = OrganizationService.Containers.Color()
           public private(set) var path:Array<OrganizationService.Containers.PathPart>  = Array<OrganizationService.Containers.PathPart>()
           required public init() {
                super.init()
@@ -864,7 +863,7 @@ final public class OrganizationService : GeneratedMessage {
               output.writeUInt32(7, value:profile_count)
             }
             if hasColor {
-              output.writeString(8, value:color)
+              output.writeMessage(8, value:color)
             }
             unknownFields.writeToCodedOutputStream(output)
           }
@@ -897,7 +896,7 @@ final public class OrganizationService : GeneratedMessage {
               size += WireFormat.computeUInt32Size(7, value:profile_count)
             }
             if hasColor {
-              size += WireFormat.computeStringSize(8, value:color)
+              size += WireFormat.computeMessageSize(8, value:color)
             }
             size += unknownFields.serializedSize()
             memoizedSerializedSize = size
@@ -966,7 +965,9 @@ final public class OrganizationService : GeneratedMessage {
               output += "\(indent) profile_count: \(profile_count) \n"
             }
             if hasColor {
-              output += "\(indent) color: \(color) \n"
+              output += "\(indent) color {\n"
+              color.writeDescriptionTo(&output, indent:"\(indent)  ")
+              output += "\(indent) }\n"
             }
             unknownFields.writeDescriptionTo(&output, indent:indent)
           }
@@ -995,7 +996,7 @@ final public class OrganizationService : GeneratedMessage {
                      hashCode = (hashCode &* 31) &+ profile_count.hashValue
                   }
                   if hasColor {
-                     hashCode = (hashCode &* 31) &+ color.hashValue
+                    hashCode = (hashCode &* 31) &+ color.hashValue
                   }
                   hashCode = (hashCode &* 31) &+  unknownFields.hashValue
                   return hashCode
@@ -1155,22 +1156,35 @@ final public class OrganizationService : GeneratedMessage {
           }
           public var hasColor:Bool {
                get {
-                    return builderResult.hasColor
+                   return builderResult.hasColor
                }
           }
-          public var color:String {
+          public var color:OrganizationService.Containers.Color {
                get {
-                    return builderResult.color
+                   return builderResult.color
                }
                set (value) {
                    builderResult.hasColor = true
                    builderResult.color = value
                }
           }
-          public func clearColor() -> OrganizationService.Containers.TeamBuilder{
-               builderResult.hasColor = false
-               builderResult.color = ""
-               return self
+          public func setColorBuilder(builderForValue:OrganizationService.Containers.ColorBuilder) -> OrganizationService.Containers.TeamBuilder {
+            color = builderForValue.build()
+            return self
+          }
+          public func mergeColor(value:OrganizationService.Containers.Color) -> OrganizationService.Containers.TeamBuilder {
+            if (builderResult.hasColor) {
+              builderResult.color = OrganizationService.Containers.Color.builderWithPrototype(builderResult.color).mergeFrom(value).buildPartial()
+            } else {
+              builderResult.color = value
+            }
+            builderResult.hasColor = true
+            return self
+          }
+          public func clearColor() -> OrganizationService.Containers.TeamBuilder {
+            builderResult.hasColor = false
+            builderResult.color = OrganizationService.Containers.Color()
+            return self
           }
           override public var internalGetResult:GeneratedMessage {
                get {
@@ -1214,8 +1228,8 @@ final public class OrganizationService : GeneratedMessage {
             if other.hasProfileCount {
                  profile_count = other.profile_count
             }
-            if other.hasColor {
-                 color = other.color
+            if (other.hasColor) {
+                mergeColor(other.color)
             }
             mergeUnknownFields(other.unknownFields)
             return self
@@ -1256,7 +1270,12 @@ final public class OrganizationService : GeneratedMessage {
                 profile_count = input.readUInt32()
 
               case 66 :
-                color = input.readString()
+                var subBuilder:OrganizationService.Containers.ColorBuilder = OrganizationService.Containers.Color.builder()
+                if hasColor {
+                  subBuilder.mergeFrom(color)
+                }
+                input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+                color = subBuilder.buildPartial()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -2633,6 +2652,282 @@ final public class OrganizationService : GeneratedMessage {
                 var subBuilder = OrganizationService.Containers.Team.builder()
                 input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
                 teams += [subBuilder.buildPartial()]
+
+              default:
+                if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+                   unknownFields = unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+
+
+      //Nested type declaration end
+
+
+
+      //Nested type declaration start
+
+        final public class Color : GeneratedMessage {
+          override public subscript (key: String) -> Any? {
+                 switch key {
+                 case "red": return red
+                 case "green": return green
+                 case "blue": return blue
+                 default: return nil
+                 }
+          }
+
+          public private(set) var hasRed:Bool = false
+          public private(set) var red:UInt32 = UInt32(0)
+
+          public private(set) var hasGreen:Bool = false
+          public private(set) var green:UInt32 = UInt32(0)
+
+          public private(set) var hasBlue:Bool = false
+          public private(set) var blue:UInt32 = UInt32(0)
+
+          required public init() {
+               super.init()
+          }
+          override public func isInitialized() -> Bool {
+           return true
+          }
+          override public func writeToCodedOutputStream(output:CodedOutputStream) {
+            if hasRed {
+              output.writeUInt32(1, value:red)
+            }
+            if hasGreen {
+              output.writeUInt32(2, value:green)
+            }
+            if hasBlue {
+              output.writeUInt32(3, value:blue)
+            }
+            unknownFields.writeToCodedOutputStream(output)
+          }
+          override public func serializedSize() -> Int32 {
+            var size:Int32 = memoizedSerializedSize
+            if size != -1 {
+             return size
+            }
+
+            size = 0
+            if hasRed {
+              size += WireFormat.computeUInt32Size(1, value:red)
+            }
+            if hasGreen {
+              size += WireFormat.computeUInt32Size(2, value:green)
+            }
+            if hasBlue {
+              size += WireFormat.computeUInt32Size(3, value:blue)
+            }
+            size += unknownFields.serializedSize()
+            memoizedSerializedSize = size
+            return size
+          }
+          public class func parseFromData(data:[Byte]) -> OrganizationService.Containers.Color {
+            return OrganizationService.Containers.Color.builder().mergeFromData(data).build()
+          }
+          public class func parseFromData(data:[Byte], extensionRegistry:ExtensionRegistry) -> OrganizationService.Containers.Color {
+            return OrganizationService.Containers.Color.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream) -> OrganizationService.Containers.Color {
+            return OrganizationService.Containers.Color.builder().mergeFromInputStream(input).build()
+          }
+          public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->OrganizationService.Containers.Color {
+            return OrganizationService.Containers.Color.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream) -> OrganizationService.Containers.Color {
+            return OrganizationService.Containers.Color.builder().mergeFromCodedInputStream(input).build()
+          }
+          public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> OrganizationService.Containers.Color {
+            return OrganizationService.Containers.Color.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+          }
+          public class func builder() -> OrganizationService.Containers.ColorBuilder {
+            return OrganizationService.Containers.Color.classBuilder() as OrganizationService.Containers.ColorBuilder
+          }
+          public func builder() -> OrganizationService.Containers.ColorBuilder {
+            return classBuilder() as OrganizationService.Containers.ColorBuilder
+          }
+          public override class func classBuilder() -> MessageBuilder {
+            return OrganizationService.Containers.ColorBuilder()
+          }
+          public override func classBuilder() -> MessageBuilder {
+            return OrganizationService.Containers.Color.builder()
+          }
+          public func toBuilder() -> OrganizationService.Containers.ColorBuilder {
+            return OrganizationService.Containers.Color.builderWithPrototype(self)
+          }
+          public class func builderWithPrototype(prototype:OrganizationService.Containers.Color) -> OrganizationService.Containers.ColorBuilder {
+            return OrganizationService.Containers.Color.builder().mergeFrom(prototype)
+          }
+          override public func writeDescriptionTo(inout output:String, indent:String) {
+            if hasRed {
+              output += "\(indent) red: \(red) \n"
+            }
+            if hasGreen {
+              output += "\(indent) green: \(green) \n"
+            }
+            if hasBlue {
+              output += "\(indent) blue: \(blue) \n"
+            }
+            unknownFields.writeDescriptionTo(&output, indent:indent)
+          }
+          override public var hashValue:Int {
+              get {
+                  var hashCode:Int = 7
+                  if hasRed {
+                     hashCode = (hashCode &* 31) &+ red.hashValue
+                  }
+                  if hasGreen {
+                     hashCode = (hashCode &* 31) &+ green.hashValue
+                  }
+                  if hasBlue {
+                     hashCode = (hashCode &* 31) &+ blue.hashValue
+                  }
+                  hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                  return hashCode
+              }
+          }
+
+
+          //Meta information declaration start
+
+          override public class func className() -> String {
+              return "OrganizationService.Containers.Color"
+          }
+          override public func className() -> String {
+              return "OrganizationService.Containers.Color"
+          }
+          override public func classMetaType() -> GeneratedMessage.Type {
+              return OrganizationService.Containers.Color.self
+          }
+
+
+          //Meta information declaration end
+
+        }
+
+        final public class ColorBuilder : GeneratedMessageBuilder {
+          private var builderResult:OrganizationService.Containers.Color
+
+          required override public init () {
+             builderResult = OrganizationService.Containers.Color()
+             super.init()
+          }
+          public var hasRed:Bool {
+               get {
+                    return builderResult.hasRed
+               }
+          }
+          public var red:UInt32 {
+               get {
+                    return builderResult.red
+               }
+               set (value) {
+                   builderResult.hasRed = true
+                   builderResult.red = value
+               }
+          }
+          public func clearRed() -> OrganizationService.Containers.ColorBuilder{
+               builderResult.hasRed = false
+               builderResult.red = UInt32(0)
+               return self
+          }
+          public var hasGreen:Bool {
+               get {
+                    return builderResult.hasGreen
+               }
+          }
+          public var green:UInt32 {
+               get {
+                    return builderResult.green
+               }
+               set (value) {
+                   builderResult.hasGreen = true
+                   builderResult.green = value
+               }
+          }
+          public func clearGreen() -> OrganizationService.Containers.ColorBuilder{
+               builderResult.hasGreen = false
+               builderResult.green = UInt32(0)
+               return self
+          }
+          public var hasBlue:Bool {
+               get {
+                    return builderResult.hasBlue
+               }
+          }
+          public var blue:UInt32 {
+               get {
+                    return builderResult.blue
+               }
+               set (value) {
+                   builderResult.hasBlue = true
+                   builderResult.blue = value
+               }
+          }
+          public func clearBlue() -> OrganizationService.Containers.ColorBuilder{
+               builderResult.hasBlue = false
+               builderResult.blue = UInt32(0)
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> OrganizationService.Containers.ColorBuilder {
+            builderResult = OrganizationService.Containers.Color()
+            return self
+          }
+          public override func clone() -> OrganizationService.Containers.ColorBuilder {
+            return OrganizationService.Containers.Color.builderWithPrototype(builderResult)
+          }
+          public override func build() -> OrganizationService.Containers.Color {
+               checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> OrganizationService.Containers.Color {
+            var returnMe:OrganizationService.Containers.Color = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:OrganizationService.Containers.Color) -> OrganizationService.Containers.ColorBuilder {
+            if other.hasRed {
+                 red = other.red
+            }
+            if other.hasGreen {
+                 green = other.green
+            }
+            if other.hasBlue {
+                 blue = other.blue
+            }
+            mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) ->OrganizationService.Containers.ColorBuilder {
+               return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> OrganizationService.Containers.ColorBuilder {
+            var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              var tag = input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = unknownFieldsBuilder.build()
+                return self
+
+              case 8 :
+                red = input.readUInt32()
+
+              case 16 :
+                green = input.readUInt32()
+
+              case 24 :
+                blue = input.readUInt32()
 
               default:
                 if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -11848,6 +12143,18 @@ public extension OrganizationService.Containers.TeamDescendants {
         var bytes = [Byte](count: data.length, repeatedValue: 0)
         data.getBytes(&bytes)
         return OrganizationService.Containers.TeamDescendants.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
+    }
+}
+public extension OrganizationService.Containers.Color {
+    class func parseFromNSData(data:NSData) -> OrganizationService.Containers.Color {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return OrganizationService.Containers.Color.builder().mergeFromData(bytes).build()
+    }
+    class func parseFromNSData(data:NSData, extensionRegistry:ExtensionRegistry) -> OrganizationService.Containers.Color {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes)
+        return OrganizationService.Containers.Color.builder().mergeFromData(bytes, extensionRegistry:extensionRegistry).build()
     }
 }
 public extension OrganizationService.Containers {

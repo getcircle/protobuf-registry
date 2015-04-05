@@ -29,7 +29,7 @@ message OrganizationService {
             repeated PathPart path = 5;
             optional string department = 6;
             optional uint32 profile_count = 7;
-            optional string color = 8;
+            optional Color color = 8;
         }
 
         message Address {
@@ -61,6 +61,12 @@ message OrganizationService {
             optional uint32 depth = 1;
             optional string parent_team_id = 2;
             repeated Team teams = 3;
+        }
+
+        message Color {
+            optional uint32 red = 1;
+            optional uint32 green = 2;
+            optional uint32 blue = 3;
         }
 
     }
