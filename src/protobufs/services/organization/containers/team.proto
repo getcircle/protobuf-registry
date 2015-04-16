@@ -1,17 +1,23 @@
-package main.services.organization.containers.team;
+package services.organization.containers.team;
 
-message PathPart {
-    optional string id = 1;
-    optional string name = 2;
-    optional string owner_id = 3;
+import 'google/protobuf/swift-descriptor.proto';
+option (.google.protobuf.swift_file_options).entities_access_control = PublicEntities;
+option (.google.protobuf.swift_file_options).compile_for_framework = false;
+
+message PathPartV1 {
+    optional uint32 version = 1 [default = 1];
+    optional string id = 2;
+    optional string name = 3;
+    optional string owner_id = 4;
 }
 
-message Team {
-    optional string id = 1;
-    optional string name = 2;
-    optional string profile_owner_id = 3;
-    optional string organization_id = 4;
-    repeated PathPart path = 5;
-    optional string department = 6;
-    optional uint32 profile_count = 7;
+message TeamV1 {
+    optional uint32 version = 1 [default = 1];
+    optional string id = 2;
+    optional string name = 3;
+    optional string profile_owner_id = 4;
+    optional string organization_id = 5;
+    repeated PathPartV1 path = 6;
+    optional string department = 7;
+    optional uint32 profile_count = 8;
 }

@@ -1,14 +1,20 @@
+package services.profile.actions.get_extended_profile;
+
+import 'google/protobuf/swift-descriptor.proto';
+option (.google.protobuf.swift_file_options).entities_access_control = PublicEntities;
+option (.google.protobuf.swift_file_options).compile_for_framework = false;
+
 import "protobufs/services/organization/containers/team.proto";
 import "protobufs/services/profile/containers/profile.proto";
 
 message RequestV1 {
-    optional uint32 version = 1;
+    optional uint32 version = 1 [default = 1];
     optional string profile_id = 2;
     optional string user_id = 3;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1;
-    optional main.services.organization.containers.team.Team team = 2;
-    optional main.services.profile.containers.profile.Profile profile = 3;
+    optional uint32 version = 1 [default = 1];
+    optional services.organization.containers.team.TeamV1 team = 2;
+    optional services.profile.containers.profile.ProfileV1 profile = 3;
 }
