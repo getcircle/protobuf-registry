@@ -32,6 +32,18 @@ public func == (lhs: Services.Organization.Containers.Team.TeamV1, rhs: Services
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: Services.Organization.Containers.Team.TeamDescendantsV1, rhs: Services.Organization.Containers.Team.TeamDescendantsV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasDepth == rhs.hasDepth) && (!lhs.hasDepth || lhs.depth == rhs.depth)
+  fieldCheck = fieldCheck && (lhs.hasParentTeamId == rhs.hasParentTeamId) && (!lhs.hasParentTeamId || lhs.parentTeamId == rhs.parentTeamId)
+  fieldCheck = fieldCheck && (lhs.teams == rhs.teams)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public extension Services.Organization.Containers.Team {
   public struct TeamRoot {
     public static var sharedInstance : TeamRoot {
@@ -845,6 +857,319 @@ public extension Services.Organization.Containers.Team {
 
         case 64 :
           profileCount = input.readUInt32()
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class TeamDescendantsV1 : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hasVersion:Bool = false
+    public private(set) var version:UInt32 = UInt32(1)
+
+    public private(set) var hasDepth:Bool = false
+    public private(set) var depth:UInt32 = UInt32(0)
+
+    public private(set) var hasParentTeamId:Bool = false
+    public private(set) var parentTeamId:String = ""
+
+    public private(set) var teams:Array<Services.Organization.Containers.Team.TeamV1>  = Array<Services.Organization.Containers.Team.TeamV1>()
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      if hasVersion {
+        output.writeUInt32(1, value:version)
+      }
+      if hasDepth {
+        output.writeUInt32(2, value:depth)
+      }
+      if hasParentTeamId {
+        output.writeString(3, value:parentTeamId)
+      }
+      for oneElementteams in teams {
+          output.writeMessage(4, value:oneElementteams)
+      }
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasVersion {
+        serialize_size += version.computeUInt32Size(1)
+      }
+      if hasDepth {
+        serialize_size += depth.computeUInt32Size(2)
+      }
+      if hasParentTeamId {
+        serialize_size += parentTeamId.computeStringSize(3)
+      }
+      for oneElementteams in teams {
+          serialize_size += oneElementteams.computeMessageSize(4)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Organization.Containers.Team.TeamDescendantsV1 {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.builder().mergeFromData(data, extensionRegistry:Services.Organization.Containers.Team.TeamRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Organization.Containers.Team.TeamDescendantsV1 {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Organization.Containers.Team.TeamDescendantsV1 {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Organization.Containers.Team.TeamDescendantsV1 {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Organization.Containers.Team.TeamDescendantsV1 {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Organization.Containers.Team.TeamDescendantsV1 {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.classBuilder() as! Services.Organization.Containers.Team.TeamDescendantsV1Builder
+    }
+    public func builder() -> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      return classBuilder() as! Services.Organization.Containers.Team.TeamDescendantsV1Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Organization.Containers.Team.TeamDescendantsV1Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.builder()
+    }
+    public func toBuilder() -> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Organization.Containers.Team.TeamDescendantsV1) -> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      if hasVersion {
+        output += "\(indent) version: \(version) \n"
+      }
+      if hasDepth {
+        output += "\(indent) depth: \(depth) \n"
+      }
+      if hasParentTeamId {
+        output += "\(indent) parentTeamId: \(parentTeamId) \n"
+      }
+      var teamsElementIndex:Int = 0
+      for oneElementteams in teams {
+          output += "\(indent) teams[\(teamsElementIndex)] {\n"
+          oneElementteams.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          teamsElementIndex++
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasVersion {
+               hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasDepth {
+               hashCode = (hashCode &* 31) &+ depth.hashValue
+            }
+            if hasParentTeamId {
+               hashCode = (hashCode &* 31) &+ parentTeamId.hashValue
+            }
+            for oneElementteams in teams {
+                hashCode = (hashCode &* 31) &+ oneElementteams.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Organization.Containers.Team.TeamDescendantsV1"
+    }
+    override public func className() -> String {
+        return "Services.Organization.Containers.Team.TeamDescendantsV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Organization.Containers.Team.TeamDescendantsV1.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class TeamDescendantsV1Builder : GeneratedMessageBuilder {
+    private var builderResult:Services.Organization.Containers.Team.TeamDescendantsV1
+
+    required override public init () {
+       builderResult = Services.Organization.Containers.Team.TeamDescendantsV1()
+       super.init()
+    }
+    public var hasVersion:Bool {
+         get {
+              return builderResult.hasVersion
+         }
+    }
+    public var version:UInt32 {
+         get {
+              return builderResult.version
+         }
+         set (value) {
+             builderResult.hasVersion = true
+             builderResult.version = value
+         }
+    }
+    public func setVersion(value:UInt32)-> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      self.version = value
+      return self
+    }
+    public func clearVersion() -> Services.Organization.Containers.Team.TeamDescendantsV1Builder{
+         builderResult.hasVersion = false
+         builderResult.version = UInt32(1)
+         return self
+    }
+    public var hasDepth:Bool {
+         get {
+              return builderResult.hasDepth
+         }
+    }
+    public var depth:UInt32 {
+         get {
+              return builderResult.depth
+         }
+         set (value) {
+             builderResult.hasDepth = true
+             builderResult.depth = value
+         }
+    }
+    public func setDepth(value:UInt32)-> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      self.depth = value
+      return self
+    }
+    public func clearDepth() -> Services.Organization.Containers.Team.TeamDescendantsV1Builder{
+         builderResult.hasDepth = false
+         builderResult.depth = UInt32(0)
+         return self
+    }
+    public var hasParentTeamId:Bool {
+         get {
+              return builderResult.hasParentTeamId
+         }
+    }
+    public var parentTeamId:String {
+         get {
+              return builderResult.parentTeamId
+         }
+         set (value) {
+             builderResult.hasParentTeamId = true
+             builderResult.parentTeamId = value
+         }
+    }
+    public func setParentTeamId(value:String)-> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      self.parentTeamId = value
+      return self
+    }
+    public func clearParentTeamId() -> Services.Organization.Containers.Team.TeamDescendantsV1Builder{
+         builderResult.hasParentTeamId = false
+         builderResult.parentTeamId = ""
+         return self
+    }
+    public var teams:Array<Services.Organization.Containers.Team.TeamV1> {
+         get {
+             return builderResult.teams
+         }
+         set (value) {
+             builderResult.teams = value
+         }
+    }
+    public func setTeams(value:Array<Services.Organization.Containers.Team.TeamV1>)-> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      self.teams = value
+      return self
+    }
+    public func clearTeams() -> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      builderResult.teams.removeAll(keepCapacity: false)
+      return self
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      builderResult = Services.Organization.Containers.Team.TeamDescendantsV1()
+      return self
+    }
+    public override func clone() -> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      return Services.Organization.Containers.Team.TeamDescendantsV1.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Organization.Containers.Team.TeamDescendantsV1 {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Organization.Containers.Team.TeamDescendantsV1 {
+      var returnMe:Services.Organization.Containers.Team.TeamDescendantsV1 = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Organization.Containers.Team.TeamDescendantsV1) -> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      if (other == Services.Organization.Containers.Team.TeamDescendantsV1()) {
+       return self
+      }
+      if other.hasVersion {
+           version = other.version
+      }
+      if other.hasDepth {
+           depth = other.depth
+      }
+      if other.hasParentTeamId {
+           parentTeamId = other.parentTeamId
+      }
+      if !other.teams.isEmpty  {
+         builderResult.teams += other.teams
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Organization.Containers.Team.TeamDescendantsV1Builder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        case 8 :
+          version = input.readUInt32()
+
+        case 16 :
+          depth = input.readUInt32()
+
+        case 26 :
+          parentTeamId = input.readString()
+
+        case 34 :
+          var subBuilder = Services.Organization.Containers.Team.TeamV1.builder()
+          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+          teams += [subBuilder.buildPartial()]
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

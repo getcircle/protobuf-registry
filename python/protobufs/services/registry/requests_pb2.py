@@ -16,16 +16,29 @@ _sym_db = _symbol_database.Default()
 import google.protobuf.swift_descriptor_pb2
 import service_protobufs.soa_pb2
 import protobufs.services.organization.actions.create_organization_pb2
+import protobufs.services.organization.actions.create_team_pb2
+import protobufs.services.organization.actions.create_address_pb2
+import protobufs.services.organization.actions.delete_address_pb2
+import protobufs.services.organization.actions.get_address_pb2
+import protobufs.services.organization.actions.get_team_pb2
 import protobufs.services.organization.actions.get_organization_pb2
+import protobufs.services.organization.actions.get_teams_pb2
+import protobufs.services.organization.actions.get_addresses_pb2
+import protobufs.services.organization.actions.get_team_descendants_pb2
+import protobufs.services.organization.actions.get_top_level_team_pb2
+import protobufs.services.organization.actions.create_location_pb2
+import protobufs.services.organization.actions.update_location_pb2
+import protobufs.services.organization.actions.get_locations_pb2
+import protobufs.services.organization.actions.get_location_pb2
 import protobufs.services.profile.actions.get_extended_profile_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/registry/requests.proto',
   package='services.registry.requests',
-  serialized_pb=_b('\n*protobufs/services/registry/requests.proto\x12\x1aservices.registry.requests\x1a&google/protobuf/swift-descriptor.proto\x1a\x1bservice_protobufs/soa.proto\x1a\x41protobufs/services/organization/actions/create_organization.proto\x1a>protobufs/services/organization/actions/get_organization.proto\x1a=protobufs/services/profile/actions/get_extended_profile.proto\"\x85\x02\n\x13OrganizationService2y\n\x16\x63reate_organization_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xc8\x01 \x01(\x0b\x32<.services.organization.actions.create_organization.RequestV12s\n\x13get_organization_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xc9\x01 \x01(\x0b\x32\x39.services.organization.actions.get_organization.RequestV1\"\x88\x01\n\x0eProfileService2v\n\x17get_extended_profile_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xac\x02 \x01(\x0b\x32\x38.services.profile.actions.get_extended_profile.RequestV1B\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
+  serialized_pb=_b('\n*protobufs/services/registry/requests.proto\x12\x1aservices.registry.requests\x1a&google/protobuf/swift-descriptor.proto\x1a\x1bservice_protobufs/soa.proto\x1a\x41protobufs/services/organization/actions/create_organization.proto\x1a\x39protobufs/services/organization/actions/create_team.proto\x1a<protobufs/services/organization/actions/create_address.proto\x1a<protobufs/services/organization/actions/delete_address.proto\x1a\x39protobufs/services/organization/actions/get_address.proto\x1a\x36protobufs/services/organization/actions/get_team.proto\x1a>protobufs/services/organization/actions/get_organization.proto\x1a\x37protobufs/services/organization/actions/get_teams.proto\x1a;protobufs/services/organization/actions/get_addresses.proto\x1a\x42protobufs/services/organization/actions/get_team_descendants.proto\x1a@protobufs/services/organization/actions/get_top_level_team.proto\x1a=protobufs/services/organization/actions/create_location.proto\x1a=protobufs/services/organization/actions/update_location.proto\x1a;protobufs/services/organization/actions/get_locations.proto\x1a:protobufs/services/organization/actions/get_location.proto\x1a=protobufs/services/profile/actions/get_extended_profile.proto\"\xb0\r\n\x13OrganizationService2y\n\x16\x63reate_organization_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xc8\x01 \x01(\x0b\x32<.services.organization.actions.create_organization.RequestV12s\n\x13get_organization_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xc9\x01 \x01(\x0b\x32\x39.services.organization.actions.get_organization.RequestV12i\n\x0e\x63reate_team_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xca\x01 \x01(\x0b\x32\x34.services.organization.actions.create_team.RequestV12o\n\x11\x63reate_address_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcb\x01 \x01(\x0b\x32\x37.services.organization.actions.create_address.RequestV12o\n\x11\x64\x65lete_address_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcc\x01 \x01(\x0b\x32\x37.services.organization.actions.delete_address.RequestV12i\n\x0eget_address_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcd\x01 \x01(\x0b\x32\x34.services.organization.actions.get_address.RequestV12c\n\x0bget_team_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xce\x01 \x01(\x0b\x32\x31.services.organization.actions.get_team.RequestV12e\n\x0cget_teams_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcf\x01 \x01(\x0b\x32\x32.services.organization.actions.get_teams.RequestV12m\n\x10get_addresses_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd0\x01 \x01(\x0b\x32\x36.services.organization.actions.get_addresses.RequestV12{\n\x17get_team_descendants_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd1\x01 \x01(\x0b\x32=.services.organization.actions.get_team_descendants.RequestV12w\n\x15get_top_level_team_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd2\x01 \x01(\x0b\x32;.services.organization.actions.get_top_level_team.RequestV12q\n\x12\x63reate_location_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd3\x01 \x01(\x0b\x32\x38.services.organization.actions.create_location.RequestV12q\n\x12update_location_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd4\x01 \x01(\x0b\x32\x38.services.organization.actions.update_location.RequestV12m\n\x10get_locations_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd5\x01 \x01(\x0b\x32\x36.services.organization.actions.get_locations.RequestV12k\n\x0fget_location_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd6\x01 \x01(\x0b\x32\x35.services.organization.actions.get_location.RequestV1\"\x88\x01\n\x0eProfileService2v\n\x17get_extended_profile_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xac\x02 \x01(\x0b\x32\x38.services.profile.actions.get_extended_profile.RequestV1B\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
   ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,service_protobufs.soa_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_organization_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_extended_profile_pb2.DESCRIPTOR,])
+  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,service_protobufs.soa_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.delete_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_teams_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_addresses_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_team_descendants_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_top_level_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_location_pb2.DESCRIPTOR,protobufs.services.organization.actions.update_location_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_locations_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_location_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_extended_profile_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -54,6 +67,97 @@ _ORGANIZATIONSERVICE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='create_team_v1', full_name='services.registry.requests.OrganizationService.create_team_v1', index=2,
+      number=202, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='create_address_v1', full_name='services.registry.requests.OrganizationService.create_address_v1', index=3,
+      number=203, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='delete_address_v1', full_name='services.registry.requests.OrganizationService.delete_address_v1', index=4,
+      number=204, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_address_v1', full_name='services.registry.requests.OrganizationService.get_address_v1', index=5,
+      number=205, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_team_v1', full_name='services.registry.requests.OrganizationService.get_team_v1', index=6,
+      number=206, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_teams_v1', full_name='services.registry.requests.OrganizationService.get_teams_v1', index=7,
+      number=207, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_addresses_v1', full_name='services.registry.requests.OrganizationService.get_addresses_v1', index=8,
+      number=208, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_team_descendants_v1', full_name='services.registry.requests.OrganizationService.get_team_descendants_v1', index=9,
+      number=209, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_top_level_team_v1', full_name='services.registry.requests.OrganizationService.get_top_level_team_v1', index=10,
+      number=210, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='create_location_v1', full_name='services.registry.requests.OrganizationService.create_location_v1', index=11,
+      number=211, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='update_location_v1', full_name='services.registry.requests.OrganizationService.update_location_v1', index=12,
+      number=212, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_locations_v1', full_name='services.registry.requests.OrganizationService.get_locations_v1', index=13,
+      number=213, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_location_v1', full_name='services.registry.requests.OrganizationService.get_location_v1', index=14,
+      number=214, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
   ],
   nested_types=[],
   enum_types=[
@@ -63,8 +167,8 @@ _ORGANIZATIONSERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=338,
-  serialized_end=599,
+  serialized_start=1135,
+  serialized_end=2847,
 )
 
 
@@ -93,8 +197,8 @@ _PROFILESERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=602,
-  serialized_end=738,
+  serialized_start=2850,
+  serialized_end=2986,
 )
 
 DESCRIPTOR.message_types_by_name['OrganizationService'] = _ORGANIZATIONSERVICE
@@ -118,6 +222,32 @@ _ORGANIZATIONSERVICE.extensions_by_name['create_organization_v1'].message_type =
 service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['create_organization_v1'])
 _ORGANIZATIONSERVICE.extensions_by_name['get_organization_v1'].message_type = protobufs.services.organization.actions.get_organization_pb2._REQUESTV1
 service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_organization_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['create_team_v1'].message_type = protobufs.services.organization.actions.create_team_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['create_team_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['create_address_v1'].message_type = protobufs.services.organization.actions.create_address_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['create_address_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['delete_address_v1'].message_type = protobufs.services.organization.actions.delete_address_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['delete_address_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_address_v1'].message_type = protobufs.services.organization.actions.get_address_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_address_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_team_v1'].message_type = protobufs.services.organization.actions.get_team_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_team_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_teams_v1'].message_type = protobufs.services.organization.actions.get_teams_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_teams_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_addresses_v1'].message_type = protobufs.services.organization.actions.get_addresses_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_addresses_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_team_descendants_v1'].message_type = protobufs.services.organization.actions.get_team_descendants_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_team_descendants_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_top_level_team_v1'].message_type = protobufs.services.organization.actions.get_top_level_team_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_top_level_team_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['create_location_v1'].message_type = protobufs.services.organization.actions.create_location_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['create_location_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['update_location_v1'].message_type = protobufs.services.organization.actions.update_location_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['update_location_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_locations_v1'].message_type = protobufs.services.organization.actions.get_locations_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_locations_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_location_v1'].message_type = protobufs.services.organization.actions.get_location_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_location_v1'])
 _PROFILESERVICE.extensions_by_name['get_extended_profile_v1'].message_type = protobufs.services.profile.actions.get_extended_profile_pb2._REQUESTV1
 service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_extended_profile_v1'])
 

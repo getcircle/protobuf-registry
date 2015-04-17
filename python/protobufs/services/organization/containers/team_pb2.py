@@ -19,7 +19,7 @@ import google.protobuf.swift_descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/team.proto',
   package='services.organization.containers.team',
-  serialized_pb=_b('\n5protobufs/services/organization/containers/team.proto\x12%services.organization.containers.team\x1a&google/protobuf/swift-descriptor.proto\"L\n\nPathPartV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x10\n\x08owner_id\x18\x04 \x01(\t\"\xd5\x01\n\x06TeamV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x18\n\x10profile_owner_id\x18\x04 \x01(\t\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12?\n\x04path\x18\x06 \x03(\x0b\x32\x31.services.organization.containers.team.PathPartV1\x12\x12\n\ndepartment\x18\x07 \x01(\t\x12\x15\n\rprofile_count\x18\x08 \x01(\rB\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
+  serialized_pb=_b('\n5protobufs/services/organization/containers/team.proto\x12%services.organization.containers.team\x1a&google/protobuf/swift-descriptor.proto\"L\n\nPathPartV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x10\n\x08owner_id\x18\x04 \x01(\t\"\xd5\x01\n\x06TeamV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x18\n\x10profile_owner_id\x18\x04 \x01(\t\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12?\n\x04path\x18\x06 \x03(\x0b\x32\x31.services.organization.containers.team.PathPartV1\x12\x12\n\ndepartment\x18\x07 \x01(\t\x12\x15\n\rprofile_count\x18\x08 \x01(\r\"\x8c\x01\n\x11TeamDescendantsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05\x64\x65pth\x18\x02 \x01(\r\x12\x16\n\x0eparent_team_id\x18\x03 \x01(\t\x12<\n\x05teams\x18\x04 \x03(\x0b\x32-.services.organization.containers.team.TeamV1B\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
   ,
   dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -156,9 +156,62 @@ _TEAMV1 = _descriptor.Descriptor(
   serialized_end=428,
 )
 
+
+_TEAMDESCENDANTSV1 = _descriptor.Descriptor(
+  name='TeamDescendantsV1',
+  full_name='services.organization.containers.team.TeamDescendantsV1',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='version', full_name='services.organization.containers.team.TeamDescendantsV1.version', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=True, default_value=1,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='depth', full_name='services.organization.containers.team.TeamDescendantsV1.depth', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='parent_team_id', full_name='services.organization.containers.team.TeamDescendantsV1.parent_team_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='teams', full_name='services.organization.containers.team.TeamDescendantsV1.teams', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=431,
+  serialized_end=571,
+)
+
 _TEAMV1.fields_by_name['path'].message_type = _PATHPARTV1
+_TEAMDESCENDANTSV1.fields_by_name['teams'].message_type = _TEAMV1
 DESCRIPTOR.message_types_by_name['PathPartV1'] = _PATHPARTV1
 DESCRIPTOR.message_types_by_name['TeamV1'] = _TEAMV1
+DESCRIPTOR.message_types_by_name['TeamDescendantsV1'] = _TEAMDESCENDANTSV1
 
 PathPartV1 = _reflection.GeneratedProtocolMessageType('PathPartV1', (_message.Message,), dict(
   DESCRIPTOR = _PATHPARTV1,
@@ -173,6 +226,13 @@ TeamV1 = _reflection.GeneratedProtocolMessageType('TeamV1', (_message.Message,),
   # @@protoc_insertion_point(class_scope:services.organization.containers.team.TeamV1)
   ))
 _sym_db.RegisterMessage(TeamV1)
+
+TeamDescendantsV1 = _reflection.GeneratedProtocolMessageType('TeamDescendantsV1', (_message.Message,), dict(
+  DESCRIPTOR = _TEAMDESCENDANTSV1,
+  __module__ = 'protobufs.services.organization.containers.team_pb2'
+  # @@protoc_insertion_point(class_scope:services.organization.containers.team.TeamDescendantsV1)
+  ))
+_sym_db.RegisterMessage(TeamDescendantsV1)
 
 
 DESCRIPTOR.has_options = True

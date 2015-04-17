@@ -1,0 +1,19 @@
+package services.organization.actions.get_team;
+
+import "google/protobuf/swift-descriptor.proto";
+option (.google.protobuf.swift_file_options).entities_access_control = PublicEntities;
+option (.google.protobuf.swift_file_options).compile_for_framework = false;
+
+import "protobufs/services/organization/containers/team.proto";
+
+message RequestV1 {
+    optional uint32 version = 1 [default = 1];
+    optional string team_id = 2;
+    optional string name = 3;
+    optional string organization_id = 4;
+}
+
+message ResponseV1 {
+    optional uint32 version = 1 [default = 1];
+    optional services.organization.containers.team.TeamV1 team = 2;
+}

@@ -1,0 +1,14 @@
+package services.organization.actions.delete_address;
+
+import "google/protobuf/swift-descriptor.proto";
+option (.google.protobuf.swift_file_options).entities_access_control = PublicEntities;
+option (.google.protobuf.swift_file_options).compile_for_framework = false;
+
+message RequestV1 {
+    optional uint32 version = 1 [default = 1];
+    optional string address_id = 2;
+}
+
+message ResponseV1 {
+    optional uint32 version = 1 [default = 1];
+}

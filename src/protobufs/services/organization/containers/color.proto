@@ -1,0 +1,12 @@
+package services.organization.containers.color;
+
+import 'google/protobuf/swift-descriptor.proto';
+option (.google.protobuf.swift_file_options).entities_access_control = PublicEntities;
+option (.google.protobuf.swift_file_options).compile_for_framework = false;
+
+message ColorV1 {
+    optional uint32 version = 1;
+    optional uint32 red = 2;
+    optional uint32 green = 3;
+    optional uint32 blue = 4;
+}

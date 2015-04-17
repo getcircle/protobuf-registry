@@ -1,0 +1,22 @@
+package services.organization.containers.address;
+
+import 'google/protobuf/swift-descriptor.proto';
+option (.google.protobuf.swift_file_options).entities_access_control = PublicEntities;
+option (.google.protobuf.swift_file_options).compile_for_framework = false;
+
+message AddressV1 {
+    optional uint32 version = 1 [default = 1];
+    optional string id = 2;
+    optional string organization_id = 3;
+    optional string name = 4;
+    optional string address_1 = 5;
+    optional string address_2 = 6;
+    optional string city = 7;
+    optional string region = 8;
+    optional string postal_code = 9;
+    optional string country_code = 10;
+    optional string profile_count = 11;
+    optional string latitude = 12;
+    optional string longitude = 13;
+    optional string timezone = 14;
+}

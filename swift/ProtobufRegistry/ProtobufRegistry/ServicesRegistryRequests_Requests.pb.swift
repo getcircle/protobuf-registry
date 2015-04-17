@@ -30,6 +30,71 @@ public var ServicesRegistryRequestsOrganizationServicegetOrganizationV1:Concreat
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetOrganizationV1Static
    }
 }
+public var ServicesRegistryRequestsOrganizationServicecreateTeamV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateTeamV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicecreateAddressV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateAddressV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicedeleteAddressV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicedeleteAddressV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicegetAddressV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetAddressV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicegetTeamV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTeamV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicegetTeamsV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTeamsV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicegetAddressesV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetAddressesV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicecreateLocationV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateLocationV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServiceupdateLocationV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServiceupdateLocationV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicegetLocationsV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetLocationsV1Static
+   }
+}
+public var ServicesRegistryRequestsOrganizationServicegetLocationV1:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetLocationV1Static
+   }
+}
 public var ServicesRegistryRequestsProfileServicegetExtendedProfileV1:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetExtendedProfileV1Static
@@ -45,24 +110,76 @@ public extension Services.Registry.Requests {
     }
     var ServicesRegistryRequestsOrganizationServicecreateOrganizationV1Static:ConcreateExtensionField
     var ServicesRegistryRequestsOrganizationServicegetOrganizationV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicecreateTeamV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicecreateAddressV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicedeleteAddressV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetAddressV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetTeamV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetTeamsV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetAddressesV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicecreateLocationV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServiceupdateLocationV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetLocationsV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetLocationV1Static:ConcreateExtensionField
     var ServicesRegistryRequestsProfileServicegetExtendedProfileV1Static:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
       ServicesRegistryRequestsOrganizationServicecreateOrganizationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 200, defaultValue:Services.Organization.Actions.CreateOrganization.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateOrganization.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsOrganizationServicegetOrganizationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 201, defaultValue:Services.Organization.Actions.GetOrganization.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetOrganization.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicecreateTeamV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 202, defaultValue:Services.Organization.Actions.CreateTeam.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicecreateAddressV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 203, defaultValue:Services.Organization.Actions.CreateAddress.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateAddress.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicedeleteAddressV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 204, defaultValue:Services.Organization.Actions.DeleteAddress.RequestV1(), messageOrGroupClass:Services.Organization.Actions.DeleteAddress.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetAddressV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 205, defaultValue:Services.Organization.Actions.GetAddress.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetAddress.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetTeamV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 206, defaultValue:Services.Organization.Actions.GetTeam.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetTeamsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 207, defaultValue:Services.Organization.Actions.GetTeams.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTeams.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetAddressesV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 208, defaultValue:Services.Organization.Actions.GetAddresses.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetAddresses.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 209, defaultValue:Services.Organization.Actions.GetTeamDescendants.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTeamDescendants.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 210, defaultValue:Services.Organization.Actions.GetTopLevelTeam.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTopLevelTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicecreateLocationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 211, defaultValue:Services.Organization.Actions.CreateLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServiceupdateLocationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 212, defaultValue:Services.Organization.Actions.UpdateLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.UpdateLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetLocationsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 213, defaultValue:Services.Organization.Actions.GetLocations.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetLocations.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetLocationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 214, defaultValue:Services.Organization.Actions.GetLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfileServicegetExtendedProfileV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 300, defaultValue:Services.Profile.Actions.GetExtendedProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetExtendedProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Google.Protobuf.SwiftDescriptorRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.CreateOrganization.CreateOrganizationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.CreateTeam.CreateTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.CreateAddress.CreateAddressRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.DeleteAddress.DeleteAddressRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetAddress.GetAddressRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetTeam.GetTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.GetOrganization.GetOrganizationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetTeams.GetTeamsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetAddresses.GetAddressesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetTeamDescendants.GetTeamDescendantsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetTopLevelTeam.GetTopLevelTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.CreateLocation.CreateLocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.UpdateLocation.UpdateLocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetLocations.GetLocationsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetLocation.GetLocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetExtendedProfile.GetExtendedProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateOrganizationV1Static)
       registry.addExtension(ServicesRegistryRequestsOrganizationServicegetOrganizationV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateTeamV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateAddressV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicedeleteAddressV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetAddressV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTeamV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTeamsV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetAddressesV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateLocationV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServiceupdateLocationV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetLocationsV1Static)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetLocationV1Static)
       registry.addExtension(ServicesRegistryRequestsProfileServicegetExtendedProfileV1Static)
     }
   }
@@ -73,6 +190,45 @@ public extension Services.Registry.Requests {
     }
     public class func getOrganizationV1() -> ConcreateExtensionField {
          return ServicesRegistryRequestsOrganizationServicegetOrganizationV1
+    }
+    public class func createTeamV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicecreateTeamV1
+    }
+    public class func createAddressV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicecreateAddressV1
+    }
+    public class func deleteAddressV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicedeleteAddressV1
+    }
+    public class func getAddressV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetAddressV1
+    }
+    public class func getTeamV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetTeamV1
+    }
+    public class func getTeamsV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetTeamsV1
+    }
+    public class func getAddressesV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetAddressesV1
+    }
+    public class func getTeamDescendantsV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1
+    }
+    public class func getTopLevelTeamV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1
+    }
+    public class func createLocationV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicecreateLocationV1
+    }
+    public class func updateLocationV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServiceupdateLocationV1
+    }
+    public class func getLocationsV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetLocationsV1
+    }
+    public class func getLocationV1() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetLocationV1
     }
     required public init() {
          super.init()

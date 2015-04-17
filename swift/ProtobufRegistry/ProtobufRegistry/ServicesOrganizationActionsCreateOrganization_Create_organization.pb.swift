@@ -2,7 +2,7 @@
 
 import Foundation
 
-public struct Services { public struct Organization { public struct Actions { public struct CreateOrganization { }}}}
+public extension Services.Organization.Actions{ public struct CreateOrganization { }}
 
 public func == (lhs: Services.Organization.Actions.CreateOrganization.RequestV1, rhs: Services.Organization.Actions.CreateOrganization.RequestV1) -> Bool {
   if (lhs === rhs) {
