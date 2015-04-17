@@ -1,9 +1,5 @@
 package services.organization.containers.team;
 
-import 'google/protobuf/swift-descriptor.proto';
-option (.google.protobuf.swift_file_options).entities_access_control = PublicEntities;
-option (.google.protobuf.swift_file_options).compile_for_framework = false;
-
 message PathPartV1 {
     optional uint32 version = 1 [default = 1];
     optional string id = 2;

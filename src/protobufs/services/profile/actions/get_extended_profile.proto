@@ -1,9 +1,5 @@
 package services.profile.actions.get_extended_profile;
 
-import 'google/protobuf/swift-descriptor.proto';
-option (.google.protobuf.swift_file_options).entities_access_control = PublicEntities;
-option (.google.protobuf.swift_file_options).compile_for_framework = false;
-
 import "protobufs/services/organization/containers/team.proto";
 import "protobufs/services/profile/containers/profile.proto";
 
