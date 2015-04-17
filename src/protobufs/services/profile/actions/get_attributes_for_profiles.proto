@@ -4,7 +4,7 @@ import "protobufs/services/profile/containers/profile.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
-    repeated services.profile.containers.profile.AttributeV1 attributes = 2;
+    repeated string attributes = 2;
     optional bool distinct = 3;
     optional string location_id = 4;
 }
