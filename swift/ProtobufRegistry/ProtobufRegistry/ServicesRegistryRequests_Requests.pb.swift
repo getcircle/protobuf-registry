@@ -75,224 +75,224 @@ public func == (lhs: Services.Registry.Requests.AppreciationService, rhs: Servic
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public var ServicesRegistryRequestsUserServicecreateUserV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicecreateUser:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicecreateUserV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicecreateUserStatic
    }
 }
-public var ServicesRegistryRequestsUserServicevalidUserV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicevalidUser:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicevalidUserV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicevalidUserStatic
    }
 }
-public var ServicesRegistryRequestsUserServiceauthenticateUserV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServiceauthenticateUser:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServiceauthenticateUserV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServiceauthenticateUserStatic
    }
 }
-public var ServicesRegistryRequestsUserServicegetUserV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicegetUser:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicegetUserV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicegetUserStatic
    }
 }
-public var ServicesRegistryRequestsUserServicesendVerificationCodeV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicesendVerificationCode:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicesendVerificationCodeV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicesendVerificationCodeStatic
    }
 }
-public var ServicesRegistryRequestsUserServiceverifyVerificationCodeV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServiceverifyVerificationCode:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServiceverifyVerificationCodeV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServiceverifyVerificationCodeStatic
    }
 }
-public var ServicesRegistryRequestsUserServiceupdateUserV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServiceupdateUser:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServiceupdateUserV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServiceupdateUserStatic
    }
 }
-public var ServicesRegistryRequestsUserServicegetAuthorizationInstructionsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicegetAuthorizationInstructions:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicegetAuthorizationInstructionsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicegetAuthorizationInstructionsStatic
    }
 }
-public var ServicesRegistryRequestsUserServicecompleteAuthorizationV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicecompleteAuthorization:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicecompleteAuthorizationV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicecompleteAuthorizationStatic
    }
 }
-public var ServicesRegistryRequestsUserServicegetIdentitiesV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicegetIdentities:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicegetIdentitiesV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicegetIdentitiesStatic
    }
 }
-public var ServicesRegistryRequestsUserServicebulkCreateUsersV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicebulkCreateUsers:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicebulkCreateUsersV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicebulkCreateUsersStatic
    }
 }
-public var ServicesRegistryRequestsUserServicerecordDeviceV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicerecordDevice:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicerecordDeviceV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicerecordDeviceStatic
    }
 }
-public var ServicesRegistryRequestsUserServicerequestAccessV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicerequestAccess:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicerequestAccessV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicerequestAccessStatic
    }
 }
-public var ServicesRegistryRequestsUserServicedeleteIdentityV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsUserServicedeleteIdentity:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicedeleteIdentityV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserServicedeleteIdentityStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicecreateOrganizationV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicecreateOrganization:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateOrganizationV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateOrganizationStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicegetOrganizationV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicegetOrganization:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetOrganizationV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetOrganizationStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicecreateTeamV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicecreateTeam:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateTeamV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateTeamStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicecreateAddressV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicecreateAddress:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateAddressV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateAddressStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicedeleteAddressV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicedeleteAddress:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicedeleteAddressV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicedeleteAddressStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicegetAddressV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicegetAddress:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetAddressV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetAddressStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicegetTeamV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicegetTeam:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTeamV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTeamStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicegetTeamsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicegetTeams:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTeamsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTeamsStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicegetAddressesV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicegetAddresses:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetAddressesV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetAddressesStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicegetTeamDescendants:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTeamDescendantsStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicegetTopLevelTeam:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetTopLevelTeamStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicecreateLocationV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicecreateLocation:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateLocationV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicecreateLocationStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServiceupdateLocationV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServiceupdateLocation:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServiceupdateLocationV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServiceupdateLocationStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicegetLocationsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicegetLocations:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetLocationsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetLocationsStatic
    }
 }
-public var ServicesRegistryRequestsOrganizationServicegetLocationV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsOrganizationServicegetLocation:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetLocationV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationServicegetLocationStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicecreateProfileV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicecreateProfile:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicecreateProfileV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicecreateProfileStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetExtendedProfileV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetExtendedProfile:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetExtendedProfileV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetExtendedProfileStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetProfileV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetProfile:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetProfileV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetProfileStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicecreateTagsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicecreateTags:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicecreateTagsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicecreateTagsStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetTagsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetTags:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetTagsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetTagsStatic
    }
 }
-public var ServicesRegistryRequestsProfileServiceaddTagsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServiceaddTags:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServiceaddTagsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServiceaddTagsStatic
    }
 }
-public var ServicesRegistryRequestsProfileServiceupdateProfileV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServiceupdateProfile:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServiceupdateProfileV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServiceupdateProfileStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetProfilesV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetProfiles:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetProfilesV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetProfilesStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetDirectReportsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetDirectReports:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetDirectReportsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetDirectReportsStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetPeersV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetPeers:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetPeersV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetPeersStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetProfileStatsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetProfileStats:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetProfileStatsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetProfileStatsStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetUpcomingAnniversariesV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetUpcomingAnniversaries:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetUpcomingAnniversariesV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetUpcomingAnniversariesStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetUpcomingBirthdaysV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetUpcomingBirthdays:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetUpcomingBirthdaysV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetUpcomingBirthdaysStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetRecentHiresV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetRecentHires:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetRecentHiresV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetRecentHiresStatic
    }
 }
-public var ServicesRegistryRequestsProfileServicegetActiveTagsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsProfileServicegetActiveTags:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetActiveTagsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServicegetActiveTagsStatic
    }
 }
 public var ServicesRegistryRequestsProfileServicebulkCreateProfiles:ConcreateExtensionField {
@@ -315,94 +315,94 @@ public var ServicesRegistryRequestsProfileServiceremoveTags:ConcreateExtensionFi
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileServiceremoveTagsStatic
    }
 }
-public var ServicesRegistryRequestsSearchServicesearchV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsSearchServicesearch:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsSearchServicesearchV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsSearchServicesearchStatic
    }
 }
-public var ServicesRegistryRequestsFeedServicegetProfileFeedV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsFeedServicegetProfileFeed:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsFeedServicegetProfileFeedV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsFeedServicegetProfileFeedStatic
    }
 }
-public var ServicesRegistryRequestsFeedServicegetOrganizationFeedV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsFeedServicegetOrganizationFeed:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsFeedServicegetOrganizationFeedV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsFeedServicegetOrganizationFeedStatic
    }
 }
-public var ServicesRegistryRequestsMediaServicestartImageUploadV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsMediaServicestartImageUpload:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsMediaServicestartImageUploadV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsMediaServicestartImageUploadStatic
    }
 }
-public var ServicesRegistryRequestsMediaServicecompleteImageUploadV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsMediaServicecompleteImageUpload:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsMediaServicecompleteImageUploadV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsMediaServicecompleteImageUploadStatic
    }
 }
-public var ServicesRegistryRequestsNoteServicecreateNoteV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsNoteServicecreateNote:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServicecreateNoteV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServicecreateNoteStatic
    }
 }
-public var ServicesRegistryRequestsNoteServicegetNtoesV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsNoteServicegetNtoes:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServicegetNtoesV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServicegetNtoesStatic
    }
 }
-public var ServicesRegistryRequestsNoteServicedeleteNoteV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsNoteServicedeleteNote:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServicedeleteNoteV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServicedeleteNoteStatic
    }
 }
-public var ServicesRegistryRequestsNoteServiceupdateNoteV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsNoteServiceupdateNote:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServiceupdateNoteV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServiceupdateNoteStatic
    }
 }
-public var ServicesRegistryRequestsResumeServicebulkCreateEducationsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsResumeServicebulkCreateEducations:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumeServicebulkCreateEducationsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumeServicebulkCreateEducationsStatic
    }
 }
-public var ServicesRegistryRequestsResumeServicebulkCreatePositionsV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsResumeServicebulkCreatePositions:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumeServicebulkCreatePositionsV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumeServicebulkCreatePositionsStatic
    }
 }
-public var ServicesRegistryRequestsResumeServicecreateCompanyV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsResumeServicecreateCompany:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumeServicecreateCompanyV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumeServicecreateCompanyStatic
    }
 }
-public var ServicesRegistryRequestsResumeServicegetResumeV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsResumeServicegetResume:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumeServicegetResumeV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumeServicegetResumeStatic
    }
 }
-public var ServicesRegistryRequestsResumeServicebulkCreateCompaniesV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsResumeServicebulkCreateCompanies:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumeServicebulkCreateCompaniesV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumeServicebulkCreateCompaniesStatic
    }
 }
-public var ServicesRegistryRequestsAppreciationServicecreateAppreciationV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsAppreciationServicecreateAppreciation:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsAppreciationServicecreateAppreciationV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsAppreciationServicecreateAppreciationStatic
    }
 }
-public var ServicesRegistryRequestsAppreciationServicegetAppreciationV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsAppreciationServicegetAppreciation:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsAppreciationServicegetAppreciationV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsAppreciationServicegetAppreciationStatic
    }
 }
-public var ServicesRegistryRequestsAppreciationServicedeleteAppreciationV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsAppreciationServicedeleteAppreciation:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsAppreciationServicedeleteAppreciationV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsAppreciationServicedeleteAppreciationStatic
    }
 }
-public var ServicesRegistryRequestsAppreciationServiceupdateAppreciationV1:ConcreateExtensionField {
+public var ServicesRegistryRequestsAppreciationServiceupdateAppreciation:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsAppreciationServiceupdateAppreciationV1Static
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsAppreciationServiceupdateAppreciationStatic
    }
 }
 public extension Services.Registry.Requests {
@@ -413,141 +413,141 @@ public extension Services.Registry.Requests {
      }
      return Static.instance
     }
-    var ServicesRegistryRequestsUserServicecreateUserV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServicevalidUserV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServiceauthenticateUserV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServicegetUserV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServicesendVerificationCodeV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServiceverifyVerificationCodeV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServiceupdateUserV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServicegetAuthorizationInstructionsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServicecompleteAuthorizationV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServicegetIdentitiesV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServicebulkCreateUsersV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServicerecordDeviceV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServicerequestAccessV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsUserServicedeleteIdentityV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicecreateOrganizationV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicegetOrganizationV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicecreateTeamV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicecreateAddressV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicedeleteAddressV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicegetAddressV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicegetTeamV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicegetTeamsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicegetAddressesV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicecreateLocationV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServiceupdateLocationV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicegetLocationsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsOrganizationServicegetLocationV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicecreateProfileV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetExtendedProfileV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetProfileV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicecreateTagsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetTagsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServiceaddTagsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServiceupdateProfileV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetProfilesV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetDirectReportsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetPeersV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetProfileStatsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetUpcomingAnniversariesV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetUpcomingBirthdaysV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetRecentHiresV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsProfileServicegetActiveTagsV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicecreateUserStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicevalidUserStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServiceauthenticateUserStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicegetUserStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicesendVerificationCodeStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServiceverifyVerificationCodeStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServiceupdateUserStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicegetAuthorizationInstructionsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicecompleteAuthorizationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicegetIdentitiesStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicebulkCreateUsersStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicerecordDeviceStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicerequestAccessStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUserServicedeleteIdentityStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicecreateOrganizationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetOrganizationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicecreateTeamStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicecreateAddressStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicedeleteAddressStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetAddressStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetTeamStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetTeamsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetAddressesStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetTeamDescendantsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetTopLevelTeamStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicecreateLocationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServiceupdateLocationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetLocationsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationServicegetLocationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicecreateProfileStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetExtendedProfileStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetProfileStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicecreateTagsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetTagsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServiceaddTagsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServiceupdateProfileStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetProfilesStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetDirectReportsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetPeersStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetProfileStatsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetUpcomingAnniversariesStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetUpcomingBirthdaysStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetRecentHiresStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfileServicegetActiveTagsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfileServicebulkCreateProfilesStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfileServicebulkUpdateProfilesStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfileServicegetAttributesForProfilesStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfileServiceremoveTagsStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsSearchServicesearchV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsFeedServicegetProfileFeedV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsFeedServicegetOrganizationFeedV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsMediaServicestartImageUploadV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsMediaServicecompleteImageUploadV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsNoteServicecreateNoteV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsNoteServicegetNtoesV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsNoteServicedeleteNoteV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsNoteServiceupdateNoteV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsResumeServicebulkCreateEducationsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsResumeServicebulkCreatePositionsV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsResumeServicecreateCompanyV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsResumeServicegetResumeV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsResumeServicebulkCreateCompaniesV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsAppreciationServicecreateAppreciationV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsAppreciationServicegetAppreciationV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsAppreciationServicedeleteAppreciationV1Static:ConcreateExtensionField
-    var ServicesRegistryRequestsAppreciationServiceupdateAppreciationV1Static:ConcreateExtensionField
+    var ServicesRegistryRequestsSearchServicesearchStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsFeedServicegetProfileFeedStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsFeedServicegetOrganizationFeedStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsMediaServicestartImageUploadStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsMediaServicecompleteImageUploadStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsNoteServicecreateNoteStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsNoteServicegetNtoesStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsNoteServicedeleteNoteStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsNoteServiceupdateNoteStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsResumeServicebulkCreateEducationsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsResumeServicebulkCreatePositionsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsResumeServicecreateCompanyStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsResumeServicegetResumeStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsResumeServicebulkCreateCompaniesStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsAppreciationServicecreateAppreciationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsAppreciationServicegetAppreciationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsAppreciationServicedeleteAppreciationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsAppreciationServiceupdateAppreciationStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
-      ServicesRegistryRequestsUserServicecreateUserV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 100, defaultValue:Services.User.Actions.CreateUser.RequestV1(), messageOrGroupClass:Services.User.Actions.CreateUser.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServicevalidUserV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 101, defaultValue:Services.User.Actions.ValidUser.RequestV1(), messageOrGroupClass:Services.User.Actions.ValidUser.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServiceauthenticateUserV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 102, defaultValue:Services.User.Actions.AuthenticateUser.RequestV1(), messageOrGroupClass:Services.User.Actions.AuthenticateUser.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServicegetUserV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 103, defaultValue:Services.User.Actions.GetUser.RequestV1(), messageOrGroupClass:Services.User.Actions.GetUser.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServicesendVerificationCodeV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 104, defaultValue:Services.User.Actions.SendVerificationCode.RequestV1(), messageOrGroupClass:Services.User.Actions.SendVerificationCode.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServiceverifyVerificationCodeV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 105, defaultValue:Services.User.Actions.VerifyVerificationCode.RequestV1(), messageOrGroupClass:Services.User.Actions.VerifyVerificationCode.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServiceupdateUserV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 106, defaultValue:Services.User.Actions.UpdateUser.RequestV1(), messageOrGroupClass:Services.User.Actions.UpdateUser.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServicegetAuthorizationInstructionsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 107, defaultValue:Services.User.Actions.GetAuthorizationInstructions.RequestV1(), messageOrGroupClass:Services.User.Actions.GetAuthorizationInstructions.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServicecompleteAuthorizationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 108, defaultValue:Services.User.Actions.CompleteAuthorization.RequestV1(), messageOrGroupClass:Services.User.Actions.CompleteAuthorization.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServicegetIdentitiesV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 109, defaultValue:Services.User.Actions.GetIdentities.RequestV1(), messageOrGroupClass:Services.User.Actions.GetIdentities.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServicebulkCreateUsersV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 110, defaultValue:Services.User.Actions.BulkCreateUsers.RequestV1(), messageOrGroupClass:Services.User.Actions.BulkCreateUsers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServicerecordDeviceV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 111, defaultValue:Services.User.Actions.RecordDevice.RequestV1(), messageOrGroupClass:Services.User.Actions.RecordDevice.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServicerequestAccessV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 112, defaultValue:Services.User.Actions.RequestAccess.RequestV1(), messageOrGroupClass:Services.User.Actions.RequestAccess.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsUserServicedeleteIdentityV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 113, defaultValue:Services.User.Actions.DeleteIdentity.RequestV1(), messageOrGroupClass:Services.User.Actions.DeleteIdentity.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicecreateOrganizationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 200, defaultValue:Services.Organization.Actions.CreateOrganization.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateOrganization.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicegetOrganizationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 201, defaultValue:Services.Organization.Actions.GetOrganization.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetOrganization.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicecreateTeamV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 202, defaultValue:Services.Organization.Actions.CreateTeam.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicecreateAddressV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 203, defaultValue:Services.Organization.Actions.CreateAddress.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateAddress.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicedeleteAddressV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 204, defaultValue:Services.Organization.Actions.DeleteAddress.RequestV1(), messageOrGroupClass:Services.Organization.Actions.DeleteAddress.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicegetAddressV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 205, defaultValue:Services.Organization.Actions.GetAddress.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetAddress.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicegetTeamV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 206, defaultValue:Services.Organization.Actions.GetTeam.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicegetTeamsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 207, defaultValue:Services.Organization.Actions.GetTeams.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTeams.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicegetAddressesV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 208, defaultValue:Services.Organization.Actions.GetAddresses.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetAddresses.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 209, defaultValue:Services.Organization.Actions.GetTeamDescendants.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTeamDescendants.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 210, defaultValue:Services.Organization.Actions.GetTopLevelTeam.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTopLevelTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicecreateLocationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 211, defaultValue:Services.Organization.Actions.CreateLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServiceupdateLocationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 212, defaultValue:Services.Organization.Actions.UpdateLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.UpdateLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicegetLocationsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 213, defaultValue:Services.Organization.Actions.GetLocations.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetLocations.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsOrganizationServicegetLocationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 214, defaultValue:Services.Organization.Actions.GetLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicecreateProfileV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 300, defaultValue:Services.Profile.Actions.CreateProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.CreateProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetExtendedProfileV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 301, defaultValue:Services.Profile.Actions.GetExtendedProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetExtendedProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetProfileV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 302, defaultValue:Services.Profile.Actions.GetProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicecreateTagsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 303, defaultValue:Services.Profile.Actions.CreateTags.RequestV1(), messageOrGroupClass:Services.Profile.Actions.CreateTags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetTagsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 304, defaultValue:Services.Profile.Actions.GetTags.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetTags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServiceaddTagsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 305, defaultValue:Services.Profile.Actions.AddTags.RequestV1(), messageOrGroupClass:Services.Profile.Actions.AddTags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServiceupdateProfileV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 306, defaultValue:Services.Profile.Actions.UpdateProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.UpdateProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetProfilesV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 307, defaultValue:Services.Profile.Actions.GetProfiles.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetProfiles.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetDirectReportsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 308, defaultValue:Services.Profile.Actions.GetDirectReports.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetDirectReports.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetPeersV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 309, defaultValue:Services.Profile.Actions.GetPeers.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetPeers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetProfileStatsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 310, defaultValue:Services.Profile.Actions.GetProfileStats.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetProfileStats.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetUpcomingAnniversariesV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 311, defaultValue:Services.Profile.Actions.GetUpcomingAnniversaries.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetUpcomingAnniversaries.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetUpcomingBirthdaysV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 312, defaultValue:Services.Profile.Actions.GetUpcomingBirthdays.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetUpcomingBirthdays.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetRecentHiresV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 313, defaultValue:Services.Profile.Actions.GetRecentHires.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetRecentHires.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsProfileServicegetActiveTagsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 314, defaultValue:Services.Profile.Actions.GetActiveTags.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetActiveTags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicecreateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 100, defaultValue:Services.User.Actions.CreateUser.RequestV1(), messageOrGroupClass:Services.User.Actions.CreateUser.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicevalidUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 101, defaultValue:Services.User.Actions.ValidUser.RequestV1(), messageOrGroupClass:Services.User.Actions.ValidUser.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServiceauthenticateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 102, defaultValue:Services.User.Actions.AuthenticateUser.RequestV1(), messageOrGroupClass:Services.User.Actions.AuthenticateUser.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicegetUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 103, defaultValue:Services.User.Actions.GetUser.RequestV1(), messageOrGroupClass:Services.User.Actions.GetUser.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicesendVerificationCodeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 104, defaultValue:Services.User.Actions.SendVerificationCode.RequestV1(), messageOrGroupClass:Services.User.Actions.SendVerificationCode.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServiceverifyVerificationCodeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 105, defaultValue:Services.User.Actions.VerifyVerificationCode.RequestV1(), messageOrGroupClass:Services.User.Actions.VerifyVerificationCode.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServiceupdateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 106, defaultValue:Services.User.Actions.UpdateUser.RequestV1(), messageOrGroupClass:Services.User.Actions.UpdateUser.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicegetAuthorizationInstructionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 107, defaultValue:Services.User.Actions.GetAuthorizationInstructions.RequestV1(), messageOrGroupClass:Services.User.Actions.GetAuthorizationInstructions.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicecompleteAuthorizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 108, defaultValue:Services.User.Actions.CompleteAuthorization.RequestV1(), messageOrGroupClass:Services.User.Actions.CompleteAuthorization.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicegetIdentitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 109, defaultValue:Services.User.Actions.GetIdentities.RequestV1(), messageOrGroupClass:Services.User.Actions.GetIdentities.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicebulkCreateUsersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 110, defaultValue:Services.User.Actions.BulkCreateUsers.RequestV1(), messageOrGroupClass:Services.User.Actions.BulkCreateUsers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicerecordDeviceStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 111, defaultValue:Services.User.Actions.RecordDevice.RequestV1(), messageOrGroupClass:Services.User.Actions.RecordDevice.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicerequestAccessStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 112, defaultValue:Services.User.Actions.RequestAccess.RequestV1(), messageOrGroupClass:Services.User.Actions.RequestAccess.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUserServicedeleteIdentityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 113, defaultValue:Services.User.Actions.DeleteIdentity.RequestV1(), messageOrGroupClass:Services.User.Actions.DeleteIdentity.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicecreateOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 200, defaultValue:Services.Organization.Actions.CreateOrganization.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateOrganization.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 201, defaultValue:Services.Organization.Actions.GetOrganization.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetOrganization.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicecreateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 202, defaultValue:Services.Organization.Actions.CreateTeam.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicecreateAddressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 203, defaultValue:Services.Organization.Actions.CreateAddress.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateAddress.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicedeleteAddressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 204, defaultValue:Services.Organization.Actions.DeleteAddress.RequestV1(), messageOrGroupClass:Services.Organization.Actions.DeleteAddress.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetAddressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 205, defaultValue:Services.Organization.Actions.GetAddress.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetAddress.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 206, defaultValue:Services.Organization.Actions.GetTeam.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetTeamsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 207, defaultValue:Services.Organization.Actions.GetTeams.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTeams.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetAddressesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 208, defaultValue:Services.Organization.Actions.GetAddresses.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetAddresses.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetTeamDescendantsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 209, defaultValue:Services.Organization.Actions.GetTeamDescendants.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTeamDescendants.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetTopLevelTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 210, defaultValue:Services.Organization.Actions.GetTopLevelTeam.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTopLevelTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicecreateLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 211, defaultValue:Services.Organization.Actions.CreateLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServiceupdateLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 212, defaultValue:Services.Organization.Actions.UpdateLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.UpdateLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetLocationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 213, defaultValue:Services.Organization.Actions.GetLocations.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetLocations.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationServicegetLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 214, defaultValue:Services.Organization.Actions.GetLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicecreateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 300, defaultValue:Services.Profile.Actions.CreateProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.CreateProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetExtendedProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 301, defaultValue:Services.Profile.Actions.GetExtendedProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetExtendedProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 302, defaultValue:Services.Profile.Actions.GetProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicecreateTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 303, defaultValue:Services.Profile.Actions.CreateTags.RequestV1(), messageOrGroupClass:Services.Profile.Actions.CreateTags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 304, defaultValue:Services.Profile.Actions.GetTags.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetTags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServiceaddTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 305, defaultValue:Services.Profile.Actions.AddTags.RequestV1(), messageOrGroupClass:Services.Profile.Actions.AddTags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServiceupdateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 306, defaultValue:Services.Profile.Actions.UpdateProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.UpdateProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 307, defaultValue:Services.Profile.Actions.GetProfiles.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetProfiles.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetDirectReportsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 308, defaultValue:Services.Profile.Actions.GetDirectReports.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetDirectReports.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetPeersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 309, defaultValue:Services.Profile.Actions.GetPeers.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetPeers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetProfileStatsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 310, defaultValue:Services.Profile.Actions.GetProfileStats.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetProfileStats.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetUpcomingAnniversariesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 311, defaultValue:Services.Profile.Actions.GetUpcomingAnniversaries.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetUpcomingAnniversaries.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetUpcomingBirthdaysStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 312, defaultValue:Services.Profile.Actions.GetUpcomingBirthdays.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetUpcomingBirthdays.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetRecentHiresStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 313, defaultValue:Services.Profile.Actions.GetRecentHires.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetRecentHires.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfileServicegetActiveTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 314, defaultValue:Services.Profile.Actions.GetActiveTags.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetActiveTags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfileServicebulkCreateProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 315, defaultValue:Services.Profile.Actions.BulkCreateProfiles.RequestV1(), messageOrGroupClass:Services.Profile.Actions.BulkCreateProfiles.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfileServicebulkUpdateProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 316, defaultValue:Services.Profile.Actions.BulkUpdateProfiles.RequestV1(), messageOrGroupClass:Services.Profile.Actions.BulkUpdateProfiles.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfileServicegetAttributesForProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 317, defaultValue:Services.Profile.Actions.GetAttributesForProfiles.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetAttributesForProfiles.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfileServiceremoveTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 318, defaultValue:Services.Profile.Actions.RemoveTags.RequestV1(), messageOrGroupClass:Services.Profile.Actions.RemoveTags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsSearchServicesearchV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 400, defaultValue:Services.Search.Actions.Search.RequestV1(), messageOrGroupClass:Services.Search.Actions.Search.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsFeedServicegetProfileFeedV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 500, defaultValue:Services.Feed.Actions.GetProfileFeed.RequestV1(), messageOrGroupClass:Services.Feed.Actions.GetProfileFeed.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsFeedServicegetOrganizationFeedV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 501, defaultValue:Services.Feed.Actions.GetOrganizationFeed.RequestV1(), messageOrGroupClass:Services.Feed.Actions.GetOrganizationFeed.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsMediaServicestartImageUploadV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsMediaServicecompleteImageUploadV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsNoteServicecreateNoteV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 700, defaultValue:Services.Note.Actions.CreateNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.CreateNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsNoteServicegetNtoesV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 701, defaultValue:Services.Note.Actions.GetNotes.RequestV1(), messageOrGroupClass:Services.Note.Actions.GetNotes.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsNoteServicedeleteNoteV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 702, defaultValue:Services.Note.Actions.DeleteNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.DeleteNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsNoteServiceupdateNoteV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 703, defaultValue:Services.Note.Actions.UpdateNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.UpdateNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsResumeServicebulkCreateEducationsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 800, defaultValue:Services.Resume.Actions.BulkCreateEducations.RequestV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreateEducations.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsResumeServicebulkCreatePositionsV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 801, defaultValue:Services.Resume.Actions.BulkCreatePositions.RequestV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreatePositions.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsResumeServicecreateCompanyV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 802, defaultValue:Services.Resume.Actions.CreateCompany.RequestV1(), messageOrGroupClass:Services.Resume.Actions.CreateCompany.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsResumeServicegetResumeV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 803, defaultValue:Services.Resume.Actions.GetResume.RequestV1(), messageOrGroupClass:Services.Resume.Actions.GetResume.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsResumeServicebulkCreateCompaniesV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 804, defaultValue:Services.Resume.Actions.BulkCreateCompanies.RequestV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreateCompanies.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsAppreciationServicecreateAppreciationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 900, defaultValue:Services.Appreciation.Actions.CreateAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.CreateAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsAppreciationServicegetAppreciationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 901, defaultValue:Services.Appreciation.Actions.GetAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.GetAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsAppreciationServicedeleteAppreciationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 902, defaultValue:Services.Appreciation.Actions.DeleteAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.DeleteAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsAppreciationServiceupdateAppreciationV1Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 903, defaultValue:Services.Appreciation.Actions.UpdateAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.UpdateAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsSearchServicesearchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 400, defaultValue:Services.Search.Actions.Search.RequestV1(), messageOrGroupClass:Services.Search.Actions.Search.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsFeedServicegetProfileFeedStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 500, defaultValue:Services.Feed.Actions.GetProfileFeed.RequestV1(), messageOrGroupClass:Services.Feed.Actions.GetProfileFeed.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsFeedServicegetOrganizationFeedStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 501, defaultValue:Services.Feed.Actions.GetOrganizationFeed.RequestV1(), messageOrGroupClass:Services.Feed.Actions.GetOrganizationFeed.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsMediaServicestartImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsMediaServicecompleteImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsNoteServicecreateNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 700, defaultValue:Services.Note.Actions.CreateNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.CreateNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsNoteServicegetNtoesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 701, defaultValue:Services.Note.Actions.GetNotes.RequestV1(), messageOrGroupClass:Services.Note.Actions.GetNotes.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsNoteServicedeleteNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 702, defaultValue:Services.Note.Actions.DeleteNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.DeleteNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsNoteServiceupdateNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 703, defaultValue:Services.Note.Actions.UpdateNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.UpdateNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsResumeServicebulkCreateEducationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 800, defaultValue:Services.Resume.Actions.BulkCreateEducations.RequestV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreateEducations.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsResumeServicebulkCreatePositionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 801, defaultValue:Services.Resume.Actions.BulkCreatePositions.RequestV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreatePositions.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsResumeServicecreateCompanyStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 802, defaultValue:Services.Resume.Actions.CreateCompany.RequestV1(), messageOrGroupClass:Services.Resume.Actions.CreateCompany.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsResumeServicegetResumeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 803, defaultValue:Services.Resume.Actions.GetResume.RequestV1(), messageOrGroupClass:Services.Resume.Actions.GetResume.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsResumeServicebulkCreateCompaniesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 804, defaultValue:Services.Resume.Actions.BulkCreateCompanies.RequestV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreateCompanies.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsAppreciationServicecreateAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 900, defaultValue:Services.Appreciation.Actions.CreateAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.CreateAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsAppreciationServicegetAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 901, defaultValue:Services.Appreciation.Actions.GetAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.GetAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsAppreciationServicedeleteAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 902, defaultValue:Services.Appreciation.Actions.DeleteAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.DeleteAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsAppreciationServiceupdateAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 903, defaultValue:Services.Appreciation.Actions.UpdateAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.UpdateAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -619,72 +619,72 @@ public extension Services.Registry.Requests {
       Services.Appreciation.Actions.UpdateAppreciation.UpdateAppreciationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
-      registry.addExtension(ServicesRegistryRequestsUserServicecreateUserV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServicevalidUserV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServiceauthenticateUserV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServicegetUserV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServicesendVerificationCodeV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServiceverifyVerificationCodeV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServiceupdateUserV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServicegetAuthorizationInstructionsV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServicecompleteAuthorizationV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServicegetIdentitiesV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServicebulkCreateUsersV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServicerecordDeviceV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServicerequestAccessV1Static)
-      registry.addExtension(ServicesRegistryRequestsUserServicedeleteIdentityV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateOrganizationV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetOrganizationV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateTeamV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateAddressV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicedeleteAddressV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetAddressV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTeamV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTeamsV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetAddressesV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateLocationV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServiceupdateLocationV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetLocationsV1Static)
-      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetLocationV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicecreateProfileV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetExtendedProfileV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetProfileV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicecreateTagsV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetTagsV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServiceaddTagsV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServiceupdateProfileV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetProfilesV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetDirectReportsV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetPeersV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetProfileStatsV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetUpcomingAnniversariesV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetUpcomingBirthdaysV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetRecentHiresV1Static)
-      registry.addExtension(ServicesRegistryRequestsProfileServicegetActiveTagsV1Static)
+      registry.addExtension(ServicesRegistryRequestsUserServicecreateUserStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServicevalidUserStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServiceauthenticateUserStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServicegetUserStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServicesendVerificationCodeStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServiceverifyVerificationCodeStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServiceupdateUserStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServicegetAuthorizationInstructionsStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServicecompleteAuthorizationStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServicegetIdentitiesStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServicebulkCreateUsersStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServicerecordDeviceStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServicerequestAccessStatic)
+      registry.addExtension(ServicesRegistryRequestsUserServicedeleteIdentityStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateOrganizationStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetOrganizationStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateTeamStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateAddressStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicedeleteAddressStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetAddressStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTeamStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTeamsStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetAddressesStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTeamDescendantsStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetTopLevelTeamStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicecreateLocationStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServiceupdateLocationStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetLocationsStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationServicegetLocationStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicecreateProfileStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetExtendedProfileStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetProfileStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicecreateTagsStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetTagsStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServiceaddTagsStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServiceupdateProfileStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetProfilesStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetDirectReportsStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetPeersStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetProfileStatsStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetUpcomingAnniversariesStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetUpcomingBirthdaysStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetRecentHiresStatic)
+      registry.addExtension(ServicesRegistryRequestsProfileServicegetActiveTagsStatic)
       registry.addExtension(ServicesRegistryRequestsProfileServicebulkCreateProfilesStatic)
       registry.addExtension(ServicesRegistryRequestsProfileServicebulkUpdateProfilesStatic)
       registry.addExtension(ServicesRegistryRequestsProfileServicegetAttributesForProfilesStatic)
       registry.addExtension(ServicesRegistryRequestsProfileServiceremoveTagsStatic)
-      registry.addExtension(ServicesRegistryRequestsSearchServicesearchV1Static)
-      registry.addExtension(ServicesRegistryRequestsFeedServicegetProfileFeedV1Static)
-      registry.addExtension(ServicesRegistryRequestsFeedServicegetOrganizationFeedV1Static)
-      registry.addExtension(ServicesRegistryRequestsMediaServicestartImageUploadV1Static)
-      registry.addExtension(ServicesRegistryRequestsMediaServicecompleteImageUploadV1Static)
-      registry.addExtension(ServicesRegistryRequestsNoteServicecreateNoteV1Static)
-      registry.addExtension(ServicesRegistryRequestsNoteServicegetNtoesV1Static)
-      registry.addExtension(ServicesRegistryRequestsNoteServicedeleteNoteV1Static)
-      registry.addExtension(ServicesRegistryRequestsNoteServiceupdateNoteV1Static)
-      registry.addExtension(ServicesRegistryRequestsResumeServicebulkCreateEducationsV1Static)
-      registry.addExtension(ServicesRegistryRequestsResumeServicebulkCreatePositionsV1Static)
-      registry.addExtension(ServicesRegistryRequestsResumeServicecreateCompanyV1Static)
-      registry.addExtension(ServicesRegistryRequestsResumeServicegetResumeV1Static)
-      registry.addExtension(ServicesRegistryRequestsResumeServicebulkCreateCompaniesV1Static)
-      registry.addExtension(ServicesRegistryRequestsAppreciationServicecreateAppreciationV1Static)
-      registry.addExtension(ServicesRegistryRequestsAppreciationServicegetAppreciationV1Static)
-      registry.addExtension(ServicesRegistryRequestsAppreciationServicedeleteAppreciationV1Static)
-      registry.addExtension(ServicesRegistryRequestsAppreciationServiceupdateAppreciationV1Static)
+      registry.addExtension(ServicesRegistryRequestsSearchServicesearchStatic)
+      registry.addExtension(ServicesRegistryRequestsFeedServicegetProfileFeedStatic)
+      registry.addExtension(ServicesRegistryRequestsFeedServicegetOrganizationFeedStatic)
+      registry.addExtension(ServicesRegistryRequestsMediaServicestartImageUploadStatic)
+      registry.addExtension(ServicesRegistryRequestsMediaServicecompleteImageUploadStatic)
+      registry.addExtension(ServicesRegistryRequestsNoteServicecreateNoteStatic)
+      registry.addExtension(ServicesRegistryRequestsNoteServicegetNtoesStatic)
+      registry.addExtension(ServicesRegistryRequestsNoteServicedeleteNoteStatic)
+      registry.addExtension(ServicesRegistryRequestsNoteServiceupdateNoteStatic)
+      registry.addExtension(ServicesRegistryRequestsResumeServicebulkCreateEducationsStatic)
+      registry.addExtension(ServicesRegistryRequestsResumeServicebulkCreatePositionsStatic)
+      registry.addExtension(ServicesRegistryRequestsResumeServicecreateCompanyStatic)
+      registry.addExtension(ServicesRegistryRequestsResumeServicegetResumeStatic)
+      registry.addExtension(ServicesRegistryRequestsResumeServicebulkCreateCompaniesStatic)
+      registry.addExtension(ServicesRegistryRequestsAppreciationServicecreateAppreciationStatic)
+      registry.addExtension(ServicesRegistryRequestsAppreciationServicegetAppreciationStatic)
+      registry.addExtension(ServicesRegistryRequestsAppreciationServicedeleteAppreciationStatic)
+      registry.addExtension(ServicesRegistryRequestsAppreciationServiceupdateAppreciationStatic)
     }
   }
 
@@ -695,47 +695,47 @@ public extension Services.Registry.Requests {
            }
     }
 
-    public class func createUserV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicecreateUserV1
+    public class func createUser() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicecreateUser
     }
-    public class func validUserV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicevalidUserV1
+    public class func validUser() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicevalidUser
     }
-    public class func authenticateUserV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServiceauthenticateUserV1
+    public class func authenticateUser() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServiceauthenticateUser
     }
-    public class func getUserV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicegetUserV1
+    public class func getUser() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicegetUser
     }
-    public class func sendVerificationCodeV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicesendVerificationCodeV1
+    public class func sendVerificationCode() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicesendVerificationCode
     }
-    public class func verifyVerificationCodeV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServiceverifyVerificationCodeV1
+    public class func verifyVerificationCode() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServiceverifyVerificationCode
     }
-    public class func updateUserV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServiceupdateUserV1
+    public class func updateUser() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServiceupdateUser
     }
-    public class func getAuthorizationInstructionsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicegetAuthorizationInstructionsV1
+    public class func getAuthorizationInstructions() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicegetAuthorizationInstructions
     }
-    public class func completeAuthorizationV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicecompleteAuthorizationV1
+    public class func completeAuthorization() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicecompleteAuthorization
     }
-    public class func getIdentitiesV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicegetIdentitiesV1
+    public class func getIdentities() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicegetIdentities
     }
-    public class func bulkCreateUsersV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicebulkCreateUsersV1
+    public class func bulkCreateUsers() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicebulkCreateUsers
     }
-    public class func recordDeviceV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicerecordDeviceV1
+    public class func recordDevice() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicerecordDevice
     }
-    public class func requestAccessV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicerequestAccessV1
+    public class func requestAccess() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicerequestAccess
     }
-    public class func deleteIdentityV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsUserServicedeleteIdentityV1
+    public class func deleteIdentity() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUserServicedeleteIdentity
     }
     required public init() {
          super.init()
@@ -883,50 +883,50 @@ public extension Services.Registry.Requests {
            }
     }
 
-    public class func createOrganizationV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicecreateOrganizationV1
+    public class func createOrganization() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicecreateOrganization
     }
-    public class func getOrganizationV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicegetOrganizationV1
+    public class func getOrganization() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetOrganization
     }
-    public class func createTeamV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicecreateTeamV1
+    public class func createTeam() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicecreateTeam
     }
-    public class func createAddressV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicecreateAddressV1
+    public class func createAddress() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicecreateAddress
     }
-    public class func deleteAddressV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicedeleteAddressV1
+    public class func deleteAddress() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicedeleteAddress
     }
-    public class func getAddressV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicegetAddressV1
+    public class func getAddress() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetAddress
     }
-    public class func getTeamV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicegetTeamV1
+    public class func getTeam() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetTeam
     }
-    public class func getTeamsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicegetTeamsV1
+    public class func getTeams() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetTeams
     }
-    public class func getAddressesV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicegetAddressesV1
+    public class func getAddresses() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetAddresses
     }
-    public class func getTeamDescendantsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicegetTeamDescendantsV1
+    public class func getTeamDescendants() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetTeamDescendants
     }
-    public class func getTopLevelTeamV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicegetTopLevelTeamV1
+    public class func getTopLevelTeam() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetTopLevelTeam
     }
-    public class func createLocationV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicecreateLocationV1
+    public class func createLocation() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicecreateLocation
     }
-    public class func updateLocationV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServiceupdateLocationV1
+    public class func updateLocation() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServiceupdateLocation
     }
-    public class func getLocationsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicegetLocationsV1
+    public class func getLocations() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetLocations
     }
-    public class func getLocationV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsOrganizationServicegetLocationV1
+    public class func getLocation() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationServicegetLocation
     }
     required public init() {
          super.init()
@@ -1074,50 +1074,50 @@ public extension Services.Registry.Requests {
            }
     }
 
-    public class func createProfileV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicecreateProfileV1
+    public class func createProfile() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicecreateProfile
     }
-    public class func getExtendedProfileV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetExtendedProfileV1
+    public class func getExtendedProfile() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetExtendedProfile
     }
-    public class func getProfileV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetProfileV1
+    public class func getProfile() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetProfile
     }
-    public class func createTagsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicecreateTagsV1
+    public class func createTags() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicecreateTags
     }
-    public class func getTagsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetTagsV1
+    public class func getTags() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetTags
     }
-    public class func addTagsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServiceaddTagsV1
+    public class func addTags() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServiceaddTags
     }
-    public class func updateProfileV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServiceupdateProfileV1
+    public class func updateProfile() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServiceupdateProfile
     }
-    public class func getProfilesV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetProfilesV1
+    public class func getProfiles() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetProfiles
     }
-    public class func getDirectReportsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetDirectReportsV1
+    public class func getDirectReports() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetDirectReports
     }
-    public class func getPeersV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetPeersV1
+    public class func getPeers() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetPeers
     }
-    public class func getProfileStatsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetProfileStatsV1
+    public class func getProfileStats() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetProfileStats
     }
-    public class func getUpcomingAnniversariesV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetUpcomingAnniversariesV1
+    public class func getUpcomingAnniversaries() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetUpcomingAnniversaries
     }
-    public class func getUpcomingBirthdaysV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetUpcomingBirthdaysV1
+    public class func getUpcomingBirthdays() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetUpcomingBirthdays
     }
-    public class func getRecentHiresV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetRecentHiresV1
+    public class func getRecentHires() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetRecentHires
     }
-    public class func getActiveTagsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsProfileServicegetActiveTagsV1
+    public class func getActiveTags() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfileServicegetActiveTags
     }
     public class func bulkCreateProfiles() -> ConcreateExtensionField {
          return ServicesRegistryRequestsProfileServicebulkCreateProfiles
@@ -1277,8 +1277,8 @@ public extension Services.Registry.Requests {
            }
     }
 
-    public class func searchV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsSearchServicesearchV1
+    public class func search() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsSearchServicesearch
     }
     required public init() {
          super.init()
@@ -1426,11 +1426,11 @@ public extension Services.Registry.Requests {
            }
     }
 
-    public class func getProfileFeedV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsFeedServicegetProfileFeedV1
+    public class func getProfileFeed() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsFeedServicegetProfileFeed
     }
-    public class func getOrganizationFeedV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsFeedServicegetOrganizationFeedV1
+    public class func getOrganizationFeed() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsFeedServicegetOrganizationFeed
     }
     required public init() {
          super.init()
@@ -1578,11 +1578,11 @@ public extension Services.Registry.Requests {
            }
     }
 
-    public class func startImageUploadV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsMediaServicestartImageUploadV1
+    public class func startImageUpload() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsMediaServicestartImageUpload
     }
-    public class func completeImageUploadV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsMediaServicecompleteImageUploadV1
+    public class func completeImageUpload() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsMediaServicecompleteImageUpload
     }
     required public init() {
          super.init()
@@ -1730,17 +1730,17 @@ public extension Services.Registry.Requests {
            }
     }
 
-    public class func createNoteV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsNoteServicecreateNoteV1
+    public class func createNote() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsNoteServicecreateNote
     }
-    public class func getNtoesV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsNoteServicegetNtoesV1
+    public class func getNtoes() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsNoteServicegetNtoes
     }
-    public class func deleteNoteV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsNoteServicedeleteNoteV1
+    public class func deleteNote() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsNoteServicedeleteNote
     }
-    public class func updateNoteV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsNoteServiceupdateNoteV1
+    public class func updateNote() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsNoteServiceupdateNote
     }
     required public init() {
          super.init()
@@ -1888,20 +1888,20 @@ public extension Services.Registry.Requests {
            }
     }
 
-    public class func bulkCreateEducationsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsResumeServicebulkCreateEducationsV1
+    public class func bulkCreateEducations() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsResumeServicebulkCreateEducations
     }
-    public class func bulkCreatePositionsV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsResumeServicebulkCreatePositionsV1
+    public class func bulkCreatePositions() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsResumeServicebulkCreatePositions
     }
-    public class func createCompanyV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsResumeServicecreateCompanyV1
+    public class func createCompany() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsResumeServicecreateCompany
     }
-    public class func getResumeV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsResumeServicegetResumeV1
+    public class func getResume() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsResumeServicegetResume
     }
-    public class func bulkCreateCompaniesV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsResumeServicebulkCreateCompaniesV1
+    public class func bulkCreateCompanies() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsResumeServicebulkCreateCompanies
     }
     required public init() {
          super.init()
@@ -2049,17 +2049,17 @@ public extension Services.Registry.Requests {
            }
     }
 
-    public class func createAppreciationV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsAppreciationServicecreateAppreciationV1
+    public class func createAppreciation() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsAppreciationServicecreateAppreciation
     }
-    public class func getAppreciationV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsAppreciationServicegetAppreciationV1
+    public class func getAppreciation() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsAppreciationServicegetAppreciation
     }
-    public class func deleteAppreciationV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsAppreciationServicedeleteAppreciationV1
+    public class func deleteAppreciation() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsAppreciationServicedeleteAppreciation
     }
-    public class func updateAppreciationV1() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsAppreciationServiceupdateAppreciationV1
+    public class func updateAppreciation() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsAppreciationServiceupdateAppreciation
     }
     required public init() {
          super.init()
