@@ -3,7 +3,6 @@
 
 import sys
 _b=sys.version_info[0]<3 and (lambda x:x) or (lambda x:x.encode('latin1'))
-from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
@@ -19,13 +18,15 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/containers/identity.proto',
   package='services.user.containers.identity',
-  serialized_pb=_b('\n1protobufs/services/user/containers/identity.proto\x12!services.user.containers.identity\"\xf7\x01\n\nIdentityV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12?\n\x08provider\x18\x03 \x01(\x0e\x32-.services.user.containers.identity.ProviderV1\x12\x11\n\tfull_name\x18\x04 \x01(\t\x12\r\n\x05\x65mail\x18\x05 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x06 \x01(\t\x12\x12\n\nexpires_at\x18\x07 \x01(\t\x12\x14\n\x0cprovider_uid\x18\x08 \x01(\t\x12\x0f\n\x07user_id\x18\t \x01(\t\x12\x15\n\rrefresh_token\x18\n \x01(\t*4\n\nProviderV1\x12\x0c\n\x08INTERNAL\x10\x00\x12\x0c\n\x08LINKEDIN\x10\x01\x12\n\n\x06GOOGLE\x10\x02')
+  serialized_pb=_b('\n1protobufs/services/user/containers/identity.proto\x12!services.user.containers.identity\"\xb8\x02\n\nIdentityV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12J\n\x08provider\x18\x03 \x01(\x0e\x32\x38.services.user.containers.identity.IdentityV1.ProviderV1\x12\x11\n\tfull_name\x18\x04 \x01(\t\x12\r\n\x05\x65mail\x18\x05 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x06 \x01(\t\x12\x12\n\nexpires_at\x18\x07 \x01(\t\x12\x14\n\x0cprovider_uid\x18\x08 \x01(\t\x12\x0f\n\x07user_id\x18\t \x01(\t\x12\x15\n\rrefresh_token\x18\n \x01(\t\"4\n\nProviderV1\x12\x0c\n\x08INTERNAL\x10\x00\x12\x0c\n\x08LINKEDIN\x10\x01\x12\n\n\x06GOOGLE\x10\x02')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-_PROVIDERV1 = _descriptor.EnumDescriptor(
+
+
+_IDENTITYV1_PROVIDERV1 = _descriptor.EnumDescriptor(
   name='ProviderV1',
-  full_name='services.user.containers.identity.ProviderV1',
+  full_name='services.user.containers.identity.IdentityV1.ProviderV1',
   filename=None,
   file=DESCRIPTOR,
   values=[
@@ -44,16 +45,10 @@ _PROVIDERV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=338,
-  serialized_end=390,
+  serialized_start=349,
+  serialized_end=401,
 )
-_sym_db.RegisterEnumDescriptor(_PROVIDERV1)
-
-ProviderV1 = enum_type_wrapper.EnumTypeWrapper(_PROVIDERV1)
-INTERNAL = 0
-LINKEDIN = 1
-GOOGLE = 2
-
+_sym_db.RegisterEnumDescriptor(_IDENTITYV1_PROVIDERV1)
 
 
 _IDENTITYV1 = _descriptor.Descriptor(
@@ -138,6 +133,7 @@ _IDENTITYV1 = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _IDENTITYV1_PROVIDERV1,
   ],
   options=None,
   is_extendable=False,
@@ -145,12 +141,12 @@ _IDENTITYV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=89,
-  serialized_end=336,
+  serialized_end=401,
 )
 
-_IDENTITYV1.fields_by_name['provider'].enum_type = _PROVIDERV1
+_IDENTITYV1.fields_by_name['provider'].enum_type = _IDENTITYV1_PROVIDERV1
+_IDENTITYV1_PROVIDERV1.containing_type = _IDENTITYV1
 DESCRIPTOR.message_types_by_name['IdentityV1'] = _IDENTITYV1
-DESCRIPTOR.enum_types_by_name['ProviderV1'] = _PROVIDERV1
 
 IdentityV1 = _reflection.GeneratedProtocolMessageType('IdentityV1', (_message.Message,), dict(
   DESCRIPTOR = _IDENTITYV1,

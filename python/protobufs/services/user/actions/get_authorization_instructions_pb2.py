@@ -19,7 +19,7 @@ import protobufs.services.user.containers.identity_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/get_authorization_instructions.proto',
   package='services.user.actions.get_authorization_instructions',
-  serialized_pb=_b('\nDprotobufs/services/user/actions/get_authorization_instructions.proto\x12\x34services.user.actions.get_authorization_instructions\x1a\x31protobufs/services/user/containers/identity.proto\"`\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12?\n\x08provider\x18\x02 \x01(\x0e\x32-.services.user.containers.identity.ProviderV1\";\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x19\n\x11\x61uthorization_url\x18\x02 \x01(\t')
+  serialized_pb=_b('\nDprotobufs/services/user/actions/get_authorization_instructions.proto\x12\x34services.user.actions.get_authorization_instructions\x1a\x31protobufs/services/user/containers/identity.proto\"k\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12J\n\x08provider\x18\x02 \x01(\x0e\x32\x38.services.user.containers.identity.IdentityV1.ProviderV1\";\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x19\n\x11\x61uthorization_url\x18\x02 \x01(\t')
   ,
   dependencies=[protobufs.services.user.containers.identity_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -60,7 +60,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=177,
-  serialized_end=273,
+  serialized_end=284,
 )
 
 
@@ -96,11 +96,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=275,
-  serialized_end=334,
+  serialized_start=286,
+  serialized_end=345,
 )
 
-_REQUESTV1.fields_by_name['provider'].enum_type = protobufs.services.user.containers.identity_pb2._PROVIDERV1
+_REQUESTV1.fields_by_name['provider'].enum_type = protobufs.services.user.containers.identity_pb2._IDENTITYV1_PROVIDERV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

@@ -39,20 +39,20 @@ public extension Services.User.Containers.Identity {
     }
   }
 
-
-
-  //Enum type declaration start 
-
-  public enum ProviderV1:Int32 {
-    case Internal = 0
-    case Linkedin = 1
-    case Google = 2
-
-  }
-
-  //Enum type declaration end 
-
   final public class IdentityV1 : GeneratedMessage, GeneratedMessageProtocol {
+
+
+      //Enum type declaration start 
+
+      public enum ProviderV1:Int32 {
+        case Internal = 0
+        case Linkedin = 1
+        case Google = 2
+
+      }
+
+      //Enum type declaration end 
+
     public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
@@ -75,7 +75,7 @@ public extension Services.User.Containers.Identity {
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
-    public private(set) var provider:Services.User.Containers.Identity.ProviderV1 = Services.User.Containers.Identity.ProviderV1.Internal
+    public private(set) var provider:Services.User.Containers.Identity.IdentityV1.ProviderV1 = Services.User.Containers.Identity.IdentityV1.ProviderV1.Internal
     public private(set) var hasProvider:Bool = false
     public private(set) var hasFullName:Bool = false
     public private(set) var fullName:String = ""
@@ -359,7 +359,7 @@ public extension Services.User.Containers.Identity {
               return builderResult.hasProvider
           }
       }
-      public var provider:Services.User.Containers.Identity.ProviderV1 {
+      public var provider:Services.User.Containers.Identity.IdentityV1.ProviderV1 {
           get {
               return builderResult.provider
           }
@@ -368,7 +368,7 @@ public extension Services.User.Containers.Identity {
               builderResult.provider = value
           }
       }
-      public func setProvider(value:Services.User.Containers.Identity.ProviderV1)-> Services.User.Containers.Identity.IdentityV1Builder {
+      public func setProvider(value:Services.User.Containers.Identity.IdentityV1.ProviderV1)-> Services.User.Containers.Identity.IdentityV1Builder {
         self.provider = value
         return self
       }
@@ -615,7 +615,7 @@ public extension Services.User.Containers.Identity {
 
         case 24 :
           let valueIntprovider = input.readEnum()
-          if let enumsprovider = Services.User.Containers.Identity.ProviderV1(rawValue:valueIntprovider){
+          if let enumsprovider = Services.User.Containers.Identity.IdentityV1.ProviderV1(rawValue:valueIntprovider){
                provider = enumsprovider
           } else {
                unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntprovider))

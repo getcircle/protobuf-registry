@@ -4,7 +4,7 @@ import "protobufs/services/user/containers/identity.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
-    optional services.user.containers.identity.ProviderV1 provider = 2;
+    optional services.user.containers.identity.IdentityV1.ProviderV1 provider = 2;
 }
 
 message ResponseV1 {

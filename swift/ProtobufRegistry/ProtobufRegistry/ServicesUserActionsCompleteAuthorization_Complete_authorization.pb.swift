@@ -62,7 +62,7 @@ public extension Services.User.Actions.CompleteAuthorization {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var provider:Services.User.Containers.Identity.ProviderV1 = Services.User.Containers.Identity.ProviderV1.Internal
+    public private(set) var provider:Services.User.Containers.Identity.IdentityV1.ProviderV1 = Services.User.Containers.Identity.IdentityV1.ProviderV1.Internal
     public private(set) var hasProvider:Bool = false
     public private(set) var hasOauth2Details:Bool = false
     public private(set) var oauth2Details:Services.User.Containers.Oauth.OAuth2DetailsV1!
@@ -246,7 +246,7 @@ public extension Services.User.Actions.CompleteAuthorization {
               return builderResult.hasProvider
           }
       }
-      public var provider:Services.User.Containers.Identity.ProviderV1 {
+      public var provider:Services.User.Containers.Identity.IdentityV1.ProviderV1 {
           get {
               return builderResult.provider
           }
@@ -255,7 +255,7 @@ public extension Services.User.Actions.CompleteAuthorization {
               builderResult.provider = value
           }
       }
-      public func setProvider(value:Services.User.Containers.Identity.ProviderV1)-> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
+      public func setProvider(value:Services.User.Containers.Identity.IdentityV1.ProviderV1)-> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
         self.provider = value
         return self
       }
@@ -384,7 +384,7 @@ public extension Services.User.Actions.CompleteAuthorization {
 
         case 16 :
           let valueIntprovider = input.readEnum()
-          if let enumsprovider = Services.User.Containers.Identity.ProviderV1(rawValue:valueIntprovider){
+          if let enumsprovider = Services.User.Containers.Identity.IdentityV1.ProviderV1(rawValue:valueIntprovider){
                provider = enumsprovider
           } else {
                unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntprovider))

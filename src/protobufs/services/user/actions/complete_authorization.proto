@@ -6,7 +6,7 @@ import "protobufs/services/user/containers/user.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
-    optional services.user.containers.identity.ProviderV1 provider = 2;
+    optional services.user.containers.identity.IdentityV1.ProviderV1 provider = 2;
     optional services.user.containers.oauth.OAuth2DetailsV1 oauth2_details = 3;
     optional services.user.containers.oauth.OAuthSDKDetailsV1 oauth_sdk_details = 4;
 }
