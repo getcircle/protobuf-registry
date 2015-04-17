@@ -13,16 +13,22 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+import protobufs.services.note.containers.note_pb2
+import protobufs.services.organization.containers.address_pb2
+import protobufs.services.organization.containers.location_pb2
 import protobufs.services.organization.containers.team_pb2
 import protobufs.services.profile.containers.profile_pb2
+import protobufs.services.profile.containers.tag_pb2
+import protobufs.services.resume.containers.resume_pb2
+import protobufs.services.user.containers.identity_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/get_extended_profile.proto',
   package='services.profile.actions.get_extended_profile',
-  serialized_pb=_b('\n=protobufs/services/profile/actions/get_extended_profile.proto\x12-services.profile.actions.get_extended_profile\x1a\x35protobufs/services/organization/containers/team.proto\x1a\x33protobufs/services/profile/containers/profile.proto\"D\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\t\"\x9e\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12;\n\x04team\x18\x02 \x01(\x0b\x32-.services.organization.containers.team.TeamV1\x12?\n\x07profile\x18\x03 \x01(\x0b\x32..services.profile.containers.profile.ProfileV1')
+  serialized_pb=_b('\n=protobufs/services/profile/actions/get_extended_profile.proto\x12-services.profile.actions.get_extended_profile\x1a-protobufs/services/note/containers/note.proto\x1a\x38protobufs/services/organization/containers/address.proto\x1a\x39protobufs/services/organization/containers/location.proto\x1a\x35protobufs/services/organization/containers/team.proto\x1a\x33protobufs/services/profile/containers/profile.proto\x1a/protobufs/services/profile/containers/tag.proto\x1a\x31protobufs/services/resume/containers/resume.proto\x1a\x31protobufs/services/user/containers/identity.proto\"D\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\t\"\xa2\x05\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12?\n\x07profile\x18\x02 \x01(\x0b\x32..services.profile.containers.profile.ProfileV1\x12\x44\n\x07\x61\x64\x64ress\x18\x03 \x01(\x0b\x32\x33.services.organization.containers.address.AddressV1\x12?\n\x07manager\x18\x04 \x01(\x0b\x32..services.profile.containers.profile.ProfileV1\x12;\n\x04team\x18\x05 \x01(\x0b\x32-.services.organization.containers.team.TeamV1\x12\x34\n\x05notes\x18\x06 \x01(\x0b\x32%.services.note.containers.note.NoteV1\x12\x34\n\x04tags\x18\x07 \x01(\x0b\x32&.services.profile.containers.tag.TagV1\x12\x41\n\nidentities\x18\x08 \x01(\x0b\x32-.services.user.containers.identity.IdentityV1\x12\x46\n\x0e\x64irect_reports\x18\t \x01(\x0b\x32..services.profile.containers.profile.ProfileV1\x12;\n\x06resume\x18\n \x01(\x0b\x32+.services.resume.containers.resume.ResumeV1\x12G\n\x08location\x18\x0b \x01(\x0b\x32\x35.services.organization.containers.location.LocationV1')
   ,
-  dependencies=[protobufs.services.organization.containers.team_pb2.DESCRIPTOR,protobufs.services.profile.containers.profile_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.note.containers.note_pb2.DESCRIPTOR,protobufs.services.organization.containers.address_pb2.DESCRIPTOR,protobufs.services.organization.containers.location_pb2.DESCRIPTOR,protobufs.services.organization.containers.team_pb2.DESCRIPTOR,protobufs.services.profile.containers.profile_pb2.DESCRIPTOR,protobufs.services.profile.containers.tag_pb2.DESCRIPTOR,protobufs.services.resume.containers.resume_pb2.DESCRIPTOR,protobufs.services.user.containers.identity_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -67,8 +73,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=220,
-  serialized_end=288,
+  serialized_start=535,
+  serialized_end=603,
 )
 
 
@@ -87,15 +93,71 @@ _RESPONSEV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='team', full_name='services.profile.actions.get_extended_profile.ResponseV1.team', index=1,
+      name='profile', full_name='services.profile.actions.get_extended_profile.ResponseV1.profile', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='profile', full_name='services.profile.actions.get_extended_profile.ResponseV1.profile', index=2,
+      name='address', full_name='services.profile.actions.get_extended_profile.ResponseV1.address', index=2,
       number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='manager', full_name='services.profile.actions.get_extended_profile.ResponseV1.manager', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='team', full_name='services.profile.actions.get_extended_profile.ResponseV1.team', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='notes', full_name='services.profile.actions.get_extended_profile.ResponseV1.notes', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='tags', full_name='services.profile.actions.get_extended_profile.ResponseV1.tags', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='identities', full_name='services.profile.actions.get_extended_profile.ResponseV1.identities', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='direct_reports', full_name='services.profile.actions.get_extended_profile.ResponseV1.direct_reports', index=8,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='resume', full_name='services.profile.actions.get_extended_profile.ResponseV1.resume', index=9,
+      number=10, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='location', full_name='services.profile.actions.get_extended_profile.ResponseV1.location', index=10,
+      number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -111,12 +173,20 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=291,
-  serialized_end=449,
+  serialized_start=606,
+  serialized_end=1280,
 )
 
-_RESPONSEV1.fields_by_name['team'].message_type = protobufs.services.organization.containers.team_pb2._TEAMV1
 _RESPONSEV1.fields_by_name['profile'].message_type = protobufs.services.profile.containers.profile_pb2._PROFILEV1
+_RESPONSEV1.fields_by_name['address'].message_type = protobufs.services.organization.containers.address_pb2._ADDRESSV1
+_RESPONSEV1.fields_by_name['manager'].message_type = protobufs.services.profile.containers.profile_pb2._PROFILEV1
+_RESPONSEV1.fields_by_name['team'].message_type = protobufs.services.organization.containers.team_pb2._TEAMV1
+_RESPONSEV1.fields_by_name['notes'].message_type = protobufs.services.note.containers.note_pb2._NOTEV1
+_RESPONSEV1.fields_by_name['tags'].message_type = protobufs.services.profile.containers.tag_pb2._TAGV1
+_RESPONSEV1.fields_by_name['identities'].message_type = protobufs.services.user.containers.identity_pb2._IDENTITYV1
+_RESPONSEV1.fields_by_name['direct_reports'].message_type = protobufs.services.profile.containers.profile_pb2._PROFILEV1
+_RESPONSEV1.fields_by_name['resume'].message_type = protobufs.services.resume.containers.resume_pb2._RESUMEV1
+_RESPONSEV1.fields_by_name['location'].message_type = protobufs.services.organization.containers.location_pb2._LOCATIONV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

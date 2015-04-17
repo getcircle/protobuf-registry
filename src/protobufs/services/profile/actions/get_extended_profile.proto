@@ -1,7 +1,13 @@
 package services.profile.actions.get_extended_profile;
 
+import "protobufs/services/note/containers/note.proto";
+import "protobufs/services/organization/containers/address.proto";
+import "protobufs/services/organization/containers/location.proto";
 import "protobufs/services/organization/containers/team.proto";
 import "protobufs/services/profile/containers/profile.proto";
+import "protobufs/services/profile/containers/tag.proto";
+import "protobufs/services/resume/containers/resume.proto";
+import "protobufs/services/user/containers/identity.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
@@ -11,6 +17,14 @@ message RequestV1 {
 
 message ResponseV1 {
     optional uint32 version = 1 [default = 1];
-    optional services.organization.containers.team.TeamV1 team = 2;
-    optional services.profile.containers.profile.ProfileV1 profile = 3;
+    optional services.profile.containers.profile.ProfileV1 profile = 2;
+    optional services.organization.containers.address.AddressV1 address = 3;
+    optional services.profile.containers.profile.ProfileV1 manager = 4;
+    optional services.organization.containers.team.TeamV1 team = 5;
+    optional services.note.containers.note.NoteV1 notes = 6;
+    optional services.profile.containers.tag.TagV1 tags = 7;
+    optional services.user.containers.identity.IdentityV1 identities = 8;
+    optional services.profile.containers.profile.ProfileV1 direct_reports = 9;
+    optional services.resume.containers.resume.ResumeV1 resume = 10;
+    optional services.organization.containers.location.LocationV1 location = 11;
 }

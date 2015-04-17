@@ -2,20 +2,188 @@ package services.registry.responses;
 
 import "service_protobufs/soa.proto";
 
-import "protobufs/services/organization/actions/create_organization.proto";
-import "protobufs/services/organization/actions/get_organization.proto";
+import "protobufs/services/user/actions/create_user.proto";
+import "protobufs/services/user/actions/valid_user.proto";
+import "protobufs/services/user/actions/authenticate_user.proto";
+import "protobufs/services/user/actions/get_user.proto";
+import "protobufs/services/user/actions/send_verification_code.proto";
+import "protobufs/services/user/actions/verify_verification_code.proto";
+import "protobufs/services/user/actions/update_user.proto";
+import "protobufs/services/user/actions/get_authorization_instructions.proto";
+import "protobufs/services/user/actions/complete_authorization.proto";
+import "protobufs/services/user/actions/get_identities.proto";
+import "protobufs/services/user/actions/bulk_create_users.proto";
+import "protobufs/services/user/actions/record_device.proto";
+import "protobufs/services/user/actions/request_access.proto";
+import "protobufs/services/user/actions/delete_identity.proto";
 
+import "protobufs/services/organization/actions/create_organization.proto";
+import "protobufs/services/organization/actions/create_team.proto";
+import "protobufs/services/organization/actions/create_address.proto";
+import "protobufs/services/organization/actions/delete_address.proto";
+import "protobufs/services/organization/actions/get_address.proto";
+import "protobufs/services/organization/actions/get_team.proto";
+import "protobufs/services/organization/actions/get_organization.proto";
+import "protobufs/services/organization/actions/get_teams.proto";
+import "protobufs/services/organization/actions/get_addresses.proto";
+import "protobufs/services/organization/actions/get_team_descendants.proto";
+import "protobufs/services/organization/actions/get_top_level_team.proto";
+import "protobufs/services/organization/actions/create_location.proto";
+import "protobufs/services/organization/actions/update_location.proto";
+import "protobufs/services/organization/actions/get_locations.proto";
+import "protobufs/services/organization/actions/get_location.proto";
+
+import "protobufs/services/profile/actions/create_profile.proto";
 import "protobufs/services/profile/actions/get_extended_profile.proto";
+import "protobufs/services/profile/actions/get_profile.proto";
+import "protobufs/services/profile/actions/create_tags.proto";
+import "protobufs/services/profile/actions/get_tags.proto";
+import "protobufs/services/profile/actions/add_tags.proto";
+import "protobufs/services/profile/actions/update_profile.proto";
+import "protobufs/services/profile/actions/get_profiles.proto";
+import "protobufs/services/profile/actions/get_direct_reports.proto";
+import "protobufs/services/profile/actions/get_peers.proto";
+import "protobufs/services/profile/actions/get_profile_stats.proto";
+import "protobufs/services/profile/actions/get_upcoming_anniversaries.proto";
+import "protobufs/services/profile/actions/get_upcoming_birthdays.proto";
+import "protobufs/services/profile/actions/get_recent_hires.proto";
+import "protobufs/services/profile/actions/get_active_tags.proto";
+import "protobufs/services/profile/actions/bulk_create_profiles.proto";
+import "protobufs/services/profile/actions/bulk_update_profiles.proto";
+import "protobufs/services/profile/actions/get_attributes_for_profiles.proto";
+import "protobufs/services/profile/actions/remove_tags.proto";
+
+import "protobufs/services/search/actions/search.proto";
+
+import "protobufs/services/feed/actions/get_profile_feed.proto";
+import "protobufs/services/feed/actions/get_organization_feed.proto";
+
+import "protobufs/services/media/actions/start_image_upload.proto";
+import "protobufs/services/media/actions/complete_image_upload.proto";
+
+import "protobufs/services/note/actions/create_note.proto";
+import "protobufs/services/note/actions/get_notes.proto";
+import "protobufs/services/note/actions/delete_note.proto";
+import "protobufs/services/note/actions/update_note.proto";
+
+import "protobufs/services/resume/actions/bulk_create_educations.proto";
+import "protobufs/services/resume/actions/bulk_create_positions.proto";
+import "protobufs/services/resume/actions/create_company.proto";
+import "protobufs/services/resume/actions/get_resume.proto";
+import "protobufs/services/resume/actions/bulk_create_companies.proto";
+
+import "protobufs/services/appreciation/actions/create_appreciation.proto";
+import "protobufs/services/appreciation/actions/get_appreciation.proto";
+import "protobufs/services/appreciation/actions/delete_appreciation.proto";
+import "protobufs/services/appreciation/actions/update_appreciation.proto";
+
+message UserService {
+    extend soa.ActionResultV1 {
+        optional services.user.actions.create_user.ResponseV1 create_user_v1 = 100;
+        optional services.user.actions.valid_user.ResponseV1 valid_user_v1 = 101;
+        optional services.user.actions.authenticate_user.ResponseV1 authenticate_user_v1 = 102;
+        optional services.user.actions.get_user.ResponseV1 get_user_v1 = 103;
+        optional services.user.actions.send_verification_code.ResponseV1 send_verification_code_v1 = 104;
+        optional services.user.actions.verify_verification_code.ResponseV1 verify_verification_code_v1 = 105;
+        optional services.user.actions.update_user.ResponseV1 update_user_v1 = 106;
+        optional services.user.actions.get_authorization_instructions.ResponseV1 get_authorization_instructions_v1 = 107;
+        optional services.user.actions.complete_authorization.ResponseV1 complete_authorization_v1 = 108;
+        optional services.user.actions.get_identities.ResponseV1 get_identities_v1 = 109;
+        optional services.user.actions.bulk_create_users.ResponseV1 bulk_create_users_v1 = 110;
+        optional services.user.actions.record_device.ResponseV1 record_device_v1 = 111;
+        optional services.user.actions.request_access.ResponseV1 request_access_v1 = 112;
+        optional services.user.actions.delete_identity.ResponseV1 delete_identity_v1 = 113;
+    }
+}
 
 message OrganizationService {
     extend soa.ActionResultV1 {
         optional services.organization.actions.create_organization.ResponseV1 create_organization_v1 = 200;
         optional services.organization.actions.get_organization.ResponseV1 get_organization_v1 = 201;
+        optional services.organization.actions.create_team.ResponseV1 create_team_v1 = 202;
+        optional services.organization.actions.create_address.ResponseV1 create_address_v1 = 203;
+        optional services.organization.actions.delete_address.ResponseV1 delete_address_v1 = 204;
+        optional services.organization.actions.get_address.ResponseV1 get_address_v1 = 205;
+        optional services.organization.actions.get_team.ResponseV1 get_team_v1 = 206;
+        optional services.organization.actions.get_teams.ResponseV1 get_teams_v1 = 207;
+        optional services.organization.actions.get_addresses.ResponseV1 get_addresses_v1 = 208;
+        optional services.organization.actions.get_team_descendants.ResponseV1 get_team_descendants_v1 = 209;
+        optional services.organization.actions.get_top_level_team.ResponseV1 get_top_level_team_v1 = 210;
+        optional services.organization.actions.create_location.ResponseV1 create_location_v1 = 211;
+        optional services.organization.actions.update_location.ResponseV1 update_location_v1 = 212;
+        optional services.organization.actions.get_locations.ResponseV1 get_locations_v1 = 213;
+        optional services.organization.actions.get_location.ResponseV1 get_location_v1 = 214;
     }
 }
 
 message ProfileService {
     extend soa.ActionResultV1 {
-        optional services.profile.actions.get_extended_profile.ResponseV1 get_extended_profile_v1 = 300;
+        optional services.profile.actions.create_profile.ResponseV1 create_profile_v1 = 300;
+        optional services.profile.actions.get_extended_profile.ResponseV1 get_extended_profile_v1 = 301;
+        optional services.profile.actions.get_profile.ResponseV1 get_profile_v1 = 302;
+        optional services.profile.actions.create_tags.ResponseV1 create_tags_v1 = 303;
+        optional services.profile.actions.get_tags.ResponseV1 get_tags_v1 = 304;
+        optional services.profile.actions.add_tags.ResponseV1 add_tags_v1 = 305;
+        optional services.profile.actions.update_profile.ResponseV1 update_profile_v1 = 306;
+        optional services.profile.actions.get_profiles.ResponseV1 get_profiles_v1 = 307;
+        optional services.profile.actions.get_direct_reports.ResponseV1 get_direct_reports_v1 = 308;
+        optional services.profile.actions.get_peers.ResponseV1 get_peers_v1 = 309;
+        optional services.profile.actions.get_profile_stats.ResponseV1 get_profile_stats_v1 = 310;
+        optional services.profile.actions.get_upcoming_anniversaries.ResponseV1 get_upcoming_anniversaries_v1 = 311;
+        optional services.profile.actions.get_upcoming_birthdays.ResponseV1 get_upcoming_birthdays_v1 = 312;
+        optional services.profile.actions.get_recent_hires.ResponseV1 get_recent_hires_v1 = 313;
+        optional services.profile.actions.get_active_tags.ResponseV1 get_active_tags_v1 = 314;
+        optional services.profile.actions.bulk_create_profiles.ResponseV1 bulk_create_profiles = 315;
+        optional services.profile.actions.bulk_update_profiles.ResponseV1 bulk_update_profiles = 316;
+        optional services.profile.actions.get_attributes_for_profiles.ResponseV1 get_attributes_for_profiles = 317;
+        optional services.profile.actions.remove_tags.ResponseV1 remove_tags = 318;
+    }
+}
+
+message SearchService {
+    extend soa.ActionResultV1 {
+        optional services.search.actions.search.ResponseV1 search_v1 = 400;
+    }
+}
+
+message FeedService {
+    extend soa.ActionResultV1 {
+        optional services.feed.actions.get_profile_feed.ResponseV1 get_profile_feed_v1 = 500;
+        optional services.feed.actions.get_organization_feed.ResponseV1 get_organization_feed_v1 = 501;
+    }
+}
+
+message MediaService {
+    extend soa.ActionResultV1 {
+        optional services.media.actions.start_image_upload.ResponseV1 start_image_upload_v1 = 600;
+        optional services.media.actions.complete_image_upload.ResponseV1 complete_image_upload_v1 = 601;
+    }
+}
+
+message NoteService {
+    extend soa.ActionResultV1 {
+        optional services.note.actions.create_note.ResponseV1 create_note_v1 = 700;
+        optional services.note.actions.get_notes.ResponseV1 get_ntoes_v1 = 701;
+        optional services.note.actions.delete_note.ResponseV1 delete_note_v1 = 702;
+        optional services.note.actions.update_note.ResponseV1 update_note_v1 = 703;
+    }
+}
+
+message ResumeService {
+    extend soa.ActionResultV1 {
+        optional services.resume.actions.bulk_create_educations.ResponseV1 bulk_create_educations_v1 = 800;
+        optional services.resume.actions.bulk_create_positions.ResponseV1 bulk_create_positions_v1 = 801;
+        optional services.resume.actions.create_company.ResponseV1 create_company_v1 = 802;
+        optional services.resume.actions.get_resume.ResponseV1 get_resume_v1 = 803;
+        optional services.resume.actions.bulk_create_companies.ResponseV1 bulk_create_companies_v1 = 804;
+    }
+}
+
+message AppreciationService {
+    extend soa.ActionResultV1 {
+        optional services.appreciation.actions.create_appreciation.ResponseV1 create_appreciation_v1 = 900;
+        optional services.appreciation.actions.get_appreciation.ResponseV1 get_appreciation_v1 = 901;
+        optional services.appreciation.actions.delete_appreciation.ResponseV1 delete_appreciation_v1 = 902;
+        optional services.appreciation.actions.update_appreciation.ResponseV1 update_appreciation_v1 = 903;
     }
 }

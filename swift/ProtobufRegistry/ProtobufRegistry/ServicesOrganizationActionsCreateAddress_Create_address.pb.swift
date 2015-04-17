@@ -4,7 +4,7 @@ import Foundation
 import ProtocolBuffers
 
 
-internal struct Services { internal struct Organization { internal struct Actions { internal struct CreateAddress { }}}}
+internal extension Services{ internal struct Organization { internal struct Actions { internal struct CreateAddress { }}}}
 
 internal func == (lhs: Services.Organization.Actions.CreateAddress.RequestV1, rhs: Services.Organization.Actions.CreateAddress.RequestV1) -> Bool {
   if (lhs === rhs) {

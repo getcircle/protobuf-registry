@@ -14,20 +14,204 @@ _sym_db = _symbol_database.Default()
 
 
 import service_protobufs.soa_pb2
+import protobufs.services.user.actions.create_user_pb2
+import protobufs.services.user.actions.valid_user_pb2
+import protobufs.services.user.actions.authenticate_user_pb2
+import protobufs.services.user.actions.get_user_pb2
+import protobufs.services.user.actions.send_verification_code_pb2
+import protobufs.services.user.actions.verify_verification_code_pb2
+import protobufs.services.user.actions.update_user_pb2
+import protobufs.services.user.actions.get_authorization_instructions_pb2
+import protobufs.services.user.actions.complete_authorization_pb2
+import protobufs.services.user.actions.get_identities_pb2
+import protobufs.services.user.actions.bulk_create_users_pb2
+import protobufs.services.user.actions.record_device_pb2
+import protobufs.services.user.actions.request_access_pb2
+import protobufs.services.user.actions.delete_identity_pb2
 import protobufs.services.organization.actions.create_organization_pb2
+import protobufs.services.organization.actions.create_team_pb2
+import protobufs.services.organization.actions.create_address_pb2
+import protobufs.services.organization.actions.delete_address_pb2
+import protobufs.services.organization.actions.get_address_pb2
+import protobufs.services.organization.actions.get_team_pb2
 import protobufs.services.organization.actions.get_organization_pb2
+import protobufs.services.organization.actions.get_teams_pb2
+import protobufs.services.organization.actions.get_addresses_pb2
+import protobufs.services.organization.actions.get_team_descendants_pb2
+import protobufs.services.organization.actions.get_top_level_team_pb2
+import protobufs.services.organization.actions.create_location_pb2
+import protobufs.services.organization.actions.update_location_pb2
+import protobufs.services.organization.actions.get_locations_pb2
+import protobufs.services.organization.actions.get_location_pb2
+import protobufs.services.profile.actions.create_profile_pb2
 import protobufs.services.profile.actions.get_extended_profile_pb2
+import protobufs.services.profile.actions.get_profile_pb2
+import protobufs.services.profile.actions.create_tags_pb2
+import protobufs.services.profile.actions.get_tags_pb2
+import protobufs.services.profile.actions.add_tags_pb2
+import protobufs.services.profile.actions.update_profile_pb2
+import protobufs.services.profile.actions.get_profiles_pb2
+import protobufs.services.profile.actions.get_direct_reports_pb2
+import protobufs.services.profile.actions.get_peers_pb2
+import protobufs.services.profile.actions.get_profile_stats_pb2
+import protobufs.services.profile.actions.get_upcoming_anniversaries_pb2
+import protobufs.services.profile.actions.get_upcoming_birthdays_pb2
+import protobufs.services.profile.actions.get_recent_hires_pb2
+import protobufs.services.profile.actions.get_active_tags_pb2
+import protobufs.services.profile.actions.bulk_create_profiles_pb2
+import protobufs.services.profile.actions.bulk_update_profiles_pb2
+import protobufs.services.profile.actions.get_attributes_for_profiles_pb2
+import protobufs.services.profile.actions.remove_tags_pb2
+import protobufs.services.search.actions.search_pb2
+import protobufs.services.feed.actions.get_profile_feed_pb2
+import protobufs.services.feed.actions.get_organization_feed_pb2
+import protobufs.services.media.actions.start_image_upload_pb2
+import protobufs.services.media.actions.complete_image_upload_pb2
+import protobufs.services.note.actions.create_note_pb2
+import protobufs.services.note.actions.get_notes_pb2
+import protobufs.services.note.actions.delete_note_pb2
+import protobufs.services.note.actions.update_note_pb2
+import protobufs.services.resume.actions.bulk_create_educations_pb2
+import protobufs.services.resume.actions.bulk_create_positions_pb2
+import protobufs.services.resume.actions.create_company_pb2
+import protobufs.services.resume.actions.get_resume_pb2
+import protobufs.services.resume.actions.bulk_create_companies_pb2
+import protobufs.services.appreciation.actions.create_appreciation_pb2
+import protobufs.services.appreciation.actions.get_appreciation_pb2
+import protobufs.services.appreciation.actions.delete_appreciation_pb2
+import protobufs.services.appreciation.actions.update_appreciation_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/registry/responses.proto',
   package='services.registry.responses',
-  serialized_pb=_b('\n+protobufs/services/registry/responses.proto\x12\x1bservices.registry.responses\x1a\x1bservice_protobufs/soa.proto\x1a\x41protobufs/services/organization/actions/create_organization.proto\x1a>protobufs/services/organization/actions/get_organization.proto\x1a=protobufs/services/profile/actions/get_extended_profile.proto\"\xf9\x01\n\x13OrganizationService2s\n\x16\x63reate_organization_v1\x12\x13.soa.ActionResultV1\x18\xc8\x01 \x01(\x0b\x32=.services.organization.actions.create_organization.ResponseV12m\n\x13get_organization_v1\x12\x13.soa.ActionResultV1\x18\xc9\x01 \x01(\x0b\x32:.services.organization.actions.get_organization.ResponseV1\"\x82\x01\n\x0eProfileService2p\n\x17get_extended_profile_v1\x12\x13.soa.ActionResultV1\x18\xac\x02 \x01(\x0b\x32\x39.services.profile.actions.get_extended_profile.ResponseV1')
+  serialized_pb=_b('\n+protobufs/services/registry/responses.proto\x12\x1bservices.registry.responses\x1a\x1bservice_protobufs/soa.proto\x1a\x31protobufs/services/user/actions/create_user.proto\x1a\x30protobufs/services/user/actions/valid_user.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\x1a.protobufs/services/user/actions/get_user.proto\x1a<protobufs/services/user/actions/send_verification_code.proto\x1a>protobufs/services/user/actions/verify_verification_code.proto\x1a\x31protobufs/services/user/actions/update_user.proto\x1a\x44protobufs/services/user/actions/get_authorization_instructions.proto\x1a<protobufs/services/user/actions/complete_authorization.proto\x1a\x34protobufs/services/user/actions/get_identities.proto\x1a\x37protobufs/services/user/actions/bulk_create_users.proto\x1a\x33protobufs/services/user/actions/record_device.proto\x1a\x34protobufs/services/user/actions/request_access.proto\x1a\x35protobufs/services/user/actions/delete_identity.proto\x1a\x41protobufs/services/organization/actions/create_organization.proto\x1a\x39protobufs/services/organization/actions/create_team.proto\x1a<protobufs/services/organization/actions/create_address.proto\x1a<protobufs/services/organization/actions/delete_address.proto\x1a\x39protobufs/services/organization/actions/get_address.proto\x1a\x36protobufs/services/organization/actions/get_team.proto\x1a>protobufs/services/organization/actions/get_organization.proto\x1a\x37protobufs/services/organization/actions/get_teams.proto\x1a;protobufs/services/organization/actions/get_addresses.proto\x1a\x42protobufs/services/organization/actions/get_team_descendants.proto\x1a@protobufs/services/organization/actions/get_top_level_team.proto\x1a=protobufs/services/organization/actions/create_location.proto\x1a=protobufs/services/organization/actions/update_location.proto\x1a;protobufs/services/organization/actions/get_locations.proto\x1a:protobufs/services/organization/actions/get_location.proto\x1a\x37protobufs/services/profile/actions/create_profile.proto\x1a=protobufs/services/profile/actions/get_extended_profile.proto\x1a\x34protobufs/services/profile/actions/get_profile.proto\x1a\x34protobufs/services/profile/actions/create_tags.proto\x1a\x31protobufs/services/profile/actions/get_tags.proto\x1a\x31protobufs/services/profile/actions/add_tags.proto\x1a\x37protobufs/services/profile/actions/update_profile.proto\x1a\x35protobufs/services/profile/actions/get_profiles.proto\x1a;protobufs/services/profile/actions/get_direct_reports.proto\x1a\x32protobufs/services/profile/actions/get_peers.proto\x1a:protobufs/services/profile/actions/get_profile_stats.proto\x1a\x43protobufs/services/profile/actions/get_upcoming_anniversaries.proto\x1a?protobufs/services/profile/actions/get_upcoming_birthdays.proto\x1a\x39protobufs/services/profile/actions/get_recent_hires.proto\x1a\x38protobufs/services/profile/actions/get_active_tags.proto\x1a=protobufs/services/profile/actions/bulk_create_profiles.proto\x1a=protobufs/services/profile/actions/bulk_update_profiles.proto\x1a\x44protobufs/services/profile/actions/get_attributes_for_profiles.proto\x1a\x34protobufs/services/profile/actions/remove_tags.proto\x1a.protobufs/services/search/actions/search.proto\x1a\x36protobufs/services/feed/actions/get_profile_feed.proto\x1a;protobufs/services/feed/actions/get_organization_feed.proto\x1a\x39protobufs/services/media/actions/start_image_upload.proto\x1a<protobufs/services/media/actions/complete_image_upload.proto\x1a\x31protobufs/services/note/actions/create_note.proto\x1a/protobufs/services/note/actions/get_notes.proto\x1a\x31protobufs/services/note/actions/delete_note.proto\x1a\x31protobufs/services/note/actions/update_note.proto\x1a>protobufs/services/resume/actions/bulk_create_educations.proto\x1a=protobufs/services/resume/actions/bulk_create_positions.proto\x1a\x36protobufs/services/resume/actions/create_company.proto\x1a\x32protobufs/services/resume/actions/get_resume.proto\x1a=protobufs/services/resume/actions/bulk_create_companies.proto\x1a\x41protobufs/services/appreciation/actions/create_appreciation.proto\x1a>protobufs/services/appreciation/actions/get_appreciation.proto\x1a\x41protobufs/services/appreciation/actions/delete_appreciation.proto\x1a\x41protobufs/services/appreciation/actions/update_appreciation.proto\"\xaa\x0b\n\x0bUserService2Z\n\x0e\x63reate_user_v1\x12\x13.soa.ActionResultV1\x18\x64 \x01(\x0b\x32-.services.user.actions.create_user.ResponseV12X\n\rvalid_user_v1\x12\x13.soa.ActionResultV1\x18\x65 \x01(\x0b\x32,.services.user.actions.valid_user.ResponseV12f\n\x14\x61uthenticate_user_v1\x12\x13.soa.ActionResultV1\x18\x66 \x01(\x0b\x32\x33.services.user.actions.authenticate_user.ResponseV12T\n\x0bget_user_v1\x12\x13.soa.ActionResultV1\x18g \x01(\x0b\x32*.services.user.actions.get_user.ResponseV12p\n\x19send_verification_code_v1\x12\x13.soa.ActionResultV1\x18h \x01(\x0b\x32\x38.services.user.actions.send_verification_code.ResponseV12t\n\x1bverify_verification_code_v1\x12\x13.soa.ActionResultV1\x18i \x01(\x0b\x32:.services.user.actions.verify_verification_code.ResponseV12Z\n\x0eupdate_user_v1\x12\x13.soa.ActionResultV1\x18j \x01(\x0b\x32-.services.user.actions.update_user.ResponseV12\x80\x01\n!get_authorization_instructions_v1\x12\x13.soa.ActionResultV1\x18k \x01(\x0b\x32@.services.user.actions.get_authorization_instructions.ResponseV12p\n\x19\x63omplete_authorization_v1\x12\x13.soa.ActionResultV1\x18l \x01(\x0b\x32\x38.services.user.actions.complete_authorization.ResponseV12`\n\x11get_identities_v1\x12\x13.soa.ActionResultV1\x18m \x01(\x0b\x32\x30.services.user.actions.get_identities.ResponseV12f\n\x14\x62ulk_create_users_v1\x12\x13.soa.ActionResultV1\x18n \x01(\x0b\x32\x33.services.user.actions.bulk_create_users.ResponseV12^\n\x10record_device_v1\x12\x13.soa.ActionResultV1\x18o \x01(\x0b\x32/.services.user.actions.record_device.ResponseV12`\n\x11request_access_v1\x12\x13.soa.ActionResultV1\x18p \x01(\x0b\x32\x30.services.user.actions.request_access.ResponseV12b\n\x12\x64\x65lete_identity_v1\x12\x13.soa.ActionResultV1\x18q \x01(\x0b\x32\x31.services.user.actions.delete_identity.ResponseV1\"\xd6\x0c\n\x13OrganizationService2s\n\x16\x63reate_organization_v1\x12\x13.soa.ActionResultV1\x18\xc8\x01 \x01(\x0b\x32=.services.organization.actions.create_organization.ResponseV12m\n\x13get_organization_v1\x12\x13.soa.ActionResultV1\x18\xc9\x01 \x01(\x0b\x32:.services.organization.actions.get_organization.ResponseV12c\n\x0e\x63reate_team_v1\x12\x13.soa.ActionResultV1\x18\xca\x01 \x01(\x0b\x32\x35.services.organization.actions.create_team.ResponseV12i\n\x11\x63reate_address_v1\x12\x13.soa.ActionResultV1\x18\xcb\x01 \x01(\x0b\x32\x38.services.organization.actions.create_address.ResponseV12i\n\x11\x64\x65lete_address_v1\x12\x13.soa.ActionResultV1\x18\xcc\x01 \x01(\x0b\x32\x38.services.organization.actions.delete_address.ResponseV12c\n\x0eget_address_v1\x12\x13.soa.ActionResultV1\x18\xcd\x01 \x01(\x0b\x32\x35.services.organization.actions.get_address.ResponseV12]\n\x0bget_team_v1\x12\x13.soa.ActionResultV1\x18\xce\x01 \x01(\x0b\x32\x32.services.organization.actions.get_team.ResponseV12_\n\x0cget_teams_v1\x12\x13.soa.ActionResultV1\x18\xcf\x01 \x01(\x0b\x32\x33.services.organization.actions.get_teams.ResponseV12g\n\x10get_addresses_v1\x12\x13.soa.ActionResultV1\x18\xd0\x01 \x01(\x0b\x32\x37.services.organization.actions.get_addresses.ResponseV12u\n\x17get_team_descendants_v1\x12\x13.soa.ActionResultV1\x18\xd1\x01 \x01(\x0b\x32>.services.organization.actions.get_team_descendants.ResponseV12q\n\x15get_top_level_team_v1\x12\x13.soa.ActionResultV1\x18\xd2\x01 \x01(\x0b\x32<.services.organization.actions.get_top_level_team.ResponseV12k\n\x12\x63reate_location_v1\x12\x13.soa.ActionResultV1\x18\xd3\x01 \x01(\x0b\x32\x39.services.organization.actions.create_location.ResponseV12k\n\x12update_location_v1\x12\x13.soa.ActionResultV1\x18\xd4\x01 \x01(\x0b\x32\x39.services.organization.actions.update_location.ResponseV12g\n\x10get_locations_v1\x12\x13.soa.ActionResultV1\x18\xd5\x01 \x01(\x0b\x32\x37.services.organization.actions.get_locations.ResponseV12e\n\x0fget_location_v1\x12\x13.soa.ActionResultV1\x18\xd6\x01 \x01(\x0b\x32\x36.services.organization.actions.get_location.ResponseV1\"\xd8\x0f\n\x0eProfileService2d\n\x11\x63reate_profile_v1\x12\x13.soa.ActionResultV1\x18\xac\x02 \x01(\x0b\x32\x33.services.profile.actions.create_profile.ResponseV12p\n\x17get_extended_profile_v1\x12\x13.soa.ActionResultV1\x18\xad\x02 \x01(\x0b\x32\x39.services.profile.actions.get_extended_profile.ResponseV12^\n\x0eget_profile_v1\x12\x13.soa.ActionResultV1\x18\xae\x02 \x01(\x0b\x32\x30.services.profile.actions.get_profile.ResponseV12^\n\x0e\x63reate_tags_v1\x12\x13.soa.ActionResultV1\x18\xaf\x02 \x01(\x0b\x32\x30.services.profile.actions.create_tags.ResponseV12X\n\x0bget_tags_v1\x12\x13.soa.ActionResultV1\x18\xb0\x02 \x01(\x0b\x32-.services.profile.actions.get_tags.ResponseV12X\n\x0b\x61\x64\x64_tags_v1\x12\x13.soa.ActionResultV1\x18\xb1\x02 \x01(\x0b\x32-.services.profile.actions.add_tags.ResponseV12d\n\x11update_profile_v1\x12\x13.soa.ActionResultV1\x18\xb2\x02 \x01(\x0b\x32\x33.services.profile.actions.update_profile.ResponseV12`\n\x0fget_profiles_v1\x12\x13.soa.ActionResultV1\x18\xb3\x02 \x01(\x0b\x32\x31.services.profile.actions.get_profiles.ResponseV12l\n\x15get_direct_reports_v1\x12\x13.soa.ActionResultV1\x18\xb4\x02 \x01(\x0b\x32\x37.services.profile.actions.get_direct_reports.ResponseV12Z\n\x0cget_peers_v1\x12\x13.soa.ActionResultV1\x18\xb5\x02 \x01(\x0b\x32..services.profile.actions.get_peers.ResponseV12j\n\x14get_profile_stats_v1\x12\x13.soa.ActionResultV1\x18\xb6\x02 \x01(\x0b\x32\x36.services.profile.actions.get_profile_stats.ResponseV12|\n\x1dget_upcoming_anniversaries_v1\x12\x13.soa.ActionResultV1\x18\xb7\x02 \x01(\x0b\x32?.services.profile.actions.get_upcoming_anniversaries.ResponseV12t\n\x19get_upcoming_birthdays_v1\x12\x13.soa.ActionResultV1\x18\xb8\x02 \x01(\x0b\x32;.services.profile.actions.get_upcoming_birthdays.ResponseV12h\n\x13get_recent_hires_v1\x12\x13.soa.ActionResultV1\x18\xb9\x02 \x01(\x0b\x32\x35.services.profile.actions.get_recent_hires.ResponseV12f\n\x12get_active_tags_v1\x12\x13.soa.ActionResultV1\x18\xba\x02 \x01(\x0b\x32\x34.services.profile.actions.get_active_tags.ResponseV12m\n\x14\x62ulk_create_profiles\x12\x13.soa.ActionResultV1\x18\xbb\x02 \x01(\x0b\x32\x39.services.profile.actions.bulk_create_profiles.ResponseV12m\n\x14\x62ulk_update_profiles\x12\x13.soa.ActionResultV1\x18\xbc\x02 \x01(\x0b\x32\x39.services.profile.actions.bulk_update_profiles.ResponseV12{\n\x1bget_attributes_for_profiles\x12\x13.soa.ActionResultV1\x18\xbd\x02 \x01(\x0b\x32@.services.profile.actions.get_attributes_for_profiles.ResponseV12[\n\x0bremove_tags\x12\x13.soa.ActionResultV1\x18\xbe\x02 \x01(\x0b\x32\x30.services.profile.actions.remove_tags.ResponseV1\"d\n\rSearchService2S\n\tsearch_v1\x12\x13.soa.ActionResultV1\x18\x90\x03 \x01(\x0b\x32*.services.search.actions.search.ResponseV1\"\xe5\x01\n\x0b\x46\x65\x65\x64Service2e\n\x13get_profile_feed_v1\x12\x13.soa.ActionResultV1\x18\xf4\x03 \x01(\x0b\x32\x32.services.feed.actions.get_profile_feed.ResponseV12o\n\x18get_organization_feed_v1\x12\x13.soa.ActionResultV1\x18\xf5\x03 \x01(\x0b\x32\x37.services.feed.actions.get_organization_feed.ResponseV1\"\xec\x01\n\x0cMediaService2j\n\x15start_image_upload_v1\x12\x13.soa.ActionResultV1\x18\xd8\x04 \x01(\x0b\x32\x35.services.media.actions.start_image_upload.ResponseV12p\n\x18\x63omplete_image_upload_v1\x12\x13.soa.ActionResultV1\x18\xd9\x04 \x01(\x0b\x32\x38.services.media.actions.complete_image_upload.ResponseV1\"\xfd\x02\n\x0bNoteService2[\n\x0e\x63reate_note_v1\x12\x13.soa.ActionResultV1\x18\xbc\x05 \x01(\x0b\x32-.services.note.actions.create_note.ResponseV12W\n\x0cget_ntoes_v1\x12\x13.soa.ActionResultV1\x18\xbd\x05 \x01(\x0b\x32+.services.note.actions.get_notes.ResponseV12[\n\x0e\x64\x65lete_note_v1\x12\x13.soa.ActionResultV1\x18\xbe\x05 \x01(\x0b\x32-.services.note.actions.delete_note.ResponseV12[\n\x0eupdate_note_v1\x12\x13.soa.ActionResultV1\x18\xbf\x05 \x01(\x0b\x32-.services.note.actions.update_note.ResponseV1\"\xac\x04\n\rResumeService2s\n\x19\x62ulk_create_educations_v1\x12\x13.soa.ActionResultV1\x18\xa0\x06 \x01(\x0b\x32:.services.resume.actions.bulk_create_educations.ResponseV12q\n\x18\x62ulk_create_positions_v1\x12\x13.soa.ActionResultV1\x18\xa1\x06 \x01(\x0b\x32\x39.services.resume.actions.bulk_create_positions.ResponseV12c\n\x11\x63reate_company_v1\x12\x13.soa.ActionResultV1\x18\xa2\x06 \x01(\x0b\x32\x32.services.resume.actions.create_company.ResponseV12[\n\rget_resume_v1\x12\x13.soa.ActionResultV1\x18\xa3\x06 \x01(\x0b\x32..services.resume.actions.get_resume.ResponseV12q\n\x18\x62ulk_create_companies_v1\x12\x13.soa.ActionResultV1\x18\xa4\x06 \x01(\x0b\x32\x39.services.resume.actions.bulk_create_companies.ResponseV1\"\xe3\x03\n\x13\x41ppreciationService2s\n\x16\x63reate_appreciation_v1\x12\x13.soa.ActionResultV1\x18\x84\x07 \x01(\x0b\x32=.services.appreciation.actions.create_appreciation.ResponseV12m\n\x13get_appreciation_v1\x12\x13.soa.ActionResultV1\x18\x85\x07 \x01(\x0b\x32:.services.appreciation.actions.get_appreciation.ResponseV12s\n\x16\x64\x65lete_appreciation_v1\x12\x13.soa.ActionResultV1\x18\x86\x07 \x01(\x0b\x32=.services.appreciation.actions.delete_appreciation.ResponseV12s\n\x16update_appreciation_v1\x12\x13.soa.ActionResultV1\x18\x87\x07 \x01(\x0b\x32=.services.appreciation.actions.update_appreciation.ResponseV1')
   ,
-  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_organization_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_extended_profile_pb2.DESCRIPTOR,])
+  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.services.user.actions.create_user_pb2.DESCRIPTOR,protobufs.services.user.actions.valid_user_pb2.DESCRIPTOR,protobufs.services.user.actions.authenticate_user_pb2.DESCRIPTOR,protobufs.services.user.actions.get_user_pb2.DESCRIPTOR,protobufs.services.user.actions.send_verification_code_pb2.DESCRIPTOR,protobufs.services.user.actions.verify_verification_code_pb2.DESCRIPTOR,protobufs.services.user.actions.update_user_pb2.DESCRIPTOR,protobufs.services.user.actions.get_authorization_instructions_pb2.DESCRIPTOR,protobufs.services.user.actions.complete_authorization_pb2.DESCRIPTOR,protobufs.services.user.actions.get_identities_pb2.DESCRIPTOR,protobufs.services.user.actions.bulk_create_users_pb2.DESCRIPTOR,protobufs.services.user.actions.record_device_pb2.DESCRIPTOR,protobufs.services.user.actions.request_access_pb2.DESCRIPTOR,protobufs.services.user.actions.delete_identity_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.delete_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_teams_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_addresses_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_team_descendants_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_top_level_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_location_pb2.DESCRIPTOR,protobufs.services.organization.actions.update_location_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_locations_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_location_pb2.DESCRIPTOR,protobufs.services.profile.actions.create_profile_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_extended_profile_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_profile_pb2.DESCRIPTOR,protobufs.services.profile.actions.create_tags_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_tags_pb2.DESCRIPTOR,protobufs.services.profile.actions.add_tags_pb2.DESCRIPTOR,protobufs.services.profile.actions.update_profile_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_profiles_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_direct_reports_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_peers_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_profile_stats_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_upcoming_anniversaries_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_upcoming_birthdays_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_recent_hires_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_active_tags_pb2.DESCRIPTOR,protobufs.services.profile.actions.bulk_create_profiles_pb2.DESCRIPTOR,protobufs.services.profile.actions.bulk_update_profiles_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_attributes_for_profiles_pb2.DESCRIPTOR,protobufs.services.profile.actions.remove_tags_pb2.DESCRIPTOR,protobufs.services.search.actions.search_pb2.DESCRIPTOR,protobufs.services.feed.actions.get_profile_feed_pb2.DESCRIPTOR,protobufs.services.feed.actions.get_organization_feed_pb2.DESCRIPTOR,protobufs.services.media.actions.start_image_upload_pb2.DESCRIPTOR,protobufs.services.media.actions.complete_image_upload_pb2.DESCRIPTOR,protobufs.services.note.actions.create_note_pb2.DESCRIPTOR,protobufs.services.note.actions.get_notes_pb2.DESCRIPTOR,protobufs.services.note.actions.delete_note_pb2.DESCRIPTOR,protobufs.services.note.actions.update_note_pb2.DESCRIPTOR,protobufs.services.resume.actions.bulk_create_educations_pb2.DESCRIPTOR,protobufs.services.resume.actions.bulk_create_positions_pb2.DESCRIPTOR,protobufs.services.resume.actions.create_company_pb2.DESCRIPTOR,protobufs.services.resume.actions.get_resume_pb2.DESCRIPTOR,protobufs.services.resume.actions.bulk_create_companies_pb2.DESCRIPTOR,protobufs.services.appreciation.actions.create_appreciation_pb2.DESCRIPTOR,protobufs.services.appreciation.actions.get_appreciation_pb2.DESCRIPTOR,protobufs.services.appreciation.actions.delete_appreciation_pb2.DESCRIPTOR,protobufs.services.appreciation.actions.update_appreciation_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
+
+
+_USERSERVICE = _descriptor.Descriptor(
+  name='UserService',
+  full_name='services.registry.responses.UserService',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='create_user_v1', full_name='services.registry.responses.UserService.create_user_v1', index=0,
+      number=100, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='valid_user_v1', full_name='services.registry.responses.UserService.valid_user_v1', index=1,
+      number=101, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='authenticate_user_v1', full_name='services.registry.responses.UserService.authenticate_user_v1', index=2,
+      number=102, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_user_v1', full_name='services.registry.responses.UserService.get_user_v1', index=3,
+      number=103, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='send_verification_code_v1', full_name='services.registry.responses.UserService.send_verification_code_v1', index=4,
+      number=104, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='verify_verification_code_v1', full_name='services.registry.responses.UserService.verify_verification_code_v1', index=5,
+      number=105, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='update_user_v1', full_name='services.registry.responses.UserService.update_user_v1', index=6,
+      number=106, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_authorization_instructions_v1', full_name='services.registry.responses.UserService.get_authorization_instructions_v1', index=7,
+      number=107, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='complete_authorization_v1', full_name='services.registry.responses.UserService.complete_authorization_v1', index=8,
+      number=108, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_identities_v1', full_name='services.registry.responses.UserService.get_identities_v1', index=9,
+      number=109, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='bulk_create_users_v1', full_name='services.registry.responses.UserService.bulk_create_users_v1', index=10,
+      number=110, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='record_device_v1', full_name='services.registry.responses.UserService.record_device_v1', index=11,
+      number=111, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='request_access_v1', full_name='services.registry.responses.UserService.request_access_v1', index=12,
+      number=112, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='delete_identity_v1', full_name='services.registry.responses.UserService.delete_identity_v1', index=13,
+      number=113, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3989,
+  serialized_end=5439,
+)
 
 
 _ORGANIZATIONSERVICE = _descriptor.Descriptor(
@@ -53,32 +237,93 @@ _ORGANIZATIONSERVICE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
       options=None),
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=300,
-  serialized_end=549,
-)
-
-
-_PROFILESERVICE = _descriptor.Descriptor(
-  name='ProfileService',
-  full_name='services.registry.responses.ProfileService',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
     _descriptor.FieldDescriptor(
-      name='get_extended_profile_v1', full_name='services.registry.responses.ProfileService.get_extended_profile_v1', index=0,
-      number=300, type=11, cpp_type=10, label=1,
+      name='create_team_v1', full_name='services.registry.responses.OrganizationService.create_team_v1', index=2,
+      number=202, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='create_address_v1', full_name='services.registry.responses.OrganizationService.create_address_v1', index=3,
+      number=203, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='delete_address_v1', full_name='services.registry.responses.OrganizationService.delete_address_v1', index=4,
+      number=204, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_address_v1', full_name='services.registry.responses.OrganizationService.get_address_v1', index=5,
+      number=205, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_team_v1', full_name='services.registry.responses.OrganizationService.get_team_v1', index=6,
+      number=206, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_teams_v1', full_name='services.registry.responses.OrganizationService.get_teams_v1', index=7,
+      number=207, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_addresses_v1', full_name='services.registry.responses.OrganizationService.get_addresses_v1', index=8,
+      number=208, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_team_descendants_v1', full_name='services.registry.responses.OrganizationService.get_team_descendants_v1', index=9,
+      number=209, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_top_level_team_v1', full_name='services.registry.responses.OrganizationService.get_top_level_team_v1', index=10,
+      number=210, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='create_location_v1', full_name='services.registry.responses.OrganizationService.create_location_v1', index=11,
+      number=211, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='update_location_v1', full_name='services.registry.responses.OrganizationService.update_location_v1', index=12,
+      number=212, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_locations_v1', full_name='services.registry.responses.OrganizationService.get_locations_v1', index=13,
+      number=213, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_location_v1', full_name='services.registry.responses.OrganizationService.get_location_v1', index=14,
+      number=214, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=True, extension_scope=None,
@@ -92,12 +337,446 @@ _PROFILESERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=552,
-  serialized_end=682,
+  serialized_start=5442,
+  serialized_end=7064,
 )
 
+
+_PROFILESERVICE = _descriptor.Descriptor(
+  name='ProfileService',
+  full_name='services.registry.responses.ProfileService',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='create_profile_v1', full_name='services.registry.responses.ProfileService.create_profile_v1', index=0,
+      number=300, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_extended_profile_v1', full_name='services.registry.responses.ProfileService.get_extended_profile_v1', index=1,
+      number=301, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_profile_v1', full_name='services.registry.responses.ProfileService.get_profile_v1', index=2,
+      number=302, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='create_tags_v1', full_name='services.registry.responses.ProfileService.create_tags_v1', index=3,
+      number=303, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_tags_v1', full_name='services.registry.responses.ProfileService.get_tags_v1', index=4,
+      number=304, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='add_tags_v1', full_name='services.registry.responses.ProfileService.add_tags_v1', index=5,
+      number=305, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='update_profile_v1', full_name='services.registry.responses.ProfileService.update_profile_v1', index=6,
+      number=306, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_profiles_v1', full_name='services.registry.responses.ProfileService.get_profiles_v1', index=7,
+      number=307, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_direct_reports_v1', full_name='services.registry.responses.ProfileService.get_direct_reports_v1', index=8,
+      number=308, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_peers_v1', full_name='services.registry.responses.ProfileService.get_peers_v1', index=9,
+      number=309, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_profile_stats_v1', full_name='services.registry.responses.ProfileService.get_profile_stats_v1', index=10,
+      number=310, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_upcoming_anniversaries_v1', full_name='services.registry.responses.ProfileService.get_upcoming_anniversaries_v1', index=11,
+      number=311, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_upcoming_birthdays_v1', full_name='services.registry.responses.ProfileService.get_upcoming_birthdays_v1', index=12,
+      number=312, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_recent_hires_v1', full_name='services.registry.responses.ProfileService.get_recent_hires_v1', index=13,
+      number=313, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_active_tags_v1', full_name='services.registry.responses.ProfileService.get_active_tags_v1', index=14,
+      number=314, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='bulk_create_profiles', full_name='services.registry.responses.ProfileService.bulk_create_profiles', index=15,
+      number=315, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='bulk_update_profiles', full_name='services.registry.responses.ProfileService.bulk_update_profiles', index=16,
+      number=316, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_attributes_for_profiles', full_name='services.registry.responses.ProfileService.get_attributes_for_profiles', index=17,
+      number=317, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='remove_tags', full_name='services.registry.responses.ProfileService.remove_tags', index=18,
+      number=318, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=7067,
+  serialized_end=9075,
+)
+
+
+_SEARCHSERVICE = _descriptor.Descriptor(
+  name='SearchService',
+  full_name='services.registry.responses.SearchService',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='search_v1', full_name='services.registry.responses.SearchService.search_v1', index=0,
+      number=400, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9077,
+  serialized_end=9177,
+)
+
+
+_FEEDSERVICE = _descriptor.Descriptor(
+  name='FeedService',
+  full_name='services.registry.responses.FeedService',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='get_profile_feed_v1', full_name='services.registry.responses.FeedService.get_profile_feed_v1', index=0,
+      number=500, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_organization_feed_v1', full_name='services.registry.responses.FeedService.get_organization_feed_v1', index=1,
+      number=501, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9180,
+  serialized_end=9409,
+)
+
+
+_MEDIASERVICE = _descriptor.Descriptor(
+  name='MediaService',
+  full_name='services.registry.responses.MediaService',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='start_image_upload_v1', full_name='services.registry.responses.MediaService.start_image_upload_v1', index=0,
+      number=600, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='complete_image_upload_v1', full_name='services.registry.responses.MediaService.complete_image_upload_v1', index=1,
+      number=601, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9412,
+  serialized_end=9648,
+)
+
+
+_NOTESERVICE = _descriptor.Descriptor(
+  name='NoteService',
+  full_name='services.registry.responses.NoteService',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='create_note_v1', full_name='services.registry.responses.NoteService.create_note_v1', index=0,
+      number=700, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_ntoes_v1', full_name='services.registry.responses.NoteService.get_ntoes_v1', index=1,
+      number=701, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='delete_note_v1', full_name='services.registry.responses.NoteService.delete_note_v1', index=2,
+      number=702, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='update_note_v1', full_name='services.registry.responses.NoteService.update_note_v1', index=3,
+      number=703, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9651,
+  serialized_end=10032,
+)
+
+
+_RESUMESERVICE = _descriptor.Descriptor(
+  name='ResumeService',
+  full_name='services.registry.responses.ResumeService',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='bulk_create_educations_v1', full_name='services.registry.responses.ResumeService.bulk_create_educations_v1', index=0,
+      number=800, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='bulk_create_positions_v1', full_name='services.registry.responses.ResumeService.bulk_create_positions_v1', index=1,
+      number=801, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='create_company_v1', full_name='services.registry.responses.ResumeService.create_company_v1', index=2,
+      number=802, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_resume_v1', full_name='services.registry.responses.ResumeService.get_resume_v1', index=3,
+      number=803, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='bulk_create_companies_v1', full_name='services.registry.responses.ResumeService.bulk_create_companies_v1', index=4,
+      number=804, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10035,
+  serialized_end=10591,
+)
+
+
+_APPRECIATIONSERVICE = _descriptor.Descriptor(
+  name='AppreciationService',
+  full_name='services.registry.responses.AppreciationService',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='create_appreciation_v1', full_name='services.registry.responses.AppreciationService.create_appreciation_v1', index=0,
+      number=900, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_appreciation_v1', full_name='services.registry.responses.AppreciationService.get_appreciation_v1', index=1,
+      number=901, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='delete_appreciation_v1', full_name='services.registry.responses.AppreciationService.delete_appreciation_v1', index=2,
+      number=902, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='update_appreciation_v1', full_name='services.registry.responses.AppreciationService.update_appreciation_v1', index=3,
+      number=903, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10594,
+  serialized_end=11077,
+)
+
+DESCRIPTOR.message_types_by_name['UserService'] = _USERSERVICE
 DESCRIPTOR.message_types_by_name['OrganizationService'] = _ORGANIZATIONSERVICE
 DESCRIPTOR.message_types_by_name['ProfileService'] = _PROFILESERVICE
+DESCRIPTOR.message_types_by_name['SearchService'] = _SEARCHSERVICE
+DESCRIPTOR.message_types_by_name['FeedService'] = _FEEDSERVICE
+DESCRIPTOR.message_types_by_name['MediaService'] = _MEDIASERVICE
+DESCRIPTOR.message_types_by_name['NoteService'] = _NOTESERVICE
+DESCRIPTOR.message_types_by_name['ResumeService'] = _RESUMESERVICE
+DESCRIPTOR.message_types_by_name['AppreciationService'] = _APPRECIATIONSERVICE
+
+UserService = _reflection.GeneratedProtocolMessageType('UserService', (_message.Message,), dict(
+  DESCRIPTOR = _USERSERVICE,
+  __module__ = 'protobufs.services.registry.responses_pb2'
+  # @@protoc_insertion_point(class_scope:services.registry.responses.UserService)
+  ))
+_sym_db.RegisterMessage(UserService)
 
 OrganizationService = _reflection.GeneratedProtocolMessageType('OrganizationService', (_message.Message,), dict(
   DESCRIPTOR = _ORGANIZATIONSERVICE,
@@ -113,11 +792,179 @@ ProfileService = _reflection.GeneratedProtocolMessageType('ProfileService', (_me
   ))
 _sym_db.RegisterMessage(ProfileService)
 
+SearchService = _reflection.GeneratedProtocolMessageType('SearchService', (_message.Message,), dict(
+  DESCRIPTOR = _SEARCHSERVICE,
+  __module__ = 'protobufs.services.registry.responses_pb2'
+  # @@protoc_insertion_point(class_scope:services.registry.responses.SearchService)
+  ))
+_sym_db.RegisterMessage(SearchService)
+
+FeedService = _reflection.GeneratedProtocolMessageType('FeedService', (_message.Message,), dict(
+  DESCRIPTOR = _FEEDSERVICE,
+  __module__ = 'protobufs.services.registry.responses_pb2'
+  # @@protoc_insertion_point(class_scope:services.registry.responses.FeedService)
+  ))
+_sym_db.RegisterMessage(FeedService)
+
+MediaService = _reflection.GeneratedProtocolMessageType('MediaService', (_message.Message,), dict(
+  DESCRIPTOR = _MEDIASERVICE,
+  __module__ = 'protobufs.services.registry.responses_pb2'
+  # @@protoc_insertion_point(class_scope:services.registry.responses.MediaService)
+  ))
+_sym_db.RegisterMessage(MediaService)
+
+NoteService = _reflection.GeneratedProtocolMessageType('NoteService', (_message.Message,), dict(
+  DESCRIPTOR = _NOTESERVICE,
+  __module__ = 'protobufs.services.registry.responses_pb2'
+  # @@protoc_insertion_point(class_scope:services.registry.responses.NoteService)
+  ))
+_sym_db.RegisterMessage(NoteService)
+
+ResumeService = _reflection.GeneratedProtocolMessageType('ResumeService', (_message.Message,), dict(
+  DESCRIPTOR = _RESUMESERVICE,
+  __module__ = 'protobufs.services.registry.responses_pb2'
+  # @@protoc_insertion_point(class_scope:services.registry.responses.ResumeService)
+  ))
+_sym_db.RegisterMessage(ResumeService)
+
+AppreciationService = _reflection.GeneratedProtocolMessageType('AppreciationService', (_message.Message,), dict(
+  DESCRIPTOR = _APPRECIATIONSERVICE,
+  __module__ = 'protobufs.services.registry.responses_pb2'
+  # @@protoc_insertion_point(class_scope:services.registry.responses.AppreciationService)
+  ))
+_sym_db.RegisterMessage(AppreciationService)
+
+_USERSERVICE.extensions_by_name['create_user_v1'].message_type = protobufs.services.user.actions.create_user_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['create_user_v1'])
+_USERSERVICE.extensions_by_name['valid_user_v1'].message_type = protobufs.services.user.actions.valid_user_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['valid_user_v1'])
+_USERSERVICE.extensions_by_name['authenticate_user_v1'].message_type = protobufs.services.user.actions.authenticate_user_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['authenticate_user_v1'])
+_USERSERVICE.extensions_by_name['get_user_v1'].message_type = protobufs.services.user.actions.get_user_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['get_user_v1'])
+_USERSERVICE.extensions_by_name['send_verification_code_v1'].message_type = protobufs.services.user.actions.send_verification_code_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['send_verification_code_v1'])
+_USERSERVICE.extensions_by_name['verify_verification_code_v1'].message_type = protobufs.services.user.actions.verify_verification_code_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['verify_verification_code_v1'])
+_USERSERVICE.extensions_by_name['update_user_v1'].message_type = protobufs.services.user.actions.update_user_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['update_user_v1'])
+_USERSERVICE.extensions_by_name['get_authorization_instructions_v1'].message_type = protobufs.services.user.actions.get_authorization_instructions_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['get_authorization_instructions_v1'])
+_USERSERVICE.extensions_by_name['complete_authorization_v1'].message_type = protobufs.services.user.actions.complete_authorization_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['complete_authorization_v1'])
+_USERSERVICE.extensions_by_name['get_identities_v1'].message_type = protobufs.services.user.actions.get_identities_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['get_identities_v1'])
+_USERSERVICE.extensions_by_name['bulk_create_users_v1'].message_type = protobufs.services.user.actions.bulk_create_users_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['bulk_create_users_v1'])
+_USERSERVICE.extensions_by_name['record_device_v1'].message_type = protobufs.services.user.actions.record_device_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['record_device_v1'])
+_USERSERVICE.extensions_by_name['request_access_v1'].message_type = protobufs.services.user.actions.request_access_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['request_access_v1'])
+_USERSERVICE.extensions_by_name['delete_identity_v1'].message_type = protobufs.services.user.actions.delete_identity_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_USERSERVICE.extensions_by_name['delete_identity_v1'])
 _ORGANIZATIONSERVICE.extensions_by_name['create_organization_v1'].message_type = protobufs.services.organization.actions.create_organization_pb2._RESPONSEV1
 service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['create_organization_v1'])
 _ORGANIZATIONSERVICE.extensions_by_name['get_organization_v1'].message_type = protobufs.services.organization.actions.get_organization_pb2._RESPONSEV1
 service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_organization_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['create_team_v1'].message_type = protobufs.services.organization.actions.create_team_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['create_team_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['create_address_v1'].message_type = protobufs.services.organization.actions.create_address_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['create_address_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['delete_address_v1'].message_type = protobufs.services.organization.actions.delete_address_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['delete_address_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_address_v1'].message_type = protobufs.services.organization.actions.get_address_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_address_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_team_v1'].message_type = protobufs.services.organization.actions.get_team_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_team_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_teams_v1'].message_type = protobufs.services.organization.actions.get_teams_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_teams_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_addresses_v1'].message_type = protobufs.services.organization.actions.get_addresses_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_addresses_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_team_descendants_v1'].message_type = protobufs.services.organization.actions.get_team_descendants_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_team_descendants_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_top_level_team_v1'].message_type = protobufs.services.organization.actions.get_top_level_team_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_top_level_team_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['create_location_v1'].message_type = protobufs.services.organization.actions.create_location_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['create_location_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['update_location_v1'].message_type = protobufs.services.organization.actions.update_location_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['update_location_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_locations_v1'].message_type = protobufs.services.organization.actions.get_locations_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_locations_v1'])
+_ORGANIZATIONSERVICE.extensions_by_name['get_location_v1'].message_type = protobufs.services.organization.actions.get_location_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['get_location_v1'])
+_PROFILESERVICE.extensions_by_name['create_profile_v1'].message_type = protobufs.services.profile.actions.create_profile_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['create_profile_v1'])
 _PROFILESERVICE.extensions_by_name['get_extended_profile_v1'].message_type = protobufs.services.profile.actions.get_extended_profile_pb2._RESPONSEV1
 service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_extended_profile_v1'])
+_PROFILESERVICE.extensions_by_name['get_profile_v1'].message_type = protobufs.services.profile.actions.get_profile_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_profile_v1'])
+_PROFILESERVICE.extensions_by_name['create_tags_v1'].message_type = protobufs.services.profile.actions.create_tags_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['create_tags_v1'])
+_PROFILESERVICE.extensions_by_name['get_tags_v1'].message_type = protobufs.services.profile.actions.get_tags_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_tags_v1'])
+_PROFILESERVICE.extensions_by_name['add_tags_v1'].message_type = protobufs.services.profile.actions.add_tags_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['add_tags_v1'])
+_PROFILESERVICE.extensions_by_name['update_profile_v1'].message_type = protobufs.services.profile.actions.update_profile_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['update_profile_v1'])
+_PROFILESERVICE.extensions_by_name['get_profiles_v1'].message_type = protobufs.services.profile.actions.get_profiles_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_profiles_v1'])
+_PROFILESERVICE.extensions_by_name['get_direct_reports_v1'].message_type = protobufs.services.profile.actions.get_direct_reports_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_direct_reports_v1'])
+_PROFILESERVICE.extensions_by_name['get_peers_v1'].message_type = protobufs.services.profile.actions.get_peers_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_peers_v1'])
+_PROFILESERVICE.extensions_by_name['get_profile_stats_v1'].message_type = protobufs.services.profile.actions.get_profile_stats_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_profile_stats_v1'])
+_PROFILESERVICE.extensions_by_name['get_upcoming_anniversaries_v1'].message_type = protobufs.services.profile.actions.get_upcoming_anniversaries_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_upcoming_anniversaries_v1'])
+_PROFILESERVICE.extensions_by_name['get_upcoming_birthdays_v1'].message_type = protobufs.services.profile.actions.get_upcoming_birthdays_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_upcoming_birthdays_v1'])
+_PROFILESERVICE.extensions_by_name['get_recent_hires_v1'].message_type = protobufs.services.profile.actions.get_recent_hires_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_recent_hires_v1'])
+_PROFILESERVICE.extensions_by_name['get_active_tags_v1'].message_type = protobufs.services.profile.actions.get_active_tags_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_active_tags_v1'])
+_PROFILESERVICE.extensions_by_name['bulk_create_profiles'].message_type = protobufs.services.profile.actions.bulk_create_profiles_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['bulk_create_profiles'])
+_PROFILESERVICE.extensions_by_name['bulk_update_profiles'].message_type = protobufs.services.profile.actions.bulk_update_profiles_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['bulk_update_profiles'])
+_PROFILESERVICE.extensions_by_name['get_attributes_for_profiles'].message_type = protobufs.services.profile.actions.get_attributes_for_profiles_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_attributes_for_profiles'])
+_PROFILESERVICE.extensions_by_name['remove_tags'].message_type = protobufs.services.profile.actions.remove_tags_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['remove_tags'])
+_SEARCHSERVICE.extensions_by_name['search_v1'].message_type = protobufs.services.search.actions.search_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_SEARCHSERVICE.extensions_by_name['search_v1'])
+_FEEDSERVICE.extensions_by_name['get_profile_feed_v1'].message_type = protobufs.services.feed.actions.get_profile_feed_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_FEEDSERVICE.extensions_by_name['get_profile_feed_v1'])
+_FEEDSERVICE.extensions_by_name['get_organization_feed_v1'].message_type = protobufs.services.feed.actions.get_organization_feed_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_FEEDSERVICE.extensions_by_name['get_organization_feed_v1'])
+_MEDIASERVICE.extensions_by_name['start_image_upload_v1'].message_type = protobufs.services.media.actions.start_image_upload_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_MEDIASERVICE.extensions_by_name['start_image_upload_v1'])
+_MEDIASERVICE.extensions_by_name['complete_image_upload_v1'].message_type = protobufs.services.media.actions.complete_image_upload_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_MEDIASERVICE.extensions_by_name['complete_image_upload_v1'])
+_NOTESERVICE.extensions_by_name['create_note_v1'].message_type = protobufs.services.note.actions.create_note_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_NOTESERVICE.extensions_by_name['create_note_v1'])
+_NOTESERVICE.extensions_by_name['get_ntoes_v1'].message_type = protobufs.services.note.actions.get_notes_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_NOTESERVICE.extensions_by_name['get_ntoes_v1'])
+_NOTESERVICE.extensions_by_name['delete_note_v1'].message_type = protobufs.services.note.actions.delete_note_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_NOTESERVICE.extensions_by_name['delete_note_v1'])
+_NOTESERVICE.extensions_by_name['update_note_v1'].message_type = protobufs.services.note.actions.update_note_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_NOTESERVICE.extensions_by_name['update_note_v1'])
+_RESUMESERVICE.extensions_by_name['bulk_create_educations_v1'].message_type = protobufs.services.resume.actions.bulk_create_educations_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_RESUMESERVICE.extensions_by_name['bulk_create_educations_v1'])
+_RESUMESERVICE.extensions_by_name['bulk_create_positions_v1'].message_type = protobufs.services.resume.actions.bulk_create_positions_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_RESUMESERVICE.extensions_by_name['bulk_create_positions_v1'])
+_RESUMESERVICE.extensions_by_name['create_company_v1'].message_type = protobufs.services.resume.actions.create_company_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_RESUMESERVICE.extensions_by_name['create_company_v1'])
+_RESUMESERVICE.extensions_by_name['get_resume_v1'].message_type = protobufs.services.resume.actions.get_resume_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_RESUMESERVICE.extensions_by_name['get_resume_v1'])
+_RESUMESERVICE.extensions_by_name['bulk_create_companies_v1'].message_type = protobufs.services.resume.actions.bulk_create_companies_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_RESUMESERVICE.extensions_by_name['bulk_create_companies_v1'])
+_APPRECIATIONSERVICE.extensions_by_name['create_appreciation_v1'].message_type = protobufs.services.appreciation.actions.create_appreciation_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_APPRECIATIONSERVICE.extensions_by_name['create_appreciation_v1'])
+_APPRECIATIONSERVICE.extensions_by_name['get_appreciation_v1'].message_type = protobufs.services.appreciation.actions.get_appreciation_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_APPRECIATIONSERVICE.extensions_by_name['get_appreciation_v1'])
+_APPRECIATIONSERVICE.extensions_by_name['delete_appreciation_v1'].message_type = protobufs.services.appreciation.actions.delete_appreciation_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_APPRECIATIONSERVICE.extensions_by_name['delete_appreciation_v1'])
+_APPRECIATIONSERVICE.extensions_by_name['update_appreciation_v1'].message_type = protobufs.services.appreciation.actions.update_appreciation_pb2._RESPONSEV1
+service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_APPRECIATIONSERVICE.extensions_by_name['update_appreciation_v1'])
 
 # @@protoc_insertion_point(module_scope)
