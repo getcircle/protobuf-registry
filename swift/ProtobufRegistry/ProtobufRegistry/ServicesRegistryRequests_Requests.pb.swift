@@ -345,9 +345,9 @@ public var ServicesRegistryRequestsNoteServicecreateNote:ConcreateExtensionField
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServicecreateNoteStatic
    }
 }
-public var ServicesRegistryRequestsNoteServicegetNtoes:ConcreateExtensionField {
+public var ServicesRegistryRequestsNoteServicegetNotes:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServicegetNtoesStatic
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteServicegetNotesStatic
    }
 }
 public var ServicesRegistryRequestsNoteServicedeleteNote:ConcreateExtensionField {
@@ -467,7 +467,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsMediaServicestartImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryRequestsMediaServicecompleteImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryRequestsNoteServicecreateNoteStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsNoteServicegetNtoesStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsNoteServicegetNotesStatic:ConcreateExtensionField
     var ServicesRegistryRequestsNoteServicedeleteNoteStatic:ConcreateExtensionField
     var ServicesRegistryRequestsNoteServiceupdateNoteStatic:ConcreateExtensionField
     var ServicesRegistryRequestsResumeServicebulkCreateEducationsStatic:ConcreateExtensionField
@@ -536,7 +536,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsMediaServicestartImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsMediaServicecompleteImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsNoteServicecreateNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 700, defaultValue:Services.Note.Actions.CreateNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.CreateNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsNoteServicegetNtoesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 701, defaultValue:Services.Note.Actions.GetNotes.RequestV1(), messageOrGroupClass:Services.Note.Actions.GetNotes.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsNoteServicegetNotesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 701, defaultValue:Services.Note.Actions.GetNotes.RequestV1(), messageOrGroupClass:Services.Note.Actions.GetNotes.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsNoteServicedeleteNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 702, defaultValue:Services.Note.Actions.DeleteNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.DeleteNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsNoteServiceupdateNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 703, defaultValue:Services.Note.Actions.UpdateNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.UpdateNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsResumeServicebulkCreateEducationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 800, defaultValue:Services.Resume.Actions.BulkCreateEducations.RequestV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreateEducations.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -673,7 +673,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsMediaServicestartImageUploadStatic)
       registry.addExtension(ServicesRegistryRequestsMediaServicecompleteImageUploadStatic)
       registry.addExtension(ServicesRegistryRequestsNoteServicecreateNoteStatic)
-      registry.addExtension(ServicesRegistryRequestsNoteServicegetNtoesStatic)
+      registry.addExtension(ServicesRegistryRequestsNoteServicegetNotesStatic)
       registry.addExtension(ServicesRegistryRequestsNoteServicedeleteNoteStatic)
       registry.addExtension(ServicesRegistryRequestsNoteServiceupdateNoteStatic)
       registry.addExtension(ServicesRegistryRequestsResumeServicebulkCreateEducationsStatic)
@@ -1733,8 +1733,8 @@ public extension Services.Registry.Requests {
     public class func createNote() -> ConcreateExtensionField {
          return ServicesRegistryRequestsNoteServicecreateNote
     }
-    public class func getNtoes() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsNoteServicegetNtoes
+    public class func getNotes() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsNoteServicegetNotes
     }
     public class func deleteNote() -> ConcreateExtensionField {
          return ServicesRegistryRequestsNoteServicedeleteNote

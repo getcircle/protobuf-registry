@@ -163,7 +163,7 @@ message MediaService {
 message NoteService {
     extend soa.ActionResultV1 {
         optional services.note.actions.create_note.ResponseV1 create_note = 700;
-        optional services.note.actions.get_notes.ResponseV1 get_ntoes = 701;
+        optional services.note.actions.get_notes.ResponseV1 get_notes = 701;
         optional services.note.actions.delete_note.ResponseV1 delete_note = 702;
         optional services.note.actions.update_note.ResponseV1 update_note = 703;
     }
