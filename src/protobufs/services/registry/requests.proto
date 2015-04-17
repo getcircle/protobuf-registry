@@ -33,9 +33,27 @@ import "protobufs/services/organization/actions/update_location.proto";
 import "protobufs/services/organization/actions/get_locations.proto";
 import "protobufs/services/organization/actions/get_location.proto";
 
-import "protobufs/services/search/actions/search.proto";
-
+import "protobufs/services/profile/actions/create_profile.proto";
 import "protobufs/services/profile/actions/get_extended_profile.proto";
+import "protobufs/services/profile/actions/get_profile.proto";
+import "protobufs/services/profile/actions/create_tags.proto";
+import "protobufs/services/profile/actions/get_tags.proto";
+import "protobufs/services/profile/actions/add_tags.proto";
+import "protobufs/services/profile/actions/update_profile.proto";
+import "protobufs/services/profile/actions/get_profiles.proto";
+import "protobufs/services/profile/actions/get_direct_reports.proto";
+import "protobufs/services/profile/actions/get_peers.proto";
+import "protobufs/services/profile/actions/get_profile_stats.proto";
+import "protobufs/services/profile/actions/get_upcoming_anniversaries.proto";
+import "protobufs/services/profile/actions/get_upcoming_birthdays.proto";
+import "protobufs/services/profile/actions/get_recent_hires.proto";
+import "protobufs/services/profile/actions/get_active_tags.proto";
+import "protobufs/services/profile/actions/bulk_create_profiles.proto";
+import "protobufs/services/profile/actions/bulk_update_profiles.proto";
+import "protobufs/services/profile/actions/get_attributes_for_profiles.proto";
+import "protobufs/services/profile/actions/remove_tags.proto";
+
+import "protobufs/services/search/actions/search.proto";
 
 message UserService {
     extend soa.ActionRequestParamsV1 {
@@ -78,7 +96,26 @@ message OrganizationService {
 
 message ProfileService {
     extend soa.ActionRequestParamsV1 {
-        optional services.profile.actions.get_extended_profile.RequestV1 get_extended_profile_v1 = 300;
+        optional services.profile.actions.create_profile.RequestV1 create_profile_v1 = 300;
+        // XXX: need to finish this one, has a lot of dependencies
+        optional services.profile.actions.get_extended_profile.RequestV1 get_extended_profile_v1 = 301;
+        optional services.profile.actions.get_profile.RequestV1 get_profile_v1 = 302;
+        optional services.profile.actions.create_tags.RequestV1 create_tags_v1 = 303;
+        optional services.profile.actions.get_tags.RequestV1 get_tags_v1 = 304;
+        optional services.profile.actions.add_tags.RequestV1 add_tags_v1 = 305;
+        optional services.profile.actions.update_profile.RequestV1 update_profile_v1 = 306;
+        optional services.profile.actions.get_profiles.RequestV1 get_profiles_v1 = 307;
+        optional services.profile.actions.get_direct_reports.RequestV1 get_direct_reports_v1 = 308;
+        optional services.profile.actions.get_peers.RequestV1 get_peers_v1 = 309;
+        optional services.profile.actions.get_profile_stats.RequestV1 get_profile_stats_v1 = 310;
+        optional services.profile.actions.get_upcoming_anniversaries.RequestV1 get_upcoming_anniversaries_v1 = 311;
+        optional services.profile.actions.get_upcoming_birthdays.RequestV1 get_upcoming_birthdays_v1 = 312;
+        optional services.profile.actions.get_recent_hires.RequestV1 get_recent_hires_v1 = 313;
+        optional services.profile.actions.get_active_tags.RequestV1 get_active_tags_v1 = 314;
+        optional services.profile.actions.bulk_create_profiles.RequestV1 bulk_create_profiles = 315;
+        optional services.profile.actions.bulk_update_profiles.RequestV1 bulk_update_profiles = 316;
+        optional services.profile.actions.get_attributes_for_profiles.RequestV1 get_attributes_for_profiles = 317;
+        optional services.profile.actions.remove_tags.RequestV1 remove_tags = 318;
     }
 }
 

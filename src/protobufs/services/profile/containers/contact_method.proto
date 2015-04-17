@@ -1,0 +1,20 @@
+package services.profile.containers.contact_method;
+
+enum ContactMethodTypeV1 {
+    CELL_PHONE = 0;
+    PHONE = 1;
+    EMAIL = 2;
+    SLACK = 3;
+    TWITTER = 4;
+    HIPCHAT = 5;
+    FACEBOOK = 6;
+    SKYPE = 7;
+}
+
+message ContactMethodV1 {
+    optional uint32 version = 1 [default = 1];
+    optional string id = 2;
+    optional string label = 3;
+    optional string value = 4;
+    optional ContactMethodTypeV1 type = 5;
+}

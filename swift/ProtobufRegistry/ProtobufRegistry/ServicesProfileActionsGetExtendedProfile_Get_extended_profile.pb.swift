@@ -4,7 +4,7 @@ import Foundation
 import ProtocolBuffers
 
 
-internal extension Services{ internal struct Profile { internal struct Actions { internal struct GetExtendedProfile { }}}}
+internal extension Services.Profile.Actions{ internal struct GetExtendedProfile { }}
 
 internal func == (lhs: Services.Profile.Actions.GetExtendedProfile.RequestV1, rhs: Services.Profile.Actions.GetExtendedProfile.RequestV1) -> Bool {
   if (lhs === rhs) {
