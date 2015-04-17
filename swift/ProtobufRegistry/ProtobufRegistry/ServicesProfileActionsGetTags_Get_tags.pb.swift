@@ -64,7 +64,7 @@ public extension Services.Profile.Actions.GetTags {
     public private(set) var hasOrganizationId:Bool = false
     public private(set) var organizationId:String = ""
 
-    public private(set) var tagType:Services.Profile.Containers.Tag.TagTypeV1 = Services.Profile.Containers.Tag.TagTypeV1.Skill
+    public private(set) var tagType:Services.Profile.Containers.Tag.TagV1.TagTypeV1 = Services.Profile.Containers.Tag.TagV1.TagTypeV1.Skill
     public private(set) var hasTagType:Bool = false
     required public init() {
          super.init()
@@ -278,7 +278,7 @@ public extension Services.Profile.Actions.GetTags {
               return builderResult.hasTagType
           }
       }
-      public var tagType:Services.Profile.Containers.Tag.TagTypeV1 {
+      public var tagType:Services.Profile.Containers.Tag.TagV1.TagTypeV1 {
           get {
               return builderResult.tagType
           }
@@ -287,7 +287,7 @@ public extension Services.Profile.Actions.GetTags {
               builderResult.tagType = value
           }
       }
-      public func setTagType(value:Services.Profile.Containers.Tag.TagTypeV1)-> Services.Profile.Actions.GetTags.RequestV1Builder {
+      public func setTagType(value:Services.Profile.Containers.Tag.TagV1.TagTypeV1)-> Services.Profile.Actions.GetTags.RequestV1Builder {
         self.tagType = value
         return self
       }
@@ -358,7 +358,7 @@ public extension Services.Profile.Actions.GetTags {
 
         case 32 :
           let valueInttagType = input.readEnum()
-          if let enumstagType = Services.Profile.Containers.Tag.TagTypeV1(rawValue:valueInttagType){
+          if let enumstagType = Services.Profile.Containers.Tag.TagV1.TagTypeV1(rawValue:valueInttagType){
                tagType = enumstagType
           } else {
                unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueInttagType))

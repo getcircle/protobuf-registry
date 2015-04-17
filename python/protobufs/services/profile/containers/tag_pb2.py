@@ -3,7 +3,6 @@
 
 import sys
 _b=sys.version_info[0]<3 and (lambda x:x) or (lambda x:x.encode('latin1'))
-from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
@@ -19,13 +18,15 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/containers/tag.proto',
   package='services.profile.containers.tag',
-  serialized_pb=_b('\n/protobufs/services/profile/containers/tag.proto\x12\x1fservices.profile.containers.tag\"o\n\x05TagV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x38\n\x04type\x18\x04 \x01(\x0e\x32*.services.profile.containers.tag.TagTypeV1*?\n\tTagTypeV1\x12\t\n\x05SKILL\x10\x00\x12\x0c\n\x08INTEREST\x10\x01\x12\x0c\n\x08LANGUAGE\x10\x02\x12\x0b\n\x07PROJECT\x10\x03')
+  serialized_pb=_b('\n/protobufs/services/profile/containers/tag.proto\x12\x1fservices.profile.containers.tag\"\xb6\x01\n\x05TagV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12>\n\x04type\x18\x04 \x01(\x0e\x32\x30.services.profile.containers.tag.TagV1.TagTypeV1\"?\n\tTagTypeV1\x12\t\n\x05SKILL\x10\x00\x12\x0c\n\x08INTEREST\x10\x01\x12\x0c\n\x08LANGUAGE\x10\x02\x12\x0b\n\x07PROJECT\x10\x03')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-_TAGTYPEV1 = _descriptor.EnumDescriptor(
+
+
+_TAGV1_TAGTYPEV1 = _descriptor.EnumDescriptor(
   name='TagTypeV1',
-  full_name='services.profile.containers.tag.TagTypeV1',
+  full_name='services.profile.containers.tag.TagV1.TagTypeV1',
   filename=None,
   file=DESCRIPTOR,
   values=[
@@ -48,17 +49,10 @@ _TAGTYPEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=197,
-  serialized_end=260,
+  serialized_start=204,
+  serialized_end=267,
 )
-_sym_db.RegisterEnumDescriptor(_TAGTYPEV1)
-
-TagTypeV1 = enum_type_wrapper.EnumTypeWrapper(_TAGTYPEV1)
-SKILL = 0
-INTEREST = 1
-LANGUAGE = 2
-PROJECT = 3
-
+_sym_db.RegisterEnumDescriptor(_TAGV1_TAGTYPEV1)
 
 
 _TAGV1 = _descriptor.Descriptor(
@@ -101,19 +95,20 @@ _TAGV1 = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _TAGV1_TAGTYPEV1,
   ],
   options=None,
   is_extendable=False,
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=84,
-  serialized_end=195,
+  serialized_start=85,
+  serialized_end=267,
 )
 
-_TAGV1.fields_by_name['type'].enum_type = _TAGTYPEV1
+_TAGV1.fields_by_name['type'].enum_type = _TAGV1_TAGTYPEV1
+_TAGV1_TAGTYPEV1.containing_type = _TAGV1
 DESCRIPTOR.message_types_by_name['TagV1'] = _TAGV1
-DESCRIPTOR.enum_types_by_name['TagTypeV1'] = _TAGTYPEV1
 
 TagV1 = _reflection.GeneratedProtocolMessageType('TagV1', (_message.Message,), dict(
   DESCRIPTOR = _TAGV1,

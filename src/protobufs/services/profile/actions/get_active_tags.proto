@@ -5,7 +5,7 @@ import "protobufs/services/profile/containers/tag.proto";
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
     optional string organization_id = 2;
-    optional services.profile.containers.tag.TagTypeV1 tag_type = 3;
+    optional services.profile.containers.tag.TagV1.TagTypeV1 tag_type = 3;
 }
 
 message ResponseV1 {

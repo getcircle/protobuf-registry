@@ -33,21 +33,21 @@ public extension Services.Profile.Containers.Tag {
     }
   }
 
-
-
-  //Enum type declaration start 
-
-  public enum TagTypeV1:Int32 {
-    case Skill = 0
-    case Interest = 1
-    case Language = 2
-    case Project = 3
-
-  }
-
-  //Enum type declaration end 
-
   final public class TagV1 : GeneratedMessage, GeneratedMessageProtocol {
+
+
+      //Enum type declaration start 
+
+      public enum TagTypeV1:Int32 {
+        case Skill = 0
+        case Interest = 1
+        case Language = 2
+        case Project = 3
+
+      }
+
+      //Enum type declaration end 
+
     public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
@@ -67,7 +67,7 @@ public extension Services.Profile.Containers.Tag {
     public private(set) var hasName:Bool = false
     public private(set) var name:String = ""
 
-    public private(set) var types:Services.Profile.Containers.Tag.TagTypeV1 = Services.Profile.Containers.Tag.TagTypeV1.Skill
+    public private(set) var types:Services.Profile.Containers.Tag.TagV1.TagTypeV1 = Services.Profile.Containers.Tag.TagV1.TagTypeV1.Skill
     public private(set) var hasTypes:Bool = false
     required public init() {
          super.init()
@@ -281,7 +281,7 @@ public extension Services.Profile.Containers.Tag {
               return builderResult.hasTypes
           }
       }
-      public var types:Services.Profile.Containers.Tag.TagTypeV1 {
+      public var types:Services.Profile.Containers.Tag.TagV1.TagTypeV1 {
           get {
               return builderResult.types
           }
@@ -290,7 +290,7 @@ public extension Services.Profile.Containers.Tag {
               builderResult.types = value
           }
       }
-      public func setTypes(value:Services.Profile.Containers.Tag.TagTypeV1)-> Services.Profile.Containers.Tag.TagV1Builder {
+      public func setTypes(value:Services.Profile.Containers.Tag.TagV1.TagTypeV1)-> Services.Profile.Containers.Tag.TagV1Builder {
         self.types = value
         return self
       }
@@ -361,7 +361,7 @@ public extension Services.Profile.Containers.Tag {
 
         case 32 :
           let valueInttypes = input.readEnum()
-          if let enumstypes = Services.Profile.Containers.Tag.TagTypeV1(rawValue:valueInttypes){
+          if let enumstypes = Services.Profile.Containers.Tag.TagV1.TagTypeV1(rawValue:valueInttypes){
                types = enumstypes
           } else {
                unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueInttypes))

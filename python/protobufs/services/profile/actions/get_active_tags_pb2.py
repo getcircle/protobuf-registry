@@ -19,7 +19,7 @@ import protobufs.services.profile.containers.tag_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/get_active_tags.proto',
   package='services.profile.actions.get_active_tags',
-  serialized_pb=_b('\n8protobufs/services/profile/actions/get_active_tags.proto\x12(services.profile.actions.get_active_tags\x1a/protobufs/services/profile/containers/tag.proto\"v\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12<\n\x08tag_type\x18\x03 \x01(\x0e\x32*.services.profile.containers.tag.TagTypeV1\"V\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x34\n\x04tags\x18\x02 \x03(\x0b\x32&.services.profile.containers.tag.TagV1')
+  serialized_pb=_b('\n8protobufs/services/profile/actions/get_active_tags.proto\x12(services.profile.actions.get_active_tags\x1a/protobufs/services/profile/containers/tag.proto\"|\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x42\n\x08tag_type\x18\x03 \x01(\x0e\x32\x30.services.profile.containers.tag.TagV1.TagTypeV1\"V\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x34\n\x04tags\x18\x02 \x03(\x0b\x32&.services.profile.containers.tag.TagV1')
   ,
   dependencies=[protobufs.services.profile.containers.tag_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -67,7 +67,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=151,
-  serialized_end=269,
+  serialized_end=275,
 )
 
 
@@ -103,11 +103,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=271,
-  serialized_end=357,
+  serialized_start=277,
+  serialized_end=363,
 )
 
-_REQUESTV1.fields_by_name['tag_type'].enum_type = protobufs.services.profile.containers.tag_pb2._TAGTYPEV1
+_REQUESTV1.fields_by_name['tag_type'].enum_type = protobufs.services.profile.containers.tag_pb2._TAGV1_TAGTYPEV1
 _RESPONSEV1.fields_by_name['tags'].message_type = protobufs.services.profile.containers.tag_pb2._TAGV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1

@@ -1,13 +1,14 @@
 package services.profile.containers.tag;
 
-enum TagTypeV1 {
-    SKILL = 0;
-    INTEREST = 1;
-    LANGUAGE = 2;
-    PROJECT = 3;
-}
-
 message TagV1 {
+
+    enum TagTypeV1 {
+        SKILL = 0;
+        INTEREST = 1;
+        LANGUAGE = 2;
+        PROJECT = 3;
+    }
+
     optional uint32 version = 1 [default = 1];
     optional string id = 2;
     optional string name = 3;
