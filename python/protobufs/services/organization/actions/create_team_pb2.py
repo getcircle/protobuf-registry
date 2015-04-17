@@ -13,16 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 import protobufs.services.organization.containers.team_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/create_team.proto',
   package='services.organization.actions.create_team',
-  serialized_pb=_b('\n9protobufs/services/organization/actions/create_team.proto\x12)services.organization.actions.create_team\x1a&google/protobuf/swift-descriptor.proto\x1a\x35protobufs/services/organization/containers/team.proto\"n\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12;\n\x04team\x18\x02 \x01(\x0b\x32-.services.organization.containers.team.TeamV1\x12\x10\n\x08\x63hild_of\x18\x03 \x01(\t\"]\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12;\n\x04team\x18\x02 \x01(\x0b\x32-.services.organization.containers.team.TeamV1B\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
+  serialized_pb=_b('\n9protobufs/services/organization/actions/create_team.proto\x12)services.organization.actions.create_team\x1a\x35protobufs/services/organization/containers/team.proto\"n\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12;\n\x04team\x18\x02 \x01(\x0b\x32-.services.organization.containers.team.TeamV1\x12\x10\n\x08\x63hild_of\x18\x03 \x01(\t\"]\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12;\n\x04team\x18\x02 \x01(\x0b\x32-.services.organization.containers.team.TeamV1')
   ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,protobufs.services.organization.containers.team_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.organization.containers.team_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -67,8 +66,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=199,
-  serialized_end=309,
+  serialized_start=159,
+  serialized_end=269,
 )
 
 
@@ -104,8 +103,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=311,
-  serialized_end=404,
+  serialized_start=271,
+  serialized_end=364,
 )
 
 _REQUESTV1.fields_by_name['team'].message_type = protobufs.services.organization.containers.team_pb2._TEAMV1
@@ -128,6 +127,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)

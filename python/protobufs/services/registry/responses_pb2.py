@@ -13,7 +13,6 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 import service_protobufs.soa_pb2
 import protobufs.services.organization.actions.create_organization_pb2
 import protobufs.services.organization.actions.get_organization_pb2
@@ -23,9 +22,9 @@ import protobufs.services.profile.actions.get_extended_profile_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/registry/responses.proto',
   package='services.registry.responses',
-  serialized_pb=_b('\n+protobufs/services/registry/responses.proto\x12\x1bservices.registry.responses\x1a&google/protobuf/swift-descriptor.proto\x1a\x1bservice_protobufs/soa.proto\x1a\x41protobufs/services/organization/actions/create_organization.proto\x1a>protobufs/services/organization/actions/get_organization.proto\x1a=protobufs/services/profile/actions/get_extended_profile.proto\"\xf9\x01\n\x13OrganizationService2s\n\x16\x63reate_organization_v1\x12\x13.soa.ActionResultV1\x18\xc8\x01 \x01(\x0b\x32=.services.organization.actions.create_organization.ResponseV12m\n\x13get_organization_v1\x12\x13.soa.ActionResultV1\x18\xc9\x01 \x01(\x0b\x32:.services.organization.actions.get_organization.ResponseV1\"\x82\x01\n\x0eProfileService2p\n\x17get_extended_profile_v1\x12\x13.soa.ActionResultV1\x18\xac\x02 \x01(\x0b\x32\x39.services.profile.actions.get_extended_profile.ResponseV1B\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
+  serialized_pb=_b('\n+protobufs/services/registry/responses.proto\x12\x1bservices.registry.responses\x1a\x1bservice_protobufs/soa.proto\x1a\x41protobufs/services/organization/actions/create_organization.proto\x1a>protobufs/services/organization/actions/get_organization.proto\x1a=protobufs/services/profile/actions/get_extended_profile.proto\"\xf9\x01\n\x13OrganizationService2s\n\x16\x63reate_organization_v1\x12\x13.soa.ActionResultV1\x18\xc8\x01 \x01(\x0b\x32=.services.organization.actions.create_organization.ResponseV12m\n\x13get_organization_v1\x12\x13.soa.ActionResultV1\x18\xc9\x01 \x01(\x0b\x32:.services.organization.actions.get_organization.ResponseV1\"\x82\x01\n\x0eProfileService2p\n\x17get_extended_profile_v1\x12\x13.soa.ActionResultV1\x18\xac\x02 \x01(\x0b\x32\x39.services.profile.actions.get_extended_profile.ResponseV1')
   ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,service_protobufs.soa_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_organization_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_extended_profile_pb2.DESCRIPTOR,])
+  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_organization_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_extended_profile_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -63,8 +62,8 @@ _ORGANIZATIONSERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=340,
-  serialized_end=589,
+  serialized_start=300,
+  serialized_end=549,
 )
 
 
@@ -93,8 +92,8 @@ _PROFILESERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=592,
-  serialized_end=722,
+  serialized_start=552,
+  serialized_end=682,
 )
 
 DESCRIPTOR.message_types_by_name['OrganizationService'] = _ORGANIZATIONSERVICE
@@ -121,6 +120,4 @@ service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_ORGANIZATIONSERVICE.
 _PROFILESERVICE.extensions_by_name['get_extended_profile_v1'].message_type = protobufs.services.profile.actions.get_extended_profile_pb2._RESPONSEV1
 service_protobufs.soa_pb2.ActionResultV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_extended_profile_v1'])
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)

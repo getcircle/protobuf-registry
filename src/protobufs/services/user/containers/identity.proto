@@ -1,0 +1,20 @@
+package services.user.containers.identity;
+
+enum ProviderV1 {
+    INTERNAL = 0;
+    LINKEDIN = 1;
+    GOOGLE = 2;
+}
+
+message IdentityV1 {
+    optional uint32 version = 1 [default = 1];
+    optional string id = 2;
+    optional ProviderV1 provider = 3;
+    optional string full_name = 4;
+    optional string email = 5;
+    optional string access_token = 6;
+    optional string expires_at = 7;
+    optional string provider_uid = 8;
+    optional string user_id = 9;
+    optional string refresh_token = 10;
+}

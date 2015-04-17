@@ -13,15 +13,13 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/containers/profile.proto',
   package='services.profile.containers.profile',
-  serialized_pb=_b('\n3protobufs/services/profile/containers/profile.proto\x12#services.profile.containers.profile\x1a&google/protobuf/swift-descriptor.proto\"\xad\x03\n\tProfileV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x0f\n\x07user_id\x18\x04 \x01(\t\x12\x12\n\naddress_id\x18\x05 \x01(\t\x12\r\n\x05title\x18\x06 \x01(\t\x12\x12\n\nfirst_name\x18\x07 \x01(\t\x12\x11\n\tlast_name\x18\x08 \x01(\t\x12\x12\n\ncell_phone\x18\t \x01(\t\x12\x12\n\nwork_phone\x18\n \x01(\t\x12\x11\n\timage_url\x18\x0b \x01(\t\x12\r\n\x05\x65mail\x18\x0c \x01(\t\x12\x0f\n\x07team_id\x18\r \x01(\t\x12\x11\n\tfull_name\x18\x0e \x01(\t\x12\x12\n\nbirth_date\x18\x0f \x01(\t\x12\x11\n\thire_date\x18\x10 \x01(\t\x12\x10\n\x08verified\x18\x11 \x01(\x08\x12\x41\n\x05items\x18\x12 \x03(\x0b\x32\x32.services.profile.containers.profile.ProfileItemV1\x12\r\n\x05\x61\x62out\x18\x13 \x01(\t\x12\x13\n\x0blocation_id\x18\x14 \x01(\t\"<\n\rProfileItemV1\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\tB\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
-  ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,])
+  serialized_pb=_b('\n3protobufs/services/profile/containers/profile.proto\x12#services.profile.containers.profile\"\xad\x03\n\tProfileV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x0f\n\x07user_id\x18\x04 \x01(\t\x12\x12\n\naddress_id\x18\x05 \x01(\t\x12\r\n\x05title\x18\x06 \x01(\t\x12\x12\n\nfirst_name\x18\x07 \x01(\t\x12\x11\n\tlast_name\x18\x08 \x01(\t\x12\x12\n\ncell_phone\x18\t \x01(\t\x12\x12\n\nwork_phone\x18\n \x01(\t\x12\x11\n\timage_url\x18\x0b \x01(\t\x12\r\n\x05\x65mail\x18\x0c \x01(\t\x12\x0f\n\x07team_id\x18\r \x01(\t\x12\x11\n\tfull_name\x18\x0e \x01(\t\x12\x12\n\nbirth_date\x18\x0f \x01(\t\x12\x11\n\thire_date\x18\x10 \x01(\t\x12\x10\n\x08verified\x18\x11 \x01(\x08\x12\x41\n\x05items\x18\x12 \x03(\x0b\x32\x32.services.profile.containers.profile.ProfileItemV1\x12\r\n\x05\x61\x62out\x18\x13 \x01(\t\x12\x13\n\x0blocation_id\x18\x14 \x01(\t\"<\n\rProfileItemV1\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t')
+)
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -185,8 +183,8 @@ _PROFILEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=133,
-  serialized_end=562,
+  serialized_start=93,
+  serialized_end=522,
 )
 
 
@@ -229,8 +227,8 @@ _PROFILEITEMV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=564,
-  serialized_end=624,
+  serialized_start=524,
+  serialized_end=584,
 )
 
 _PROFILEV1.fields_by_name['items'].message_type = _PROFILEITEMV1
@@ -252,6 +250,4 @@ ProfileItemV1 = _reflection.GeneratedProtocolMessageType('ProfileItemV1', (_mess
 _sym_db.RegisterMessage(ProfileItemV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)

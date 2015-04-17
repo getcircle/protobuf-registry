@@ -13,16 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 import protobufs.services.organization.containers.address_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/location.proto',
   package='services.organization.containers.location',
-  serialized_pb=_b('\n9protobufs/services/organization/containers/location.proto\x12)services.organization.containers.location\x1a&google/protobuf/swift-descriptor.proto\x1a\x38protobufs/services/organization/containers/address.proto\"\xc3\x01\n\nLocationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x44\n\x07\x61\x64\x64ress\x18\x04 \x01(\x0b\x32\x33.services.organization.containers.address.AddressV1\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12\x15\n\rprofile_count\x18\x06 \x01(\r\x12\x11\n\timage_url\x18\x07 \x01(\tB\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
+  serialized_pb=_b('\n9protobufs/services/organization/containers/location.proto\x12)services.organization.containers.location\x1a\x38protobufs/services/organization/containers/address.proto\"\xc3\x01\n\nLocationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x44\n\x07\x61\x64\x64ress\x18\x04 \x01(\x0b\x32\x33.services.organization.containers.address.AddressV1\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12\x15\n\rprofile_count\x18\x06 \x01(\r\x12\x11\n\timage_url\x18\x07 \x01(\t')
   ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,protobufs.services.organization.containers.address_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.organization.containers.address_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -95,8 +94,8 @@ _LOCATIONV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=203,
-  serialized_end=398,
+  serialized_start=163,
+  serialized_end=358,
 )
 
 _LOCATIONV1.fields_by_name['address'].message_type = protobufs.services.organization.containers.address_pb2._ADDRESSV1
@@ -110,6 +109,4 @@ LocationV1 = _reflection.GeneratedProtocolMessageType('LocationV1', (_message.Me
 _sym_db.RegisterMessage(LocationV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)

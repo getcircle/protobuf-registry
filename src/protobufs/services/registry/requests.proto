@@ -2,6 +2,21 @@ package services.registry.requests;
 
 import "service_protobufs/soa.proto";
 
+import "protobufs/services/user/actions/create_user.proto";
+import "protobufs/services/user/actions/valid_user.proto";
+import "protobufs/services/user/actions/authenticate_user.proto";
+import "protobufs/services/user/actions/get_user.proto";
+import "protobufs/services/user/actions/send_verification_code.proto";
+import "protobufs/services/user/actions/verify_verification_code.proto";
+import "protobufs/services/user/actions/update_user.proto";
+import "protobufs/services/user/actions/get_authorization_instructions.proto";
+import "protobufs/services/user/actions/complete_authorization.proto";
+import "protobufs/services/user/actions/get_identities.proto";
+import "protobufs/services/user/actions/bulk_create_users.proto";
+import "protobufs/services/user/actions/record_device.proto";
+import "protobufs/services/user/actions/request_access.proto";
+import "protobufs/services/user/actions/delete_identity.proto";
+
 import "protobufs/services/organization/actions/create_organization.proto";
 import "protobufs/services/organization/actions/create_team.proto";
 import "protobufs/services/organization/actions/create_address.proto";
@@ -18,7 +33,28 @@ import "protobufs/services/organization/actions/update_location.proto";
 import "protobufs/services/organization/actions/get_locations.proto";
 import "protobufs/services/organization/actions/get_location.proto";
 
+import "protobufs/services/search/actions/search.proto";
+
 import "protobufs/services/profile/actions/get_extended_profile.proto";
+
+message UserService {
+    extend soa.ActionRequestParamsV1 {
+        optional services.user.actions.create_user.RequestV1 create_user_v1 = 100;
+        optional services.user.actions.valid_user.RequestV1 valid_user_v1 = 101;
+        optional services.user.actions.authenticate_user.RequestV1 authenticate_user_v1 = 102;
+        optional services.user.actions.get_user.RequestV1 get_user_v1 = 103;
+        optional services.user.actions.send_verification_code.RequestV1 send_verification_code_v1 = 104;
+        optional services.user.actions.verify_verification_code.RequestV1 verify_verification_code_v1 = 105;
+        optional services.user.actions.update_user.RequestV1 update_user_v1 = 106;
+        optional services.user.actions.get_authorization_instructions.RequestV1 get_authorization_instructions_v1 = 107;
+        optional services.user.actions.complete_authorization.RequestV1 complete_authorization_v1 = 108;
+        optional services.user.actions.get_identities.RequestV1 get_identities_v1 = 109;
+        optional services.user.actions.bulk_create_users.RequestV1 bulk_create_users_v1 = 110;
+        optional services.user.actions.record_device.RequestV1 record_device_v1 = 111;
+        optional services.user.actions.request_access.RequestV1 request_access_v1 = 112;
+        optional services.user.actions.delete_identity.RequestV1 delete_identity_v1 = 113;
+    }
+}
 
 message OrganizationService {
     extend soa.ActionRequestParamsV1 {
@@ -43,5 +79,11 @@ message OrganizationService {
 message ProfileService {
     extend soa.ActionRequestParamsV1 {
         optional services.profile.actions.get_extended_profile.RequestV1 get_extended_profile_v1 = 300;
+    }
+}
+
+message SearchService {
+    extend soa.ActionRequestParamsV1 {
+        optional services.search.actions.search.RequestV1 search_v1 = 400;
     }
 }

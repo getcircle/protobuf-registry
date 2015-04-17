@@ -13,16 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 import protobufs.services.organization.containers.organization_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/create_organization.proto',
   package='services.organization.actions.create_organization',
-  serialized_pb=_b('\nAprotobufs/services/organization/actions/create_organization.proto\x12\x31services.organization.actions.create_organization\x1a&google/protobuf/swift-descriptor.proto\x1a=protobufs/services/organization/containers/organization.proto\"t\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12S\n\x0corganization\x18\x02 \x01(\x0b\x32=.services.organization.containers.organization.OrganizationV1\"u\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12S\n\x0corganization\x18\x02 \x01(\x0b\x32=.services.organization.containers.organization.OrganizationV1B\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
+  serialized_pb=_b('\nAprotobufs/services/organization/actions/create_organization.proto\x12\x31services.organization.actions.create_organization\x1a=protobufs/services/organization/containers/organization.proto\"t\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12S\n\x0corganization\x18\x02 \x01(\x0b\x32=.services.organization.containers.organization.OrganizationV1\"u\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12S\n\x0corganization\x18\x02 \x01(\x0b\x32=.services.organization.containers.organization.OrganizationV1')
   ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,protobufs.services.organization.containers.organization_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.organization.containers.organization_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -60,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=223,
-  serialized_end=339,
+  serialized_start=183,
+  serialized_end=299,
 )
 
 
@@ -97,8 +96,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=341,
-  serialized_end=458,
+  serialized_start=301,
+  serialized_end=418,
 )
 
 _REQUESTV1.fields_by_name['organization'].message_type = protobufs.services.organization.containers.organization_pb2._ORGANIZATIONV1
@@ -121,6 +120,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)

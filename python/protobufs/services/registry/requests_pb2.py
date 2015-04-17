@@ -13,8 +13,21 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 import service_protobufs.soa_pb2
+import protobufs.services.user.actions.create_user_pb2
+import protobufs.services.user.actions.valid_user_pb2
+import protobufs.services.user.actions.authenticate_user_pb2
+import protobufs.services.user.actions.get_user_pb2
+import protobufs.services.user.actions.send_verification_code_pb2
+import protobufs.services.user.actions.verify_verification_code_pb2
+import protobufs.services.user.actions.update_user_pb2
+import protobufs.services.user.actions.get_authorization_instructions_pb2
+import protobufs.services.user.actions.complete_authorization_pb2
+import protobufs.services.user.actions.get_identities_pb2
+import protobufs.services.user.actions.bulk_create_users_pb2
+import protobufs.services.user.actions.record_device_pb2
+import protobufs.services.user.actions.request_access_pb2
+import protobufs.services.user.actions.delete_identity_pb2
 import protobufs.services.organization.actions.create_organization_pb2
 import protobufs.services.organization.actions.create_team_pb2
 import protobufs.services.organization.actions.create_address_pb2
@@ -36,12 +49,133 @@ import protobufs.services.profile.actions.get_extended_profile_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/registry/requests.proto',
   package='services.registry.requests',
-  serialized_pb=_b('\n*protobufs/services/registry/requests.proto\x12\x1aservices.registry.requests\x1a&google/protobuf/swift-descriptor.proto\x1a\x1bservice_protobufs/soa.proto\x1a\x41protobufs/services/organization/actions/create_organization.proto\x1a\x39protobufs/services/organization/actions/create_team.proto\x1a<protobufs/services/organization/actions/create_address.proto\x1a<protobufs/services/organization/actions/delete_address.proto\x1a\x39protobufs/services/organization/actions/get_address.proto\x1a\x36protobufs/services/organization/actions/get_team.proto\x1a>protobufs/services/organization/actions/get_organization.proto\x1a\x37protobufs/services/organization/actions/get_teams.proto\x1a;protobufs/services/organization/actions/get_addresses.proto\x1a\x42protobufs/services/organization/actions/get_team_descendants.proto\x1a@protobufs/services/organization/actions/get_top_level_team.proto\x1a=protobufs/services/organization/actions/create_location.proto\x1a=protobufs/services/organization/actions/update_location.proto\x1a;protobufs/services/organization/actions/get_locations.proto\x1a:protobufs/services/organization/actions/get_location.proto\x1a=protobufs/services/profile/actions/get_extended_profile.proto\"\xb0\r\n\x13OrganizationService2y\n\x16\x63reate_organization_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xc8\x01 \x01(\x0b\x32<.services.organization.actions.create_organization.RequestV12s\n\x13get_organization_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xc9\x01 \x01(\x0b\x32\x39.services.organization.actions.get_organization.RequestV12i\n\x0e\x63reate_team_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xca\x01 \x01(\x0b\x32\x34.services.organization.actions.create_team.RequestV12o\n\x11\x63reate_address_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcb\x01 \x01(\x0b\x32\x37.services.organization.actions.create_address.RequestV12o\n\x11\x64\x65lete_address_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcc\x01 \x01(\x0b\x32\x37.services.organization.actions.delete_address.RequestV12i\n\x0eget_address_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcd\x01 \x01(\x0b\x32\x34.services.organization.actions.get_address.RequestV12c\n\x0bget_team_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xce\x01 \x01(\x0b\x32\x31.services.organization.actions.get_team.RequestV12e\n\x0cget_teams_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcf\x01 \x01(\x0b\x32\x32.services.organization.actions.get_teams.RequestV12m\n\x10get_addresses_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd0\x01 \x01(\x0b\x32\x36.services.organization.actions.get_addresses.RequestV12{\n\x17get_team_descendants_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd1\x01 \x01(\x0b\x32=.services.organization.actions.get_team_descendants.RequestV12w\n\x15get_top_level_team_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd2\x01 \x01(\x0b\x32;.services.organization.actions.get_top_level_team.RequestV12q\n\x12\x63reate_location_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd3\x01 \x01(\x0b\x32\x38.services.organization.actions.create_location.RequestV12q\n\x12update_location_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd4\x01 \x01(\x0b\x32\x38.services.organization.actions.update_location.RequestV12m\n\x10get_locations_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd5\x01 \x01(\x0b\x32\x36.services.organization.actions.get_locations.RequestV12k\n\x0fget_location_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd6\x01 \x01(\x0b\x32\x35.services.organization.actions.get_location.RequestV1\"\x88\x01\n\x0eProfileService2v\n\x17get_extended_profile_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xac\x02 \x01(\x0b\x32\x38.services.profile.actions.get_extended_profile.RequestV1B\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
+  serialized_pb=_b('\n*protobufs/services/registry/requests.proto\x12\x1aservices.registry.requests\x1a\x1bservice_protobufs/soa.proto\x1a\x31protobufs/services/user/actions/create_user.proto\x1a\x30protobufs/services/user/actions/valid_user.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\x1a.protobufs/services/user/actions/get_user.proto\x1a<protobufs/services/user/actions/send_verification_code.proto\x1a>protobufs/services/user/actions/verify_verification_code.proto\x1a\x31protobufs/services/user/actions/update_user.proto\x1a\x44protobufs/services/user/actions/get_authorization_instructions.proto\x1a<protobufs/services/user/actions/complete_authorization.proto\x1a\x34protobufs/services/user/actions/get_identities.proto\x1a\x37protobufs/services/user/actions/bulk_create_users.proto\x1a\x33protobufs/services/user/actions/record_device.proto\x1a\x34protobufs/services/user/actions/request_access.proto\x1a\x35protobufs/services/user/actions/delete_identity.proto\x1a\x41protobufs/services/organization/actions/create_organization.proto\x1a\x39protobufs/services/organization/actions/create_team.proto\x1a<protobufs/services/organization/actions/create_address.proto\x1a<protobufs/services/organization/actions/delete_address.proto\x1a\x39protobufs/services/organization/actions/get_address.proto\x1a\x36protobufs/services/organization/actions/get_team.proto\x1a>protobufs/services/organization/actions/get_organization.proto\x1a\x37protobufs/services/organization/actions/get_teams.proto\x1a;protobufs/services/organization/actions/get_addresses.proto\x1a\x42protobufs/services/organization/actions/get_team_descendants.proto\x1a@protobufs/services/organization/actions/get_top_level_team.proto\x1a=protobufs/services/organization/actions/create_location.proto\x1a=protobufs/services/organization/actions/update_location.proto\x1a;protobufs/services/organization/actions/get_locations.proto\x1a:protobufs/services/organization/actions/get_location.proto\x1a=protobufs/services/profile/actions/get_extended_profile.proto\"\xfe\x0b\n\x0bUserService2`\n\x0e\x63reate_user_v1\x12\x1a.soa.ActionRequestParamsV1\x18\x64 \x01(\x0b\x32,.services.user.actions.create_user.RequestV12^\n\rvalid_user_v1\x12\x1a.soa.ActionRequestParamsV1\x18\x65 \x01(\x0b\x32+.services.user.actions.valid_user.RequestV12l\n\x14\x61uthenticate_user_v1\x12\x1a.soa.ActionRequestParamsV1\x18\x66 \x01(\x0b\x32\x32.services.user.actions.authenticate_user.RequestV12Z\n\x0bget_user_v1\x12\x1a.soa.ActionRequestParamsV1\x18g \x01(\x0b\x32).services.user.actions.get_user.RequestV12v\n\x19send_verification_code_v1\x12\x1a.soa.ActionRequestParamsV1\x18h \x01(\x0b\x32\x37.services.user.actions.send_verification_code.RequestV12z\n\x1bverify_verification_code_v1\x12\x1a.soa.ActionRequestParamsV1\x18i \x01(\x0b\x32\x39.services.user.actions.verify_verification_code.RequestV12`\n\x0eupdate_user_v1\x12\x1a.soa.ActionRequestParamsV1\x18j \x01(\x0b\x32,.services.user.actions.update_user.RequestV12\x86\x01\n!get_authorization_instructions_v1\x12\x1a.soa.ActionRequestParamsV1\x18k \x01(\x0b\x32?.services.user.actions.get_authorization_instructions.RequestV12v\n\x19\x63omplete_authorization_v1\x12\x1a.soa.ActionRequestParamsV1\x18l \x01(\x0b\x32\x37.services.user.actions.complete_authorization.RequestV12f\n\x11get_identities_v1\x12\x1a.soa.ActionRequestParamsV1\x18m \x01(\x0b\x32/.services.user.actions.get_identities.RequestV12l\n\x14\x62ulk_create_users_v1\x12\x1a.soa.ActionRequestParamsV1\x18n \x01(\x0b\x32\x32.services.user.actions.bulk_create_users.RequestV12d\n\x10record_device_v1\x12\x1a.soa.ActionRequestParamsV1\x18o \x01(\x0b\x32..services.user.actions.record_device.RequestV12f\n\x11request_access_v1\x12\x1a.soa.ActionRequestParamsV1\x18p \x01(\x0b\x32/.services.user.actions.request_access.RequestV12h\n\x12\x64\x65lete_identity_v1\x12\x1a.soa.ActionRequestParamsV1\x18q \x01(\x0b\x32\x30.services.user.actions.delete_identity.RequestV1\"\xb0\r\n\x13OrganizationService2y\n\x16\x63reate_organization_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xc8\x01 \x01(\x0b\x32<.services.organization.actions.create_organization.RequestV12s\n\x13get_organization_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xc9\x01 \x01(\x0b\x32\x39.services.organization.actions.get_organization.RequestV12i\n\x0e\x63reate_team_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xca\x01 \x01(\x0b\x32\x34.services.organization.actions.create_team.RequestV12o\n\x11\x63reate_address_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcb\x01 \x01(\x0b\x32\x37.services.organization.actions.create_address.RequestV12o\n\x11\x64\x65lete_address_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcc\x01 \x01(\x0b\x32\x37.services.organization.actions.delete_address.RequestV12i\n\x0eget_address_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcd\x01 \x01(\x0b\x32\x34.services.organization.actions.get_address.RequestV12c\n\x0bget_team_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xce\x01 \x01(\x0b\x32\x31.services.organization.actions.get_team.RequestV12e\n\x0cget_teams_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xcf\x01 \x01(\x0b\x32\x32.services.organization.actions.get_teams.RequestV12m\n\x10get_addresses_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd0\x01 \x01(\x0b\x32\x36.services.organization.actions.get_addresses.RequestV12{\n\x17get_team_descendants_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd1\x01 \x01(\x0b\x32=.services.organization.actions.get_team_descendants.RequestV12w\n\x15get_top_level_team_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd2\x01 \x01(\x0b\x32;.services.organization.actions.get_top_level_team.RequestV12q\n\x12\x63reate_location_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd3\x01 \x01(\x0b\x32\x38.services.organization.actions.create_location.RequestV12q\n\x12update_location_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd4\x01 \x01(\x0b\x32\x38.services.organization.actions.update_location.RequestV12m\n\x10get_locations_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd5\x01 \x01(\x0b\x32\x36.services.organization.actions.get_locations.RequestV12k\n\x0fget_location_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xd6\x01 \x01(\x0b\x32\x35.services.organization.actions.get_location.RequestV1\"\x88\x01\n\x0eProfileService2v\n\x17get_extended_profile_v1\x12\x1a.soa.ActionRequestParamsV1\x18\xac\x02 \x01(\x0b\x32\x38.services.profile.actions.get_extended_profile.RequestV1')
   ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,service_protobufs.soa_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.delete_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_teams_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_addresses_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_team_descendants_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_top_level_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_location_pb2.DESCRIPTOR,protobufs.services.organization.actions.update_location_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_locations_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_location_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_extended_profile_pb2.DESCRIPTOR,])
+  dependencies=[service_protobufs.soa_pb2.DESCRIPTOR,protobufs.services.user.actions.create_user_pb2.DESCRIPTOR,protobufs.services.user.actions.valid_user_pb2.DESCRIPTOR,protobufs.services.user.actions.authenticate_user_pb2.DESCRIPTOR,protobufs.services.user.actions.get_user_pb2.DESCRIPTOR,protobufs.services.user.actions.send_verification_code_pb2.DESCRIPTOR,protobufs.services.user.actions.verify_verification_code_pb2.DESCRIPTOR,protobufs.services.user.actions.update_user_pb2.DESCRIPTOR,protobufs.services.user.actions.get_authorization_instructions_pb2.DESCRIPTOR,protobufs.services.user.actions.complete_authorization_pb2.DESCRIPTOR,protobufs.services.user.actions.get_identities_pb2.DESCRIPTOR,protobufs.services.user.actions.bulk_create_users_pb2.DESCRIPTOR,protobufs.services.user.actions.record_device_pb2.DESCRIPTOR,protobufs.services.user.actions.request_access_pb2.DESCRIPTOR,protobufs.services.user.actions.delete_identity_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.delete_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_address_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_organization_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_teams_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_addresses_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_team_descendants_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_top_level_team_pb2.DESCRIPTOR,protobufs.services.organization.actions.create_location_pb2.DESCRIPTOR,protobufs.services.organization.actions.update_location_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_locations_pb2.DESCRIPTOR,protobufs.services.organization.actions.get_location_pb2.DESCRIPTOR,protobufs.services.profile.actions.get_extended_profile_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
+
+
+_USERSERVICE = _descriptor.Descriptor(
+  name='UserService',
+  full_name='services.registry.requests.UserService',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='create_user_v1', full_name='services.registry.requests.UserService.create_user_v1', index=0,
+      number=100, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='valid_user_v1', full_name='services.registry.requests.UserService.valid_user_v1', index=1,
+      number=101, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='authenticate_user_v1', full_name='services.registry.requests.UserService.authenticate_user_v1', index=2,
+      number=102, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_user_v1', full_name='services.registry.requests.UserService.get_user_v1', index=3,
+      number=103, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='send_verification_code_v1', full_name='services.registry.requests.UserService.send_verification_code_v1', index=4,
+      number=104, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='verify_verification_code_v1', full_name='services.registry.requests.UserService.verify_verification_code_v1', index=5,
+      number=105, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='update_user_v1', full_name='services.registry.requests.UserService.update_user_v1', index=6,
+      number=106, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_authorization_instructions_v1', full_name='services.registry.requests.UserService.get_authorization_instructions_v1', index=7,
+      number=107, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='complete_authorization_v1', full_name='services.registry.requests.UserService.complete_authorization_v1', index=8,
+      number=108, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_identities_v1', full_name='services.registry.requests.UserService.get_identities_v1', index=9,
+      number=109, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='bulk_create_users_v1', full_name='services.registry.requests.UserService.bulk_create_users_v1', index=10,
+      number=110, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='record_device_v1', full_name='services.registry.requests.UserService.record_device_v1', index=11,
+      number=111, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='request_access_v1', full_name='services.registry.requests.UserService.request_access_v1', index=12,
+      number=112, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='delete_identity_v1', full_name='services.registry.requests.UserService.delete_identity_v1', index=13,
+      number=113, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1883,
+  serialized_end=3417,
+)
 
 
 _ORGANIZATIONSERVICE = _descriptor.Descriptor(
@@ -167,8 +301,8 @@ _ORGANIZATIONSERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1135,
-  serialized_end=2847,
+  serialized_start=3420,
+  serialized_end=5132,
 )
 
 
@@ -197,12 +331,20 @@ _PROFILESERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2850,
-  serialized_end=2986,
+  serialized_start=5135,
+  serialized_end=5271,
 )
 
+DESCRIPTOR.message_types_by_name['UserService'] = _USERSERVICE
 DESCRIPTOR.message_types_by_name['OrganizationService'] = _ORGANIZATIONSERVICE
 DESCRIPTOR.message_types_by_name['ProfileService'] = _PROFILESERVICE
+
+UserService = _reflection.GeneratedProtocolMessageType('UserService', (_message.Message,), dict(
+  DESCRIPTOR = _USERSERVICE,
+  __module__ = 'protobufs.services.registry.requests_pb2'
+  # @@protoc_insertion_point(class_scope:services.registry.requests.UserService)
+  ))
+_sym_db.RegisterMessage(UserService)
 
 OrganizationService = _reflection.GeneratedProtocolMessageType('OrganizationService', (_message.Message,), dict(
   DESCRIPTOR = _ORGANIZATIONSERVICE,
@@ -218,6 +360,34 @@ ProfileService = _reflection.GeneratedProtocolMessageType('ProfileService', (_me
   ))
 _sym_db.RegisterMessage(ProfileService)
 
+_USERSERVICE.extensions_by_name['create_user_v1'].message_type = protobufs.services.user.actions.create_user_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['create_user_v1'])
+_USERSERVICE.extensions_by_name['valid_user_v1'].message_type = protobufs.services.user.actions.valid_user_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['valid_user_v1'])
+_USERSERVICE.extensions_by_name['authenticate_user_v1'].message_type = protobufs.services.user.actions.authenticate_user_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['authenticate_user_v1'])
+_USERSERVICE.extensions_by_name['get_user_v1'].message_type = protobufs.services.user.actions.get_user_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['get_user_v1'])
+_USERSERVICE.extensions_by_name['send_verification_code_v1'].message_type = protobufs.services.user.actions.send_verification_code_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['send_verification_code_v1'])
+_USERSERVICE.extensions_by_name['verify_verification_code_v1'].message_type = protobufs.services.user.actions.verify_verification_code_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['verify_verification_code_v1'])
+_USERSERVICE.extensions_by_name['update_user_v1'].message_type = protobufs.services.user.actions.update_user_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['update_user_v1'])
+_USERSERVICE.extensions_by_name['get_authorization_instructions_v1'].message_type = protobufs.services.user.actions.get_authorization_instructions_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['get_authorization_instructions_v1'])
+_USERSERVICE.extensions_by_name['complete_authorization_v1'].message_type = protobufs.services.user.actions.complete_authorization_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['complete_authorization_v1'])
+_USERSERVICE.extensions_by_name['get_identities_v1'].message_type = protobufs.services.user.actions.get_identities_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['get_identities_v1'])
+_USERSERVICE.extensions_by_name['bulk_create_users_v1'].message_type = protobufs.services.user.actions.bulk_create_users_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['bulk_create_users_v1'])
+_USERSERVICE.extensions_by_name['record_device_v1'].message_type = protobufs.services.user.actions.record_device_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['record_device_v1'])
+_USERSERVICE.extensions_by_name['request_access_v1'].message_type = protobufs.services.user.actions.request_access_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['request_access_v1'])
+_USERSERVICE.extensions_by_name['delete_identity_v1'].message_type = protobufs.services.user.actions.delete_identity_pb2._REQUESTV1
+service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_USERSERVICE.extensions_by_name['delete_identity_v1'])
 _ORGANIZATIONSERVICE.extensions_by_name['create_organization_v1'].message_type = protobufs.services.organization.actions.create_organization_pb2._REQUESTV1
 service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONSERVICE.extensions_by_name['create_organization_v1'])
 _ORGANIZATIONSERVICE.extensions_by_name['get_organization_v1'].message_type = protobufs.services.organization.actions.get_organization_pb2._REQUESTV1
@@ -251,6 +421,4 @@ service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_ORGANIZATIONS
 _PROFILESERVICE.extensions_by_name['get_extended_profile_v1'].message_type = protobufs.services.profile.actions.get_extended_profile_pb2._REQUESTV1
 service_protobufs.soa_pb2.ActionRequestParamsV1.RegisterExtension(_PROFILESERVICE.extensions_by_name['get_extended_profile_v1'])
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)

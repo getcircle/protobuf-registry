@@ -13,15 +13,13 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/address.proto',
   package='services.organization.containers.address',
-  serialized_pb=_b('\n8protobufs/services/organization/containers/address.proto\x12(services.organization.containers.address\x1a&google/protobuf/swift-descriptor.proto\"\x8f\x02\n\tAddressV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x11\n\taddress_1\x18\x05 \x01(\t\x12\x11\n\taddress_2\x18\x06 \x01(\t\x12\x0c\n\x04\x63ity\x18\x07 \x01(\t\x12\x0e\n\x06region\x18\x08 \x01(\t\x12\x13\n\x0bpostal_code\x18\t \x01(\t\x12\x14\n\x0c\x63ountry_code\x18\n \x01(\t\x12\x15\n\rprofile_count\x18\x0b \x01(\t\x12\x10\n\x08latitude\x18\x0c \x01(\t\x12\x11\n\tlongitude\x18\r \x01(\t\x12\x10\n\x08timezone\x18\x0e \x01(\tB\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
-  ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,])
+  serialized_pb=_b('\n8protobufs/services/organization/containers/address.proto\x12(services.organization.containers.address\"\x8f\x02\n\tAddressV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x11\n\taddress_1\x18\x05 \x01(\t\x12\x11\n\taddress_2\x18\x06 \x01(\t\x12\x0c\n\x04\x63ity\x18\x07 \x01(\t\x12\x0e\n\x06region\x18\x08 \x01(\t\x12\x13\n\x0bpostal_code\x18\t \x01(\t\x12\x14\n\x0c\x63ountry_code\x18\n \x01(\t\x12\x15\n\rprofile_count\x18\x0b \x01(\t\x12\x10\n\x08latitude\x18\x0c \x01(\t\x12\x11\n\tlongitude\x18\r \x01(\t\x12\x10\n\x08timezone\x18\x0e \x01(\t')
+)
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -143,8 +141,8 @@ _ADDRESSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=143,
-  serialized_end=414,
+  serialized_start=103,
+  serialized_end=374,
 )
 
 DESCRIPTOR.message_types_by_name['AddressV1'] = _ADDRESSV1
@@ -157,6 +155,4 @@ AddressV1 = _reflection.GeneratedProtocolMessageType('AddressV1', (_message.Mess
 _sym_db.RegisterMessage(AddressV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)

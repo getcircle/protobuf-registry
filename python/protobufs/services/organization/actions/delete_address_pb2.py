@@ -13,15 +13,13 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/delete_address.proto',
   package='services.organization.actions.delete_address',
-  serialized_pb=_b('\n<protobufs/services/organization/actions/delete_address.proto\x12,services.organization.actions.delete_address\x1a&google/protobuf/swift-descriptor.proto\"3\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\naddress_id\x18\x02 \x01(\t\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x42\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
-  ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,])
+  serialized_pb=_b('\n<protobufs/services/organization/actions/delete_address.proto\x12,services.organization.actions.delete_address\"3\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\naddress_id\x18\x02 \x01(\t\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31')
+)
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +57,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=150,
-  serialized_end=201,
+  serialized_start=110,
+  serialized_end=161,
 )
 
 
@@ -89,8 +87,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=203,
-  serialized_end=235,
+  serialized_start=163,
+  serialized_end=195,
 )
 
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
@@ -111,6 +109,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)

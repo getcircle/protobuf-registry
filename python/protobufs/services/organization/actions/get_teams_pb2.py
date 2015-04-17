@@ -13,16 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 import protobufs.services.organization.containers.team_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/get_teams.proto',
   package='services.organization.actions.get_teams',
-  serialized_pb=_b('\n7protobufs/services/organization/actions/get_teams.proto\x12\'services.organization.actions.get_teams\x1a&google/protobuf/swift-descriptor.proto\x1a\x35protobufs/services/organization/containers/team.proto\"M\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x13\n\x0blocation_id\x18\x03 \x01(\t\"^\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12<\n\x05teams\x18\x02 \x03(\x0b\x32-.services.organization.containers.team.TeamV1B\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
+  serialized_pb=_b('\n7protobufs/services/organization/actions/get_teams.proto\x12\'services.organization.actions.get_teams\x1a\x35protobufs/services/organization/containers/team.proto\"M\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x13\n\x0blocation_id\x18\x03 \x01(\t\"^\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12<\n\x05teams\x18\x02 \x03(\x0b\x32-.services.organization.containers.team.TeamV1')
   ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,protobufs.services.organization.containers.team_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.organization.containers.team_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -67,8 +66,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=195,
-  serialized_end=272,
+  serialized_start=155,
+  serialized_end=232,
 )
 
 
@@ -104,8 +103,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=274,
-  serialized_end=368,
+  serialized_start=234,
+  serialized_end=328,
 )
 
 _RESPONSEV1.fields_by_name['teams'].message_type = protobufs.services.organization.containers.team_pb2._TEAMV1
@@ -127,6 +126,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)

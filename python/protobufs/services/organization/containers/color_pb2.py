@@ -13,15 +13,13 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/color.proto',
   package='services.organization.containers.color',
-  serialized_pb=_b('\n6protobufs/services/organization/containers/color.proto\x12&services.organization.containers.color\x1a&google/protobuf/swift-descriptor.proto\"D\n\x07\x43olorV1\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x0b\n\x03red\x18\x02 \x01(\r\x12\r\n\x05green\x18\x03 \x01(\r\x12\x0c\n\x04\x62lue\x18\x04 \x01(\rB\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
-  ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,])
+  serialized_pb=_b('\n6protobufs/services/organization/containers/color.proto\x12&services.organization.containers.color\"D\n\x07\x43olorV1\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x0b\n\x03red\x18\x02 \x01(\r\x12\r\n\x05green\x18\x03 \x01(\r\x12\x0c\n\x04\x62lue\x18\x04 \x01(\r')
+)
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -73,8 +71,8 @@ _COLORV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=138,
-  serialized_end=206,
+  serialized_start=98,
+  serialized_end=166,
 )
 
 DESCRIPTOR.message_types_by_name['ColorV1'] = _COLORV1
@@ -87,6 +85,4 @@ ColorV1 = _reflection.GeneratedProtocolMessageType('ColorV1', (_message.Message,
 _sym_db.RegisterMessage(ColorV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)
