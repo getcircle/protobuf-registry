@@ -34,25 +34,25 @@ public extension Services.Profile.Containers.ContactMethod {
     }
   }
 
-
-
-  //Enum type declaration start 
-
-  public enum ContactMethodTypeV1:Int32 {
-    case CellPhone = 0
-    case Phone = 1
-    case Email = 2
-    case Slack = 3
-    case Twitter = 4
-    case Hipchat = 5
-    case Facebook = 6
-    case Skype = 7
-
-  }
-
-  //Enum type declaration end 
-
   final public class ContactMethodV1 : GeneratedMessage, GeneratedMessageProtocol {
+
+
+      //Enum type declaration start 
+
+      public enum ContactMethodTypeV1:Int32 {
+        case CellPhone = 0
+        case Phone = 1
+        case Email = 2
+        case Slack = 3
+        case Twitter = 4
+        case Hipchat = 5
+        case Facebook = 6
+        case Skype = 7
+
+      }
+
+      //Enum type declaration end 
+
     public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
@@ -76,7 +76,7 @@ public extension Services.Profile.Containers.ContactMethod {
     public private(set) var hasValue:Bool = false
     public private(set) var value:String = ""
 
-    public private(set) var types:Services.Profile.Containers.ContactMethod.ContactMethodTypeV1 = Services.Profile.Containers.ContactMethod.ContactMethodTypeV1.CellPhone
+    public private(set) var types:Services.Profile.Containers.ContactMethod.ContactMethodV1.ContactMethodTypeV1 = Services.Profile.Containers.ContactMethod.ContactMethodV1.ContactMethodTypeV1.CellPhone
     public private(set) var hasTypes:Bool = false
     required public init() {
          super.init()
@@ -325,7 +325,7 @@ public extension Services.Profile.Containers.ContactMethod {
               return builderResult.hasTypes
           }
       }
-      public var types:Services.Profile.Containers.ContactMethod.ContactMethodTypeV1 {
+      public var types:Services.Profile.Containers.ContactMethod.ContactMethodV1.ContactMethodTypeV1 {
           get {
               return builderResult.types
           }
@@ -334,7 +334,7 @@ public extension Services.Profile.Containers.ContactMethod {
               builderResult.types = value
           }
       }
-      public func setTypes(value:Services.Profile.Containers.ContactMethod.ContactMethodTypeV1)-> Services.Profile.Containers.ContactMethod.ContactMethodV1Builder {
+      public func setTypes(value:Services.Profile.Containers.ContactMethod.ContactMethodV1.ContactMethodTypeV1)-> Services.Profile.Containers.ContactMethod.ContactMethodV1Builder {
         self.types = value
         return self
       }
@@ -411,7 +411,7 @@ public extension Services.Profile.Containers.ContactMethod {
 
         case 40 :
           let valueInttypes = input.readEnum()
-          if let enumstypes = Services.Profile.Containers.ContactMethod.ContactMethodTypeV1(rawValue:valueInttypes){
+          if let enumstypes = Services.Profile.Containers.ContactMethod.ContactMethodV1.ContactMethodTypeV1(rawValue:valueInttypes){
                types = enumstypes
           } else {
                unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueInttypes))

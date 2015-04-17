@@ -3,7 +3,6 @@
 
 import sys
 _b=sys.version_info[0]<3 and (lambda x:x) or (lambda x:x.encode('latin1'))
-from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
@@ -19,13 +18,15 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/containers/contact_method.proto',
   package='services.profile.containers.contact_method',
-  serialized_pb=_b('\n:protobufs/services/profile/containers/contact_method.proto\x12*services.profile.containers.contact_method\"\x9e\x01\n\x0f\x43ontactMethodV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05label\x18\x03 \x01(\t\x12\r\n\x05value\x18\x04 \x01(\t\x12M\n\x04type\x18\x05 \x01(\x0e\x32?.services.profile.containers.contact_method.ContactMethodTypeV1*y\n\x13\x43ontactMethodTypeV1\x12\x0e\n\nCELL_PHONE\x10\x00\x12\t\n\x05PHONE\x10\x01\x12\t\n\x05\x45MAIL\x10\x02\x12\t\n\x05SLACK\x10\x03\x12\x0b\n\x07TWITTER\x10\x04\x12\x0b\n\x07HIPCHAT\x10\x05\x12\x0c\n\x08\x46\x41\x43\x45\x42OOK\x10\x06\x12\t\n\x05SKYPE\x10\x07')
+  serialized_pb=_b('\n:protobufs/services/profile/containers/contact_method.proto\x12*services.profile.containers.contact_method\"\xa9\x02\n\x0f\x43ontactMethodV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05label\x18\x03 \x01(\t\x12\r\n\x05value\x18\x04 \x01(\t\x12]\n\x04type\x18\x05 \x01(\x0e\x32O.services.profile.containers.contact_method.ContactMethodV1.ContactMethodTypeV1\"y\n\x13\x43ontactMethodTypeV1\x12\x0e\n\nCELL_PHONE\x10\x00\x12\t\n\x05PHONE\x10\x01\x12\t\n\x05\x45MAIL\x10\x02\x12\t\n\x05SLACK\x10\x03\x12\x0b\n\x07TWITTER\x10\x04\x12\x0b\n\x07HIPCHAT\x10\x05\x12\x0c\n\x08\x46\x41\x43\x45\x42OOK\x10\x06\x12\t\n\x05SKYPE\x10\x07')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-_CONTACTMETHODTYPEV1 = _descriptor.EnumDescriptor(
+
+
+_CONTACTMETHODV1_CONTACTMETHODTYPEV1 = _descriptor.EnumDescriptor(
   name='ContactMethodTypeV1',
-  full_name='services.profile.containers.contact_method.ContactMethodTypeV1',
+  full_name='services.profile.containers.contact_method.ContactMethodV1.ContactMethodTypeV1',
   filename=None,
   file=DESCRIPTOR,
   values=[
@@ -64,21 +65,10 @@ _CONTACTMETHODTYPEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=267,
-  serialized_end=388,
+  serialized_start=283,
+  serialized_end=404,
 )
-_sym_db.RegisterEnumDescriptor(_CONTACTMETHODTYPEV1)
-
-ContactMethodTypeV1 = enum_type_wrapper.EnumTypeWrapper(_CONTACTMETHODTYPEV1)
-CELL_PHONE = 0
-PHONE = 1
-EMAIL = 2
-SLACK = 3
-TWITTER = 4
-HIPCHAT = 5
-FACEBOOK = 6
-SKYPE = 7
-
+_sym_db.RegisterEnumDescriptor(_CONTACTMETHODV1_CONTACTMETHODTYPEV1)
 
 
 _CONTACTMETHODV1 = _descriptor.Descriptor(
@@ -128,6 +118,7 @@ _CONTACTMETHODV1 = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _CONTACTMETHODV1_CONTACTMETHODTYPEV1,
   ],
   options=None,
   is_extendable=False,
@@ -135,12 +126,12 @@ _CONTACTMETHODV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=107,
-  serialized_end=265,
+  serialized_end=404,
 )
 
-_CONTACTMETHODV1.fields_by_name['type'].enum_type = _CONTACTMETHODTYPEV1
+_CONTACTMETHODV1.fields_by_name['type'].enum_type = _CONTACTMETHODV1_CONTACTMETHODTYPEV1
+_CONTACTMETHODV1_CONTACTMETHODTYPEV1.containing_type = _CONTACTMETHODV1
 DESCRIPTOR.message_types_by_name['ContactMethodV1'] = _CONTACTMETHODV1
-DESCRIPTOR.enum_types_by_name['ContactMethodTypeV1'] = _CONTACTMETHODTYPEV1
 
 ContactMethodV1 = _reflection.GeneratedProtocolMessageType('ContactMethodV1', (_message.Message,), dict(
   DESCRIPTOR = _CONTACTMETHODV1,
