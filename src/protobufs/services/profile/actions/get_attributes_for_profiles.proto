@@ -11,5 +11,5 @@ message RequestV1 {
 
 message ResponseV1 {
     optional uint32 version = 1 [default = 1];
-    repeated services.profile.containers.profile.AttributeV1 tags = 2;
+    repeated services.profile.containers.profile.AttributeV1 attributes = 2;
 }

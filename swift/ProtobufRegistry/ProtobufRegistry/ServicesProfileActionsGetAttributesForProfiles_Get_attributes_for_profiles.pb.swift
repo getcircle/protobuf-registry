@@ -21,7 +21,7 @@ public func == (lhs: Services.Profile.Actions.GetAttributesForProfiles.ResponseV
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.tags == rhs.tags)
+  fieldCheck = fieldCheck && (lhs.attributes == rhs.attributes)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -377,7 +377,7 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var tags:Array<Services.Profile.Containers.Profile.AttributeV1>  = Array<Services.Profile.Containers.Profile.AttributeV1>()
+    public private(set) var attributes:Array<Services.Profile.Containers.Profile.AttributeV1>  = Array<Services.Profile.Containers.Profile.AttributeV1>()
     required public init() {
          super.init()
     }
@@ -388,8 +388,8 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
       if hasVersion {
         output.writeUInt32(1, value:version)
       }
-      for oneElementtags in tags {
-          output.writeMessage(2, value:oneElementtags)
+      for oneElementattributes in attributes {
+          output.writeMessage(2, value:oneElementattributes)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -403,8 +403,8 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
-      for oneElementtags in tags {
-          serialize_size += oneElementtags.computeMessageSize(2)
+      for oneElementattributes in attributes {
+          serialize_size += oneElementattributes.computeMessageSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -450,12 +450,12 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
-      var tagsElementIndex:Int = 0
-      for oneElementtags in tags {
-          output += "\(indent) tags[\(tagsElementIndex)] {\n"
-          oneElementtags.writeDescriptionTo(&output, indent:"\(indent)  ")
+      var attributesElementIndex:Int = 0
+      for oneElementattributes in attributes {
+          output += "\(indent) attributes[\(attributesElementIndex)] {\n"
+          oneElementattributes.writeDescriptionTo(&output, indent:"\(indent)  ")
           output += "\(indent)}\n"
-          tagsElementIndex++
+          attributesElementIndex++
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -465,8 +465,8 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
             }
-            for oneElementtags in tags {
-                hashCode = (hashCode &* 31) &+ oneElementtags.hashValue
+            for oneElementattributes in attributes {
+                hashCode = (hashCode &* 31) &+ oneElementattributes.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -519,20 +519,20 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
          builderResult.version = UInt32(1)
          return self
     }
-    public var tags:Array<Services.Profile.Containers.Profile.AttributeV1> {
+    public var attributes:Array<Services.Profile.Containers.Profile.AttributeV1> {
          get {
-             return builderResult.tags
+             return builderResult.attributes
          }
          set (value) {
-             builderResult.tags = value
+             builderResult.attributes = value
          }
     }
-    public func setTags(value:Array<Services.Profile.Containers.Profile.AttributeV1>)-> Services.Profile.Actions.GetAttributesForProfiles.ResponseV1Builder {
-      self.tags = value
+    public func setAttributes(value:Array<Services.Profile.Containers.Profile.AttributeV1>)-> Services.Profile.Actions.GetAttributesForProfiles.ResponseV1Builder {
+      self.attributes = value
       return self
     }
-    public func clearTags() -> Services.Profile.Actions.GetAttributesForProfiles.ResponseV1Builder {
-      builderResult.tags.removeAll(keepCapacity: false)
+    public func clearAttributes() -> Services.Profile.Actions.GetAttributesForProfiles.ResponseV1Builder {
+      builderResult.attributes.removeAll(keepCapacity: false)
       return self
     }
     override public var internalGetResult:GeneratedMessage {
@@ -562,8 +562,8 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
       if other.hasVersion {
            version = other.version
       }
-      if !other.tags.isEmpty  {
-         builderResult.tags += other.tags
+      if !other.attributes.isEmpty  {
+         builderResult.attributes += other.attributes
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -586,7 +586,7 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
         case 18 :
           var subBuilder = Services.Profile.Containers.Profile.AttributeV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-          tags += [subBuilder.buildPartial()]
+          attributes += [subBuilder.buildPartial()]
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

@@ -19,7 +19,7 @@ import protobufs.services.profile.containers.profile_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/get_attributes_for_profiles.proto',
   package='services.profile.actions.get_attributes_for_profiles',
-  serialized_pb=_b('\nDprotobufs/services/profile/actions/get_attributes_for_profiles.proto\x12\x34services.profile.actions.get_attributes_for_profiles\x1a\x33protobufs/services/profile/containers/profile.proto\"\x8c\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x44\n\nattributes\x18\x02 \x03(\x0b\x32\x30.services.profile.containers.profile.AttributeV1\x12\x10\n\x08\x64istinct\x18\x03 \x01(\x08\x12\x13\n\x0blocation_id\x18\x04 \x01(\t\"`\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12>\n\x04tags\x18\x02 \x03(\x0b\x32\x30.services.profile.containers.profile.AttributeV1')
+  serialized_pb=_b('\nDprotobufs/services/profile/actions/get_attributes_for_profiles.proto\x12\x34services.profile.actions.get_attributes_for_profiles\x1a\x33protobufs/services/profile/containers/profile.proto\"\x8c\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x44\n\nattributes\x18\x02 \x03(\x0b\x32\x30.services.profile.containers.profile.AttributeV1\x12\x10\n\x08\x64istinct\x18\x03 \x01(\x08\x12\x13\n\x0blocation_id\x18\x04 \x01(\t\"f\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x44\n\nattributes\x18\x02 \x03(\x0b\x32\x30.services.profile.containers.profile.AttributeV1')
   ,
   dependencies=[protobufs.services.profile.containers.profile_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -93,7 +93,7 @@ _RESPONSEV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='tags', full_name='services.profile.actions.get_attributes_for_profiles.ResponseV1.tags', index=1,
+      name='attributes', full_name='services.profile.actions.get_attributes_for_profiles.ResponseV1.attributes', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -111,11 +111,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=322,
-  serialized_end=418,
+  serialized_end=424,
 )
 
 _REQUESTV1.fields_by_name['attributes'].message_type = protobufs.services.profile.containers.profile_pb2._ATTRIBUTEV1
-_RESPONSEV1.fields_by_name['tags'].message_type = protobufs.services.profile.containers.profile_pb2._ATTRIBUTEV1
+_RESPONSEV1.fields_by_name['attributes'].message_type = protobufs.services.profile.containers.profile_pb2._ATTRIBUTEV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 
