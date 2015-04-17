@@ -24,10 +24,10 @@ public func == (lhs: Services.Profile.Actions.GetExtendedProfile.ResponseV1, rhs
   fieldCheck = fieldCheck && (lhs.hasAddress == rhs.hasAddress) && (!lhs.hasAddress || lhs.address == rhs.address)
   fieldCheck = fieldCheck && (lhs.hasManager == rhs.hasManager) && (!lhs.hasManager || lhs.manager == rhs.manager)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
-  fieldCheck = fieldCheck && (lhs.hasNotes == rhs.hasNotes) && (!lhs.hasNotes || lhs.notes == rhs.notes)
-  fieldCheck = fieldCheck && (lhs.hasTags == rhs.hasTags) && (!lhs.hasTags || lhs.tags == rhs.tags)
-  fieldCheck = fieldCheck && (lhs.hasIdentities == rhs.hasIdentities) && (!lhs.hasIdentities || lhs.identities == rhs.identities)
-  fieldCheck = fieldCheck && (lhs.hasDirectReports == rhs.hasDirectReports) && (!lhs.hasDirectReports || lhs.directReports == rhs.directReports)
+  fieldCheck = fieldCheck && (lhs.notes == rhs.notes)
+  fieldCheck = fieldCheck && (lhs.tags == rhs.tags)
+  fieldCheck = fieldCheck && (lhs.identities == rhs.identities)
+  fieldCheck = fieldCheck && (lhs.directReports == rhs.directReports)
   fieldCheck = fieldCheck && (lhs.hasResume == rhs.hasResume) && (!lhs.hasResume || lhs.resume == rhs.resume)
   fieldCheck = fieldCheck && (lhs.hasLocation == rhs.hasLocation) && (!lhs.hasLocation || lhs.location == rhs.location)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -348,10 +348,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
            case "address": return address
            case "manager": return manager
            case "team": return team
-           case "notes": return notes
-           case "tags": return tags
-           case "identities": return identities
-           case "directReports": return directReports
            case "resume": return resume
            case "location": return location
            default: return nil
@@ -369,18 +365,14 @@ public extension Services.Profile.Actions.GetExtendedProfile {
     public private(set) var manager:Services.Profile.Containers.Profile.ProfileV1!
     public private(set) var hasTeam:Bool = false
     public private(set) var team:Services.Organization.Containers.Team.TeamV1!
-    public private(set) var hasNotes:Bool = false
-    public private(set) var notes:Services.Note.Containers.Note.NoteV1!
-    public private(set) var hasTags:Bool = false
-    public private(set) var tags:Services.Profile.Containers.Tag.TagV1!
-    public private(set) var hasIdentities:Bool = false
-    public private(set) var identities:Services.User.Containers.Identity.IdentityV1!
-    public private(set) var hasDirectReports:Bool = false
-    public private(set) var directReports:Services.Profile.Containers.Profile.ProfileV1!
     public private(set) var hasResume:Bool = false
     public private(set) var resume:Services.Resume.Containers.Resume.ResumeV1!
     public private(set) var hasLocation:Bool = false
     public private(set) var location:Services.Organization.Containers.Location.LocationV1!
+    public private(set) var notes:Array<Services.Note.Containers.Note.NoteV1>  = Array<Services.Note.Containers.Note.NoteV1>()
+    public private(set) var tags:Array<Services.Profile.Containers.Tag.TagV1>  = Array<Services.Profile.Containers.Tag.TagV1>()
+    public private(set) var identities:Array<Services.User.Containers.Identity.IdentityV1>  = Array<Services.User.Containers.Identity.IdentityV1>()
+    public private(set) var directReports:Array<Services.Profile.Containers.Profile.ProfileV1>  = Array<Services.Profile.Containers.Profile.ProfileV1>()
     required public init() {
          super.init()
     }
@@ -403,17 +395,17 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       if hasTeam {
         output.writeMessage(5, value:team)
       }
-      if hasNotes {
-        output.writeMessage(6, value:notes)
+      for oneElementnotes in notes {
+          output.writeMessage(6, value:oneElementnotes)
       }
-      if hasTags {
-        output.writeMessage(7, value:tags)
+      for oneElementtags in tags {
+          output.writeMessage(7, value:oneElementtags)
       }
-      if hasIdentities {
-        output.writeMessage(8, value:identities)
+      for oneElementidentities in identities {
+          output.writeMessage(8, value:oneElementidentities)
       }
-      if hasDirectReports {
-        output.writeMessage(9, value:directReports)
+      for oneElementdirectReports in directReports {
+          output.writeMessage(9, value:oneElementdirectReports)
       }
       if hasResume {
         output.writeMessage(10, value:resume)
@@ -453,25 +445,17 @@ public extension Services.Profile.Actions.GetExtendedProfile {
               serialize_size += varSizeteam
           }
       }
-      if hasNotes {
-          if let varSizenotes = notes?.computeMessageSize(6) {
-              serialize_size += varSizenotes
-          }
+      for oneElementnotes in notes {
+          serialize_size += oneElementnotes.computeMessageSize(6)
       }
-      if hasTags {
-          if let varSizetags = tags?.computeMessageSize(7) {
-              serialize_size += varSizetags
-          }
+      for oneElementtags in tags {
+          serialize_size += oneElementtags.computeMessageSize(7)
       }
-      if hasIdentities {
-          if let varSizeidentities = identities?.computeMessageSize(8) {
-              serialize_size += varSizeidentities
-          }
+      for oneElementidentities in identities {
+          serialize_size += oneElementidentities.computeMessageSize(8)
       }
-      if hasDirectReports {
-          if let varSizedirectReports = directReports?.computeMessageSize(9) {
-              serialize_size += varSizedirectReports
-          }
+      for oneElementdirectReports in directReports {
+          serialize_size += oneElementdirectReports.computeMessageSize(9)
       }
       if hasResume {
           if let varSizeresume = resume?.computeMessageSize(10) {
@@ -547,25 +531,33 @@ public extension Services.Profile.Actions.GetExtendedProfile {
         team?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
-      if hasNotes {
-        output += "\(indent) notes {\n"
-        notes?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
+      var notesElementIndex:Int = 0
+      for oneElementnotes in notes {
+          output += "\(indent) notes[\(notesElementIndex)] {\n"
+          oneElementnotes.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          notesElementIndex++
       }
-      if hasTags {
-        output += "\(indent) tags {\n"
-        tags?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
+      var tagsElementIndex:Int = 0
+      for oneElementtags in tags {
+          output += "\(indent) tags[\(tagsElementIndex)] {\n"
+          oneElementtags.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          tagsElementIndex++
       }
-      if hasIdentities {
-        output += "\(indent) identities {\n"
-        identities?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
+      var identitiesElementIndex:Int = 0
+      for oneElementidentities in identities {
+          output += "\(indent) identities[\(identitiesElementIndex)] {\n"
+          oneElementidentities.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          identitiesElementIndex++
       }
-      if hasDirectReports {
-        output += "\(indent) directReports {\n"
-        directReports?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
+      var directReportsElementIndex:Int = 0
+      for oneElementdirectReports in directReports {
+          output += "\(indent) directReports[\(directReportsElementIndex)] {\n"
+          oneElementdirectReports.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          directReportsElementIndex++
       }
       if hasResume {
         output += "\(indent) resume {\n"
@@ -605,25 +597,17 @@ public extension Services.Profile.Actions.GetExtendedProfile {
                     hashCode = (hashCode &* 31) &+ hashValueteam
                 }
             }
-            if hasNotes {
-                if let hashValuenotes = notes?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuenotes
-                }
+            for oneElementnotes in notes {
+                hashCode = (hashCode &* 31) &+ oneElementnotes.hashValue
             }
-            if hasTags {
-                if let hashValuetags = tags?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuetags
-                }
+            for oneElementtags in tags {
+                hashCode = (hashCode &* 31) &+ oneElementtags.hashValue
             }
-            if hasIdentities {
-                if let hashValueidentities = identities?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValueidentities
-                }
+            for oneElementidentities in identities {
+                hashCode = (hashCode &* 31) &+ oneElementidentities.hashValue
             }
-            if hasDirectReports {
-                if let hashValuedirectReports = directReports?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuedirectReports
-                }
+            for oneElementdirectReports in directReports {
+                hashCode = (hashCode &* 31) &+ oneElementdirectReports.hashValue
             }
             if hasResume {
                 if let hashValueresume = resume?.hashValue {
@@ -814,132 +798,68 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       builderResult.team = nil
       return self
     }
-    public var hasNotes:Bool {
-         get {
-             return builderResult.hasNotes
-         }
-    }
-    public var notes:Services.Note.Containers.Note.NoteV1! {
+    public var notes:Array<Services.Note.Containers.Note.NoteV1> {
          get {
              return builderResult.notes
          }
          set (value) {
-             builderResult.hasNotes = true
              builderResult.notes = value
          }
     }
-    public func setNotes(value:Services.Note.Containers.Note.NoteV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setNotes(value:Array<Services.Note.Containers.Note.NoteV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.notes = value
       return self
     }
-    public func mergeNotes(value:Services.Note.Containers.Note.NoteV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      if (builderResult.hasNotes) {
-        builderResult.notes = Services.Note.Containers.Note.NoteV1.builderWithPrototype(builderResult.notes).mergeFrom(value).buildPartial()
-      } else {
-        builderResult.notes = value
-      }
-      builderResult.hasNotes = true
-      return self
-    }
     public func clearNotes() -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      builderResult.hasNotes = false
-      builderResult.notes = nil
+      builderResult.notes.removeAll(keepCapacity: false)
       return self
     }
-    public var hasTags:Bool {
-         get {
-             return builderResult.hasTags
-         }
-    }
-    public var tags:Services.Profile.Containers.Tag.TagV1! {
+    public var tags:Array<Services.Profile.Containers.Tag.TagV1> {
          get {
              return builderResult.tags
          }
          set (value) {
-             builderResult.hasTags = true
              builderResult.tags = value
          }
     }
-    public func setTags(value:Services.Profile.Containers.Tag.TagV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setTags(value:Array<Services.Profile.Containers.Tag.TagV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.tags = value
       return self
     }
-    public func mergeTags(value:Services.Profile.Containers.Tag.TagV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      if (builderResult.hasTags) {
-        builderResult.tags = Services.Profile.Containers.Tag.TagV1.builderWithPrototype(builderResult.tags).mergeFrom(value).buildPartial()
-      } else {
-        builderResult.tags = value
-      }
-      builderResult.hasTags = true
-      return self
-    }
     public func clearTags() -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      builderResult.hasTags = false
-      builderResult.tags = nil
+      builderResult.tags.removeAll(keepCapacity: false)
       return self
     }
-    public var hasIdentities:Bool {
-         get {
-             return builderResult.hasIdentities
-         }
-    }
-    public var identities:Services.User.Containers.Identity.IdentityV1! {
+    public var identities:Array<Services.User.Containers.Identity.IdentityV1> {
          get {
              return builderResult.identities
          }
          set (value) {
-             builderResult.hasIdentities = true
              builderResult.identities = value
          }
     }
-    public func setIdentities(value:Services.User.Containers.Identity.IdentityV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setIdentities(value:Array<Services.User.Containers.Identity.IdentityV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.identities = value
       return self
     }
-    public func mergeIdentities(value:Services.User.Containers.Identity.IdentityV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      if (builderResult.hasIdentities) {
-        builderResult.identities = Services.User.Containers.Identity.IdentityV1.builderWithPrototype(builderResult.identities).mergeFrom(value).buildPartial()
-      } else {
-        builderResult.identities = value
-      }
-      builderResult.hasIdentities = true
-      return self
-    }
     public func clearIdentities() -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      builderResult.hasIdentities = false
-      builderResult.identities = nil
+      builderResult.identities.removeAll(keepCapacity: false)
       return self
     }
-    public var hasDirectReports:Bool {
-         get {
-             return builderResult.hasDirectReports
-         }
-    }
-    public var directReports:Services.Profile.Containers.Profile.ProfileV1! {
+    public var directReports:Array<Services.Profile.Containers.Profile.ProfileV1> {
          get {
              return builderResult.directReports
          }
          set (value) {
-             builderResult.hasDirectReports = true
              builderResult.directReports = value
          }
     }
-    public func setDirectReports(value:Services.Profile.Containers.Profile.ProfileV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setDirectReports(value:Array<Services.Profile.Containers.Profile.ProfileV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.directReports = value
       return self
     }
-    public func mergeDirectReports(value:Services.Profile.Containers.Profile.ProfileV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      if (builderResult.hasDirectReports) {
-        builderResult.directReports = Services.Profile.Containers.Profile.ProfileV1.builderWithPrototype(builderResult.directReports).mergeFrom(value).buildPartial()
-      } else {
-        builderResult.directReports = value
-      }
-      builderResult.hasDirectReports = true
-      return self
-    }
     public func clearDirectReports() -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      builderResult.hasDirectReports = false
-      builderResult.directReports = nil
+      builderResult.directReports.removeAll(keepCapacity: false)
       return self
     }
     public var hasResume:Bool {
@@ -1045,17 +965,17 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       if (other.hasTeam) {
           mergeTeam(other.team)
       }
-      if (other.hasNotes) {
-          mergeNotes(other.notes)
+      if !other.notes.isEmpty  {
+         builderResult.notes += other.notes
       }
-      if (other.hasTags) {
-          mergeTags(other.tags)
+      if !other.tags.isEmpty  {
+         builderResult.tags += other.tags
       }
-      if (other.hasIdentities) {
-          mergeIdentities(other.identities)
+      if !other.identities.isEmpty  {
+         builderResult.identities += other.identities
       }
-      if (other.hasDirectReports) {
-          mergeDirectReports(other.directReports)
+      if !other.directReports.isEmpty  {
+         builderResult.directReports += other.directReports
       }
       if (other.hasResume) {
           mergeResume(other.resume)
@@ -1114,36 +1034,24 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           team = subBuilder.buildPartial()
 
         case 50 :
-          var subBuilder:Services.Note.Containers.Note.NoteV1Builder = Services.Note.Containers.Note.NoteV1.builder()
-          if hasNotes {
-            subBuilder.mergeFrom(notes)
-          }
-          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-          notes = subBuilder.buildPartial()
+          var subBuilder = Services.Note.Containers.Note.NoteV1.builder()
+          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+          notes += [subBuilder.buildPartial()]
 
         case 58 :
-          var subBuilder:Services.Profile.Containers.Tag.TagV1Builder = Services.Profile.Containers.Tag.TagV1.builder()
-          if hasTags {
-            subBuilder.mergeFrom(tags)
-          }
-          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-          tags = subBuilder.buildPartial()
+          var subBuilder = Services.Profile.Containers.Tag.TagV1.builder()
+          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+          tags += [subBuilder.buildPartial()]
 
         case 66 :
-          var subBuilder:Services.User.Containers.Identity.IdentityV1Builder = Services.User.Containers.Identity.IdentityV1.builder()
-          if hasIdentities {
-            subBuilder.mergeFrom(identities)
-          }
-          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-          identities = subBuilder.buildPartial()
+          var subBuilder = Services.User.Containers.Identity.IdentityV1.builder()
+          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+          identities += [subBuilder.buildPartial()]
 
         case 74 :
-          var subBuilder:Services.Profile.Containers.Profile.ProfileV1Builder = Services.Profile.Containers.Profile.ProfileV1.builder()
-          if hasDirectReports {
-            subBuilder.mergeFrom(directReports)
-          }
-          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-          directReports = subBuilder.buildPartial()
+          var subBuilder = Services.Profile.Containers.Profile.ProfileV1.builder()
+          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+          directReports += [subBuilder.buildPartial()]
 
         case 82 :
           var subBuilder:Services.Resume.Containers.Resume.ResumeV1Builder = Services.Resume.Containers.Resume.ResumeV1.builder()
