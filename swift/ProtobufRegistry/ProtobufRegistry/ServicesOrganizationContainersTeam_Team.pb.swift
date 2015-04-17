@@ -11,7 +11,7 @@ public func == (lhs: Services.Organization.Containers.Team.PathPartV1, rhs: Serv
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
-  fieldCheck = fieldCheck && (lhs.hasOwnerProfileId == rhs.hasOwnerProfileId) && (!lhs.hasOwnerProfileId || lhs.ownerProfileId == rhs.ownerProfileId)
+  fieldCheck = fieldCheck && (lhs.hasOwnerId == rhs.hasOwnerId) && (!lhs.hasOwnerId || lhs.ownerId == rhs.ownerId)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -23,7 +23,7 @@ public func == (lhs: Services.Organization.Containers.Team.TeamV1, rhs: Services
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
-  fieldCheck = fieldCheck && (lhs.hasOwnerProfileId == rhs.hasOwnerProfileId) && (!lhs.hasOwnerProfileId || lhs.ownerProfileId == rhs.ownerProfileId)
+  fieldCheck = fieldCheck && (lhs.hasOwnerId == rhs.hasOwnerId) && (!lhs.hasOwnerId || lhs.ownerId == rhs.ownerId)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = fieldCheck && (lhs.path == rhs.path)
   fieldCheck = fieldCheck && (lhs.hasDepartment == rhs.hasDepartment) && (!lhs.hasDepartment || lhs.department == rhs.department)
@@ -67,7 +67,7 @@ public extension Services.Organization.Containers.Team {
            case "version": return version
            case "id": return id
            case "name": return name
-           case "ownerProfileId": return ownerProfileId
+           case "ownerId": return ownerId
            default: return nil
            }
     }
@@ -81,8 +81,8 @@ public extension Services.Organization.Containers.Team {
     public private(set) var hasName:Bool = false
     public private(set) var name:String = ""
 
-    public private(set) var hasOwnerProfileId:Bool = false
-    public private(set) var ownerProfileId:String = ""
+    public private(set) var hasOwnerId:Bool = false
+    public private(set) var ownerId:String = ""
 
     required public init() {
          super.init()
@@ -100,8 +100,8 @@ public extension Services.Organization.Containers.Team {
       if hasName {
         output.writeString(3, value:name)
       }
-      if hasOwnerProfileId {
-        output.writeString(4, value:ownerProfileId)
+      if hasOwnerId {
+        output.writeString(4, value:ownerId)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -121,8 +121,8 @@ public extension Services.Organization.Containers.Team {
       if hasName {
         serialize_size += name.computeStringSize(3)
       }
-      if hasOwnerProfileId {
-        serialize_size += ownerProfileId.computeStringSize(4)
+      if hasOwnerId {
+        serialize_size += ownerId.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -174,8 +174,8 @@ public extension Services.Organization.Containers.Team {
       if hasName {
         output += "\(indent) name: \(name) \n"
       }
-      if hasOwnerProfileId {
-        output += "\(indent) ownerProfileId: \(ownerProfileId) \n"
+      if hasOwnerId {
+        output += "\(indent) ownerId: \(ownerId) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -191,8 +191,8 @@ public extension Services.Organization.Containers.Team {
             if hasName {
                hashCode = (hashCode &* 31) &+ name.hashValue
             }
-            if hasOwnerProfileId {
-               hashCode = (hashCode &* 31) &+ ownerProfileId.hashValue
+            if hasOwnerId {
+               hashCode = (hashCode &* 31) &+ ownerId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -291,27 +291,27 @@ public extension Services.Organization.Containers.Team {
          builderResult.name = ""
          return self
     }
-    public var hasOwnerProfileId:Bool {
+    public var hasOwnerId:Bool {
          get {
-              return builderResult.hasOwnerProfileId
+              return builderResult.hasOwnerId
          }
     }
-    public var ownerProfileId:String {
+    public var ownerId:String {
          get {
-              return builderResult.ownerProfileId
+              return builderResult.ownerId
          }
          set (value) {
-             builderResult.hasOwnerProfileId = true
-             builderResult.ownerProfileId = value
+             builderResult.hasOwnerId = true
+             builderResult.ownerId = value
          }
     }
-    public func setOwnerProfileId(value:String)-> Services.Organization.Containers.Team.PathPartV1Builder {
-      self.ownerProfileId = value
+    public func setOwnerId(value:String)-> Services.Organization.Containers.Team.PathPartV1Builder {
+      self.ownerId = value
       return self
     }
-    public func clearOwnerProfileId() -> Services.Organization.Containers.Team.PathPartV1Builder{
-         builderResult.hasOwnerProfileId = false
-         builderResult.ownerProfileId = ""
+    public func clearOwnerId() -> Services.Organization.Containers.Team.PathPartV1Builder{
+         builderResult.hasOwnerId = false
+         builderResult.ownerId = ""
          return self
     }
     override public var internalGetResult:GeneratedMessage {
@@ -347,8 +347,8 @@ public extension Services.Organization.Containers.Team {
       if other.hasName {
            name = other.name
       }
-      if other.hasOwnerProfileId {
-           ownerProfileId = other.ownerProfileId
+      if other.hasOwnerId {
+           ownerId = other.ownerId
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -375,7 +375,7 @@ public extension Services.Organization.Containers.Team {
           name = input.readString()
 
         case 34 :
-          ownerProfileId = input.readString()
+          ownerId = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -393,7 +393,7 @@ public extension Services.Organization.Containers.Team {
            case "version": return version
            case "id": return id
            case "name": return name
-           case "ownerProfileId": return ownerProfileId
+           case "ownerId": return ownerId
            case "organizationId": return organizationId
            case "department": return department
            case "profileCount": return profileCount
@@ -410,8 +410,8 @@ public extension Services.Organization.Containers.Team {
     public private(set) var hasName:Bool = false
     public private(set) var name:String = ""
 
-    public private(set) var hasOwnerProfileId:Bool = false
-    public private(set) var ownerProfileId:String = ""
+    public private(set) var hasOwnerId:Bool = false
+    public private(set) var ownerId:String = ""
 
     public private(set) var hasOrganizationId:Bool = false
     public private(set) var organizationId:String = ""
@@ -439,8 +439,8 @@ public extension Services.Organization.Containers.Team {
       if hasName {
         output.writeString(3, value:name)
       }
-      if hasOwnerProfileId {
-        output.writeString(4, value:ownerProfileId)
+      if hasOwnerId {
+        output.writeString(4, value:ownerId)
       }
       if hasOrganizationId {
         output.writeString(5, value:organizationId)
@@ -472,8 +472,8 @@ public extension Services.Organization.Containers.Team {
       if hasName {
         serialize_size += name.computeStringSize(3)
       }
-      if hasOwnerProfileId {
-        serialize_size += ownerProfileId.computeStringSize(4)
+      if hasOwnerId {
+        serialize_size += ownerId.computeStringSize(4)
       }
       if hasOrganizationId {
         serialize_size += organizationId.computeStringSize(5)
@@ -537,8 +537,8 @@ public extension Services.Organization.Containers.Team {
       if hasName {
         output += "\(indent) name: \(name) \n"
       }
-      if hasOwnerProfileId {
-        output += "\(indent) ownerProfileId: \(ownerProfileId) \n"
+      if hasOwnerId {
+        output += "\(indent) ownerId: \(ownerId) \n"
       }
       if hasOrganizationId {
         output += "\(indent) organizationId: \(organizationId) \n"
@@ -570,8 +570,8 @@ public extension Services.Organization.Containers.Team {
             if hasName {
                hashCode = (hashCode &* 31) &+ name.hashValue
             }
-            if hasOwnerProfileId {
-               hashCode = (hashCode &* 31) &+ ownerProfileId.hashValue
+            if hasOwnerId {
+               hashCode = (hashCode &* 31) &+ ownerId.hashValue
             }
             if hasOrganizationId {
                hashCode = (hashCode &* 31) &+ organizationId.hashValue
@@ -682,27 +682,27 @@ public extension Services.Organization.Containers.Team {
          builderResult.name = ""
          return self
     }
-    public var hasOwnerProfileId:Bool {
+    public var hasOwnerId:Bool {
          get {
-              return builderResult.hasOwnerProfileId
+              return builderResult.hasOwnerId
          }
     }
-    public var ownerProfileId:String {
+    public var ownerId:String {
          get {
-              return builderResult.ownerProfileId
+              return builderResult.ownerId
          }
          set (value) {
-             builderResult.hasOwnerProfileId = true
-             builderResult.ownerProfileId = value
+             builderResult.hasOwnerId = true
+             builderResult.ownerId = value
          }
     }
-    public func setOwnerProfileId(value:String)-> Services.Organization.Containers.Team.TeamV1Builder {
-      self.ownerProfileId = value
+    public func setOwnerId(value:String)-> Services.Organization.Containers.Team.TeamV1Builder {
+      self.ownerId = value
       return self
     }
-    public func clearOwnerProfileId() -> Services.Organization.Containers.Team.TeamV1Builder{
-         builderResult.hasOwnerProfileId = false
-         builderResult.ownerProfileId = ""
+    public func clearOwnerId() -> Services.Organization.Containers.Team.TeamV1Builder{
+         builderResult.hasOwnerId = false
+         builderResult.ownerId = ""
          return self
     }
     public var hasOrganizationId:Bool {
@@ -823,8 +823,8 @@ public extension Services.Organization.Containers.Team {
       if other.hasName {
            name = other.name
       }
-      if other.hasOwnerProfileId {
-           ownerProfileId = other.ownerProfileId
+      if other.hasOwnerId {
+           ownerId = other.ownerId
       }
       if other.hasOrganizationId {
            organizationId = other.organizationId
@@ -863,7 +863,7 @@ public extension Services.Organization.Containers.Team {
           name = input.readString()
 
         case 34 :
-          ownerProfileId = input.readString()
+          ownerId = input.readString()
 
         case 42 :
           organizationId = input.readString()

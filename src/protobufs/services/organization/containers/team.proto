@@ -4,14 +4,14 @@ message PathPartV1 {
     optional uint32 version = 1 [default = 1];
     optional string id = 2;
     optional string name = 3;
-    optional string owner_profile_id = 4;
+    optional string owner_id = 4;
 }
 
 message TeamV1 {
     optional uint32 version = 1 [default = 1];
     optional string id = 2;
     optional string name = 3;
-    optional string owner_profile_id = 4;
+    optional string owner_id = 4;
     optional string organization_id = 5;
     repeated PathPartV1 path = 6;
     optional string department = 7;

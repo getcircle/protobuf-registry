@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/team.proto',
   package='services.organization.containers.team',
-  serialized_pb=_b('\n5protobufs/services/organization/containers/team.proto\x12%services.organization.containers.team\"T\n\nPathPartV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x18\n\x10owner_profile_id\x18\x04 \x01(\t\"\xd5\x01\n\x06TeamV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x18\n\x10owner_profile_id\x18\x04 \x01(\t\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12?\n\x04path\x18\x06 \x03(\x0b\x32\x31.services.organization.containers.team.PathPartV1\x12\x12\n\ndepartment\x18\x07 \x01(\t\x12\x15\n\rprofile_count\x18\x08 \x01(\r\"\x8c\x01\n\x11TeamDescendantsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05\x64\x65pth\x18\x02 \x01(\r\x12\x16\n\x0eparent_team_id\x18\x03 \x01(\t\x12<\n\x05teams\x18\x04 \x03(\x0b\x32-.services.organization.containers.team.TeamV1')
+  serialized_pb=_b('\n5protobufs/services/organization/containers/team.proto\x12%services.organization.containers.team\"L\n\nPathPartV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x10\n\x08owner_id\x18\x04 \x01(\t\"\xcd\x01\n\x06TeamV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x10\n\x08owner_id\x18\x04 \x01(\t\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12?\n\x04path\x18\x06 \x03(\x0b\x32\x31.services.organization.containers.team.PathPartV1\x12\x12\n\ndepartment\x18\x07 \x01(\t\x12\x15\n\rprofile_count\x18\x08 \x01(\r\"\x8c\x01\n\x11TeamDescendantsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05\x64\x65pth\x18\x02 \x01(\r\x12\x16\n\x0eparent_team_id\x18\x03 \x01(\t\x12<\n\x05teams\x18\x04 \x03(\x0b\x32-.services.organization.containers.team.TeamV1')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -54,7 +54,7 @@ _PATHPARTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='owner_profile_id', full_name='services.organization.containers.team.PathPartV1.owner_profile_id', index=3,
+      name='owner_id', full_name='services.organization.containers.team.PathPartV1.owner_id', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -72,7 +72,7 @@ _PATHPARTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=96,
-  serialized_end=180,
+  serialized_end=172,
 )
 
 
@@ -105,7 +105,7 @@ _TEAMV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='owner_profile_id', full_name='services.organization.containers.team.TeamV1.owner_profile_id', index=3,
+      name='owner_id', full_name='services.organization.containers.team.TeamV1.owner_id', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -150,8 +150,8 @@ _TEAMV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=183,
-  serialized_end=396,
+  serialized_start=175,
+  serialized_end=380,
 )
 
 
@@ -201,8 +201,8 @@ _TEAMDESCENDANTSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=399,
-  serialized_end=539,
+  serialized_start=383,
+  serialized_end=523,
 )
 
 _TEAMV1.fields_by_name['path'].message_type = _PATHPARTV1
