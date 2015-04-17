@@ -1,0 +1,25 @@
+package services.registry.requests;
+
+import 'google/protobuf/swift-descriptor.proto';
+option (.google.protobuf.swift_file_options).entities_access_control = PublicEntities;
+option (.google.protobuf.swift_file_options).compile_for_framework = false;
+
+import "service_protobufs/soa.proto";
+
+import "protobufs/services/organization/actions/create_organization.proto";
+import "protobufs/services/organization/actions/get_organization.proto";
+
+import "protobufs/services/profile/actions/get_extended_profile.proto";
+
+message OrganizationService {
+    extend soa.ActionRequestParamsV1 {
+        optional services.organization.actions.create_organization.RequestV1 create_organization_v1 = 200;
+        optional services.organization.actions.get_organization.RequestV1 get_organization_v1 = 201;
+    }
+}
+
+message ProfileService {
+    extend soa.ActionRequestParamsV1 {
+        optional services.profile.actions.get_extended_profile.RequestV1 get_extended_profile_v1 = 300;
+    }
+}

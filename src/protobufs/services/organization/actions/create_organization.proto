@@ -1,6 +1,6 @@
 package services.organization.actions.create_organization;
 
-import 'google/protobuf/swift-descriptor.proto';
+import "google/protobuf/swift-descriptor.proto";
 option (.google.protobuf.swift_file_options).entities_access_control = PublicEntities;
 option (.google.protobuf.swift_file_options).compile_for_framework = false;
 

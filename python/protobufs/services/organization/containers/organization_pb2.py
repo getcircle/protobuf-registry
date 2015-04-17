@@ -13,15 +13,13 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import google.protobuf.swift_descriptor_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/organization.proto',
   package='services.organization.containers.organization',
-  serialized_pb=_b('\n=protobufs/services/organization/containers/organization.proto\x12-services.organization.containers.organization\x1a&google/protobuf/swift-descriptor.proto\"a\n\x0eOrganizationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0e\n\x06\x64omain\x18\x04 \x01(\t\x12\x11\n\timage_url\x18\x05 \x01(\tB\x0e\xf2\xaa\xb6\x13\x02\x10\x01\xf2\xaa\xb6\x13\x02\x18\x00')
-  ,
-  dependencies=[google.protobuf.swift_descriptor_pb2.DESCRIPTOR,])
+  serialized_pb=_b('\n=protobufs/services/organization/containers/organization.proto\x12-services.organization.containers.organization\"a\n\x0eOrganizationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0e\n\x06\x64omain\x18\x04 \x01(\t\x12\x11\n\timage_url\x18\x05 \x01(\t')
+)
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -80,8 +78,8 @@ _ORGANIZATIONV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=152,
-  serialized_end=249,
+  serialized_start=112,
+  serialized_end=209,
 )
 
 DESCRIPTOR.message_types_by_name['OrganizationV1'] = _ORGANIZATIONV1
@@ -94,6 +92,4 @@ OrganizationV1 = _reflection.GeneratedProtocolMessageType('OrganizationV1', (_me
 _sym_db.RegisterMessage(OrganizationV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\362\252\266\023\002\020\001\362\252\266\023\002\030\000'))
 # @@protoc_insertion_point(module_scope)
