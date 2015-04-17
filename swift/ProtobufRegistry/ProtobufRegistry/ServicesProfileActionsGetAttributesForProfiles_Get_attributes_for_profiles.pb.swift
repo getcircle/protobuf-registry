@@ -63,7 +63,7 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
     public private(set) var hasLocationId:Bool = false
     public private(set) var locationId:String = ""
 
-    public private(set) var attributes:Array<Services.Profile.Containers.Profile.AttributeV1>  = Array<Services.Profile.Containers.Profile.AttributeV1>()
+    public private(set) var attributes:Array<String> = Array<String>()
     required public init() {
          super.init()
     }
@@ -74,8 +74,10 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
       if hasVersion {
         output.writeUInt32(1, value:version)
       }
-      for oneElementattributes in attributes {
-          output.writeMessage(2, value:oneElementattributes)
+      if !attributes.isEmpty {
+        for oneValueattributes in attributes {
+          output.writeString(2, value:oneValueattributes)
+        }
       }
       if hasDistinct {
         output.writeBool(3, value:distinct)
@@ -95,9 +97,12 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
-      for oneElementattributes in attributes {
-          serialize_size += oneElementattributes.computeMessageSize(2)
+      var dataSizeAttributes:Int32 = 0
+      for oneValueattributes in attributes {
+          dataSizeAttributes += oneValueattributes.computeStringSizeNoTag()
       }
+      serialize_size += dataSizeAttributes
+      serialize_size += 1 * Int32(attributes.count)
       if hasDistinct {
         serialize_size += distinct.computeBoolSize(3)
       }
@@ -149,10 +154,8 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
         output += "\(indent) version: \(version) \n"
       }
       var attributesElementIndex:Int = 0
-      for oneElementattributes in attributes {
-          output += "\(indent) attributes[\(attributesElementIndex)] {\n"
-          oneElementattributes.writeDescriptionTo(&output, indent:"\(indent)  ")
-          output += "\(indent)}\n"
+      for oneValueattributes in attributes  {
+          output += "\(indent) attributes[\(attributesElementIndex)]: \(oneValueattributes)\n"
           attributesElementIndex++
       }
       if hasDistinct {
@@ -169,8 +172,8 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
             }
-            for oneElementattributes in attributes {
-                hashCode = (hashCode &* 31) &+ oneElementattributes.hashValue
+            for oneValueattributes in attributes {
+                hashCode = (hashCode &* 31) &+ oneValueattributes.hashValue
             }
             if hasDistinct {
                hashCode = (hashCode &* 31) &+ distinct.hashValue
@@ -229,21 +232,21 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
          builderResult.version = UInt32(1)
          return self
     }
-    public var attributes:Array<Services.Profile.Containers.Profile.AttributeV1> {
+    public var attributes:Array<String> {
          get {
              return builderResult.attributes
          }
-         set (value) {
-             builderResult.attributes = value
+         set (array) {
+             builderResult.attributes = array
          }
     }
-    public func setAttributes(value:Array<Services.Profile.Containers.Profile.AttributeV1>)-> Services.Profile.Actions.GetAttributesForProfiles.RequestV1Builder {
+    public func setAttributes(value:Array<String>)-> Services.Profile.Actions.GetAttributesForProfiles.RequestV1Builder {
       self.attributes = value
       return self
     }
     public func clearAttributes() -> Services.Profile.Actions.GetAttributesForProfiles.RequestV1Builder {
-      builderResult.attributes.removeAll(keepCapacity: false)
-      return self
+       builderResult.attributes.removeAll(keepCapacity: false)
+       return self
     }
     public var hasDistinct:Bool {
          get {
@@ -318,8 +321,8 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
       if other.hasVersion {
            version = other.version
       }
-      if !other.attributes.isEmpty  {
-         builderResult.attributes += other.attributes
+      if !other.attributes.isEmpty {
+          builderResult.attributes += other.attributes
       }
       if other.hasDistinct {
            distinct = other.distinct
@@ -346,9 +349,7 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Profile.Containers.Profile.AttributeV1.builder()
-          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-          attributes += [subBuilder.buildPartial()]
+          attributes += [input.readString()]
 
         case 24 :
           distinct = input.readBool()
