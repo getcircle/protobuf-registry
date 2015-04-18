@@ -3,7 +3,7 @@
 import Foundation
 public extension Services.Registry{ public struct Responses { }}
 
-public func == (lhs: Services.Registry.Responses.UserService, rhs: Services.Registry.Responses.UserService) -> Bool {
+public func == (lhs: Services.Registry.Responses.User, rhs: Services.Registry.Responses.User) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -11,7 +11,7 @@ public func == (lhs: Services.Registry.Responses.UserService, rhs: Services.Regi
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: Services.Registry.Responses.OrganizationService, rhs: Services.Registry.Responses.OrganizationService) -> Bool {
+public func == (lhs: Services.Registry.Responses.Organization, rhs: Services.Registry.Responses.Organization) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -19,7 +19,7 @@ public func == (lhs: Services.Registry.Responses.OrganizationService, rhs: Servi
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: Services.Registry.Responses.ProfileService, rhs: Services.Registry.Responses.ProfileService) -> Bool {
+public func == (lhs: Services.Registry.Responses.Profile, rhs: Services.Registry.Responses.Profile) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -27,7 +27,7 @@ public func == (lhs: Services.Registry.Responses.ProfileService, rhs: Services.R
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: Services.Registry.Responses.SearchService, rhs: Services.Registry.Responses.SearchService) -> Bool {
+public func == (lhs: Services.Registry.Responses.Search, rhs: Services.Registry.Responses.Search) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -35,7 +35,7 @@ public func == (lhs: Services.Registry.Responses.SearchService, rhs: Services.Re
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: Services.Registry.Responses.FeedService, rhs: Services.Registry.Responses.FeedService) -> Bool {
+public func == (lhs: Services.Registry.Responses.Feed, rhs: Services.Registry.Responses.Feed) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -43,7 +43,7 @@ public func == (lhs: Services.Registry.Responses.FeedService, rhs: Services.Regi
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: Services.Registry.Responses.MediaService, rhs: Services.Registry.Responses.MediaService) -> Bool {
+public func == (lhs: Services.Registry.Responses.Media, rhs: Services.Registry.Responses.Media) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -51,7 +51,7 @@ public func == (lhs: Services.Registry.Responses.MediaService, rhs: Services.Reg
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: Services.Registry.Responses.NoteService, rhs: Services.Registry.Responses.NoteService) -> Bool {
+public func == (lhs: Services.Registry.Responses.Note, rhs: Services.Registry.Responses.Note) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -59,7 +59,7 @@ public func == (lhs: Services.Registry.Responses.NoteService, rhs: Services.Regi
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: Services.Registry.Responses.ResumeService, rhs: Services.Registry.Responses.ResumeService) -> Bool {
+public func == (lhs: Services.Registry.Responses.Resume, rhs: Services.Registry.Responses.Resume) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -67,7 +67,7 @@ public func == (lhs: Services.Registry.Responses.ResumeService, rhs: Services.Re
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: Services.Registry.Responses.AppreciationService, rhs: Services.Registry.Responses.AppreciationService) -> Bool {
+public func == (lhs: Services.Registry.Responses.Appreciation, rhs: Services.Registry.Responses.Appreciation) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -75,334 +75,334 @@ public func == (lhs: Services.Registry.Responses.AppreciationService, rhs: Servi
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public var ServicesRegistryResponsesUserServicecreateUser:ConcreateExtensionField {
+public var ServicesRegistryResponsesUsercreateUser:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicecreateUserStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsercreateUserStatic
    }
 }
-public var ServicesRegistryResponsesUserServicevalidUser:ConcreateExtensionField {
+public var ServicesRegistryResponsesUservalidUser:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicevalidUserStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUservalidUserStatic
    }
 }
-public var ServicesRegistryResponsesUserServiceauthenticateUser:ConcreateExtensionField {
+public var ServicesRegistryResponsesUserauthenticateUser:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServiceauthenticateUserStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserauthenticateUserStatic
    }
 }
-public var ServicesRegistryResponsesUserServicegetUser:ConcreateExtensionField {
+public var ServicesRegistryResponsesUsergetUser:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicegetUserStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsergetUserStatic
    }
 }
-public var ServicesRegistryResponsesUserServicesendVerificationCode:ConcreateExtensionField {
+public var ServicesRegistryResponsesUsersendVerificationCode:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicesendVerificationCodeStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsersendVerificationCodeStatic
    }
 }
-public var ServicesRegistryResponsesUserServiceverifyVerificationCode:ConcreateExtensionField {
+public var ServicesRegistryResponsesUserverifyVerificationCode:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServiceverifyVerificationCodeStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserverifyVerificationCodeStatic
    }
 }
-public var ServicesRegistryResponsesUserServiceupdateUser:ConcreateExtensionField {
+public var ServicesRegistryResponsesUserupdateUser:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServiceupdateUserStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserupdateUserStatic
    }
 }
-public var ServicesRegistryResponsesUserServicegetAuthorizationInstructions:ConcreateExtensionField {
+public var ServicesRegistryResponsesUsergetAuthorizationInstructions:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicegetAuthorizationInstructionsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsergetAuthorizationInstructionsStatic
    }
 }
-public var ServicesRegistryResponsesUserServicecompleteAuthorization:ConcreateExtensionField {
+public var ServicesRegistryResponsesUsercompleteAuthorization:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicecompleteAuthorizationStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsercompleteAuthorizationStatic
    }
 }
-public var ServicesRegistryResponsesUserServicegetIdentities:ConcreateExtensionField {
+public var ServicesRegistryResponsesUsergetIdentities:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicegetIdentitiesStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsergetIdentitiesStatic
    }
 }
-public var ServicesRegistryResponsesUserServicebulkCreateUsers:ConcreateExtensionField {
+public var ServicesRegistryResponsesUserbulkCreateUsers:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicebulkCreateUsersStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserbulkCreateUsersStatic
    }
 }
-public var ServicesRegistryResponsesUserServicerecordDevice:ConcreateExtensionField {
+public var ServicesRegistryResponsesUserrecordDevice:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicerecordDeviceStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserrecordDeviceStatic
    }
 }
-public var ServicesRegistryResponsesUserServicerequestAccess:ConcreateExtensionField {
+public var ServicesRegistryResponsesUserrequestAccess:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicerequestAccessStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserrequestAccessStatic
    }
 }
-public var ServicesRegistryResponsesUserServicedeleteIdentity:ConcreateExtensionField {
+public var ServicesRegistryResponsesUserdeleteIdentity:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserServicedeleteIdentityStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserdeleteIdentityStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicecreateOrganization:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationcreateOrganization:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicecreateOrganizationStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationcreateOrganizationStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicegetOrganization:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationgetOrganization:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicegetOrganizationStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetOrganizationStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicecreateTeam:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationcreateTeam:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicecreateTeamStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationcreateTeamStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicecreateAddress:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationcreateAddress:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicecreateAddressStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationcreateAddressStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicedeleteAddress:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationdeleteAddress:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicedeleteAddressStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationdeleteAddressStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicegetAddress:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationgetAddress:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicegetAddressStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetAddressStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicegetTeam:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationgetTeam:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicegetTeamStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetTeamStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicegetTeams:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationgetTeams:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicegetTeamsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetTeamsStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicegetAddresses:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationgetAddresses:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicegetAddressesStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetAddressesStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicegetTeamDescendants:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationgetTeamDescendants:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicegetTeamDescendantsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetTeamDescendantsStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicegetTopLevelTeam:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationgetTopLevelTeam:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicegetTopLevelTeamStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetTopLevelTeamStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicecreateLocation:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationcreateLocation:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicecreateLocationStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationcreateLocationStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServiceupdateLocation:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationupdateLocation:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServiceupdateLocationStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationupdateLocationStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicegetLocations:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationgetLocations:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicegetLocationsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetLocationsStatic
    }
 }
-public var ServicesRegistryResponsesOrganizationServicegetLocation:ConcreateExtensionField {
+public var ServicesRegistryResponsesOrganizationgetLocation:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationServicegetLocationStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetLocationStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicecreateProfile:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilecreateProfile:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicecreateProfileStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilecreateProfileStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetExtendedProfile:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetExtendedProfile:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetExtendedProfileStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetExtendedProfileStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetProfile:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetProfile:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetProfileStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetProfileStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicecreateTags:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilecreateTags:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicecreateTagsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilecreateTagsStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetTags:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetTags:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetTagsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetTagsStatic
    }
 }
-public var ServicesRegistryResponsesProfileServiceaddTags:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfileaddTags:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServiceaddTagsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileaddTagsStatic
    }
 }
-public var ServicesRegistryResponsesProfileServiceupdateProfile:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfileupdateProfile:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServiceupdateProfileStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileupdateProfileStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetProfiles:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetProfiles:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetProfilesStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetProfilesStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetDirectReports:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetDirectReports:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetDirectReportsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetDirectReportsStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetPeers:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetPeers:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetPeersStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetPeersStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetProfileStats:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetProfileStats:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetProfileStatsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetProfileStatsStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetUpcomingAnniversaries:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetUpcomingAnniversaries:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetUpcomingAnniversariesStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetUpcomingAnniversariesStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetUpcomingBirthdays:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetUpcomingBirthdays:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetUpcomingBirthdaysStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetUpcomingBirthdaysStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetRecentHires:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetRecentHires:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetRecentHiresStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetRecentHiresStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetActiveTags:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetActiveTags:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetActiveTagsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetActiveTagsStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicebulkCreateProfiles:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilebulkCreateProfiles:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicebulkCreateProfilesStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilebulkCreateProfilesStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicebulkUpdateProfiles:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilebulkUpdateProfiles:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicebulkUpdateProfilesStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilebulkUpdateProfilesStatic
    }
 }
-public var ServicesRegistryResponsesProfileServicegetAttributesForProfiles:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfilegetAttributesForProfiles:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServicegetAttributesForProfilesStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetAttributesForProfilesStatic
    }
 }
-public var ServicesRegistryResponsesProfileServiceremoveTags:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfileremoveTags:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileServiceremoveTagsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileremoveTagsStatic
    }
 }
-public var ServicesRegistryResponsesSearchServicesearch:ConcreateExtensionField {
+public var ServicesRegistryResponsesSearchsearch:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesSearchServicesearchStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesSearchsearchStatic
    }
 }
-public var ServicesRegistryResponsesFeedServicegetProfileFeed:ConcreateExtensionField {
+public var ServicesRegistryResponsesFeedgetProfileFeed:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesFeedServicegetProfileFeedStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesFeedgetProfileFeedStatic
    }
 }
-public var ServicesRegistryResponsesFeedServicegetOrganizationFeed:ConcreateExtensionField {
+public var ServicesRegistryResponsesFeedgetOrganizationFeed:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesFeedServicegetOrganizationFeedStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesFeedgetOrganizationFeedStatic
    }
 }
-public var ServicesRegistryResponsesMediaServicestartImageUpload:ConcreateExtensionField {
+public var ServicesRegistryResponsesMediastartImageUpload:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesMediaServicestartImageUploadStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesMediastartImageUploadStatic
    }
 }
-public var ServicesRegistryResponsesMediaServicecompleteImageUpload:ConcreateExtensionField {
+public var ServicesRegistryResponsesMediacompleteImageUpload:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesMediaServicecompleteImageUploadStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesMediacompleteImageUploadStatic
    }
 }
-public var ServicesRegistryResponsesNoteServicecreateNote:ConcreateExtensionField {
+public var ServicesRegistryResponsesNotecreateNote:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNoteServicecreateNoteStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNotecreateNoteStatic
    }
 }
-public var ServicesRegistryResponsesNoteServicegetNotes:ConcreateExtensionField {
+public var ServicesRegistryResponsesNotegetNotes:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNoteServicegetNotesStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNotegetNotesStatic
    }
 }
-public var ServicesRegistryResponsesNoteServicedeleteNote:ConcreateExtensionField {
+public var ServicesRegistryResponsesNotedeleteNote:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNoteServicedeleteNoteStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNotedeleteNoteStatic
    }
 }
-public var ServicesRegistryResponsesNoteServiceupdateNote:ConcreateExtensionField {
+public var ServicesRegistryResponsesNoteupdateNote:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNoteServiceupdateNoteStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNoteupdateNoteStatic
    }
 }
-public var ServicesRegistryResponsesResumeServicebulkCreateEducations:ConcreateExtensionField {
+public var ServicesRegistryResponsesResumebulkCreateEducations:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesResumeServicebulkCreateEducationsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesResumebulkCreateEducationsStatic
    }
 }
-public var ServicesRegistryResponsesResumeServicebulkCreatePositions:ConcreateExtensionField {
+public var ServicesRegistryResponsesResumebulkCreatePositions:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesResumeServicebulkCreatePositionsStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesResumebulkCreatePositionsStatic
    }
 }
-public var ServicesRegistryResponsesResumeServicecreateCompany:ConcreateExtensionField {
+public var ServicesRegistryResponsesResumecreateCompany:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesResumeServicecreateCompanyStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesResumecreateCompanyStatic
    }
 }
-public var ServicesRegistryResponsesResumeServicegetResume:ConcreateExtensionField {
+public var ServicesRegistryResponsesResumegetResume:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesResumeServicegetResumeStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesResumegetResumeStatic
    }
 }
-public var ServicesRegistryResponsesResumeServicebulkCreateCompanies:ConcreateExtensionField {
+public var ServicesRegistryResponsesResumebulkCreateCompanies:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesResumeServicebulkCreateCompaniesStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesResumebulkCreateCompaniesStatic
    }
 }
-public var ServicesRegistryResponsesAppreciationServicecreateAppreciation:ConcreateExtensionField {
+public var ServicesRegistryResponsesAppreciationcreateAppreciation:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesAppreciationServicecreateAppreciationStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesAppreciationcreateAppreciationStatic
    }
 }
-public var ServicesRegistryResponsesAppreciationServicegetAppreciation:ConcreateExtensionField {
+public var ServicesRegistryResponsesAppreciationgetAppreciation:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesAppreciationServicegetAppreciationStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesAppreciationgetAppreciationStatic
    }
 }
-public var ServicesRegistryResponsesAppreciationServicedeleteAppreciation:ConcreateExtensionField {
+public var ServicesRegistryResponsesAppreciationdeleteAppreciation:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesAppreciationServicedeleteAppreciationStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesAppreciationdeleteAppreciationStatic
    }
 }
-public var ServicesRegistryResponsesAppreciationServiceupdateAppreciation:ConcreateExtensionField {
+public var ServicesRegistryResponsesAppreciationupdateAppreciation:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesAppreciationServiceupdateAppreciationStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesAppreciationupdateAppreciationStatic
    }
 }
 public extension Services.Registry.Responses {
@@ -413,141 +413,141 @@ public extension Services.Registry.Responses {
      }
      return Static.instance
     }
-    var ServicesRegistryResponsesUserServicecreateUserStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServicevalidUserStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServiceauthenticateUserStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServicegetUserStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServicesendVerificationCodeStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServiceverifyVerificationCodeStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServiceupdateUserStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServicegetAuthorizationInstructionsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServicecompleteAuthorizationStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServicegetIdentitiesStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServicebulkCreateUsersStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServicerecordDeviceStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServicerequestAccessStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesUserServicedeleteIdentityStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicecreateOrganizationStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicegetOrganizationStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicecreateTeamStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicecreateAddressStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicedeleteAddressStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicegetAddressStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicegetTeamStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicegetTeamsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicegetAddressesStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicegetTeamDescendantsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicegetTopLevelTeamStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicecreateLocationStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServiceupdateLocationStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicegetLocationsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesOrganizationServicegetLocationStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicecreateProfileStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetExtendedProfileStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetProfileStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicecreateTagsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetTagsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServiceaddTagsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServiceupdateProfileStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetProfilesStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetDirectReportsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetPeersStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetProfileStatsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetUpcomingAnniversariesStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetUpcomingBirthdaysStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetRecentHiresStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetActiveTagsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicebulkCreateProfilesStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicebulkUpdateProfilesStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServicegetAttributesForProfilesStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfileServiceremoveTagsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesSearchServicesearchStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesFeedServicegetProfileFeedStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesFeedServicegetOrganizationFeedStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesMediaServicestartImageUploadStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesMediaServicecompleteImageUploadStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesNoteServicecreateNoteStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesNoteServicegetNotesStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesNoteServicedeleteNoteStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesNoteServiceupdateNoteStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesResumeServicebulkCreateEducationsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesResumeServicebulkCreatePositionsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesResumeServicecreateCompanyStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesResumeServicegetResumeStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesResumeServicebulkCreateCompaniesStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesAppreciationServicecreateAppreciationStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesAppreciationServicegetAppreciationStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesAppreciationServicedeleteAppreciationStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesAppreciationServiceupdateAppreciationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUsercreateUserStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUservalidUserStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUserauthenticateUserStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUsergetUserStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUsersendVerificationCodeStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUserverifyVerificationCodeStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUserupdateUserStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUsergetAuthorizationInstructionsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUsercompleteAuthorizationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUsergetIdentitiesStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUserbulkCreateUsersStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUserrecordDeviceStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUserrequestAccessStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUserdeleteIdentityStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationcreateOrganizationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetOrganizationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationcreateTeamStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationcreateAddressStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationdeleteAddressStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetAddressStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetTeamStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetTeamsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetAddressesStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetTeamDescendantsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetTopLevelTeamStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationcreateLocationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationupdateLocationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetLocationsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetLocationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilecreateProfileStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetExtendedProfileStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetProfileStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilecreateTagsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetTagsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfileaddTagsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfileupdateProfileStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetProfilesStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetDirectReportsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetPeersStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetProfileStatsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetUpcomingAnniversariesStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetUpcomingBirthdaysStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetRecentHiresStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetActiveTagsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilebulkCreateProfilesStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilebulkUpdateProfilesStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfilegetAttributesForProfilesStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfileremoveTagsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesSearchsearchStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesFeedgetProfileFeedStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesFeedgetOrganizationFeedStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesMediastartImageUploadStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesMediacompleteImageUploadStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesNotecreateNoteStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesNotegetNotesStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesNotedeleteNoteStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesNoteupdateNoteStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesResumebulkCreateEducationsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesResumebulkCreatePositionsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesResumecreateCompanyStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesResumegetResumeStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesResumebulkCreateCompaniesStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesAppreciationcreateAppreciationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesAppreciationgetAppreciationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesAppreciationdeleteAppreciationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesAppreciationupdateAppreciationStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
-      ServicesRegistryResponsesUserServicecreateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 100, defaultValue:Services.User.Actions.CreateUser.ResponseV1(), messageOrGroupClass:Services.User.Actions.CreateUser.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServicevalidUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 101, defaultValue:Services.User.Actions.ValidUser.ResponseV1(), messageOrGroupClass:Services.User.Actions.ValidUser.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServiceauthenticateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 102, defaultValue:Services.User.Actions.AuthenticateUser.ResponseV1(), messageOrGroupClass:Services.User.Actions.AuthenticateUser.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServicegetUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 103, defaultValue:Services.User.Actions.GetUser.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetUser.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServicesendVerificationCodeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 104, defaultValue:Services.User.Actions.SendVerificationCode.ResponseV1(), messageOrGroupClass:Services.User.Actions.SendVerificationCode.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServiceverifyVerificationCodeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 105, defaultValue:Services.User.Actions.VerifyVerificationCode.ResponseV1(), messageOrGroupClass:Services.User.Actions.VerifyVerificationCode.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServiceupdateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 106, defaultValue:Services.User.Actions.UpdateUser.ResponseV1(), messageOrGroupClass:Services.User.Actions.UpdateUser.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServicegetAuthorizationInstructionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 107, defaultValue:Services.User.Actions.GetAuthorizationInstructions.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetAuthorizationInstructions.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServicecompleteAuthorizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 108, defaultValue:Services.User.Actions.CompleteAuthorization.ResponseV1(), messageOrGroupClass:Services.User.Actions.CompleteAuthorization.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServicegetIdentitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 109, defaultValue:Services.User.Actions.GetIdentities.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetIdentities.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServicebulkCreateUsersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 110, defaultValue:Services.User.Actions.BulkCreateUsers.ResponseV1(), messageOrGroupClass:Services.User.Actions.BulkCreateUsers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServicerecordDeviceStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 111, defaultValue:Services.User.Actions.RecordDevice.ResponseV1(), messageOrGroupClass:Services.User.Actions.RecordDevice.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServicerequestAccessStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 112, defaultValue:Services.User.Actions.RequestAccess.ResponseV1(), messageOrGroupClass:Services.User.Actions.RequestAccess.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesUserServicedeleteIdentityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 113, defaultValue:Services.User.Actions.DeleteIdentity.ResponseV1(), messageOrGroupClass:Services.User.Actions.DeleteIdentity.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicecreateOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 200, defaultValue:Services.Organization.Actions.CreateOrganization.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateOrganization.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicegetOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 201, defaultValue:Services.Organization.Actions.GetOrganization.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetOrganization.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicecreateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 202, defaultValue:Services.Organization.Actions.CreateTeam.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicecreateAddressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 203, defaultValue:Services.Organization.Actions.CreateAddress.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateAddress.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicedeleteAddressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 204, defaultValue:Services.Organization.Actions.DeleteAddress.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.DeleteAddress.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicegetAddressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 205, defaultValue:Services.Organization.Actions.GetAddress.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetAddress.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicegetTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 206, defaultValue:Services.Organization.Actions.GetTeam.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicegetTeamsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 207, defaultValue:Services.Organization.Actions.GetTeams.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTeams.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicegetAddressesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 208, defaultValue:Services.Organization.Actions.GetAddresses.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetAddresses.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicegetTeamDescendantsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 209, defaultValue:Services.Organization.Actions.GetTeamDescendants.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTeamDescendants.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicegetTopLevelTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 210, defaultValue:Services.Organization.Actions.GetTopLevelTeam.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTopLevelTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicecreateLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 211, defaultValue:Services.Organization.Actions.CreateLocation.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateLocation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServiceupdateLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 212, defaultValue:Services.Organization.Actions.UpdateLocation.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.UpdateLocation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicegetLocationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 213, defaultValue:Services.Organization.Actions.GetLocations.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetLocations.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesOrganizationServicegetLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 214, defaultValue:Services.Organization.Actions.GetLocation.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetLocation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicecreateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 300, defaultValue:Services.Profile.Actions.CreateProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.CreateProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetExtendedProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 301, defaultValue:Services.Profile.Actions.GetExtendedProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetExtendedProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 302, defaultValue:Services.Profile.Actions.GetProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicecreateTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 303, defaultValue:Services.Profile.Actions.CreateTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.CreateTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 304, defaultValue:Services.Profile.Actions.GetTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServiceaddTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 305, defaultValue:Services.Profile.Actions.AddTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.AddTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServiceupdateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 306, defaultValue:Services.Profile.Actions.UpdateProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.UpdateProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 307, defaultValue:Services.Profile.Actions.GetProfiles.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetProfiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetDirectReportsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 308, defaultValue:Services.Profile.Actions.GetDirectReports.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetDirectReports.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetPeersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 309, defaultValue:Services.Profile.Actions.GetPeers.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetPeers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetProfileStatsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 310, defaultValue:Services.Profile.Actions.GetProfileStats.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetProfileStats.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetUpcomingAnniversariesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 311, defaultValue:Services.Profile.Actions.GetUpcomingAnniversaries.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetUpcomingAnniversaries.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetUpcomingBirthdaysStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 312, defaultValue:Services.Profile.Actions.GetUpcomingBirthdays.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetUpcomingBirthdays.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetRecentHiresStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 313, defaultValue:Services.Profile.Actions.GetRecentHires.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetRecentHires.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetActiveTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 314, defaultValue:Services.Profile.Actions.GetActiveTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetActiveTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicebulkCreateProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 315, defaultValue:Services.Profile.Actions.BulkCreateProfiles.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.BulkCreateProfiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicebulkUpdateProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 316, defaultValue:Services.Profile.Actions.BulkUpdateProfiles.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.BulkUpdateProfiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServicegetAttributesForProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 317, defaultValue:Services.Profile.Actions.GetAttributesForProfiles.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetAttributesForProfiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfileServiceremoveTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 318, defaultValue:Services.Profile.Actions.RemoveTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.RemoveTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesSearchServicesearchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 400, defaultValue:Services.Search.Actions.Search.ResponseV1(), messageOrGroupClass:Services.Search.Actions.Search.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesFeedServicegetProfileFeedStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 500, defaultValue:Services.Feed.Actions.GetProfileFeed.ResponseV1(), messageOrGroupClass:Services.Feed.Actions.GetProfileFeed.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesFeedServicegetOrganizationFeedStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 501, defaultValue:Services.Feed.Actions.GetOrganizationFeed.ResponseV1(), messageOrGroupClass:Services.Feed.Actions.GetOrganizationFeed.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesMediaServicestartImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.ResponseV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesMediaServicecompleteImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.ResponseV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesNoteServicecreateNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 700, defaultValue:Services.Note.Actions.CreateNote.ResponseV1(), messageOrGroupClass:Services.Note.Actions.CreateNote.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesNoteServicegetNotesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 701, defaultValue:Services.Note.Actions.GetNotes.ResponseV1(), messageOrGroupClass:Services.Note.Actions.GetNotes.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesNoteServicedeleteNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 702, defaultValue:Services.Note.Actions.DeleteNote.ResponseV1(), messageOrGroupClass:Services.Note.Actions.DeleteNote.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesNoteServiceupdateNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 703, defaultValue:Services.Note.Actions.UpdateNote.ResponseV1(), messageOrGroupClass:Services.Note.Actions.UpdateNote.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesResumeServicebulkCreateEducationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 800, defaultValue:Services.Resume.Actions.BulkCreateEducations.ResponseV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreateEducations.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesResumeServicebulkCreatePositionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 801, defaultValue:Services.Resume.Actions.BulkCreatePositions.ResponseV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreatePositions.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesResumeServicecreateCompanyStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 802, defaultValue:Services.Resume.Actions.CreateCompany.ResponseV1(), messageOrGroupClass:Services.Resume.Actions.CreateCompany.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesResumeServicegetResumeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 803, defaultValue:Services.Resume.Actions.GetResume.ResponseV1(), messageOrGroupClass:Services.Resume.Actions.GetResume.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesResumeServicebulkCreateCompaniesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 804, defaultValue:Services.Resume.Actions.BulkCreateCompanies.ResponseV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreateCompanies.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesAppreciationServicecreateAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 900, defaultValue:Services.Appreciation.Actions.CreateAppreciation.ResponseV1(), messageOrGroupClass:Services.Appreciation.Actions.CreateAppreciation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesAppreciationServicegetAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 901, defaultValue:Services.Appreciation.Actions.GetAppreciation.ResponseV1(), messageOrGroupClass:Services.Appreciation.Actions.GetAppreciation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesAppreciationServicedeleteAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 902, defaultValue:Services.Appreciation.Actions.DeleteAppreciation.ResponseV1(), messageOrGroupClass:Services.Appreciation.Actions.DeleteAppreciation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesAppreciationServiceupdateAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 903, defaultValue:Services.Appreciation.Actions.UpdateAppreciation.ResponseV1(), messageOrGroupClass:Services.Appreciation.Actions.UpdateAppreciation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUsercreateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 100, defaultValue:Services.User.Actions.CreateUser.ResponseV1(), messageOrGroupClass:Services.User.Actions.CreateUser.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUservalidUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 101, defaultValue:Services.User.Actions.ValidUser.ResponseV1(), messageOrGroupClass:Services.User.Actions.ValidUser.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUserauthenticateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 102, defaultValue:Services.User.Actions.AuthenticateUser.ResponseV1(), messageOrGroupClass:Services.User.Actions.AuthenticateUser.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUsergetUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 103, defaultValue:Services.User.Actions.GetUser.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetUser.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUsersendVerificationCodeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 104, defaultValue:Services.User.Actions.SendVerificationCode.ResponseV1(), messageOrGroupClass:Services.User.Actions.SendVerificationCode.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUserverifyVerificationCodeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 105, defaultValue:Services.User.Actions.VerifyVerificationCode.ResponseV1(), messageOrGroupClass:Services.User.Actions.VerifyVerificationCode.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUserupdateUserStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 106, defaultValue:Services.User.Actions.UpdateUser.ResponseV1(), messageOrGroupClass:Services.User.Actions.UpdateUser.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUsergetAuthorizationInstructionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 107, defaultValue:Services.User.Actions.GetAuthorizationInstructions.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetAuthorizationInstructions.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUsercompleteAuthorizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 108, defaultValue:Services.User.Actions.CompleteAuthorization.ResponseV1(), messageOrGroupClass:Services.User.Actions.CompleteAuthorization.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUsergetIdentitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 109, defaultValue:Services.User.Actions.GetIdentities.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetIdentities.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUserbulkCreateUsersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 110, defaultValue:Services.User.Actions.BulkCreateUsers.ResponseV1(), messageOrGroupClass:Services.User.Actions.BulkCreateUsers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUserrecordDeviceStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 111, defaultValue:Services.User.Actions.RecordDevice.ResponseV1(), messageOrGroupClass:Services.User.Actions.RecordDevice.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUserrequestAccessStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 112, defaultValue:Services.User.Actions.RequestAccess.ResponseV1(), messageOrGroupClass:Services.User.Actions.RequestAccess.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUserdeleteIdentityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 113, defaultValue:Services.User.Actions.DeleteIdentity.ResponseV1(), messageOrGroupClass:Services.User.Actions.DeleteIdentity.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationcreateOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 200, defaultValue:Services.Organization.Actions.CreateOrganization.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateOrganization.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 201, defaultValue:Services.Organization.Actions.GetOrganization.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetOrganization.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationcreateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 202, defaultValue:Services.Organization.Actions.CreateTeam.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationcreateAddressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 203, defaultValue:Services.Organization.Actions.CreateAddress.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateAddress.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationdeleteAddressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 204, defaultValue:Services.Organization.Actions.DeleteAddress.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.DeleteAddress.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetAddressStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 205, defaultValue:Services.Organization.Actions.GetAddress.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetAddress.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 206, defaultValue:Services.Organization.Actions.GetTeam.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetTeamsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 207, defaultValue:Services.Organization.Actions.GetTeams.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTeams.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetAddressesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 208, defaultValue:Services.Organization.Actions.GetAddresses.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetAddresses.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetTeamDescendantsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 209, defaultValue:Services.Organization.Actions.GetTeamDescendants.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTeamDescendants.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetTopLevelTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 210, defaultValue:Services.Organization.Actions.GetTopLevelTeam.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTopLevelTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationcreateLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 211, defaultValue:Services.Organization.Actions.CreateLocation.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateLocation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationupdateLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 212, defaultValue:Services.Organization.Actions.UpdateLocation.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.UpdateLocation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetLocationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 213, defaultValue:Services.Organization.Actions.GetLocations.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetLocations.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 214, defaultValue:Services.Organization.Actions.GetLocation.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetLocation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilecreateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 300, defaultValue:Services.Profile.Actions.CreateProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.CreateProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetExtendedProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 301, defaultValue:Services.Profile.Actions.GetExtendedProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetExtendedProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 302, defaultValue:Services.Profile.Actions.GetProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilecreateTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 303, defaultValue:Services.Profile.Actions.CreateTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.CreateTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 304, defaultValue:Services.Profile.Actions.GetTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfileaddTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 305, defaultValue:Services.Profile.Actions.AddTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.AddTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfileupdateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 306, defaultValue:Services.Profile.Actions.UpdateProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.UpdateProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 307, defaultValue:Services.Profile.Actions.GetProfiles.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetProfiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetDirectReportsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 308, defaultValue:Services.Profile.Actions.GetDirectReports.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetDirectReports.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetPeersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 309, defaultValue:Services.Profile.Actions.GetPeers.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetPeers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetProfileStatsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 310, defaultValue:Services.Profile.Actions.GetProfileStats.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetProfileStats.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetUpcomingAnniversariesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 311, defaultValue:Services.Profile.Actions.GetUpcomingAnniversaries.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetUpcomingAnniversaries.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetUpcomingBirthdaysStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 312, defaultValue:Services.Profile.Actions.GetUpcomingBirthdays.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetUpcomingBirthdays.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetRecentHiresStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 313, defaultValue:Services.Profile.Actions.GetRecentHires.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetRecentHires.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetActiveTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 314, defaultValue:Services.Profile.Actions.GetActiveTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetActiveTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilebulkCreateProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 315, defaultValue:Services.Profile.Actions.BulkCreateProfiles.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.BulkCreateProfiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilebulkUpdateProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 316, defaultValue:Services.Profile.Actions.BulkUpdateProfiles.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.BulkUpdateProfiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfilegetAttributesForProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 317, defaultValue:Services.Profile.Actions.GetAttributesForProfiles.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetAttributesForProfiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfileremoveTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 318, defaultValue:Services.Profile.Actions.RemoveTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.RemoveTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesSearchsearchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 400, defaultValue:Services.Search.Actions.Search.ResponseV1(), messageOrGroupClass:Services.Search.Actions.Search.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesFeedgetProfileFeedStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 500, defaultValue:Services.Feed.Actions.GetProfileFeed.ResponseV1(), messageOrGroupClass:Services.Feed.Actions.GetProfileFeed.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesFeedgetOrganizationFeedStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 501, defaultValue:Services.Feed.Actions.GetOrganizationFeed.ResponseV1(), messageOrGroupClass:Services.Feed.Actions.GetOrganizationFeed.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesMediastartImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.ResponseV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesMediacompleteImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.ResponseV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesNotecreateNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 700, defaultValue:Services.Note.Actions.CreateNote.ResponseV1(), messageOrGroupClass:Services.Note.Actions.CreateNote.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesNotegetNotesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 701, defaultValue:Services.Note.Actions.GetNotes.ResponseV1(), messageOrGroupClass:Services.Note.Actions.GetNotes.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesNotedeleteNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 702, defaultValue:Services.Note.Actions.DeleteNote.ResponseV1(), messageOrGroupClass:Services.Note.Actions.DeleteNote.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesNoteupdateNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 703, defaultValue:Services.Note.Actions.UpdateNote.ResponseV1(), messageOrGroupClass:Services.Note.Actions.UpdateNote.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesResumebulkCreateEducationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 800, defaultValue:Services.Resume.Actions.BulkCreateEducations.ResponseV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreateEducations.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesResumebulkCreatePositionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 801, defaultValue:Services.Resume.Actions.BulkCreatePositions.ResponseV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreatePositions.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesResumecreateCompanyStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 802, defaultValue:Services.Resume.Actions.CreateCompany.ResponseV1(), messageOrGroupClass:Services.Resume.Actions.CreateCompany.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesResumegetResumeStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 803, defaultValue:Services.Resume.Actions.GetResume.ResponseV1(), messageOrGroupClass:Services.Resume.Actions.GetResume.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesResumebulkCreateCompaniesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 804, defaultValue:Services.Resume.Actions.BulkCreateCompanies.ResponseV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreateCompanies.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesAppreciationcreateAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 900, defaultValue:Services.Appreciation.Actions.CreateAppreciation.ResponseV1(), messageOrGroupClass:Services.Appreciation.Actions.CreateAppreciation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesAppreciationgetAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 901, defaultValue:Services.Appreciation.Actions.GetAppreciation.ResponseV1(), messageOrGroupClass:Services.Appreciation.Actions.GetAppreciation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesAppreciationdeleteAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 902, defaultValue:Services.Appreciation.Actions.DeleteAppreciation.ResponseV1(), messageOrGroupClass:Services.Appreciation.Actions.DeleteAppreciation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesAppreciationupdateAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 903, defaultValue:Services.Appreciation.Actions.UpdateAppreciation.ResponseV1(), messageOrGroupClass:Services.Appreciation.Actions.UpdateAppreciation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -619,76 +619,76 @@ public extension Services.Registry.Responses {
       Services.Appreciation.Actions.UpdateAppreciation.UpdateAppreciationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
-      registry.addExtension(ServicesRegistryResponsesUserServicecreateUserStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServicevalidUserStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServiceauthenticateUserStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServicegetUserStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServicesendVerificationCodeStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServiceverifyVerificationCodeStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServiceupdateUserStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServicegetAuthorizationInstructionsStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServicecompleteAuthorizationStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServicegetIdentitiesStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServicebulkCreateUsersStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServicerecordDeviceStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServicerequestAccessStatic)
-      registry.addExtension(ServicesRegistryResponsesUserServicedeleteIdentityStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicecreateOrganizationStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicegetOrganizationStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicecreateTeamStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicecreateAddressStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicedeleteAddressStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicegetAddressStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicegetTeamStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicegetTeamsStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicegetAddressesStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicegetTeamDescendantsStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicegetTopLevelTeamStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicecreateLocationStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServiceupdateLocationStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicegetLocationsStatic)
-      registry.addExtension(ServicesRegistryResponsesOrganizationServicegetLocationStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicecreateProfileStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetExtendedProfileStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetProfileStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicecreateTagsStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetTagsStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServiceaddTagsStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServiceupdateProfileStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetProfilesStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetDirectReportsStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetPeersStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetProfileStatsStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetUpcomingAnniversariesStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetUpcomingBirthdaysStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetRecentHiresStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetActiveTagsStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicebulkCreateProfilesStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicebulkUpdateProfilesStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServicegetAttributesForProfilesStatic)
-      registry.addExtension(ServicesRegistryResponsesProfileServiceremoveTagsStatic)
-      registry.addExtension(ServicesRegistryResponsesSearchServicesearchStatic)
-      registry.addExtension(ServicesRegistryResponsesFeedServicegetProfileFeedStatic)
-      registry.addExtension(ServicesRegistryResponsesFeedServicegetOrganizationFeedStatic)
-      registry.addExtension(ServicesRegistryResponsesMediaServicestartImageUploadStatic)
-      registry.addExtension(ServicesRegistryResponsesMediaServicecompleteImageUploadStatic)
-      registry.addExtension(ServicesRegistryResponsesNoteServicecreateNoteStatic)
-      registry.addExtension(ServicesRegistryResponsesNoteServicegetNotesStatic)
-      registry.addExtension(ServicesRegistryResponsesNoteServicedeleteNoteStatic)
-      registry.addExtension(ServicesRegistryResponsesNoteServiceupdateNoteStatic)
-      registry.addExtension(ServicesRegistryResponsesResumeServicebulkCreateEducationsStatic)
-      registry.addExtension(ServicesRegistryResponsesResumeServicebulkCreatePositionsStatic)
-      registry.addExtension(ServicesRegistryResponsesResumeServicecreateCompanyStatic)
-      registry.addExtension(ServicesRegistryResponsesResumeServicegetResumeStatic)
-      registry.addExtension(ServicesRegistryResponsesResumeServicebulkCreateCompaniesStatic)
-      registry.addExtension(ServicesRegistryResponsesAppreciationServicecreateAppreciationStatic)
-      registry.addExtension(ServicesRegistryResponsesAppreciationServicegetAppreciationStatic)
-      registry.addExtension(ServicesRegistryResponsesAppreciationServicedeleteAppreciationStatic)
-      registry.addExtension(ServicesRegistryResponsesAppreciationServiceupdateAppreciationStatic)
+      registry.addExtension(ServicesRegistryResponsesUsercreateUserStatic)
+      registry.addExtension(ServicesRegistryResponsesUservalidUserStatic)
+      registry.addExtension(ServicesRegistryResponsesUserauthenticateUserStatic)
+      registry.addExtension(ServicesRegistryResponsesUsergetUserStatic)
+      registry.addExtension(ServicesRegistryResponsesUsersendVerificationCodeStatic)
+      registry.addExtension(ServicesRegistryResponsesUserverifyVerificationCodeStatic)
+      registry.addExtension(ServicesRegistryResponsesUserupdateUserStatic)
+      registry.addExtension(ServicesRegistryResponsesUsergetAuthorizationInstructionsStatic)
+      registry.addExtension(ServicesRegistryResponsesUsercompleteAuthorizationStatic)
+      registry.addExtension(ServicesRegistryResponsesUsergetIdentitiesStatic)
+      registry.addExtension(ServicesRegistryResponsesUserbulkCreateUsersStatic)
+      registry.addExtension(ServicesRegistryResponsesUserrecordDeviceStatic)
+      registry.addExtension(ServicesRegistryResponsesUserrequestAccessStatic)
+      registry.addExtension(ServicesRegistryResponsesUserdeleteIdentityStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationcreateOrganizationStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetOrganizationStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationcreateTeamStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationcreateAddressStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationdeleteAddressStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetAddressStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetTeamStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetTeamsStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetAddressesStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetTeamDescendantsStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetTopLevelTeamStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationcreateLocationStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationupdateLocationStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetLocationsStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetLocationStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilecreateProfileStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetExtendedProfileStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetProfileStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilecreateTagsStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetTagsStatic)
+      registry.addExtension(ServicesRegistryResponsesProfileaddTagsStatic)
+      registry.addExtension(ServicesRegistryResponsesProfileupdateProfileStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetProfilesStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetDirectReportsStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetPeersStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetProfileStatsStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetUpcomingAnniversariesStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetUpcomingBirthdaysStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetRecentHiresStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetActiveTagsStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilebulkCreateProfilesStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilebulkUpdateProfilesStatic)
+      registry.addExtension(ServicesRegistryResponsesProfilegetAttributesForProfilesStatic)
+      registry.addExtension(ServicesRegistryResponsesProfileremoveTagsStatic)
+      registry.addExtension(ServicesRegistryResponsesSearchsearchStatic)
+      registry.addExtension(ServicesRegistryResponsesFeedgetProfileFeedStatic)
+      registry.addExtension(ServicesRegistryResponsesFeedgetOrganizationFeedStatic)
+      registry.addExtension(ServicesRegistryResponsesMediastartImageUploadStatic)
+      registry.addExtension(ServicesRegistryResponsesMediacompleteImageUploadStatic)
+      registry.addExtension(ServicesRegistryResponsesNotecreateNoteStatic)
+      registry.addExtension(ServicesRegistryResponsesNotegetNotesStatic)
+      registry.addExtension(ServicesRegistryResponsesNotedeleteNoteStatic)
+      registry.addExtension(ServicesRegistryResponsesNoteupdateNoteStatic)
+      registry.addExtension(ServicesRegistryResponsesResumebulkCreateEducationsStatic)
+      registry.addExtension(ServicesRegistryResponsesResumebulkCreatePositionsStatic)
+      registry.addExtension(ServicesRegistryResponsesResumecreateCompanyStatic)
+      registry.addExtension(ServicesRegistryResponsesResumegetResumeStatic)
+      registry.addExtension(ServicesRegistryResponsesResumebulkCreateCompaniesStatic)
+      registry.addExtension(ServicesRegistryResponsesAppreciationcreateAppreciationStatic)
+      registry.addExtension(ServicesRegistryResponsesAppreciationgetAppreciationStatic)
+      registry.addExtension(ServicesRegistryResponsesAppreciationdeleteAppreciationStatic)
+      registry.addExtension(ServicesRegistryResponsesAppreciationupdateAppreciationStatic)
     }
   }
 
-  final public class UserService : GeneratedMessage, GeneratedMessageProtocol {
+  final public class User : GeneratedMessage, GeneratedMessageProtocol {
     public subscript(key: String) -> Any? {
            switch key {
            default: return nil
@@ -696,46 +696,46 @@ public extension Services.Registry.Responses {
     }
 
     public class func createUser() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicecreateUser
+         return ServicesRegistryResponsesUsercreateUser
     }
     public class func validUser() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicevalidUser
+         return ServicesRegistryResponsesUservalidUser
     }
     public class func authenticateUser() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServiceauthenticateUser
+         return ServicesRegistryResponsesUserauthenticateUser
     }
     public class func getUser() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicegetUser
+         return ServicesRegistryResponsesUsergetUser
     }
     public class func sendVerificationCode() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicesendVerificationCode
+         return ServicesRegistryResponsesUsersendVerificationCode
     }
     public class func verifyVerificationCode() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServiceverifyVerificationCode
+         return ServicesRegistryResponsesUserverifyVerificationCode
     }
     public class func updateUser() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServiceupdateUser
+         return ServicesRegistryResponsesUserupdateUser
     }
     public class func getAuthorizationInstructions() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicegetAuthorizationInstructions
+         return ServicesRegistryResponsesUsergetAuthorizationInstructions
     }
     public class func completeAuthorization() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicecompleteAuthorization
+         return ServicesRegistryResponsesUsercompleteAuthorization
     }
     public class func getIdentities() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicegetIdentities
+         return ServicesRegistryResponsesUsergetIdentities
     }
     public class func bulkCreateUsers() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicebulkCreateUsers
+         return ServicesRegistryResponsesUserbulkCreateUsers
     }
     public class func recordDevice() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicerecordDevice
+         return ServicesRegistryResponsesUserrecordDevice
     }
     public class func requestAccess() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicerequestAccess
+         return ServicesRegistryResponsesUserrequestAccess
     }
     public class func deleteIdentity() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesUserServicedeleteIdentity
+         return ServicesRegistryResponsesUserdeleteIdentity
     }
     required public init() {
          super.init()
@@ -757,41 +757,41 @@ public extension Services.Registry.Responses {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func parseFromData(data:NSData) -> Services.Registry.Responses.UserService {
-      return Services.Registry.Responses.UserService.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.User {
+      return Services.Registry.Responses.User.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
     }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.UserService {
-      return Services.Registry.Responses.UserService.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.User {
+      return Services.Registry.Responses.User.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.UserService {
-      return Services.Registry.Responses.UserService.builder().mergeFromInputStream(input).build()
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.User {
+      return Services.Registry.Responses.User.builder().mergeFromInputStream(input).build()
     }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.UserService {
-      return Services.Registry.Responses.UserService.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.User {
+      return Services.Registry.Responses.User.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.UserService {
-      return Services.Registry.Responses.UserService.builder().mergeFromCodedInputStream(input).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.User {
+      return Services.Registry.Responses.User.builder().mergeFromCodedInputStream(input).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.UserService {
-      return Services.Registry.Responses.UserService.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.User {
+      return Services.Registry.Responses.User.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func builder() -> Services.Registry.Responses.UserServiceBuilder {
-      return Services.Registry.Responses.UserService.classBuilder() as! Services.Registry.Responses.UserServiceBuilder
+    public class func builder() -> Services.Registry.Responses.UserBuilder {
+      return Services.Registry.Responses.User.classBuilder() as! Services.Registry.Responses.UserBuilder
     }
-    public func builder() -> Services.Registry.Responses.UserServiceBuilder {
-      return classBuilder() as! Services.Registry.Responses.UserServiceBuilder
+    public func builder() -> Services.Registry.Responses.UserBuilder {
+      return classBuilder() as! Services.Registry.Responses.UserBuilder
     }
     public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.UserServiceBuilder()
+      return Services.Registry.Responses.UserBuilder()
     }
     public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.UserService.builder()
+      return Services.Registry.Responses.User.builder()
     }
-    public func toBuilder() -> Services.Registry.Responses.UserServiceBuilder {
-      return Services.Registry.Responses.UserService.builderWithPrototype(self)
+    public func toBuilder() -> Services.Registry.Responses.UserBuilder {
+      return Services.Registry.Responses.User.builderWithPrototype(self)
     }
-    public class func builderWithPrototype(prototype:Services.Registry.Responses.UserService) -> Services.Registry.Responses.UserServiceBuilder {
-      return Services.Registry.Responses.UserService.builder().mergeFrom(prototype)
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.User) -> Services.Registry.Responses.UserBuilder {
+      return Services.Registry.Responses.User.builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) {
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -808,23 +808,23 @@ public extension Services.Registry.Responses {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "Services.Registry.Responses.UserService"
+        return "Services.Registry.Responses.User"
     }
     override public func className() -> String {
-        return "Services.Registry.Responses.UserService"
+        return "Services.Registry.Responses.User"
     }
     override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Responses.UserService.self
+        return Services.Registry.Responses.User.self
     }
     //Meta information declaration end
 
   }
 
-  final public class UserServiceBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Responses.UserService
+  final public class UserBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.User
 
     required override public init () {
-       builderResult = Services.Registry.Responses.UserService()
+       builderResult = Services.Registry.Responses.User()
        super.init()
     }
     override public var internalGetResult:GeneratedMessage {
@@ -832,32 +832,32 @@ public extension Services.Registry.Responses {
             return builderResult
          }
     }
-    public override func clear() -> Services.Registry.Responses.UserServiceBuilder {
-      builderResult = Services.Registry.Responses.UserService()
+    public override func clear() -> Services.Registry.Responses.UserBuilder {
+      builderResult = Services.Registry.Responses.User()
       return self
     }
-    public override func clone() -> Services.Registry.Responses.UserServiceBuilder {
-      return Services.Registry.Responses.UserService.builderWithPrototype(builderResult)
+    public override func clone() -> Services.Registry.Responses.UserBuilder {
+      return Services.Registry.Responses.User.builderWithPrototype(builderResult)
     }
-    public override func build() -> Services.Registry.Responses.UserService {
+    public override func build() -> Services.Registry.Responses.User {
          checkInitialized()
          return buildPartial()
     }
-    public func buildPartial() -> Services.Registry.Responses.UserService {
-      var returnMe:Services.Registry.Responses.UserService = builderResult
+    public func buildPartial() -> Services.Registry.Responses.User {
+      var returnMe:Services.Registry.Responses.User = builderResult
       return returnMe
     }
-    public func mergeFrom(other:Services.Registry.Responses.UserService) -> Services.Registry.Responses.UserServiceBuilder {
-      if (other == Services.Registry.Responses.UserService()) {
+    public func mergeFrom(other:Services.Registry.Responses.User) -> Services.Registry.Responses.UserBuilder {
+      if (other == Services.Registry.Responses.User()) {
        return self
       }
       mergeUnknownFields(other.unknownFields)
       return self
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.UserServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.UserBuilder {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.UserServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.UserBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
@@ -876,7 +876,7 @@ public extension Services.Registry.Responses {
     }
   }
 
-  final public class OrganizationService : GeneratedMessage, GeneratedMessageProtocol {
+  final public class Organization : GeneratedMessage, GeneratedMessageProtocol {
     public subscript(key: String) -> Any? {
            switch key {
            default: return nil
@@ -884,49 +884,49 @@ public extension Services.Registry.Responses {
     }
 
     public class func createOrganization() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicecreateOrganization
+         return ServicesRegistryResponsesOrganizationcreateOrganization
     }
     public class func getOrganization() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicegetOrganization
+         return ServicesRegistryResponsesOrganizationgetOrganization
     }
     public class func createTeam() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicecreateTeam
+         return ServicesRegistryResponsesOrganizationcreateTeam
     }
     public class func createAddress() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicecreateAddress
+         return ServicesRegistryResponsesOrganizationcreateAddress
     }
     public class func deleteAddress() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicedeleteAddress
+         return ServicesRegistryResponsesOrganizationdeleteAddress
     }
     public class func getAddress() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicegetAddress
+         return ServicesRegistryResponsesOrganizationgetAddress
     }
     public class func getTeam() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicegetTeam
+         return ServicesRegistryResponsesOrganizationgetTeam
     }
     public class func getTeams() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicegetTeams
+         return ServicesRegistryResponsesOrganizationgetTeams
     }
     public class func getAddresses() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicegetAddresses
+         return ServicesRegistryResponsesOrganizationgetAddresses
     }
     public class func getTeamDescendants() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicegetTeamDescendants
+         return ServicesRegistryResponsesOrganizationgetTeamDescendants
     }
     public class func getTopLevelTeam() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicegetTopLevelTeam
+         return ServicesRegistryResponsesOrganizationgetTopLevelTeam
     }
     public class func createLocation() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicecreateLocation
+         return ServicesRegistryResponsesOrganizationcreateLocation
     }
     public class func updateLocation() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServiceupdateLocation
+         return ServicesRegistryResponsesOrganizationupdateLocation
     }
     public class func getLocations() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicegetLocations
+         return ServicesRegistryResponsesOrganizationgetLocations
     }
     public class func getLocation() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesOrganizationServicegetLocation
+         return ServicesRegistryResponsesOrganizationgetLocation
     }
     required public init() {
          super.init()
@@ -948,41 +948,41 @@ public extension Services.Registry.Responses {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func parseFromData(data:NSData) -> Services.Registry.Responses.OrganizationService {
-      return Services.Registry.Responses.OrganizationService.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Organization {
+      return Services.Registry.Responses.Organization.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
     }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.OrganizationService {
-      return Services.Registry.Responses.OrganizationService.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Organization {
+      return Services.Registry.Responses.Organization.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.OrganizationService {
-      return Services.Registry.Responses.OrganizationService.builder().mergeFromInputStream(input).build()
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Organization {
+      return Services.Registry.Responses.Organization.builder().mergeFromInputStream(input).build()
     }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.OrganizationService {
-      return Services.Registry.Responses.OrganizationService.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Organization {
+      return Services.Registry.Responses.Organization.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.OrganizationService {
-      return Services.Registry.Responses.OrganizationService.builder().mergeFromCodedInputStream(input).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Organization {
+      return Services.Registry.Responses.Organization.builder().mergeFromCodedInputStream(input).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.OrganizationService {
-      return Services.Registry.Responses.OrganizationService.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Organization {
+      return Services.Registry.Responses.Organization.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func builder() -> Services.Registry.Responses.OrganizationServiceBuilder {
-      return Services.Registry.Responses.OrganizationService.classBuilder() as! Services.Registry.Responses.OrganizationServiceBuilder
+    public class func builder() -> Services.Registry.Responses.OrganizationBuilder {
+      return Services.Registry.Responses.Organization.classBuilder() as! Services.Registry.Responses.OrganizationBuilder
     }
-    public func builder() -> Services.Registry.Responses.OrganizationServiceBuilder {
-      return classBuilder() as! Services.Registry.Responses.OrganizationServiceBuilder
+    public func builder() -> Services.Registry.Responses.OrganizationBuilder {
+      return classBuilder() as! Services.Registry.Responses.OrganizationBuilder
     }
     public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.OrganizationServiceBuilder()
+      return Services.Registry.Responses.OrganizationBuilder()
     }
     public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.OrganizationService.builder()
+      return Services.Registry.Responses.Organization.builder()
     }
-    public func toBuilder() -> Services.Registry.Responses.OrganizationServiceBuilder {
-      return Services.Registry.Responses.OrganizationService.builderWithPrototype(self)
+    public func toBuilder() -> Services.Registry.Responses.OrganizationBuilder {
+      return Services.Registry.Responses.Organization.builderWithPrototype(self)
     }
-    public class func builderWithPrototype(prototype:Services.Registry.Responses.OrganizationService) -> Services.Registry.Responses.OrganizationServiceBuilder {
-      return Services.Registry.Responses.OrganizationService.builder().mergeFrom(prototype)
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Organization) -> Services.Registry.Responses.OrganizationBuilder {
+      return Services.Registry.Responses.Organization.builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) {
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -999,23 +999,23 @@ public extension Services.Registry.Responses {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "Services.Registry.Responses.OrganizationService"
+        return "Services.Registry.Responses.Organization"
     }
     override public func className() -> String {
-        return "Services.Registry.Responses.OrganizationService"
+        return "Services.Registry.Responses.Organization"
     }
     override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Responses.OrganizationService.self
+        return Services.Registry.Responses.Organization.self
     }
     //Meta information declaration end
 
   }
 
-  final public class OrganizationServiceBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Responses.OrganizationService
+  final public class OrganizationBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.Organization
 
     required override public init () {
-       builderResult = Services.Registry.Responses.OrganizationService()
+       builderResult = Services.Registry.Responses.Organization()
        super.init()
     }
     override public var internalGetResult:GeneratedMessage {
@@ -1023,32 +1023,32 @@ public extension Services.Registry.Responses {
             return builderResult
          }
     }
-    public override func clear() -> Services.Registry.Responses.OrganizationServiceBuilder {
-      builderResult = Services.Registry.Responses.OrganizationService()
+    public override func clear() -> Services.Registry.Responses.OrganizationBuilder {
+      builderResult = Services.Registry.Responses.Organization()
       return self
     }
-    public override func clone() -> Services.Registry.Responses.OrganizationServiceBuilder {
-      return Services.Registry.Responses.OrganizationService.builderWithPrototype(builderResult)
+    public override func clone() -> Services.Registry.Responses.OrganizationBuilder {
+      return Services.Registry.Responses.Organization.builderWithPrototype(builderResult)
     }
-    public override func build() -> Services.Registry.Responses.OrganizationService {
+    public override func build() -> Services.Registry.Responses.Organization {
          checkInitialized()
          return buildPartial()
     }
-    public func buildPartial() -> Services.Registry.Responses.OrganizationService {
-      var returnMe:Services.Registry.Responses.OrganizationService = builderResult
+    public func buildPartial() -> Services.Registry.Responses.Organization {
+      var returnMe:Services.Registry.Responses.Organization = builderResult
       return returnMe
     }
-    public func mergeFrom(other:Services.Registry.Responses.OrganizationService) -> Services.Registry.Responses.OrganizationServiceBuilder {
-      if (other == Services.Registry.Responses.OrganizationService()) {
+    public func mergeFrom(other:Services.Registry.Responses.Organization) -> Services.Registry.Responses.OrganizationBuilder {
+      if (other == Services.Registry.Responses.Organization()) {
        return self
       }
       mergeUnknownFields(other.unknownFields)
       return self
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.OrganizationServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.OrganizationBuilder {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.OrganizationServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.OrganizationBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
@@ -1067,7 +1067,7 @@ public extension Services.Registry.Responses {
     }
   }
 
-  final public class ProfileService : GeneratedMessage, GeneratedMessageProtocol {
+  final public class Profile : GeneratedMessage, GeneratedMessageProtocol {
     public subscript(key: String) -> Any? {
            switch key {
            default: return nil
@@ -1075,61 +1075,61 @@ public extension Services.Registry.Responses {
     }
 
     public class func createProfile() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicecreateProfile
+         return ServicesRegistryResponsesProfilecreateProfile
     }
     public class func getExtendedProfile() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetExtendedProfile
+         return ServicesRegistryResponsesProfilegetExtendedProfile
     }
     public class func getProfile() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetProfile
+         return ServicesRegistryResponsesProfilegetProfile
     }
     public class func createTags() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicecreateTags
+         return ServicesRegistryResponsesProfilecreateTags
     }
     public class func getTags() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetTags
+         return ServicesRegistryResponsesProfilegetTags
     }
     public class func addTags() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServiceaddTags
+         return ServicesRegistryResponsesProfileaddTags
     }
     public class func updateProfile() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServiceupdateProfile
+         return ServicesRegistryResponsesProfileupdateProfile
     }
     public class func getProfiles() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetProfiles
+         return ServicesRegistryResponsesProfilegetProfiles
     }
     public class func getDirectReports() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetDirectReports
+         return ServicesRegistryResponsesProfilegetDirectReports
     }
     public class func getPeers() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetPeers
+         return ServicesRegistryResponsesProfilegetPeers
     }
     public class func getProfileStats() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetProfileStats
+         return ServicesRegistryResponsesProfilegetProfileStats
     }
     public class func getUpcomingAnniversaries() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetUpcomingAnniversaries
+         return ServicesRegistryResponsesProfilegetUpcomingAnniversaries
     }
     public class func getUpcomingBirthdays() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetUpcomingBirthdays
+         return ServicesRegistryResponsesProfilegetUpcomingBirthdays
     }
     public class func getRecentHires() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetRecentHires
+         return ServicesRegistryResponsesProfilegetRecentHires
     }
     public class func getActiveTags() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetActiveTags
+         return ServicesRegistryResponsesProfilegetActiveTags
     }
     public class func bulkCreateProfiles() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicebulkCreateProfiles
+         return ServicesRegistryResponsesProfilebulkCreateProfiles
     }
     public class func bulkUpdateProfiles() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicebulkUpdateProfiles
+         return ServicesRegistryResponsesProfilebulkUpdateProfiles
     }
     public class func getAttributesForProfiles() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServicegetAttributesForProfiles
+         return ServicesRegistryResponsesProfilegetAttributesForProfiles
     }
     public class func removeTags() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfileServiceremoveTags
+         return ServicesRegistryResponsesProfileremoveTags
     }
     required public init() {
          super.init()
@@ -1151,41 +1151,41 @@ public extension Services.Registry.Responses {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func parseFromData(data:NSData) -> Services.Registry.Responses.ProfileService {
-      return Services.Registry.Responses.ProfileService.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Profile {
+      return Services.Registry.Responses.Profile.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
     }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.ProfileService {
-      return Services.Registry.Responses.ProfileService.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Profile {
+      return Services.Registry.Responses.Profile.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.ProfileService {
-      return Services.Registry.Responses.ProfileService.builder().mergeFromInputStream(input).build()
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Profile {
+      return Services.Registry.Responses.Profile.builder().mergeFromInputStream(input).build()
     }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.ProfileService {
-      return Services.Registry.Responses.ProfileService.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Profile {
+      return Services.Registry.Responses.Profile.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.ProfileService {
-      return Services.Registry.Responses.ProfileService.builder().mergeFromCodedInputStream(input).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Profile {
+      return Services.Registry.Responses.Profile.builder().mergeFromCodedInputStream(input).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.ProfileService {
-      return Services.Registry.Responses.ProfileService.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Profile {
+      return Services.Registry.Responses.Profile.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func builder() -> Services.Registry.Responses.ProfileServiceBuilder {
-      return Services.Registry.Responses.ProfileService.classBuilder() as! Services.Registry.Responses.ProfileServiceBuilder
+    public class func builder() -> Services.Registry.Responses.ProfileBuilder {
+      return Services.Registry.Responses.Profile.classBuilder() as! Services.Registry.Responses.ProfileBuilder
     }
-    public func builder() -> Services.Registry.Responses.ProfileServiceBuilder {
-      return classBuilder() as! Services.Registry.Responses.ProfileServiceBuilder
+    public func builder() -> Services.Registry.Responses.ProfileBuilder {
+      return classBuilder() as! Services.Registry.Responses.ProfileBuilder
     }
     public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.ProfileServiceBuilder()
+      return Services.Registry.Responses.ProfileBuilder()
     }
     public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.ProfileService.builder()
+      return Services.Registry.Responses.Profile.builder()
     }
-    public func toBuilder() -> Services.Registry.Responses.ProfileServiceBuilder {
-      return Services.Registry.Responses.ProfileService.builderWithPrototype(self)
+    public func toBuilder() -> Services.Registry.Responses.ProfileBuilder {
+      return Services.Registry.Responses.Profile.builderWithPrototype(self)
     }
-    public class func builderWithPrototype(prototype:Services.Registry.Responses.ProfileService) -> Services.Registry.Responses.ProfileServiceBuilder {
-      return Services.Registry.Responses.ProfileService.builder().mergeFrom(prototype)
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Profile) -> Services.Registry.Responses.ProfileBuilder {
+      return Services.Registry.Responses.Profile.builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) {
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -1202,23 +1202,23 @@ public extension Services.Registry.Responses {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "Services.Registry.Responses.ProfileService"
+        return "Services.Registry.Responses.Profile"
     }
     override public func className() -> String {
-        return "Services.Registry.Responses.ProfileService"
+        return "Services.Registry.Responses.Profile"
     }
     override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Responses.ProfileService.self
+        return Services.Registry.Responses.Profile.self
     }
     //Meta information declaration end
 
   }
 
-  final public class ProfileServiceBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Responses.ProfileService
+  final public class ProfileBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.Profile
 
     required override public init () {
-       builderResult = Services.Registry.Responses.ProfileService()
+       builderResult = Services.Registry.Responses.Profile()
        super.init()
     }
     override public var internalGetResult:GeneratedMessage {
@@ -1226,32 +1226,32 @@ public extension Services.Registry.Responses {
             return builderResult
          }
     }
-    public override func clear() -> Services.Registry.Responses.ProfileServiceBuilder {
-      builderResult = Services.Registry.Responses.ProfileService()
+    public override func clear() -> Services.Registry.Responses.ProfileBuilder {
+      builderResult = Services.Registry.Responses.Profile()
       return self
     }
-    public override func clone() -> Services.Registry.Responses.ProfileServiceBuilder {
-      return Services.Registry.Responses.ProfileService.builderWithPrototype(builderResult)
+    public override func clone() -> Services.Registry.Responses.ProfileBuilder {
+      return Services.Registry.Responses.Profile.builderWithPrototype(builderResult)
     }
-    public override func build() -> Services.Registry.Responses.ProfileService {
+    public override func build() -> Services.Registry.Responses.Profile {
          checkInitialized()
          return buildPartial()
     }
-    public func buildPartial() -> Services.Registry.Responses.ProfileService {
-      var returnMe:Services.Registry.Responses.ProfileService = builderResult
+    public func buildPartial() -> Services.Registry.Responses.Profile {
+      var returnMe:Services.Registry.Responses.Profile = builderResult
       return returnMe
     }
-    public func mergeFrom(other:Services.Registry.Responses.ProfileService) -> Services.Registry.Responses.ProfileServiceBuilder {
-      if (other == Services.Registry.Responses.ProfileService()) {
+    public func mergeFrom(other:Services.Registry.Responses.Profile) -> Services.Registry.Responses.ProfileBuilder {
+      if (other == Services.Registry.Responses.Profile()) {
        return self
       }
       mergeUnknownFields(other.unknownFields)
       return self
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.ProfileServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.ProfileBuilder {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.ProfileServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.ProfileBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
@@ -1270,7 +1270,7 @@ public extension Services.Registry.Responses {
     }
   }
 
-  final public class SearchService : GeneratedMessage, GeneratedMessageProtocol {
+  final public class Search : GeneratedMessage, GeneratedMessageProtocol {
     public subscript(key: String) -> Any? {
            switch key {
            default: return nil
@@ -1278,7 +1278,7 @@ public extension Services.Registry.Responses {
     }
 
     public class func search() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesSearchServicesearch
+         return ServicesRegistryResponsesSearchsearch
     }
     required public init() {
          super.init()
@@ -1300,41 +1300,41 @@ public extension Services.Registry.Responses {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func parseFromData(data:NSData) -> Services.Registry.Responses.SearchService {
-      return Services.Registry.Responses.SearchService.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Search {
+      return Services.Registry.Responses.Search.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
     }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.SearchService {
-      return Services.Registry.Responses.SearchService.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Search {
+      return Services.Registry.Responses.Search.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.SearchService {
-      return Services.Registry.Responses.SearchService.builder().mergeFromInputStream(input).build()
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Search {
+      return Services.Registry.Responses.Search.builder().mergeFromInputStream(input).build()
     }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.SearchService {
-      return Services.Registry.Responses.SearchService.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Search {
+      return Services.Registry.Responses.Search.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.SearchService {
-      return Services.Registry.Responses.SearchService.builder().mergeFromCodedInputStream(input).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Search {
+      return Services.Registry.Responses.Search.builder().mergeFromCodedInputStream(input).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.SearchService {
-      return Services.Registry.Responses.SearchService.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Search {
+      return Services.Registry.Responses.Search.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func builder() -> Services.Registry.Responses.SearchServiceBuilder {
-      return Services.Registry.Responses.SearchService.classBuilder() as! Services.Registry.Responses.SearchServiceBuilder
+    public class func builder() -> Services.Registry.Responses.SearchBuilder {
+      return Services.Registry.Responses.Search.classBuilder() as! Services.Registry.Responses.SearchBuilder
     }
-    public func builder() -> Services.Registry.Responses.SearchServiceBuilder {
-      return classBuilder() as! Services.Registry.Responses.SearchServiceBuilder
+    public func builder() -> Services.Registry.Responses.SearchBuilder {
+      return classBuilder() as! Services.Registry.Responses.SearchBuilder
     }
     public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.SearchServiceBuilder()
+      return Services.Registry.Responses.SearchBuilder()
     }
     public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.SearchService.builder()
+      return Services.Registry.Responses.Search.builder()
     }
-    public func toBuilder() -> Services.Registry.Responses.SearchServiceBuilder {
-      return Services.Registry.Responses.SearchService.builderWithPrototype(self)
+    public func toBuilder() -> Services.Registry.Responses.SearchBuilder {
+      return Services.Registry.Responses.Search.builderWithPrototype(self)
     }
-    public class func builderWithPrototype(prototype:Services.Registry.Responses.SearchService) -> Services.Registry.Responses.SearchServiceBuilder {
-      return Services.Registry.Responses.SearchService.builder().mergeFrom(prototype)
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Search) -> Services.Registry.Responses.SearchBuilder {
+      return Services.Registry.Responses.Search.builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) {
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -1351,23 +1351,23 @@ public extension Services.Registry.Responses {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "Services.Registry.Responses.SearchService"
+        return "Services.Registry.Responses.Search"
     }
     override public func className() -> String {
-        return "Services.Registry.Responses.SearchService"
+        return "Services.Registry.Responses.Search"
     }
     override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Responses.SearchService.self
+        return Services.Registry.Responses.Search.self
     }
     //Meta information declaration end
 
   }
 
-  final public class SearchServiceBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Responses.SearchService
+  final public class SearchBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.Search
 
     required override public init () {
-       builderResult = Services.Registry.Responses.SearchService()
+       builderResult = Services.Registry.Responses.Search()
        super.init()
     }
     override public var internalGetResult:GeneratedMessage {
@@ -1375,32 +1375,32 @@ public extension Services.Registry.Responses {
             return builderResult
          }
     }
-    public override func clear() -> Services.Registry.Responses.SearchServiceBuilder {
-      builderResult = Services.Registry.Responses.SearchService()
+    public override func clear() -> Services.Registry.Responses.SearchBuilder {
+      builderResult = Services.Registry.Responses.Search()
       return self
     }
-    public override func clone() -> Services.Registry.Responses.SearchServiceBuilder {
-      return Services.Registry.Responses.SearchService.builderWithPrototype(builderResult)
+    public override func clone() -> Services.Registry.Responses.SearchBuilder {
+      return Services.Registry.Responses.Search.builderWithPrototype(builderResult)
     }
-    public override func build() -> Services.Registry.Responses.SearchService {
+    public override func build() -> Services.Registry.Responses.Search {
          checkInitialized()
          return buildPartial()
     }
-    public func buildPartial() -> Services.Registry.Responses.SearchService {
-      var returnMe:Services.Registry.Responses.SearchService = builderResult
+    public func buildPartial() -> Services.Registry.Responses.Search {
+      var returnMe:Services.Registry.Responses.Search = builderResult
       return returnMe
     }
-    public func mergeFrom(other:Services.Registry.Responses.SearchService) -> Services.Registry.Responses.SearchServiceBuilder {
-      if (other == Services.Registry.Responses.SearchService()) {
+    public func mergeFrom(other:Services.Registry.Responses.Search) -> Services.Registry.Responses.SearchBuilder {
+      if (other == Services.Registry.Responses.Search()) {
        return self
       }
       mergeUnknownFields(other.unknownFields)
       return self
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.SearchServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.SearchBuilder {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.SearchServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.SearchBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
@@ -1419,7 +1419,7 @@ public extension Services.Registry.Responses {
     }
   }
 
-  final public class FeedService : GeneratedMessage, GeneratedMessageProtocol {
+  final public class Feed : GeneratedMessage, GeneratedMessageProtocol {
     public subscript(key: String) -> Any? {
            switch key {
            default: return nil
@@ -1427,10 +1427,10 @@ public extension Services.Registry.Responses {
     }
 
     public class func getProfileFeed() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesFeedServicegetProfileFeed
+         return ServicesRegistryResponsesFeedgetProfileFeed
     }
     public class func getOrganizationFeed() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesFeedServicegetOrganizationFeed
+         return ServicesRegistryResponsesFeedgetOrganizationFeed
     }
     required public init() {
          super.init()
@@ -1452,41 +1452,41 @@ public extension Services.Registry.Responses {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func parseFromData(data:NSData) -> Services.Registry.Responses.FeedService {
-      return Services.Registry.Responses.FeedService.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Feed {
+      return Services.Registry.Responses.Feed.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
     }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.FeedService {
-      return Services.Registry.Responses.FeedService.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Feed {
+      return Services.Registry.Responses.Feed.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.FeedService {
-      return Services.Registry.Responses.FeedService.builder().mergeFromInputStream(input).build()
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Feed {
+      return Services.Registry.Responses.Feed.builder().mergeFromInputStream(input).build()
     }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.FeedService {
-      return Services.Registry.Responses.FeedService.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Feed {
+      return Services.Registry.Responses.Feed.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.FeedService {
-      return Services.Registry.Responses.FeedService.builder().mergeFromCodedInputStream(input).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Feed {
+      return Services.Registry.Responses.Feed.builder().mergeFromCodedInputStream(input).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.FeedService {
-      return Services.Registry.Responses.FeedService.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Feed {
+      return Services.Registry.Responses.Feed.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func builder() -> Services.Registry.Responses.FeedServiceBuilder {
-      return Services.Registry.Responses.FeedService.classBuilder() as! Services.Registry.Responses.FeedServiceBuilder
+    public class func builder() -> Services.Registry.Responses.FeedBuilder {
+      return Services.Registry.Responses.Feed.classBuilder() as! Services.Registry.Responses.FeedBuilder
     }
-    public func builder() -> Services.Registry.Responses.FeedServiceBuilder {
-      return classBuilder() as! Services.Registry.Responses.FeedServiceBuilder
+    public func builder() -> Services.Registry.Responses.FeedBuilder {
+      return classBuilder() as! Services.Registry.Responses.FeedBuilder
     }
     public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.FeedServiceBuilder()
+      return Services.Registry.Responses.FeedBuilder()
     }
     public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.FeedService.builder()
+      return Services.Registry.Responses.Feed.builder()
     }
-    public func toBuilder() -> Services.Registry.Responses.FeedServiceBuilder {
-      return Services.Registry.Responses.FeedService.builderWithPrototype(self)
+    public func toBuilder() -> Services.Registry.Responses.FeedBuilder {
+      return Services.Registry.Responses.Feed.builderWithPrototype(self)
     }
-    public class func builderWithPrototype(prototype:Services.Registry.Responses.FeedService) -> Services.Registry.Responses.FeedServiceBuilder {
-      return Services.Registry.Responses.FeedService.builder().mergeFrom(prototype)
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Feed) -> Services.Registry.Responses.FeedBuilder {
+      return Services.Registry.Responses.Feed.builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) {
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -1503,23 +1503,23 @@ public extension Services.Registry.Responses {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "Services.Registry.Responses.FeedService"
+        return "Services.Registry.Responses.Feed"
     }
     override public func className() -> String {
-        return "Services.Registry.Responses.FeedService"
+        return "Services.Registry.Responses.Feed"
     }
     override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Responses.FeedService.self
+        return Services.Registry.Responses.Feed.self
     }
     //Meta information declaration end
 
   }
 
-  final public class FeedServiceBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Responses.FeedService
+  final public class FeedBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.Feed
 
     required override public init () {
-       builderResult = Services.Registry.Responses.FeedService()
+       builderResult = Services.Registry.Responses.Feed()
        super.init()
     }
     override public var internalGetResult:GeneratedMessage {
@@ -1527,32 +1527,32 @@ public extension Services.Registry.Responses {
             return builderResult
          }
     }
-    public override func clear() -> Services.Registry.Responses.FeedServiceBuilder {
-      builderResult = Services.Registry.Responses.FeedService()
+    public override func clear() -> Services.Registry.Responses.FeedBuilder {
+      builderResult = Services.Registry.Responses.Feed()
       return self
     }
-    public override func clone() -> Services.Registry.Responses.FeedServiceBuilder {
-      return Services.Registry.Responses.FeedService.builderWithPrototype(builderResult)
+    public override func clone() -> Services.Registry.Responses.FeedBuilder {
+      return Services.Registry.Responses.Feed.builderWithPrototype(builderResult)
     }
-    public override func build() -> Services.Registry.Responses.FeedService {
+    public override func build() -> Services.Registry.Responses.Feed {
          checkInitialized()
          return buildPartial()
     }
-    public func buildPartial() -> Services.Registry.Responses.FeedService {
-      var returnMe:Services.Registry.Responses.FeedService = builderResult
+    public func buildPartial() -> Services.Registry.Responses.Feed {
+      var returnMe:Services.Registry.Responses.Feed = builderResult
       return returnMe
     }
-    public func mergeFrom(other:Services.Registry.Responses.FeedService) -> Services.Registry.Responses.FeedServiceBuilder {
-      if (other == Services.Registry.Responses.FeedService()) {
+    public func mergeFrom(other:Services.Registry.Responses.Feed) -> Services.Registry.Responses.FeedBuilder {
+      if (other == Services.Registry.Responses.Feed()) {
        return self
       }
       mergeUnknownFields(other.unknownFields)
       return self
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.FeedServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.FeedBuilder {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.FeedServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.FeedBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
@@ -1571,7 +1571,7 @@ public extension Services.Registry.Responses {
     }
   }
 
-  final public class MediaService : GeneratedMessage, GeneratedMessageProtocol {
+  final public class Media : GeneratedMessage, GeneratedMessageProtocol {
     public subscript(key: String) -> Any? {
            switch key {
            default: return nil
@@ -1579,10 +1579,10 @@ public extension Services.Registry.Responses {
     }
 
     public class func startImageUpload() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesMediaServicestartImageUpload
+         return ServicesRegistryResponsesMediastartImageUpload
     }
     public class func completeImageUpload() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesMediaServicecompleteImageUpload
+         return ServicesRegistryResponsesMediacompleteImageUpload
     }
     required public init() {
          super.init()
@@ -1604,41 +1604,41 @@ public extension Services.Registry.Responses {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func parseFromData(data:NSData) -> Services.Registry.Responses.MediaService {
-      return Services.Registry.Responses.MediaService.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Media {
+      return Services.Registry.Responses.Media.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
     }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.MediaService {
-      return Services.Registry.Responses.MediaService.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Media {
+      return Services.Registry.Responses.Media.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.MediaService {
-      return Services.Registry.Responses.MediaService.builder().mergeFromInputStream(input).build()
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Media {
+      return Services.Registry.Responses.Media.builder().mergeFromInputStream(input).build()
     }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.MediaService {
-      return Services.Registry.Responses.MediaService.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Media {
+      return Services.Registry.Responses.Media.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.MediaService {
-      return Services.Registry.Responses.MediaService.builder().mergeFromCodedInputStream(input).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Media {
+      return Services.Registry.Responses.Media.builder().mergeFromCodedInputStream(input).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.MediaService {
-      return Services.Registry.Responses.MediaService.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Media {
+      return Services.Registry.Responses.Media.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func builder() -> Services.Registry.Responses.MediaServiceBuilder {
-      return Services.Registry.Responses.MediaService.classBuilder() as! Services.Registry.Responses.MediaServiceBuilder
+    public class func builder() -> Services.Registry.Responses.MediaBuilder {
+      return Services.Registry.Responses.Media.classBuilder() as! Services.Registry.Responses.MediaBuilder
     }
-    public func builder() -> Services.Registry.Responses.MediaServiceBuilder {
-      return classBuilder() as! Services.Registry.Responses.MediaServiceBuilder
+    public func builder() -> Services.Registry.Responses.MediaBuilder {
+      return classBuilder() as! Services.Registry.Responses.MediaBuilder
     }
     public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.MediaServiceBuilder()
+      return Services.Registry.Responses.MediaBuilder()
     }
     public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.MediaService.builder()
+      return Services.Registry.Responses.Media.builder()
     }
-    public func toBuilder() -> Services.Registry.Responses.MediaServiceBuilder {
-      return Services.Registry.Responses.MediaService.builderWithPrototype(self)
+    public func toBuilder() -> Services.Registry.Responses.MediaBuilder {
+      return Services.Registry.Responses.Media.builderWithPrototype(self)
     }
-    public class func builderWithPrototype(prototype:Services.Registry.Responses.MediaService) -> Services.Registry.Responses.MediaServiceBuilder {
-      return Services.Registry.Responses.MediaService.builder().mergeFrom(prototype)
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Media) -> Services.Registry.Responses.MediaBuilder {
+      return Services.Registry.Responses.Media.builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) {
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -1655,23 +1655,23 @@ public extension Services.Registry.Responses {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "Services.Registry.Responses.MediaService"
+        return "Services.Registry.Responses.Media"
     }
     override public func className() -> String {
-        return "Services.Registry.Responses.MediaService"
+        return "Services.Registry.Responses.Media"
     }
     override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Responses.MediaService.self
+        return Services.Registry.Responses.Media.self
     }
     //Meta information declaration end
 
   }
 
-  final public class MediaServiceBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Responses.MediaService
+  final public class MediaBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.Media
 
     required override public init () {
-       builderResult = Services.Registry.Responses.MediaService()
+       builderResult = Services.Registry.Responses.Media()
        super.init()
     }
     override public var internalGetResult:GeneratedMessage {
@@ -1679,32 +1679,32 @@ public extension Services.Registry.Responses {
             return builderResult
          }
     }
-    public override func clear() -> Services.Registry.Responses.MediaServiceBuilder {
-      builderResult = Services.Registry.Responses.MediaService()
+    public override func clear() -> Services.Registry.Responses.MediaBuilder {
+      builderResult = Services.Registry.Responses.Media()
       return self
     }
-    public override func clone() -> Services.Registry.Responses.MediaServiceBuilder {
-      return Services.Registry.Responses.MediaService.builderWithPrototype(builderResult)
+    public override func clone() -> Services.Registry.Responses.MediaBuilder {
+      return Services.Registry.Responses.Media.builderWithPrototype(builderResult)
     }
-    public override func build() -> Services.Registry.Responses.MediaService {
+    public override func build() -> Services.Registry.Responses.Media {
          checkInitialized()
          return buildPartial()
     }
-    public func buildPartial() -> Services.Registry.Responses.MediaService {
-      var returnMe:Services.Registry.Responses.MediaService = builderResult
+    public func buildPartial() -> Services.Registry.Responses.Media {
+      var returnMe:Services.Registry.Responses.Media = builderResult
       return returnMe
     }
-    public func mergeFrom(other:Services.Registry.Responses.MediaService) -> Services.Registry.Responses.MediaServiceBuilder {
-      if (other == Services.Registry.Responses.MediaService()) {
+    public func mergeFrom(other:Services.Registry.Responses.Media) -> Services.Registry.Responses.MediaBuilder {
+      if (other == Services.Registry.Responses.Media()) {
        return self
       }
       mergeUnknownFields(other.unknownFields)
       return self
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.MediaServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.MediaBuilder {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.MediaServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.MediaBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
@@ -1723,7 +1723,7 @@ public extension Services.Registry.Responses {
     }
   }
 
-  final public class NoteService : GeneratedMessage, GeneratedMessageProtocol {
+  final public class Note : GeneratedMessage, GeneratedMessageProtocol {
     public subscript(key: String) -> Any? {
            switch key {
            default: return nil
@@ -1731,16 +1731,16 @@ public extension Services.Registry.Responses {
     }
 
     public class func createNote() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesNoteServicecreateNote
+         return ServicesRegistryResponsesNotecreateNote
     }
     public class func getNotes() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesNoteServicegetNotes
+         return ServicesRegistryResponsesNotegetNotes
     }
     public class func deleteNote() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesNoteServicedeleteNote
+         return ServicesRegistryResponsesNotedeleteNote
     }
     public class func updateNote() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesNoteServiceupdateNote
+         return ServicesRegistryResponsesNoteupdateNote
     }
     required public init() {
          super.init()
@@ -1762,41 +1762,41 @@ public extension Services.Registry.Responses {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func parseFromData(data:NSData) -> Services.Registry.Responses.NoteService {
-      return Services.Registry.Responses.NoteService.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Note {
+      return Services.Registry.Responses.Note.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
     }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.NoteService {
-      return Services.Registry.Responses.NoteService.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Note {
+      return Services.Registry.Responses.Note.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.NoteService {
-      return Services.Registry.Responses.NoteService.builder().mergeFromInputStream(input).build()
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Note {
+      return Services.Registry.Responses.Note.builder().mergeFromInputStream(input).build()
     }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.NoteService {
-      return Services.Registry.Responses.NoteService.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Note {
+      return Services.Registry.Responses.Note.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.NoteService {
-      return Services.Registry.Responses.NoteService.builder().mergeFromCodedInputStream(input).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Note {
+      return Services.Registry.Responses.Note.builder().mergeFromCodedInputStream(input).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.NoteService {
-      return Services.Registry.Responses.NoteService.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Note {
+      return Services.Registry.Responses.Note.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func builder() -> Services.Registry.Responses.NoteServiceBuilder {
-      return Services.Registry.Responses.NoteService.classBuilder() as! Services.Registry.Responses.NoteServiceBuilder
+    public class func builder() -> Services.Registry.Responses.NoteBuilder {
+      return Services.Registry.Responses.Note.classBuilder() as! Services.Registry.Responses.NoteBuilder
     }
-    public func builder() -> Services.Registry.Responses.NoteServiceBuilder {
-      return classBuilder() as! Services.Registry.Responses.NoteServiceBuilder
+    public func builder() -> Services.Registry.Responses.NoteBuilder {
+      return classBuilder() as! Services.Registry.Responses.NoteBuilder
     }
     public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.NoteServiceBuilder()
+      return Services.Registry.Responses.NoteBuilder()
     }
     public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.NoteService.builder()
+      return Services.Registry.Responses.Note.builder()
     }
-    public func toBuilder() -> Services.Registry.Responses.NoteServiceBuilder {
-      return Services.Registry.Responses.NoteService.builderWithPrototype(self)
+    public func toBuilder() -> Services.Registry.Responses.NoteBuilder {
+      return Services.Registry.Responses.Note.builderWithPrototype(self)
     }
-    public class func builderWithPrototype(prototype:Services.Registry.Responses.NoteService) -> Services.Registry.Responses.NoteServiceBuilder {
-      return Services.Registry.Responses.NoteService.builder().mergeFrom(prototype)
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Note) -> Services.Registry.Responses.NoteBuilder {
+      return Services.Registry.Responses.Note.builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) {
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -1813,23 +1813,23 @@ public extension Services.Registry.Responses {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "Services.Registry.Responses.NoteService"
+        return "Services.Registry.Responses.Note"
     }
     override public func className() -> String {
-        return "Services.Registry.Responses.NoteService"
+        return "Services.Registry.Responses.Note"
     }
     override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Responses.NoteService.self
+        return Services.Registry.Responses.Note.self
     }
     //Meta information declaration end
 
   }
 
-  final public class NoteServiceBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Responses.NoteService
+  final public class NoteBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.Note
 
     required override public init () {
-       builderResult = Services.Registry.Responses.NoteService()
+       builderResult = Services.Registry.Responses.Note()
        super.init()
     }
     override public var internalGetResult:GeneratedMessage {
@@ -1837,32 +1837,32 @@ public extension Services.Registry.Responses {
             return builderResult
          }
     }
-    public override func clear() -> Services.Registry.Responses.NoteServiceBuilder {
-      builderResult = Services.Registry.Responses.NoteService()
+    public override func clear() -> Services.Registry.Responses.NoteBuilder {
+      builderResult = Services.Registry.Responses.Note()
       return self
     }
-    public override func clone() -> Services.Registry.Responses.NoteServiceBuilder {
-      return Services.Registry.Responses.NoteService.builderWithPrototype(builderResult)
+    public override func clone() -> Services.Registry.Responses.NoteBuilder {
+      return Services.Registry.Responses.Note.builderWithPrototype(builderResult)
     }
-    public override func build() -> Services.Registry.Responses.NoteService {
+    public override func build() -> Services.Registry.Responses.Note {
          checkInitialized()
          return buildPartial()
     }
-    public func buildPartial() -> Services.Registry.Responses.NoteService {
-      var returnMe:Services.Registry.Responses.NoteService = builderResult
+    public func buildPartial() -> Services.Registry.Responses.Note {
+      var returnMe:Services.Registry.Responses.Note = builderResult
       return returnMe
     }
-    public func mergeFrom(other:Services.Registry.Responses.NoteService) -> Services.Registry.Responses.NoteServiceBuilder {
-      if (other == Services.Registry.Responses.NoteService()) {
+    public func mergeFrom(other:Services.Registry.Responses.Note) -> Services.Registry.Responses.NoteBuilder {
+      if (other == Services.Registry.Responses.Note()) {
        return self
       }
       mergeUnknownFields(other.unknownFields)
       return self
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.NoteServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.NoteBuilder {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.NoteServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.NoteBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
@@ -1881,7 +1881,7 @@ public extension Services.Registry.Responses {
     }
   }
 
-  final public class ResumeService : GeneratedMessage, GeneratedMessageProtocol {
+  final public class Resume : GeneratedMessage, GeneratedMessageProtocol {
     public subscript(key: String) -> Any? {
            switch key {
            default: return nil
@@ -1889,19 +1889,19 @@ public extension Services.Registry.Responses {
     }
 
     public class func bulkCreateEducations() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesResumeServicebulkCreateEducations
+         return ServicesRegistryResponsesResumebulkCreateEducations
     }
     public class func bulkCreatePositions() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesResumeServicebulkCreatePositions
+         return ServicesRegistryResponsesResumebulkCreatePositions
     }
     public class func createCompany() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesResumeServicecreateCompany
+         return ServicesRegistryResponsesResumecreateCompany
     }
     public class func getResume() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesResumeServicegetResume
+         return ServicesRegistryResponsesResumegetResume
     }
     public class func bulkCreateCompanies() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesResumeServicebulkCreateCompanies
+         return ServicesRegistryResponsesResumebulkCreateCompanies
     }
     required public init() {
          super.init()
@@ -1923,41 +1923,41 @@ public extension Services.Registry.Responses {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func parseFromData(data:NSData) -> Services.Registry.Responses.ResumeService {
-      return Services.Registry.Responses.ResumeService.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Resume {
+      return Services.Registry.Responses.Resume.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
     }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.ResumeService {
-      return Services.Registry.Responses.ResumeService.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Resume {
+      return Services.Registry.Responses.Resume.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.ResumeService {
-      return Services.Registry.Responses.ResumeService.builder().mergeFromInputStream(input).build()
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Resume {
+      return Services.Registry.Responses.Resume.builder().mergeFromInputStream(input).build()
     }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.ResumeService {
-      return Services.Registry.Responses.ResumeService.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Resume {
+      return Services.Registry.Responses.Resume.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.ResumeService {
-      return Services.Registry.Responses.ResumeService.builder().mergeFromCodedInputStream(input).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Resume {
+      return Services.Registry.Responses.Resume.builder().mergeFromCodedInputStream(input).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.ResumeService {
-      return Services.Registry.Responses.ResumeService.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Resume {
+      return Services.Registry.Responses.Resume.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func builder() -> Services.Registry.Responses.ResumeServiceBuilder {
-      return Services.Registry.Responses.ResumeService.classBuilder() as! Services.Registry.Responses.ResumeServiceBuilder
+    public class func builder() -> Services.Registry.Responses.ResumeBuilder {
+      return Services.Registry.Responses.Resume.classBuilder() as! Services.Registry.Responses.ResumeBuilder
     }
-    public func builder() -> Services.Registry.Responses.ResumeServiceBuilder {
-      return classBuilder() as! Services.Registry.Responses.ResumeServiceBuilder
+    public func builder() -> Services.Registry.Responses.ResumeBuilder {
+      return classBuilder() as! Services.Registry.Responses.ResumeBuilder
     }
     public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.ResumeServiceBuilder()
+      return Services.Registry.Responses.ResumeBuilder()
     }
     public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.ResumeService.builder()
+      return Services.Registry.Responses.Resume.builder()
     }
-    public func toBuilder() -> Services.Registry.Responses.ResumeServiceBuilder {
-      return Services.Registry.Responses.ResumeService.builderWithPrototype(self)
+    public func toBuilder() -> Services.Registry.Responses.ResumeBuilder {
+      return Services.Registry.Responses.Resume.builderWithPrototype(self)
     }
-    public class func builderWithPrototype(prototype:Services.Registry.Responses.ResumeService) -> Services.Registry.Responses.ResumeServiceBuilder {
-      return Services.Registry.Responses.ResumeService.builder().mergeFrom(prototype)
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Resume) -> Services.Registry.Responses.ResumeBuilder {
+      return Services.Registry.Responses.Resume.builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) {
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -1974,23 +1974,23 @@ public extension Services.Registry.Responses {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "Services.Registry.Responses.ResumeService"
+        return "Services.Registry.Responses.Resume"
     }
     override public func className() -> String {
-        return "Services.Registry.Responses.ResumeService"
+        return "Services.Registry.Responses.Resume"
     }
     override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Responses.ResumeService.self
+        return Services.Registry.Responses.Resume.self
     }
     //Meta information declaration end
 
   }
 
-  final public class ResumeServiceBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Responses.ResumeService
+  final public class ResumeBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.Resume
 
     required override public init () {
-       builderResult = Services.Registry.Responses.ResumeService()
+       builderResult = Services.Registry.Responses.Resume()
        super.init()
     }
     override public var internalGetResult:GeneratedMessage {
@@ -1998,32 +1998,32 @@ public extension Services.Registry.Responses {
             return builderResult
          }
     }
-    public override func clear() -> Services.Registry.Responses.ResumeServiceBuilder {
-      builderResult = Services.Registry.Responses.ResumeService()
+    public override func clear() -> Services.Registry.Responses.ResumeBuilder {
+      builderResult = Services.Registry.Responses.Resume()
       return self
     }
-    public override func clone() -> Services.Registry.Responses.ResumeServiceBuilder {
-      return Services.Registry.Responses.ResumeService.builderWithPrototype(builderResult)
+    public override func clone() -> Services.Registry.Responses.ResumeBuilder {
+      return Services.Registry.Responses.Resume.builderWithPrototype(builderResult)
     }
-    public override func build() -> Services.Registry.Responses.ResumeService {
+    public override func build() -> Services.Registry.Responses.Resume {
          checkInitialized()
          return buildPartial()
     }
-    public func buildPartial() -> Services.Registry.Responses.ResumeService {
-      var returnMe:Services.Registry.Responses.ResumeService = builderResult
+    public func buildPartial() -> Services.Registry.Responses.Resume {
+      var returnMe:Services.Registry.Responses.Resume = builderResult
       return returnMe
     }
-    public func mergeFrom(other:Services.Registry.Responses.ResumeService) -> Services.Registry.Responses.ResumeServiceBuilder {
-      if (other == Services.Registry.Responses.ResumeService()) {
+    public func mergeFrom(other:Services.Registry.Responses.Resume) -> Services.Registry.Responses.ResumeBuilder {
+      if (other == Services.Registry.Responses.Resume()) {
        return self
       }
       mergeUnknownFields(other.unknownFields)
       return self
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.ResumeServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.ResumeBuilder {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.ResumeServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.ResumeBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
@@ -2042,7 +2042,7 @@ public extension Services.Registry.Responses {
     }
   }
 
-  final public class AppreciationService : GeneratedMessage, GeneratedMessageProtocol {
+  final public class Appreciation : GeneratedMessage, GeneratedMessageProtocol {
     public subscript(key: String) -> Any? {
            switch key {
            default: return nil
@@ -2050,16 +2050,16 @@ public extension Services.Registry.Responses {
     }
 
     public class func createAppreciation() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesAppreciationServicecreateAppreciation
+         return ServicesRegistryResponsesAppreciationcreateAppreciation
     }
     public class func getAppreciation() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesAppreciationServicegetAppreciation
+         return ServicesRegistryResponsesAppreciationgetAppreciation
     }
     public class func deleteAppreciation() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesAppreciationServicedeleteAppreciation
+         return ServicesRegistryResponsesAppreciationdeleteAppreciation
     }
     public class func updateAppreciation() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesAppreciationServiceupdateAppreciation
+         return ServicesRegistryResponsesAppreciationupdateAppreciation
     }
     required public init() {
          super.init()
@@ -2081,41 +2081,41 @@ public extension Services.Registry.Responses {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func parseFromData(data:NSData) -> Services.Registry.Responses.AppreciationService {
-      return Services.Registry.Responses.AppreciationService.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Appreciation {
+      return Services.Registry.Responses.Appreciation.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
     }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.AppreciationService {
-      return Services.Registry.Responses.AppreciationService.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Appreciation {
+      return Services.Registry.Responses.Appreciation.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.AppreciationService {
-      return Services.Registry.Responses.AppreciationService.builder().mergeFromInputStream(input).build()
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Appreciation {
+      return Services.Registry.Responses.Appreciation.builder().mergeFromInputStream(input).build()
     }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.AppreciationService {
-      return Services.Registry.Responses.AppreciationService.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Appreciation {
+      return Services.Registry.Responses.Appreciation.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.AppreciationService {
-      return Services.Registry.Responses.AppreciationService.builder().mergeFromCodedInputStream(input).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Appreciation {
+      return Services.Registry.Responses.Appreciation.builder().mergeFromCodedInputStream(input).build()
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.AppreciationService {
-      return Services.Registry.Responses.AppreciationService.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Appreciation {
+      return Services.Registry.Responses.Appreciation.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    public class func builder() -> Services.Registry.Responses.AppreciationServiceBuilder {
-      return Services.Registry.Responses.AppreciationService.classBuilder() as! Services.Registry.Responses.AppreciationServiceBuilder
+    public class func builder() -> Services.Registry.Responses.AppreciationBuilder {
+      return Services.Registry.Responses.Appreciation.classBuilder() as! Services.Registry.Responses.AppreciationBuilder
     }
-    public func builder() -> Services.Registry.Responses.AppreciationServiceBuilder {
-      return classBuilder() as! Services.Registry.Responses.AppreciationServiceBuilder
+    public func builder() -> Services.Registry.Responses.AppreciationBuilder {
+      return classBuilder() as! Services.Registry.Responses.AppreciationBuilder
     }
     public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.AppreciationServiceBuilder()
+      return Services.Registry.Responses.AppreciationBuilder()
     }
     public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.AppreciationService.builder()
+      return Services.Registry.Responses.Appreciation.builder()
     }
-    public func toBuilder() -> Services.Registry.Responses.AppreciationServiceBuilder {
-      return Services.Registry.Responses.AppreciationService.builderWithPrototype(self)
+    public func toBuilder() -> Services.Registry.Responses.AppreciationBuilder {
+      return Services.Registry.Responses.Appreciation.builderWithPrototype(self)
     }
-    public class func builderWithPrototype(prototype:Services.Registry.Responses.AppreciationService) -> Services.Registry.Responses.AppreciationServiceBuilder {
-      return Services.Registry.Responses.AppreciationService.builder().mergeFrom(prototype)
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Appreciation) -> Services.Registry.Responses.AppreciationBuilder {
+      return Services.Registry.Responses.Appreciation.builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) {
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -2132,23 +2132,23 @@ public extension Services.Registry.Responses {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "Services.Registry.Responses.AppreciationService"
+        return "Services.Registry.Responses.Appreciation"
     }
     override public func className() -> String {
-        return "Services.Registry.Responses.AppreciationService"
+        return "Services.Registry.Responses.Appreciation"
     }
     override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Responses.AppreciationService.self
+        return Services.Registry.Responses.Appreciation.self
     }
     //Meta information declaration end
 
   }
 
-  final public class AppreciationServiceBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Responses.AppreciationService
+  final public class AppreciationBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.Appreciation
 
     required override public init () {
-       builderResult = Services.Registry.Responses.AppreciationService()
+       builderResult = Services.Registry.Responses.Appreciation()
        super.init()
     }
     override public var internalGetResult:GeneratedMessage {
@@ -2156,32 +2156,32 @@ public extension Services.Registry.Responses {
             return builderResult
          }
     }
-    public override func clear() -> Services.Registry.Responses.AppreciationServiceBuilder {
-      builderResult = Services.Registry.Responses.AppreciationService()
+    public override func clear() -> Services.Registry.Responses.AppreciationBuilder {
+      builderResult = Services.Registry.Responses.Appreciation()
       return self
     }
-    public override func clone() -> Services.Registry.Responses.AppreciationServiceBuilder {
-      return Services.Registry.Responses.AppreciationService.builderWithPrototype(builderResult)
+    public override func clone() -> Services.Registry.Responses.AppreciationBuilder {
+      return Services.Registry.Responses.Appreciation.builderWithPrototype(builderResult)
     }
-    public override func build() -> Services.Registry.Responses.AppreciationService {
+    public override func build() -> Services.Registry.Responses.Appreciation {
          checkInitialized()
          return buildPartial()
     }
-    public func buildPartial() -> Services.Registry.Responses.AppreciationService {
-      var returnMe:Services.Registry.Responses.AppreciationService = builderResult
+    public func buildPartial() -> Services.Registry.Responses.Appreciation {
+      var returnMe:Services.Registry.Responses.Appreciation = builderResult
       return returnMe
     }
-    public func mergeFrom(other:Services.Registry.Responses.AppreciationService) -> Services.Registry.Responses.AppreciationServiceBuilder {
-      if (other == Services.Registry.Responses.AppreciationService()) {
+    public func mergeFrom(other:Services.Registry.Responses.Appreciation) -> Services.Registry.Responses.AppreciationBuilder {
+      if (other == Services.Registry.Responses.Appreciation()) {
        return self
       }
       mergeUnknownFields(other.unknownFields)
       return self
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.AppreciationServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.AppreciationBuilder {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.AppreciationServiceBuilder {
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.AppreciationBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()

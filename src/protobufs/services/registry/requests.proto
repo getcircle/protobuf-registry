@@ -77,7 +77,7 @@ import "protobufs/services/appreciation/actions/get_appreciation.proto";
 import "protobufs/services/appreciation/actions/delete_appreciation.proto";
 import "protobufs/services/appreciation/actions/update_appreciation.proto";
 
-message UserService {
+message User {
     extend soa.ActionRequestParamsV1 {
         optional services.user.actions.create_user.RequestV1 create_user = 100;
         optional services.user.actions.valid_user.RequestV1 valid_user = 101;
@@ -96,7 +96,7 @@ message UserService {
     }
 }
 
-message OrganizationService {
+message Organization {
     extend soa.ActionRequestParamsV1 {
         optional services.organization.actions.create_organization.RequestV1 create_organization = 200;
         optional services.organization.actions.get_organization.RequestV1 get_organization = 201;
@@ -116,7 +116,7 @@ message OrganizationService {
     }
 }
 
-message ProfileService {
+message Profile {
     extend soa.ActionRequestParamsV1 {
         optional services.profile.actions.create_profile.RequestV1 create_profile = 300;
         // XXX: need to finish this one, has a lot of dependencies
@@ -141,27 +141,27 @@ message ProfileService {
     }
 }
 
-message SearchService {
+message Search {
     extend soa.ActionRequestParamsV1 {
         optional services.search.actions.search.RequestV1 search = 400;
     }
 }
 
-message FeedService {
+message Feed {
     extend soa.ActionRequestParamsV1 {
         optional services.feed.actions.get_profile_feed.RequestV1 get_profile_feed = 500;
         optional services.feed.actions.get_organization_feed.RequestV1 get_organization_feed = 501;
     }
 }
 
-message MediaService {
+message Media {
     extend soa.ActionRequestParamsV1 {
         optional services.media.actions.start_image_upload.RequestV1 start_image_upload = 600;
         optional services.media.actions.complete_image_upload.RequestV1 complete_image_upload = 601;
     }
 }
 
-message NoteService {
+message Note {
     extend soa.ActionRequestParamsV1 {
         optional services.note.actions.create_note.RequestV1 create_note = 700;
         optional services.note.actions.get_notes.RequestV1 get_notes = 701;
@@ -170,7 +170,7 @@ message NoteService {
     }
 }
 
-message ResumeService {
+message Resume {
     extend soa.ActionRequestParamsV1 {
         optional services.resume.actions.bulk_create_educations.RequestV1 bulk_create_educations = 800;
         optional services.resume.actions.bulk_create_positions.RequestV1 bulk_create_positions = 801;
@@ -180,7 +180,7 @@ message ResumeService {
     }
 }
 
-message AppreciationService {
+message Appreciation {
     extend soa.ActionRequestParamsV1 {
         optional services.appreciation.actions.create_appreciation.RequestV1 create_appreciation = 900;
         optional services.appreciation.actions.get_appreciation.RequestV1 get_appreciation = 901;
