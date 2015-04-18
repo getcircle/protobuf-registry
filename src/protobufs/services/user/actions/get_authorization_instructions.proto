@@ -1,10 +1,10 @@
 package services.user.actions.get_authorization_instructions;
 
-import "protobufs/services/user/containers/identity.proto";
+import "protobufs/services/user/containers.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
-    optional services.user.containers.identity.IdentityV1.ProviderV1 provider = 2;
+    optional services.user.containers.IdentityV1.ProviderV1 provider = 2;
 }
 
 message ResponseV1 {

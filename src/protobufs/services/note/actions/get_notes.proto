@@ -1,6 +1,6 @@
 package services.note.actions.get_notes;
 
-import "protobufs/services/note/containers/note.proto";
+import "protobufs/services/note/containers.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
@@ -10,5 +10,5 @@ message RequestV1 {
 
 message ResponseV1 {
     optional uint32 version = 1 [default = 1];
-    repeated services.note.containers.note.NoteV1 notes = 2;
+    repeated services.note.containers.NoteV1 notes = 2;
 }

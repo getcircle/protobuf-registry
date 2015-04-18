@@ -36,7 +36,7 @@ public extension Services.User.Actions.RecordDevice {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.User.Containers.Device.DeviceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -55,7 +55,7 @@ public extension Services.User.Actions.RecordDevice {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasDevice:Bool = false
-    public private(set) var device:Services.User.Containers.Device.DeviceV1!
+    public private(set) var device:Services.User.Containers.DeviceV1!
     required public init() {
          super.init()
     }
@@ -204,7 +204,7 @@ public extension Services.User.Actions.RecordDevice {
              return builderResult.hasDevice
          }
     }
-    public var device:Services.User.Containers.Device.DeviceV1! {
+    public var device:Services.User.Containers.DeviceV1! {
          get {
              return builderResult.device
          }
@@ -213,13 +213,13 @@ public extension Services.User.Actions.RecordDevice {
              builderResult.device = value
          }
     }
-    public func setDevice(value:Services.User.Containers.Device.DeviceV1!)-> Services.User.Actions.RecordDevice.RequestV1Builder {
+    public func setDevice(value:Services.User.Containers.DeviceV1!)-> Services.User.Actions.RecordDevice.RequestV1Builder {
       self.device = value
       return self
     }
-    public func mergeDevice(value:Services.User.Containers.Device.DeviceV1) -> Services.User.Actions.RecordDevice.RequestV1Builder {
+    public func mergeDevice(value:Services.User.Containers.DeviceV1) -> Services.User.Actions.RecordDevice.RequestV1Builder {
       if (builderResult.hasDevice) {
-        builderResult.device = Services.User.Containers.Device.DeviceV1.builderWithPrototype(builderResult.device).mergeFrom(value).buildPartial()
+        builderResult.device = Services.User.Containers.DeviceV1.builderWithPrototype(builderResult.device).mergeFrom(value).buildPartial()
       } else {
         builderResult.device = value
       }
@@ -280,7 +280,7 @@ public extension Services.User.Actions.RecordDevice {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.User.Containers.Device.DeviceV1Builder = Services.User.Containers.Device.DeviceV1.builder()
+          var subBuilder:Services.User.Containers.DeviceV1Builder = Services.User.Containers.DeviceV1.builder()
           if hasDevice {
             subBuilder.mergeFrom(device)
           }
@@ -310,7 +310,7 @@ public extension Services.User.Actions.RecordDevice {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasDevice:Bool = false
-    public private(set) var device:Services.User.Containers.Device.DeviceV1!
+    public private(set) var device:Services.User.Containers.DeviceV1!
     required public init() {
          super.init()
     }
@@ -459,7 +459,7 @@ public extension Services.User.Actions.RecordDevice {
              return builderResult.hasDevice
          }
     }
-    public var device:Services.User.Containers.Device.DeviceV1! {
+    public var device:Services.User.Containers.DeviceV1! {
          get {
              return builderResult.device
          }
@@ -468,13 +468,13 @@ public extension Services.User.Actions.RecordDevice {
              builderResult.device = value
          }
     }
-    public func setDevice(value:Services.User.Containers.Device.DeviceV1!)-> Services.User.Actions.RecordDevice.ResponseV1Builder {
+    public func setDevice(value:Services.User.Containers.DeviceV1!)-> Services.User.Actions.RecordDevice.ResponseV1Builder {
       self.device = value
       return self
     }
-    public func mergeDevice(value:Services.User.Containers.Device.DeviceV1) -> Services.User.Actions.RecordDevice.ResponseV1Builder {
+    public func mergeDevice(value:Services.User.Containers.DeviceV1) -> Services.User.Actions.RecordDevice.ResponseV1Builder {
       if (builderResult.hasDevice) {
-        builderResult.device = Services.User.Containers.Device.DeviceV1.builderWithPrototype(builderResult.device).mergeFrom(value).buildPartial()
+        builderResult.device = Services.User.Containers.DeviceV1.builderWithPrototype(builderResult.device).mergeFrom(value).buildPartial()
       } else {
         builderResult.device = value
       }
@@ -535,7 +535,7 @@ public extension Services.User.Actions.RecordDevice {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.User.Containers.Device.DeviceV1Builder = Services.User.Containers.Device.DeviceV1.builder()
+          var subBuilder:Services.User.Containers.DeviceV1Builder = Services.User.Containers.DeviceV1.builder()
           if hasDevice {
             subBuilder.mergeFrom(device)
           }

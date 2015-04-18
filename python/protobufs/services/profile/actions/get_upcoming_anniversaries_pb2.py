@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.profile.containers.profile_pb2
+import protobufs.services.profile.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/get_upcoming_anniversaries.proto',
   package='services.profile.actions.get_upcoming_anniversaries',
-  serialized_pb=_b('\nCprotobufs/services/profile/actions/get_upcoming_anniversaries.proto\x12\x33services.profile.actions.get_upcoming_anniversaries\x1a\x33protobufs/services/profile/containers/profile.proto\"8\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\"b\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12@\n\x08profiles\x18\x02 \x03(\x0b\x32..services.profile.containers.profile.ProfileV1')
+  serialized_pb=_b('\nCprotobufs/services/profile/actions/get_upcoming_anniversaries.proto\x12\x33services.profile.actions.get_upcoming_anniversaries\x1a+protobufs/services/profile/containers.proto\"8\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\"Z\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x38\n\x08profiles\x18\x02 \x03(\x0b\x32&.services.profile.containers.ProfileV1')
   ,
-  dependencies=[protobufs.services.profile.containers.profile_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.profile.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=177,
-  serialized_end=233,
+  serialized_start=169,
+  serialized_end=225,
 )
 
 
@@ -96,11 +96,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=235,
-  serialized_end=333,
+  serialized_start=227,
+  serialized_end=317,
 )
 
-_RESPONSEV1.fields_by_name['profiles'].message_type = protobufs.services.profile.containers.profile_pb2._PROFILEV1
+_RESPONSEV1.fields_by_name['profiles'].message_type = protobufs.services.profile.containers_pb2._PROFILEV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

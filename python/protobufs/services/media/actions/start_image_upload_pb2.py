@@ -13,16 +13,16 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.media.containers.instructions_pb2
+import protobufs.services.media.containers_pb2
 import protobufs.services.media.containers.media_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/media/actions/start_image_upload.proto',
   package='services.media.actions.start_image_upload',
-  serialized_pb=_b('\n9protobufs/services/media/actions/start_image_upload.proto\x12)services.media.actions.start_image_upload\x1a\x36protobufs/services/media/containers/instructions.proto\x1a/protobufs/services/media/containers/media.proto\"t\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12@\n\nmedia_type\x18\x02 \x01(\x0e\x32,.services.media.containers.media.MediaTypeV1\x12\x11\n\tmedia_key\x18\x03 \x01(\t\"{\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12Y\n\x13upload_instructions\x18\x02 \x01(\x0b\x32<.services.media.containers.instructions.UploadInstructionsV1')
+  serialized_pb=_b('\n9protobufs/services/media/actions/start_image_upload.proto\x12)services.media.actions.start_image_upload\x1a)protobufs/services/media/containers.proto\x1a/protobufs/services/media/containers/media.proto\"t\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12@\n\nmedia_type\x18\x02 \x01(\x0e\x32,.services.media.containers.media.MediaTypeV1\x12\x11\n\tmedia_key\x18\x03 \x01(\t\"n\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12L\n\x13upload_instructions\x18\x02 \x01(\x0b\x32/.services.media.containers.UploadInstructionsV1')
   ,
-  dependencies=[protobufs.services.media.containers.instructions_pb2.DESCRIPTOR,protobufs.services.media.containers.media_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.media.containers_pb2.DESCRIPTOR,protobufs.services.media.containers.media_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -67,8 +67,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=209,
-  serialized_end=325,
+  serialized_start=196,
+  serialized_end=312,
 )
 
 
@@ -104,12 +104,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=327,
-  serialized_end=450,
+  serialized_start=314,
+  serialized_end=424,
 )
 
 _REQUESTV1.fields_by_name['media_type'].enum_type = protobufs.services.media.containers.media_pb2._MEDIATYPEV1
-_RESPONSEV1.fields_by_name['upload_instructions'].message_type = protobufs.services.media.containers.instructions_pb2._UPLOADINSTRUCTIONSV1
+_RESPONSEV1.fields_by_name['upload_instructions'].message_type = protobufs.services.media.containers_pb2._UPLOADINSTRUCTIONSV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

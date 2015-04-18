@@ -38,9 +38,8 @@ public extension Services.Search.Actions.Search {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Team.TeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Address.AddressRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Profile.ProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -293,9 +292,9 @@ public extension Services.Search.Actions.Search {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var profiles:Array<Services.Profile.Containers.Profile.ProfileV1>  = Array<Services.Profile.Containers.Profile.ProfileV1>()
-    public private(set) var teams:Array<Services.Organization.Containers.Team.TeamV1>  = Array<Services.Organization.Containers.Team.TeamV1>()
-    public private(set) var addresses:Array<Services.Organization.Containers.Address.AddressV1>  = Array<Services.Organization.Containers.Address.AddressV1>()
+    public private(set) var profiles:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
+    public private(set) var teams:Array<Services.Organization.Containers.TeamV1>  = Array<Services.Organization.Containers.TeamV1>()
+    public private(set) var addresses:Array<Services.Organization.Containers.AddressV1>  = Array<Services.Organization.Containers.AddressV1>()
     required public init() {
          super.init()
     }
@@ -469,7 +468,7 @@ public extension Services.Search.Actions.Search {
          builderResult.version = UInt32(1)
          return self
     }
-    public var profiles:Array<Services.Profile.Containers.Profile.ProfileV1> {
+    public var profiles:Array<Services.Profile.Containers.ProfileV1> {
          get {
              return builderResult.profiles
          }
@@ -477,7 +476,7 @@ public extension Services.Search.Actions.Search {
              builderResult.profiles = value
          }
     }
-    public func setProfiles(value:Array<Services.Profile.Containers.Profile.ProfileV1>)-> Services.Search.Actions.Search.ResponseV1Builder {
+    public func setProfiles(value:Array<Services.Profile.Containers.ProfileV1>)-> Services.Search.Actions.Search.ResponseV1Builder {
       self.profiles = value
       return self
     }
@@ -485,7 +484,7 @@ public extension Services.Search.Actions.Search {
       builderResult.profiles.removeAll(keepCapacity: false)
       return self
     }
-    public var teams:Array<Services.Organization.Containers.Team.TeamV1> {
+    public var teams:Array<Services.Organization.Containers.TeamV1> {
          get {
              return builderResult.teams
          }
@@ -493,7 +492,7 @@ public extension Services.Search.Actions.Search {
              builderResult.teams = value
          }
     }
-    public func setTeams(value:Array<Services.Organization.Containers.Team.TeamV1>)-> Services.Search.Actions.Search.ResponseV1Builder {
+    public func setTeams(value:Array<Services.Organization.Containers.TeamV1>)-> Services.Search.Actions.Search.ResponseV1Builder {
       self.teams = value
       return self
     }
@@ -501,7 +500,7 @@ public extension Services.Search.Actions.Search {
       builderResult.teams.removeAll(keepCapacity: false)
       return self
     }
-    public var addresses:Array<Services.Organization.Containers.Address.AddressV1> {
+    public var addresses:Array<Services.Organization.Containers.AddressV1> {
          get {
              return builderResult.addresses
          }
@@ -509,7 +508,7 @@ public extension Services.Search.Actions.Search {
              builderResult.addresses = value
          }
     }
-    public func setAddresses(value:Array<Services.Organization.Containers.Address.AddressV1>)-> Services.Search.Actions.Search.ResponseV1Builder {
+    public func setAddresses(value:Array<Services.Organization.Containers.AddressV1>)-> Services.Search.Actions.Search.ResponseV1Builder {
       self.addresses = value
       return self
     }
@@ -572,17 +571,17 @@ public extension Services.Search.Actions.Search {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Profile.Containers.Profile.ProfileV1.builder()
+          var subBuilder = Services.Profile.Containers.ProfileV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           profiles += [subBuilder.buildPartial()]
 
         case 26 :
-          var subBuilder = Services.Organization.Containers.Team.TeamV1.builder()
+          var subBuilder = Services.Organization.Containers.TeamV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           teams += [subBuilder.buildPartial()]
 
         case 34 :
-          var subBuilder = Services.Organization.Containers.Address.AddressV1.builder()
+          var subBuilder = Services.Organization.Containers.AddressV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           addresses += [subBuilder.buildPartial()]
 

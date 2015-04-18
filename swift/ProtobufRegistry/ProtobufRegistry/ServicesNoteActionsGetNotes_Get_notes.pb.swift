@@ -37,7 +37,7 @@ public extension Services.Note.Actions.GetNotes {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Note.Containers.Note.NoteRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Note.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -335,7 +335,7 @@ public extension Services.Note.Actions.GetNotes {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var notes:Array<Services.Note.Containers.Note.NoteV1>  = Array<Services.Note.Containers.Note.NoteV1>()
+    public private(set) var notes:Array<Services.Note.Containers.NoteV1>  = Array<Services.Note.Containers.NoteV1>()
     required public init() {
          super.init()
     }
@@ -477,7 +477,7 @@ public extension Services.Note.Actions.GetNotes {
          builderResult.version = UInt32(1)
          return self
     }
-    public var notes:Array<Services.Note.Containers.Note.NoteV1> {
+    public var notes:Array<Services.Note.Containers.NoteV1> {
          get {
              return builderResult.notes
          }
@@ -485,7 +485,7 @@ public extension Services.Note.Actions.GetNotes {
              builderResult.notes = value
          }
     }
-    public func setNotes(value:Array<Services.Note.Containers.Note.NoteV1>)-> Services.Note.Actions.GetNotes.ResponseV1Builder {
+    public func setNotes(value:Array<Services.Note.Containers.NoteV1>)-> Services.Note.Actions.GetNotes.ResponseV1Builder {
       self.notes = value
       return self
     }
@@ -542,7 +542,7 @@ public extension Services.Note.Actions.GetNotes {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Note.Containers.Note.NoteV1.builder()
+          var subBuilder = Services.Note.Containers.NoteV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           notes += [subBuilder.buildPartial()]
 

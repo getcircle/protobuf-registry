@@ -40,9 +40,7 @@ public extension Services.User.Actions.CompleteAuthorization {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.User.Containers.Identity.IdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.User.Containers.Oauth.OauthRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.User.Containers.User.UserRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -62,12 +60,12 @@ public extension Services.User.Actions.CompleteAuthorization {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var provider:Services.User.Containers.Identity.IdentityV1.ProviderV1 = Services.User.Containers.Identity.IdentityV1.ProviderV1.Internal
+    public private(set) var provider:Services.User.Containers.IdentityV1.ProviderV1 = Services.User.Containers.IdentityV1.ProviderV1.Internal
     public private(set) var hasProvider:Bool = false
     public private(set) var hasOauth2Details:Bool = false
-    public private(set) var oauth2Details:Services.User.Containers.Oauth.OAuth2DetailsV1!
+    public private(set) var oauth2Details:Services.User.Containers.OAuth2DetailsV1!
     public private(set) var hasOauthSdkDetails:Bool = false
-    public private(set) var oauthSdkDetails:Services.User.Containers.Oauth.OAuthSDKDetailsV1!
+    public private(set) var oauthSdkDetails:Services.User.Containers.OAuthSDKDetailsV1!
     required public init() {
          super.init()
     }
@@ -246,7 +244,7 @@ public extension Services.User.Actions.CompleteAuthorization {
               return builderResult.hasProvider
           }
       }
-      public var provider:Services.User.Containers.Identity.IdentityV1.ProviderV1 {
+      public var provider:Services.User.Containers.IdentityV1.ProviderV1 {
           get {
               return builderResult.provider
           }
@@ -255,7 +253,7 @@ public extension Services.User.Actions.CompleteAuthorization {
               builderResult.provider = value
           }
       }
-      public func setProvider(value:Services.User.Containers.Identity.IdentityV1.ProviderV1)-> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
+      public func setProvider(value:Services.User.Containers.IdentityV1.ProviderV1)-> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
         self.provider = value
         return self
       }
@@ -269,7 +267,7 @@ public extension Services.User.Actions.CompleteAuthorization {
              return builderResult.hasOauth2Details
          }
     }
-    public var oauth2Details:Services.User.Containers.Oauth.OAuth2DetailsV1! {
+    public var oauth2Details:Services.User.Containers.OAuth2DetailsV1! {
          get {
              return builderResult.oauth2Details
          }
@@ -278,13 +276,13 @@ public extension Services.User.Actions.CompleteAuthorization {
              builderResult.oauth2Details = value
          }
     }
-    public func setOauth2Details(value:Services.User.Containers.Oauth.OAuth2DetailsV1!)-> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
+    public func setOauth2Details(value:Services.User.Containers.OAuth2DetailsV1!)-> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
       self.oauth2Details = value
       return self
     }
-    public func mergeOauth2Details(value:Services.User.Containers.Oauth.OAuth2DetailsV1) -> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
+    public func mergeOauth2Details(value:Services.User.Containers.OAuth2DetailsV1) -> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
       if (builderResult.hasOauth2Details) {
-        builderResult.oauth2Details = Services.User.Containers.Oauth.OAuth2DetailsV1.builderWithPrototype(builderResult.oauth2Details).mergeFrom(value).buildPartial()
+        builderResult.oauth2Details = Services.User.Containers.OAuth2DetailsV1.builderWithPrototype(builderResult.oauth2Details).mergeFrom(value).buildPartial()
       } else {
         builderResult.oauth2Details = value
       }
@@ -301,7 +299,7 @@ public extension Services.User.Actions.CompleteAuthorization {
              return builderResult.hasOauthSdkDetails
          }
     }
-    public var oauthSdkDetails:Services.User.Containers.Oauth.OAuthSDKDetailsV1! {
+    public var oauthSdkDetails:Services.User.Containers.OAuthSDKDetailsV1! {
          get {
              return builderResult.oauthSdkDetails
          }
@@ -310,13 +308,13 @@ public extension Services.User.Actions.CompleteAuthorization {
              builderResult.oauthSdkDetails = value
          }
     }
-    public func setOauthSdkDetails(value:Services.User.Containers.Oauth.OAuthSDKDetailsV1!)-> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
+    public func setOauthSdkDetails(value:Services.User.Containers.OAuthSDKDetailsV1!)-> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
       self.oauthSdkDetails = value
       return self
     }
-    public func mergeOauthSdkDetails(value:Services.User.Containers.Oauth.OAuthSDKDetailsV1) -> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
+    public func mergeOauthSdkDetails(value:Services.User.Containers.OAuthSDKDetailsV1) -> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
       if (builderResult.hasOauthSdkDetails) {
-        builderResult.oauthSdkDetails = Services.User.Containers.Oauth.OAuthSDKDetailsV1.builderWithPrototype(builderResult.oauthSdkDetails).mergeFrom(value).buildPartial()
+        builderResult.oauthSdkDetails = Services.User.Containers.OAuthSDKDetailsV1.builderWithPrototype(builderResult.oauthSdkDetails).mergeFrom(value).buildPartial()
       } else {
         builderResult.oauthSdkDetails = value
       }
@@ -384,14 +382,14 @@ public extension Services.User.Actions.CompleteAuthorization {
 
         case 16 :
           let valueIntprovider = input.readEnum()
-          if let enumsprovider = Services.User.Containers.Identity.IdentityV1.ProviderV1(rawValue:valueIntprovider){
+          if let enumsprovider = Services.User.Containers.IdentityV1.ProviderV1(rawValue:valueIntprovider){
                provider = enumsprovider
           } else {
                unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntprovider))
           }
 
         case 26 :
-          var subBuilder:Services.User.Containers.Oauth.OAuth2DetailsV1Builder = Services.User.Containers.Oauth.OAuth2DetailsV1.builder()
+          var subBuilder:Services.User.Containers.OAuth2DetailsV1Builder = Services.User.Containers.OAuth2DetailsV1.builder()
           if hasOauth2Details {
             subBuilder.mergeFrom(oauth2Details)
           }
@@ -399,7 +397,7 @@ public extension Services.User.Actions.CompleteAuthorization {
           oauth2Details = subBuilder.buildPartial()
 
         case 34 :
-          var subBuilder:Services.User.Containers.Oauth.OAuthSDKDetailsV1Builder = Services.User.Containers.Oauth.OAuthSDKDetailsV1.builder()
+          var subBuilder:Services.User.Containers.OAuthSDKDetailsV1Builder = Services.User.Containers.OAuthSDKDetailsV1.builder()
           if hasOauthSdkDetails {
             subBuilder.mergeFrom(oauthSdkDetails)
           }
@@ -431,9 +429,9 @@ public extension Services.User.Actions.CompleteAuthorization {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasUser:Bool = false
-    public private(set) var user:Services.User.Containers.User.UserV1!
+    public private(set) var user:Services.User.Containers.UserV1!
     public private(set) var hasIdentity:Bool = false
-    public private(set) var identity:Services.User.Containers.Identity.IdentityV1!
+    public private(set) var identity:Services.User.Containers.IdentityV1!
     public private(set) var hasNewUser:Bool = false
     public private(set) var newUser:Bool = false
 
@@ -615,7 +613,7 @@ public extension Services.User.Actions.CompleteAuthorization {
              return builderResult.hasUser
          }
     }
-    public var user:Services.User.Containers.User.UserV1! {
+    public var user:Services.User.Containers.UserV1! {
          get {
              return builderResult.user
          }
@@ -624,13 +622,13 @@ public extension Services.User.Actions.CompleteAuthorization {
              builderResult.user = value
          }
     }
-    public func setUser(value:Services.User.Containers.User.UserV1!)-> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
+    public func setUser(value:Services.User.Containers.UserV1!)-> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
       self.user = value
       return self
     }
-    public func mergeUser(value:Services.User.Containers.User.UserV1) -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
+    public func mergeUser(value:Services.User.Containers.UserV1) -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
       if (builderResult.hasUser) {
-        builderResult.user = Services.User.Containers.User.UserV1.builderWithPrototype(builderResult.user).mergeFrom(value).buildPartial()
+        builderResult.user = Services.User.Containers.UserV1.builderWithPrototype(builderResult.user).mergeFrom(value).buildPartial()
       } else {
         builderResult.user = value
       }
@@ -647,7 +645,7 @@ public extension Services.User.Actions.CompleteAuthorization {
              return builderResult.hasIdentity
          }
     }
-    public var identity:Services.User.Containers.Identity.IdentityV1! {
+    public var identity:Services.User.Containers.IdentityV1! {
          get {
              return builderResult.identity
          }
@@ -656,13 +654,13 @@ public extension Services.User.Actions.CompleteAuthorization {
              builderResult.identity = value
          }
     }
-    public func setIdentity(value:Services.User.Containers.Identity.IdentityV1!)-> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
+    public func setIdentity(value:Services.User.Containers.IdentityV1!)-> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
       self.identity = value
       return self
     }
-    public func mergeIdentity(value:Services.User.Containers.Identity.IdentityV1) -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
+    public func mergeIdentity(value:Services.User.Containers.IdentityV1) -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
       if (builderResult.hasIdentity) {
-        builderResult.identity = Services.User.Containers.Identity.IdentityV1.builderWithPrototype(builderResult.identity).mergeFrom(value).buildPartial()
+        builderResult.identity = Services.User.Containers.IdentityV1.builderWithPrototype(builderResult.identity).mergeFrom(value).buildPartial()
       } else {
         builderResult.identity = value
       }
@@ -752,7 +750,7 @@ public extension Services.User.Actions.CompleteAuthorization {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.User.Containers.User.UserV1Builder = Services.User.Containers.User.UserV1.builder()
+          var subBuilder:Services.User.Containers.UserV1Builder = Services.User.Containers.UserV1.builder()
           if hasUser {
             subBuilder.mergeFrom(user)
           }
@@ -760,7 +758,7 @@ public extension Services.User.Actions.CompleteAuthorization {
           user = subBuilder.buildPartial()
 
         case 26 :
-          var subBuilder:Services.User.Containers.Identity.IdentityV1Builder = Services.User.Containers.Identity.IdentityV1.builder()
+          var subBuilder:Services.User.Containers.IdentityV1Builder = Services.User.Containers.IdentityV1.builder()
           if hasIdentity {
             subBuilder.mergeFrom(identity)
           }

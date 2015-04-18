@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.profile.containers.tag_pb2
+import protobufs.services.profile.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/remove_tags.proto',
   package='services.profile.actions.remove_tags',
-  serialized_pb=_b('\n4protobufs/services/profile/actions/remove_tags.proto\x12$services.profile.actions.remove_tags\x1a/protobufs/services/profile/containers/tag.proto\"i\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x34\n\x04tags\x18\x02 \x03(\x0b\x32&.services.profile.containers.tag.TagV1\x12\x12\n\nprofile_id\x18\x03 \x01(\t\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31')
+  serialized_pb=_b('\n4protobufs/services/profile/actions/remove_tags.proto\x12$services.profile.actions.remove_tags\x1a+protobufs/services/profile/containers.proto\"e\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x30\n\x04tags\x18\x02 \x03(\x0b\x32\".services.profile.containers.TagV1\x12\x12\n\nprofile_id\x18\x03 \x01(\t\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31')
   ,
-  dependencies=[protobufs.services.profile.containers.tag_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.profile.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -66,8 +66,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=143,
-  serialized_end=248,
+  serialized_start=139,
+  serialized_end=240,
 )
 
 
@@ -96,11 +96,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=250,
-  serialized_end=282,
+  serialized_start=242,
+  serialized_end=274,
 )
 
-_REQUESTV1.fields_by_name['tags'].message_type = protobufs.services.profile.containers.tag_pb2._TAGV1
+_REQUESTV1.fields_by_name['tags'].message_type = protobufs.services.profile.containers_pb2._TAGV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

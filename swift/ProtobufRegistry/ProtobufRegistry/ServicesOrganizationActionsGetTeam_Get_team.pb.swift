@@ -38,7 +38,7 @@ public extension Services.Organization.Actions.GetTeam {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Team.TeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -383,7 +383,7 @@ public extension Services.Organization.Actions.GetTeam {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasTeam:Bool = false
-    public private(set) var team:Services.Organization.Containers.Team.TeamV1!
+    public private(set) var team:Services.Organization.Containers.TeamV1!
     required public init() {
          super.init()
     }
@@ -532,7 +532,7 @@ public extension Services.Organization.Actions.GetTeam {
              return builderResult.hasTeam
          }
     }
-    public var team:Services.Organization.Containers.Team.TeamV1! {
+    public var team:Services.Organization.Containers.TeamV1! {
          get {
              return builderResult.team
          }
@@ -541,13 +541,13 @@ public extension Services.Organization.Actions.GetTeam {
              builderResult.team = value
          }
     }
-    public func setTeam(value:Services.Organization.Containers.Team.TeamV1!)-> Services.Organization.Actions.GetTeam.ResponseV1Builder {
+    public func setTeam(value:Services.Organization.Containers.TeamV1!)-> Services.Organization.Actions.GetTeam.ResponseV1Builder {
       self.team = value
       return self
     }
-    public func mergeTeam(value:Services.Organization.Containers.Team.TeamV1) -> Services.Organization.Actions.GetTeam.ResponseV1Builder {
+    public func mergeTeam(value:Services.Organization.Containers.TeamV1) -> Services.Organization.Actions.GetTeam.ResponseV1Builder {
       if (builderResult.hasTeam) {
-        builderResult.team = Services.Organization.Containers.Team.TeamV1.builderWithPrototype(builderResult.team).mergeFrom(value).buildPartial()
+        builderResult.team = Services.Organization.Containers.TeamV1.builderWithPrototype(builderResult.team).mergeFrom(value).buildPartial()
       } else {
         builderResult.team = value
       }
@@ -608,7 +608,7 @@ public extension Services.Organization.Actions.GetTeam {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Organization.Containers.Team.TeamV1Builder = Services.Organization.Containers.Team.TeamV1.builder()
+          var subBuilder:Services.Organization.Containers.TeamV1Builder = Services.Organization.Containers.TeamV1.builder()
           if hasTeam {
             subBuilder.mergeFrom(team)
           }

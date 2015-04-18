@@ -1,6 +1,6 @@
 package services.organization.actions.get_top_level_team;
 
-import "protobufs/services/organization/containers/team.proto";
+import "protobufs/services/organization/containers.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
@@ -9,5 +9,5 @@ message RequestV1 {
 
 message ResponseV1 {
     optional uint32 version = 1 [default = 1];
-    optional services.organization.containers.team.TeamV1 team = 2;
+    optional services.organization.containers.TeamV1 team = 2;
 }

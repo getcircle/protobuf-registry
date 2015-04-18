@@ -1,19 +1,17 @@
 package services.user.actions.complete_authorization;
 
-import "protobufs/services/user/containers/identity.proto";
-import "protobufs/services/user/containers/oauth.proto";
-import "protobufs/services/user/containers/user.proto";
+import "protobufs/services/user/containers.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
-    optional services.user.containers.identity.IdentityV1.ProviderV1 provider = 2;
-    optional services.user.containers.oauth.OAuth2DetailsV1 oauth2_details = 3;
-    optional services.user.containers.oauth.OAuthSDKDetailsV1 oauth_sdk_details = 4;
+    optional services.user.containers.IdentityV1.ProviderV1 provider = 2;
+    optional services.user.containers.OAuth2DetailsV1 oauth2_details = 3;
+    optional services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 4;
 }
 
 message ResponseV1 {
     optional uint32 version = 1 [default = 1];
-    optional services.user.containers.user.UserV1 user = 2;
-    optional services.user.containers.identity.IdentityV1 identity = 3;
+    optional services.user.containers.UserV1 user = 2;
+    optional services.user.containers.IdentityV1 identity = 3;
     optional bool new_user = 4;
 }

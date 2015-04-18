@@ -38,9 +38,9 @@ public extension Services.Feed.Actions.GetOrganizationFeed {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Feed.Containers.Category.CategoryRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Organization.OrganizationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Profile.ProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Feed.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -296,10 +296,10 @@ public extension Services.Feed.Actions.GetOrganizationFeed {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasOwner:Bool = false
-    public private(set) var owner:Services.Profile.Containers.Profile.ProfileV1!
+    public private(set) var owner:Services.Profile.Containers.ProfileV1!
     public private(set) var hasOrganization:Bool = false
-    public private(set) var organization:Services.Organization.Containers.Organization.OrganizationV1!
-    public private(set) var categories:Array<Services.Feed.Containers.Category.CategoryV1>  = Array<Services.Feed.Containers.Category.CategoryV1>()
+    public private(set) var organization:Services.Organization.Containers.OrganizationV1!
+    public private(set) var categories:Array<Services.Feed.Containers.CategoryV1>  = Array<Services.Feed.Containers.CategoryV1>()
     required public init() {
          super.init()
     }
@@ -477,7 +477,7 @@ public extension Services.Feed.Actions.GetOrganizationFeed {
          builderResult.version = UInt32(1)
          return self
     }
-    public var categories:Array<Services.Feed.Containers.Category.CategoryV1> {
+    public var categories:Array<Services.Feed.Containers.CategoryV1> {
          get {
              return builderResult.categories
          }
@@ -485,7 +485,7 @@ public extension Services.Feed.Actions.GetOrganizationFeed {
              builderResult.categories = value
          }
     }
-    public func setCategories(value:Array<Services.Feed.Containers.Category.CategoryV1>)-> Services.Feed.Actions.GetOrganizationFeed.ResponseV1Builder {
+    public func setCategories(value:Array<Services.Feed.Containers.CategoryV1>)-> Services.Feed.Actions.GetOrganizationFeed.ResponseV1Builder {
       self.categories = value
       return self
     }
@@ -498,7 +498,7 @@ public extension Services.Feed.Actions.GetOrganizationFeed {
              return builderResult.hasOwner
          }
     }
-    public var owner:Services.Profile.Containers.Profile.ProfileV1! {
+    public var owner:Services.Profile.Containers.ProfileV1! {
          get {
              return builderResult.owner
          }
@@ -507,13 +507,13 @@ public extension Services.Feed.Actions.GetOrganizationFeed {
              builderResult.owner = value
          }
     }
-    public func setOwner(value:Services.Profile.Containers.Profile.ProfileV1!)-> Services.Feed.Actions.GetOrganizationFeed.ResponseV1Builder {
+    public func setOwner(value:Services.Profile.Containers.ProfileV1!)-> Services.Feed.Actions.GetOrganizationFeed.ResponseV1Builder {
       self.owner = value
       return self
     }
-    public func mergeOwner(value:Services.Profile.Containers.Profile.ProfileV1) -> Services.Feed.Actions.GetOrganizationFeed.ResponseV1Builder {
+    public func mergeOwner(value:Services.Profile.Containers.ProfileV1) -> Services.Feed.Actions.GetOrganizationFeed.ResponseV1Builder {
       if (builderResult.hasOwner) {
-        builderResult.owner = Services.Profile.Containers.Profile.ProfileV1.builderWithPrototype(builderResult.owner).mergeFrom(value).buildPartial()
+        builderResult.owner = Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.owner).mergeFrom(value).buildPartial()
       } else {
         builderResult.owner = value
       }
@@ -530,7 +530,7 @@ public extension Services.Feed.Actions.GetOrganizationFeed {
              return builderResult.hasOrganization
          }
     }
-    public var organization:Services.Organization.Containers.Organization.OrganizationV1! {
+    public var organization:Services.Organization.Containers.OrganizationV1! {
          get {
              return builderResult.organization
          }
@@ -539,13 +539,13 @@ public extension Services.Feed.Actions.GetOrganizationFeed {
              builderResult.organization = value
          }
     }
-    public func setOrganization(value:Services.Organization.Containers.Organization.OrganizationV1!)-> Services.Feed.Actions.GetOrganizationFeed.ResponseV1Builder {
+    public func setOrganization(value:Services.Organization.Containers.OrganizationV1!)-> Services.Feed.Actions.GetOrganizationFeed.ResponseV1Builder {
       self.organization = value
       return self
     }
-    public func mergeOrganization(value:Services.Organization.Containers.Organization.OrganizationV1) -> Services.Feed.Actions.GetOrganizationFeed.ResponseV1Builder {
+    public func mergeOrganization(value:Services.Organization.Containers.OrganizationV1) -> Services.Feed.Actions.GetOrganizationFeed.ResponseV1Builder {
       if (builderResult.hasOrganization) {
-        builderResult.organization = Services.Organization.Containers.Organization.OrganizationV1.builderWithPrototype(builderResult.organization).mergeFrom(value).buildPartial()
+        builderResult.organization = Services.Organization.Containers.OrganizationV1.builderWithPrototype(builderResult.organization).mergeFrom(value).buildPartial()
       } else {
         builderResult.organization = value
       }
@@ -612,12 +612,12 @@ public extension Services.Feed.Actions.GetOrganizationFeed {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Feed.Containers.Category.CategoryV1.builder()
+          var subBuilder = Services.Feed.Containers.CategoryV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           categories += [subBuilder.buildPartial()]
 
         case 26 :
-          var subBuilder:Services.Profile.Containers.Profile.ProfileV1Builder = Services.Profile.Containers.Profile.ProfileV1.builder()
+          var subBuilder:Services.Profile.Containers.ProfileV1Builder = Services.Profile.Containers.ProfileV1.builder()
           if hasOwner {
             subBuilder.mergeFrom(owner)
           }
@@ -625,7 +625,7 @@ public extension Services.Feed.Actions.GetOrganizationFeed {
           owner = subBuilder.buildPartial()
 
         case 34 :
-          var subBuilder:Services.Organization.Containers.Organization.OrganizationV1Builder = Services.Organization.Containers.Organization.OrganizationV1.builder()
+          var subBuilder:Services.Organization.Containers.OrganizationV1Builder = Services.Organization.Containers.OrganizationV1.builder()
           if hasOrganization {
             subBuilder.mergeFrom(organization)
           }

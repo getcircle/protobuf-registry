@@ -1,6 +1,6 @@
 package services.feed.actions.get_profile_feed;
 
-import "protobufs/services/feed/containers/category.proto";
+import "protobufs/services/feed/containers.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
@@ -10,5 +10,5 @@ message RequestV1 {
 
 message ResponseV1 {
     optional uint32 version = 1 [default = 1];
-    repeated services.feed.containers.category.CategoryV1 categories = 2;
+    repeated services.feed.containers.CategoryV1 categories = 2;
 }

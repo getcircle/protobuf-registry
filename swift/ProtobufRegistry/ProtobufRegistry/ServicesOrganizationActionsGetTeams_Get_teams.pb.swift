@@ -37,7 +37,7 @@ public extension Services.Organization.Actions.GetTeams {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Team.TeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -335,7 +335,7 @@ public extension Services.Organization.Actions.GetTeams {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var teams:Array<Services.Organization.Containers.Team.TeamV1>  = Array<Services.Organization.Containers.Team.TeamV1>()
+    public private(set) var teams:Array<Services.Organization.Containers.TeamV1>  = Array<Services.Organization.Containers.TeamV1>()
     required public init() {
          super.init()
     }
@@ -477,7 +477,7 @@ public extension Services.Organization.Actions.GetTeams {
          builderResult.version = UInt32(1)
          return self
     }
-    public var teams:Array<Services.Organization.Containers.Team.TeamV1> {
+    public var teams:Array<Services.Organization.Containers.TeamV1> {
          get {
              return builderResult.teams
          }
@@ -485,7 +485,7 @@ public extension Services.Organization.Actions.GetTeams {
              builderResult.teams = value
          }
     }
-    public func setTeams(value:Array<Services.Organization.Containers.Team.TeamV1>)-> Services.Organization.Actions.GetTeams.ResponseV1Builder {
+    public func setTeams(value:Array<Services.Organization.Containers.TeamV1>)-> Services.Organization.Actions.GetTeams.ResponseV1Builder {
       self.teams = value
       return self
     }
@@ -542,7 +542,7 @@ public extension Services.Organization.Actions.GetTeams {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Organization.Containers.Team.TeamV1.builder()
+          var subBuilder = Services.Organization.Containers.TeamV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           teams += [subBuilder.buildPartial()]
 

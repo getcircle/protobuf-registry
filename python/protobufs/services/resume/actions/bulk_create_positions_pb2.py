@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.resume.containers.resume_pb2
+import protobufs.services.resume.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/resume/actions/bulk_create_positions.proto',
   package='services.resume.actions.bulk_create_positions',
-  serialized_pb=_b('\n=protobufs/services/resume/actions/bulk_create_positions.proto\x12-services.resume.actions.bulk_create_positions\x1a\x31protobufs/services/resume/containers/resume.proto\"a\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12@\n\tpositions\x18\x02 \x03(\x0b\x32-.services.resume.containers.resume.PositionV1\"b\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12@\n\tpositions\x18\x02 \x03(\x0b\x32-.services.resume.containers.resume.PositionV1')
+  serialized_pb=_b('\n=protobufs/services/resume/actions/bulk_create_positions.proto\x12-services.resume.actions.bulk_create_positions\x1a*protobufs/services/resume/containers.proto\"Z\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x39\n\tpositions\x18\x02 \x03(\x0b\x32&.services.resume.containers.PositionV1\"[\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x39\n\tpositions\x18\x02 \x03(\x0b\x32&.services.resume.containers.PositionV1')
   ,
-  dependencies=[protobufs.services.resume.containers.resume_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.resume.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=163,
-  serialized_end=260,
+  serialized_start=156,
+  serialized_end=246,
 )
 
 
@@ -96,12 +96,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=262,
-  serialized_end=360,
+  serialized_start=248,
+  serialized_end=339,
 )
 
-_REQUESTV1.fields_by_name['positions'].message_type = protobufs.services.resume.containers.resume_pb2._POSITIONV1
-_RESPONSEV1.fields_by_name['positions'].message_type = protobufs.services.resume.containers.resume_pb2._POSITIONV1
+_REQUESTV1.fields_by_name['positions'].message_type = protobufs.services.resume.containers_pb2._POSITIONV1
+_RESPONSEV1.fields_by_name['positions'].message_type = protobufs.services.resume.containers_pb2._POSITIONV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

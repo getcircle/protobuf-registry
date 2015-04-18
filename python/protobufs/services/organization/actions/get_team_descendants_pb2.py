@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.organization.containers.team_pb2
+import protobufs.services.organization.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/get_team_descendants.proto',
   package='services.organization.actions.get_team_descendants',
-  serialized_pb=_b('\nBprotobufs/services/organization/actions/get_team_descendants.proto\x12\x32services.organization.actions.get_team_descendants\x1a\x35protobufs/services/organization/containers/team.proto\"T\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x10\n\x08team_ids\x18\x02 \x03(\t\x12\x12\n\nattributes\x18\x03 \x03(\t\x12\r\n\x05\x64\x65pth\x18\x04 \x01(\r\"o\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12M\n\x0b\x64\x65scendants\x18\x02 \x03(\x0b\x32\x38.services.organization.containers.team.TeamDescendantsV1')
+  serialized_pb=_b('\nBprotobufs/services/organization/actions/get_team_descendants.proto\x12\x32services.organization.actions.get_team_descendants\x1a\x30protobufs/services/organization/containers.proto\"T\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x10\n\x08team_ids\x18\x02 \x03(\t\x12\x12\n\nattributes\x18\x03 \x03(\t\x12\r\n\x05\x64\x65pth\x18\x04 \x01(\r\"j\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12H\n\x0b\x64\x65scendants\x18\x02 \x03(\x0b\x32\x33.services.organization.containers.TeamDescendantsV1')
   ,
-  dependencies=[protobufs.services.organization.containers.team_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.organization.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -73,8 +73,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=177,
-  serialized_end=261,
+  serialized_start=172,
+  serialized_end=256,
 )
 
 
@@ -110,11 +110,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=374,
+  serialized_start=258,
+  serialized_end=364,
 )
 
-_RESPONSEV1.fields_by_name['descendants'].message_type = protobufs.services.organization.containers.team_pb2._TEAMDESCENDANTSV1
+_RESPONSEV1.fields_by_name['descendants'].message_type = protobufs.services.organization.containers_pb2._TEAMDESCENDANTSV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

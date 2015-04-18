@@ -36,7 +36,7 @@ public extension Services.Appreciation.Actions.GetAppreciation {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Appreciation.Containers.Appreciation.AppreciationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Appreciation.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -289,7 +289,7 @@ public extension Services.Appreciation.Actions.GetAppreciation {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var appreciation:Array<Services.Appreciation.Containers.Appreciation.AppreciationV1>  = Array<Services.Appreciation.Containers.Appreciation.AppreciationV1>()
+    public private(set) var appreciation:Array<Services.Appreciation.Containers.AppreciationV1>  = Array<Services.Appreciation.Containers.AppreciationV1>()
     required public init() {
          super.init()
     }
@@ -431,7 +431,7 @@ public extension Services.Appreciation.Actions.GetAppreciation {
          builderResult.version = UInt32(1)
          return self
     }
-    public var appreciation:Array<Services.Appreciation.Containers.Appreciation.AppreciationV1> {
+    public var appreciation:Array<Services.Appreciation.Containers.AppreciationV1> {
          get {
              return builderResult.appreciation
          }
@@ -439,7 +439,7 @@ public extension Services.Appreciation.Actions.GetAppreciation {
              builderResult.appreciation = value
          }
     }
-    public func setAppreciation(value:Array<Services.Appreciation.Containers.Appreciation.AppreciationV1>)-> Services.Appreciation.Actions.GetAppreciation.ResponseV1Builder {
+    public func setAppreciation(value:Array<Services.Appreciation.Containers.AppreciationV1>)-> Services.Appreciation.Actions.GetAppreciation.ResponseV1Builder {
       self.appreciation = value
       return self
     }
@@ -496,7 +496,7 @@ public extension Services.Appreciation.Actions.GetAppreciation {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Appreciation.Containers.Appreciation.AppreciationV1.builder()
+          var subBuilder = Services.Appreciation.Containers.AppreciationV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           appreciation += [subBuilder.buildPartial()]
 

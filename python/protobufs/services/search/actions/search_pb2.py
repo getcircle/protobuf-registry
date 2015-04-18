@@ -13,17 +13,16 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.organization.containers.team_pb2
-import protobufs.services.organization.containers.address_pb2
-import protobufs.services.profile.containers.profile_pb2
+import protobufs.services.organization.containers_pb2
+import protobufs.services.profile.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/search/actions/search.proto',
   package='services.search.actions.search',
-  serialized_pb=_b('\n.protobufs/services/search/actions/search.proto\x12\x1eservices.search.actions.search\x1a\x35protobufs/services/organization/containers/team.proto\x1a\x38protobufs/services/organization/containers/address.proto\x1a\x33protobufs/services/profile/containers/profile.proto\".\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05query\x18\x02 \x01(\t\"\xe8\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12@\n\x08profiles\x18\x02 \x03(\x0b\x32..services.profile.containers.profile.ProfileV1\x12<\n\x05teams\x18\x03 \x03(\x0b\x32-.services.organization.containers.team.TeamV1\x12\x46\n\taddresses\x18\x04 \x03(\x0b\x32\x33.services.organization.containers.address.AddressV1')
+  serialized_pb=_b('\n.protobufs/services/search/actions/search.proto\x12\x1eservices.search.actions.search\x1a\x30protobufs/services/organization/containers.proto\x1a+protobufs/services/profile/containers.proto\".\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05query\x18\x02 \x01(\t\"\xd3\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x38\n\x08profiles\x18\x02 \x03(\x0b\x32&.services.profile.containers.ProfileV1\x12\x37\n\x05teams\x18\x03 \x03(\x0b\x32(.services.organization.containers.TeamV1\x12>\n\taddresses\x18\x04 \x03(\x0b\x32+.services.organization.containers.AddressV1')
   ,
-  dependencies=[protobufs.services.organization.containers.team_pb2.DESCRIPTOR,protobufs.services.organization.containers.address_pb2.DESCRIPTOR,protobufs.services.profile.containers.profile_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.organization.containers_pb2.DESCRIPTOR,protobufs.services.profile.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -61,8 +60,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=248,
-  serialized_end=294,
+  serialized_start=177,
+  serialized_end=223,
 )
 
 
@@ -112,13 +111,13 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=297,
-  serialized_end=529,
+  serialized_start=226,
+  serialized_end=437,
 )
 
-_RESPONSEV1.fields_by_name['profiles'].message_type = protobufs.services.profile.containers.profile_pb2._PROFILEV1
-_RESPONSEV1.fields_by_name['teams'].message_type = protobufs.services.organization.containers.team_pb2._TEAMV1
-_RESPONSEV1.fields_by_name['addresses'].message_type = protobufs.services.organization.containers.address_pb2._ADDRESSV1
+_RESPONSEV1.fields_by_name['profiles'].message_type = protobufs.services.profile.containers_pb2._PROFILEV1
+_RESPONSEV1.fields_by_name['teams'].message_type = protobufs.services.organization.containers_pb2._TEAMV1
+_RESPONSEV1.fields_by_name['addresses'].message_type = protobufs.services.organization.containers_pb2._ADDRESSV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

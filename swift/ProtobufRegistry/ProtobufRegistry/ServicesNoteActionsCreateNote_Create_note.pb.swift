@@ -36,7 +36,7 @@ public extension Services.Note.Actions.CreateNote {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Note.Containers.Note.NoteRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Note.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -55,7 +55,7 @@ public extension Services.Note.Actions.CreateNote {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasNote:Bool = false
-    public private(set) var note:Services.Note.Containers.Note.NoteV1!
+    public private(set) var note:Services.Note.Containers.NoteV1!
     required public init() {
          super.init()
     }
@@ -204,7 +204,7 @@ public extension Services.Note.Actions.CreateNote {
              return builderResult.hasNote
          }
     }
-    public var note:Services.Note.Containers.Note.NoteV1! {
+    public var note:Services.Note.Containers.NoteV1! {
          get {
              return builderResult.note
          }
@@ -213,13 +213,13 @@ public extension Services.Note.Actions.CreateNote {
              builderResult.note = value
          }
     }
-    public func setNote(value:Services.Note.Containers.Note.NoteV1!)-> Services.Note.Actions.CreateNote.RequestV1Builder {
+    public func setNote(value:Services.Note.Containers.NoteV1!)-> Services.Note.Actions.CreateNote.RequestV1Builder {
       self.note = value
       return self
     }
-    public func mergeNote(value:Services.Note.Containers.Note.NoteV1) -> Services.Note.Actions.CreateNote.RequestV1Builder {
+    public func mergeNote(value:Services.Note.Containers.NoteV1) -> Services.Note.Actions.CreateNote.RequestV1Builder {
       if (builderResult.hasNote) {
-        builderResult.note = Services.Note.Containers.Note.NoteV1.builderWithPrototype(builderResult.note).mergeFrom(value).buildPartial()
+        builderResult.note = Services.Note.Containers.NoteV1.builderWithPrototype(builderResult.note).mergeFrom(value).buildPartial()
       } else {
         builderResult.note = value
       }
@@ -280,7 +280,7 @@ public extension Services.Note.Actions.CreateNote {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Note.Containers.Note.NoteV1Builder = Services.Note.Containers.Note.NoteV1.builder()
+          var subBuilder:Services.Note.Containers.NoteV1Builder = Services.Note.Containers.NoteV1.builder()
           if hasNote {
             subBuilder.mergeFrom(note)
           }
@@ -310,7 +310,7 @@ public extension Services.Note.Actions.CreateNote {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasNote:Bool = false
-    public private(set) var note:Services.Note.Containers.Note.NoteV1!
+    public private(set) var note:Services.Note.Containers.NoteV1!
     required public init() {
          super.init()
     }
@@ -459,7 +459,7 @@ public extension Services.Note.Actions.CreateNote {
              return builderResult.hasNote
          }
     }
-    public var note:Services.Note.Containers.Note.NoteV1! {
+    public var note:Services.Note.Containers.NoteV1! {
          get {
              return builderResult.note
          }
@@ -468,13 +468,13 @@ public extension Services.Note.Actions.CreateNote {
              builderResult.note = value
          }
     }
-    public func setNote(value:Services.Note.Containers.Note.NoteV1!)-> Services.Note.Actions.CreateNote.ResponseV1Builder {
+    public func setNote(value:Services.Note.Containers.NoteV1!)-> Services.Note.Actions.CreateNote.ResponseV1Builder {
       self.note = value
       return self
     }
-    public func mergeNote(value:Services.Note.Containers.Note.NoteV1) -> Services.Note.Actions.CreateNote.ResponseV1Builder {
+    public func mergeNote(value:Services.Note.Containers.NoteV1) -> Services.Note.Actions.CreateNote.ResponseV1Builder {
       if (builderResult.hasNote) {
-        builderResult.note = Services.Note.Containers.Note.NoteV1.builderWithPrototype(builderResult.note).mergeFrom(value).buildPartial()
+        builderResult.note = Services.Note.Containers.NoteV1.builderWithPrototype(builderResult.note).mergeFrom(value).buildPartial()
       } else {
         builderResult.note = value
       }
@@ -535,7 +535,7 @@ public extension Services.Note.Actions.CreateNote {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Note.Containers.Note.NoteV1Builder = Services.Note.Containers.Note.NoteV1.builder()
+          var subBuilder:Services.Note.Containers.NoteV1Builder = Services.Note.Containers.NoteV1.builder()
           if hasNote {
             subBuilder.mergeFrom(note)
           }

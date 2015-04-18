@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.appreciation.containers.appreciation_pb2
+import protobufs.services.appreciation.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/appreciation/actions/get_appreciation.proto',
   package='services.appreciation.actions.get_appreciation',
-  serialized_pb=_b('\n>protobufs/services/appreciation/actions/get_appreciation.proto\x12.services.appreciation.actions.get_appreciation\x1a=protobufs/services/appreciation/containers/appreciation.proto\"?\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x1e\n\x16\x64\x65stination_profile_id\x18\x02 \x01(\t\"u\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12S\n\x0c\x61ppreciation\x18\x02 \x03(\x0b\x32=.services.appreciation.containers.appreciation.AppreciationV1')
+  serialized_pb=_b('\n>protobufs/services/appreciation/actions/get_appreciation.proto\x12.services.appreciation.actions.get_appreciation\x1a\x30protobufs/services/appreciation/containers.proto\"?\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x1e\n\x16\x64\x65stination_profile_id\x18\x02 \x01(\t\"h\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x46\n\x0c\x61ppreciation\x18\x02 \x03(\x0b\x32\x30.services.appreciation.containers.AppreciationV1')
   ,
-  dependencies=[protobufs.services.appreciation.containers.appreciation_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.appreciation.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=177,
-  serialized_end=240,
+  serialized_start=164,
+  serialized_end=227,
 )
 
 
@@ -96,11 +96,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=242,
-  serialized_end=359,
+  serialized_start=229,
+  serialized_end=333,
 )
 
-_RESPONSEV1.fields_by_name['appreciation'].message_type = protobufs.services.appreciation.containers.appreciation_pb2._APPRECIATIONV1
+_RESPONSEV1.fields_by_name['appreciation'].message_type = protobufs.services.appreciation.containers_pb2._APPRECIATIONV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

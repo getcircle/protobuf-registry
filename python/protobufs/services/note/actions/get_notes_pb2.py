@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.note.containers.note_pb2
+import protobufs.services.note.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/note/actions/get_notes.proto',
   package='services.note.actions.get_notes',
-  serialized_pb=_b('\n/protobufs/services/note/actions/get_notes.proto\x12\x1fservices.note.actions.get_notes\x1a-protobufs/services/note/containers/note.proto\"Q\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x18\n\x10owner_profile_id\x18\x02 \x01(\t\x12\x16\n\x0e\x66or_profile_id\x18\x03 \x01(\t\"V\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x34\n\x05notes\x18\x02 \x03(\x0b\x32%.services.note.containers.note.NoteV1')
+  serialized_pb=_b('\n/protobufs/services/note/actions/get_notes.proto\x12\x1fservices.note.actions.get_notes\x1a(protobufs/services/note/containers.proto\"Q\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x18\n\x10owner_profile_id\x18\x02 \x01(\t\x12\x16\n\x0e\x66or_profile_id\x18\x03 \x01(\t\"Q\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12/\n\x05notes\x18\x02 \x03(\x0b\x32 .services.note.containers.NoteV1')
   ,
-  dependencies=[protobufs.services.note.containers.note_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.note.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -66,8 +66,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=131,
-  serialized_end=212,
+  serialized_start=126,
+  serialized_end=207,
 )
 
 
@@ -103,11 +103,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=214,
-  serialized_end=300,
+  serialized_start=209,
+  serialized_end=290,
 )
 
-_RESPONSEV1.fields_by_name['notes'].message_type = protobufs.services.note.containers.note_pb2._NOTEV1
+_RESPONSEV1.fields_by_name['notes'].message_type = protobufs.services.note.containers_pb2._NOTEV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

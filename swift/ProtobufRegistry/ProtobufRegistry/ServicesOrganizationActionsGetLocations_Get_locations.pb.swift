@@ -36,7 +36,7 @@ public extension Services.Organization.Actions.GetLocations {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Location.LocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -289,7 +289,7 @@ public extension Services.Organization.Actions.GetLocations {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var locations:Array<Services.Organization.Containers.Location.LocationV1>  = Array<Services.Organization.Containers.Location.LocationV1>()
+    public private(set) var locations:Array<Services.Organization.Containers.LocationV1>  = Array<Services.Organization.Containers.LocationV1>()
     required public init() {
          super.init()
     }
@@ -431,7 +431,7 @@ public extension Services.Organization.Actions.GetLocations {
          builderResult.version = UInt32(1)
          return self
     }
-    public var locations:Array<Services.Organization.Containers.Location.LocationV1> {
+    public var locations:Array<Services.Organization.Containers.LocationV1> {
          get {
              return builderResult.locations
          }
@@ -439,7 +439,7 @@ public extension Services.Organization.Actions.GetLocations {
              builderResult.locations = value
          }
     }
-    public func setLocations(value:Array<Services.Organization.Containers.Location.LocationV1>)-> Services.Organization.Actions.GetLocations.ResponseV1Builder {
+    public func setLocations(value:Array<Services.Organization.Containers.LocationV1>)-> Services.Organization.Actions.GetLocations.ResponseV1Builder {
       self.locations = value
       return self
     }
@@ -496,7 +496,7 @@ public extension Services.Organization.Actions.GetLocations {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Organization.Containers.Location.LocationV1.builder()
+          var subBuilder = Services.Organization.Containers.LocationV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           locations += [subBuilder.buildPartial()]
 

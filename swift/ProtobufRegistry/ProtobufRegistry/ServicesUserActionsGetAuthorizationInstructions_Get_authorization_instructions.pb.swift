@@ -36,7 +36,7 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.User.Containers.Identity.IdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -54,7 +54,7 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var provider:Services.User.Containers.Identity.IdentityV1.ProviderV1 = Services.User.Containers.Identity.IdentityV1.ProviderV1.Internal
+    public private(set) var provider:Services.User.Containers.IdentityV1.ProviderV1 = Services.User.Containers.IdentityV1.ProviderV1.Internal
     public private(set) var hasProvider:Bool = false
     required public init() {
          super.init()
@@ -198,7 +198,7 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
               return builderResult.hasProvider
           }
       }
-      public var provider:Services.User.Containers.Identity.IdentityV1.ProviderV1 {
+      public var provider:Services.User.Containers.IdentityV1.ProviderV1 {
           get {
               return builderResult.provider
           }
@@ -207,7 +207,7 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
               builderResult.provider = value
           }
       }
-      public func setProvider(value:Services.User.Containers.Identity.IdentityV1.ProviderV1)-> Services.User.Actions.GetAuthorizationInstructions.RequestV1Builder {
+      public func setProvider(value:Services.User.Containers.IdentityV1.ProviderV1)-> Services.User.Actions.GetAuthorizationInstructions.RequestV1Builder {
         self.provider = value
         return self
       }
@@ -266,7 +266,7 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
 
         case 16 :
           let valueIntprovider = input.readEnum()
-          if let enumsprovider = Services.User.Containers.Identity.IdentityV1.ProviderV1(rawValue:valueIntprovider){
+          if let enumsprovider = Services.User.Containers.IdentityV1.ProviderV1(rawValue:valueIntprovider){
                provider = enumsprovider
           } else {
                unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntprovider))

@@ -37,7 +37,7 @@ public extension Services.Media.Actions.StartImageUpload {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Media.Containers.Instructions.InstructionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Media.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Containers.Media.MediaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
@@ -342,7 +342,7 @@ public extension Services.Media.Actions.StartImageUpload {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasUploadInstructions:Bool = false
-    public private(set) var uploadInstructions:Services.Media.Containers.Instructions.UploadInstructionsV1!
+    public private(set) var uploadInstructions:Services.Media.Containers.UploadInstructionsV1!
     required public init() {
          super.init()
     }
@@ -491,7 +491,7 @@ public extension Services.Media.Actions.StartImageUpload {
              return builderResult.hasUploadInstructions
          }
     }
-    public var uploadInstructions:Services.Media.Containers.Instructions.UploadInstructionsV1! {
+    public var uploadInstructions:Services.Media.Containers.UploadInstructionsV1! {
          get {
              return builderResult.uploadInstructions
          }
@@ -500,13 +500,13 @@ public extension Services.Media.Actions.StartImageUpload {
              builderResult.uploadInstructions = value
          }
     }
-    public func setUploadInstructions(value:Services.Media.Containers.Instructions.UploadInstructionsV1!)-> Services.Media.Actions.StartImageUpload.ResponseV1Builder {
+    public func setUploadInstructions(value:Services.Media.Containers.UploadInstructionsV1!)-> Services.Media.Actions.StartImageUpload.ResponseV1Builder {
       self.uploadInstructions = value
       return self
     }
-    public func mergeUploadInstructions(value:Services.Media.Containers.Instructions.UploadInstructionsV1) -> Services.Media.Actions.StartImageUpload.ResponseV1Builder {
+    public func mergeUploadInstructions(value:Services.Media.Containers.UploadInstructionsV1) -> Services.Media.Actions.StartImageUpload.ResponseV1Builder {
       if (builderResult.hasUploadInstructions) {
-        builderResult.uploadInstructions = Services.Media.Containers.Instructions.UploadInstructionsV1.builderWithPrototype(builderResult.uploadInstructions).mergeFrom(value).buildPartial()
+        builderResult.uploadInstructions = Services.Media.Containers.UploadInstructionsV1.builderWithPrototype(builderResult.uploadInstructions).mergeFrom(value).buildPartial()
       } else {
         builderResult.uploadInstructions = value
       }
@@ -567,7 +567,7 @@ public extension Services.Media.Actions.StartImageUpload {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Media.Containers.Instructions.UploadInstructionsV1Builder = Services.Media.Containers.Instructions.UploadInstructionsV1.builder()
+          var subBuilder:Services.Media.Containers.UploadInstructionsV1Builder = Services.Media.Containers.UploadInstructionsV1.builder()
           if hasUploadInstructions {
             subBuilder.mergeFrom(uploadInstructions)
           }

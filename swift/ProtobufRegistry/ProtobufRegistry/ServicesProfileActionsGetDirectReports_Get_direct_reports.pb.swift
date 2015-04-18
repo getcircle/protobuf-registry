@@ -37,7 +37,7 @@ public extension Services.Profile.Actions.GetDirectReports {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Profile.ProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -335,7 +335,7 @@ public extension Services.Profile.Actions.GetDirectReports {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var profiles:Array<Services.Profile.Containers.Profile.ProfileV1>  = Array<Services.Profile.Containers.Profile.ProfileV1>()
+    public private(set) var profiles:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
     required public init() {
          super.init()
     }
@@ -477,7 +477,7 @@ public extension Services.Profile.Actions.GetDirectReports {
          builderResult.version = UInt32(1)
          return self
     }
-    public var profiles:Array<Services.Profile.Containers.Profile.ProfileV1> {
+    public var profiles:Array<Services.Profile.Containers.ProfileV1> {
          get {
              return builderResult.profiles
          }
@@ -485,7 +485,7 @@ public extension Services.Profile.Actions.GetDirectReports {
              builderResult.profiles = value
          }
     }
-    public func setProfiles(value:Array<Services.Profile.Containers.Profile.ProfileV1>)-> Services.Profile.Actions.GetDirectReports.ResponseV1Builder {
+    public func setProfiles(value:Array<Services.Profile.Containers.ProfileV1>)-> Services.Profile.Actions.GetDirectReports.ResponseV1Builder {
       self.profiles = value
       return self
     }
@@ -542,7 +542,7 @@ public extension Services.Profile.Actions.GetDirectReports {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Profile.Containers.Profile.ProfileV1.builder()
+          var subBuilder = Services.Profile.Containers.ProfileV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           profiles += [subBuilder.buildPartial()]
 

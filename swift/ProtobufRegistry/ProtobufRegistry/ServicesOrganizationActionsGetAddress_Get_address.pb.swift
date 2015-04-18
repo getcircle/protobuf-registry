@@ -38,7 +38,7 @@ public extension Services.Organization.Actions.GetAddress {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Address.AddressRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -383,7 +383,7 @@ public extension Services.Organization.Actions.GetAddress {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasAddress:Bool = false
-    public private(set) var address:Services.Organization.Containers.Address.AddressV1!
+    public private(set) var address:Services.Organization.Containers.AddressV1!
     required public init() {
          super.init()
     }
@@ -532,7 +532,7 @@ public extension Services.Organization.Actions.GetAddress {
              return builderResult.hasAddress
          }
     }
-    public var address:Services.Organization.Containers.Address.AddressV1! {
+    public var address:Services.Organization.Containers.AddressV1! {
          get {
              return builderResult.address
          }
@@ -541,13 +541,13 @@ public extension Services.Organization.Actions.GetAddress {
              builderResult.address = value
          }
     }
-    public func setAddress(value:Services.Organization.Containers.Address.AddressV1!)-> Services.Organization.Actions.GetAddress.ResponseV1Builder {
+    public func setAddress(value:Services.Organization.Containers.AddressV1!)-> Services.Organization.Actions.GetAddress.ResponseV1Builder {
       self.address = value
       return self
     }
-    public func mergeAddress(value:Services.Organization.Containers.Address.AddressV1) -> Services.Organization.Actions.GetAddress.ResponseV1Builder {
+    public func mergeAddress(value:Services.Organization.Containers.AddressV1) -> Services.Organization.Actions.GetAddress.ResponseV1Builder {
       if (builderResult.hasAddress) {
-        builderResult.address = Services.Organization.Containers.Address.AddressV1.builderWithPrototype(builderResult.address).mergeFrom(value).buildPartial()
+        builderResult.address = Services.Organization.Containers.AddressV1.builderWithPrototype(builderResult.address).mergeFrom(value).buildPartial()
       } else {
         builderResult.address = value
       }
@@ -608,7 +608,7 @@ public extension Services.Organization.Actions.GetAddress {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Organization.Containers.Address.AddressV1Builder = Services.Organization.Containers.Address.AddressV1.builder()
+          var subBuilder:Services.Organization.Containers.AddressV1Builder = Services.Organization.Containers.AddressV1.builder()
           if hasAddress {
             subBuilder.mergeFrom(address)
           }

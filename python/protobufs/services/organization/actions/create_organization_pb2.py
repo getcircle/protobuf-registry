@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.organization.containers.organization_pb2
+import protobufs.services.organization.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/create_organization.proto',
   package='services.organization.actions.create_organization',
-  serialized_pb=_b('\nAprotobufs/services/organization/actions/create_organization.proto\x12\x31services.organization.actions.create_organization\x1a=protobufs/services/organization/containers/organization.proto\"t\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12S\n\x0corganization\x18\x02 \x01(\x0b\x32=.services.organization.containers.organization.OrganizationV1\"u\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12S\n\x0corganization\x18\x02 \x01(\x0b\x32=.services.organization.containers.organization.OrganizationV1')
+  serialized_pb=_b('\nAprotobufs/services/organization/actions/create_organization.proto\x12\x31services.organization.actions.create_organization\x1a\x30protobufs/services/organization/containers.proto\"g\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x46\n\x0corganization\x18\x02 \x01(\x0b\x32\x30.services.organization.containers.OrganizationV1\"h\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x46\n\x0corganization\x18\x02 \x01(\x0b\x32\x30.services.organization.containers.OrganizationV1')
   ,
-  dependencies=[protobufs.services.organization.containers.organization_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.organization.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=183,
-  serialized_end=299,
+  serialized_start=170,
+  serialized_end=273,
 )
 
 
@@ -96,12 +96,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=301,
-  serialized_end=418,
+  serialized_start=275,
+  serialized_end=379,
 )
 
-_REQUESTV1.fields_by_name['organization'].message_type = protobufs.services.organization.containers.organization_pb2._ORGANIZATIONV1
-_RESPONSEV1.fields_by_name['organization'].message_type = protobufs.services.organization.containers.organization_pb2._ORGANIZATIONV1
+_REQUESTV1.fields_by_name['organization'].message_type = protobufs.services.organization.containers_pb2._ORGANIZATIONV1
+_RESPONSEV1.fields_by_name['organization'].message_type = protobufs.services.organization.containers_pb2._ORGANIZATIONV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

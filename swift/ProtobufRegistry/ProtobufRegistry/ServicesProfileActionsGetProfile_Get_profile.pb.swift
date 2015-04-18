@@ -37,7 +37,7 @@ public extension Services.Profile.Actions.GetProfile {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Profile.ProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -337,7 +337,7 @@ public extension Services.Profile.Actions.GetProfile {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasProfile:Bool = false
-    public private(set) var profile:Services.Profile.Containers.Profile.ProfileV1!
+    public private(set) var profile:Services.Profile.Containers.ProfileV1!
     required public init() {
          super.init()
     }
@@ -486,7 +486,7 @@ public extension Services.Profile.Actions.GetProfile {
              return builderResult.hasProfile
          }
     }
-    public var profile:Services.Profile.Containers.Profile.ProfileV1! {
+    public var profile:Services.Profile.Containers.ProfileV1! {
          get {
              return builderResult.profile
          }
@@ -495,13 +495,13 @@ public extension Services.Profile.Actions.GetProfile {
              builderResult.profile = value
          }
     }
-    public func setProfile(value:Services.Profile.Containers.Profile.ProfileV1!)-> Services.Profile.Actions.GetProfile.ResponseV1Builder {
+    public func setProfile(value:Services.Profile.Containers.ProfileV1!)-> Services.Profile.Actions.GetProfile.ResponseV1Builder {
       self.profile = value
       return self
     }
-    public func mergeProfile(value:Services.Profile.Containers.Profile.ProfileV1) -> Services.Profile.Actions.GetProfile.ResponseV1Builder {
+    public func mergeProfile(value:Services.Profile.Containers.ProfileV1) -> Services.Profile.Actions.GetProfile.ResponseV1Builder {
       if (builderResult.hasProfile) {
-        builderResult.profile = Services.Profile.Containers.Profile.ProfileV1.builderWithPrototype(builderResult.profile).mergeFrom(value).buildPartial()
+        builderResult.profile = Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.profile).mergeFrom(value).buildPartial()
       } else {
         builderResult.profile = value
       }
@@ -562,7 +562,7 @@ public extension Services.Profile.Actions.GetProfile {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Profile.Containers.Profile.ProfileV1Builder = Services.Profile.Containers.Profile.ProfileV1.builder()
+          var subBuilder:Services.Profile.Containers.ProfileV1Builder = Services.Profile.Containers.ProfileV1.builder()
           if hasProfile {
             subBuilder.mergeFrom(profile)
           }

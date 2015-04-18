@@ -36,7 +36,7 @@ public extension Services.User.Actions.GetIdentities {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.User.Containers.Identity.IdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -289,7 +289,7 @@ public extension Services.User.Actions.GetIdentities {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var identities:Array<Services.User.Containers.Identity.IdentityV1>  = Array<Services.User.Containers.Identity.IdentityV1>()
+    public private(set) var identities:Array<Services.User.Containers.IdentityV1>  = Array<Services.User.Containers.IdentityV1>()
     required public init() {
          super.init()
     }
@@ -431,7 +431,7 @@ public extension Services.User.Actions.GetIdentities {
          builderResult.version = UInt32(1)
          return self
     }
-    public var identities:Array<Services.User.Containers.Identity.IdentityV1> {
+    public var identities:Array<Services.User.Containers.IdentityV1> {
          get {
              return builderResult.identities
          }
@@ -439,7 +439,7 @@ public extension Services.User.Actions.GetIdentities {
              builderResult.identities = value
          }
     }
-    public func setIdentities(value:Array<Services.User.Containers.Identity.IdentityV1>)-> Services.User.Actions.GetIdentities.ResponseV1Builder {
+    public func setIdentities(value:Array<Services.User.Containers.IdentityV1>)-> Services.User.Actions.GetIdentities.ResponseV1Builder {
       self.identities = value
       return self
     }
@@ -496,7 +496,7 @@ public extension Services.User.Actions.GetIdentities {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.User.Containers.Identity.IdentityV1.builder()
+          var subBuilder = Services.User.Containers.IdentityV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           identities += [subBuilder.buildPartial()]
 

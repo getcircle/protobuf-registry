@@ -36,7 +36,7 @@ public extension Services.Resume.Actions.GetResume {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Resume.Containers.Resume.ResumeRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Resume.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -291,7 +291,7 @@ public extension Services.Resume.Actions.GetResume {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasResume:Bool = false
-    public private(set) var resume:Services.Resume.Containers.Resume.ResumeV1!
+    public private(set) var resume:Services.Resume.Containers.ResumeV1!
     required public init() {
          super.init()
     }
@@ -440,7 +440,7 @@ public extension Services.Resume.Actions.GetResume {
              return builderResult.hasResume
          }
     }
-    public var resume:Services.Resume.Containers.Resume.ResumeV1! {
+    public var resume:Services.Resume.Containers.ResumeV1! {
          get {
              return builderResult.resume
          }
@@ -449,13 +449,13 @@ public extension Services.Resume.Actions.GetResume {
              builderResult.resume = value
          }
     }
-    public func setResume(value:Services.Resume.Containers.Resume.ResumeV1!)-> Services.Resume.Actions.GetResume.ResponseV1Builder {
+    public func setResume(value:Services.Resume.Containers.ResumeV1!)-> Services.Resume.Actions.GetResume.ResponseV1Builder {
       self.resume = value
       return self
     }
-    public func mergeResume(value:Services.Resume.Containers.Resume.ResumeV1) -> Services.Resume.Actions.GetResume.ResponseV1Builder {
+    public func mergeResume(value:Services.Resume.Containers.ResumeV1) -> Services.Resume.Actions.GetResume.ResponseV1Builder {
       if (builderResult.hasResume) {
-        builderResult.resume = Services.Resume.Containers.Resume.ResumeV1.builderWithPrototype(builderResult.resume).mergeFrom(value).buildPartial()
+        builderResult.resume = Services.Resume.Containers.ResumeV1.builderWithPrototype(builderResult.resume).mergeFrom(value).buildPartial()
       } else {
         builderResult.resume = value
       }
@@ -516,7 +516,7 @@ public extension Services.Resume.Actions.GetResume {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Resume.Containers.Resume.ResumeV1Builder = Services.Resume.Containers.Resume.ResumeV1.builder()
+          var subBuilder:Services.Resume.Containers.ResumeV1Builder = Services.Resume.Containers.ResumeV1.builder()
           if hasResume {
             subBuilder.mergeFrom(resume)
           }

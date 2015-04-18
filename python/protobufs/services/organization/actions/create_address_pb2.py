@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.organization.containers.address_pb2
+import protobufs.services.organization.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/create_address.proto',
   package='services.organization.actions.create_address',
-  serialized_pb=_b('\n<protobufs/services/organization/actions/create_address.proto\x12,services.organization.actions.create_address\x1a\x38protobufs/services/organization/containers/address.proto\"e\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x44\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x33.services.organization.containers.address.AddressV1\"f\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x44\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x33.services.organization.containers.address.AddressV1')
+  serialized_pb=_b('\n<protobufs/services/organization/actions/create_address.proto\x12,services.organization.actions.create_address\x1a\x30protobufs/services/organization/containers.proto\"]\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12<\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32+.services.organization.containers.AddressV1\"^\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12<\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32+.services.organization.containers.AddressV1')
   ,
-  dependencies=[protobufs.services.organization.containers.address_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.organization.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=168,
-  serialized_end=269,
+  serialized_start=160,
+  serialized_end=253,
 )
 
 
@@ -96,12 +96,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=271,
-  serialized_end=373,
+  serialized_start=255,
+  serialized_end=349,
 )
 
-_REQUESTV1.fields_by_name['address'].message_type = protobufs.services.organization.containers.address_pb2._ADDRESSV1
-_RESPONSEV1.fields_by_name['address'].message_type = protobufs.services.organization.containers.address_pb2._ADDRESSV1
+_REQUESTV1.fields_by_name['address'].message_type = protobufs.services.organization.containers_pb2._ADDRESSV1
+_RESPONSEV1.fields_by_name['address'].message_type = protobufs.services.organization.containers_pb2._ADDRESSV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

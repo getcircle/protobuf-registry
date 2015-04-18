@@ -36,7 +36,7 @@ public extension Services.Feed.Actions.GetProfileFeed {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Feed.Containers.Category.CategoryRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Feed.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -289,7 +289,7 @@ public extension Services.Feed.Actions.GetProfileFeed {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var categories:Array<Services.Feed.Containers.Category.CategoryV1>  = Array<Services.Feed.Containers.Category.CategoryV1>()
+    public private(set) var categories:Array<Services.Feed.Containers.CategoryV1>  = Array<Services.Feed.Containers.CategoryV1>()
     required public init() {
          super.init()
     }
@@ -431,7 +431,7 @@ public extension Services.Feed.Actions.GetProfileFeed {
          builderResult.version = UInt32(1)
          return self
     }
-    public var categories:Array<Services.Feed.Containers.Category.CategoryV1> {
+    public var categories:Array<Services.Feed.Containers.CategoryV1> {
          get {
              return builderResult.categories
          }
@@ -439,7 +439,7 @@ public extension Services.Feed.Actions.GetProfileFeed {
              builderResult.categories = value
          }
     }
-    public func setCategories(value:Array<Services.Feed.Containers.Category.CategoryV1>)-> Services.Feed.Actions.GetProfileFeed.ResponseV1Builder {
+    public func setCategories(value:Array<Services.Feed.Containers.CategoryV1>)-> Services.Feed.Actions.GetProfileFeed.ResponseV1Builder {
       self.categories = value
       return self
     }
@@ -496,7 +496,7 @@ public extension Services.Feed.Actions.GetProfileFeed {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Feed.Containers.Category.CategoryV1.builder()
+          var subBuilder = Services.Feed.Containers.CategoryV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           categories += [subBuilder.buildPartial()]
 

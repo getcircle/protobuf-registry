@@ -36,7 +36,7 @@ public extension Services.User.Actions.RequestAccess {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.User.Containers.AccessRequest.AccessRequestRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -291,7 +291,7 @@ public extension Services.User.Actions.RequestAccess {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasAccessRequest:Bool = false
-    public private(set) var accessRequest:Services.User.Containers.AccessRequest.AccessRequestV1!
+    public private(set) var accessRequest:Services.User.Containers.AccessRequestV1!
     required public init() {
          super.init()
     }
@@ -440,7 +440,7 @@ public extension Services.User.Actions.RequestAccess {
              return builderResult.hasAccessRequest
          }
     }
-    public var accessRequest:Services.User.Containers.AccessRequest.AccessRequestV1! {
+    public var accessRequest:Services.User.Containers.AccessRequestV1! {
          get {
              return builderResult.accessRequest
          }
@@ -449,13 +449,13 @@ public extension Services.User.Actions.RequestAccess {
              builderResult.accessRequest = value
          }
     }
-    public func setAccessRequest(value:Services.User.Containers.AccessRequest.AccessRequestV1!)-> Services.User.Actions.RequestAccess.ResponseV1Builder {
+    public func setAccessRequest(value:Services.User.Containers.AccessRequestV1!)-> Services.User.Actions.RequestAccess.ResponseV1Builder {
       self.accessRequest = value
       return self
     }
-    public func mergeAccessRequest(value:Services.User.Containers.AccessRequest.AccessRequestV1) -> Services.User.Actions.RequestAccess.ResponseV1Builder {
+    public func mergeAccessRequest(value:Services.User.Containers.AccessRequestV1) -> Services.User.Actions.RequestAccess.ResponseV1Builder {
       if (builderResult.hasAccessRequest) {
-        builderResult.accessRequest = Services.User.Containers.AccessRequest.AccessRequestV1.builderWithPrototype(builderResult.accessRequest).mergeFrom(value).buildPartial()
+        builderResult.accessRequest = Services.User.Containers.AccessRequestV1.builderWithPrototype(builderResult.accessRequest).mergeFrom(value).buildPartial()
       } else {
         builderResult.accessRequest = value
       }
@@ -516,7 +516,7 @@ public extension Services.User.Actions.RequestAccess {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.User.Containers.AccessRequest.AccessRequestV1Builder = Services.User.Containers.AccessRequest.AccessRequestV1.builder()
+          var subBuilder:Services.User.Containers.AccessRequestV1Builder = Services.User.Containers.AccessRequestV1.builder()
           if hasAccessRequest {
             subBuilder.mergeFrom(accessRequest)
           }

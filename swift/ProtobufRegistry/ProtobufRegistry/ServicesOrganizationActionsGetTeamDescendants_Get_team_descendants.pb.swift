@@ -38,7 +38,7 @@ public extension Services.Organization.Actions.GetTeamDescendants {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Team.TeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -375,7 +375,7 @@ public extension Services.Organization.Actions.GetTeamDescendants {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var descendants:Array<Services.Organization.Containers.Team.TeamDescendantsV1>  = Array<Services.Organization.Containers.Team.TeamDescendantsV1>()
+    public private(set) var descendants:Array<Services.Organization.Containers.TeamDescendantsV1>  = Array<Services.Organization.Containers.TeamDescendantsV1>()
     required public init() {
          super.init()
     }
@@ -517,7 +517,7 @@ public extension Services.Organization.Actions.GetTeamDescendants {
          builderResult.version = UInt32(1)
          return self
     }
-    public var descendants:Array<Services.Organization.Containers.Team.TeamDescendantsV1> {
+    public var descendants:Array<Services.Organization.Containers.TeamDescendantsV1> {
          get {
              return builderResult.descendants
          }
@@ -525,7 +525,7 @@ public extension Services.Organization.Actions.GetTeamDescendants {
              builderResult.descendants = value
          }
     }
-    public func setDescendants(value:Array<Services.Organization.Containers.Team.TeamDescendantsV1>)-> Services.Organization.Actions.GetTeamDescendants.ResponseV1Builder {
+    public func setDescendants(value:Array<Services.Organization.Containers.TeamDescendantsV1>)-> Services.Organization.Actions.GetTeamDescendants.ResponseV1Builder {
       self.descendants = value
       return self
     }
@@ -582,7 +582,7 @@ public extension Services.Organization.Actions.GetTeamDescendants {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Organization.Containers.Team.TeamDescendantsV1.builder()
+          var subBuilder = Services.Organization.Containers.TeamDescendantsV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           descendants += [subBuilder.buildPartial()]
 

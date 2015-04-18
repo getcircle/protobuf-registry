@@ -35,7 +35,7 @@ public extension Services.User.Actions.DeleteIdentity {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.User.Containers.Identity.IdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -54,7 +54,7 @@ public extension Services.User.Actions.DeleteIdentity {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasIdentity:Bool = false
-    public private(set) var identity:Services.User.Containers.Identity.IdentityV1!
+    public private(set) var identity:Services.User.Containers.IdentityV1!
     required public init() {
          super.init()
     }
@@ -203,7 +203,7 @@ public extension Services.User.Actions.DeleteIdentity {
              return builderResult.hasIdentity
          }
     }
-    public var identity:Services.User.Containers.Identity.IdentityV1! {
+    public var identity:Services.User.Containers.IdentityV1! {
          get {
              return builderResult.identity
          }
@@ -212,13 +212,13 @@ public extension Services.User.Actions.DeleteIdentity {
              builderResult.identity = value
          }
     }
-    public func setIdentity(value:Services.User.Containers.Identity.IdentityV1!)-> Services.User.Actions.DeleteIdentity.RequestV1Builder {
+    public func setIdentity(value:Services.User.Containers.IdentityV1!)-> Services.User.Actions.DeleteIdentity.RequestV1Builder {
       self.identity = value
       return self
     }
-    public func mergeIdentity(value:Services.User.Containers.Identity.IdentityV1) -> Services.User.Actions.DeleteIdentity.RequestV1Builder {
+    public func mergeIdentity(value:Services.User.Containers.IdentityV1) -> Services.User.Actions.DeleteIdentity.RequestV1Builder {
       if (builderResult.hasIdentity) {
-        builderResult.identity = Services.User.Containers.Identity.IdentityV1.builderWithPrototype(builderResult.identity).mergeFrom(value).buildPartial()
+        builderResult.identity = Services.User.Containers.IdentityV1.builderWithPrototype(builderResult.identity).mergeFrom(value).buildPartial()
       } else {
         builderResult.identity = value
       }
@@ -279,7 +279,7 @@ public extension Services.User.Actions.DeleteIdentity {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.User.Containers.Identity.IdentityV1Builder = Services.User.Containers.Identity.IdentityV1.builder()
+          var subBuilder:Services.User.Containers.IdentityV1Builder = Services.User.Containers.IdentityV1.builder()
           if hasIdentity {
             subBuilder.mergeFrom(identity)
           }

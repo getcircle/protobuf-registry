@@ -37,7 +37,7 @@ public extension Services.Profile.Actions.GetActiveTags {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Tag.TagRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -59,7 +59,7 @@ public extension Services.Profile.Actions.GetActiveTags {
     public private(set) var hasOrganizationId:Bool = false
     public private(set) var organizationId:String = ""
 
-    public private(set) var tagType:Services.Profile.Containers.Tag.TagV1.TagTypeV1 = Services.Profile.Containers.Tag.TagV1.TagTypeV1.Skill
+    public private(set) var tagType:Services.Profile.Containers.TagV1.TagTypeV1 = Services.Profile.Containers.TagV1.TagTypeV1.Skill
     public private(set) var hasTagType:Bool = false
     required public init() {
          super.init()
@@ -238,7 +238,7 @@ public extension Services.Profile.Actions.GetActiveTags {
               return builderResult.hasTagType
           }
       }
-      public var tagType:Services.Profile.Containers.Tag.TagV1.TagTypeV1 {
+      public var tagType:Services.Profile.Containers.TagV1.TagTypeV1 {
           get {
               return builderResult.tagType
           }
@@ -247,7 +247,7 @@ public extension Services.Profile.Actions.GetActiveTags {
               builderResult.tagType = value
           }
       }
-      public func setTagType(value:Services.Profile.Containers.Tag.TagV1.TagTypeV1)-> Services.Profile.Actions.GetActiveTags.RequestV1Builder {
+      public func setTagType(value:Services.Profile.Containers.TagV1.TagTypeV1)-> Services.Profile.Actions.GetActiveTags.RequestV1Builder {
         self.tagType = value
         return self
       }
@@ -312,7 +312,7 @@ public extension Services.Profile.Actions.GetActiveTags {
 
         case 24 :
           let valueInttagType = input.readEnum()
-          if let enumstagType = Services.Profile.Containers.Tag.TagV1.TagTypeV1(rawValue:valueInttagType){
+          if let enumstagType = Services.Profile.Containers.TagV1.TagTypeV1(rawValue:valueInttagType){
                tagType = enumstagType
           } else {
                unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueInttagType))
@@ -339,7 +339,7 @@ public extension Services.Profile.Actions.GetActiveTags {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var tags:Array<Services.Profile.Containers.Tag.TagV1>  = Array<Services.Profile.Containers.Tag.TagV1>()
+    public private(set) var tags:Array<Services.Profile.Containers.TagV1>  = Array<Services.Profile.Containers.TagV1>()
     required public init() {
          super.init()
     }
@@ -481,7 +481,7 @@ public extension Services.Profile.Actions.GetActiveTags {
          builderResult.version = UInt32(1)
          return self
     }
-    public var tags:Array<Services.Profile.Containers.Tag.TagV1> {
+    public var tags:Array<Services.Profile.Containers.TagV1> {
          get {
              return builderResult.tags
          }
@@ -489,7 +489,7 @@ public extension Services.Profile.Actions.GetActiveTags {
              builderResult.tags = value
          }
     }
-    public func setTags(value:Array<Services.Profile.Containers.Tag.TagV1>)-> Services.Profile.Actions.GetActiveTags.ResponseV1Builder {
+    public func setTags(value:Array<Services.Profile.Containers.TagV1>)-> Services.Profile.Actions.GetActiveTags.ResponseV1Builder {
       self.tags = value
       return self
     }
@@ -546,7 +546,7 @@ public extension Services.Profile.Actions.GetActiveTags {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Profile.Containers.Tag.TagV1.builder()
+          var subBuilder = Services.Profile.Containers.TagV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           tags += [subBuilder.buildPartial()]
 

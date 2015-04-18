@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.note.containers.note_pb2
+import protobufs.services.note.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/note/actions/create_note.proto',
   package='services.note.actions.create_note',
-  serialized_pb=_b('\n1protobufs/services/note/actions/create_note.proto\x12!services.note.actions.create_note\x1a-protobufs/services/note/containers/note.proto\"T\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x33\n\x04note\x18\x02 \x01(\x0b\x32%.services.note.containers.note.NoteV1\"U\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x33\n\x04note\x18\x02 \x01(\x0b\x32%.services.note.containers.note.NoteV1')
+  serialized_pb=_b('\n1protobufs/services/note/actions/create_note.proto\x12!services.note.actions.create_note\x1a(protobufs/services/note/containers.proto\"O\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12.\n\x04note\x18\x02 \x01(\x0b\x32 .services.note.containers.NoteV1\"P\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12.\n\x04note\x18\x02 \x01(\x0b\x32 .services.note.containers.NoteV1')
   ,
-  dependencies=[protobufs.services.note.containers.note_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.note.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=135,
-  serialized_end=219,
+  serialized_start=130,
+  serialized_end=209,
 )
 
 
@@ -96,12 +96,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=221,
-  serialized_end=306,
+  serialized_start=211,
+  serialized_end=291,
 )
 
-_REQUESTV1.fields_by_name['note'].message_type = protobufs.services.note.containers.note_pb2._NOTEV1
-_RESPONSEV1.fields_by_name['note'].message_type = protobufs.services.note.containers.note_pb2._NOTEV1
+_REQUESTV1.fields_by_name['note'].message_type = protobufs.services.note.containers_pb2._NOTEV1
+_RESPONSEV1.fields_by_name['note'].message_type = protobufs.services.note.containers_pb2._NOTEV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

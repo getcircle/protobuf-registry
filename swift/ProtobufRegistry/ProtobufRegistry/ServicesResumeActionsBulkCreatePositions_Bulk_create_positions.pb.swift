@@ -36,7 +36,7 @@ public extension Services.Resume.Actions.BulkCreatePositions {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Resume.Containers.Resume.ResumeRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Resume.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -53,7 +53,7 @@ public extension Services.Resume.Actions.BulkCreatePositions {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var positions:Array<Services.Resume.Containers.Resume.PositionV1>  = Array<Services.Resume.Containers.Resume.PositionV1>()
+    public private(set) var positions:Array<Services.Resume.Containers.PositionV1>  = Array<Services.Resume.Containers.PositionV1>()
     required public init() {
          super.init()
     }
@@ -195,7 +195,7 @@ public extension Services.Resume.Actions.BulkCreatePositions {
          builderResult.version = UInt32(1)
          return self
     }
-    public var positions:Array<Services.Resume.Containers.Resume.PositionV1> {
+    public var positions:Array<Services.Resume.Containers.PositionV1> {
          get {
              return builderResult.positions
          }
@@ -203,7 +203,7 @@ public extension Services.Resume.Actions.BulkCreatePositions {
              builderResult.positions = value
          }
     }
-    public func setPositions(value:Array<Services.Resume.Containers.Resume.PositionV1>)-> Services.Resume.Actions.BulkCreatePositions.RequestV1Builder {
+    public func setPositions(value:Array<Services.Resume.Containers.PositionV1>)-> Services.Resume.Actions.BulkCreatePositions.RequestV1Builder {
       self.positions = value
       return self
     }
@@ -260,7 +260,7 @@ public extension Services.Resume.Actions.BulkCreatePositions {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Resume.Containers.Resume.PositionV1.builder()
+          var subBuilder = Services.Resume.Containers.PositionV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           positions += [subBuilder.buildPartial()]
 
@@ -285,7 +285,7 @@ public extension Services.Resume.Actions.BulkCreatePositions {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var positions:Array<Services.Resume.Containers.Resume.PositionV1>  = Array<Services.Resume.Containers.Resume.PositionV1>()
+    public private(set) var positions:Array<Services.Resume.Containers.PositionV1>  = Array<Services.Resume.Containers.PositionV1>()
     required public init() {
          super.init()
     }
@@ -427,7 +427,7 @@ public extension Services.Resume.Actions.BulkCreatePositions {
          builderResult.version = UInt32(1)
          return self
     }
-    public var positions:Array<Services.Resume.Containers.Resume.PositionV1> {
+    public var positions:Array<Services.Resume.Containers.PositionV1> {
          get {
              return builderResult.positions
          }
@@ -435,7 +435,7 @@ public extension Services.Resume.Actions.BulkCreatePositions {
              builderResult.positions = value
          }
     }
-    public func setPositions(value:Array<Services.Resume.Containers.Resume.PositionV1>)-> Services.Resume.Actions.BulkCreatePositions.ResponseV1Builder {
+    public func setPositions(value:Array<Services.Resume.Containers.PositionV1>)-> Services.Resume.Actions.BulkCreatePositions.ResponseV1Builder {
       self.positions = value
       return self
     }
@@ -492,7 +492,7 @@ public extension Services.Resume.Actions.BulkCreatePositions {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Resume.Containers.Resume.PositionV1.builder()
+          var subBuilder = Services.Resume.Containers.PositionV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           positions += [subBuilder.buildPartial()]
 

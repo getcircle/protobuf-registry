@@ -37,7 +37,7 @@ public extension Services.User.Actions.CreateUser {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.User.Containers.User.UserRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -337,7 +337,7 @@ public extension Services.User.Actions.CreateUser {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasUser:Bool = false
-    public private(set) var user:Services.User.Containers.User.UserV1!
+    public private(set) var user:Services.User.Containers.UserV1!
     required public init() {
          super.init()
     }
@@ -486,7 +486,7 @@ public extension Services.User.Actions.CreateUser {
              return builderResult.hasUser
          }
     }
-    public var user:Services.User.Containers.User.UserV1! {
+    public var user:Services.User.Containers.UserV1! {
          get {
              return builderResult.user
          }
@@ -495,13 +495,13 @@ public extension Services.User.Actions.CreateUser {
              builderResult.user = value
          }
     }
-    public func setUser(value:Services.User.Containers.User.UserV1!)-> Services.User.Actions.CreateUser.ResponseV1Builder {
+    public func setUser(value:Services.User.Containers.UserV1!)-> Services.User.Actions.CreateUser.ResponseV1Builder {
       self.user = value
       return self
     }
-    public func mergeUser(value:Services.User.Containers.User.UserV1) -> Services.User.Actions.CreateUser.ResponseV1Builder {
+    public func mergeUser(value:Services.User.Containers.UserV1) -> Services.User.Actions.CreateUser.ResponseV1Builder {
       if (builderResult.hasUser) {
-        builderResult.user = Services.User.Containers.User.UserV1.builderWithPrototype(builderResult.user).mergeFrom(value).buildPartial()
+        builderResult.user = Services.User.Containers.UserV1.builderWithPrototype(builderResult.user).mergeFrom(value).buildPartial()
       } else {
         builderResult.user = value
       }
@@ -562,7 +562,7 @@ public extension Services.User.Actions.CreateUser {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.User.Containers.User.UserV1Builder = Services.User.Containers.User.UserV1.builder()
+          var subBuilder:Services.User.Containers.UserV1Builder = Services.User.Containers.UserV1.builder()
           if hasUser {
             subBuilder.mergeFrom(user)
           }

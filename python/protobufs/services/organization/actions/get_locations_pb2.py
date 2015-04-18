@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.organization.containers.location_pb2
+import protobufs.services.organization.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/get_locations.proto',
   package='services.organization.actions.get_locations',
-  serialized_pb=_b('\n;protobufs/services/organization/actions/get_locations.proto\x12+services.organization.actions.get_locations\x1a\x39protobufs/services/organization/containers/location.proto\"8\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\"j\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12H\n\tlocations\x18\x02 \x03(\x0b\x32\x35.services.organization.containers.location.LocationV1')
+  serialized_pb=_b('\n;protobufs/services/organization/actions/get_locations.proto\x12+services.organization.actions.get_locations\x1a\x30protobufs/services/organization/containers.proto\"8\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\"a\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12?\n\tlocations\x18\x02 \x03(\x0b\x32,.services.organization.containers.LocationV1')
   ,
-  dependencies=[protobufs.services.organization.containers.location_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.organization.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=167,
-  serialized_end=223,
+  serialized_start=158,
+  serialized_end=214,
 )
 
 
@@ -96,11 +96,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=225,
-  serialized_end=331,
+  serialized_start=216,
+  serialized_end=313,
 )
 
-_RESPONSEV1.fields_by_name['locations'].message_type = protobufs.services.organization.containers.location_pb2._LOCATIONV1
+_RESPONSEV1.fields_by_name['locations'].message_type = protobufs.services.organization.containers_pb2._LOCATIONV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

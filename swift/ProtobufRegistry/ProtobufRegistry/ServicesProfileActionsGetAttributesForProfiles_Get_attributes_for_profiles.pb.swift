@@ -38,7 +38,7 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Profile.ProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -378,7 +378,7 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var attributes:Array<Services.Profile.Containers.Profile.AttributeV1>  = Array<Services.Profile.Containers.Profile.AttributeV1>()
+    public private(set) var attributes:Array<Services.Profile.Containers.AttributeV1>  = Array<Services.Profile.Containers.AttributeV1>()
     required public init() {
          super.init()
     }
@@ -520,7 +520,7 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
          builderResult.version = UInt32(1)
          return self
     }
-    public var attributes:Array<Services.Profile.Containers.Profile.AttributeV1> {
+    public var attributes:Array<Services.Profile.Containers.AttributeV1> {
          get {
              return builderResult.attributes
          }
@@ -528,7 +528,7 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
              builderResult.attributes = value
          }
     }
-    public func setAttributes(value:Array<Services.Profile.Containers.Profile.AttributeV1>)-> Services.Profile.Actions.GetAttributesForProfiles.ResponseV1Builder {
+    public func setAttributes(value:Array<Services.Profile.Containers.AttributeV1>)-> Services.Profile.Actions.GetAttributesForProfiles.ResponseV1Builder {
       self.attributes = value
       return self
     }
@@ -585,7 +585,7 @@ public extension Services.Profile.Actions.GetAttributesForProfiles {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Profile.Containers.Profile.AttributeV1.builder()
+          var subBuilder = Services.Profile.Containers.AttributeV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           attributes += [subBuilder.buildPartial()]
 

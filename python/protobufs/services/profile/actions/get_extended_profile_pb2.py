@@ -13,22 +13,19 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.note.containers.note_pb2
-import protobufs.services.organization.containers.address_pb2
-import protobufs.services.organization.containers.location_pb2
-import protobufs.services.organization.containers.team_pb2
-import protobufs.services.profile.containers.profile_pb2
-import protobufs.services.profile.containers.tag_pb2
-import protobufs.services.resume.containers.resume_pb2
-import protobufs.services.user.containers.identity_pb2
+import protobufs.services.note.containers_pb2
+import protobufs.services.organization.containers_pb2
+import protobufs.services.profile.containers_pb2
+import protobufs.services.resume.containers_pb2
+import protobufs.services.user.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/get_extended_profile.proto',
   package='services.profile.actions.get_extended_profile',
-  serialized_pb=_b('\n=protobufs/services/profile/actions/get_extended_profile.proto\x12-services.profile.actions.get_extended_profile\x1a-protobufs/services/note/containers/note.proto\x1a\x38protobufs/services/organization/containers/address.proto\x1a\x39protobufs/services/organization/containers/location.proto\x1a\x35protobufs/services/organization/containers/team.proto\x1a\x33protobufs/services/profile/containers/profile.proto\x1a/protobufs/services/profile/containers/tag.proto\x1a\x31protobufs/services/resume/containers/resume.proto\x1a\x31protobufs/services/user/containers/identity.proto\"D\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\t\"\xa2\x05\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12?\n\x07profile\x18\x02 \x01(\x0b\x32..services.profile.containers.profile.ProfileV1\x12\x44\n\x07\x61\x64\x64ress\x18\x03 \x01(\x0b\x32\x33.services.organization.containers.address.AddressV1\x12?\n\x07manager\x18\x04 \x01(\x0b\x32..services.profile.containers.profile.ProfileV1\x12;\n\x04team\x18\x05 \x01(\x0b\x32-.services.organization.containers.team.TeamV1\x12\x34\n\x05notes\x18\x06 \x03(\x0b\x32%.services.note.containers.note.NoteV1\x12\x34\n\x04tags\x18\x07 \x03(\x0b\x32&.services.profile.containers.tag.TagV1\x12\x41\n\nidentities\x18\x08 \x03(\x0b\x32-.services.user.containers.identity.IdentityV1\x12\x46\n\x0e\x64irect_reports\x18\t \x03(\x0b\x32..services.profile.containers.profile.ProfileV1\x12;\n\x06resume\x18\n \x01(\x0b\x32+.services.resume.containers.resume.ResumeV1\x12G\n\x08location\x18\x0b \x01(\x0b\x32\x35.services.organization.containers.location.LocationV1')
+  serialized_pb=_b('\n=protobufs/services/profile/actions/get_extended_profile.proto\x12-services.profile.actions.get_extended_profile\x1a(protobufs/services/note/containers.proto\x1a\x30protobufs/services/organization/containers.proto\x1a+protobufs/services/profile/containers.proto\x1a*protobufs/services/resume/containers.proto\x1a(protobufs/services/user/containers.proto\"D\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\t\"\xdb\x04\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x37\n\x07profile\x18\x02 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12<\n\x07\x61\x64\x64ress\x18\x03 \x01(\x0b\x32+.services.organization.containers.AddressV1\x12\x37\n\x07manager\x18\x04 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12\x36\n\x04team\x18\x05 \x01(\x0b\x32(.services.organization.containers.TeamV1\x12/\n\x05notes\x18\x06 \x03(\x0b\x32 .services.note.containers.NoteV1\x12\x30\n\x04tags\x18\x07 \x03(\x0b\x32\".services.profile.containers.TagV1\x12\x38\n\nidentities\x18\x08 \x03(\x0b\x32$.services.user.containers.IdentityV1\x12>\n\x0e\x64irect_reports\x18\t \x03(\x0b\x32&.services.profile.containers.ProfileV1\x12\x34\n\x06resume\x18\n \x01(\x0b\x32$.services.resume.containers.ResumeV1\x12>\n\x08location\x18\x0b \x01(\x0b\x32,.services.organization.containers.LocationV1')
   ,
-  dependencies=[protobufs.services.note.containers.note_pb2.DESCRIPTOR,protobufs.services.organization.containers.address_pb2.DESCRIPTOR,protobufs.services.organization.containers.location_pb2.DESCRIPTOR,protobufs.services.organization.containers.team_pb2.DESCRIPTOR,protobufs.services.profile.containers.profile_pb2.DESCRIPTOR,protobufs.services.profile.containers.tag_pb2.DESCRIPTOR,protobufs.services.resume.containers.resume_pb2.DESCRIPTOR,protobufs.services.user.containers.identity_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.note.containers_pb2.DESCRIPTOR,protobufs.services.organization.containers_pb2.DESCRIPTOR,protobufs.services.profile.containers_pb2.DESCRIPTOR,protobufs.services.resume.containers_pb2.DESCRIPTOR,protobufs.services.user.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -73,8 +70,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=535,
-  serialized_end=603,
+  serialized_start=335,
+  serialized_end=403,
 )
 
 
@@ -173,20 +170,20 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=606,
-  serialized_end=1280,
+  serialized_start=406,
+  serialized_end=1009,
 )
 
-_RESPONSEV1.fields_by_name['profile'].message_type = protobufs.services.profile.containers.profile_pb2._PROFILEV1
-_RESPONSEV1.fields_by_name['address'].message_type = protobufs.services.organization.containers.address_pb2._ADDRESSV1
-_RESPONSEV1.fields_by_name['manager'].message_type = protobufs.services.profile.containers.profile_pb2._PROFILEV1
-_RESPONSEV1.fields_by_name['team'].message_type = protobufs.services.organization.containers.team_pb2._TEAMV1
-_RESPONSEV1.fields_by_name['notes'].message_type = protobufs.services.note.containers.note_pb2._NOTEV1
-_RESPONSEV1.fields_by_name['tags'].message_type = protobufs.services.profile.containers.tag_pb2._TAGV1
-_RESPONSEV1.fields_by_name['identities'].message_type = protobufs.services.user.containers.identity_pb2._IDENTITYV1
-_RESPONSEV1.fields_by_name['direct_reports'].message_type = protobufs.services.profile.containers.profile_pb2._PROFILEV1
-_RESPONSEV1.fields_by_name['resume'].message_type = protobufs.services.resume.containers.resume_pb2._RESUMEV1
-_RESPONSEV1.fields_by_name['location'].message_type = protobufs.services.organization.containers.location_pb2._LOCATIONV1
+_RESPONSEV1.fields_by_name['profile'].message_type = protobufs.services.profile.containers_pb2._PROFILEV1
+_RESPONSEV1.fields_by_name['address'].message_type = protobufs.services.organization.containers_pb2._ADDRESSV1
+_RESPONSEV1.fields_by_name['manager'].message_type = protobufs.services.profile.containers_pb2._PROFILEV1
+_RESPONSEV1.fields_by_name['team'].message_type = protobufs.services.organization.containers_pb2._TEAMV1
+_RESPONSEV1.fields_by_name['notes'].message_type = protobufs.services.note.containers_pb2._NOTEV1
+_RESPONSEV1.fields_by_name['tags'].message_type = protobufs.services.profile.containers_pb2._TAGV1
+_RESPONSEV1.fields_by_name['identities'].message_type = protobufs.services.user.containers_pb2._IDENTITYV1
+_RESPONSEV1.fields_by_name['direct_reports'].message_type = protobufs.services.profile.containers_pb2._PROFILEV1
+_RESPONSEV1.fields_by_name['resume'].message_type = protobufs.services.resume.containers_pb2._RESUMEV1
+_RESPONSEV1.fields_by_name['location'].message_type = protobufs.services.organization.containers_pb2._LOCATIONV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

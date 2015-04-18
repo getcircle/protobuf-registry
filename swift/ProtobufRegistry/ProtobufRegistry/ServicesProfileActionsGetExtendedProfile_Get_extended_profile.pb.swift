@@ -46,14 +46,11 @@ public extension Services.Profile.Actions.GetExtendedProfile {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Note.Containers.Note.NoteRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Address.AddressRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Location.LocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Team.TeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Profile.ProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Tag.TagRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Resume.Containers.Resume.ResumeRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.User.Containers.Identity.IdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Note.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Resume.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -358,21 +355,21 @@ public extension Services.Profile.Actions.GetExtendedProfile {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasProfile:Bool = false
-    public private(set) var profile:Services.Profile.Containers.Profile.ProfileV1!
+    public private(set) var profile:Services.Profile.Containers.ProfileV1!
     public private(set) var hasAddress:Bool = false
-    public private(set) var address:Services.Organization.Containers.Address.AddressV1!
+    public private(set) var address:Services.Organization.Containers.AddressV1!
     public private(set) var hasManager:Bool = false
-    public private(set) var manager:Services.Profile.Containers.Profile.ProfileV1!
+    public private(set) var manager:Services.Profile.Containers.ProfileV1!
     public private(set) var hasTeam:Bool = false
-    public private(set) var team:Services.Organization.Containers.Team.TeamV1!
+    public private(set) var team:Services.Organization.Containers.TeamV1!
     public private(set) var hasResume:Bool = false
-    public private(set) var resume:Services.Resume.Containers.Resume.ResumeV1!
+    public private(set) var resume:Services.Resume.Containers.ResumeV1!
     public private(set) var hasLocation:Bool = false
-    public private(set) var location:Services.Organization.Containers.Location.LocationV1!
-    public private(set) var notes:Array<Services.Note.Containers.Note.NoteV1>  = Array<Services.Note.Containers.Note.NoteV1>()
-    public private(set) var tags:Array<Services.Profile.Containers.Tag.TagV1>  = Array<Services.Profile.Containers.Tag.TagV1>()
-    public private(set) var identities:Array<Services.User.Containers.Identity.IdentityV1>  = Array<Services.User.Containers.Identity.IdentityV1>()
-    public private(set) var directReports:Array<Services.Profile.Containers.Profile.ProfileV1>  = Array<Services.Profile.Containers.Profile.ProfileV1>()
+    public private(set) var location:Services.Organization.Containers.LocationV1!
+    public private(set) var notes:Array<Services.Note.Containers.NoteV1>  = Array<Services.Note.Containers.NoteV1>()
+    public private(set) var tags:Array<Services.Profile.Containers.TagV1>  = Array<Services.Profile.Containers.TagV1>()
+    public private(set) var identities:Array<Services.User.Containers.IdentityV1>  = Array<Services.User.Containers.IdentityV1>()
+    public private(set) var directReports:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
     required public init() {
          super.init()
     }
@@ -675,7 +672,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              return builderResult.hasProfile
          }
     }
-    public var profile:Services.Profile.Containers.Profile.ProfileV1! {
+    public var profile:Services.Profile.Containers.ProfileV1! {
          get {
              return builderResult.profile
          }
@@ -684,13 +681,13 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              builderResult.profile = value
          }
     }
-    public func setProfile(value:Services.Profile.Containers.Profile.ProfileV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setProfile(value:Services.Profile.Containers.ProfileV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.profile = value
       return self
     }
-    public func mergeProfile(value:Services.Profile.Containers.Profile.ProfileV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func mergeProfile(value:Services.Profile.Containers.ProfileV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       if (builderResult.hasProfile) {
-        builderResult.profile = Services.Profile.Containers.Profile.ProfileV1.builderWithPrototype(builderResult.profile).mergeFrom(value).buildPartial()
+        builderResult.profile = Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.profile).mergeFrom(value).buildPartial()
       } else {
         builderResult.profile = value
       }
@@ -707,7 +704,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              return builderResult.hasAddress
          }
     }
-    public var address:Services.Organization.Containers.Address.AddressV1! {
+    public var address:Services.Organization.Containers.AddressV1! {
          get {
              return builderResult.address
          }
@@ -716,13 +713,13 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              builderResult.address = value
          }
     }
-    public func setAddress(value:Services.Organization.Containers.Address.AddressV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setAddress(value:Services.Organization.Containers.AddressV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.address = value
       return self
     }
-    public func mergeAddress(value:Services.Organization.Containers.Address.AddressV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func mergeAddress(value:Services.Organization.Containers.AddressV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       if (builderResult.hasAddress) {
-        builderResult.address = Services.Organization.Containers.Address.AddressV1.builderWithPrototype(builderResult.address).mergeFrom(value).buildPartial()
+        builderResult.address = Services.Organization.Containers.AddressV1.builderWithPrototype(builderResult.address).mergeFrom(value).buildPartial()
       } else {
         builderResult.address = value
       }
@@ -739,7 +736,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              return builderResult.hasManager
          }
     }
-    public var manager:Services.Profile.Containers.Profile.ProfileV1! {
+    public var manager:Services.Profile.Containers.ProfileV1! {
          get {
              return builderResult.manager
          }
@@ -748,13 +745,13 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              builderResult.manager = value
          }
     }
-    public func setManager(value:Services.Profile.Containers.Profile.ProfileV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setManager(value:Services.Profile.Containers.ProfileV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.manager = value
       return self
     }
-    public func mergeManager(value:Services.Profile.Containers.Profile.ProfileV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func mergeManager(value:Services.Profile.Containers.ProfileV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       if (builderResult.hasManager) {
-        builderResult.manager = Services.Profile.Containers.Profile.ProfileV1.builderWithPrototype(builderResult.manager).mergeFrom(value).buildPartial()
+        builderResult.manager = Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.manager).mergeFrom(value).buildPartial()
       } else {
         builderResult.manager = value
       }
@@ -771,7 +768,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              return builderResult.hasTeam
          }
     }
-    public var team:Services.Organization.Containers.Team.TeamV1! {
+    public var team:Services.Organization.Containers.TeamV1! {
          get {
              return builderResult.team
          }
@@ -780,13 +777,13 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              builderResult.team = value
          }
     }
-    public func setTeam(value:Services.Organization.Containers.Team.TeamV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setTeam(value:Services.Organization.Containers.TeamV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.team = value
       return self
     }
-    public func mergeTeam(value:Services.Organization.Containers.Team.TeamV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func mergeTeam(value:Services.Organization.Containers.TeamV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       if (builderResult.hasTeam) {
-        builderResult.team = Services.Organization.Containers.Team.TeamV1.builderWithPrototype(builderResult.team).mergeFrom(value).buildPartial()
+        builderResult.team = Services.Organization.Containers.TeamV1.builderWithPrototype(builderResult.team).mergeFrom(value).buildPartial()
       } else {
         builderResult.team = value
       }
@@ -798,7 +795,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       builderResult.team = nil
       return self
     }
-    public var notes:Array<Services.Note.Containers.Note.NoteV1> {
+    public var notes:Array<Services.Note.Containers.NoteV1> {
          get {
              return builderResult.notes
          }
@@ -806,7 +803,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              builderResult.notes = value
          }
     }
-    public func setNotes(value:Array<Services.Note.Containers.Note.NoteV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setNotes(value:Array<Services.Note.Containers.NoteV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.notes = value
       return self
     }
@@ -814,7 +811,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       builderResult.notes.removeAll(keepCapacity: false)
       return self
     }
-    public var tags:Array<Services.Profile.Containers.Tag.TagV1> {
+    public var tags:Array<Services.Profile.Containers.TagV1> {
          get {
              return builderResult.tags
          }
@@ -822,7 +819,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              builderResult.tags = value
          }
     }
-    public func setTags(value:Array<Services.Profile.Containers.Tag.TagV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setTags(value:Array<Services.Profile.Containers.TagV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.tags = value
       return self
     }
@@ -830,7 +827,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       builderResult.tags.removeAll(keepCapacity: false)
       return self
     }
-    public var identities:Array<Services.User.Containers.Identity.IdentityV1> {
+    public var identities:Array<Services.User.Containers.IdentityV1> {
          get {
              return builderResult.identities
          }
@@ -838,7 +835,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              builderResult.identities = value
          }
     }
-    public func setIdentities(value:Array<Services.User.Containers.Identity.IdentityV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setIdentities(value:Array<Services.User.Containers.IdentityV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.identities = value
       return self
     }
@@ -846,7 +843,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       builderResult.identities.removeAll(keepCapacity: false)
       return self
     }
-    public var directReports:Array<Services.Profile.Containers.Profile.ProfileV1> {
+    public var directReports:Array<Services.Profile.Containers.ProfileV1> {
          get {
              return builderResult.directReports
          }
@@ -854,7 +851,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              builderResult.directReports = value
          }
     }
-    public func setDirectReports(value:Array<Services.Profile.Containers.Profile.ProfileV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setDirectReports(value:Array<Services.Profile.Containers.ProfileV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.directReports = value
       return self
     }
@@ -867,7 +864,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              return builderResult.hasResume
          }
     }
-    public var resume:Services.Resume.Containers.Resume.ResumeV1! {
+    public var resume:Services.Resume.Containers.ResumeV1! {
          get {
              return builderResult.resume
          }
@@ -876,13 +873,13 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              builderResult.resume = value
          }
     }
-    public func setResume(value:Services.Resume.Containers.Resume.ResumeV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setResume(value:Services.Resume.Containers.ResumeV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.resume = value
       return self
     }
-    public func mergeResume(value:Services.Resume.Containers.Resume.ResumeV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func mergeResume(value:Services.Resume.Containers.ResumeV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       if (builderResult.hasResume) {
-        builderResult.resume = Services.Resume.Containers.Resume.ResumeV1.builderWithPrototype(builderResult.resume).mergeFrom(value).buildPartial()
+        builderResult.resume = Services.Resume.Containers.ResumeV1.builderWithPrototype(builderResult.resume).mergeFrom(value).buildPartial()
       } else {
         builderResult.resume = value
       }
@@ -899,7 +896,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              return builderResult.hasLocation
          }
     }
-    public var location:Services.Organization.Containers.Location.LocationV1! {
+    public var location:Services.Organization.Containers.LocationV1! {
          get {
              return builderResult.location
          }
@@ -908,13 +905,13 @@ public extension Services.Profile.Actions.GetExtendedProfile {
              builderResult.location = value
          }
     }
-    public func setLocation(value:Services.Organization.Containers.Location.LocationV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func setLocation(value:Services.Organization.Containers.LocationV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       self.location = value
       return self
     }
-    public func mergeLocation(value:Services.Organization.Containers.Location.LocationV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
+    public func mergeLocation(value:Services.Organization.Containers.LocationV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
       if (builderResult.hasLocation) {
-        builderResult.location = Services.Organization.Containers.Location.LocationV1.builderWithPrototype(builderResult.location).mergeFrom(value).buildPartial()
+        builderResult.location = Services.Organization.Containers.LocationV1.builderWithPrototype(builderResult.location).mergeFrom(value).buildPartial()
       } else {
         builderResult.location = value
       }
@@ -1002,7 +999,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Profile.Containers.Profile.ProfileV1Builder = Services.Profile.Containers.Profile.ProfileV1.builder()
+          var subBuilder:Services.Profile.Containers.ProfileV1Builder = Services.Profile.Containers.ProfileV1.builder()
           if hasProfile {
             subBuilder.mergeFrom(profile)
           }
@@ -1010,7 +1007,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           profile = subBuilder.buildPartial()
 
         case 26 :
-          var subBuilder:Services.Organization.Containers.Address.AddressV1Builder = Services.Organization.Containers.Address.AddressV1.builder()
+          var subBuilder:Services.Organization.Containers.AddressV1Builder = Services.Organization.Containers.AddressV1.builder()
           if hasAddress {
             subBuilder.mergeFrom(address)
           }
@@ -1018,7 +1015,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           address = subBuilder.buildPartial()
 
         case 34 :
-          var subBuilder:Services.Profile.Containers.Profile.ProfileV1Builder = Services.Profile.Containers.Profile.ProfileV1.builder()
+          var subBuilder:Services.Profile.Containers.ProfileV1Builder = Services.Profile.Containers.ProfileV1.builder()
           if hasManager {
             subBuilder.mergeFrom(manager)
           }
@@ -1026,7 +1023,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           manager = subBuilder.buildPartial()
 
         case 42 :
-          var subBuilder:Services.Organization.Containers.Team.TeamV1Builder = Services.Organization.Containers.Team.TeamV1.builder()
+          var subBuilder:Services.Organization.Containers.TeamV1Builder = Services.Organization.Containers.TeamV1.builder()
           if hasTeam {
             subBuilder.mergeFrom(team)
           }
@@ -1034,27 +1031,27 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           team = subBuilder.buildPartial()
 
         case 50 :
-          var subBuilder = Services.Note.Containers.Note.NoteV1.builder()
+          var subBuilder = Services.Note.Containers.NoteV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           notes += [subBuilder.buildPartial()]
 
         case 58 :
-          var subBuilder = Services.Profile.Containers.Tag.TagV1.builder()
+          var subBuilder = Services.Profile.Containers.TagV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           tags += [subBuilder.buildPartial()]
 
         case 66 :
-          var subBuilder = Services.User.Containers.Identity.IdentityV1.builder()
+          var subBuilder = Services.User.Containers.IdentityV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           identities += [subBuilder.buildPartial()]
 
         case 74 :
-          var subBuilder = Services.Profile.Containers.Profile.ProfileV1.builder()
+          var subBuilder = Services.Profile.Containers.ProfileV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           directReports += [subBuilder.buildPartial()]
 
         case 82 :
-          var subBuilder:Services.Resume.Containers.Resume.ResumeV1Builder = Services.Resume.Containers.Resume.ResumeV1.builder()
+          var subBuilder:Services.Resume.Containers.ResumeV1Builder = Services.Resume.Containers.ResumeV1.builder()
           if hasResume {
             subBuilder.mergeFrom(resume)
           }
@@ -1062,7 +1059,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           resume = subBuilder.buildPartial()
 
         case 90 :
-          var subBuilder:Services.Organization.Containers.Location.LocationV1Builder = Services.Organization.Containers.Location.LocationV1.builder()
+          var subBuilder:Services.Organization.Containers.LocationV1Builder = Services.Organization.Containers.LocationV1.builder()
           if hasLocation {
             subBuilder.mergeFrom(location)
           }

@@ -38,7 +38,7 @@ public extension Services.Profile.Actions.GetProfileStats {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Stat.StatRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -372,7 +372,7 @@ public extension Services.Profile.Actions.GetProfileStats {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var stats:Array<Services.Profile.Containers.Stat.StatV1>  = Array<Services.Profile.Containers.Stat.StatV1>()
+    public private(set) var stats:Array<Services.Profile.Containers.StatV1>  = Array<Services.Profile.Containers.StatV1>()
     required public init() {
          super.init()
     }
@@ -514,7 +514,7 @@ public extension Services.Profile.Actions.GetProfileStats {
          builderResult.version = UInt32(1)
          return self
     }
-    public var stats:Array<Services.Profile.Containers.Stat.StatV1> {
+    public var stats:Array<Services.Profile.Containers.StatV1> {
          get {
              return builderResult.stats
          }
@@ -522,7 +522,7 @@ public extension Services.Profile.Actions.GetProfileStats {
              builderResult.stats = value
          }
     }
-    public func setStats(value:Array<Services.Profile.Containers.Stat.StatV1>)-> Services.Profile.Actions.GetProfileStats.ResponseV1Builder {
+    public func setStats(value:Array<Services.Profile.Containers.StatV1>)-> Services.Profile.Actions.GetProfileStats.ResponseV1Builder {
       self.stats = value
       return self
     }
@@ -579,7 +579,7 @@ public extension Services.Profile.Actions.GetProfileStats {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Profile.Containers.Stat.StatV1.builder()
+          var subBuilder = Services.Profile.Containers.StatV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           stats += [subBuilder.buildPartial()]
 

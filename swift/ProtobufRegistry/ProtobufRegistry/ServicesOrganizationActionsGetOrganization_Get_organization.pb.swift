@@ -37,7 +37,7 @@ public extension Services.Organization.Actions.GetOrganization {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Organization.OrganizationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -337,7 +337,7 @@ public extension Services.Organization.Actions.GetOrganization {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasOrganization:Bool = false
-    public private(set) var organization:Services.Organization.Containers.Organization.OrganizationV1!
+    public private(set) var organization:Services.Organization.Containers.OrganizationV1!
     required public init() {
          super.init()
     }
@@ -486,7 +486,7 @@ public extension Services.Organization.Actions.GetOrganization {
              return builderResult.hasOrganization
          }
     }
-    public var organization:Services.Organization.Containers.Organization.OrganizationV1! {
+    public var organization:Services.Organization.Containers.OrganizationV1! {
          get {
              return builderResult.organization
          }
@@ -495,13 +495,13 @@ public extension Services.Organization.Actions.GetOrganization {
              builderResult.organization = value
          }
     }
-    public func setOrganization(value:Services.Organization.Containers.Organization.OrganizationV1!)-> Services.Organization.Actions.GetOrganization.ResponseV1Builder {
+    public func setOrganization(value:Services.Organization.Containers.OrganizationV1!)-> Services.Organization.Actions.GetOrganization.ResponseV1Builder {
       self.organization = value
       return self
     }
-    public func mergeOrganization(value:Services.Organization.Containers.Organization.OrganizationV1) -> Services.Organization.Actions.GetOrganization.ResponseV1Builder {
+    public func mergeOrganization(value:Services.Organization.Containers.OrganizationV1) -> Services.Organization.Actions.GetOrganization.ResponseV1Builder {
       if (builderResult.hasOrganization) {
-        builderResult.organization = Services.Organization.Containers.Organization.OrganizationV1.builderWithPrototype(builderResult.organization).mergeFrom(value).buildPartial()
+        builderResult.organization = Services.Organization.Containers.OrganizationV1.builderWithPrototype(builderResult.organization).mergeFrom(value).buildPartial()
       } else {
         builderResult.organization = value
       }
@@ -562,7 +562,7 @@ public extension Services.Organization.Actions.GetOrganization {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Organization.Containers.Organization.OrganizationV1Builder = Services.Organization.Containers.Organization.OrganizationV1.builder()
+          var subBuilder:Services.Organization.Containers.OrganizationV1Builder = Services.Organization.Containers.OrganizationV1.builder()
           if hasOrganization {
             subBuilder.mergeFrom(organization)
           }

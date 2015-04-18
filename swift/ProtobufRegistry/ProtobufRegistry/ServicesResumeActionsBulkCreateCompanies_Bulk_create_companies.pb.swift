@@ -36,7 +36,7 @@ public extension Services.Resume.Actions.BulkCreateCompanies {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Resume.Containers.Resume.ResumeRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Resume.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -53,7 +53,7 @@ public extension Services.Resume.Actions.BulkCreateCompanies {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var companies:Array<Services.Resume.Containers.Resume.CompanyV1>  = Array<Services.Resume.Containers.Resume.CompanyV1>()
+    public private(set) var companies:Array<Services.Resume.Containers.CompanyV1>  = Array<Services.Resume.Containers.CompanyV1>()
     required public init() {
          super.init()
     }
@@ -195,7 +195,7 @@ public extension Services.Resume.Actions.BulkCreateCompanies {
          builderResult.version = UInt32(1)
          return self
     }
-    public var companies:Array<Services.Resume.Containers.Resume.CompanyV1> {
+    public var companies:Array<Services.Resume.Containers.CompanyV1> {
          get {
              return builderResult.companies
          }
@@ -203,7 +203,7 @@ public extension Services.Resume.Actions.BulkCreateCompanies {
              builderResult.companies = value
          }
     }
-    public func setCompanies(value:Array<Services.Resume.Containers.Resume.CompanyV1>)-> Services.Resume.Actions.BulkCreateCompanies.RequestV1Builder {
+    public func setCompanies(value:Array<Services.Resume.Containers.CompanyV1>)-> Services.Resume.Actions.BulkCreateCompanies.RequestV1Builder {
       self.companies = value
       return self
     }
@@ -260,7 +260,7 @@ public extension Services.Resume.Actions.BulkCreateCompanies {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Resume.Containers.Resume.CompanyV1.builder()
+          var subBuilder = Services.Resume.Containers.CompanyV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           companies += [subBuilder.buildPartial()]
 
@@ -285,7 +285,7 @@ public extension Services.Resume.Actions.BulkCreateCompanies {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var companies:Array<Services.Resume.Containers.Resume.CompanyV1>  = Array<Services.Resume.Containers.Resume.CompanyV1>()
+    public private(set) var companies:Array<Services.Resume.Containers.CompanyV1>  = Array<Services.Resume.Containers.CompanyV1>()
     required public init() {
          super.init()
     }
@@ -427,7 +427,7 @@ public extension Services.Resume.Actions.BulkCreateCompanies {
          builderResult.version = UInt32(1)
          return self
     }
-    public var companies:Array<Services.Resume.Containers.Resume.CompanyV1> {
+    public var companies:Array<Services.Resume.Containers.CompanyV1> {
          get {
              return builderResult.companies
          }
@@ -435,7 +435,7 @@ public extension Services.Resume.Actions.BulkCreateCompanies {
              builderResult.companies = value
          }
     }
-    public func setCompanies(value:Array<Services.Resume.Containers.Resume.CompanyV1>)-> Services.Resume.Actions.BulkCreateCompanies.ResponseV1Builder {
+    public func setCompanies(value:Array<Services.Resume.Containers.CompanyV1>)-> Services.Resume.Actions.BulkCreateCompanies.ResponseV1Builder {
       self.companies = value
       return self
     }
@@ -492,7 +492,7 @@ public extension Services.Resume.Actions.BulkCreateCompanies {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Resume.Containers.Resume.CompanyV1.builder()
+          var subBuilder = Services.Resume.Containers.CompanyV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           companies += [subBuilder.buildPartial()]
 

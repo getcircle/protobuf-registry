@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.user.containers.user_pb2
+import protobufs.services.user.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/get_user.proto',
   package='services.user.actions.get_user',
-  serialized_pb=_b('\n.protobufs/services/user/actions/get_user.proto\x12\x1eservices.user.actions.get_user\x1a-protobufs/services/user/containers/user.proto\".\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05\x65mail\x18\x02 \x01(\t\"U\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x33\n\x04user\x18\x02 \x01(\x0b\x32%.services.user.containers.user.UserV1')
+  serialized_pb=_b('\n.protobufs/services/user/actions/get_user.proto\x12\x1eservices.user.actions.get_user\x1a(protobufs/services/user/containers.proto\".\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05\x65mail\x18\x02 \x01(\t\"P\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12.\n\x04user\x18\x02 \x01(\x0b\x32 .services.user.containers.UserV1')
   ,
-  dependencies=[protobufs.services.user.containers.user_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.user.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=129,
-  serialized_end=175,
+  serialized_start=124,
+  serialized_end=170,
 )
 
 
@@ -96,11 +96,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=177,
-  serialized_end=262,
+  serialized_start=172,
+  serialized_end=252,
 )
 
-_RESPONSEV1.fields_by_name['user'].message_type = protobufs.services.user.containers.user_pb2._USERV1
+_RESPONSEV1.fields_by_name['user'].message_type = protobufs.services.user.containers_pb2._USERV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

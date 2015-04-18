@@ -36,7 +36,7 @@ public extension Services.Resume.Actions.CreateCompany {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Resume.Containers.Resume.ResumeRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Resume.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -55,7 +55,7 @@ public extension Services.Resume.Actions.CreateCompany {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasCompany:Bool = false
-    public private(set) var company:Services.Resume.Containers.Resume.CompanyV1!
+    public private(set) var company:Services.Resume.Containers.CompanyV1!
     required public init() {
          super.init()
     }
@@ -204,7 +204,7 @@ public extension Services.Resume.Actions.CreateCompany {
              return builderResult.hasCompany
          }
     }
-    public var company:Services.Resume.Containers.Resume.CompanyV1! {
+    public var company:Services.Resume.Containers.CompanyV1! {
          get {
              return builderResult.company
          }
@@ -213,13 +213,13 @@ public extension Services.Resume.Actions.CreateCompany {
              builderResult.company = value
          }
     }
-    public func setCompany(value:Services.Resume.Containers.Resume.CompanyV1!)-> Services.Resume.Actions.CreateCompany.RequestV1Builder {
+    public func setCompany(value:Services.Resume.Containers.CompanyV1!)-> Services.Resume.Actions.CreateCompany.RequestV1Builder {
       self.company = value
       return self
     }
-    public func mergeCompany(value:Services.Resume.Containers.Resume.CompanyV1) -> Services.Resume.Actions.CreateCompany.RequestV1Builder {
+    public func mergeCompany(value:Services.Resume.Containers.CompanyV1) -> Services.Resume.Actions.CreateCompany.RequestV1Builder {
       if (builderResult.hasCompany) {
-        builderResult.company = Services.Resume.Containers.Resume.CompanyV1.builderWithPrototype(builderResult.company).mergeFrom(value).buildPartial()
+        builderResult.company = Services.Resume.Containers.CompanyV1.builderWithPrototype(builderResult.company).mergeFrom(value).buildPartial()
       } else {
         builderResult.company = value
       }
@@ -280,7 +280,7 @@ public extension Services.Resume.Actions.CreateCompany {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Resume.Containers.Resume.CompanyV1Builder = Services.Resume.Containers.Resume.CompanyV1.builder()
+          var subBuilder:Services.Resume.Containers.CompanyV1Builder = Services.Resume.Containers.CompanyV1.builder()
           if hasCompany {
             subBuilder.mergeFrom(company)
           }
@@ -310,7 +310,7 @@ public extension Services.Resume.Actions.CreateCompany {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasCompany:Bool = false
-    public private(set) var company:Services.Resume.Containers.Resume.CompanyV1!
+    public private(set) var company:Services.Resume.Containers.CompanyV1!
     required public init() {
          super.init()
     }
@@ -459,7 +459,7 @@ public extension Services.Resume.Actions.CreateCompany {
              return builderResult.hasCompany
          }
     }
-    public var company:Services.Resume.Containers.Resume.CompanyV1! {
+    public var company:Services.Resume.Containers.CompanyV1! {
          get {
              return builderResult.company
          }
@@ -468,13 +468,13 @@ public extension Services.Resume.Actions.CreateCompany {
              builderResult.company = value
          }
     }
-    public func setCompany(value:Services.Resume.Containers.Resume.CompanyV1!)-> Services.Resume.Actions.CreateCompany.ResponseV1Builder {
+    public func setCompany(value:Services.Resume.Containers.CompanyV1!)-> Services.Resume.Actions.CreateCompany.ResponseV1Builder {
       self.company = value
       return self
     }
-    public func mergeCompany(value:Services.Resume.Containers.Resume.CompanyV1) -> Services.Resume.Actions.CreateCompany.ResponseV1Builder {
+    public func mergeCompany(value:Services.Resume.Containers.CompanyV1) -> Services.Resume.Actions.CreateCompany.ResponseV1Builder {
       if (builderResult.hasCompany) {
-        builderResult.company = Services.Resume.Containers.Resume.CompanyV1.builderWithPrototype(builderResult.company).mergeFrom(value).buildPartial()
+        builderResult.company = Services.Resume.Containers.CompanyV1.builderWithPrototype(builderResult.company).mergeFrom(value).buildPartial()
       } else {
         builderResult.company = value
       }
@@ -535,7 +535,7 @@ public extension Services.Resume.Actions.CreateCompany {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Resume.Containers.Resume.CompanyV1Builder = Services.Resume.Containers.Resume.CompanyV1.builder()
+          var subBuilder:Services.Resume.Containers.CompanyV1Builder = Services.Resume.Containers.CompanyV1.builder()
           if hasCompany {
             subBuilder.mergeFrom(company)
           }

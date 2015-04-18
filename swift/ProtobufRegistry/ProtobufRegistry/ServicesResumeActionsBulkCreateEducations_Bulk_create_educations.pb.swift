@@ -36,7 +36,7 @@ public extension Services.Resume.Actions.BulkCreateEducations {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Resume.Containers.Resume.ResumeRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Resume.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -53,7 +53,7 @@ public extension Services.Resume.Actions.BulkCreateEducations {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var educations:Array<Services.Resume.Containers.Resume.EducationV1>  = Array<Services.Resume.Containers.Resume.EducationV1>()
+    public private(set) var educations:Array<Services.Resume.Containers.EducationV1>  = Array<Services.Resume.Containers.EducationV1>()
     required public init() {
          super.init()
     }
@@ -195,7 +195,7 @@ public extension Services.Resume.Actions.BulkCreateEducations {
          builderResult.version = UInt32(1)
          return self
     }
-    public var educations:Array<Services.Resume.Containers.Resume.EducationV1> {
+    public var educations:Array<Services.Resume.Containers.EducationV1> {
          get {
              return builderResult.educations
          }
@@ -203,7 +203,7 @@ public extension Services.Resume.Actions.BulkCreateEducations {
              builderResult.educations = value
          }
     }
-    public func setEducations(value:Array<Services.Resume.Containers.Resume.EducationV1>)-> Services.Resume.Actions.BulkCreateEducations.RequestV1Builder {
+    public func setEducations(value:Array<Services.Resume.Containers.EducationV1>)-> Services.Resume.Actions.BulkCreateEducations.RequestV1Builder {
       self.educations = value
       return self
     }
@@ -260,7 +260,7 @@ public extension Services.Resume.Actions.BulkCreateEducations {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Resume.Containers.Resume.EducationV1.builder()
+          var subBuilder = Services.Resume.Containers.EducationV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           educations += [subBuilder.buildPartial()]
 
@@ -285,7 +285,7 @@ public extension Services.Resume.Actions.BulkCreateEducations {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var educations:Array<Services.Resume.Containers.Resume.EducationV1>  = Array<Services.Resume.Containers.Resume.EducationV1>()
+    public private(set) var educations:Array<Services.Resume.Containers.EducationV1>  = Array<Services.Resume.Containers.EducationV1>()
     required public init() {
          super.init()
     }
@@ -427,7 +427,7 @@ public extension Services.Resume.Actions.BulkCreateEducations {
          builderResult.version = UInt32(1)
          return self
     }
-    public var educations:Array<Services.Resume.Containers.Resume.EducationV1> {
+    public var educations:Array<Services.Resume.Containers.EducationV1> {
          get {
              return builderResult.educations
          }
@@ -435,7 +435,7 @@ public extension Services.Resume.Actions.BulkCreateEducations {
              builderResult.educations = value
          }
     }
-    public func setEducations(value:Array<Services.Resume.Containers.Resume.EducationV1>)-> Services.Resume.Actions.BulkCreateEducations.ResponseV1Builder {
+    public func setEducations(value:Array<Services.Resume.Containers.EducationV1>)-> Services.Resume.Actions.BulkCreateEducations.ResponseV1Builder {
       self.educations = value
       return self
     }
@@ -492,7 +492,7 @@ public extension Services.Resume.Actions.BulkCreateEducations {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Resume.Containers.Resume.EducationV1.builder()
+          var subBuilder = Services.Resume.Containers.EducationV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           educations += [subBuilder.buildPartial()]
 

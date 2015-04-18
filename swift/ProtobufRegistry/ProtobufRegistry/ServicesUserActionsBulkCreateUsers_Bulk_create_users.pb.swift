@@ -36,7 +36,7 @@ public extension Services.User.Actions.BulkCreateUsers {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.User.Containers.User.UserRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -53,7 +53,7 @@ public extension Services.User.Actions.BulkCreateUsers {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var users:Array<Services.User.Containers.User.UserV1>  = Array<Services.User.Containers.User.UserV1>()
+    public private(set) var users:Array<Services.User.Containers.UserV1>  = Array<Services.User.Containers.UserV1>()
     required public init() {
          super.init()
     }
@@ -195,7 +195,7 @@ public extension Services.User.Actions.BulkCreateUsers {
          builderResult.version = UInt32(1)
          return self
     }
-    public var users:Array<Services.User.Containers.User.UserV1> {
+    public var users:Array<Services.User.Containers.UserV1> {
          get {
              return builderResult.users
          }
@@ -203,7 +203,7 @@ public extension Services.User.Actions.BulkCreateUsers {
              builderResult.users = value
          }
     }
-    public func setUsers(value:Array<Services.User.Containers.User.UserV1>)-> Services.User.Actions.BulkCreateUsers.RequestV1Builder {
+    public func setUsers(value:Array<Services.User.Containers.UserV1>)-> Services.User.Actions.BulkCreateUsers.RequestV1Builder {
       self.users = value
       return self
     }
@@ -260,7 +260,7 @@ public extension Services.User.Actions.BulkCreateUsers {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.User.Containers.User.UserV1.builder()
+          var subBuilder = Services.User.Containers.UserV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           users += [subBuilder.buildPartial()]
 
@@ -285,7 +285,7 @@ public extension Services.User.Actions.BulkCreateUsers {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var users:Array<Services.User.Containers.User.UserV1>  = Array<Services.User.Containers.User.UserV1>()
+    public private(set) var users:Array<Services.User.Containers.UserV1>  = Array<Services.User.Containers.UserV1>()
     required public init() {
          super.init()
     }
@@ -427,7 +427,7 @@ public extension Services.User.Actions.BulkCreateUsers {
          builderResult.version = UInt32(1)
          return self
     }
-    public var users:Array<Services.User.Containers.User.UserV1> {
+    public var users:Array<Services.User.Containers.UserV1> {
          get {
              return builderResult.users
          }
@@ -435,7 +435,7 @@ public extension Services.User.Actions.BulkCreateUsers {
              builderResult.users = value
          }
     }
-    public func setUsers(value:Array<Services.User.Containers.User.UserV1>)-> Services.User.Actions.BulkCreateUsers.ResponseV1Builder {
+    public func setUsers(value:Array<Services.User.Containers.UserV1>)-> Services.User.Actions.BulkCreateUsers.ResponseV1Builder {
       self.users = value
       return self
     }
@@ -492,7 +492,7 @@ public extension Services.User.Actions.BulkCreateUsers {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.User.Containers.User.UserV1.builder()
+          var subBuilder = Services.User.Containers.UserV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           users += [subBuilder.buildPartial()]
 

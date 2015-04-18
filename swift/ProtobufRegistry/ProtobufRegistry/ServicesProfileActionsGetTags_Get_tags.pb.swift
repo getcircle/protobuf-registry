@@ -38,7 +38,7 @@ public extension Services.Profile.Actions.GetTags {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Tag.TagRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -64,7 +64,7 @@ public extension Services.Profile.Actions.GetTags {
     public private(set) var hasOrganizationId:Bool = false
     public private(set) var organizationId:String = ""
 
-    public private(set) var tagType:Services.Profile.Containers.Tag.TagV1.TagTypeV1 = Services.Profile.Containers.Tag.TagV1.TagTypeV1.Skill
+    public private(set) var tagType:Services.Profile.Containers.TagV1.TagTypeV1 = Services.Profile.Containers.TagV1.TagTypeV1.Skill
     public private(set) var hasTagType:Bool = false
     required public init() {
          super.init()
@@ -278,7 +278,7 @@ public extension Services.Profile.Actions.GetTags {
               return builderResult.hasTagType
           }
       }
-      public var tagType:Services.Profile.Containers.Tag.TagV1.TagTypeV1 {
+      public var tagType:Services.Profile.Containers.TagV1.TagTypeV1 {
           get {
               return builderResult.tagType
           }
@@ -287,7 +287,7 @@ public extension Services.Profile.Actions.GetTags {
               builderResult.tagType = value
           }
       }
-      public func setTagType(value:Services.Profile.Containers.Tag.TagV1.TagTypeV1)-> Services.Profile.Actions.GetTags.RequestV1Builder {
+      public func setTagType(value:Services.Profile.Containers.TagV1.TagTypeV1)-> Services.Profile.Actions.GetTags.RequestV1Builder {
         self.tagType = value
         return self
       }
@@ -358,7 +358,7 @@ public extension Services.Profile.Actions.GetTags {
 
         case 32 :
           let valueInttagType = input.readEnum()
-          if let enumstagType = Services.Profile.Containers.Tag.TagV1.TagTypeV1(rawValue:valueInttagType){
+          if let enumstagType = Services.Profile.Containers.TagV1.TagTypeV1(rawValue:valueInttagType){
                tagType = enumstagType
           } else {
                unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueInttagType))
@@ -385,7 +385,7 @@ public extension Services.Profile.Actions.GetTags {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var tags:Array<Services.Profile.Containers.Tag.TagV1>  = Array<Services.Profile.Containers.Tag.TagV1>()
+    public private(set) var tags:Array<Services.Profile.Containers.TagV1>  = Array<Services.Profile.Containers.TagV1>()
     required public init() {
          super.init()
     }
@@ -527,7 +527,7 @@ public extension Services.Profile.Actions.GetTags {
          builderResult.version = UInt32(1)
          return self
     }
-    public var tags:Array<Services.Profile.Containers.Tag.TagV1> {
+    public var tags:Array<Services.Profile.Containers.TagV1> {
          get {
              return builderResult.tags
          }
@@ -535,7 +535,7 @@ public extension Services.Profile.Actions.GetTags {
              builderResult.tags = value
          }
     }
-    public func setTags(value:Array<Services.Profile.Containers.Tag.TagV1>)-> Services.Profile.Actions.GetTags.ResponseV1Builder {
+    public func setTags(value:Array<Services.Profile.Containers.TagV1>)-> Services.Profile.Actions.GetTags.ResponseV1Builder {
       self.tags = value
       return self
     }
@@ -592,7 +592,7 @@ public extension Services.Profile.Actions.GetTags {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Profile.Containers.Tag.TagV1.builder()
+          var subBuilder = Services.Profile.Containers.TagV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           tags += [subBuilder.buildPartial()]
 

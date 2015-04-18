@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.resume.containers.resume_pb2
+import protobufs.services.resume.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/resume/actions/get_resume.proto',
   package='services.resume.actions.get_resume',
-  serialized_pb=_b('\n2protobufs/services/resume/actions/get_resume.proto\x12\"services.resume.actions.get_resume\x1a\x31protobufs/services/resume/containers/resume.proto\"0\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07user_id\x18\x02 \x01(\t\"]\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12;\n\x06resume\x18\x02 \x01(\x0b\x32+.services.resume.containers.resume.ResumeV1')
+  serialized_pb=_b('\n2protobufs/services/resume/actions/get_resume.proto\x12\"services.resume.actions.get_resume\x1a*protobufs/services/resume/containers.proto\"0\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07user_id\x18\x02 \x01(\t\"V\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x34\n\x06resume\x18\x02 \x01(\x0b\x32$.services.resume.containers.ResumeV1')
   ,
-  dependencies=[protobufs.services.resume.containers.resume_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.resume.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=141,
-  serialized_end=189,
+  serialized_start=134,
+  serialized_end=182,
 )
 
 
@@ -96,11 +96,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=191,
-  serialized_end=284,
+  serialized_start=184,
+  serialized_end=270,
 )
 
-_RESPONSEV1.fields_by_name['resume'].message_type = protobufs.services.resume.containers.resume_pb2._RESUMEV1
+_RESPONSEV1.fields_by_name['resume'].message_type = protobufs.services.resume.containers_pb2._RESUMEV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

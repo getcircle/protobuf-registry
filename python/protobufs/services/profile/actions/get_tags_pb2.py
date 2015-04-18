@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import protobufs.services.profile.containers.tag_pb2
+import protobufs.services.profile.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/get_tags.proto',
   package='services.profile.actions.get_tags',
-  serialized_pb=_b('\n1protobufs/services/profile/actions/get_tags.proto\x12!services.profile.actions.get_tags\x1a/protobufs/services/profile/containers/tag.proto\"\x90\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x42\n\x08tag_type\x18\x04 \x01(\x0e\x32\x30.services.profile.containers.tag.TagV1.TagTypeV1\"V\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x34\n\x04tags\x18\x02 \x03(\x0b\x32&.services.profile.containers.tag.TagV1')
+  serialized_pb=_b('\n1protobufs/services/profile/actions/get_tags.proto\x12!services.profile.actions.get_tags\x1a+protobufs/services/profile/containers.proto\"\x8c\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12>\n\x08tag_type\x18\x04 \x01(\x0e\x32,.services.profile.containers.TagV1.TagTypeV1\"R\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x30\n\x04tags\x18\x02 \x03(\x0b\x32\".services.profile.containers.TagV1')
   ,
-  dependencies=[protobufs.services.profile.containers.tag_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.profile.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -73,8 +73,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=138,
-  serialized_end=282,
+  serialized_start=134,
+  serialized_end=274,
 )
 
 
@@ -110,12 +110,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=284,
-  serialized_end=370,
+  serialized_start=276,
+  serialized_end=358,
 )
 
-_REQUESTV1.fields_by_name['tag_type'].enum_type = protobufs.services.profile.containers.tag_pb2._TAGV1_TAGTYPEV1
-_RESPONSEV1.fields_by_name['tags'].message_type = protobufs.services.profile.containers.tag_pb2._TAGV1
+_REQUESTV1.fields_by_name['tag_type'].enum_type = protobufs.services.profile.containers_pb2._TAGV1_TAGTYPEV1
+_RESPONSEV1.fields_by_name['tags'].message_type = protobufs.services.profile.containers_pb2._TAGV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

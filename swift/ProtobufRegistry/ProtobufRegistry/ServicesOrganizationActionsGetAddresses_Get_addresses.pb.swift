@@ -36,7 +36,7 @@ public extension Services.Organization.Actions.GetAddresses {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Address.AddressRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -289,7 +289,7 @@ public extension Services.Organization.Actions.GetAddresses {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var addresses:Array<Services.Organization.Containers.Address.AddressV1>  = Array<Services.Organization.Containers.Address.AddressV1>()
+    public private(set) var addresses:Array<Services.Organization.Containers.AddressV1>  = Array<Services.Organization.Containers.AddressV1>()
     required public init() {
          super.init()
     }
@@ -431,7 +431,7 @@ public extension Services.Organization.Actions.GetAddresses {
          builderResult.version = UInt32(1)
          return self
     }
-    public var addresses:Array<Services.Organization.Containers.Address.AddressV1> {
+    public var addresses:Array<Services.Organization.Containers.AddressV1> {
          get {
              return builderResult.addresses
          }
@@ -439,7 +439,7 @@ public extension Services.Organization.Actions.GetAddresses {
              builderResult.addresses = value
          }
     }
-    public func setAddresses(value:Array<Services.Organization.Containers.Address.AddressV1>)-> Services.Organization.Actions.GetAddresses.ResponseV1Builder {
+    public func setAddresses(value:Array<Services.Organization.Containers.AddressV1>)-> Services.Organization.Actions.GetAddresses.ResponseV1Builder {
       self.addresses = value
       return self
     }
@@ -496,7 +496,7 @@ public extension Services.Organization.Actions.GetAddresses {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Organization.Containers.Address.AddressV1.builder()
+          var subBuilder = Services.Organization.Containers.AddressV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           addresses += [subBuilder.buildPartial()]
 

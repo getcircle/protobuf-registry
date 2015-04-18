@@ -35,7 +35,7 @@ public extension Services.Appreciation.Actions.DeleteAppreciation {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Appreciation.Containers.Appreciation.AppreciationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Appreciation.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -54,7 +54,7 @@ public extension Services.Appreciation.Actions.DeleteAppreciation {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasAppreciation:Bool = false
-    public private(set) var appreciation:Services.Appreciation.Containers.Appreciation.AppreciationV1!
+    public private(set) var appreciation:Services.Appreciation.Containers.AppreciationV1!
     required public init() {
          super.init()
     }
@@ -203,7 +203,7 @@ public extension Services.Appreciation.Actions.DeleteAppreciation {
              return builderResult.hasAppreciation
          }
     }
-    public var appreciation:Services.Appreciation.Containers.Appreciation.AppreciationV1! {
+    public var appreciation:Services.Appreciation.Containers.AppreciationV1! {
          get {
              return builderResult.appreciation
          }
@@ -212,13 +212,13 @@ public extension Services.Appreciation.Actions.DeleteAppreciation {
              builderResult.appreciation = value
          }
     }
-    public func setAppreciation(value:Services.Appreciation.Containers.Appreciation.AppreciationV1!)-> Services.Appreciation.Actions.DeleteAppreciation.RequestV1Builder {
+    public func setAppreciation(value:Services.Appreciation.Containers.AppreciationV1!)-> Services.Appreciation.Actions.DeleteAppreciation.RequestV1Builder {
       self.appreciation = value
       return self
     }
-    public func mergeAppreciation(value:Services.Appreciation.Containers.Appreciation.AppreciationV1) -> Services.Appreciation.Actions.DeleteAppreciation.RequestV1Builder {
+    public func mergeAppreciation(value:Services.Appreciation.Containers.AppreciationV1) -> Services.Appreciation.Actions.DeleteAppreciation.RequestV1Builder {
       if (builderResult.hasAppreciation) {
-        builderResult.appreciation = Services.Appreciation.Containers.Appreciation.AppreciationV1.builderWithPrototype(builderResult.appreciation).mergeFrom(value).buildPartial()
+        builderResult.appreciation = Services.Appreciation.Containers.AppreciationV1.builderWithPrototype(builderResult.appreciation).mergeFrom(value).buildPartial()
       } else {
         builderResult.appreciation = value
       }
@@ -279,7 +279,7 @@ public extension Services.Appreciation.Actions.DeleteAppreciation {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Appreciation.Containers.Appreciation.AppreciationV1Builder = Services.Appreciation.Containers.Appreciation.AppreciationV1.builder()
+          var subBuilder:Services.Appreciation.Containers.AppreciationV1Builder = Services.Appreciation.Containers.AppreciationV1.builder()
           if hasAppreciation {
             subBuilder.mergeFrom(appreciation)
           }

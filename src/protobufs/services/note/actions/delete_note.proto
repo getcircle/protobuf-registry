@@ -1,10 +1,10 @@
 package services.note.actions.delete_note;
 
-import "protobufs/services/note/containers/note.proto";
+import "protobufs/services/note/containers.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
-    optional services.note.containers.note.NoteV1 note = 2;
+    optional services.note.containers.NoteV1 note = 2;
 }
 
 message ResponseV1 {

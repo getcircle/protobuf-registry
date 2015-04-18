@@ -38,7 +38,7 @@ public extension Services.Organization.Actions.GetLocation {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Organization.Containers.Location.LocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -383,7 +383,7 @@ public extension Services.Organization.Actions.GetLocation {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasLocation:Bool = false
-    public private(set) var location:Services.Organization.Containers.Location.LocationV1!
+    public private(set) var location:Services.Organization.Containers.LocationV1!
     required public init() {
          super.init()
     }
@@ -532,7 +532,7 @@ public extension Services.Organization.Actions.GetLocation {
              return builderResult.hasLocation
          }
     }
-    public var location:Services.Organization.Containers.Location.LocationV1! {
+    public var location:Services.Organization.Containers.LocationV1! {
          get {
              return builderResult.location
          }
@@ -541,13 +541,13 @@ public extension Services.Organization.Actions.GetLocation {
              builderResult.location = value
          }
     }
-    public func setLocation(value:Services.Organization.Containers.Location.LocationV1!)-> Services.Organization.Actions.GetLocation.ResponseV1Builder {
+    public func setLocation(value:Services.Organization.Containers.LocationV1!)-> Services.Organization.Actions.GetLocation.ResponseV1Builder {
       self.location = value
       return self
     }
-    public func mergeLocation(value:Services.Organization.Containers.Location.LocationV1) -> Services.Organization.Actions.GetLocation.ResponseV1Builder {
+    public func mergeLocation(value:Services.Organization.Containers.LocationV1) -> Services.Organization.Actions.GetLocation.ResponseV1Builder {
       if (builderResult.hasLocation) {
-        builderResult.location = Services.Organization.Containers.Location.LocationV1.builderWithPrototype(builderResult.location).mergeFrom(value).buildPartial()
+        builderResult.location = Services.Organization.Containers.LocationV1.builderWithPrototype(builderResult.location).mergeFrom(value).buildPartial()
       } else {
         builderResult.location = value
       }
@@ -608,7 +608,7 @@ public extension Services.Organization.Actions.GetLocation {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder:Services.Organization.Containers.Location.LocationV1Builder = Services.Organization.Containers.Location.LocationV1.builder()
+          var subBuilder:Services.Organization.Containers.LocationV1Builder = Services.Organization.Containers.LocationV1.builder()
           if hasLocation {
             subBuilder.mergeFrom(location)
           }

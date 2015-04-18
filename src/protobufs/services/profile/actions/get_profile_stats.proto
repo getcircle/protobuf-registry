@@ -1,6 +1,6 @@
 package services.profile.actions.get_profile_stats;
 
-import "protobufs/services/profile/containers/stat.proto";
+import "protobufs/services/profile/containers.proto";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
@@ -11,5 +11,5 @@ message RequestV1 {
 
 message ResponseV1 {
     optional uint32 version = 1 [default = 1];
-    repeated services.profile.containers.stat.StatV1 stats = 2;
+    repeated services.profile.containers.StatV1 stats = 2;
 }

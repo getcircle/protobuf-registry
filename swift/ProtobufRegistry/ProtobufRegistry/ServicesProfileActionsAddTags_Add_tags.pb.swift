@@ -37,7 +37,7 @@ public extension Services.Profile.Actions.AddTags {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Profile.Containers.Tag.TagRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -58,7 +58,7 @@ public extension Services.Profile.Actions.AddTags {
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
-    public private(set) var tags:Array<Services.Profile.Containers.Tag.TagV1>  = Array<Services.Profile.Containers.Tag.TagV1>()
+    public private(set) var tags:Array<Services.Profile.Containers.TagV1>  = Array<Services.Profile.Containers.TagV1>()
     required public init() {
          super.init()
     }
@@ -212,7 +212,7 @@ public extension Services.Profile.Actions.AddTags {
          builderResult.version = UInt32(1)
          return self
     }
-    public var tags:Array<Services.Profile.Containers.Tag.TagV1> {
+    public var tags:Array<Services.Profile.Containers.TagV1> {
          get {
              return builderResult.tags
          }
@@ -220,7 +220,7 @@ public extension Services.Profile.Actions.AddTags {
              builderResult.tags = value
          }
     }
-    public func setTags(value:Array<Services.Profile.Containers.Tag.TagV1>)-> Services.Profile.Actions.AddTags.RequestV1Builder {
+    public func setTags(value:Array<Services.Profile.Containers.TagV1>)-> Services.Profile.Actions.AddTags.RequestV1Builder {
       self.tags = value
       return self
     }
@@ -303,7 +303,7 @@ public extension Services.Profile.Actions.AddTags {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Profile.Containers.Tag.TagV1.builder()
+          var subBuilder = Services.Profile.Containers.TagV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           tags += [subBuilder.buildPartial()]
 
@@ -331,7 +331,7 @@ public extension Services.Profile.Actions.AddTags {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var tags:Array<Services.Profile.Containers.Tag.TagV1>  = Array<Services.Profile.Containers.Tag.TagV1>()
+    public private(set) var tags:Array<Services.Profile.Containers.TagV1>  = Array<Services.Profile.Containers.TagV1>()
     required public init() {
          super.init()
     }
@@ -473,7 +473,7 @@ public extension Services.Profile.Actions.AddTags {
          builderResult.version = UInt32(1)
          return self
     }
-    public var tags:Array<Services.Profile.Containers.Tag.TagV1> {
+    public var tags:Array<Services.Profile.Containers.TagV1> {
          get {
              return builderResult.tags
          }
@@ -481,7 +481,7 @@ public extension Services.Profile.Actions.AddTags {
              builderResult.tags = value
          }
     }
-    public func setTags(value:Array<Services.Profile.Containers.Tag.TagV1>)-> Services.Profile.Actions.AddTags.ResponseV1Builder {
+    public func setTags(value:Array<Services.Profile.Containers.TagV1>)-> Services.Profile.Actions.AddTags.ResponseV1Builder {
       self.tags = value
       return self
     }
@@ -538,7 +538,7 @@ public extension Services.Profile.Actions.AddTags {
           version = input.readUInt32()
 
         case 18 :
-          var subBuilder = Services.Profile.Containers.Tag.TagV1.builder()
+          var subBuilder = Services.Profile.Containers.TagV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           tags += [subBuilder.buildPartial()]
 
