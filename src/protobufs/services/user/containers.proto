@@ -36,7 +36,6 @@ message IdentityV1 {
     optional string provider_uid = 8;
     optional string user_id = 9;
     optional string refresh_token = 10;
-    optional string id_token = 11;
 }
 
 message OAuth2DetailsV1 {
