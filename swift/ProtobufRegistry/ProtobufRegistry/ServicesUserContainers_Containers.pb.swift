@@ -46,6 +46,7 @@ public func == (lhs: Services.User.Containers.IdentityV1, rhs: Services.User.Con
   fieldCheck = fieldCheck && (lhs.hasProviderUid == rhs.hasProviderUid) && (!lhs.hasProviderUid || lhs.providerUid == rhs.providerUid)
   fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = fieldCheck && (lhs.hasRefreshToken == rhs.hasRefreshToken) && (!lhs.hasRefreshToken || lhs.refreshToken == rhs.refreshToken)
+  fieldCheck = fieldCheck && (lhs.hasIdToken == rhs.hasIdToken) && (!lhs.hasIdToken || lhs.idToken == rhs.idToken)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -963,6 +964,7 @@ public extension Services.User.Containers {
            case "providerUid": return providerUid
            case "userId": return userId
            case "refreshToken": return refreshToken
+           case "idToken": return idToken
            default: return nil
            }
     }
@@ -995,6 +997,9 @@ public extension Services.User.Containers {
 
     public private(set) var hasRefreshToken:Bool = false
     public private(set) var refreshToken:String = ""
+
+    public private(set) var hasIdToken:Bool = false
+    public private(set) var idToken:String = ""
 
     required public init() {
          super.init()
@@ -1032,6 +1037,9 @@ public extension Services.User.Containers {
       }
       if hasRefreshToken {
         output.writeString(10, value:refreshToken)
+      }
+      if hasIdToken {
+        output.writeString(11, value:idToken)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -1071,6 +1079,9 @@ public extension Services.User.Containers {
       }
       if hasRefreshToken {
         serialize_size += refreshToken.computeStringSize(10)
+      }
+      if hasIdToken {
+        serialize_size += idToken.computeStringSize(11)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1143,6 +1154,9 @@ public extension Services.User.Containers {
       if hasRefreshToken {
         output += "\(indent) refreshToken: \(refreshToken) \n"
       }
+      if hasIdToken {
+        output += "\(indent) idToken: \(idToken) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1177,6 +1191,9 @@ public extension Services.User.Containers {
             }
             if hasRefreshToken {
                hashCode = (hashCode &* 31) &+ refreshToken.hashValue
+            }
+            if hasIdToken {
+               hashCode = (hashCode &* 31) &+ idToken.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1436,6 +1453,29 @@ public extension Services.User.Containers {
          builderResult.refreshToken = ""
          return self
     }
+    public var hasIdToken:Bool {
+         get {
+              return builderResult.hasIdToken
+         }
+    }
+    public var idToken:String {
+         get {
+              return builderResult.idToken
+         }
+         set (value) {
+             builderResult.hasIdToken = true
+             builderResult.idToken = value
+         }
+    }
+    public func setIdToken(value:String)-> Services.User.Containers.IdentityV1Builder {
+      self.idToken = value
+      return self
+    }
+    public func clearIdToken() -> Services.User.Containers.IdentityV1Builder{
+         builderResult.hasIdToken = false
+         builderResult.idToken = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -1490,6 +1530,9 @@ public extension Services.User.Containers {
       if other.hasRefreshToken {
            refreshToken = other.refreshToken
       }
+      if other.hasIdToken {
+           idToken = other.idToken
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -1539,6 +1582,9 @@ public extension Services.User.Containers {
 
         case 82 :
           refreshToken = input.readString()
+
+        case 90 :
+          idToken = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
