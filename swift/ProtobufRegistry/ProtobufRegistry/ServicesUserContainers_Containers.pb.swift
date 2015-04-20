@@ -57,6 +57,7 @@ public func == (lhs: Services.User.Containers.OAuth2DetailsV1, rhs: Services.Use
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasCode == rhs.hasCode) && (!lhs.hasCode || lhs.code == rhs.code)
   fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
+  fieldCheck = fieldCheck && (lhs.hasLoginHint == rhs.hasLoginHint) && (!lhs.hasLoginHint || lhs.loginHint == rhs.loginHint)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -1556,6 +1557,7 @@ public extension Services.User.Containers {
            case "version": return version
            case "code": return code
            case "state": return state
+           case "loginHint": return loginHint
            default: return nil
            }
     }
@@ -1568,6 +1570,9 @@ public extension Services.User.Containers {
 
     public private(set) var hasState:Bool = false
     public private(set) var state:String = ""
+
+    public private(set) var hasLoginHint:Bool = false
+    public private(set) var loginHint:String = ""
 
     required public init() {
          super.init()
@@ -1584,6 +1589,9 @@ public extension Services.User.Containers {
       }
       if hasState {
         output.writeString(3, value:state)
+      }
+      if hasLoginHint {
+        output.writeString(4, value:loginHint)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -1602,6 +1610,9 @@ public extension Services.User.Containers {
       }
       if hasState {
         serialize_size += state.computeStringSize(3)
+      }
+      if hasLoginHint {
+        serialize_size += loginHint.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1653,6 +1664,9 @@ public extension Services.User.Containers {
       if hasState {
         output += "\(indent) state: \(state) \n"
       }
+      if hasLoginHint {
+        output += "\(indent) loginHint: \(loginHint) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1666,6 +1680,9 @@ public extension Services.User.Containers {
             }
             if hasState {
                hashCode = (hashCode &* 31) &+ state.hashValue
+            }
+            if hasLoginHint {
+               hashCode = (hashCode &* 31) &+ loginHint.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1764,6 +1781,29 @@ public extension Services.User.Containers {
          builderResult.state = ""
          return self
     }
+    public var hasLoginHint:Bool {
+         get {
+              return builderResult.hasLoginHint
+         }
+    }
+    public var loginHint:String {
+         get {
+              return builderResult.loginHint
+         }
+         set (value) {
+             builderResult.hasLoginHint = true
+             builderResult.loginHint = value
+         }
+    }
+    public func setLoginHint(value:String)-> Services.User.Containers.OAuth2DetailsV1Builder {
+      self.loginHint = value
+      return self
+    }
+    public func clearLoginHint() -> Services.User.Containers.OAuth2DetailsV1Builder{
+         builderResult.hasLoginHint = false
+         builderResult.loginHint = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -1797,6 +1837,9 @@ public extension Services.User.Containers {
       if other.hasState {
            state = other.state
       }
+      if other.hasLoginHint {
+           loginHint = other.loginHint
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -1820,6 +1863,9 @@ public extension Services.User.Containers {
 
         case 26 :
           state = input.readString()
+
+        case 34 :
+          loginHint = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
