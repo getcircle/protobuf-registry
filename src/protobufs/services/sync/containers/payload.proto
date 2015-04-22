@@ -3,8 +3,8 @@ package services.sync.containers.payload;
 message PayloadV1 {
 
     enum PayloadTypeV1 {
-        USERS = 1;
-        GROUPS = 2;
+        USERS = 0;
+        GROUPS = 1;
     }
 
     optional uint32 version = 1 [default = 1];

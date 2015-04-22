@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/sync/containers/source.proto',
   package='services.sync.containers.source',
-  serialized_pb=_b('\n/protobufs/services/sync/containers/source.proto\x12\x1fservices.sync.containers.source*\x14\n\x08SourceV1\x12\x08\n\x04LDAP\x10\x01')
+  serialized_pb=_b('\n/protobufs/services/sync/containers/source.proto\x12\x1fservices.sync.containers.source*\x14\n\x08SourceV1\x12\x08\n\x04LDAP\x10\x00')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -30,7 +30,7 @@ _SOURCEV1 = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='LDAP', index=0, number=1,
+      name='LDAP', index=0, number=0,
       options=None,
       type=None),
   ],
@@ -42,7 +42,7 @@ _SOURCEV1 = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_SOURCEV1)
 
 SourceV1 = enum_type_wrapper.EnumTypeWrapper(_SOURCEV1)
-LDAP = 1
+LDAP = 0
 
 
 DESCRIPTOR.enum_types_by_name['SourceV1'] = _SOURCEV1

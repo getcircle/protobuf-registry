@@ -38,8 +38,8 @@ public extension Services.Sync.Containers.Payload {
       //Enum type declaration start 
 
       public enum PayloadTypeV1:Int32 {
-        case Users = 1
-        case Groups = 2
+        case Users = 0
+        case Groups = 1
 
       }
 

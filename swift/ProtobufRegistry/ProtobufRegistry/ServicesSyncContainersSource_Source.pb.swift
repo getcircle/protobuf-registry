@@ -26,7 +26,7 @@ public extension Services.Sync.Containers.Source {
   //Enum type declaration start 
 
   public enum SourceV1:Int32 {
-    case Ldap = 1
+    case Ldap = 0
 
   }
 

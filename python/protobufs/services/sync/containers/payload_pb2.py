@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/sync/containers/payload.proto',
   package='services.sync.containers.payload',
-  serialized_pb=_b('\n0protobufs/services/sync/containers/payload.proto\x12 services.sync.containers.payload\"\xa9\x01\n\tPayloadV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07payload\x18\x02 \x01(\t\x12O\n\x0cpayload_type\x18\x03 \x01(\x0e\x32\x39.services.sync.containers.payload.PayloadV1.PayloadTypeV1\"&\n\rPayloadTypeV1\x12\t\n\x05USERS\x10\x01\x12\n\n\x06GROUPS\x10\x02')
+  serialized_pb=_b('\n0protobufs/services/sync/containers/payload.proto\x12 services.sync.containers.payload\"\xa9\x01\n\tPayloadV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07payload\x18\x02 \x01(\t\x12O\n\x0cpayload_type\x18\x03 \x01(\x0e\x32\x39.services.sync.containers.payload.PayloadV1.PayloadTypeV1\"&\n\rPayloadTypeV1\x12\t\n\x05USERS\x10\x00\x12\n\n\x06GROUPS\x10\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -31,11 +31,11 @@ _PAYLOADV1_PAYLOADTYPEV1 = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='USERS', index=0, number=1,
+      name='USERS', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='GROUPS', index=1, number=2,
+      name='GROUPS', index=1, number=1,
       options=None,
       type=None),
   ],
@@ -71,7 +71,7 @@ _PAYLOADV1 = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='payload_type', full_name='services.sync.containers.payload.PayloadV1.payload_type', index=2,
       number=3, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
