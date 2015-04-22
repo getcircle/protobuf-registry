@@ -75,6 +75,14 @@ public func == (lhs: Services.Registry.Requests.Appreciation, rhs: Services.Regi
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: Services.Registry.Requests.Sync, rhs: Services.Registry.Requests.Sync) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public var ServicesRegistryRequestsUsercreateUser:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUsercreateUserStatic
@@ -410,6 +418,21 @@ public var ServicesRegistryRequestsAppreciationupdateAppreciation:ConcreateExten
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsAppreciationupdateAppreciationStatic
    }
 }
+public var ServicesRegistryRequestsSyncstartSync:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsSyncstartSyncStatic
+   }
+}
+public var ServicesRegistryRequestsSyncsync:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsSyncsyncStatic
+   }
+}
+public var ServicesRegistryRequestsSynccompleteSync:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsSynccompleteSyncStatic
+   }
+}
 public extension Services.Registry.Requests {
   public struct RequestsRoot {
     public static var sharedInstance : RequestsRoot {
@@ -485,6 +508,9 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsAppreciationgetAppreciationStatic:ConcreateExtensionField
     var ServicesRegistryRequestsAppreciationdeleteAppreciationStatic:ConcreateExtensionField
     var ServicesRegistryRequestsAppreciationupdateAppreciationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsSyncstartSyncStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsSyncsyncStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsSynccompleteSyncStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -555,6 +581,9 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsAppreciationgetAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 901, defaultValue:Services.Appreciation.Actions.GetAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.GetAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsAppreciationdeleteAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 902, defaultValue:Services.Appreciation.Actions.DeleteAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.DeleteAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsAppreciationupdateAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 903, defaultValue:Services.Appreciation.Actions.UpdateAppreciation.RequestV1(), messageOrGroupClass:Services.Appreciation.Actions.UpdateAppreciation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsSyncstartSyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1000, defaultValue:Services.Sync.Actions.StartSync.RequestV1(), messageOrGroupClass:Services.Sync.Actions.StartSync.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsSyncsyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1001, defaultValue:Services.Sync.Actions.Sync.RequestV1(), messageOrGroupClass:Services.Sync.Actions.Sync.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsSynccompleteSyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1002, defaultValue:Services.Sync.Actions.CompleteSync.RequestV1(), messageOrGroupClass:Services.Sync.Actions.CompleteSync.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -625,6 +654,9 @@ public extension Services.Registry.Requests {
       Services.Appreciation.Actions.GetAppreciation.GetAppreciationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Appreciation.Actions.DeleteAppreciation.DeleteAppreciationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Appreciation.Actions.UpdateAppreciation.UpdateAppreciationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Sync.Actions.StartSync.StartSyncRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Sync.Actions.Sync.SyncRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Sync.Actions.CompleteSync.CompleteSyncRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryRequestsUsercreateUserStatic)
@@ -694,6 +726,9 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsAppreciationgetAppreciationStatic)
       registry.addExtension(ServicesRegistryRequestsAppreciationdeleteAppreciationStatic)
       registry.addExtension(ServicesRegistryRequestsAppreciationupdateAppreciationStatic)
+      registry.addExtension(ServicesRegistryRequestsSyncstartSyncStatic)
+      registry.addExtension(ServicesRegistryRequestsSyncsyncStatic)
+      registry.addExtension(ServicesRegistryRequestsSynccompleteSyncStatic)
     }
   }
 
@@ -2194,6 +2229,161 @@ public extension Services.Registry.Requests {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
     public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.AppreciationBuilder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class Sync : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           default: return nil
+           }
+    }
+
+    public class func startSync() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsSyncstartSync
+    }
+    public class func sync() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsSyncsync
+    }
+    public class func completeSync() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsSynccompleteSync
+    }
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Registry.Requests.Sync {
+      return Services.Registry.Requests.Sync.builder().mergeFromData(data, extensionRegistry:Services.Registry.Requests.RequestsRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.Sync {
+      return Services.Registry.Requests.Sync.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Requests.Sync {
+      return Services.Registry.Requests.Sync.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Requests.Sync {
+      return Services.Registry.Requests.Sync.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Requests.Sync {
+      return Services.Registry.Requests.Sync.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.Sync {
+      return Services.Registry.Requests.Sync.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Registry.Requests.SyncBuilder {
+      return Services.Registry.Requests.Sync.classBuilder() as! Services.Registry.Requests.SyncBuilder
+    }
+    public func builder() -> Services.Registry.Requests.SyncBuilder {
+      return classBuilder() as! Services.Registry.Requests.SyncBuilder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Registry.Requests.SyncBuilder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Registry.Requests.Sync.builder()
+    }
+    public func toBuilder() -> Services.Registry.Requests.SyncBuilder {
+      return Services.Registry.Requests.Sync.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Registry.Requests.Sync) -> Services.Registry.Requests.SyncBuilder {
+      return Services.Registry.Requests.Sync.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Registry.Requests.Sync"
+    }
+    override public func className() -> String {
+        return "Services.Registry.Requests.Sync"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Registry.Requests.Sync.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class SyncBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Requests.Sync
+
+    required override public init () {
+       builderResult = Services.Registry.Requests.Sync()
+       super.init()
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Registry.Requests.SyncBuilder {
+      builderResult = Services.Registry.Requests.Sync()
+      return self
+    }
+    public override func clone() -> Services.Registry.Requests.SyncBuilder {
+      return Services.Registry.Requests.Sync.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Registry.Requests.Sync {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Registry.Requests.Sync {
+      var returnMe:Services.Registry.Requests.Sync = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Registry.Requests.Sync) -> Services.Registry.Requests.SyncBuilder {
+      if (other == Services.Registry.Requests.Sync()) {
+       return self
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Requests.SyncBuilder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.SyncBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()

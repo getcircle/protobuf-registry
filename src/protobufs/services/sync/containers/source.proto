@@ -1,0 +1,5 @@
+package services.sync.containers.source;
+
+enum SourceV1 {
+    LDAP = 1;
+}
