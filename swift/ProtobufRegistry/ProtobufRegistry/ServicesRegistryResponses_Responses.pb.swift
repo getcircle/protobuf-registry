@@ -423,9 +423,9 @@ public var ServicesRegistryResponsesSyncstartSync:ConcreateExtensionField {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesSyncstartSyncStatic
    }
 }
-public var ServicesRegistryResponsesSyncsync:ConcreateExtensionField {
+public var ServicesRegistryResponsesSyncsyncPayloads:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesSyncsyncStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesSyncsyncPayloadsStatic
    }
 }
 public var ServicesRegistryResponsesSynccompleteSync:ConcreateExtensionField {
@@ -509,7 +509,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesAppreciationdeleteAppreciationStatic:ConcreateExtensionField
     var ServicesRegistryResponsesAppreciationupdateAppreciationStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSyncstartSyncStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesSyncsyncStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesSyncsyncPayloadsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSynccompleteSyncStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
@@ -582,7 +582,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesAppreciationdeleteAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 902, defaultValue:Services.Appreciation.Actions.DeleteAppreciation.ResponseV1(), messageOrGroupClass:Services.Appreciation.Actions.DeleteAppreciation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesAppreciationupdateAppreciationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 903, defaultValue:Services.Appreciation.Actions.UpdateAppreciation.ResponseV1(), messageOrGroupClass:Services.Appreciation.Actions.UpdateAppreciation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSyncstartSyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1000, defaultValue:Services.Sync.Actions.StartSync.ResponseV1(), messageOrGroupClass:Services.Sync.Actions.StartSync.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesSyncsyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1001, defaultValue:Services.Sync.Actions.Sync.ResponseV1(), messageOrGroupClass:Services.Sync.Actions.Sync.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesSyncsyncPayloadsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1001, defaultValue:Services.Sync.Actions.Sync.ResponseV1(), messageOrGroupClass:Services.Sync.Actions.Sync.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSynccompleteSyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1002, defaultValue:Services.Sync.Actions.CompleteSync.ResponseV1(), messageOrGroupClass:Services.Sync.Actions.CompleteSync.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
@@ -727,7 +727,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesAppreciationdeleteAppreciationStatic)
       registry.addExtension(ServicesRegistryResponsesAppreciationupdateAppreciationStatic)
       registry.addExtension(ServicesRegistryResponsesSyncstartSyncStatic)
-      registry.addExtension(ServicesRegistryResponsesSyncsyncStatic)
+      registry.addExtension(ServicesRegistryResponsesSyncsyncPayloadsStatic)
       registry.addExtension(ServicesRegistryResponsesSynccompleteSyncStatic)
     }
   }
@@ -2257,8 +2257,8 @@ public extension Services.Registry.Responses {
     public class func startSync() -> ConcreateExtensionField {
          return ServicesRegistryResponsesSyncstartSync
     }
-    public class func sync() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesSyncsync
+    public class func syncPayloads() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesSyncsyncPayloads
     }
     public class func completeSync() -> ConcreateExtensionField {
          return ServicesRegistryResponsesSynccompleteSync
