@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/sync/actions/complete_sync.proto',
   package='services.sync.actions.complete_sync',
-  serialized_pb=_b('\n3protobufs/services/sync/actions/complete_sync.proto\x12#services.sync.actions.complete_sync\"0\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07sync_id\x18\x02 \x01(\t\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31')
+  serialized_pb=_b('\n3protobufs/services/sync/actions/complete_sync.proto\x12#services.sync.actions.complete_sync\"0\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07sync_id\x18\x02 \x01(\t\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x42:\n8com.rhlabs.protobufs.services.sync.actions.complete_sync')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -109,4 +109,6 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n8com.rhlabs.protobufs.services.sync.actions.complete_sync'))
 # @@protoc_insertion_point(module_scope)

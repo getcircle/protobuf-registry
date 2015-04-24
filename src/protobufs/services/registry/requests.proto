@@ -1,5 +1,8 @@
 package services.registry.requests;
 
+// GENERATED OPTIONS FOR: JAVA
+option java_package = "com.rhlabs.protobufs.services.registry.requests";
+
 import "service_protobufs/soa.proto";
 
 import "protobufs/services/user/actions/create_user.proto";

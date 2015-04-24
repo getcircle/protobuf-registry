@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/sync/containers/source.proto',
   package='services.sync.containers.source',
-  serialized_pb=_b('\n/protobufs/services/sync/containers/source.proto\x12\x1fservices.sync.containers.source*\x14\n\x08SourceV1\x12\x08\n\x04LDAP\x10\x00')
+  serialized_pb=_b('\n/protobufs/services/sync/containers/source.proto\x12\x1fservices.sync.containers.source*\x14\n\x08SourceV1\x12\x08\n\x04LDAP\x10\x00\x42\x36\n4com.rhlabs.protobufs.services.sync.containers.source')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -48,4 +48,6 @@ LDAP = 0
 DESCRIPTOR.enum_types_by_name['SourceV1'] = _SOURCEV1
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n4com.rhlabs.protobufs.services.sync.containers.source'))
 # @@protoc_insertion_point(module_scope)

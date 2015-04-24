@@ -19,7 +19,7 @@ import protobufs.services.user.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/authenticate_user.proto',
   package='services.user.actions.authenticate_user',
-  serialized_pb=_b('\n7protobufs/services/user/actions/authenticate_user.proto\x12\'services.user.actions.authenticate_user\x1a(protobufs/services/user/containers.proto\"\xb6\x02\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12Q\n\x07\x62\x61\x63kend\x18\x02 \x01(\x0e\x32@.services.user.actions.authenticate_user.RequestV1.AuthBackendV1\x12U\n\x0b\x63redentials\x18\x03 \x01(\x0b\x32@.services.user.actions.authenticate_user.RequestV1.CredentialsV1\x1a@\n\rCredentialsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0e\n\x06secret\x18\x03 \x01(\t\")\n\rAuthBackendV1\x12\x0c\n\x08INTERNAL\x10\x00\x12\n\n\x06GOOGLE\x10\x01\"q\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12.\n\x04user\x18\x02 \x01(\x0b\x32 .services.user.containers.UserV1\x12\r\n\x05token\x18\x03 \x01(\t\x12\x10\n\x08new_user\x18\x04 \x01(\x08')
+  serialized_pb=_b('\n7protobufs/services/user/actions/authenticate_user.proto\x12\'services.user.actions.authenticate_user\x1a(protobufs/services/user/containers.proto\"\xb6\x02\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12Q\n\x07\x62\x61\x63kend\x18\x02 \x01(\x0e\x32@.services.user.actions.authenticate_user.RequestV1.AuthBackendV1\x12U\n\x0b\x63redentials\x18\x03 \x01(\x0b\x32@.services.user.actions.authenticate_user.RequestV1.CredentialsV1\x1a@\n\rCredentialsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0e\n\x06secret\x18\x03 \x01(\t\")\n\rAuthBackendV1\x12\x0c\n\x08INTERNAL\x10\x00\x12\n\n\x06GOOGLE\x10\x01\"q\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12.\n\x04user\x18\x02 \x01(\x0b\x32 .services.user.containers.UserV1\x12\r\n\x05token\x18\x03 \x01(\t\x12\x10\n\x08new_user\x18\x04 \x01(\x08\x42>\n<com.rhlabs.protobufs.services.user.actions.authenticate_user')
   ,
   dependencies=[protobufs.services.user.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -218,4 +218,6 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n<com.rhlabs.protobufs.services.user.actions.authenticate_user'))
 # @@protoc_insertion_point(module_scope)

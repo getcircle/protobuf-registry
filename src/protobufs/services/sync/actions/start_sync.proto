@@ -1,5 +1,8 @@
 package services.sync.actions.start_sync;
 
+// GENERATED OPTIONS FOR: JAVA
+option java_package = "com.rhlabs.protobufs.services.sync.actions.start_sync";
+
 import "protobufs/services/sync/containers/source.proto";
 
 message RequestV1 {

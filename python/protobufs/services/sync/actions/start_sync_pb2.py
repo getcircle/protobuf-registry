@@ -19,7 +19,7 @@ import protobufs.services.sync.containers.source_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/sync/actions/start_sync.proto',
   package='services.sync.actions.start_sync',
-  serialized_pb=_b('\n0protobufs/services/sync/actions/start_sync.proto\x12 services.sync.actions.start_sync\x1a/protobufs/services/sync/containers/source.proto\"Z\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x39\n\x06source\x18\x02 \x01(\x0e\x32).services.sync.containers.source.SourceV1\"1\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07sync_id\x18\x02 \x01(\t')
+  serialized_pb=_b('\n0protobufs/services/sync/actions/start_sync.proto\x12 services.sync.actions.start_sync\x1a/protobufs/services/sync/containers/source.proto\"Z\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x39\n\x06source\x18\x02 \x01(\x0e\x32).services.sync.containers.source.SourceV1\"1\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07sync_id\x18\x02 \x01(\tB7\n5com.rhlabs.protobufs.services.sync.actions.start_sync')
   ,
   dependencies=[protobufs.services.sync.containers.source_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -119,4 +119,6 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n5com.rhlabs.protobufs.services.sync.actions.start_sync'))
 # @@protoc_insertion_point(module_scope)

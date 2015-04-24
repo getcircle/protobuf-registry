@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/logout.proto',
   package='services.user.actions.logout',
-  serialized_pb=_b('\n,protobufs/services/user/actions/logout.proto\x12\x1cservices.user.actions.logout\"\x1f\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31')
+  serialized_pb=_b('\n,protobufs/services/user/actions/logout.proto\x12\x1cservices.user.actions.logout\"\x1f\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x42\x33\n1com.rhlabs.protobufs.services.user.actions.logout')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -102,4 +102,6 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n1com.rhlabs.protobufs.services.user.actions.logout'))
 # @@protoc_insertion_point(module_scope)

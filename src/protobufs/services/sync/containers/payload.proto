@@ -1,5 +1,8 @@
 package services.sync.containers.payload;
 
+// GENERATED OPTIONS FOR: JAVA
+option java_package = "com.rhlabs.protobufs.services.sync.containers.payload";
+
 message PayloadV1 {
 
     enum PayloadTypeV1 {
