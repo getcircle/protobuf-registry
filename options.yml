@@ -1,2 +1,2 @@
 java:
-    - java_package "com.rhlabs.protobufs.%(package)s"
+    - java_package = "com.rhlabs.protobufs.%(package)s"
