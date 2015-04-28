@@ -2,6 +2,7 @@ package services.search.actions.search;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.search.actions.search";
+option java_class_prefix = "Search";
 
 import "protobufs/services/organization/containers.proto";
 import "protobufs/services/profile/containers.proto";

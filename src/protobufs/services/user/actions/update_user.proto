@@ -2,6 +2,7 @@ package services.user.actions.update_user;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.user.actions.update_user";
+option java_class_prefix = "UpdateUser";
 
 import "protobufs/services/user/containers.proto";
 

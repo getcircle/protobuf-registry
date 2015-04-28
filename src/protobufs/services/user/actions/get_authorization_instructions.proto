@@ -2,6 +2,7 @@ package services.user.actions.get_authorization_instructions;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.user.actions.get_authorization_instructions";
+option java_class_prefix = "GetAuthorizationInstructions";
 
 import "protobufs/services/user/containers.proto";
 

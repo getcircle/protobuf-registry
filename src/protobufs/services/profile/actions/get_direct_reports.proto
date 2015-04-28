@@ -2,6 +2,7 @@ package services.profile.actions.get_direct_reports;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.profile.actions.get_direct_reports";
+option java_class_prefix = "GetDirectReports";
 
 import "protobufs/services/profile/containers.proto";
 

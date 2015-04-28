@@ -2,6 +2,7 @@ package services.user.actions.verify_verification_code;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.user.actions.verify_verification_code";
+option java_class_prefix = "VerifyVerificationCode";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];

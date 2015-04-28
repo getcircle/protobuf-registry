@@ -2,6 +2,7 @@ package services.profile.actions.create_profile;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.profile.actions.create_profile";
+option java_class_prefix = "CreateProfile";
 
 import "protobufs/services/profile/containers.proto";
 

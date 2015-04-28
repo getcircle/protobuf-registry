@@ -2,6 +2,7 @@ package services.user.actions.create_user;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.user.actions.create_user";
+option java_class_prefix = "CreateUser";
 
 import "protobufs/services/user/containers.proto";
 

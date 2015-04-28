@@ -2,6 +2,7 @@ package services.media.actions.complete_image_upload;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.media.actions.complete_image_upload";
+option java_class_prefix = "CompleteImageUpload";
 
 import "protobufs/services/media/containers/media.proto";
 

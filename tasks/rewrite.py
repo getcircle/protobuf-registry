@@ -47,12 +47,31 @@ def options():
                     print 'no package found for: %s, exiting' % (file_path,)
                     exit(1)
 
-                option_format_args = {'package': package}
+                camel_case_container = ''.join(
+                    x.capitalize() for x in package.rsplit('.', 1)[-1].split('_')
+                )
+                option_format_args = {
+                    'package': package,
+                    'camel_case_container': camel_case_container,
+                }
                 header.append(package_line)
                 for language, language_options in options.iteritems():
-                    header.append('\n')
-                    header.append('// GENERATED OPTIONS FOR: %s\n' % (language.upper(),))
+                    header_added = False
                     for option in language_options:
+                        if isinstance(option, dict):
+                            if not re.search(option.values()[0]['file_regex'], file_path):
+                                continue
+                            else:
+                                option = '%s = "%s"' % (
+                                    option.keys()[0],
+                                    option.values()[0]['option'],
+                                )
+
+                        if not header_added:
+                            header.append('\n')
+                            header.append('// GENERATED OPTIONS FOR: %s\n' % (language.upper(),))
+                            header_added = True
+
                         formatted_option = option % option_format_args
                         option_output = 'option %s;\n' % (formatted_option,)
                         existing_option = current_options.pop(formatted_option, None)

@@ -2,6 +2,7 @@ package services.resume.actions.bulk_create_companies;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.resume.actions.bulk_create_companies";
+option java_class_prefix = "BulkCreateCompanies";
 
 import "protobufs/services/resume/containers.proto";
 

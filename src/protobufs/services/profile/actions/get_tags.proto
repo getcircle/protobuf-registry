@@ -2,6 +2,7 @@ package services.profile.actions.get_tags;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.profile.actions.get_tags";
+option java_class_prefix = "GetTags";
 
 import "protobufs/services/profile/containers.proto";
 
