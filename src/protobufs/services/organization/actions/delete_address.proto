@@ -2,7 +2,6 @@ package services.organization.actions.delete_address;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.organization.actions.delete_address";
-option java_class_prefix = "DeleteAddress";
 
 message RequestV1 {
     optional uint32 version = 1 [default = 1];

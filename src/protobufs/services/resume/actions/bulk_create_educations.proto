@@ -2,7 +2,6 @@ package services.resume.actions.bulk_create_educations;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.resume.actions.bulk_create_educations";
-option java_class_prefix = "BulkCreateEducations";
 
 import "protobufs/services/resume/containers.proto";
 

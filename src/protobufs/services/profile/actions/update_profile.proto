@@ -2,7 +2,6 @@ package services.profile.actions.update_profile;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.profile.actions.update_profile";
-option java_class_prefix = "UpdateProfile";
 
 import "protobufs/services/profile/containers.proto";
 

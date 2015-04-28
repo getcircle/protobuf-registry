@@ -2,7 +2,6 @@ package services.user.actions.complete_authorization;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.user.actions.complete_authorization";
-option java_class_prefix = "CompleteAuthorization";
 
 import "protobufs/services/user/containers.proto";
 

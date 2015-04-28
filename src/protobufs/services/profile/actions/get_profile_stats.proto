@@ -2,7 +2,6 @@ package services.profile.actions.get_profile_stats;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.profile.actions.get_profile_stats";
-option java_class_prefix = "GetProfileStats";
 
 import "protobufs/services/profile/containers.proto";
 

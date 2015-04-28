@@ -2,7 +2,6 @@ package services.profile.actions.get_peers;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.profile.actions.get_peers";
-option java_class_prefix = "GetPeers";
 
 import "protobufs/services/profile/containers.proto";
 

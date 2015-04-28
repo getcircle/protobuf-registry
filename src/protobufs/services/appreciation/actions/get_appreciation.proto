@@ -2,7 +2,6 @@ package services.appreciation.actions.get_appreciation;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.appreciation.actions.get_appreciation";
-option java_class_prefix = "GetAppreciation";
 
 import "protobufs/services/appreciation/containers.proto";
 

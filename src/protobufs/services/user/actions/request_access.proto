@@ -2,7 +2,6 @@ package services.user.actions.request_access;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.user.actions.request_access";
-option java_class_prefix = "RequestAccess";
 
 import "protobufs/services/user/containers.proto";
 

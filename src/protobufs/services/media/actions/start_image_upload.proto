@@ -2,7 +2,6 @@ package services.media.actions.start_image_upload;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.media.actions.start_image_upload";
-option java_class_prefix = "StartImageUpload";
 
 import "protobufs/services/media/containers.proto";
 import "protobufs/services/media/containers/media.proto";

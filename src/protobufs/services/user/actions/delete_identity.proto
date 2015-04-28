@@ -2,7 +2,6 @@ package services.user.actions.delete_identity;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.user.actions.delete_identity";
-option java_class_prefix = "DeleteIdentity";
 
 import "protobufs/services/user/containers.proto";
 

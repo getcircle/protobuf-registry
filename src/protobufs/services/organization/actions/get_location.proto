@@ -2,7 +2,6 @@ package services.organization.actions.get_location;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.organization.actions.get_location";
-option java_class_prefix = "GetLocation";
 
 import "protobufs/services/organization/containers.proto";
 

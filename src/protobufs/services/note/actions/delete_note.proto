@@ -2,7 +2,6 @@ package services.note.actions.delete_note;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.note.actions.delete_note";
-option java_class_prefix = "DeleteNote";
 
 import "protobufs/services/note/containers.proto";
 

@@ -2,7 +2,6 @@ package services.organization.actions.get_top_level_team;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.organization.actions.get_top_level_team";
-option java_class_prefix = "GetTopLevelTeam";
 
 import "protobufs/services/organization/containers.proto";
 

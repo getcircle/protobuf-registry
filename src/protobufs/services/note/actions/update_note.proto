@@ -2,7 +2,6 @@ package services.note.actions.update_note;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.note.actions.update_note";
-option java_class_prefix = "UpdateNote";
 
 import "protobufs/services/note/containers.proto";
 

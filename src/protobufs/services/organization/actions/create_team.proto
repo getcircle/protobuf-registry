@@ -2,7 +2,6 @@ package services.organization.actions.create_team;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.organization.actions.create_team";
-option java_class_prefix = "CreateTeam";
 
 import "protobufs/services/organization/containers.proto";
 

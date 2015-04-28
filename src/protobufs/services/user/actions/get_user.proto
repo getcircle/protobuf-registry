@@ -2,7 +2,6 @@ package services.user.actions.get_user;
 
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.user.actions.get_user";
-option java_class_prefix = "GetUser";
 
 import "protobufs/services/user/containers.proto";
 
