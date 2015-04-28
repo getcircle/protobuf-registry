@@ -13,13 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+import protobufs.services.user.containers.token_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/logout.proto',
   package='services.user.actions.logout',
-  serialized_pb=_b('\n,protobufs/services/user/actions/logout.proto\x12\x1cservices.user.actions.logout\"\x1f\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x42\x33\n1com.rhlabs.protobufs.services.user.actions.logout')
-)
+  serialized_pb=_b('\n,protobufs/services/user/actions/logout.proto\x12\x1cservices.user.actions.logout\x1a.protobufs/services/user/containers/token.proto\"b\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x41\n\x0b\x63lient_Type\x18\x02 \x01(\x0e\x32,.services.user.containers.token.ClientTypeV1\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x42\x33\n1com.rhlabs.protobufs.services.user.actions.logout')
+  ,
+  dependencies=[protobufs.services.user.containers.token_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -39,6 +41,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='client_Type', full_name='services.user.actions.logout.RequestV1.client_Type', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -50,8 +59,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=78,
-  serialized_end=109,
+  serialized_start=126,
+  serialized_end=224,
 )
 
 
@@ -80,10 +89,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=111,
-  serialized_end=143,
+  serialized_start=226,
+  serialized_end=258,
 )
 
+_REQUESTV1.fields_by_name['client_Type'].enum_type = protobufs.services.user.containers.token_pb2._CLIENTTYPEV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 
