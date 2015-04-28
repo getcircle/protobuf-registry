@@ -233,6 +233,16 @@ public var ServicesRegistryRequestsOrganizationgetLocation:ConcreateExtensionFie
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationgetLocationStatic
    }
 }
+public var ServicesRegistryRequestsOrganizationcreateToken:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationcreateTokenStatic
+   }
+}
+public var ServicesRegistryRequestsOrganizationgetTokens:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationgetTokensStatic
+   }
+}
 public var ServicesRegistryRequestsProfilecreateProfile:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfilecreateProfileStatic
@@ -471,6 +481,8 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsOrganizationupdateLocationStatic:ConcreateExtensionField
     var ServicesRegistryRequestsOrganizationgetLocationsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsOrganizationgetLocationStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationcreateTokenStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationgetTokensStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfilecreateProfileStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfilegetExtendedProfileStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfilegetProfileStatic:ConcreateExtensionField
@@ -544,6 +556,8 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsOrganizationupdateLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 212, defaultValue:Services.Organization.Actions.UpdateLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.UpdateLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsOrganizationgetLocationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 213, defaultValue:Services.Organization.Actions.GetLocations.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetLocations.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsOrganizationgetLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 214, defaultValue:Services.Organization.Actions.GetLocation.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetLocation.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationcreateTokenStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 215, defaultValue:Services.Organization.Actions.CreateToken.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateToken.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationgetTokensStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 216, defaultValue:Services.Organization.Actions.GetTokens.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTokens.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfilecreateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 300, defaultValue:Services.Profile.Actions.CreateProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.CreateProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfilegetExtendedProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 301, defaultValue:Services.Profile.Actions.GetExtendedProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetExtendedProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfilegetProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 302, defaultValue:Services.Profile.Actions.GetProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -617,6 +631,8 @@ public extension Services.Registry.Requests {
       Services.Organization.Actions.UpdateLocation.UpdateLocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.GetLocations.GetLocationsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.GetLocation.GetLocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.CreateToken.CreateTokenRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetTokens.GetTokensRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.CreateProfile.CreateProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetExtendedProfile.GetExtendedProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetProfile.GetProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -689,6 +705,8 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsOrganizationupdateLocationStatic)
       registry.addExtension(ServicesRegistryRequestsOrganizationgetLocationsStatic)
       registry.addExtension(ServicesRegistryRequestsOrganizationgetLocationStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationcreateTokenStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationgetTokensStatic)
       registry.addExtension(ServicesRegistryRequestsProfilecreateProfileStatic)
       registry.addExtension(ServicesRegistryRequestsProfilegetExtendedProfileStatic)
       registry.addExtension(ServicesRegistryRequestsProfilegetProfileStatic)
@@ -974,6 +992,12 @@ public extension Services.Registry.Requests {
     }
     public class func getLocation() -> ConcreateExtensionField {
          return ServicesRegistryRequestsOrganizationgetLocation
+    }
+    public class func createToken() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationcreateToken
+    }
+    public class func getTokens() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationgetTokens
     }
     required public init() {
          super.init()

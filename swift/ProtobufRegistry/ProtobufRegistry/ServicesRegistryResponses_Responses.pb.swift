@@ -233,6 +233,16 @@ public var ServicesRegistryResponsesOrganizationgetLocation:ConcreateExtensionFi
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetLocationStatic
    }
 }
+public var ServicesRegistryResponsesOrganizationcreateToken:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationcreateTokenStatic
+   }
+}
+public var ServicesRegistryResponsesOrganizationgetTokens:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetTokensStatic
+   }
+}
 public var ServicesRegistryResponsesProfilecreateProfile:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilecreateProfileStatic
@@ -471,6 +481,8 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesOrganizationupdateLocationStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationgetLocationsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationgetLocationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationcreateTokenStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetTokensStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfilecreateProfileStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfilegetExtendedProfileStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfilegetProfileStatic:ConcreateExtensionField
@@ -544,6 +556,8 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesOrganizationupdateLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 212, defaultValue:Services.Organization.Actions.UpdateLocation.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.UpdateLocation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationgetLocationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 213, defaultValue:Services.Organization.Actions.GetLocations.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetLocations.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationgetLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 214, defaultValue:Services.Organization.Actions.GetLocation.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetLocation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationcreateTokenStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 215, defaultValue:Services.Organization.Actions.CreateToken.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateToken.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetTokensStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 216, defaultValue:Services.Organization.Actions.GetTokens.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTokens.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfilecreateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 300, defaultValue:Services.Profile.Actions.CreateProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.CreateProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfilegetExtendedProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 301, defaultValue:Services.Profile.Actions.GetExtendedProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetExtendedProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfilegetProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 302, defaultValue:Services.Profile.Actions.GetProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -617,6 +631,8 @@ public extension Services.Registry.Responses {
       Services.Organization.Actions.UpdateLocation.UpdateLocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.GetLocations.GetLocationsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.GetLocation.GetLocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.CreateToken.CreateTokenRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetTokens.GetTokensRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.CreateProfile.CreateProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetExtendedProfile.GetExtendedProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetProfile.GetProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -689,6 +705,8 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesOrganizationupdateLocationStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationgetLocationsStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationgetLocationStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationcreateTokenStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetTokensStatic)
       registry.addExtension(ServicesRegistryResponsesProfilecreateProfileStatic)
       registry.addExtension(ServicesRegistryResponsesProfilegetExtendedProfileStatic)
       registry.addExtension(ServicesRegistryResponsesProfilegetProfileStatic)
@@ -974,6 +992,12 @@ public extension Services.Registry.Responses {
     }
     public class func getLocation() -> ConcreateExtensionField {
          return ServicesRegistryResponsesOrganizationgetLocation
+    }
+    public class func createToken() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesOrganizationcreateToken
+    }
+    public class func getTokens() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesOrganizationgetTokens
     }
     required public init() {
          super.init()

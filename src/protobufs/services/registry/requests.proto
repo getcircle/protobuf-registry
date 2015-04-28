@@ -36,6 +36,8 @@ import "protobufs/services/organization/actions/create_location.proto";
 import "protobufs/services/organization/actions/update_location.proto";
 import "protobufs/services/organization/actions/get_locations.proto";
 import "protobufs/services/organization/actions/get_location.proto";
+import "protobufs/services/organization/actions/create_token.proto";
+import "protobufs/services/organization/actions/get_tokens.proto";
 
 import "protobufs/services/profile/actions/create_profile.proto";
 import "protobufs/services/profile/actions/get_extended_profile.proto";
@@ -122,6 +124,8 @@ message Organization {
         optional services.organization.actions.update_location.RequestV1 update_location = 212;
         optional services.organization.actions.get_locations.RequestV1 get_locations = 213;
         optional services.organization.actions.get_location.RequestV1 get_location = 214;
+        optional services.organization.actions.create_token.RequestV1 create_token = 215;
+        optional services.organization.actions.get_tokens.RequestV1 get_tokens = 216;
     }
 }
 
