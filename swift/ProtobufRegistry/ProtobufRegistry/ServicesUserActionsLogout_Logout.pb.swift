@@ -10,6 +10,7 @@ public func == (lhs: Services.User.Actions.Logout.RequestV1, rhs: Services.User.
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasClientType == rhs.hasClientType) && (!lhs.hasClientType || lhs.clientType == rhs.clientType)
+  fieldCheck = fieldCheck && (lhs.hasRevokeAll == rhs.hasRevokeAll) && (!lhs.hasRevokeAll || lhs.revokeAll == rhs.revokeAll)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -46,6 +47,7 @@ public extension Services.User.Actions.Logout {
            switch key {
            case "version": return version
            case "clientType": return self.clientType
+           case "revokeAll": return revokeAll
            default: return nil
            }
     }
@@ -55,6 +57,9 @@ public extension Services.User.Actions.Logout {
 
     public private(set) var clientType:Services.User.Containers.Token.ClientTypeV1 = Services.User.Containers.Token.ClientTypeV1.Ios
     public private(set) var hasClientType:Bool = false
+    public private(set) var hasRevokeAll:Bool = false
+    public private(set) var revokeAll:Bool = false
+
     required public init() {
          super.init()
     }
@@ -67,6 +72,9 @@ public extension Services.User.Actions.Logout {
       }
       if hasClientType {
         output.writeEnum(2, value:clientType.rawValue)
+      }
+      if hasRevokeAll {
+        output.writeBool(3, value:revokeAll)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -82,6 +90,9 @@ public extension Services.User.Actions.Logout {
       }
       if (hasClientType) {
         serialize_size += clientType.rawValue.computeEnumSize(2)
+      }
+      if hasRevokeAll {
+        serialize_size += revokeAll.computeBoolSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -130,6 +141,9 @@ public extension Services.User.Actions.Logout {
       if (hasClientType) {
         output += "\(indent) clientType: \(clientType.rawValue)\n"
       }
+      if hasRevokeAll {
+        output += "\(indent) revokeAll: \(revokeAll) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -140,6 +154,9 @@ public extension Services.User.Actions.Logout {
             }
             if hasClientType {
                hashCode = (hashCode &* 31) &+ Int(clientType.rawValue)
+            }
+            if hasRevokeAll {
+               hashCode = (hashCode &* 31) &+ revokeAll.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -215,6 +232,29 @@ public extension Services.User.Actions.Logout {
          builderResult.clientType = .Ios
          return self
       }
+    public var hasRevokeAll:Bool {
+         get {
+              return builderResult.hasRevokeAll
+         }
+    }
+    public var revokeAll:Bool {
+         get {
+              return builderResult.revokeAll
+         }
+         set (value) {
+             builderResult.hasRevokeAll = true
+             builderResult.revokeAll = value
+         }
+    }
+    public func setRevokeAll(value:Bool)-> Services.User.Actions.Logout.RequestV1Builder {
+      self.revokeAll = value
+      return self
+    }
+    public func clearRevokeAll() -> Services.User.Actions.Logout.RequestV1Builder{
+         builderResult.hasRevokeAll = false
+         builderResult.revokeAll = false
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -245,6 +285,9 @@ public extension Services.User.Actions.Logout {
       if other.hasClientType {
            clientType = other.clientType
       }
+      if other.hasRevokeAll {
+           revokeAll = other.revokeAll
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -270,6 +313,9 @@ public extension Services.User.Actions.Logout {
           } else {
                unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntclientType))
           }
+
+        case 24 :
+          revokeAll = input.readBool()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
