@@ -8,6 +8,10 @@ import "protobufs/services/group/containers/permissions/who_can_view_membership.
 import "protobufs/services/group/containers/permissions/who_can_view_group.proto";
 import "protobufs/services/group/containers/permissions/who_can_invite.proto";
 
+enum GroupProviderV1 {
+    GOOGLE = 0;
+}
+
 message GroupV1 {
     optional uint32 version = 1 [default = 1];
     optional string id = 2;
@@ -18,6 +22,7 @@ message GroupV1 {
     repeated string aliases = 7;
     optional uint32 members_count = 8;
     optional GroupSettingsV1 settings = 9;
+    optional GroupProviderV1 provider = 10;
 }
 
 message GroupSettingsV1 {
