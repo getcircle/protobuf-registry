@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/group/containers/permissions/who_can_invite.proto',
   package='services.group.containers.permissions.who_can_invite',
-  serialized_pb=_b('\nDprotobufs/services/group/containers/permissions/who_can_invite.proto\x12\x34services.group.containers.permissions.who_can_invite*>\n\x19WhoCanInvitePermissionsV1\x12\x0f\n\x0b\x41LL_MEMBERS\x10\x00\x12\x10\n\x0c\x41LL_MANAGERS\x10\x01')
+  serialized_pb=_b('\nDprotobufs/services/group/containers/permissions/who_can_invite.proto\x12\x34services.group.containers.permissions.who_can_invite*>\n\x19WhoCanInvitePermissionsV1\x12\x0f\n\x0b\x41LL_MEMBERS\x10\x00\x12\x10\n\x0c\x41LL_MANAGERS\x10\x01\x42K\nIcom.rhlabs.protobufs.services.group.containers.permissions.who_can_invite')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -53,4 +53,6 @@ ALL_MANAGERS = 1
 DESCRIPTOR.enum_types_by_name['WhoCanInvitePermissionsV1'] = _WHOCANINVITEPERMISSIONSV1
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\nIcom.rhlabs.protobufs.services.group.containers.permissions.who_can_invite'))
 # @@protoc_insertion_point(module_scope)

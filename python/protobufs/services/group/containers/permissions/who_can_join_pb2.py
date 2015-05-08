@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/group/containers/permissions/who_can_join.proto',
   package='services.group.containers.permissions.who_can_join',
-  serialized_pb=_b('\nBprotobufs/services/group/containers/permissions/who_can_join.proto\x12\x32services.group.containers.permissions.who_can_join*W\n\x17WhoCanJoinPermissionsV1\x12\n\n\x06\x41NYONE\x10\x00\x12\x11\n\rALL_IN_DOMAIN\x10\x01\x12\x0b\n\x07INVITED\x10\x02\x12\x10\n\x0cREQUEST_ONLY\x10\x03')
+  serialized_pb=_b('\nBprotobufs/services/group/containers/permissions/who_can_join.proto\x12\x32services.group.containers.permissions.who_can_join*W\n\x17WhoCanJoinPermissionsV1\x12\n\n\x06\x41NYONE\x10\x00\x12\x11\n\rALL_IN_DOMAIN\x10\x01\x12\x0b\n\x07INVITED\x10\x02\x12\x10\n\x0cREQUEST_ONLY\x10\x03\x42I\nGcom.rhlabs.protobufs.services.group.containers.permissions.who_can_join')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -63,4 +63,6 @@ REQUEST_ONLY = 3
 DESCRIPTOR.enum_types_by_name['WhoCanJoinPermissionsV1'] = _WHOCANJOINPERMISSIONSV1
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\nGcom.rhlabs.protobufs.services.group.containers.permissions.who_can_join'))
 # @@protoc_insertion_point(module_scope)

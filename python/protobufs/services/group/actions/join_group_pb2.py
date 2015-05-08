@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/group/actions/join_group.proto',
   package='services.group.actions.join_group',
-  serialized_pb=_b('\n1protobufs/services/group/actions/join_group.proto\x12!services.group.actions.join_group\"\x1f\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\"\xa3\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12J\n\x06status\x18\x02 \x01(\x0e\x32:.services.group.actions.join_group.ResponseV1.JoinStatusV1\"5\n\x0cJoinStatusV1\x12\r\n\tREQUESTED\x10\x00\x12\n\n\x06JOINED\x10\x01\x12\n\n\x06\x46\x41ILED\x10\x02')
+  serialized_pb=_b('\n1protobufs/services/group/actions/join_group.proto\x12!services.group.actions.join_group\"\x1f\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\"\xa3\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12J\n\x06status\x18\x02 \x01(\x0e\x32:.services.group.actions.join_group.ResponseV1.JoinStatusV1\"5\n\x0cJoinStatusV1\x12\r\n\tREQUESTED\x10\x00\x12\n\n\x06JOINED\x10\x01\x12\n\n\x06\x46\x41ILED\x10\x02\x42\x38\n6com.rhlabs.protobufs.services.group.actions.join_group')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -138,4 +138,6 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n6com.rhlabs.protobufs.services.group.actions.join_group'))
 # @@protoc_insertion_point(module_scope)
