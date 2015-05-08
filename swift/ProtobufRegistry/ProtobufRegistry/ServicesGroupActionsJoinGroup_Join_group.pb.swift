@@ -9,6 +9,7 @@ public func == (lhs: Services.Group.Actions.JoinGroup.RequestV1, rhs: Services.G
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -44,12 +45,16 @@ public extension Services.Group.Actions.JoinGroup {
     override public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
+           case "groupId": return groupId
            default: return nil
            }
     }
 
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
+
+    public private(set) var hasGroupId:Bool = false
+    public private(set) var groupId:String = ""
 
     required public init() {
          super.init()
@@ -60,6 +65,9 @@ public extension Services.Group.Actions.JoinGroup {
     override public func writeToCodedOutputStream(output:CodedOutputStream) {
       if hasVersion {
         output.writeUInt32(1, value:version)
+      }
+      if hasGroupId {
+        output.writeString(2, value:groupId)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -72,6 +80,9 @@ public extension Services.Group.Actions.JoinGroup {
       serialize_size = 0
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
+      }
+      if hasGroupId {
+        serialize_size += groupId.computeStringSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -117,6 +128,9 @@ public extension Services.Group.Actions.JoinGroup {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
+      if hasGroupId {
+        output += "\(indent) groupId: \(groupId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -124,6 +138,9 @@ public extension Services.Group.Actions.JoinGroup {
             var hashCode:Int = 7
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasGroupId {
+               hashCode = (hashCode &* 31) &+ groupId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -176,6 +193,29 @@ public extension Services.Group.Actions.JoinGroup {
          builderResult.version = UInt32(1)
          return self
     }
+    public var hasGroupId:Bool {
+         get {
+              return builderResult.hasGroupId
+         }
+    }
+    public var groupId:String {
+         get {
+              return builderResult.groupId
+         }
+         set (value) {
+             builderResult.hasGroupId = true
+             builderResult.groupId = value
+         }
+    }
+    public func setGroupId(value:String)-> Services.Group.Actions.JoinGroup.RequestV1Builder {
+      self.groupId = value
+      return self
+    }
+    public func clearGroupId() -> Services.Group.Actions.JoinGroup.RequestV1Builder{
+         builderResult.hasGroupId = false
+         builderResult.groupId = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -203,6 +243,9 @@ public extension Services.Group.Actions.JoinGroup {
       if other.hasVersion {
            version = other.version
       }
+      if other.hasGroupId {
+           groupId = other.groupId
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -220,6 +263,9 @@ public extension Services.Group.Actions.JoinGroup {
 
         case 8 :
           version = input.readUInt32()
+
+        case 18 :
+          groupId = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

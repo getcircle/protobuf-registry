@@ -17,6 +17,7 @@ public func == (lhs: Services.Group.Containers.GroupV1, rhs: Services.Group.Cont
   fieldCheck = fieldCheck && (lhs.aliases == rhs.aliases)
   fieldCheck = fieldCheck && (lhs.hasMembersCount == rhs.hasMembersCount) && (!lhs.hasMembersCount || lhs.membersCount == rhs.membersCount)
   fieldCheck = fieldCheck && (lhs.hasSettings == rhs.hasSettings) && (!lhs.hasSettings || lhs.settings == rhs.settings)
+  fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -57,6 +58,17 @@ public extension Services.Group.Containers {
     }
   }
 
+
+
+  //Enum type declaration start 
+
+  public enum GroupProviderV1:Int32 {
+    case Google = 0
+
+  }
+
+  //Enum type declaration end 
+
   final public class GroupV1 : GeneratedMessage, GeneratedMessageProtocol {
     override public subscript(key: String) -> Any? {
            switch key {
@@ -68,6 +80,7 @@ public extension Services.Group.Containers {
            case "description_": return description_
            case "membersCount": return membersCount
            case "settings": return settings
+           case "provider": return self.provider
            default: return nil
            }
     }
@@ -95,6 +108,8 @@ public extension Services.Group.Containers {
 
     public private(set) var hasSettings:Bool = false
     public private(set) var settings:Services.Group.Containers.GroupSettingsV1!
+    public private(set) var provider:Services.Group.Containers.GroupProviderV1 = Services.Group.Containers.GroupProviderV1.Google
+    public private(set) var hasProvider:Bool = false
     public private(set) var aliases:Array<String> = Array<String>()
     required public init() {
          super.init()
@@ -131,6 +146,9 @@ public extension Services.Group.Containers {
       }
       if hasSettings {
         output.writeMessage(9, value:settings)
+      }
+      if hasProvider {
+        output.writeEnum(10, value:provider.rawValue)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -172,6 +190,9 @@ public extension Services.Group.Containers {
           if let varSizesettings = settings?.computeMessageSize(9) {
               serialize_size += varSizesettings
           }
+      }
+      if (hasProvider) {
+        serialize_size += provider.rawValue.computeEnumSize(10)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -245,6 +266,9 @@ public extension Services.Group.Containers {
         settings?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if (hasProvider) {
+        output += "\(indent) provider: \(provider.rawValue)\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -278,6 +302,9 @@ public extension Services.Group.Containers {
                 if let hashValuesettings = settings?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuesettings
                 }
+            }
+            if hasProvider {
+               hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -516,6 +543,29 @@ public extension Services.Group.Containers {
       builderResult.settings = nil
       return self
     }
+      public var hasProvider:Bool{
+          get {
+              return builderResult.hasProvider
+          }
+      }
+      public var provider:Services.Group.Containers.GroupProviderV1 {
+          get {
+              return builderResult.provider
+          }
+          set (value) {
+              builderResult.hasProvider = true
+              builderResult.provider = value
+          }
+      }
+      public func setProvider(value:Services.Group.Containers.GroupProviderV1)-> Services.Group.Containers.GroupV1Builder {
+        self.provider = value
+        return self
+      }
+      public func clearProvider() -> Services.Group.Containers.GroupV1Builder {
+         builderResult.hasProvider = false
+         builderResult.provider = .Google
+         return self
+      }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -567,6 +617,9 @@ public extension Services.Group.Containers {
       if (other.hasSettings) {
           mergeSettings(other.settings)
       }
+      if other.hasProvider {
+           provider = other.provider
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -613,6 +666,14 @@ public extension Services.Group.Containers {
           }
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
           settings = subBuilder.buildPartial()
+
+        case 80 :
+          let valueIntprovider = input.readEnum()
+          if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
+               provider = enumsprovider
+          } else {
+               unknownFieldsBuilder.mergeVarintField(10, value:Int64(valueIntprovider))
+          }
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

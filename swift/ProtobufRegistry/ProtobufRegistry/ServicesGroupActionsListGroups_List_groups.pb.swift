@@ -10,6 +10,7 @@ public func == (lhs: Services.Group.Actions.ListGroups.RequestV1, rhs: Services.
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
+  fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -47,6 +48,7 @@ public extension Services.Group.Actions.ListGroups {
            switch key {
            case "version": return version
            case "profileId": return profileId
+           case "provider": return self.provider
            default: return nil
            }
     }
@@ -57,6 +59,8 @@ public extension Services.Group.Actions.ListGroups {
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
+    public private(set) var provider:Services.Group.Containers.GroupProviderV1 = Services.Group.Containers.GroupProviderV1.Google
+    public private(set) var hasProvider:Bool = false
     required public init() {
          super.init()
     }
@@ -69,6 +73,9 @@ public extension Services.Group.Actions.ListGroups {
       }
       if hasProfileId {
         output.writeString(2, value:profileId)
+      }
+      if hasProvider {
+        output.writeEnum(3, value:provider.rawValue)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -84,6 +91,9 @@ public extension Services.Group.Actions.ListGroups {
       }
       if hasProfileId {
         serialize_size += profileId.computeStringSize(2)
+      }
+      if (hasProvider) {
+        serialize_size += provider.rawValue.computeEnumSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -132,6 +142,9 @@ public extension Services.Group.Actions.ListGroups {
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
+      if (hasProvider) {
+        output += "\(indent) provider: \(provider.rawValue)\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -142,6 +155,9 @@ public extension Services.Group.Actions.ListGroups {
             }
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
+            }
+            if hasProvider {
+               hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -217,6 +233,29 @@ public extension Services.Group.Actions.ListGroups {
          builderResult.profileId = ""
          return self
     }
+      public var hasProvider:Bool{
+          get {
+              return builderResult.hasProvider
+          }
+      }
+      public var provider:Services.Group.Containers.GroupProviderV1 {
+          get {
+              return builderResult.provider
+          }
+          set (value) {
+              builderResult.hasProvider = true
+              builderResult.provider = value
+          }
+      }
+      public func setProvider(value:Services.Group.Containers.GroupProviderV1)-> Services.Group.Actions.ListGroups.RequestV1Builder {
+        self.provider = value
+        return self
+      }
+      public func clearProvider() -> Services.Group.Actions.ListGroups.RequestV1Builder {
+         builderResult.hasProvider = false
+         builderResult.provider = .Google
+         return self
+      }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -247,6 +286,9 @@ public extension Services.Group.Actions.ListGroups {
       if other.hasProfileId {
            profileId = other.profileId
       }
+      if other.hasProvider {
+           provider = other.provider
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -267,6 +309,14 @@ public extension Services.Group.Actions.ListGroups {
 
         case 18 :
           profileId = input.readString()
+
+        case 24 :
+          let valueIntprovider = input.readEnum()
+          if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
+               provider = enumsprovider
+          } else {
+               unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntprovider))
+          }
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
