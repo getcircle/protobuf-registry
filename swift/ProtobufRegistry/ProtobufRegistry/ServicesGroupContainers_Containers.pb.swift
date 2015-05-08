@@ -16,8 +16,9 @@ public func == (lhs: Services.Group.Containers.GroupV1, rhs: Services.Group.Cont
   fieldCheck = fieldCheck && (lhs.hasDescription == rhs.hasDescription) && (!lhs.hasDescription || lhs.description_ == rhs.description_)
   fieldCheck = fieldCheck && (lhs.aliases == rhs.aliases)
   fieldCheck = fieldCheck && (lhs.hasMembersCount == rhs.hasMembersCount) && (!lhs.hasMembersCount || lhs.membersCount == rhs.membersCount)
-  fieldCheck = fieldCheck && (lhs.hasSettings == rhs.hasSettings) && (!lhs.hasSettings || lhs.settings == rhs.settings)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
+  fieldCheck = fieldCheck && (lhs.hasCanJoin == rhs.hasCanJoin) && (!lhs.hasCanJoin || lhs.canJoin == rhs.canJoin)
+  fieldCheck = fieldCheck && (lhs.hasIsMember == rhs.hasIsMember) && (!lhs.hasIsMember || lhs.isMember == rhs.isMember)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -79,8 +80,9 @@ public extension Services.Group.Containers {
            case "displayName": return displayName
            case "description_": return description_
            case "membersCount": return membersCount
-           case "settings": return settings
            case "provider": return self.provider
+           case "canJoin": return canJoin
+           case "isMember": return isMember
            default: return nil
            }
     }
@@ -106,10 +108,14 @@ public extension Services.Group.Containers {
     public private(set) var hasMembersCount:Bool = false
     public private(set) var membersCount:UInt32 = UInt32(0)
 
-    public private(set) var hasSettings:Bool = false
-    public private(set) var settings:Services.Group.Containers.GroupSettingsV1!
     public private(set) var provider:Services.Group.Containers.GroupProviderV1 = Services.Group.Containers.GroupProviderV1.Google
     public private(set) var hasProvider:Bool = false
+    public private(set) var hasCanJoin:Bool = false
+    public private(set) var canJoin:Bool = false
+
+    public private(set) var hasIsMember:Bool = false
+    public private(set) var isMember:Bool = false
+
     public private(set) var aliases:Array<String> = Array<String>()
     required public init() {
          super.init()
@@ -144,11 +150,14 @@ public extension Services.Group.Containers {
       if hasMembersCount {
         output.writeUInt32(8, value:membersCount)
       }
-      if hasSettings {
-        output.writeMessage(9, value:settings)
-      }
       if hasProvider {
-        output.writeEnum(10, value:provider.rawValue)
+        output.writeEnum(9, value:provider.rawValue)
+      }
+      if hasCanJoin {
+        output.writeBool(10, value:canJoin)
+      }
+      if hasIsMember {
+        output.writeBool(11, value:isMember)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -186,13 +195,14 @@ public extension Services.Group.Containers {
       if hasMembersCount {
         serialize_size += membersCount.computeUInt32Size(8)
       }
-      if hasSettings {
-          if let varSizesettings = settings?.computeMessageSize(9) {
-              serialize_size += varSizesettings
-          }
-      }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(10)
+        serialize_size += provider.rawValue.computeEnumSize(9)
+      }
+      if hasCanJoin {
+        serialize_size += canJoin.computeBoolSize(10)
+      }
+      if hasIsMember {
+        serialize_size += isMember.computeBoolSize(11)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -261,13 +271,14 @@ public extension Services.Group.Containers {
       if hasMembersCount {
         output += "\(indent) membersCount: \(membersCount) \n"
       }
-      if hasSettings {
-        output += "\(indent) settings {\n"
-        settings?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
-      }
       if (hasProvider) {
         output += "\(indent) provider: \(provider.rawValue)\n"
+      }
+      if hasCanJoin {
+        output += "\(indent) canJoin: \(canJoin) \n"
+      }
+      if hasIsMember {
+        output += "\(indent) isMember: \(isMember) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -298,13 +309,14 @@ public extension Services.Group.Containers {
             if hasMembersCount {
                hashCode = (hashCode &* 31) &+ membersCount.hashValue
             }
-            if hasSettings {
-                if let hashValuesettings = settings?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuesettings
-                }
-            }
             if hasProvider {
                hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
+            }
+            if hasCanJoin {
+               hashCode = (hashCode &* 31) &+ canJoin.hashValue
+            }
+            if hasIsMember {
+               hashCode = (hashCode &* 31) &+ isMember.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -511,38 +523,6 @@ public extension Services.Group.Containers {
          builderResult.membersCount = UInt32(0)
          return self
     }
-    public var hasSettings:Bool {
-         get {
-             return builderResult.hasSettings
-         }
-    }
-    public var settings:Services.Group.Containers.GroupSettingsV1! {
-         get {
-             return builderResult.settings
-         }
-         set (value) {
-             builderResult.hasSettings = true
-             builderResult.settings = value
-         }
-    }
-    public func setSettings(value:Services.Group.Containers.GroupSettingsV1!)-> Services.Group.Containers.GroupV1Builder {
-      self.settings = value
-      return self
-    }
-    public func mergeSettings(value:Services.Group.Containers.GroupSettingsV1) -> Services.Group.Containers.GroupV1Builder {
-      if (builderResult.hasSettings) {
-        builderResult.settings = Services.Group.Containers.GroupSettingsV1.builderWithPrototype(builderResult.settings).mergeFrom(value).buildPartial()
-      } else {
-        builderResult.settings = value
-      }
-      builderResult.hasSettings = true
-      return self
-    }
-    public func clearSettings() -> Services.Group.Containers.GroupV1Builder {
-      builderResult.hasSettings = false
-      builderResult.settings = nil
-      return self
-    }
       public var hasProvider:Bool{
           get {
               return builderResult.hasProvider
@@ -566,6 +546,52 @@ public extension Services.Group.Containers {
          builderResult.provider = .Google
          return self
       }
+    public var hasCanJoin:Bool {
+         get {
+              return builderResult.hasCanJoin
+         }
+    }
+    public var canJoin:Bool {
+         get {
+              return builderResult.canJoin
+         }
+         set (value) {
+             builderResult.hasCanJoin = true
+             builderResult.canJoin = value
+         }
+    }
+    public func setCanJoin(value:Bool)-> Services.Group.Containers.GroupV1Builder {
+      self.canJoin = value
+      return self
+    }
+    public func clearCanJoin() -> Services.Group.Containers.GroupV1Builder{
+         builderResult.hasCanJoin = false
+         builderResult.canJoin = false
+         return self
+    }
+    public var hasIsMember:Bool {
+         get {
+              return builderResult.hasIsMember
+         }
+    }
+    public var isMember:Bool {
+         get {
+              return builderResult.isMember
+         }
+         set (value) {
+             builderResult.hasIsMember = true
+             builderResult.isMember = value
+         }
+    }
+    public func setIsMember(value:Bool)-> Services.Group.Containers.GroupV1Builder {
+      self.isMember = value
+      return self
+    }
+    public func clearIsMember() -> Services.Group.Containers.GroupV1Builder{
+         builderResult.hasIsMember = false
+         builderResult.isMember = false
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -614,11 +640,14 @@ public extension Services.Group.Containers {
       if other.hasMembersCount {
            membersCount = other.membersCount
       }
-      if (other.hasSettings) {
-          mergeSettings(other.settings)
-      }
       if other.hasProvider {
            provider = other.provider
+      }
+      if other.hasCanJoin {
+           canJoin = other.canJoin
+      }
+      if other.hasIsMember {
+           isMember = other.isMember
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -659,21 +688,19 @@ public extension Services.Group.Containers {
         case 64 :
           membersCount = input.readUInt32()
 
-        case 74 :
-          var subBuilder:Services.Group.Containers.GroupSettingsV1Builder = Services.Group.Containers.GroupSettingsV1.builder()
-          if hasSettings {
-            subBuilder.mergeFrom(settings)
-          }
-          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-          settings = subBuilder.buildPartial()
-
-        case 80 :
+        case 72 :
           let valueIntprovider = input.readEnum()
           if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
                provider = enumsprovider
           } else {
-               unknownFieldsBuilder.mergeVarintField(10, value:Int64(valueIntprovider))
+               unknownFieldsBuilder.mergeVarintField(9, value:Int64(valueIntprovider))
           }
+
+        case 80 :
+          canJoin = input.readBool()
+
+        case 88 :
+          isMember = input.readBool()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
