@@ -19,6 +19,7 @@ public func == (lhs: Services.Group.Containers.GroupV1, rhs: Services.Group.Cont
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   fieldCheck = fieldCheck && (lhs.hasCanJoin == rhs.hasCanJoin) && (!lhs.hasCanJoin || lhs.canJoin == rhs.canJoin)
   fieldCheck = fieldCheck && (lhs.hasIsMember == rhs.hasIsMember) && (!lhs.hasIsMember || lhs.isMember == rhs.isMember)
+  fieldCheck = fieldCheck && (lhs.hasCanRequest == rhs.hasCanRequest) && (!lhs.hasCanRequest || lhs.canRequest == rhs.canRequest)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -83,6 +84,7 @@ public extension Services.Group.Containers {
            case "provider": return self.provider
            case "canJoin": return canJoin
            case "isMember": return isMember
+           case "canRequest": return canRequest
            default: return nil
            }
     }
@@ -115,6 +117,9 @@ public extension Services.Group.Containers {
 
     public private(set) var hasIsMember:Bool = false
     public private(set) var isMember:Bool = false
+
+    public private(set) var hasCanRequest:Bool = false
+    public private(set) var canRequest:Bool = false
 
     public private(set) var aliases:Array<String> = Array<String>()
     required public init() {
@@ -158,6 +163,9 @@ public extension Services.Group.Containers {
       }
       if hasIsMember {
         output.writeBool(11, value:isMember)
+      }
+      if hasCanRequest {
+        output.writeBool(12, value:canRequest)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -203,6 +211,9 @@ public extension Services.Group.Containers {
       }
       if hasIsMember {
         serialize_size += isMember.computeBoolSize(11)
+      }
+      if hasCanRequest {
+        serialize_size += canRequest.computeBoolSize(12)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -280,6 +291,9 @@ public extension Services.Group.Containers {
       if hasIsMember {
         output += "\(indent) isMember: \(isMember) \n"
       }
+      if hasCanRequest {
+        output += "\(indent) canRequest: \(canRequest) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -317,6 +331,9 @@ public extension Services.Group.Containers {
             }
             if hasIsMember {
                hashCode = (hashCode &* 31) &+ isMember.hashValue
+            }
+            if hasCanRequest {
+               hashCode = (hashCode &* 31) &+ canRequest.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -592,6 +609,29 @@ public extension Services.Group.Containers {
          builderResult.isMember = false
          return self
     }
+    public var hasCanRequest:Bool {
+         get {
+              return builderResult.hasCanRequest
+         }
+    }
+    public var canRequest:Bool {
+         get {
+              return builderResult.canRequest
+         }
+         set (value) {
+             builderResult.hasCanRequest = true
+             builderResult.canRequest = value
+         }
+    }
+    public func setCanRequest(value:Bool)-> Services.Group.Containers.GroupV1Builder {
+      self.canRequest = value
+      return self
+    }
+    public func clearCanRequest() -> Services.Group.Containers.GroupV1Builder{
+         builderResult.hasCanRequest = false
+         builderResult.canRequest = false
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -649,6 +689,9 @@ public extension Services.Group.Containers {
       if other.hasIsMember {
            isMember = other.isMember
       }
+      if other.hasCanRequest {
+           canRequest = other.canRequest
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -701,6 +744,9 @@ public extension Services.Group.Containers {
 
         case 88 :
           isMember = input.readBool()
+
+        case 96 :
+          canRequest = input.readBool()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
