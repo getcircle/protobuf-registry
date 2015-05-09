@@ -24,6 +24,7 @@ message GroupV1 {
     optional GroupProviderV1 provider = 9;
     optional bool can_join = 10;
     optional bool is_member = 11;
+    optional bool can_request = 12;
 }
 
 message GroupSettingsV1 {
