@@ -13,7 +13,7 @@ public func == (lhs: Services.Group.Containers.GroupV1, rhs: Services.Group.Cont
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
   fieldCheck = fieldCheck && (lhs.hasDisplayName == rhs.hasDisplayName) && (!lhs.hasDisplayName || lhs.displayName == rhs.displayName)
-  fieldCheck = fieldCheck && (lhs.hasDescription == rhs.hasDescription) && (!lhs.hasDescription || lhs.description_ == rhs.description_)
+  fieldCheck = fieldCheck && (lhs.hasGroupDescription == rhs.hasGroupDescription) && (!lhs.hasGroupDescription || lhs.groupDescription == rhs.groupDescription)
   fieldCheck = fieldCheck && (lhs.aliases == rhs.aliases)
   fieldCheck = fieldCheck && (lhs.hasMembersCount == rhs.hasMembersCount) && (!lhs.hasMembersCount || lhs.membersCount == rhs.membersCount)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
@@ -105,7 +105,7 @@ public extension Services.Group.Containers {
            case "email": return email
            case "name": return name
            case "displayName": return displayName
-           case "description_": return description_
+           case "groupDescription": return groupDescription
            case "membersCount": return membersCount
            case "provider": return self.provider
            case "canJoin": return canJoin
@@ -130,8 +130,8 @@ public extension Services.Group.Containers {
     public private(set) var hasDisplayName:Bool = false
     public private(set) var displayName:String = ""
 
-    public private(set) var hasDescription:Bool = false
-    public private(set) var description_:String = ""
+    public private(set) var hasGroupDescription:Bool = false
+    public private(set) var groupDescription:String = ""
 
     public private(set) var hasMembersCount:Bool = false
     public private(set) var membersCount:UInt32 = UInt32(0)
@@ -170,8 +170,8 @@ public extension Services.Group.Containers {
       if hasDisplayName {
         output.writeString(5, value:displayName)
       }
-      if hasDescription {
-        output.writeString(6, value:description_)
+      if hasGroupDescription {
+        output.writeString(6, value:groupDescription)
       }
       if !aliases.isEmpty {
         for oneValuealiases in aliases {
@@ -217,8 +217,8 @@ public extension Services.Group.Containers {
       if hasDisplayName {
         serialize_size += displayName.computeStringSize(5)
       }
-      if hasDescription {
-        serialize_size += description_.computeStringSize(6)
+      if hasGroupDescription {
+        serialize_size += groupDescription.computeStringSize(6)
       }
       var dataSizeAliases:Int32 = 0
       for oneValuealiases in aliases {
@@ -297,8 +297,8 @@ public extension Services.Group.Containers {
       if hasDisplayName {
         output += "\(indent) displayName: \(displayName) \n"
       }
-      if hasDescription {
-        output += "\(indent) description_: \(description_) \n"
+      if hasGroupDescription {
+        output += "\(indent) groupDescription: \(groupDescription) \n"
       }
       var aliasesElementIndex:Int = 0
       for oneValuealiases in aliases  {
@@ -340,8 +340,8 @@ public extension Services.Group.Containers {
             if hasDisplayName {
                hashCode = (hashCode &* 31) &+ displayName.hashValue
             }
-            if hasDescription {
-               hashCode = (hashCode &* 31) &+ description_.hashValue
+            if hasGroupDescription {
+               hashCode = (hashCode &* 31) &+ groupDescription.hashValue
             }
             for oneValuealiases in aliases {
                 hashCode = (hashCode &* 31) &+ oneValuealiases.hashValue
@@ -504,27 +504,27 @@ public extension Services.Group.Containers {
          builderResult.displayName = ""
          return self
     }
-    public var hasDescription:Bool {
+    public var hasGroupDescription:Bool {
          get {
-              return builderResult.hasDescription
+              return builderResult.hasGroupDescription
          }
     }
-    public var description_:String {
+    public var groupDescription:String {
          get {
-              return builderResult.description_
+              return builderResult.groupDescription
          }
          set (value) {
-             builderResult.hasDescription = true
-             builderResult.description_ = value
+             builderResult.hasGroupDescription = true
+             builderResult.groupDescription = value
          }
     }
-    public func setDescription(value:String)-> Services.Group.Containers.GroupV1Builder {
-      self.description_ = value
+    public func setGroupDescription(value:String)-> Services.Group.Containers.GroupV1Builder {
+      self.groupDescription = value
       return self
     }
-    public func clearDescription() -> Services.Group.Containers.GroupV1Builder{
-         builderResult.hasDescription = false
-         builderResult.description_ = ""
+    public func clearGroupDescription() -> Services.Group.Containers.GroupV1Builder{
+         builderResult.hasGroupDescription = false
+         builderResult.groupDescription = ""
          return self
     }
     public var aliases:Array<String> {
@@ -697,8 +697,8 @@ public extension Services.Group.Containers {
       if other.hasDisplayName {
            displayName = other.displayName
       }
-      if other.hasDescription {
-           description_ = other.description_
+      if other.hasGroupDescription {
+           groupDescription = other.groupDescription
       }
       if !other.aliases.isEmpty {
           builderResult.aliases += other.aliases
@@ -749,7 +749,7 @@ public extension Services.Group.Containers {
           displayName = input.readString()
 
         case 50 :
-          description_ = input.readString()
+          groupDescription = input.readString()
 
         case 58 :
           aliases += [input.readString()]
