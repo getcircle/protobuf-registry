@@ -55,7 +55,7 @@ message MemberV1 {
 enum MembershipRequestStatusV1 {
     PENDING = 0;
     APPROVED = 1;
-    REJECTED = 2;
+    DENIED = 2;
 }
 
 message MembershipRequestMetaV1 {

@@ -132,7 +132,7 @@ public extension Services.Group.Containers {
   public enum MembershipRequestStatusV1:Int32 {
     case Pending = 0
     case Approved = 1
-    case Rejected = 2
+    case Denied = 2
 
   }
 
