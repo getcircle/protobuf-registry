@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/group/actions/join_group.proto',
   package='services.group.actions.join_group',
-  serialized_pb=_b('\n1protobufs/services/group/actions/join_group.proto\x12!services.group.actions.join_group\"1\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x10\n\x08group_id\x18\x02 \x01(\t\"\xa3\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12J\n\x06status\x18\x02 \x01(\x0e\x32:.services.group.actions.join_group.ResponseV1.JoinStatusV1\"5\n\x0cJoinStatusV1\x12\r\n\tREQUESTED\x10\x00\x12\n\n\x06JOINED\x10\x01\x12\n\n\x06\x46\x41ILED\x10\x02\x42\x38\n6com.rhlabs.protobufs.services.group.actions.join_group')
+  serialized_pb=_b('\n1protobufs/services/group/actions/join_group.proto\x12!services.group.actions.join_group\"2\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x11\n\tgroup_key\x18\x02 \x01(\t\"\xa3\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12J\n\x06status\x18\x02 \x01(\x0e\x32:.services.group.actions.join_group.ResponseV1.JoinStatusV1\"5\n\x0cJoinStatusV1\x12\r\n\tREQUESTED\x10\x00\x12\n\n\x06JOINED\x10\x01\x12\n\n\x06\x46\x41ILED\x10\x02\x42\x38\n6com.rhlabs.protobufs.services.group.actions.join_group')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -45,8 +45,8 @@ _RESPONSEV1_JOINSTATUSV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=250,
-  serialized_end=303,
+  serialized_start=251,
+  serialized_end=304,
 )
 _sym_db.RegisterEnumDescriptor(_RESPONSEV1_JOINSTATUSV1)
 
@@ -66,7 +66,7 @@ _REQUESTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='group_id', full_name='services.group.actions.join_group.RequestV1.group_id', index=1,
+      name='group_key', full_name='services.group.actions.join_group.RequestV1.group_key', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -84,7 +84,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=88,
-  serialized_end=137,
+  serialized_end=138,
 )
 
 
@@ -121,8 +121,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=140,
-  serialized_end=303,
+  serialized_start=141,
+  serialized_end=304,
 )
 
 _RESPONSEV1.fields_by_name['status'].enum_type = _RESPONSEV1_JOINSTATUSV1
