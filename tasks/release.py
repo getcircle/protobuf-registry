@@ -55,8 +55,12 @@ def _update_version():
             print 'releasing new version: %s' % (release_version,)
             output.append(VERSION_RE_TEMPLATE % (release_version,))
 
+    # write out the new python version
     with open(INIT_FILE, 'w') as initf:
         initf.write('\n'.join(output))
+
+    # update the javascript package version
+    run('npm version %s --no-git-tag-version')
     return release_version
 
 
