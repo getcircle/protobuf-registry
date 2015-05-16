@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/getcircle/protobuf-registry/issues"
   },
-  "homepage": "https://github.com/getcircle/protobuf-registry"
+  "homepage": "https://github.com/getcircle/protobuf-registry",
+  "dependencies": {
+    "protobufjs": "mhahn/ProtoBuf.js"
+  }
 }
