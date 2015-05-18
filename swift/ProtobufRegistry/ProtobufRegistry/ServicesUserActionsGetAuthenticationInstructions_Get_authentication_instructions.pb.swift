@@ -19,7 +19,7 @@ public func == (lhs: Services.User.Actions.GetAuthenticationInstructions.Respons
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
+  fieldCheck = fieldCheck && (lhs.hasBackend == rhs.hasBackend) && (!lhs.hasBackend || lhs.backend == rhs.backend)
   fieldCheck = fieldCheck && (lhs.hasUserExists == rhs.hasUserExists) && (!lhs.hasUserExists || lhs.userExists == rhs.userExists)
   fieldCheck = fieldCheck && (lhs.hasAuthorizationUrl == rhs.hasAuthorizationUrl) && (!lhs.hasAuthorizationUrl || lhs.authorizationUrl == rhs.authorizationUrl)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -39,6 +39,7 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Actions.AuthenticateUser.AuthenticateUserRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -284,7 +285,7 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
     override public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
-           case "provider": return self.provider
+           case "backend": return self.backend
            case "userExists": return userExists
            case "authorizationUrl": return authorizationUrl
            default: return nil
@@ -294,8 +295,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var provider:Services.User.Containers.IdentityV1.ProviderV1 = Services.User.Containers.IdentityV1.ProviderV1.Internal
-    public private(set) var hasProvider:Bool = false
+    public private(set) var backend:Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1 = Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1.Internal
+    public private(set) var hasBackend:Bool = false
     public private(set) var hasUserExists:Bool = false
     public private(set) var userExists:Bool = false
 
@@ -312,8 +313,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if hasVersion {
         output.writeUInt32(1, value:version)
       }
-      if hasProvider {
-        output.writeEnum(2, value:provider.rawValue)
+      if hasBackend {
+        output.writeEnum(2, value:backend.rawValue)
       }
       if hasUserExists {
         output.writeBool(3, value:userExists)
@@ -333,8 +334,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
-      if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(2)
+      if (hasBackend) {
+        serialize_size += backend.rawValue.computeEnumSize(2)
       }
       if hasUserExists {
         serialize_size += userExists.computeBoolSize(3)
@@ -386,8 +387,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
-      if (hasProvider) {
-        output += "\(indent) provider: \(provider.rawValue)\n"
+      if (hasBackend) {
+        output += "\(indent) backend: \(backend.rawValue)\n"
       }
       if hasUserExists {
         output += "\(indent) userExists: \(userExists) \n"
@@ -403,8 +404,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
             }
-            if hasProvider {
-               hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
+            if hasBackend {
+               hashCode = (hashCode &* 31) &+ Int(backend.rawValue)
             }
             if hasUserExists {
                hashCode = (hashCode &* 31) &+ userExists.hashValue
@@ -463,27 +464,27 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
          builderResult.version = UInt32(1)
          return self
     }
-      public var hasProvider:Bool{
+      public var hasBackend:Bool{
           get {
-              return builderResult.hasProvider
+              return builderResult.hasBackend
           }
       }
-      public var provider:Services.User.Containers.IdentityV1.ProviderV1 {
+      public var backend:Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1 {
           get {
-              return builderResult.provider
+              return builderResult.backend
           }
           set (value) {
-              builderResult.hasProvider = true
-              builderResult.provider = value
+              builderResult.hasBackend = true
+              builderResult.backend = value
           }
       }
-      public func setProvider(value:Services.User.Containers.IdentityV1.ProviderV1)-> Services.User.Actions.GetAuthenticationInstructions.ResponseV1Builder {
-        self.provider = value
+      public func setBackend(value:Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1)-> Services.User.Actions.GetAuthenticationInstructions.ResponseV1Builder {
+        self.backend = value
         return self
       }
-      public func clearProvider() -> Services.User.Actions.GetAuthenticationInstructions.ResponseV1Builder {
-         builderResult.hasProvider = false
-         builderResult.provider = .Internal
+      public func clearBackend() -> Services.User.Actions.GetAuthenticationInstructions.ResponseV1Builder {
+         builderResult.hasBackend = false
+         builderResult.backend = .Internal
          return self
       }
     public var hasUserExists:Bool {
@@ -559,8 +560,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if other.hasVersion {
            version = other.version
       }
-      if other.hasProvider {
-           provider = other.provider
+      if other.hasBackend {
+           backend = other.backend
       }
       if other.hasUserExists {
            userExists = other.userExists
@@ -587,11 +588,11 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
           version = input.readUInt32()
 
         case 16 :
-          let valueIntprovider = input.readEnum()
-          if let enumsprovider = Services.User.Containers.IdentityV1.ProviderV1(rawValue:valueIntprovider){
-               provider = enumsprovider
+          let valueIntbackend = input.readEnum()
+          if let enumsbackend = Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1(rawValue:valueIntbackend){
+               backend = enumsbackend
           } else {
-               unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntprovider))
+               unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntbackend))
           }
 
         case 24 :

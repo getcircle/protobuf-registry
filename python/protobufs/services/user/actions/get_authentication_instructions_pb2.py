@@ -14,14 +14,15 @@ _sym_db = _symbol_database.Default()
 
 
 import protobufs.services.user.containers_pb2
+import protobufs.services.user.actions.authenticate_user_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/get_authentication_instructions.proto',
   package='services.user.actions.get_authentication_instructions',
-  serialized_pb=_b('\nEprotobufs/services/user/actions/get_authentication_instructions.proto\x12\x35services.user.actions.get_authentication_instructions\x1a(protobufs/services/user/containers.proto\".\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05\x65mail\x18\x02 \x01(\t\"\x93\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x41\n\x08provider\x18\x02 \x01(\x0e\x32/.services.user.containers.IdentityV1.ProviderV1\x12\x13\n\x0buser_exists\x18\x03 \x01(\x08\x12\x19\n\x11\x61uthorization_url\x18\x04 \x01(\tBL\nJcom.rhlabs.protobufs.services.user.actions.get_authentication_instructions')
+  serialized_pb=_b('\nEprotobufs/services/user/actions/get_authentication_instructions.proto\x12\x35services.user.actions.get_authentication_instructions\x1a(protobufs/services/user/containers.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\".\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05\x65mail\x18\x02 \x01(\t\"\xa3\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12Q\n\x07\x62\x61\x63kend\x18\x02 \x01(\x0e\x32@.services.user.actions.authenticate_user.RequestV1.AuthBackendV1\x12\x13\n\x0buser_exists\x18\x03 \x01(\x08\x12\x19\n\x11\x61uthorization_url\x18\x04 \x01(\tBL\nJcom.rhlabs.protobufs.services.user.actions.get_authentication_instructions')
   ,
-  dependencies=[protobufs.services.user.containers_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.user.containers_pb2.DESCRIPTOR,protobufs.services.user.actions.authenticate_user_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -59,8 +60,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=170,
-  serialized_end=216,
+  serialized_start=227,
+  serialized_end=273,
 )
 
 
@@ -79,7 +80,7 @@ _RESPONSEV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='provider', full_name='services.user.actions.get_authentication_instructions.ResponseV1.provider', index=1,
+      name='backend', full_name='services.user.actions.get_authentication_instructions.ResponseV1.backend', index=1,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -110,11 +111,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=219,
-  serialized_end=366,
+  serialized_start=276,
+  serialized_end=439,
 )
 
-_RESPONSEV1.fields_by_name['provider'].enum_type = protobufs.services.user.containers_pb2._IDENTITYV1_PROVIDERV1
+_RESPONSEV1.fields_by_name['backend'].enum_type = protobufs.services.user.actions.authenticate_user_pb2._REQUESTV1_AUTHBACKENDV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 
