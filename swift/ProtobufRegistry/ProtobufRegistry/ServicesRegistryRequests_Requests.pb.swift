@@ -166,6 +166,11 @@ public var ServicesRegistryRequestsUserlogout:ConcreateExtensionField {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUserlogoutStatic
    }
 }
+public var ServicesRegistryRequestsUsergetAuthenticationInstructions:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUsergetAuthenticationInstructionsStatic
+   }
+}
 public var ServicesRegistryRequestsOrganizationcreateOrganization:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationcreateOrganizationStatic
@@ -504,6 +509,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsUserrequestAccessStatic:ConcreateExtensionField
     var ServicesRegistryRequestsUserdeleteIdentityStatic:ConcreateExtensionField
     var ServicesRegistryRequestsUserlogoutStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsUsergetAuthenticationInstructionsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsOrganizationcreateOrganizationStatic:ConcreateExtensionField
     var ServicesRegistryRequestsOrganizationgetOrganizationStatic:ConcreateExtensionField
     var ServicesRegistryRequestsOrganizationcreateTeamStatic:ConcreateExtensionField
@@ -585,6 +591,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsUserrequestAccessStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 112, defaultValue:Services.User.Actions.RequestAccess.RequestV1(), messageOrGroupClass:Services.User.Actions.RequestAccess.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsUserdeleteIdentityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 113, defaultValue:Services.User.Actions.DeleteIdentity.RequestV1(), messageOrGroupClass:Services.User.Actions.DeleteIdentity.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsUserlogoutStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 114, defaultValue:Services.User.Actions.Logout.RequestV1(), messageOrGroupClass:Services.User.Actions.Logout.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsUsergetAuthenticationInstructionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 115, defaultValue:Services.User.Actions.GetAuthenticationInstructions.RequestV1(), messageOrGroupClass:Services.User.Actions.GetAuthenticationInstructions.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsOrganizationcreateOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 200, defaultValue:Services.Organization.Actions.CreateOrganization.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateOrganization.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsOrganizationgetOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 201, defaultValue:Services.Organization.Actions.GetOrganization.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetOrganization.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsOrganizationcreateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 202, defaultValue:Services.Organization.Actions.CreateTeam.RequestV1(), messageOrGroupClass:Services.Organization.Actions.CreateTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -666,6 +673,7 @@ public extension Services.Registry.Requests {
       Services.User.Actions.RequestAccess.RequestAccessRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.User.Actions.DeleteIdentity.DeleteIdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.User.Actions.Logout.LogoutRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Actions.GetAuthenticationInstructions.GetAuthenticationInstructionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.CreateOrganization.CreateOrganizationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.CreateTeam.CreateTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.CreateAddress.CreateAddressRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -746,6 +754,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsUserrequestAccessStatic)
       registry.addExtension(ServicesRegistryRequestsUserdeleteIdentityStatic)
       registry.addExtension(ServicesRegistryRequestsUserlogoutStatic)
+      registry.addExtension(ServicesRegistryRequestsUsergetAuthenticationInstructionsStatic)
       registry.addExtension(ServicesRegistryRequestsOrganizationcreateOrganizationStatic)
       registry.addExtension(ServicesRegistryRequestsOrganizationgetOrganizationStatic)
       registry.addExtension(ServicesRegistryRequestsOrganizationcreateTeamStatic)
@@ -863,6 +872,9 @@ public extension Services.Registry.Requests {
     }
     public class func logout() -> ConcreateExtensionField {
          return ServicesRegistryRequestsUserlogout
+    }
+    public class func getAuthenticationInstructions() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsUsergetAuthenticationInstructions
     }
     required public init() {
          super.init()

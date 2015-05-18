@@ -14,7 +14,7 @@ from . import (
 )
 
 
-@task(post=[python.compile, swift.compile])
+@task(post=[python.compile, swift.compile, js.compile])
 def compile():
     print 'compiling protobufs...'
 
