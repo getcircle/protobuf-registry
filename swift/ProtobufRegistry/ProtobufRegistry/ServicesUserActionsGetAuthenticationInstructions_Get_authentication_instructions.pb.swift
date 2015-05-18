@@ -20,7 +20,7 @@ public func == (lhs: Services.User.Actions.GetAuthenticationInstructions.Respons
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
-  fieldCheck = fieldCheck && (lhs.hasExists == rhs.hasExists) && (!lhs.hasExists || lhs.exists == rhs.exists)
+  fieldCheck = fieldCheck && (lhs.hasUserExists == rhs.hasUserExists) && (!lhs.hasUserExists || lhs.userExists == rhs.userExists)
   fieldCheck = fieldCheck && (lhs.hasAuthorizationUrl == rhs.hasAuthorizationUrl) && (!lhs.hasAuthorizationUrl || lhs.authorizationUrl == rhs.authorizationUrl)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
@@ -285,7 +285,7 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
            switch key {
            case "version": return version
            case "provider": return self.provider
-           case "exists": return exists
+           case "userExists": return userExists
            case "authorizationUrl": return authorizationUrl
            default: return nil
            }
@@ -296,8 +296,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
 
     public private(set) var provider:Services.User.Containers.IdentityV1.ProviderV1 = Services.User.Containers.IdentityV1.ProviderV1.Internal
     public private(set) var hasProvider:Bool = false
-    public private(set) var hasExists:Bool = false
-    public private(set) var exists:Bool = false
+    public private(set) var hasUserExists:Bool = false
+    public private(set) var userExists:Bool = false
 
     public private(set) var hasAuthorizationUrl:Bool = false
     public private(set) var authorizationUrl:String = ""
@@ -315,8 +315,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if hasProvider {
         output.writeEnum(2, value:provider.rawValue)
       }
-      if hasExists {
-        output.writeBool(3, value:exists)
+      if hasUserExists {
+        output.writeBool(3, value:userExists)
       }
       if hasAuthorizationUrl {
         output.writeString(4, value:authorizationUrl)
@@ -336,8 +336,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if (hasProvider) {
         serialize_size += provider.rawValue.computeEnumSize(2)
       }
-      if hasExists {
-        serialize_size += exists.computeBoolSize(3)
+      if hasUserExists {
+        serialize_size += userExists.computeBoolSize(3)
       }
       if hasAuthorizationUrl {
         serialize_size += authorizationUrl.computeStringSize(4)
@@ -389,8 +389,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if (hasProvider) {
         output += "\(indent) provider: \(provider.rawValue)\n"
       }
-      if hasExists {
-        output += "\(indent) exists: \(exists) \n"
+      if hasUserExists {
+        output += "\(indent) userExists: \(userExists) \n"
       }
       if hasAuthorizationUrl {
         output += "\(indent) authorizationUrl: \(authorizationUrl) \n"
@@ -406,8 +406,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
             if hasProvider {
                hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
             }
-            if hasExists {
-               hashCode = (hashCode &* 31) &+ exists.hashValue
+            if hasUserExists {
+               hashCode = (hashCode &* 31) &+ userExists.hashValue
             }
             if hasAuthorizationUrl {
                hashCode = (hashCode &* 31) &+ authorizationUrl.hashValue
@@ -486,27 +486,27 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
          builderResult.provider = .Internal
          return self
       }
-    public var hasExists:Bool {
+    public var hasUserExists:Bool {
          get {
-              return builderResult.hasExists
+              return builderResult.hasUserExists
          }
     }
-    public var exists:Bool {
+    public var userExists:Bool {
          get {
-              return builderResult.exists
+              return builderResult.userExists
          }
          set (value) {
-             builderResult.hasExists = true
-             builderResult.exists = value
+             builderResult.hasUserExists = true
+             builderResult.userExists = value
          }
     }
-    public func setExists(value:Bool)-> Services.User.Actions.GetAuthenticationInstructions.ResponseV1Builder {
-      self.exists = value
+    public func setUserExists(value:Bool)-> Services.User.Actions.GetAuthenticationInstructions.ResponseV1Builder {
+      self.userExists = value
       return self
     }
-    public func clearExists() -> Services.User.Actions.GetAuthenticationInstructions.ResponseV1Builder{
-         builderResult.hasExists = false
-         builderResult.exists = false
+    public func clearUserExists() -> Services.User.Actions.GetAuthenticationInstructions.ResponseV1Builder{
+         builderResult.hasUserExists = false
+         builderResult.userExists = false
          return self
     }
     public var hasAuthorizationUrl:Bool {
@@ -562,8 +562,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if other.hasProvider {
            provider = other.provider
       }
-      if other.hasExists {
-           exists = other.exists
+      if other.hasUserExists {
+           userExists = other.userExists
       }
       if other.hasAuthorizationUrl {
            authorizationUrl = other.authorizationUrl
@@ -595,7 +595,7 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
           }
 
         case 24 :
-          exists = input.readBool()
+          userExists = input.readBool()
 
         case 34 :
           authorizationUrl = input.readString()
