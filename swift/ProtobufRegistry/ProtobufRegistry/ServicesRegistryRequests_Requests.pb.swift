@@ -486,6 +486,11 @@ public var ServicesRegistryRequestsGroupgetGroup:ConcreateExtensionField {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGroupgetGroupStatic
    }
 }
+public var ServicesRegistryRequestsGroupaddToGroup:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGroupaddToGroupStatic
+   }
+}
 public extension Services.Registry.Requests {
   public struct RequestsRoot {
     public static var sharedInstance : RequestsRoot {
@@ -573,6 +578,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsGroupleaveGroupStatic:ConcreateExtensionField
     var ServicesRegistryRequestsGrouplistMembersStatic:ConcreateExtensionField
     var ServicesRegistryRequestsGroupgetGroupStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsGroupaddToGroupStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -655,6 +661,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsGroupleaveGroupStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1103, defaultValue:Services.Group.Actions.LeaveGroup.RequestV1(), messageOrGroupClass:Services.Group.Actions.LeaveGroup.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsGrouplistMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1104, defaultValue:Services.Group.Actions.ListMembers.RequestV1(), messageOrGroupClass:Services.Group.Actions.ListMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsGroupgetGroupStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1105, defaultValue:Services.Group.Actions.GetGroup.RequestV1(), messageOrGroupClass:Services.Group.Actions.GetGroup.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsGroupaddToGroupStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1106, defaultValue:Services.Group.Actions.AddToGroup.RequestV1(), messageOrGroupClass:Services.Group.Actions.AddToGroup.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -737,6 +744,7 @@ public extension Services.Registry.Requests {
       Services.Group.Actions.LeaveGroup.LeaveGroupRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Group.Actions.ListMembers.ListMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Group.Actions.GetGroup.GetGroupRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Group.Actions.AddToGroup.AddToGroupRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryRequestsUsercreateUserStatic)
@@ -818,6 +826,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsGroupleaveGroupStatic)
       registry.addExtension(ServicesRegistryRequestsGrouplistMembersStatic)
       registry.addExtension(ServicesRegistryRequestsGroupgetGroupStatic)
+      registry.addExtension(ServicesRegistryRequestsGroupaddToGroupStatic)
     }
   }
 
@@ -2524,6 +2533,9 @@ public extension Services.Registry.Requests {
     }
     public class func getGroup() -> ConcreateExtensionField {
          return ServicesRegistryRequestsGroupgetGroup
+    }
+    public class func addToGroup() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsGroupaddToGroup
     }
     required public init() {
          super.init()
