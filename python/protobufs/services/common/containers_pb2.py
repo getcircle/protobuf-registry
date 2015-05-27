@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/common/containers.proto',
   package='services.common.containers',
-  serialized_pb=_b('\n*protobufs/services/common/containers.proto\x12\x1aservices.common.containers\"<\n\nKeyValueV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\"T\n\x05MapV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x37\n\x07\x63ontent\x18\x02 \x03(\x0b\x32&.services.common.containers.KeyValueV1')
+  serialized_pb=_b('\n*protobufs/services/common/containers.proto\x12\x1aservices.common.containers\"<\n\nKeyValueV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\"T\n\x05MapV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x37\n\x07\x63ontent\x18\x02 \x03(\x0b\x32&.services.common.containers.KeyValueV1B1\n/com.rhlabs.protobufs.services.common.containers')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -124,4 +124,6 @@ MapV1 = _reflection.GeneratedProtocolMessageType('MapV1', (_message.Message,), d
 _sym_db.RegisterMessage(MapV1)
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n/com.rhlabs.protobufs.services.common.containers'))
 # @@protoc_insertion_point(module_scope)

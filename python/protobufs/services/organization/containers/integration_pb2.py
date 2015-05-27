@@ -20,7 +20,7 @@ import protobufs.services.common.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/integration.proto',
   package='services.organization.containers.integration',
-  serialized_pb=_b('\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\xa8\x01\n\rIntegrationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12Y\n\x10integration_type\x18\x03 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12\x0f\n\x07\x64\x65tails\x18\x04 \x01(\t*&\n\x11IntegrationTypeV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00')
+  serialized_pb=_b('\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\xa8\x01\n\rIntegrationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12Y\n\x10integration_type\x18\x03 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12\x0f\n\x07\x64\x65tails\x18\x04 \x01(\t*&\n\x11IntegrationTypeV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00\x42\x43\nAcom.rhlabs.protobufs.services.organization.containers.integration')
   ,
   dependencies=[protobufs.services.common.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -110,4 +110,6 @@ IntegrationV1 = _reflection.GeneratedProtocolMessageType('IntegrationV1', (_mess
 _sym_db.RegisterMessage(IntegrationV1)
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\nAcom.rhlabs.protobufs.services.organization.containers.integration'))
 # @@protoc_insertion_point(module_scope)
