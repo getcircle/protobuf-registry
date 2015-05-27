@@ -11,7 +11,8 @@ enum IntegrationTypeV1 {
 
 message IntegrationV1 {
     optional uint32 version = 1 [default = 1];
-    optional string organization_id = 2;
-    optional IntegrationTypeV1 integration_type = 3;
-    optional string details = 4;
+    optional string id = 2;
+    optional string organization_id = 3;
+    optional IntegrationTypeV1 integration_type = 4;
+    optional string details = 5;
 }
