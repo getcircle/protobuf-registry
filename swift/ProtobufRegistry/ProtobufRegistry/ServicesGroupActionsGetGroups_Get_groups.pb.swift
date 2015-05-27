@@ -11,6 +11,7 @@ public func == (lhs: Services.Group.Actions.GetGroups.RequestV1, rhs: Services.G
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
+  fieldCheck = fieldCheck && (lhs.groupKeys == rhs.groupKeys)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -61,6 +62,7 @@ public extension Services.Group.Actions.GetGroups {
 
     public private(set) var provider:Services.Group.Containers.GroupProviderV1 = Services.Group.Containers.GroupProviderV1.Google
     public private(set) var hasProvider:Bool = false
+    public private(set) var groupKeys:Array<String> = Array<String>()
     required public init() {
          super.init()
     }
@@ -76,6 +78,11 @@ public extension Services.Group.Actions.GetGroups {
       }
       if hasProvider {
         output.writeEnum(3, value:provider.rawValue)
+      }
+      if !groupKeys.isEmpty {
+        for oneValuegroupKeys in groupKeys {
+          output.writeString(4, value:oneValuegroupKeys)
+        }
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -95,6 +102,12 @@ public extension Services.Group.Actions.GetGroups {
       if (hasProvider) {
         serialize_size += provider.rawValue.computeEnumSize(3)
       }
+      var dataSizeGroupKeys:Int32 = 0
+      for oneValuegroupKeys in groupKeys {
+          dataSizeGroupKeys += oneValuegroupKeys.computeStringSizeNoTag()
+      }
+      serialize_size += dataSizeGroupKeys
+      serialize_size += 1 * Int32(groupKeys.count)
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -145,6 +158,11 @@ public extension Services.Group.Actions.GetGroups {
       if (hasProvider) {
         output += "\(indent) provider: \(provider.rawValue)\n"
       }
+      var groupKeysElementIndex:Int = 0
+      for oneValuegroupKeys in groupKeys  {
+          output += "\(indent) groupKeys[\(groupKeysElementIndex)]: \(oneValuegroupKeys)\n"
+          groupKeysElementIndex++
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -158,6 +176,9 @@ public extension Services.Group.Actions.GetGroups {
             }
             if hasProvider {
                hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
+            }
+            for oneValuegroupKeys in groupKeys {
+                hashCode = (hashCode &* 31) &+ oneValuegroupKeys.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -256,6 +277,22 @@ public extension Services.Group.Actions.GetGroups {
          builderResult.provider = .Google
          return self
       }
+    public var groupKeys:Array<String> {
+         get {
+             return builderResult.groupKeys
+         }
+         set (array) {
+             builderResult.groupKeys = array
+         }
+    }
+    public func setGroupKeys(value:Array<String>)-> Services.Group.Actions.GetGroups.RequestV1Builder {
+      self.groupKeys = value
+      return self
+    }
+    public func clearGroupKeys() -> Services.Group.Actions.GetGroups.RequestV1Builder {
+       builderResult.groupKeys.removeAll(keepCapacity: false)
+       return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -289,6 +326,9 @@ public extension Services.Group.Actions.GetGroups {
       if other.hasProvider {
            provider = other.provider
       }
+      if !other.groupKeys.isEmpty {
+          builderResult.groupKeys += other.groupKeys
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -317,6 +357,9 @@ public extension Services.Group.Actions.GetGroups {
           } else {
                unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntprovider))
           }
+
+        case 34 :
+          groupKeys += [input.readString()]
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
