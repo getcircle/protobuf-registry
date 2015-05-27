@@ -20,7 +20,7 @@ import protobufs.services.common.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/integration.proto',
   package='services.organization.containers.integration',
-  serialized_pb=_b('\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\x85\x02\n\rIntegrationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12Y\n\x10integration_type\x18\x04 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12`\n\x14google_group_details\x18\x05 \x01(\x0b\x32\x42.services.organization.containers.integration.GoogleGroupDetailsV1\"O\n\x14GoogleGroupDetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x13\n\x0b\x61\x64min_email\x18\x02 \x01(\t\x12\x0e\n\x06scopes\x18\x03 \x03(\t*&\n\x11IntegrationTypeV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00\x42\x43\nAcom.rhlabs.protobufs.services.organization.containers.integration')
+  serialized_pb=_b('\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\x8b\x02\n\rIntegrationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12Y\n\x10integration_type\x18\x04 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12[\n\rgoogle_groups\x18\x05 \x01(\x0b\x32\x42.services.organization.containers.integration.GoogleGroupDetailsV1H\x00\x42\t\n\x07\x64\x65tails\"O\n\x14GoogleGroupDetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x13\n\x0b\x61\x64min_email\x18\x02 \x01(\t\x12\x0e\n\x06scopes\x18\x03 \x03(\t*&\n\x11IntegrationTypeV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00\x42\x43\nAcom.rhlabs.protobufs.services.organization.containers.integration')
   ,
   dependencies=[protobufs.services.common.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -38,8 +38,8 @@ _INTEGRATIONTYPEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=499,
-  serialized_end=537,
+  serialized_start=505,
+  serialized_end=543,
 )
 _sym_db.RegisterEnumDescriptor(_INTEGRATIONTYPEV1)
 
@@ -84,7 +84,7 @@ _INTEGRATIONV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='google_group_details', full_name='services.organization.containers.integration.IntegrationV1.google_group_details', index=4,
+      name='google_groups', full_name='services.organization.containers.integration.IntegrationV1.google_groups', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -100,9 +100,12 @@ _INTEGRATIONV1 = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='details', full_name='services.organization.containers.integration.IntegrationV1.details',
+      index=0, containing_type=None, fields=[]),
   ],
   serialized_start=155,
-  serialized_end=416,
+  serialized_end=422,
 )
 
 
@@ -145,12 +148,15 @@ _GOOGLEGROUPDETAILSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=418,
-  serialized_end=497,
+  serialized_start=424,
+  serialized_end=503,
 )
 
 _INTEGRATIONV1.fields_by_name['integration_type'].enum_type = _INTEGRATIONTYPEV1
-_INTEGRATIONV1.fields_by_name['google_group_details'].message_type = _GOOGLEGROUPDETAILSV1
+_INTEGRATIONV1.fields_by_name['google_groups'].message_type = _GOOGLEGROUPDETAILSV1
+_INTEGRATIONV1.oneofs_by_name['details'].fields.append(
+  _INTEGRATIONV1.fields_by_name['google_groups'])
+_INTEGRATIONV1.fields_by_name['google_groups'].containing_oneof = _INTEGRATIONV1.oneofs_by_name['details']
 DESCRIPTOR.message_types_by_name['IntegrationV1'] = _INTEGRATIONV1
 DESCRIPTOR.message_types_by_name['GoogleGroupDetailsV1'] = _GOOGLEGROUPDETAILSV1
 DESCRIPTOR.enum_types_by_name['IntegrationTypeV1'] = _INTEGRATIONTYPEV1

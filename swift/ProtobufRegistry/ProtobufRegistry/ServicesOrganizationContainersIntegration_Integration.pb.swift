@@ -12,7 +12,7 @@ public func == (lhs: Services.Organization.Containers.Integration.IntegrationV1,
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = fieldCheck && (lhs.hasIntegrationType == rhs.hasIntegrationType) && (!lhs.hasIntegrationType || lhs.integrationType == rhs.integrationType)
-  fieldCheck = fieldCheck && (lhs.hasGoogleGroupDetails == rhs.hasGoogleGroupDetails) && (!lhs.hasGoogleGroupDetails || lhs.googleGroupDetails == rhs.googleGroupDetails)
+  fieldCheck = fieldCheck && (lhs.hasGoogleGroups == rhs.hasGoogleGroups) && (!lhs.hasGoogleGroups || lhs.googleGroups == rhs.googleGroups)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -58,13 +58,42 @@ public extension Services.Organization.Containers.Integration {
   //Enum type declaration end 
 
   final public class IntegrationV1 : GeneratedMessage, GeneratedMessageProtocol {
+
+
+    //OneOf declaration start
+
+    public enum Details {
+      case DetailsOneOfNotSet
+
+      public func checkOneOfIsSet() -> Bool {
+           switch self {
+           case .DetailsOneOfNotSet:
+                return false
+           default:
+                return true
+           }
+      }
+      case GoogleGroups(Services.Organization.Containers.Integration.GoogleGroupDetailsV1)
+
+      public static func getGoogleGroups(value:Details) ->Services.Organization.Containers.Integration.GoogleGroupDetailsV1? {
+           switch value {
+           case .GoogleGroups(let enumValue):
+                return enumValue
+           default:
+                return nil
+           }
+      }
+    }
+    //OneOf declaration end
+
+    private var storageDetails:Services.Organization.Containers.Integration.IntegrationV1.Details =  Services.Organization.Containers.Integration.IntegrationV1.Details.DetailsOneOfNotSet
     override public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
            case "id": return id
            case "organizationId": return organizationId
            case "integrationType": return self.integrationType
-           case "googleGroupDetails": return googleGroupDetails
+           case "googleGroups": return googleGroups
            default: return nil
            }
     }
@@ -80,8 +109,24 @@ public extension Services.Organization.Containers.Integration {
 
     public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.GoogleGroups
     public private(set) var hasIntegrationType:Bool = false
-    public private(set) var hasGoogleGroupDetails:Bool = false
-    public private(set) var googleGroupDetails:Services.Organization.Containers.Integration.GoogleGroupDetailsV1!
+    public private(set) var hasGoogleGroups:Bool {
+          get {
+               if Services.Organization.Containers.Integration.IntegrationV1.Details.getGoogleGroups(storageDetails) == nil {
+                   return false
+               }
+               return true
+          }
+          set(newValue) {
+          }
+    }
+    public private(set) var googleGroups:Services.Organization.Containers.Integration.GoogleGroupDetailsV1!{
+         get {
+              return Services.Organization.Containers.Integration.IntegrationV1.Details.getGoogleGroups(storageDetails)
+         }
+         set (newvalue) {
+              storageDetails = Services.Organization.Containers.Integration.IntegrationV1.Details.GoogleGroups(newvalue)
+         }
+    }
     required public init() {
          super.init()
     }
@@ -101,8 +146,8 @@ public extension Services.Organization.Containers.Integration {
       if hasIntegrationType {
         output.writeEnum(4, value:integrationType.rawValue)
       }
-      if hasGoogleGroupDetails {
-        output.writeMessage(5, value:googleGroupDetails)
+      if hasGoogleGroups {
+        output.writeMessage(5, value:googleGroups)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -125,9 +170,9 @@ public extension Services.Organization.Containers.Integration {
       if (hasIntegrationType) {
         serialize_size += integrationType.rawValue.computeEnumSize(4)
       }
-      if hasGoogleGroupDetails {
-          if let varSizegoogleGroupDetails = googleGroupDetails?.computeMessageSize(5) {
-              serialize_size += varSizegoogleGroupDetails
+      if hasGoogleGroups {
+          if let varSizegoogleGroups = googleGroups?.computeMessageSize(5) {
+              serialize_size += varSizegoogleGroups
           }
       }
       serialize_size += unknownFields.serializedSize()
@@ -183,9 +228,9 @@ public extension Services.Organization.Containers.Integration {
       if (hasIntegrationType) {
         output += "\(indent) integrationType: \(integrationType.rawValue)\n"
       }
-      if hasGoogleGroupDetails {
-        output += "\(indent) googleGroupDetails {\n"
-        googleGroupDetails?.writeDescriptionTo(&output, indent:"\(indent)  ")
+      if hasGoogleGroups {
+        output += "\(indent) googleGroups {\n"
+        googleGroups?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -205,9 +250,9 @@ public extension Services.Organization.Containers.Integration {
             if hasIntegrationType {
                hashCode = (hashCode &* 31) &+ Int(integrationType.rawValue)
             }
-            if hasGoogleGroupDetails {
-                if let hashValuegoogleGroupDetails = googleGroupDetails?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuegoogleGroupDetails
+            if hasGoogleGroups {
+                if let hashValuegoogleGroups = googleGroups?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuegoogleGroups
                 }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -330,36 +375,36 @@ public extension Services.Organization.Containers.Integration {
          builderResult.integrationType = .GoogleGroups
          return self
       }
-    public var hasGoogleGroupDetails:Bool {
+    public var hasGoogleGroups:Bool {
          get {
-             return builderResult.hasGoogleGroupDetails
+             return builderResult.hasGoogleGroups
          }
     }
-    public var googleGroupDetails:Services.Organization.Containers.Integration.GoogleGroupDetailsV1! {
+    public var googleGroups:Services.Organization.Containers.Integration.GoogleGroupDetailsV1! {
          get {
-             return builderResult.googleGroupDetails
+             return builderResult.googleGroups
          }
          set (value) {
-             builderResult.hasGoogleGroupDetails = true
-             builderResult.googleGroupDetails = value
+             builderResult.hasGoogleGroups = true
+             builderResult.googleGroups = value
          }
     }
-    public func setGoogleGroupDetails(value:Services.Organization.Containers.Integration.GoogleGroupDetailsV1!)-> Services.Organization.Containers.Integration.IntegrationV1Builder {
-      self.googleGroupDetails = value
+    public func setGoogleGroups(value:Services.Organization.Containers.Integration.GoogleGroupDetailsV1!)-> Services.Organization.Containers.Integration.IntegrationV1Builder {
+      self.googleGroups = value
       return self
     }
-    public func mergeGoogleGroupDetails(value:Services.Organization.Containers.Integration.GoogleGroupDetailsV1) -> Services.Organization.Containers.Integration.IntegrationV1Builder {
-      if (builderResult.hasGoogleGroupDetails) {
-        builderResult.googleGroupDetails = Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builderWithPrototype(builderResult.googleGroupDetails).mergeFrom(value).buildPartial()
+    public func mergeGoogleGroups(value:Services.Organization.Containers.Integration.GoogleGroupDetailsV1) -> Services.Organization.Containers.Integration.IntegrationV1Builder {
+      if (builderResult.hasGoogleGroups) {
+        builderResult.googleGroups = Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builderWithPrototype(builderResult.googleGroups).mergeFrom(value).buildPartial()
       } else {
-        builderResult.googleGroupDetails = value
+        builderResult.googleGroups = value
       }
-      builderResult.hasGoogleGroupDetails = true
+      builderResult.hasGoogleGroups = true
       return self
     }
-    public func clearGoogleGroupDetails() -> Services.Organization.Containers.Integration.IntegrationV1Builder {
-      builderResult.hasGoogleGroupDetails = false
-      builderResult.googleGroupDetails = nil
+    public func clearGoogleGroups() -> Services.Organization.Containers.Integration.IntegrationV1Builder {
+      builderResult.hasGoogleGroups = false
+      builderResult.googleGroups = nil
       return self
     }
     override public var internalGetResult:GeneratedMessage {
@@ -398,8 +443,8 @@ public extension Services.Organization.Containers.Integration {
       if other.hasIntegrationType {
            integrationType = other.integrationType
       }
-      if (other.hasGoogleGroupDetails) {
-          mergeGoogleGroupDetails(other.googleGroupDetails)
+      if (other.hasGoogleGroups) {
+          mergeGoogleGroups(other.googleGroups)
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -435,11 +480,11 @@ public extension Services.Organization.Containers.Integration {
 
         case 42 :
           var subBuilder:Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder = Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builder()
-          if hasGoogleGroupDetails {
-            subBuilder.mergeFrom(googleGroupDetails)
+          if hasGoogleGroups {
+            subBuilder.mergeFrom(googleGroups)
           }
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-          googleGroupDetails = subBuilder.buildPartial()
+          googleGroups = subBuilder.buildPartial()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
