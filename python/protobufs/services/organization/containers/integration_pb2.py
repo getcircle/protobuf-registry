@@ -20,7 +20,7 @@ import protobufs.services.common.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/integration.proto',
   package='services.organization.containers.integration',
-  serialized_pb=_b('\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\xa8\x01\n\rIntegrationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12Y\n\x10integration_type\x18\x03 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12\x0f\n\x07\x64\x65tails\x18\x04 \x01(\t*&\n\x11IntegrationTypeV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00\x42\x43\nAcom.rhlabs.protobufs.services.organization.containers.integration')
+  serialized_pb=_b('\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\xb4\x01\n\rIntegrationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12Y\n\x10integration_type\x18\x04 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12\x0f\n\x07\x64\x65tails\x18\x05 \x01(\t*&\n\x11IntegrationTypeV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00\x42\x43\nAcom.rhlabs.protobufs.services.organization.containers.integration')
   ,
   dependencies=[protobufs.services.common.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -38,8 +38,8 @@ _INTEGRATIONTYPEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=325,
-  serialized_end=363,
+  serialized_start=337,
+  serialized_end=375,
 )
 _sym_db.RegisterEnumDescriptor(_INTEGRATIONTYPEV1)
 
@@ -63,22 +63,29 @@ _INTEGRATIONV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='organization_id', full_name='services.organization.containers.integration.IntegrationV1.organization_id', index=1,
+      name='id', full_name='services.organization.containers.integration.IntegrationV1.id', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='integration_type', full_name='services.organization.containers.integration.IntegrationV1.integration_type', index=2,
-      number=3, type=14, cpp_type=8, label=1,
+      name='organization_id', full_name='services.organization.containers.integration.IntegrationV1.organization_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='integration_type', full_name='services.organization.containers.integration.IntegrationV1.integration_type', index=3,
+      number=4, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='details', full_name='services.organization.containers.integration.IntegrationV1.details', index=3,
-      number=4, type=9, cpp_type=9, label=1,
+      name='details', full_name='services.organization.containers.integration.IntegrationV1.details', index=4,
+      number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -95,7 +102,7 @@ _INTEGRATIONV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=155,
-  serialized_end=323,
+  serialized_end=335,
 )
 
 _INTEGRATIONV1.fields_by_name['integration_type'].enum_type = _INTEGRATIONTYPEV1

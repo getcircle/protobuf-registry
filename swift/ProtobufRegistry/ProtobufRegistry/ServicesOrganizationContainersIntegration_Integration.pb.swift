@@ -9,6 +9,7 @@ public func == (lhs: Services.Organization.Containers.Integration.IntegrationV1,
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = fieldCheck && (lhs.hasIntegrationType == rhs.hasIntegrationType) && (!lhs.hasIntegrationType || lhs.integrationType == rhs.integrationType)
   fieldCheck = fieldCheck && (lhs.hasDetails == rhs.hasDetails) && (!lhs.hasDetails || lhs.details == rhs.details)
@@ -49,6 +50,7 @@ public extension Services.Organization.Containers.Integration {
     override public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
+           case "id": return id
            case "organizationId": return organizationId
            case "integrationType": return self.integrationType
            case "details": return details
@@ -58,6 +60,9 @@ public extension Services.Organization.Containers.Integration {
 
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
+
+    public private(set) var hasId:Bool = false
+    public private(set) var id:String = ""
 
     public private(set) var hasOrganizationId:Bool = false
     public private(set) var organizationId:String = ""
@@ -77,14 +82,17 @@ public extension Services.Organization.Containers.Integration {
       if hasVersion {
         output.writeUInt32(1, value:version)
       }
+      if hasId {
+        output.writeString(2, value:id)
+      }
       if hasOrganizationId {
-        output.writeString(2, value:organizationId)
+        output.writeString(3, value:organizationId)
       }
       if hasIntegrationType {
-        output.writeEnum(3, value:integrationType.rawValue)
+        output.writeEnum(4, value:integrationType.rawValue)
       }
       if hasDetails {
-        output.writeString(4, value:details)
+        output.writeString(5, value:details)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -98,14 +106,17 @@ public extension Services.Organization.Containers.Integration {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
+      if hasId {
+        serialize_size += id.computeStringSize(2)
+      }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(2)
+        serialize_size += organizationId.computeStringSize(3)
       }
       if (hasIntegrationType) {
-        serialize_size += integrationType.rawValue.computeEnumSize(3)
+        serialize_size += integrationType.rawValue.computeEnumSize(4)
       }
       if hasDetails {
-        serialize_size += details.computeStringSize(4)
+        serialize_size += details.computeStringSize(5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -151,6 +162,9 @@ public extension Services.Organization.Containers.Integration {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
+      if hasId {
+        output += "\(indent) id: \(id) \n"
+      }
       if hasOrganizationId {
         output += "\(indent) organizationId: \(organizationId) \n"
       }
@@ -167,6 +181,9 @@ public extension Services.Organization.Containers.Integration {
             var hashCode:Int = 7
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasId {
+               hashCode = (hashCode &* 31) &+ id.hashValue
             }
             if hasOrganizationId {
                hashCode = (hashCode &* 31) &+ organizationId.hashValue
@@ -226,6 +243,29 @@ public extension Services.Organization.Containers.Integration {
     public func clearVersion() -> Services.Organization.Containers.Integration.IntegrationV1Builder{
          builderResult.hasVersion = false
          builderResult.version = UInt32(1)
+         return self
+    }
+    public var hasId:Bool {
+         get {
+              return builderResult.hasId
+         }
+    }
+    public var id:String {
+         get {
+              return builderResult.id
+         }
+         set (value) {
+             builderResult.hasId = true
+             builderResult.id = value
+         }
+    }
+    public func setId(value:String)-> Services.Organization.Containers.Integration.IntegrationV1Builder {
+      self.id = value
+      return self
+    }
+    public func clearId() -> Services.Organization.Containers.Integration.IntegrationV1Builder{
+         builderResult.hasId = false
+         builderResult.id = ""
          return self
     }
     public var hasOrganizationId:Bool {
@@ -324,6 +364,9 @@ public extension Services.Organization.Containers.Integration {
       if other.hasVersion {
            version = other.version
       }
+      if other.hasId {
+           id = other.id
+      }
       if other.hasOrganizationId {
            organizationId = other.organizationId
       }
@@ -352,17 +395,20 @@ public extension Services.Organization.Containers.Integration {
           version = input.readUInt32()
 
         case 18 :
+          id = input.readString()
+
+        case 26 :
           organizationId = input.readString()
 
-        case 24 :
+        case 32 :
           let valueIntintegrationType = input.readEnum()
           if let enumsintegrationType = Services.Organization.Containers.Integration.IntegrationTypeV1(rawValue:valueIntintegrationType){
                integrationType = enumsintegrationType
           } else {
-               unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntintegrationType))
+               unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntintegrationType))
           }
 
-        case 34 :
+        case 42 :
           details = input.readString()
 
         default:
