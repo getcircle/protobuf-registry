@@ -1,0 +1,19 @@
+package services.organization.actions.create_integration;
+
+// GENERATED OPTIONS FOR: JAVA
+option java_package = "com.rhlabs.protobufs.services.organization.actions.create_integration";
+
+import "protobufs/services/common/containers.proto";
+import "protobufs/services/organization/containers/integration.proto";
+
+
+message RequestV1 {
+    optional uint32 version = 1 [default = 1];
+    optional services.organization.containers.integration.IntegrationTypeV1 integration_type = 2;
+    optional services.common.containers.MapV1 details = 3;
+}
+
+message ResponseV1 {
+    optional uint32 version = 1 [default = 1];
+    optional services.organization.containers.integration.IntegrationV1 integration = 2;
+}

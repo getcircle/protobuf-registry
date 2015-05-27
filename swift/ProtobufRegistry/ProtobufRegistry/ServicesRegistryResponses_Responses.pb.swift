@@ -256,6 +256,21 @@ public var ServicesRegistryResponsesOrganizationgetTokens:ConcreateExtensionFiel
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetTokensStatic
    }
 }
+public var ServicesRegistryResponsesOrganizationcreateIntegration:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationcreateIntegrationStatic
+   }
+}
+public var ServicesRegistryResponsesOrganizationgetIntegration:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetIntegrationStatic
+   }
+}
+public var ServicesRegistryResponsesOrganizationdeleteIntegration:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationdeleteIntegrationStatic
+   }
+}
 public var ServicesRegistryResponsesProfilecreateProfile:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilecreateProfileStatic
@@ -537,6 +552,9 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesOrganizationgetLocationStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationcreateTokenStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationgetTokensStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationcreateIntegrationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetIntegrationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationdeleteIntegrationStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfilecreateProfileStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfilegetExtendedProfileStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfilegetProfileStatic:ConcreateExtensionField
@@ -621,6 +639,9 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesOrganizationgetLocationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 214, defaultValue:Services.Organization.Actions.GetLocation.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetLocation.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationcreateTokenStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 215, defaultValue:Services.Organization.Actions.CreateToken.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateToken.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationgetTokensStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 216, defaultValue:Services.Organization.Actions.GetTokens.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTokens.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationcreateIntegrationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 217, defaultValue:Services.Organization.Actions.CreateIntegration.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateIntegration.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetIntegrationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 218, defaultValue:Services.Organization.Actions.GetIntegration.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetIntegration.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationdeleteIntegrationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 219, defaultValue:Services.Organization.Actions.DeleteIntegration.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.DeleteIntegration.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfilecreateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 300, defaultValue:Services.Profile.Actions.CreateProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.CreateProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfilegetExtendedProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 301, defaultValue:Services.Profile.Actions.GetExtendedProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetExtendedProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfilegetProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 302, defaultValue:Services.Profile.Actions.GetProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -705,6 +726,9 @@ public extension Services.Registry.Responses {
       Services.Organization.Actions.GetLocation.GetLocationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.CreateToken.CreateTokenRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.GetTokens.GetTokensRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.CreateIntegration.CreateIntegrationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetIntegration.GetIntegrationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.DeleteIntegration.DeleteIntegrationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.CreateProfile.CreateProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetExtendedProfile.GetExtendedProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetProfile.GetProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -788,6 +812,9 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesOrganizationgetLocationStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationcreateTokenStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationgetTokensStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationcreateIntegrationStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetIntegrationStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationdeleteIntegrationStatic)
       registry.addExtension(ServicesRegistryResponsesProfilecreateProfileStatic)
       registry.addExtension(ServicesRegistryResponsesProfilegetExtendedProfileStatic)
       registry.addExtension(ServicesRegistryResponsesProfilegetProfileStatic)
@@ -1090,6 +1117,15 @@ public extension Services.Registry.Responses {
     }
     public class func getTokens() -> ConcreateExtensionField {
          return ServicesRegistryResponsesOrganizationgetTokens
+    }
+    public class func createIntegration() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesOrganizationcreateIntegration
+    }
+    public class func getIntegration() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesOrganizationgetIntegration
+    }
+    public class func deleteIntegration() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesOrganizationdeleteIntegration
     }
     required public init() {
          super.init()
