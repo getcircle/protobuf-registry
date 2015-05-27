@@ -37,7 +37,6 @@ public extension Services.Organization.Actions.EnableIntegration {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Containers.Integration.IntegrationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
@@ -60,7 +59,8 @@ public extension Services.Organization.Actions.EnableIntegration {
     public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.GoogleGroups
     public private(set) var hasIntegrationType:Bool = false
     public private(set) var hasDetails:Bool = false
-    public private(set) var details:Services.Common.Containers.MapV1!
+    public private(set) var details:String = ""
+
     required public init() {
          super.init()
     }
@@ -75,7 +75,7 @@ public extension Services.Organization.Actions.EnableIntegration {
         output.writeEnum(2, value:integrationType.rawValue)
       }
       if hasDetails {
-        output.writeMessage(3, value:details)
+        output.writeString(3, value:details)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -93,9 +93,7 @@ public extension Services.Organization.Actions.EnableIntegration {
         serialize_size += integrationType.rawValue.computeEnumSize(2)
       }
       if hasDetails {
-          if let varSizedetails = details?.computeMessageSize(3) {
-              serialize_size += varSizedetails
-          }
+        serialize_size += details.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -145,9 +143,7 @@ public extension Services.Organization.Actions.EnableIntegration {
         output += "\(indent) integrationType: \(integrationType.rawValue)\n"
       }
       if hasDetails {
-        output += "\(indent) details {\n"
-        details?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
+        output += "\(indent) details: \(details) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -161,9 +157,7 @@ public extension Services.Organization.Actions.EnableIntegration {
                hashCode = (hashCode &* 31) &+ Int(integrationType.rawValue)
             }
             if hasDetails {
-                if let hashValuedetails = details?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuedetails
-                }
+               hashCode = (hashCode &* 31) &+ details.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -241,35 +235,26 @@ public extension Services.Organization.Actions.EnableIntegration {
       }
     public var hasDetails:Bool {
          get {
-             return builderResult.hasDetails
+              return builderResult.hasDetails
          }
     }
-    public var details:Services.Common.Containers.MapV1! {
+    public var details:String {
          get {
-             return builderResult.details
+              return builderResult.details
          }
          set (value) {
              builderResult.hasDetails = true
              builderResult.details = value
          }
     }
-    public func setDetails(value:Services.Common.Containers.MapV1!)-> Services.Organization.Actions.EnableIntegration.RequestV1Builder {
+    public func setDetails(value:String)-> Services.Organization.Actions.EnableIntegration.RequestV1Builder {
       self.details = value
       return self
     }
-    public func mergeDetails(value:Services.Common.Containers.MapV1) -> Services.Organization.Actions.EnableIntegration.RequestV1Builder {
-      if (builderResult.hasDetails) {
-        builderResult.details = Services.Common.Containers.MapV1.builderWithPrototype(builderResult.details).mergeFrom(value).buildPartial()
-      } else {
-        builderResult.details = value
-      }
-      builderResult.hasDetails = true
-      return self
-    }
-    public func clearDetails() -> Services.Organization.Actions.EnableIntegration.RequestV1Builder {
-      builderResult.hasDetails = false
-      builderResult.details = nil
-      return self
+    public func clearDetails() -> Services.Organization.Actions.EnableIntegration.RequestV1Builder{
+         builderResult.hasDetails = false
+         builderResult.details = ""
+         return self
     }
     override public var internalGetResult:GeneratedMessage {
          get {
@@ -301,8 +286,8 @@ public extension Services.Organization.Actions.EnableIntegration {
       if other.hasIntegrationType {
            integrationType = other.integrationType
       }
-      if (other.hasDetails) {
-          mergeDetails(other.details)
+      if other.hasDetails {
+           details = other.details
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -331,12 +316,7 @@ public extension Services.Organization.Actions.EnableIntegration {
           }
 
         case 26 :
-          var subBuilder:Services.Common.Containers.MapV1Builder = Services.Common.Containers.MapV1.builder()
-          if hasDetails {
-            subBuilder.mergeFrom(details)
-          }
-          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-          details = subBuilder.buildPartial()
+          details = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
