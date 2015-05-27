@@ -1,7 +1,7 @@
-package services.organization.actions.create_integration;
+package services.organization.actions.enable_integration;
 
 // GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.organization.actions.create_integration";
+option java_package = "com.rhlabs.protobufs.services.organization.actions.enable_integration";
 
 import "protobufs/services/common/containers.proto";
 import "protobufs/services/organization/containers/integration.proto";

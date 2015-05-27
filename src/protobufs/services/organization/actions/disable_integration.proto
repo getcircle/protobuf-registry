@@ -1,7 +1,7 @@
-package services.organization.actions.delete_integration;
+package services.organization.actions.disable_integration;
 
 // GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.organization.actions.delete_integration";
+option java_package = "com.rhlabs.protobufs.services.organization.actions.disable_integration";
 
 import "protobufs/services/organization/containers/integration.proto";
 
