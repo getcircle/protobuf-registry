@@ -11,7 +11,7 @@ public func == (lhs: Services.Organization.Containers.Integration.IntegrationV1,
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = fieldCheck && (lhs.hasIntegrationType == rhs.hasIntegrationType) && (!lhs.hasIntegrationType || lhs.integrationType == rhs.integrationType)
-  fieldCheck = fieldCheck && (lhs.details == rhs.details)
+  fieldCheck = fieldCheck && (lhs.hasDetails == rhs.hasDetails) && (!lhs.hasDetails || lhs.details == rhs.details)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -51,6 +51,7 @@ public extension Services.Organization.Containers.Integration {
            case "version": return version
            case "organizationId": return organizationId
            case "integrationType": return self.integrationType
+           case "details": return details
            default: return nil
            }
     }
@@ -63,7 +64,9 @@ public extension Services.Organization.Containers.Integration {
 
     public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.GoogleGroups
     public private(set) var hasIntegrationType:Bool = false
-    public private(set) var details:Array<Services.Common.Containers.MapV1>  = Array<Services.Common.Containers.MapV1>()
+    public private(set) var hasDetails:Bool = false
+    public private(set) var details:String = ""
+
     required public init() {
          super.init()
     }
@@ -80,8 +83,8 @@ public extension Services.Organization.Containers.Integration {
       if hasIntegrationType {
         output.writeEnum(3, value:integrationType.rawValue)
       }
-      for oneElementdetails in details {
-          output.writeMessage(4, value:oneElementdetails)
+      if hasDetails {
+        output.writeString(4, value:details)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -101,8 +104,8 @@ public extension Services.Organization.Containers.Integration {
       if (hasIntegrationType) {
         serialize_size += integrationType.rawValue.computeEnumSize(3)
       }
-      for oneElementdetails in details {
-          serialize_size += oneElementdetails.computeMessageSize(4)
+      if hasDetails {
+        serialize_size += details.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -154,12 +157,8 @@ public extension Services.Organization.Containers.Integration {
       if (hasIntegrationType) {
         output += "\(indent) integrationType: \(integrationType.rawValue)\n"
       }
-      var detailsElementIndex:Int = 0
-      for oneElementdetails in details {
-          output += "\(indent) details[\(detailsElementIndex)] {\n"
-          oneElementdetails.writeDescriptionTo(&output, indent:"\(indent)  ")
-          output += "\(indent)}\n"
-          detailsElementIndex++
+      if hasDetails {
+        output += "\(indent) details: \(details) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -175,8 +174,8 @@ public extension Services.Organization.Containers.Integration {
             if hasIntegrationType {
                hashCode = (hashCode &* 31) &+ Int(integrationType.rawValue)
             }
-            for oneElementdetails in details {
-                hashCode = (hashCode &* 31) &+ oneElementdetails.hashValue
+            if hasDetails {
+               hashCode = (hashCode &* 31) &+ details.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -275,21 +274,28 @@ public extension Services.Organization.Containers.Integration {
          builderResult.integrationType = .GoogleGroups
          return self
       }
-    public var details:Array<Services.Common.Containers.MapV1> {
+    public var hasDetails:Bool {
          get {
-             return builderResult.details
+              return builderResult.hasDetails
+         }
+    }
+    public var details:String {
+         get {
+              return builderResult.details
          }
          set (value) {
+             builderResult.hasDetails = true
              builderResult.details = value
          }
     }
-    public func setDetails(value:Array<Services.Common.Containers.MapV1>)-> Services.Organization.Containers.Integration.IntegrationV1Builder {
+    public func setDetails(value:String)-> Services.Organization.Containers.Integration.IntegrationV1Builder {
       self.details = value
       return self
     }
-    public func clearDetails() -> Services.Organization.Containers.Integration.IntegrationV1Builder {
-      builderResult.details.removeAll(keepCapacity: false)
-      return self
+    public func clearDetails() -> Services.Organization.Containers.Integration.IntegrationV1Builder{
+         builderResult.hasDetails = false
+         builderResult.details = ""
+         return self
     }
     override public var internalGetResult:GeneratedMessage {
          get {
@@ -324,8 +330,8 @@ public extension Services.Organization.Containers.Integration {
       if other.hasIntegrationType {
            integrationType = other.integrationType
       }
-      if !other.details.isEmpty  {
-         builderResult.details += other.details
+      if other.hasDetails {
+           details = other.details
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -357,9 +363,7 @@ public extension Services.Organization.Containers.Integration {
           }
 
         case 34 :
-          var subBuilder = Services.Common.Containers.MapV1.builder()
-          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-          details += [subBuilder.buildPartial()]
+          details = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
