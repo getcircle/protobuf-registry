@@ -1,5 +1,8 @@
 package services.common.containers;
 
+// GENERATED OPTIONS FOR: JAVA
+option java_package = "com.rhlabs.protobufs.services.common.containers";
+
 message KeyValueV1 {
     optional uint32 version = 1 [default = 1];
     optional string key = 2;

@@ -1,5 +1,8 @@
 package services.organization.containers.integration;
 
+// GENERATED OPTIONS FOR: JAVA
+option java_package = "com.rhlabs.protobufs.services.organization.containers.integration";
+
 import "protobufs/services/common/containers.proto";
 
 enum IntegrationTypeV1 {
