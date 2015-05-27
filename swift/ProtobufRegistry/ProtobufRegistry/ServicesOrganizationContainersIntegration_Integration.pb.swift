@@ -12,7 +12,18 @@ public func == (lhs: Services.Organization.Containers.Integration.IntegrationV1,
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = fieldCheck && (lhs.hasIntegrationType == rhs.hasIntegrationType) && (!lhs.hasIntegrationType || lhs.integrationType == rhs.integrationType)
-  fieldCheck = fieldCheck && (lhs.hasDetails == rhs.hasDetails) && (!lhs.hasDetails || lhs.details == rhs.details)
+  fieldCheck = fieldCheck && (lhs.hasGoogleGroupDetails == rhs.hasGoogleGroupDetails) && (!lhs.hasGoogleGroupDetails || lhs.googleGroupDetails == rhs.googleGroupDetails)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
+public func == (lhs: Services.Organization.Containers.Integration.GoogleGroupDetailsV1, rhs: Services.Organization.Containers.Integration.GoogleGroupDetailsV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasAdminEmail == rhs.hasAdminEmail) && (!lhs.hasAdminEmail || lhs.adminEmail == rhs.adminEmail)
+  fieldCheck = fieldCheck && (lhs.scopes == rhs.scopes)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -53,7 +64,7 @@ public extension Services.Organization.Containers.Integration {
            case "id": return id
            case "organizationId": return organizationId
            case "integrationType": return self.integrationType
-           case "details": return details
+           case "googleGroupDetails": return googleGroupDetails
            default: return nil
            }
     }
@@ -69,9 +80,8 @@ public extension Services.Organization.Containers.Integration {
 
     public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.GoogleGroups
     public private(set) var hasIntegrationType:Bool = false
-    public private(set) var hasDetails:Bool = false
-    public private(set) var details:String = ""
-
+    public private(set) var hasGoogleGroupDetails:Bool = false
+    public private(set) var googleGroupDetails:Services.Organization.Containers.Integration.GoogleGroupDetailsV1!
     required public init() {
          super.init()
     }
@@ -91,8 +101,8 @@ public extension Services.Organization.Containers.Integration {
       if hasIntegrationType {
         output.writeEnum(4, value:integrationType.rawValue)
       }
-      if hasDetails {
-        output.writeString(5, value:details)
+      if hasGoogleGroupDetails {
+        output.writeMessage(5, value:googleGroupDetails)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -115,8 +125,10 @@ public extension Services.Organization.Containers.Integration {
       if (hasIntegrationType) {
         serialize_size += integrationType.rawValue.computeEnumSize(4)
       }
-      if hasDetails {
-        serialize_size += details.computeStringSize(5)
+      if hasGoogleGroupDetails {
+          if let varSizegoogleGroupDetails = googleGroupDetails?.computeMessageSize(5) {
+              serialize_size += varSizegoogleGroupDetails
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -171,8 +183,10 @@ public extension Services.Organization.Containers.Integration {
       if (hasIntegrationType) {
         output += "\(indent) integrationType: \(integrationType.rawValue)\n"
       }
-      if hasDetails {
-        output += "\(indent) details: \(details) \n"
+      if hasGoogleGroupDetails {
+        output += "\(indent) googleGroupDetails {\n"
+        googleGroupDetails?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -191,8 +205,10 @@ public extension Services.Organization.Containers.Integration {
             if hasIntegrationType {
                hashCode = (hashCode &* 31) &+ Int(integrationType.rawValue)
             }
-            if hasDetails {
-               hashCode = (hashCode &* 31) &+ details.hashValue
+            if hasGoogleGroupDetails {
+                if let hashValuegoogleGroupDetails = googleGroupDetails?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuegoogleGroupDetails
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -314,28 +330,37 @@ public extension Services.Organization.Containers.Integration {
          builderResult.integrationType = .GoogleGroups
          return self
       }
-    public var hasDetails:Bool {
+    public var hasGoogleGroupDetails:Bool {
          get {
-              return builderResult.hasDetails
+             return builderResult.hasGoogleGroupDetails
          }
     }
-    public var details:String {
+    public var googleGroupDetails:Services.Organization.Containers.Integration.GoogleGroupDetailsV1! {
          get {
-              return builderResult.details
+             return builderResult.googleGroupDetails
          }
          set (value) {
-             builderResult.hasDetails = true
-             builderResult.details = value
+             builderResult.hasGoogleGroupDetails = true
+             builderResult.googleGroupDetails = value
          }
     }
-    public func setDetails(value:String)-> Services.Organization.Containers.Integration.IntegrationV1Builder {
-      self.details = value
+    public func setGoogleGroupDetails(value:Services.Organization.Containers.Integration.GoogleGroupDetailsV1!)-> Services.Organization.Containers.Integration.IntegrationV1Builder {
+      self.googleGroupDetails = value
       return self
     }
-    public func clearDetails() -> Services.Organization.Containers.Integration.IntegrationV1Builder{
-         builderResult.hasDetails = false
-         builderResult.details = ""
-         return self
+    public func mergeGoogleGroupDetails(value:Services.Organization.Containers.Integration.GoogleGroupDetailsV1) -> Services.Organization.Containers.Integration.IntegrationV1Builder {
+      if (builderResult.hasGoogleGroupDetails) {
+        builderResult.googleGroupDetails = Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builderWithPrototype(builderResult.googleGroupDetails).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.googleGroupDetails = value
+      }
+      builderResult.hasGoogleGroupDetails = true
+      return self
+    }
+    public func clearGoogleGroupDetails() -> Services.Organization.Containers.Integration.IntegrationV1Builder {
+      builderResult.hasGoogleGroupDetails = false
+      builderResult.googleGroupDetails = nil
+      return self
     }
     override public var internalGetResult:GeneratedMessage {
          get {
@@ -373,8 +398,8 @@ public extension Services.Organization.Containers.Integration {
       if other.hasIntegrationType {
            integrationType = other.integrationType
       }
-      if other.hasDetails {
-           details = other.details
+      if (other.hasGoogleGroupDetails) {
+          mergeGoogleGroupDetails(other.googleGroupDetails)
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -409,7 +434,290 @@ public extension Services.Organization.Containers.Integration {
           }
 
         case 42 :
-          details = input.readString()
+          var subBuilder:Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder = Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builder()
+          if hasGoogleGroupDetails {
+            subBuilder.mergeFrom(googleGroupDetails)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          googleGroupDetails = subBuilder.buildPartial()
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class GoogleGroupDetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           case "version": return version
+           case "adminEmail": return adminEmail
+           default: return nil
+           }
+    }
+
+    public private(set) var hasVersion:Bool = false
+    public private(set) var version:UInt32 = UInt32(1)
+
+    public private(set) var hasAdminEmail:Bool = false
+    public private(set) var adminEmail:String = ""
+
+    public private(set) var scopes:Array<String> = Array<String>()
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      if hasVersion {
+        output.writeUInt32(1, value:version)
+      }
+      if hasAdminEmail {
+        output.writeString(2, value:adminEmail)
+      }
+      if !scopes.isEmpty {
+        for oneValuescopes in scopes {
+          output.writeString(3, value:oneValuescopes)
+        }
+      }
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasVersion {
+        serialize_size += version.computeUInt32Size(1)
+      }
+      if hasAdminEmail {
+        serialize_size += adminEmail.computeStringSize(2)
+      }
+      var dataSizeScopes:Int32 = 0
+      for oneValuescopes in scopes {
+          dataSizeScopes += oneValuescopes.computeStringSizeNoTag()
+      }
+      serialize_size += dataSizeScopes
+      serialize_size += 1 * Int32(scopes.count)
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builder().mergeFromData(data, extensionRegistry:Services.Organization.Containers.Integration.IntegrationRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.classBuilder() as! Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder
+    }
+    public func builder() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      return classBuilder() as! Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builder()
+    }
+    public func toBuilder() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Organization.Containers.Integration.GoogleGroupDetailsV1) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      if hasVersion {
+        output += "\(indent) version: \(version) \n"
+      }
+      if hasAdminEmail {
+        output += "\(indent) adminEmail: \(adminEmail) \n"
+      }
+      var scopesElementIndex:Int = 0
+      for oneValuescopes in scopes  {
+          output += "\(indent) scopes[\(scopesElementIndex)]: \(oneValuescopes)\n"
+          scopesElementIndex++
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasVersion {
+               hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasAdminEmail {
+               hashCode = (hashCode &* 31) &+ adminEmail.hashValue
+            }
+            for oneValuescopes in scopes {
+                hashCode = (hashCode &* 31) &+ oneValuescopes.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Organization.Containers.Integration.GoogleGroupDetailsV1"
+    }
+    override public func className() -> String {
+        return "Services.Organization.Containers.Integration.GoogleGroupDetailsV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class GoogleGroupDetailsV1Builder : GeneratedMessageBuilder {
+    private var builderResult:Services.Organization.Containers.Integration.GoogleGroupDetailsV1
+
+    required override public init () {
+       builderResult = Services.Organization.Containers.Integration.GoogleGroupDetailsV1()
+       super.init()
+    }
+    public var hasVersion:Bool {
+         get {
+              return builderResult.hasVersion
+         }
+    }
+    public var version:UInt32 {
+         get {
+              return builderResult.version
+         }
+         set (value) {
+             builderResult.hasVersion = true
+             builderResult.version = value
+         }
+    }
+    public func setVersion(value:UInt32)-> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      self.version = value
+      return self
+    }
+    public func clearVersion() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder{
+         builderResult.hasVersion = false
+         builderResult.version = UInt32(1)
+         return self
+    }
+    public var hasAdminEmail:Bool {
+         get {
+              return builderResult.hasAdminEmail
+         }
+    }
+    public var adminEmail:String {
+         get {
+              return builderResult.adminEmail
+         }
+         set (value) {
+             builderResult.hasAdminEmail = true
+             builderResult.adminEmail = value
+         }
+    }
+    public func setAdminEmail(value:String)-> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      self.adminEmail = value
+      return self
+    }
+    public func clearAdminEmail() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder{
+         builderResult.hasAdminEmail = false
+         builderResult.adminEmail = ""
+         return self
+    }
+    public var scopes:Array<String> {
+         get {
+             return builderResult.scopes
+         }
+         set (array) {
+             builderResult.scopes = array
+         }
+    }
+    public func setScopes(value:Array<String>)-> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      self.scopes = value
+      return self
+    }
+    public func clearScopes() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+       builderResult.scopes.removeAll(keepCapacity: false)
+       return self
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      builderResult = Services.Organization.Containers.Integration.GoogleGroupDetailsV1()
+      return self
+    }
+    public override func clone() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
+      var returnMe:Services.Organization.Containers.Integration.GoogleGroupDetailsV1 = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Organization.Containers.Integration.GoogleGroupDetailsV1) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      if (other == Services.Organization.Containers.Integration.GoogleGroupDetailsV1()) {
+       return self
+      }
+      if other.hasVersion {
+           version = other.version
+      }
+      if other.hasAdminEmail {
+           adminEmail = other.adminEmail
+      }
+      if !other.scopes.isEmpty {
+          builderResult.scopes += other.scopes
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1Builder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        case 8 :
+          version = input.readUInt32()
+
+        case 18 :
+          adminEmail = input.readString()
+
+        case 26 :
+          scopes += [input.readString()]
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

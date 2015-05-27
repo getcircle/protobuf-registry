@@ -20,7 +20,7 @@ import protobufs.services.common.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/integration.proto',
   package='services.organization.containers.integration',
-  serialized_pb=_b('\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\xb4\x01\n\rIntegrationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12Y\n\x10integration_type\x18\x04 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12\x0f\n\x07\x64\x65tails\x18\x05 \x01(\t*&\n\x11IntegrationTypeV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00\x42\x43\nAcom.rhlabs.protobufs.services.organization.containers.integration')
+  serialized_pb=_b('\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\x85\x02\n\rIntegrationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12Y\n\x10integration_type\x18\x04 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12`\n\x14google_group_details\x18\x05 \x01(\x0b\x32\x42.services.organization.containers.integration.GoogleGroupDetailsV1\"O\n\x14GoogleGroupDetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x13\n\x0b\x61\x64min_email\x18\x02 \x01(\t\x12\x0e\n\x06scopes\x18\x03 \x03(\t*&\n\x11IntegrationTypeV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00\x42\x43\nAcom.rhlabs.protobufs.services.organization.containers.integration')
   ,
   dependencies=[protobufs.services.common.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -38,8 +38,8 @@ _INTEGRATIONTYPEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=337,
-  serialized_end=375,
+  serialized_start=499,
+  serialized_end=537,
 )
 _sym_db.RegisterEnumDescriptor(_INTEGRATIONTYPEV1)
 
@@ -84,9 +84,9 @@ _INTEGRATIONV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='details', full_name='services.organization.containers.integration.IntegrationV1.details', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='google_group_details', full_name='services.organization.containers.integration.IntegrationV1.google_group_details', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -102,11 +102,57 @@ _INTEGRATIONV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=155,
-  serialized_end=335,
+  serialized_end=416,
+)
+
+
+_GOOGLEGROUPDETAILSV1 = _descriptor.Descriptor(
+  name='GoogleGroupDetailsV1',
+  full_name='services.organization.containers.integration.GoogleGroupDetailsV1',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='version', full_name='services.organization.containers.integration.GoogleGroupDetailsV1.version', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=True, default_value=1,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='admin_email', full_name='services.organization.containers.integration.GoogleGroupDetailsV1.admin_email', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='scopes', full_name='services.organization.containers.integration.GoogleGroupDetailsV1.scopes', index=2,
+      number=3, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=418,
+  serialized_end=497,
 )
 
 _INTEGRATIONV1.fields_by_name['integration_type'].enum_type = _INTEGRATIONTYPEV1
+_INTEGRATIONV1.fields_by_name['google_group_details'].message_type = _GOOGLEGROUPDETAILSV1
 DESCRIPTOR.message_types_by_name['IntegrationV1'] = _INTEGRATIONV1
+DESCRIPTOR.message_types_by_name['GoogleGroupDetailsV1'] = _GOOGLEGROUPDETAILSV1
 DESCRIPTOR.enum_types_by_name['IntegrationTypeV1'] = _INTEGRATIONTYPEV1
 
 IntegrationV1 = _reflection.GeneratedProtocolMessageType('IntegrationV1', (_message.Message,), dict(
@@ -115,6 +161,13 @@ IntegrationV1 = _reflection.GeneratedProtocolMessageType('IntegrationV1', (_mess
   # @@protoc_insertion_point(class_scope:services.organization.containers.integration.IntegrationV1)
   ))
 _sym_db.RegisterMessage(IntegrationV1)
+
+GoogleGroupDetailsV1 = _reflection.GeneratedProtocolMessageType('GoogleGroupDetailsV1', (_message.Message,), dict(
+  DESCRIPTOR = _GOOGLEGROUPDETAILSV1,
+  __module__ = 'protobufs.services.organization.containers.integration_pb2'
+  # @@protoc_insertion_point(class_scope:services.organization.containers.integration.GoogleGroupDetailsV1)
+  ))
+_sym_db.RegisterMessage(GoogleGroupDetailsV1)
 
 
 DESCRIPTOR.has_options = True

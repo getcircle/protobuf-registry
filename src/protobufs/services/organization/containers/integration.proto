@@ -14,6 +14,11 @@ message IntegrationV1 {
     optional string id = 2;
     optional string organization_id = 3;
     optional IntegrationTypeV1 integration_type = 4;
-    // TODO this should be a "map" in proto3
-    optional string details = 5;
+    optional GoogleGroupDetailsV1 google_group_details = 5;
+}
+
+message GoogleGroupDetailsV1 {
+    optional uint32 version = 1 [default = 1];
+    optional string admin_email = 2;
+    repeated string scopes = 3;
 }
