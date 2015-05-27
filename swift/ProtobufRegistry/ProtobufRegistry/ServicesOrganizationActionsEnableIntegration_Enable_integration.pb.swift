@@ -9,8 +9,7 @@ public func == (lhs: Services.Organization.Actions.EnableIntegration.RequestV1, 
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasIntegrationType == rhs.hasIntegrationType) && (!lhs.hasIntegrationType || lhs.integrationType == rhs.integrationType)
-  fieldCheck = fieldCheck && (lhs.hasDetails == rhs.hasDetails) && (!lhs.hasDetails || lhs.details == rhs.details)
+  fieldCheck = fieldCheck && (lhs.hasIntegration == rhs.hasIntegration) && (!lhs.hasIntegration || lhs.integration == rhs.integration)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -47,8 +46,7 @@ public extension Services.Organization.Actions.EnableIntegration {
     override public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
-           case "integrationType": return self.integrationType
-           case "details": return details
+           case "integration": return integration
            default: return nil
            }
     }
@@ -56,11 +54,8 @@ public extension Services.Organization.Actions.EnableIntegration {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.GoogleGroups
-    public private(set) var hasIntegrationType:Bool = false
-    public private(set) var hasDetails:Bool = false
-    public private(set) var details:String = ""
-
+    public private(set) var hasIntegration:Bool = false
+    public private(set) var integration:Services.Organization.Containers.Integration.IntegrationV1!
     required public init() {
          super.init()
     }
@@ -71,11 +66,8 @@ public extension Services.Organization.Actions.EnableIntegration {
       if hasVersion {
         output.writeUInt32(1, value:version)
       }
-      if hasIntegrationType {
-        output.writeEnum(2, value:integrationType.rawValue)
-      }
-      if hasDetails {
-        output.writeString(3, value:details)
+      if hasIntegration {
+        output.writeMessage(2, value:integration)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -89,11 +81,10 @@ public extension Services.Organization.Actions.EnableIntegration {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
-      if (hasIntegrationType) {
-        serialize_size += integrationType.rawValue.computeEnumSize(2)
-      }
-      if hasDetails {
-        serialize_size += details.computeStringSize(3)
+      if hasIntegration {
+          if let varSizeintegration = integration?.computeMessageSize(2) {
+              serialize_size += varSizeintegration
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -139,11 +130,10 @@ public extension Services.Organization.Actions.EnableIntegration {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
-      if (hasIntegrationType) {
-        output += "\(indent) integrationType: \(integrationType.rawValue)\n"
-      }
-      if hasDetails {
-        output += "\(indent) details: \(details) \n"
+      if hasIntegration {
+        output += "\(indent) integration {\n"
+        integration?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -153,11 +143,10 @@ public extension Services.Organization.Actions.EnableIntegration {
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
             }
-            if hasIntegrationType {
-               hashCode = (hashCode &* 31) &+ Int(integrationType.rawValue)
-            }
-            if hasDetails {
-               hashCode = (hashCode &* 31) &+ details.hashValue
+            if hasIntegration {
+                if let hashValueintegration = integration?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueintegration
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -210,51 +199,37 @@ public extension Services.Organization.Actions.EnableIntegration {
          builderResult.version = UInt32(1)
          return self
     }
-      public var hasIntegrationType:Bool{
-          get {
-              return builderResult.hasIntegrationType
-          }
-      }
-      public var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 {
-          get {
-              return builderResult.integrationType
-          }
-          set (value) {
-              builderResult.hasIntegrationType = true
-              builderResult.integrationType = value
-          }
-      }
-      public func setIntegrationType(value:Services.Organization.Containers.Integration.IntegrationTypeV1)-> Services.Organization.Actions.EnableIntegration.RequestV1Builder {
-        self.integrationType = value
-        return self
-      }
-      public func clearIntegrationType() -> Services.Organization.Actions.EnableIntegration.RequestV1Builder {
-         builderResult.hasIntegrationType = false
-         builderResult.integrationType = .GoogleGroups
-         return self
-      }
-    public var hasDetails:Bool {
+    public var hasIntegration:Bool {
          get {
-              return builderResult.hasDetails
+             return builderResult.hasIntegration
          }
     }
-    public var details:String {
+    public var integration:Services.Organization.Containers.Integration.IntegrationV1! {
          get {
-              return builderResult.details
+             return builderResult.integration
          }
          set (value) {
-             builderResult.hasDetails = true
-             builderResult.details = value
+             builderResult.hasIntegration = true
+             builderResult.integration = value
          }
     }
-    public func setDetails(value:String)-> Services.Organization.Actions.EnableIntegration.RequestV1Builder {
-      self.details = value
+    public func setIntegration(value:Services.Organization.Containers.Integration.IntegrationV1!)-> Services.Organization.Actions.EnableIntegration.RequestV1Builder {
+      self.integration = value
       return self
     }
-    public func clearDetails() -> Services.Organization.Actions.EnableIntegration.RequestV1Builder{
-         builderResult.hasDetails = false
-         builderResult.details = ""
-         return self
+    public func mergeIntegration(value:Services.Organization.Containers.Integration.IntegrationV1) -> Services.Organization.Actions.EnableIntegration.RequestV1Builder {
+      if (builderResult.hasIntegration) {
+        builderResult.integration = Services.Organization.Containers.Integration.IntegrationV1.builderWithPrototype(builderResult.integration).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.integration = value
+      }
+      builderResult.hasIntegration = true
+      return self
+    }
+    public func clearIntegration() -> Services.Organization.Actions.EnableIntegration.RequestV1Builder {
+      builderResult.hasIntegration = false
+      builderResult.integration = nil
+      return self
     }
     override public var internalGetResult:GeneratedMessage {
          get {
@@ -283,11 +258,8 @@ public extension Services.Organization.Actions.EnableIntegration {
       if other.hasVersion {
            version = other.version
       }
-      if other.hasIntegrationType {
-           integrationType = other.integrationType
-      }
-      if other.hasDetails {
-           details = other.details
+      if (other.hasIntegration) {
+          mergeIntegration(other.integration)
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -307,16 +279,13 @@ public extension Services.Organization.Actions.EnableIntegration {
         case 8 :
           version = input.readUInt32()
 
-        case 16 :
-          let valueIntintegrationType = input.readEnum()
-          if let enumsintegrationType = Services.Organization.Containers.Integration.IntegrationTypeV1(rawValue:valueIntintegrationType){
-               integrationType = enumsintegrationType
-          } else {
-               unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntintegrationType))
+        case 18 :
+          var subBuilder:Services.Organization.Containers.Integration.IntegrationV1Builder = Services.Organization.Containers.Integration.IntegrationV1.builder()
+          if hasIntegration {
+            subBuilder.mergeFrom(integration)
           }
-
-        case 26 :
-          details = input.readString()
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          integration = subBuilder.buildPartial()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
