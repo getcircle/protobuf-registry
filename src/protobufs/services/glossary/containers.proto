@@ -1,7 +1,5 @@
 package services.glossary.containers;
 
-import "protobufs/services/profile/containers.proto";
-
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.glossary.containers";
 
@@ -11,7 +9,7 @@ message TermV1 {
     optional string name = 3;
     optional string definition = 4;
     optional string organization_id = 5;
-    optional services.profile.containers.ProfileV1 created_by_profile = 6;
+    optional string created_by_profile_id = 6;
     optional string created = 7;
     optional string changed = 8;
 }
