@@ -31,6 +31,7 @@ public extension Services.Glossary.Containers {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -63,8 +64,7 @@ public extension Services.Glossary.Containers {
     public private(set) var organizationId:String = ""
 
     public private(set) var hasCreatedByProfile:Bool = false
-    public private(set) var createdByProfile:String = ""
-
+    public private(set) var createdByProfile:Services.Profile.Containers.ProfileV1!
     public private(set) var hasCreated:Bool = false
     public private(set) var created:String = ""
 
@@ -91,7 +91,7 @@ public extension Services.Glossary.Containers {
         output.writeString(4, value:organizationId)
       }
       if hasCreatedByProfile {
-        output.writeString(5, value:createdByProfile)
+        output.writeMessage(5, value:createdByProfile)
       }
       if hasCreated {
         output.writeString(6, value:created)
@@ -121,7 +121,9 @@ public extension Services.Glossary.Containers {
         serialize_size += organizationId.computeStringSize(4)
       }
       if hasCreatedByProfile {
-        serialize_size += createdByProfile.computeStringSize(5)
+          if let varSizecreatedByProfile = createdByProfile?.computeMessageSize(5) {
+              serialize_size += varSizecreatedByProfile
+          }
       }
       if hasCreated {
         serialize_size += created.computeStringSize(6)
@@ -183,7 +185,9 @@ public extension Services.Glossary.Containers {
         output += "\(indent) organizationId: \(organizationId) \n"
       }
       if hasCreatedByProfile {
-        output += "\(indent) createdByProfile: \(createdByProfile) \n"
+        output += "\(indent) createdByProfile {\n"
+        createdByProfile?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
       if hasCreated {
         output += "\(indent) created: \(created) \n"
@@ -209,7 +213,9 @@ public extension Services.Glossary.Containers {
                hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             if hasCreatedByProfile {
-               hashCode = (hashCode &* 31) &+ createdByProfile.hashValue
+                if let hashValuecreatedByProfile = createdByProfile?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuecreatedByProfile
+                }
             }
             if hasCreated {
                hashCode = (hashCode &* 31) &+ created.hashValue
@@ -339,26 +345,35 @@ public extension Services.Glossary.Containers {
     }
     public var hasCreatedByProfile:Bool {
          get {
-              return builderResult.hasCreatedByProfile
+             return builderResult.hasCreatedByProfile
          }
     }
-    public var createdByProfile:String {
+    public var createdByProfile:Services.Profile.Containers.ProfileV1! {
          get {
-              return builderResult.createdByProfile
+             return builderResult.createdByProfile
          }
          set (value) {
              builderResult.hasCreatedByProfile = true
              builderResult.createdByProfile = value
          }
     }
-    public func setCreatedByProfile(value:String)-> Services.Glossary.Containers.TermV1Builder {
+    public func setCreatedByProfile(value:Services.Profile.Containers.ProfileV1!)-> Services.Glossary.Containers.TermV1Builder {
       self.createdByProfile = value
       return self
     }
-    public func clearCreatedByProfile() -> Services.Glossary.Containers.TermV1Builder{
-         builderResult.hasCreatedByProfile = false
-         builderResult.createdByProfile = ""
-         return self
+    public func mergeCreatedByProfile(value:Services.Profile.Containers.ProfileV1) -> Services.Glossary.Containers.TermV1Builder {
+      if (builderResult.hasCreatedByProfile) {
+        builderResult.createdByProfile = Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.createdByProfile).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.createdByProfile = value
+      }
+      builderResult.hasCreatedByProfile = true
+      return self
+    }
+    public func clearCreatedByProfile() -> Services.Glossary.Containers.TermV1Builder {
+      builderResult.hasCreatedByProfile = false
+      builderResult.createdByProfile = nil
+      return self
     }
     public var hasCreated:Bool {
          get {
@@ -442,8 +457,8 @@ public extension Services.Glossary.Containers {
       if other.hasOrganizationId {
            organizationId = other.organizationId
       }
-      if other.hasCreatedByProfile {
-           createdByProfile = other.createdByProfile
+      if (other.hasCreatedByProfile) {
+          mergeCreatedByProfile(other.createdByProfile)
       }
       if other.hasCreated {
            created = other.created
@@ -479,7 +494,12 @@ public extension Services.Glossary.Containers {
           organizationId = input.readString()
 
         case 42 :
-          createdByProfile = input.readString()
+          var subBuilder:Services.Profile.Containers.ProfileV1Builder = Services.Profile.Containers.ProfileV1.builder()
+          if hasCreatedByProfile {
+            subBuilder.mergeFrom(createdByProfile)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          createdByProfile = subBuilder.buildPartial()
 
         case 50 :
           created = input.readString()
