@@ -9,6 +9,7 @@ public func == (lhs: Services.Glossary.Containers.TermV1, rhs: Services.Glossary
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
   fieldCheck = fieldCheck && (lhs.hasDefinition == rhs.hasDefinition) && (!lhs.hasDefinition || lhs.definition == rhs.definition)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
@@ -41,6 +42,7 @@ public extension Services.Glossary.Containers {
     override public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
+           case "id": return id
            case "name": return name
            case "definition": return definition
            case "organizationId": return organizationId
@@ -53,6 +55,9 @@ public extension Services.Glossary.Containers {
 
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
+
+    public private(set) var hasId:Bool = false
+    public private(set) var id:String = ""
 
     public private(set) var hasName:Bool = false
     public private(set) var name:String = ""
@@ -81,23 +86,26 @@ public extension Services.Glossary.Containers {
       if hasVersion {
         output.writeUInt32(1, value:version)
       }
+      if hasId {
+        output.writeString(2, value:id)
+      }
       if hasName {
-        output.writeString(2, value:name)
+        output.writeString(3, value:name)
       }
       if hasDefinition {
-        output.writeString(3, value:definition)
+        output.writeString(4, value:definition)
       }
       if hasOrganizationId {
-        output.writeString(4, value:organizationId)
+        output.writeString(5, value:organizationId)
       }
       if hasCreatedByProfile {
-        output.writeMessage(5, value:createdByProfile)
+        output.writeMessage(6, value:createdByProfile)
       }
       if hasCreated {
-        output.writeString(6, value:created)
+        output.writeString(7, value:created)
       }
       if hasChanged {
-        output.writeString(7, value:changed)
+        output.writeString(8, value:changed)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -111,25 +119,28 @@ public extension Services.Glossary.Containers {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
+      if hasId {
+        serialize_size += id.computeStringSize(2)
+      }
       if hasName {
-        serialize_size += name.computeStringSize(2)
+        serialize_size += name.computeStringSize(3)
       }
       if hasDefinition {
-        serialize_size += definition.computeStringSize(3)
+        serialize_size += definition.computeStringSize(4)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(4)
+        serialize_size += organizationId.computeStringSize(5)
       }
       if hasCreatedByProfile {
-          if let varSizecreatedByProfile = createdByProfile?.computeMessageSize(5) {
+          if let varSizecreatedByProfile = createdByProfile?.computeMessageSize(6) {
               serialize_size += varSizecreatedByProfile
           }
       }
       if hasCreated {
-        serialize_size += created.computeStringSize(6)
+        serialize_size += created.computeStringSize(7)
       }
       if hasChanged {
-        serialize_size += changed.computeStringSize(7)
+        serialize_size += changed.computeStringSize(8)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -175,6 +186,9 @@ public extension Services.Glossary.Containers {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
+      if hasId {
+        output += "\(indent) id: \(id) \n"
+      }
       if hasName {
         output += "\(indent) name: \(name) \n"
       }
@@ -202,6 +216,9 @@ public extension Services.Glossary.Containers {
             var hashCode:Int = 7
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasId {
+               hashCode = (hashCode &* 31) &+ id.hashValue
             }
             if hasName {
                hashCode = (hashCode &* 31) &+ name.hashValue
@@ -272,6 +289,29 @@ public extension Services.Glossary.Containers {
     public func clearVersion() -> Services.Glossary.Containers.TermV1Builder{
          builderResult.hasVersion = false
          builderResult.version = UInt32(1)
+         return self
+    }
+    public var hasId:Bool {
+         get {
+              return builderResult.hasId
+         }
+    }
+    public var id:String {
+         get {
+              return builderResult.id
+         }
+         set (value) {
+             builderResult.hasId = true
+             builderResult.id = value
+         }
+    }
+    public func setId(value:String)-> Services.Glossary.Containers.TermV1Builder {
+      self.id = value
+      return self
+    }
+    public func clearId() -> Services.Glossary.Containers.TermV1Builder{
+         builderResult.hasId = false
+         builderResult.id = ""
          return self
     }
     public var hasName:Bool {
@@ -448,6 +488,9 @@ public extension Services.Glossary.Containers {
       if other.hasVersion {
            version = other.version
       }
+      if other.hasId {
+           id = other.id
+      }
       if other.hasName {
            name = other.name
       }
@@ -485,15 +528,18 @@ public extension Services.Glossary.Containers {
           version = input.readUInt32()
 
         case 18 :
-          name = input.readString()
+          id = input.readString()
 
         case 26 :
-          definition = input.readString()
+          name = input.readString()
 
         case 34 :
-          organizationId = input.readString()
+          definition = input.readString()
 
         case 42 :
+          organizationId = input.readString()
+
+        case 50 :
           var subBuilder:Services.Profile.Containers.ProfileV1Builder = Services.Profile.Containers.ProfileV1.builder()
           if hasCreatedByProfile {
             subBuilder.mergeFrom(createdByProfile)
@@ -501,10 +547,10 @@ public extension Services.Glossary.Containers {
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
           createdByProfile = subBuilder.buildPartial()
 
-        case 50 :
+        case 58 :
           created = input.readString()
 
-        case 58 :
+        case 66 :
           changed = input.readString()
 
         default:

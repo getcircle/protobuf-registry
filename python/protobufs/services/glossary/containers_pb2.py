@@ -19,7 +19,7 @@ import protobufs.services.profile.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/glossary/containers.proto',
   package='services.glossary.containers',
-  serialized_pb=_b('\n,protobufs/services/glossary/containers.proto\x12\x1cservices.glossary.containers\x1a+protobufs/services/profile/containers.proto\"\xbd\x01\n\x06TermV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\ndefinition\x18\x03 \x01(\t\x12\x17\n\x0forganization_id\x18\x04 \x01(\t\x12\x42\n\x12\x63reated_by_profile\x18\x05 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12\x0f\n\x07\x63reated\x18\x06 \x01(\t\x12\x0f\n\x07\x63hanged\x18\x07 \x01(\tB3\n1com.rhlabs.protobufs.services.glossary.containers')
+  serialized_pb=_b('\n,protobufs/services/glossary/containers.proto\x12\x1cservices.glossary.containers\x1a+protobufs/services/profile/containers.proto\"\xc9\x01\n\x06TermV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x12\n\ndefinition\x18\x04 \x01(\t\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12\x42\n\x12\x63reated_by_profile\x18\x06 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12\x0f\n\x07\x63reated\x18\x07 \x01(\t\x12\x0f\n\x07\x63hanged\x18\x08 \x01(\tB3\n1com.rhlabs.protobufs.services.glossary.containers')
   ,
   dependencies=[protobufs.services.profile.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -42,43 +42,50 @@ _TERMV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='name', full_name='services.glossary.containers.TermV1.name', index=1,
+      name='id', full_name='services.glossary.containers.TermV1.id', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='definition', full_name='services.glossary.containers.TermV1.definition', index=2,
+      name='name', full_name='services.glossary.containers.TermV1.name', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='organization_id', full_name='services.glossary.containers.TermV1.organization_id', index=3,
+      name='definition', full_name='services.glossary.containers.TermV1.definition', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='created_by_profile', full_name='services.glossary.containers.TermV1.created_by_profile', index=4,
-      number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='created', full_name='services.glossary.containers.TermV1.created', index=5,
-      number=6, type=9, cpp_type=9, label=1,
+      name='organization_id', full_name='services.glossary.containers.TermV1.organization_id', index=4,
+      number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='changed', full_name='services.glossary.containers.TermV1.changed', index=6,
+      name='created_by_profile', full_name='services.glossary.containers.TermV1.created_by_profile', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='created', full_name='services.glossary.containers.TermV1.created', index=6,
       number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='changed', full_name='services.glossary.containers.TermV1.changed', index=7,
+      number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -95,7 +102,7 @@ _TERMV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=124,
-  serialized_end=313,
+  serialized_end=325,
 )
 
 _TERMV1.fields_by_name['created_by_profile'].message_type = protobufs.services.profile.containers_pb2._PROFILEV1
