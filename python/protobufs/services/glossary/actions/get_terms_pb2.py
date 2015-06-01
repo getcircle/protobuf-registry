@@ -19,7 +19,7 @@ import protobufs.services.glossary.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/glossary/actions/get_terms.proto',
   package='services.glossary.actions.get_terms',
-  serialized_pb=_b('\n3protobufs/services/glossary/actions/get_terms.proto\x12#services.glossary.actions.get_terms\x1a,protobufs/services/glossary/containers.proto\"E\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0b\n\x03ids\x18\x02 \x03(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\"U\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x33\n\x05terms\x18\x02 \x03(\x0b\x32$.services.glossary.containers.TermV1B:\n8com.rhlabs.protobufs.services.glossary.actions.get_terms')
+  serialized_pb=_b('\n3protobufs/services/glossary/actions/get_terms.proto\x12#services.glossary.actions.get_terms\x1a,protobufs/services/glossary/containers.proto\",\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0b\n\x03ids\x18\x02 \x03(\t\"U\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x33\n\x05terms\x18\x02 \x03(\x0b\x32$.services.glossary.containers.TermV1B:\n8com.rhlabs.protobufs.services.glossary.actions.get_terms')
   ,
   dependencies=[protobufs.services.glossary.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -48,13 +48,6 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='organization_id', full_name='services.glossary.actions.get_terms.RequestV1.organization_id', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -67,7 +60,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=138,
-  serialized_end=207,
+  serialized_end=182,
 )
 
 
@@ -103,8 +96,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=209,
-  serialized_end=294,
+  serialized_start=184,
+  serialized_end=269,
 )
 
 _RESPONSEV1.fields_by_name['terms'].message_type = protobufs.services.glossary.containers_pb2._TERMV1

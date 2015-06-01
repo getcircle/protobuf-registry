@@ -10,7 +10,6 @@ public func == (lhs: Services.Glossary.Actions.GetTerms.RequestV1, rhs: Services
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
-  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -47,16 +46,12 @@ public extension Services.Glossary.Actions.GetTerms {
     override public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
-           case "organizationId": return organizationId
            default: return nil
            }
     }
 
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
-
-    public private(set) var hasOrganizationId:Bool = false
-    public private(set) var organizationId:String = ""
 
     public private(set) var ids:Array<String> = Array<String>()
     required public init() {
@@ -73,9 +68,6 @@ public extension Services.Glossary.Actions.GetTerms {
         for oneValueids in ids {
           output.writeString(2, value:oneValueids)
         }
-      }
-      if hasOrganizationId {
-        output.writeString(3, value:organizationId)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -95,9 +87,6 @@ public extension Services.Glossary.Actions.GetTerms {
       }
       serialize_size += dataSizeIds
       serialize_size += 1 * Int32(ids.count)
-      if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(3)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -147,9 +136,6 @@ public extension Services.Glossary.Actions.GetTerms {
           output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
           idsElementIndex++
       }
-      if hasOrganizationId {
-        output += "\(indent) organizationId: \(organizationId) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -160,9 +146,6 @@ public extension Services.Glossary.Actions.GetTerms {
             }
             for oneValueids in ids {
                 hashCode = (hashCode &* 31) &+ oneValueids.hashValue
-            }
-            if hasOrganizationId {
-               hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -231,29 +214,6 @@ public extension Services.Glossary.Actions.GetTerms {
        builderResult.ids.removeAll(keepCapacity: false)
        return self
     }
-    public var hasOrganizationId:Bool {
-         get {
-              return builderResult.hasOrganizationId
-         }
-    }
-    public var organizationId:String {
-         get {
-              return builderResult.organizationId
-         }
-         set (value) {
-             builderResult.hasOrganizationId = true
-             builderResult.organizationId = value
-         }
-    }
-    public func setOrganizationId(value:String)-> Services.Glossary.Actions.GetTerms.RequestV1Builder {
-      self.organizationId = value
-      return self
-    }
-    public func clearOrganizationId() -> Services.Glossary.Actions.GetTerms.RequestV1Builder{
-         builderResult.hasOrganizationId = false
-         builderResult.organizationId = ""
-         return self
-    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -284,9 +244,6 @@ public extension Services.Glossary.Actions.GetTerms {
       if !other.ids.isEmpty {
           builderResult.ids += other.ids
       }
-      if other.hasOrganizationId {
-           organizationId = other.organizationId
-      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -307,9 +264,6 @@ public extension Services.Glossary.Actions.GetTerms {
 
         case 18 :
           ids += [input.readString()]
-
-        case 26 :
-          organizationId = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
