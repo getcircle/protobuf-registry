@@ -16,6 +16,7 @@ public func == (lhs: Services.Glossary.Containers.TermV1, rhs: Services.Glossary
   fieldCheck = fieldCheck && (lhs.hasCreatedByProfileId == rhs.hasCreatedByProfileId) && (!lhs.hasCreatedByProfileId || lhs.createdByProfileId == rhs.createdByProfileId)
   fieldCheck = fieldCheck && (lhs.hasCreated == rhs.hasCreated) && (!lhs.hasCreated || lhs.created == rhs.created)
   fieldCheck = fieldCheck && (lhs.hasChanged == rhs.hasChanged) && (!lhs.hasChanged || lhs.changed == rhs.changed)
+  fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -32,6 +33,7 @@ public extension Services.Glossary.Containers {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -48,6 +50,7 @@ public extension Services.Glossary.Containers {
            case "createdByProfileId": return createdByProfileId
            case "created": return created
            case "changed": return changed
+           case "permissions": return permissions
            default: return nil
            }
     }
@@ -76,6 +79,8 @@ public extension Services.Glossary.Containers {
     public private(set) var hasChanged:Bool = false
     public private(set) var changed:String = ""
 
+    public private(set) var hasPermissions:Bool = false
+    public private(set) var permissions:Services.Common.Containers.PermissionsV1!
     required public init() {
          super.init()
     }
@@ -106,6 +111,9 @@ public extension Services.Glossary.Containers {
       }
       if hasChanged {
         output.writeString(8, value:changed)
+      }
+      if hasPermissions {
+        output.writeMessage(9, value:permissions)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -139,6 +147,11 @@ public extension Services.Glossary.Containers {
       }
       if hasChanged {
         serialize_size += changed.computeStringSize(8)
+      }
+      if hasPermissions {
+          if let varSizepermissions = permissions?.computeMessageSize(9) {
+              serialize_size += varSizepermissions
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -205,6 +218,11 @@ public extension Services.Glossary.Containers {
       if hasChanged {
         output += "\(indent) changed: \(changed) \n"
       }
+      if hasPermissions {
+        output += "\(indent) permissions {\n"
+        permissions?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -233,6 +251,11 @@ public extension Services.Glossary.Containers {
             }
             if hasChanged {
                hashCode = (hashCode &* 31) &+ changed.hashValue
+            }
+            if hasPermissions {
+                if let hashValuepermissions = permissions?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuepermissions
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -446,6 +469,38 @@ public extension Services.Glossary.Containers {
          builderResult.changed = ""
          return self
     }
+    public var hasPermissions:Bool {
+         get {
+             return builderResult.hasPermissions
+         }
+    }
+    public var permissions:Services.Common.Containers.PermissionsV1! {
+         get {
+             return builderResult.permissions
+         }
+         set (value) {
+             builderResult.hasPermissions = true
+             builderResult.permissions = value
+         }
+    }
+    public func setPermissions(value:Services.Common.Containers.PermissionsV1!)-> Services.Glossary.Containers.TermV1Builder {
+      self.permissions = value
+      return self
+    }
+    public func mergePermissions(value:Services.Common.Containers.PermissionsV1) -> Services.Glossary.Containers.TermV1Builder {
+      if (builderResult.hasPermissions) {
+        builderResult.permissions = Services.Common.Containers.PermissionsV1.builderWithPrototype(builderResult.permissions).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.permissions = value
+      }
+      builderResult.hasPermissions = true
+      return self
+    }
+    public func clearPermissions() -> Services.Glossary.Containers.TermV1Builder {
+      builderResult.hasPermissions = false
+      builderResult.permissions = nil
+      return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -494,6 +549,9 @@ public extension Services.Glossary.Containers {
       if other.hasChanged {
            changed = other.changed
       }
+      if (other.hasPermissions) {
+          mergePermissions(other.permissions)
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -532,6 +590,14 @@ public extension Services.Glossary.Containers {
 
         case 66 :
           changed = input.readString()
+
+        case 74 :
+          var subBuilder:Services.Common.Containers.PermissionsV1Builder = Services.Common.Containers.PermissionsV1.builder()
+          if hasPermissions {
+            subBuilder.mergeFrom(permissions)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          permissions = subBuilder.buildPartial()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
