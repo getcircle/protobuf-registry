@@ -99,6 +99,14 @@ public func == (lhs: Services.Registry.Responses.Glossary, rhs: Services.Registr
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: Services.Registry.Responses.Notification, rhs: Services.Registry.Responses.Notification) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public var ServicesRegistryResponsesUsercreateUser:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsercreateUserStatic
@@ -544,6 +552,26 @@ public var ServicesRegistryResponsesGlossarydeleteTerm:ConcreateExtensionField {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesGlossarydeleteTermStatic
    }
 }
+public var ServicesRegistryResponsesNotificationregisterDevice:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNotificationregisterDeviceStatic
+   }
+}
+public var ServicesRegistryResponsesNotificationgetPreferences:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNotificationgetPreferencesStatic
+   }
+}
+public var ServicesRegistryResponsesNotificationupdatePreference:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNotificationupdatePreferenceStatic
+   }
+}
+public var ServicesRegistryResponsesNotificationsendNotification:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNotificationsendNotificationStatic
+   }
+}
 public extension Services.Registry.Responses {
   public struct ResponsesRoot {
     public static var sharedInstance : ResponsesRoot {
@@ -641,6 +669,10 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesGlossarygetTermsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesGlossaryupdateTermStatic:ConcreateExtensionField
     var ServicesRegistryResponsesGlossarydeleteTermStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesNotificationregisterDeviceStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesNotificationgetPreferencesStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesNotificationupdatePreferenceStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesNotificationsendNotificationStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -733,6 +765,10 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesGlossarygetTermsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1202, defaultValue:Services.Glossary.Actions.GetTerms.ResponseV1(), messageOrGroupClass:Services.Glossary.Actions.GetTerms.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesGlossaryupdateTermStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1203, defaultValue:Services.Glossary.Actions.UpdateTerm.ResponseV1(), messageOrGroupClass:Services.Glossary.Actions.UpdateTerm.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesGlossarydeleteTermStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1204, defaultValue:Services.Glossary.Actions.DeleteTerm.ResponseV1(), messageOrGroupClass:Services.Glossary.Actions.DeleteTerm.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesNotificationregisterDeviceStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1300, defaultValue:Services.Notification.Actions.RegisterDevice.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.RegisterDevice.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesNotificationgetPreferencesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1301, defaultValue:Services.Notification.Actions.GetPreferences.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.GetPreferences.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesNotificationupdatePreferenceStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1302, defaultValue:Services.Notification.Actions.UpdatePreference.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.UpdatePreference.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesNotificationsendNotificationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1303, defaultValue:Services.Notification.Actions.SendNotification.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.SendNotification.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -825,6 +861,10 @@ public extension Services.Registry.Responses {
       Services.Glossary.Actions.GetTerms.GetTermsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Glossary.Actions.UpdateTerm.UpdateTermRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Glossary.Actions.DeleteTerm.DeleteTermRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Notification.Actions.RegisterDevice.RegisterDeviceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Notification.Actions.GetPreferences.GetPreferencesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Notification.Actions.UpdatePreference.UpdatePreferenceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Notification.Actions.SendNotification.SendNotificationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryResponsesUsercreateUserStatic)
@@ -916,6 +956,10 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesGlossarygetTermsStatic)
       registry.addExtension(ServicesRegistryResponsesGlossaryupdateTermStatic)
       registry.addExtension(ServicesRegistryResponsesGlossarydeleteTermStatic)
+      registry.addExtension(ServicesRegistryResponsesNotificationregisterDeviceStatic)
+      registry.addExtension(ServicesRegistryResponsesNotificationgetPreferencesStatic)
+      registry.addExtension(ServicesRegistryResponsesNotificationupdatePreferenceStatic)
+      registry.addExtension(ServicesRegistryResponsesNotificationsendNotificationStatic)
     }
   }
 
@@ -2920,6 +2964,164 @@ public extension Services.Registry.Responses {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
     public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.GlossaryBuilder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class Notification : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           default: return nil
+           }
+    }
+
+    public class func registerDevice() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesNotificationregisterDevice
+    }
+    public class func getPreferences() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesNotificationgetPreferences
+    }
+    public class func updatePreference() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesNotificationupdatePreference
+    }
+    public class func sendNotification() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesNotificationsendNotification
+    }
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Notification {
+      return Services.Registry.Responses.Notification.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Notification {
+      return Services.Registry.Responses.Notification.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Notification {
+      return Services.Registry.Responses.Notification.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Notification {
+      return Services.Registry.Responses.Notification.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Notification {
+      return Services.Registry.Responses.Notification.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Notification {
+      return Services.Registry.Responses.Notification.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Registry.Responses.NotificationBuilder {
+      return Services.Registry.Responses.Notification.classBuilder() as! Services.Registry.Responses.NotificationBuilder
+    }
+    public func builder() -> Services.Registry.Responses.NotificationBuilder {
+      return classBuilder() as! Services.Registry.Responses.NotificationBuilder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Registry.Responses.NotificationBuilder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Registry.Responses.Notification.builder()
+    }
+    public func toBuilder() -> Services.Registry.Responses.NotificationBuilder {
+      return Services.Registry.Responses.Notification.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Notification) -> Services.Registry.Responses.NotificationBuilder {
+      return Services.Registry.Responses.Notification.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Registry.Responses.Notification"
+    }
+    override public func className() -> String {
+        return "Services.Registry.Responses.Notification"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Registry.Responses.Notification.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class NotificationBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.Notification
+
+    required override public init () {
+       builderResult = Services.Registry.Responses.Notification()
+       super.init()
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Registry.Responses.NotificationBuilder {
+      builderResult = Services.Registry.Responses.Notification()
+      return self
+    }
+    public override func clone() -> Services.Registry.Responses.NotificationBuilder {
+      return Services.Registry.Responses.Notification.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Registry.Responses.Notification {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Registry.Responses.Notification {
+      var returnMe:Services.Registry.Responses.Notification = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Registry.Responses.Notification) -> Services.Registry.Responses.NotificationBuilder {
+      if (other == Services.Registry.Responses.Notification()) {
+       return self
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.NotificationBuilder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.NotificationBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
