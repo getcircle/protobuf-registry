@@ -187,6 +187,11 @@ public var ServicesRegistryResponsesUsergetAuthenticationInstructions:ConcreateE
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsergetAuthenticationInstructionsStatic
    }
 }
+public var ServicesRegistryResponsesUsergetActiveDevices:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsergetActiveDevicesStatic
+   }
+}
 public var ServicesRegistryResponsesOrganizationcreateOrganization:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationcreateOrganizationStatic
@@ -596,6 +601,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesUserdeleteIdentityStatic:ConcreateExtensionField
     var ServicesRegistryResponsesUserlogoutStatic:ConcreateExtensionField
     var ServicesRegistryResponsesUsergetAuthenticationInstructionsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUsergetActiveDevicesStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationcreateOrganizationStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationgetOrganizationStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationcreateTeamStatic:ConcreateExtensionField
@@ -692,6 +698,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesUserdeleteIdentityStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 113, defaultValue:Services.User.Actions.DeleteIdentity.ResponseV1(), messageOrGroupClass:Services.User.Actions.DeleteIdentity.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesUserlogoutStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 114, defaultValue:Services.User.Actions.Logout.ResponseV1(), messageOrGroupClass:Services.User.Actions.Logout.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesUsergetAuthenticationInstructionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 115, defaultValue:Services.User.Actions.GetAuthenticationInstructions.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetAuthenticationInstructions.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUsergetActiveDevicesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 116, defaultValue:Services.User.Actions.GetActiveDevices.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetActiveDevices.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationcreateOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 200, defaultValue:Services.Organization.Actions.CreateOrganization.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateOrganization.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationgetOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 201, defaultValue:Services.Organization.Actions.GetOrganization.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetOrganization.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationcreateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 202, defaultValue:Services.Organization.Actions.CreateTeam.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -788,6 +795,7 @@ public extension Services.Registry.Responses {
       Services.User.Actions.DeleteIdentity.DeleteIdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.User.Actions.Logout.LogoutRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.User.Actions.GetAuthenticationInstructions.GetAuthenticationInstructionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Actions.GetActiveDevices.GetActiveDevicesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.CreateOrganization.CreateOrganizationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.CreateTeam.CreateTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.CreateAddress.CreateAddressRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -883,6 +891,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesUserdeleteIdentityStatic)
       registry.addExtension(ServicesRegistryResponsesUserlogoutStatic)
       registry.addExtension(ServicesRegistryResponsesUsergetAuthenticationInstructionsStatic)
+      registry.addExtension(ServicesRegistryResponsesUsergetActiveDevicesStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationcreateOrganizationStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationgetOrganizationStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationcreateTeamStatic)
@@ -1017,6 +1026,9 @@ public extension Services.Registry.Responses {
     }
     public class func getAuthenticationInstructions() -> ConcreateExtensionField {
          return ServicesRegistryResponsesUsergetAuthenticationInstructions
+    }
+    public class func getActiveDevices() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesUsergetActiveDevices
     }
     required public init() {
          super.init()
