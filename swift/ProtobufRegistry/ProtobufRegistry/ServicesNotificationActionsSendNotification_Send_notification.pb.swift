@@ -10,7 +10,6 @@ public func == (lhs: Services.Notification.Actions.SendNotification.RequestV1, r
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasToProfileId == rhs.hasToProfileId) && (!lhs.hasToProfileId || lhs.toProfileId == rhs.toProfileId)
-  fieldCheck = fieldCheck && (lhs.hasToOrganizationId == rhs.hasToOrganizationId) && (!lhs.hasToOrganizationId || lhs.toOrganizationId == rhs.toOrganizationId)
   fieldCheck = fieldCheck && (lhs.hasNotificationType == rhs.hasNotificationType) && (!lhs.hasNotificationType || lhs.notificationType == rhs.notificationType)
   fieldCheck = fieldCheck && (lhs.hasGroupMembershipRequest == rhs.hasGroupMembershipRequest) && (!lhs.hasGroupMembershipRequest || lhs.groupMembershipRequest == rhs.groupMembershipRequest)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -49,7 +48,6 @@ public extension Services.Notification.Actions.SendNotification {
            switch key {
            case "version": return version
            case "toProfileId": return toProfileId
-           case "toOrganizationId": return toOrganizationId
            case "notificationType": return notificationType
            case "groupMembershipRequest": return groupMembershipRequest
            default: return nil
@@ -61,9 +59,6 @@ public extension Services.Notification.Actions.SendNotification {
 
     public private(set) var hasToProfileId:Bool = false
     public private(set) var toProfileId:String = ""
-
-    public private(set) var hasToOrganizationId:Bool = false
-    public private(set) var toOrganizationId:String = ""
 
     public private(set) var hasNotificationType:Bool = false
     public private(set) var notificationType:Services.Notification.Containers.NotificationTypeV1!
@@ -82,14 +77,11 @@ public extension Services.Notification.Actions.SendNotification {
       if hasToProfileId {
         output.writeString(2, value:toProfileId)
       }
-      if hasToOrganizationId {
-        output.writeString(3, value:toOrganizationId)
-      }
       if hasNotificationType {
-        output.writeMessage(4, value:notificationType)
+        output.writeMessage(3, value:notificationType)
       }
       if hasGroupMembershipRequest {
-        output.writeMessage(5, value:groupMembershipRequest)
+        output.writeMessage(4, value:groupMembershipRequest)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -106,16 +98,13 @@ public extension Services.Notification.Actions.SendNotification {
       if hasToProfileId {
         serialize_size += toProfileId.computeStringSize(2)
       }
-      if hasToOrganizationId {
-        serialize_size += toOrganizationId.computeStringSize(3)
-      }
       if hasNotificationType {
-          if let varSizenotificationType = notificationType?.computeMessageSize(4) {
+          if let varSizenotificationType = notificationType?.computeMessageSize(3) {
               serialize_size += varSizenotificationType
           }
       }
       if hasGroupMembershipRequest {
-          if let varSizegroupMembershipRequest = groupMembershipRequest?.computeMessageSize(5) {
+          if let varSizegroupMembershipRequest = groupMembershipRequest?.computeMessageSize(4) {
               serialize_size += varSizegroupMembershipRequest
           }
       }
@@ -166,9 +155,6 @@ public extension Services.Notification.Actions.SendNotification {
       if hasToProfileId {
         output += "\(indent) toProfileId: \(toProfileId) \n"
       }
-      if hasToOrganizationId {
-        output += "\(indent) toOrganizationId: \(toOrganizationId) \n"
-      }
       if hasNotificationType {
         output += "\(indent) notificationType {\n"
         notificationType?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -189,9 +175,6 @@ public extension Services.Notification.Actions.SendNotification {
             }
             if hasToProfileId {
                hashCode = (hashCode &* 31) &+ toProfileId.hashValue
-            }
-            if hasToOrganizationId {
-               hashCode = (hashCode &* 31) &+ toOrganizationId.hashValue
             }
             if hasNotificationType {
                 if let hashValuenotificationType = notificationType?.hashValue {
@@ -275,29 +258,6 @@ public extension Services.Notification.Actions.SendNotification {
     public func clearToProfileId() -> Services.Notification.Actions.SendNotification.RequestV1Builder{
          builderResult.hasToProfileId = false
          builderResult.toProfileId = ""
-         return self
-    }
-    public var hasToOrganizationId:Bool {
-         get {
-              return builderResult.hasToOrganizationId
-         }
-    }
-    public var toOrganizationId:String {
-         get {
-              return builderResult.toOrganizationId
-         }
-         set (value) {
-             builderResult.hasToOrganizationId = true
-             builderResult.toOrganizationId = value
-         }
-    }
-    public func setToOrganizationId(value:String)-> Services.Notification.Actions.SendNotification.RequestV1Builder {
-      self.toOrganizationId = value
-      return self
-    }
-    public func clearToOrganizationId() -> Services.Notification.Actions.SendNotification.RequestV1Builder{
-         builderResult.hasToOrganizationId = false
-         builderResult.toOrganizationId = ""
          return self
     }
     public var hasNotificationType:Bool {
@@ -394,9 +354,6 @@ public extension Services.Notification.Actions.SendNotification {
       if other.hasToProfileId {
            toProfileId = other.toProfileId
       }
-      if other.hasToOrganizationId {
-           toOrganizationId = other.toOrganizationId
-      }
       if (other.hasNotificationType) {
           mergeNotificationType(other.notificationType)
       }
@@ -425,9 +382,6 @@ public extension Services.Notification.Actions.SendNotification {
           toProfileId = input.readString()
 
         case 26 :
-          toOrganizationId = input.readString()
-
-        case 34 :
           var subBuilder:Services.Notification.Containers.NotificationTypeV1Builder = Services.Notification.Containers.NotificationTypeV1.builder()
           if hasNotificationType {
             subBuilder.mergeFrom(notificationType)
@@ -435,7 +389,7 @@ public extension Services.Notification.Actions.SendNotification {
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
           notificationType = subBuilder.buildPartial()
 
-        case 42 :
+        case 34 :
           var subBuilder:Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder = Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder()
           if hasGroupMembershipRequest {
             subBuilder.mergeFrom(groupMembershipRequest)

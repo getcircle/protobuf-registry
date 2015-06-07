@@ -19,7 +19,7 @@ import protobufs.services.notification.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/notification/actions/send_notification.proto',
   package='services.notification.actions.send_notification',
-  serialized_pb=_b('\n?protobufs/services/notification/actions/send_notification.proto\x12/services.notification.actions.send_notification\x1a\x30protobufs/services/notification/containers.proto\"\x8d\x02\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x15\n\rto_profile_id\x18\x02 \x01(\t\x12\x1a\n\x12to_organization_id\x18\x03 \x01(\t\x12O\n\x11notification_type\x18\x04 \x01(\x0b\x32\x34.services.notification.containers.NotificationTypeV1\x12h\n\x18group_membership_request\x18\x05 \x01(\x0b\x32\x46.services.notification.containers.GroupMembershipRequestNotificationV1\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31')
+  serialized_pb=_b('\n?protobufs/services/notification/actions/send_notification.proto\x12/services.notification.actions.send_notification\x1a\x30protobufs/services/notification/containers.proto\"\xf1\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x15\n\rto_profile_id\x18\x02 \x01(\t\x12O\n\x11notification_type\x18\x03 \x01(\x0b\x32\x34.services.notification.containers.NotificationTypeV1\x12h\n\x18group_membership_request\x18\x04 \x01(\x0b\x32\x46.services.notification.containers.GroupMembershipRequestNotificationV1\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31')
   ,
   dependencies=[protobufs.services.notification.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -49,22 +49,15 @@ _REQUESTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='to_organization_id', full_name='services.notification.actions.send_notification.RequestV1.to_organization_id', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='notification_type', full_name='services.notification.actions.send_notification.RequestV1.notification_type', index=3,
-      number=4, type=11, cpp_type=10, label=1,
+      name='notification_type', full_name='services.notification.actions.send_notification.RequestV1.notification_type', index=2,
+      number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='group_membership_request', full_name='services.notification.actions.send_notification.RequestV1.group_membership_request', index=4,
-      number=5, type=11, cpp_type=10, label=1,
+      name='group_membership_request', full_name='services.notification.actions.send_notification.RequestV1.group_membership_request', index=3,
+      number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -81,7 +74,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=167,
-  serialized_end=436,
+  serialized_end=408,
 )
 
 
@@ -110,8 +103,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=438,
-  serialized_end=470,
+  serialized_start=410,
+  serialized_end=442,
 )
 
 _REQUESTV1.fields_by_name['notification_type'].message_type = protobufs.services.notification.containers_pb2._NOTIFICATIONTYPEV1
