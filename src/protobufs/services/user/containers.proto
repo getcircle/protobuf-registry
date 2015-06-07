@@ -26,6 +26,7 @@ message DeviceV1 {
     optional string user_id = 8;
     optional string language_preference = 9;
     optional ProviderV1 provider = 10;
+    optional bool active = 11;
 }
 
 message IdentityV1 {
