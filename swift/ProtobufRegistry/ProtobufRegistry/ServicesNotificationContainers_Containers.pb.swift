@@ -24,6 +24,7 @@ public func == (lhs: Services.Notification.Containers.NotificationTokenV1, rhs: 
   fieldCheck = fieldCheck && (lhs.hasDeviceId == rhs.hasDeviceId) && (!lhs.hasDeviceId || lhs.deviceId == rhs.deviceId)
   fieldCheck = fieldCheck && (lhs.hasProviderToken == rhs.hasProviderToken) && (!lhs.hasProviderToken || lhs.providerToken == rhs.providerToken)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
+  fieldCheck = fieldCheck && (lhs.hasProviderPlatform == rhs.hasProviderPlatform) && (!lhs.hasProviderPlatform || lhs.providerPlatform == rhs.providerPlatform)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -371,7 +372,18 @@ public extension Services.Notification.Containers {
 
       public enum ProviderV1:Int32 {
         case Sns = 0
-        case Gms = 1
+
+      }
+
+      //Enum type declaration end 
+
+
+
+      //Enum type declaration start 
+
+      public enum ProviderPlatformV1:Int32 {
+        case Apns = 0
+        case Gcm = 1
 
       }
 
@@ -384,6 +396,7 @@ public extension Services.Notification.Containers {
            case "deviceId": return deviceId
            case "providerToken": return providerToken
            case "provider": return self.provider
+           case "providerPlatform": return self.providerPlatform
            default: return nil
            }
     }
@@ -402,6 +415,8 @@ public extension Services.Notification.Containers {
 
     public private(set) var provider:Services.Notification.Containers.NotificationTokenV1.ProviderV1 = Services.Notification.Containers.NotificationTokenV1.ProviderV1.Sns
     public private(set) var hasProvider:Bool = false
+    public private(set) var providerPlatform:Services.Notification.Containers.NotificationTokenV1.ProviderPlatformV1 = Services.Notification.Containers.NotificationTokenV1.ProviderPlatformV1.Apns
+    public private(set) var hasProviderPlatform:Bool = false
     required public init() {
          super.init()
     }
@@ -423,6 +438,9 @@ public extension Services.Notification.Containers {
       }
       if hasProvider {
         output.writeEnum(5, value:provider.rawValue)
+      }
+      if hasProviderPlatform {
+        output.writeEnum(6, value:providerPlatform.rawValue)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -447,6 +465,9 @@ public extension Services.Notification.Containers {
       }
       if (hasProvider) {
         serialize_size += provider.rawValue.computeEnumSize(5)
+      }
+      if (hasProviderPlatform) {
+        serialize_size += providerPlatform.rawValue.computeEnumSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -504,6 +525,9 @@ public extension Services.Notification.Containers {
       if (hasProvider) {
         output += "\(indent) provider: \(provider.rawValue)\n"
       }
+      if (hasProviderPlatform) {
+        output += "\(indent) providerPlatform: \(providerPlatform.rawValue)\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -523,6 +547,9 @@ public extension Services.Notification.Containers {
             }
             if hasProvider {
                hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
+            }
+            if hasProviderPlatform {
+               hashCode = (hashCode &* 31) &+ Int(providerPlatform.rawValue)
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -667,6 +694,29 @@ public extension Services.Notification.Containers {
          builderResult.provider = .Sns
          return self
       }
+      public var hasProviderPlatform:Bool{
+          get {
+              return builderResult.hasProviderPlatform
+          }
+      }
+      public var providerPlatform:Services.Notification.Containers.NotificationTokenV1.ProviderPlatformV1 {
+          get {
+              return builderResult.providerPlatform
+          }
+          set (value) {
+              builderResult.hasProviderPlatform = true
+              builderResult.providerPlatform = value
+          }
+      }
+      public func setProviderPlatform(value:Services.Notification.Containers.NotificationTokenV1.ProviderPlatformV1)-> Services.Notification.Containers.NotificationTokenV1Builder {
+        self.providerPlatform = value
+        return self
+      }
+      public func clearProviderPlatform() -> Services.Notification.Containers.NotificationTokenV1Builder {
+         builderResult.hasProviderPlatform = false
+         builderResult.providerPlatform = .Apns
+         return self
+      }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -706,6 +756,9 @@ public extension Services.Notification.Containers {
       if other.hasProvider {
            provider = other.provider
       }
+      if other.hasProviderPlatform {
+           providerPlatform = other.providerPlatform
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -739,6 +792,14 @@ public extension Services.Notification.Containers {
                provider = enumsprovider
           } else {
                unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueIntprovider))
+          }
+
+        case 48 :
+          let valueIntproviderPlatform = input.readEnum()
+          if let enumsproviderPlatform = Services.Notification.Containers.NotificationTokenV1.ProviderPlatformV1(rawValue:valueIntproviderPlatform){
+               providerPlatform = enumsproviderPlatform
+          } else {
+               unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntproviderPlatform))
           }
 
         default:

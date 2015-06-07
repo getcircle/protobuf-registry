@@ -14,7 +14,11 @@ message NotificationTokenV1 {
 
     enum ProviderV1 {
         SNS = 0;
-        GMS = 1;
+    }
+
+    enum ProviderPlatformV1 {
+        APNS = 0;
+        GCM = 1;
     }
 
     optional uint32 version = 1 [default = 1];
@@ -22,6 +26,7 @@ message NotificationTokenV1 {
     optional string device_id = 3;
     optional string provider_token = 4;
     optional ProviderV1 provider = 5;
+    optional ProviderPlatformV1 provider_platform = 6;
 }
 
 message NotificationPreferenceV1 {
