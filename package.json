@@ -1,6 +1,6 @@
 {
   "name": "protobufs",
-  "version": "2.13.6",
+  "version": "2.13.7",
   "description": "Circle Javascript Protobufs",
   "main": "js/index.js",
   "directories": {
