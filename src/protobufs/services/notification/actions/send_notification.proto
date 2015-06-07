@@ -5,7 +5,7 @@ import "protobufs/services/notification/containers.proto";
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
     optional string to_profile_id = 2;
-    optional services.notification.containers.NotificationTypeV1 notification_type = 3;
+    optional services.notification.containers.NotificationTypeV1.TypeV1 notification_type = 3;
     optional services.notification.containers.GroupMembershipRequestNotificationV1 group_membership_request = 4;
 }
 

@@ -48,7 +48,7 @@ public extension Services.Notification.Actions.SendNotification {
            switch key {
            case "version": return version
            case "toProfileId": return toProfileId
-           case "notificationType": return notificationType
+           case "notificationType": return self.notificationType
            case "groupMembershipRequest": return groupMembershipRequest
            default: return nil
            }
@@ -60,8 +60,8 @@ public extension Services.Notification.Actions.SendNotification {
     public private(set) var hasToProfileId:Bool = false
     public private(set) var toProfileId:String = ""
 
+    public private(set) var notificationType:Services.Notification.Containers.NotificationTypeV1.TypeV1 = Services.Notification.Containers.NotificationTypeV1.TypeV1.GroupMembershipRequest
     public private(set) var hasNotificationType:Bool = false
-    public private(set) var notificationType:Services.Notification.Containers.NotificationTypeV1!
     public private(set) var hasGroupMembershipRequest:Bool = false
     public private(set) var groupMembershipRequest:Services.Notification.Containers.GroupMembershipRequestNotificationV1!
     required public init() {
@@ -78,7 +78,7 @@ public extension Services.Notification.Actions.SendNotification {
         output.writeString(2, value:toProfileId)
       }
       if hasNotificationType {
-        output.writeMessage(3, value:notificationType)
+        output.writeEnum(3, value:notificationType.rawValue)
       }
       if hasGroupMembershipRequest {
         output.writeMessage(4, value:groupMembershipRequest)
@@ -98,10 +98,8 @@ public extension Services.Notification.Actions.SendNotification {
       if hasToProfileId {
         serialize_size += toProfileId.computeStringSize(2)
       }
-      if hasNotificationType {
-          if let varSizenotificationType = notificationType?.computeMessageSize(3) {
-              serialize_size += varSizenotificationType
-          }
+      if (hasNotificationType) {
+        serialize_size += notificationType.rawValue.computeEnumSize(3)
       }
       if hasGroupMembershipRequest {
           if let varSizegroupMembershipRequest = groupMembershipRequest?.computeMessageSize(4) {
@@ -155,10 +153,8 @@ public extension Services.Notification.Actions.SendNotification {
       if hasToProfileId {
         output += "\(indent) toProfileId: \(toProfileId) \n"
       }
-      if hasNotificationType {
-        output += "\(indent) notificationType {\n"
-        notificationType?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
+      if (hasNotificationType) {
+        output += "\(indent) notificationType: \(notificationType.rawValue)\n"
       }
       if hasGroupMembershipRequest {
         output += "\(indent) groupMembershipRequest {\n"
@@ -177,9 +173,7 @@ public extension Services.Notification.Actions.SendNotification {
                hashCode = (hashCode &* 31) &+ toProfileId.hashValue
             }
             if hasNotificationType {
-                if let hashValuenotificationType = notificationType?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuenotificationType
-                }
+               hashCode = (hashCode &* 31) &+ Int(notificationType.rawValue)
             }
             if hasGroupMembershipRequest {
                 if let hashValuegroupMembershipRequest = groupMembershipRequest?.hashValue {
@@ -260,38 +254,29 @@ public extension Services.Notification.Actions.SendNotification {
          builderResult.toProfileId = ""
          return self
     }
-    public var hasNotificationType:Bool {
-         get {
-             return builderResult.hasNotificationType
-         }
-    }
-    public var notificationType:Services.Notification.Containers.NotificationTypeV1! {
-         get {
-             return builderResult.notificationType
-         }
-         set (value) {
-             builderResult.hasNotificationType = true
-             builderResult.notificationType = value
-         }
-    }
-    public func setNotificationType(value:Services.Notification.Containers.NotificationTypeV1!)-> Services.Notification.Actions.SendNotification.RequestV1Builder {
-      self.notificationType = value
-      return self
-    }
-    public func mergeNotificationType(value:Services.Notification.Containers.NotificationTypeV1) -> Services.Notification.Actions.SendNotification.RequestV1Builder {
-      if (builderResult.hasNotificationType) {
-        builderResult.notificationType = Services.Notification.Containers.NotificationTypeV1.builderWithPrototype(builderResult.notificationType).mergeFrom(value).buildPartial()
-      } else {
-        builderResult.notificationType = value
+      public var hasNotificationType:Bool{
+          get {
+              return builderResult.hasNotificationType
+          }
       }
-      builderResult.hasNotificationType = true
-      return self
-    }
-    public func clearNotificationType() -> Services.Notification.Actions.SendNotification.RequestV1Builder {
-      builderResult.hasNotificationType = false
-      builderResult.notificationType = nil
-      return self
-    }
+      public var notificationType:Services.Notification.Containers.NotificationTypeV1.TypeV1 {
+          get {
+              return builderResult.notificationType
+          }
+          set (value) {
+              builderResult.hasNotificationType = true
+              builderResult.notificationType = value
+          }
+      }
+      public func setNotificationType(value:Services.Notification.Containers.NotificationTypeV1.TypeV1)-> Services.Notification.Actions.SendNotification.RequestV1Builder {
+        self.notificationType = value
+        return self
+      }
+      public func clearNotificationType() -> Services.Notification.Actions.SendNotification.RequestV1Builder {
+         builderResult.hasNotificationType = false
+         builderResult.notificationType = .GroupMembershipRequest
+         return self
+      }
     public var hasGroupMembershipRequest:Bool {
          get {
              return builderResult.hasGroupMembershipRequest
@@ -354,8 +339,8 @@ public extension Services.Notification.Actions.SendNotification {
       if other.hasToProfileId {
            toProfileId = other.toProfileId
       }
-      if (other.hasNotificationType) {
-          mergeNotificationType(other.notificationType)
+      if other.hasNotificationType {
+           notificationType = other.notificationType
       }
       if (other.hasGroupMembershipRequest) {
           mergeGroupMembershipRequest(other.groupMembershipRequest)
@@ -381,13 +366,13 @@ public extension Services.Notification.Actions.SendNotification {
         case 18 :
           toProfileId = input.readString()
 
-        case 26 :
-          var subBuilder:Services.Notification.Containers.NotificationTypeV1Builder = Services.Notification.Containers.NotificationTypeV1.builder()
-          if hasNotificationType {
-            subBuilder.mergeFrom(notificationType)
+        case 24 :
+          let valueIntnotificationType = input.readEnum()
+          if let enumsnotificationType = Services.Notification.Containers.NotificationTypeV1.TypeV1(rawValue:valueIntnotificationType){
+               notificationType = enumsnotificationType
+          } else {
+               unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntnotificationType))
           }
-          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-          notificationType = subBuilder.buildPartial()
 
         case 34 :
           var subBuilder:Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder = Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder()
