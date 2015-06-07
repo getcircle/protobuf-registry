@@ -29,7 +29,6 @@ public func == (lhs: Services.User.Containers.DeviceV1, rhs: Services.User.Conta
   fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = fieldCheck && (lhs.hasLanguagePreference == rhs.hasLanguagePreference) && (!lhs.hasLanguagePreference || lhs.languagePreference == rhs.languagePreference)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
-  fieldCheck = fieldCheck && (lhs.hasActive == rhs.hasActive) && (!lhs.hasActive || lhs.active == rhs.active)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -413,7 +412,6 @@ public extension Services.User.Containers {
            case "userId": return userId
            case "languagePreference": return languagePreference
            case "provider": return self.provider
-           case "active": return active
            default: return nil
            }
     }
@@ -447,9 +445,6 @@ public extension Services.User.Containers {
 
     public private(set) var provider:Services.User.Containers.DeviceV1.ProviderV1 = Services.User.Containers.DeviceV1.ProviderV1.Apple
     public private(set) var hasProvider:Bool = false
-    public private(set) var hasActive:Bool = false
-    public private(set) var active:Bool = false
-
     required public init() {
          super.init()
     }
@@ -486,9 +481,6 @@ public extension Services.User.Containers {
       }
       if hasProvider {
         output.writeEnum(10, value:provider.rawValue)
-      }
-      if hasActive {
-        output.writeBool(11, value:active)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -528,9 +520,6 @@ public extension Services.User.Containers {
       }
       if (hasProvider) {
         serialize_size += provider.rawValue.computeEnumSize(10)
-      }
-      if hasActive {
-        serialize_size += active.computeBoolSize(11)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -603,9 +592,6 @@ public extension Services.User.Containers {
       if (hasProvider) {
         output += "\(indent) provider: \(provider.rawValue)\n"
       }
-      if hasActive {
-        output += "\(indent) active: \(active) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -640,9 +626,6 @@ public extension Services.User.Containers {
             }
             if hasProvider {
                hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
-            }
-            if hasActive {
-               hashCode = (hashCode &* 31) &+ active.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -902,29 +885,6 @@ public extension Services.User.Containers {
          builderResult.provider = .Apple
          return self
       }
-    public var hasActive:Bool {
-         get {
-              return builderResult.hasActive
-         }
-    }
-    public var active:Bool {
-         get {
-              return builderResult.active
-         }
-         set (value) {
-             builderResult.hasActive = true
-             builderResult.active = value
-         }
-    }
-    public func setActive(value:Bool)-> Services.User.Containers.DeviceV1Builder {
-      self.active = value
-      return self
-    }
-    public func clearActive() -> Services.User.Containers.DeviceV1Builder{
-         builderResult.hasActive = false
-         builderResult.active = false
-         return self
-    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -979,9 +939,6 @@ public extension Services.User.Containers {
       if other.hasProvider {
            provider = other.provider
       }
-      if other.hasActive {
-           active = other.active
-      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -1031,9 +988,6 @@ public extension Services.User.Containers {
           } else {
                unknownFieldsBuilder.mergeVarintField(10, value:Int64(valueIntprovider))
           }
-
-        case 88 :
-          active = input.readBool()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
