@@ -35,8 +35,7 @@ message NotificationPreferenceV1 {
 message NotificationTypeV1 {
 
     enum TypeIdV1 {
-        GROUP_MEMBERSHIP_REQUEST = 0;
-        UPCOMING_BIRTHDAY_TEAM = 1;
+         GOOGLE_GROUPS = 0;
     }
 
     optional uint32 version = 1 [default = 1];

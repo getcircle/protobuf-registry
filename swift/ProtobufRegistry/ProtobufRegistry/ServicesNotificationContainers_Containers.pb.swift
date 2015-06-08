@@ -564,7 +564,7 @@ public extension Services.Notification.Containers {
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
-    public private(set) var notificationTypeId:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GroupMembershipRequest
+    public private(set) var notificationTypeId:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GoogleGroups
     public private(set) var hasNotificationTypeId:Bool = false
     public private(set) var hasSubscribed:Bool = false
     public private(set) var subscribed:Bool = false
@@ -828,7 +828,7 @@ public extension Services.Notification.Containers {
       }
       public func clearNotificationTypeId() -> Services.Notification.Containers.NotificationPreferenceV1Builder {
          builderResult.hasNotificationTypeId = false
-         builderResult.notificationTypeId = .GroupMembershipRequest
+         builderResult.notificationTypeId = .GoogleGroups
          return self
       }
     public var hasSubscribed:Bool {
@@ -987,8 +987,7 @@ public extension Services.Notification.Containers {
       //Enum type declaration start 
 
       public enum TypeIdV1:Int32 {
-        case GroupMembershipRequest = 0
-        case UpcomingBirthdayTeam = 1
+        case GoogleGroups = 0
 
       }
 
@@ -1008,7 +1007,7 @@ public extension Services.Notification.Containers {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var id:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GroupMembershipRequest
+    public private(set) var id:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GoogleGroups
     public private(set) var hasId:Bool = false
     public private(set) var hasDescription:Bool = false
     public private(set) var description_:String = ""
@@ -1212,7 +1211,7 @@ public extension Services.Notification.Containers {
       }
       public func clearId() -> Services.Notification.Containers.NotificationTypeV1Builder {
          builderResult.hasId = false
-         builderResult.id = .GroupMembershipRequest
+         builderResult.id = .GoogleGroups
          return self
       }
     public var hasDescription:Bool {
@@ -1381,7 +1380,7 @@ public extension Services.Notification.Containers {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var notificationTypeId:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GroupMembershipRequest
+    public private(set) var notificationTypeId:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GoogleGroups
     public private(set) var hasNotificationTypeId:Bool = false
     public private(set) var hasGroupMembershipRequest:Bool = false
     public private(set) var groupMembershipRequest:Services.Notification.Containers.GroupMembershipRequestNotificationV1!
@@ -1560,7 +1559,7 @@ public extension Services.Notification.Containers {
       }
       public func clearNotificationTypeId() -> Services.Notification.Containers.NotificationV1Builder {
          builderResult.hasNotificationTypeId = false
-         builderResult.notificationTypeId = .GroupMembershipRequest
+         builderResult.notificationTypeId = .GoogleGroups
          return self
       }
     public var hasGroupMembershipRequest:Bool {

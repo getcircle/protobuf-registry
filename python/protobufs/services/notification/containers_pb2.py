@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/notification/containers.proto',
   package='services.notification.containers',
-  serialized_pb=_b('\n0protobufs/services/notification/containers.proto\x12 services.notification.containers\"\xde\x02\n\x13NotificationTokenV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12\x11\n\tdevice_id\x18\x03 \x01(\t\x12\x16\n\x0eprovider_token\x18\x04 \x01(\t\x12R\n\x08provider\x18\x05 \x01(\x0e\x32@.services.notification.containers.NotificationTokenV1.ProviderV1\x12\x63\n\x11provider_platform\x18\x06 \x01(\x0e\x32H.services.notification.containers.NotificationTokenV1.ProviderPlatformV1\"\x15\n\nProviderV1\x12\x07\n\x03SNS\x10\x00\"\'\n\x12ProviderPlatformV1\x12\x08\n\x04\x41PNS\x10\x00\x12\x07\n\x03GCM\x10\x01\"\x90\x02\n\x18NotificationPreferenceV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x12\n\nprofile_id\x18\x03 \x01(\t\x12[\n\x14notification_type_id\x18\x04 \x01(\x0e\x32=.services.notification.containers.NotificationTypeV1.TypeIdV1\x12\x12\n\nsubscribed\x18\x05 \x01(\x08\x12O\n\x11notification_type\x18\x06 \x01(\x0b\x32\x34.services.notification.containers.NotificationTypeV1\"\xf3\x01\n\x12NotificationTypeV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12I\n\x02id\x18\x02 \x01(\x0e\x32=.services.notification.containers.NotificationTypeV1.TypeIdV1\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x0e\n\x06opt_in\x18\x04 \x01(\x08\x12\x13\n\x0bmobile_push\x18\x05 \x01(\x08\"D\n\x08TypeIdV1\x12\x1c\n\x18GROUP_MEMBERSHIP_REQUEST\x10\x00\x12\x1a\n\x16UPCOMING_BIRTHDAY_TEAM\x10\x01\"\xeb\x01\n\x0eNotificationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12[\n\x14notification_type_id\x18\x02 \x01(\x0e\x32=.services.notification.containers.NotificationTypeV1.TypeIdV1\x12h\n\x18group_membership_request\x18\x03 \x01(\x0b\x32\x46.services.notification.containers.GroupMembershipRequestNotificationV1\"j\n$GroupMembershipRequestNotificationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x1c\n\x14requester_profile_id\x18\x02 \x01(\t\x12\x10\n\x08group_id\x18\x03 \x01(\t*(\n\x15NotificationChannelV1\x12\x0f\n\x0bMOBILE_PUSH\x10\x00')
+  serialized_pb=_b('\n0protobufs/services/notification/containers.proto\x12 services.notification.containers\"\xde\x02\n\x13NotificationTokenV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12\x11\n\tdevice_id\x18\x03 \x01(\t\x12\x16\n\x0eprovider_token\x18\x04 \x01(\t\x12R\n\x08provider\x18\x05 \x01(\x0e\x32@.services.notification.containers.NotificationTokenV1.ProviderV1\x12\x63\n\x11provider_platform\x18\x06 \x01(\x0e\x32H.services.notification.containers.NotificationTokenV1.ProviderPlatformV1\"\x15\n\nProviderV1\x12\x07\n\x03SNS\x10\x00\"\'\n\x12ProviderPlatformV1\x12\x08\n\x04\x41PNS\x10\x00\x12\x07\n\x03GCM\x10\x01\"\x90\x02\n\x18NotificationPreferenceV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x12\n\nprofile_id\x18\x03 \x01(\t\x12[\n\x14notification_type_id\x18\x04 \x01(\x0e\x32=.services.notification.containers.NotificationTypeV1.TypeIdV1\x12\x12\n\nsubscribed\x18\x05 \x01(\x08\x12O\n\x11notification_type\x18\x06 \x01(\x0b\x32\x34.services.notification.containers.NotificationTypeV1\"\xcc\x01\n\x12NotificationTypeV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12I\n\x02id\x18\x02 \x01(\x0e\x32=.services.notification.containers.NotificationTypeV1.TypeIdV1\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x0e\n\x06opt_in\x18\x04 \x01(\x08\x12\x13\n\x0bmobile_push\x18\x05 \x01(\x08\"\x1d\n\x08TypeIdV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00\"\xeb\x01\n\x0eNotificationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12[\n\x14notification_type_id\x18\x02 \x01(\x0e\x32=.services.notification.containers.NotificationTypeV1.TypeIdV1\x12h\n\x18group_membership_request\x18\x03 \x01(\x0b\x32\x46.services.notification.containers.GroupMembershipRequestNotificationV1\"j\n$GroupMembershipRequestNotificationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x1c\n\x14requester_profile_id\x18\x02 \x01(\t\x12\x10\n\x08group_id\x18\x03 \x01(\t*(\n\x15NotificationChannelV1\x12\x0f\n\x0bMOBILE_PUSH\x10\x00')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -36,8 +36,8 @@ _NOTIFICATIONCHANNELV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1306,
-  serialized_end=1346,
+  serialized_start=1267,
+  serialized_end=1307,
 )
 _sym_db.RegisterEnumDescriptor(_NOTIFICATIONCHANNELV1)
 
@@ -92,18 +92,14 @@ _NOTIFICATIONTYPEV1_TYPEIDV1 = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='GROUP_MEMBERSHIP_REQUEST', index=0, number=0,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='UPCOMING_BIRTHDAY_TEAM', index=1, number=1,
+      name='GOOGLE_GROUPS', index=0, number=0,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=890,
-  serialized_end=958,
+  serialized_end=919,
 )
 _sym_db.RegisterEnumDescriptor(_NOTIFICATIONTYPEV1_TYPEIDV1)
 
@@ -295,7 +291,7 @@ _NOTIFICATIONTYPEV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=715,
-  serialized_end=958,
+  serialized_end=919,
 )
 
 
@@ -338,8 +334,8 @@ _NOTIFICATIONV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=961,
-  serialized_end=1196,
+  serialized_start=922,
+  serialized_end=1157,
 )
 
 
@@ -382,8 +378,8 @@ _GROUPMEMBERSHIPREQUESTNOTIFICATIONV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1198,
-  serialized_end=1304,
+  serialized_start=1159,
+  serialized_end=1265,
 )
 
 _NOTIFICATIONTOKENV1.fields_by_name['provider'].enum_type = _NOTIFICATIONTOKENV1_PROVIDERV1
