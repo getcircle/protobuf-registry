@@ -52,6 +52,7 @@ public func == (lhs: Services.Notification.Containers.NotificationV1, rhs: Servi
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasNotificationTypeId == rhs.hasNotificationTypeId) && (!lhs.hasNotificationTypeId || lhs.notificationTypeId == rhs.notificationTypeId)
   fieldCheck = fieldCheck && (lhs.hasGroupMembershipRequest == rhs.hasGroupMembershipRequest) && (!lhs.hasGroupMembershipRequest || lhs.groupMembershipRequest == rhs.groupMembershipRequest)
+  fieldCheck = fieldCheck && (lhs.hasGroupMembershipRequestResponse == rhs.hasGroupMembershipRequestResponse) && (!lhs.hasGroupMembershipRequestResponse || lhs.groupMembershipRequestResponse == rhs.groupMembershipRequestResponse)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -63,6 +64,18 @@ public func == (lhs: Services.Notification.Containers.GroupMembershipRequestNoti
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasRequesterProfileId == rhs.hasRequesterProfileId) && (!lhs.hasRequesterProfileId || lhs.requesterProfileId == rhs.requesterProfileId)
   fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
+public func == (lhs: Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1, rhs: Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasGroupManagerProfileId == rhs.hasGroupManagerProfileId) && (!lhs.hasGroupManagerProfileId || lhs.groupManagerProfileId == rhs.groupManagerProfileId)
+  fieldCheck = fieldCheck && (lhs.hasApproved == rhs.hasApproved) && (!lhs.hasApproved || lhs.approved == rhs.approved)
+  fieldCheck = fieldCheck && (lhs.hasGroupKey == rhs.hasGroupKey) && (!lhs.hasGroupKey || lhs.groupKey == rhs.groupKey)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -1373,6 +1386,7 @@ public extension Services.Notification.Containers {
            case "version": return version
            case "notificationTypeId": return self.notificationTypeId
            case "groupMembershipRequest": return groupMembershipRequest
+           case "groupMembershipRequestResponse": return groupMembershipRequestResponse
            default: return nil
            }
     }
@@ -1384,6 +1398,8 @@ public extension Services.Notification.Containers {
     public private(set) var hasNotificationTypeId:Bool = false
     public private(set) var hasGroupMembershipRequest:Bool = false
     public private(set) var groupMembershipRequest:Services.Notification.Containers.GroupMembershipRequestNotificationV1!
+    public private(set) var hasGroupMembershipRequestResponse:Bool = false
+    public private(set) var groupMembershipRequestResponse:Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1!
     required public init() {
          super.init()
     }
@@ -1399,6 +1415,9 @@ public extension Services.Notification.Containers {
       }
       if hasGroupMembershipRequest {
         output.writeMessage(3, value:groupMembershipRequest)
+      }
+      if hasGroupMembershipRequestResponse {
+        output.writeMessage(4, value:groupMembershipRequestResponse)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -1418,6 +1437,11 @@ public extension Services.Notification.Containers {
       if hasGroupMembershipRequest {
           if let varSizegroupMembershipRequest = groupMembershipRequest?.computeMessageSize(3) {
               serialize_size += varSizegroupMembershipRequest
+          }
+      }
+      if hasGroupMembershipRequestResponse {
+          if let varSizegroupMembershipRequestResponse = groupMembershipRequestResponse?.computeMessageSize(4) {
+              serialize_size += varSizegroupMembershipRequestResponse
           }
       }
       serialize_size += unknownFields.serializedSize()
@@ -1472,6 +1496,11 @@ public extension Services.Notification.Containers {
         groupMembershipRequest?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasGroupMembershipRequestResponse {
+        output += "\(indent) groupMembershipRequestResponse {\n"
+        groupMembershipRequestResponse?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1486,6 +1515,11 @@ public extension Services.Notification.Containers {
             if hasGroupMembershipRequest {
                 if let hashValuegroupMembershipRequest = groupMembershipRequest?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuegroupMembershipRequest
+                }
+            }
+            if hasGroupMembershipRequestResponse {
+                if let hashValuegroupMembershipRequestResponse = groupMembershipRequestResponse?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuegroupMembershipRequestResponse
                 }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -1594,6 +1628,38 @@ public extension Services.Notification.Containers {
       builderResult.groupMembershipRequest = nil
       return self
     }
+    public var hasGroupMembershipRequestResponse:Bool {
+         get {
+             return builderResult.hasGroupMembershipRequestResponse
+         }
+    }
+    public var groupMembershipRequestResponse:Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1! {
+         get {
+             return builderResult.groupMembershipRequestResponse
+         }
+         set (value) {
+             builderResult.hasGroupMembershipRequestResponse = true
+             builderResult.groupMembershipRequestResponse = value
+         }
+    }
+    public func setGroupMembershipRequestResponse(value:Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1!)-> Services.Notification.Containers.NotificationV1Builder {
+      self.groupMembershipRequestResponse = value
+      return self
+    }
+    public func mergeGroupMembershipRequestResponse(value:Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1) -> Services.Notification.Containers.NotificationV1Builder {
+      if (builderResult.hasGroupMembershipRequestResponse) {
+        builderResult.groupMembershipRequestResponse = Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builderWithPrototype(builderResult.groupMembershipRequestResponse).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.groupMembershipRequestResponse = value
+      }
+      builderResult.hasGroupMembershipRequestResponse = true
+      return self
+    }
+    public func clearGroupMembershipRequestResponse() -> Services.Notification.Containers.NotificationV1Builder {
+      builderResult.hasGroupMembershipRequestResponse = false
+      builderResult.groupMembershipRequestResponse = nil
+      return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -1626,6 +1692,9 @@ public extension Services.Notification.Containers {
       }
       if (other.hasGroupMembershipRequest) {
           mergeGroupMembershipRequest(other.groupMembershipRequest)
+      }
+      if (other.hasGroupMembershipRequestResponse) {
+          mergeGroupMembershipRequestResponse(other.groupMembershipRequestResponse)
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -1660,6 +1729,14 @@ public extension Services.Notification.Containers {
           }
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
           groupMembershipRequest = subBuilder.buildPartial()
+
+        case 34 :
+          var subBuilder:Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder = Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builder()
+          if hasGroupMembershipRequestResponse {
+            subBuilder.mergeFrom(groupMembershipRequestResponse)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          groupMembershipRequestResponse = subBuilder.buildPartial()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
@@ -1941,6 +2018,332 @@ public extension Services.Notification.Containers {
 
         case 26 :
           groupId = input.readString()
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class GroupMembershipRequestResponseNotificationV1 : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           case "version": return version
+           case "groupManagerProfileId": return groupManagerProfileId
+           case "approved": return approved
+           case "groupKey": return groupKey
+           default: return nil
+           }
+    }
+
+    public private(set) var hasVersion:Bool = false
+    public private(set) var version:UInt32 = UInt32(1)
+
+    public private(set) var hasGroupManagerProfileId:Bool = false
+    public private(set) var groupManagerProfileId:String = ""
+
+    public private(set) var hasApproved:Bool = false
+    public private(set) var approved:Bool = false
+
+    public private(set) var hasGroupKey:Bool = false
+    public private(set) var groupKey:String = ""
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      if hasVersion {
+        output.writeUInt32(1, value:version)
+      }
+      if hasGroupManagerProfileId {
+        output.writeString(2, value:groupManagerProfileId)
+      }
+      if hasApproved {
+        output.writeBool(3, value:approved)
+      }
+      if hasGroupKey {
+        output.writeString(4, value:groupKey)
+      }
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasVersion {
+        serialize_size += version.computeUInt32Size(1)
+      }
+      if hasGroupManagerProfileId {
+        serialize_size += groupManagerProfileId.computeStringSize(2)
+      }
+      if hasApproved {
+        serialize_size += approved.computeBoolSize(3)
+      }
+      if hasGroupKey {
+        serialize_size += groupKey.computeStringSize(4)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builder().mergeFromData(data, extensionRegistry:Services.Notification.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.classBuilder() as! Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder
+    }
+    public func builder() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      return classBuilder() as! Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builder()
+    }
+    public func toBuilder() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1) -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      if hasVersion {
+        output += "\(indent) version: \(version) \n"
+      }
+      if hasGroupManagerProfileId {
+        output += "\(indent) groupManagerProfileId: \(groupManagerProfileId) \n"
+      }
+      if hasApproved {
+        output += "\(indent) approved: \(approved) \n"
+      }
+      if hasGroupKey {
+        output += "\(indent) groupKey: \(groupKey) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasVersion {
+               hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasGroupManagerProfileId {
+               hashCode = (hashCode &* 31) &+ groupManagerProfileId.hashValue
+            }
+            if hasApproved {
+               hashCode = (hashCode &* 31) &+ approved.hashValue
+            }
+            if hasGroupKey {
+               hashCode = (hashCode &* 31) &+ groupKey.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1"
+    }
+    override public func className() -> String {
+        return "Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class GroupMembershipRequestResponseNotificationV1Builder : GeneratedMessageBuilder {
+    private var builderResult:Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1
+
+    required override public init () {
+       builderResult = Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1()
+       super.init()
+    }
+    public var hasVersion:Bool {
+         get {
+              return builderResult.hasVersion
+         }
+    }
+    public var version:UInt32 {
+         get {
+              return builderResult.version
+         }
+         set (value) {
+             builderResult.hasVersion = true
+             builderResult.version = value
+         }
+    }
+    public func setVersion(value:UInt32)-> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      self.version = value
+      return self
+    }
+    public func clearVersion() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder{
+         builderResult.hasVersion = false
+         builderResult.version = UInt32(1)
+         return self
+    }
+    public var hasGroupManagerProfileId:Bool {
+         get {
+              return builderResult.hasGroupManagerProfileId
+         }
+    }
+    public var groupManagerProfileId:String {
+         get {
+              return builderResult.groupManagerProfileId
+         }
+         set (value) {
+             builderResult.hasGroupManagerProfileId = true
+             builderResult.groupManagerProfileId = value
+         }
+    }
+    public func setGroupManagerProfileId(value:String)-> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      self.groupManagerProfileId = value
+      return self
+    }
+    public func clearGroupManagerProfileId() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder{
+         builderResult.hasGroupManagerProfileId = false
+         builderResult.groupManagerProfileId = ""
+         return self
+    }
+    public var hasApproved:Bool {
+         get {
+              return builderResult.hasApproved
+         }
+    }
+    public var approved:Bool {
+         get {
+              return builderResult.approved
+         }
+         set (value) {
+             builderResult.hasApproved = true
+             builderResult.approved = value
+         }
+    }
+    public func setApproved(value:Bool)-> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      self.approved = value
+      return self
+    }
+    public func clearApproved() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder{
+         builderResult.hasApproved = false
+         builderResult.approved = false
+         return self
+    }
+    public var hasGroupKey:Bool {
+         get {
+              return builderResult.hasGroupKey
+         }
+    }
+    public var groupKey:String {
+         get {
+              return builderResult.groupKey
+         }
+         set (value) {
+             builderResult.hasGroupKey = true
+             builderResult.groupKey = value
+         }
+    }
+    public func setGroupKey(value:String)-> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      self.groupKey = value
+      return self
+    }
+    public func clearGroupKey() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder{
+         builderResult.hasGroupKey = false
+         builderResult.groupKey = ""
+         return self
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      builderResult = Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1()
+      return self
+    }
+    public override func clone() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      return Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1 {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1 {
+      var returnMe:Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1 = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1) -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      if (other == Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1()) {
+       return self
+      }
+      if other.hasVersion {
+           version = other.version
+      }
+      if other.hasGroupManagerProfileId {
+           groupManagerProfileId = other.groupManagerProfileId
+      }
+      if other.hasApproved {
+           approved = other.approved
+      }
+      if other.hasGroupKey {
+           groupKey = other.groupKey
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1Builder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        case 8 :
+          version = input.readUInt32()
+
+        case 18 :
+          groupManagerProfileId = input.readString()
+
+        case 24 :
+          approved = input.readBool()
+
+        case 34 :
+          groupKey = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
