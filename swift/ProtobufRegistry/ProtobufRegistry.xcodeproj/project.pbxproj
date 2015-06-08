@@ -102,6 +102,7 @@
 		BF608BBE1B23AE6700F4736C /* ServicesNotificationContainers_Containers.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF608BB91B23AE6700F4736C /* ServicesNotificationContainers_Containers.pb.swift */; };
 		BF608BC11B23D23800F4736C /* ServicesNotificationActionsGetPreferences_Get_preferences.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF608BBF1B23D23800F4736C /* ServicesNotificationActionsGetPreferences_Get_preferences.pb.swift */; };
 		BF608BC21B23D23800F4736C /* ServicesNotificationActionsUpdatePreference_Update_preference.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF608BC01B23D23800F4736C /* ServicesNotificationActionsUpdatePreference_Update_preference.pb.swift */; };
+		BF608BC51B2536BC00F4736C /* ServicesUserActionsGetActiveDevices_Get_active_devices.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF608BC41B2536BC00F4736C /* ServicesUserActionsGetActiveDevices_Get_active_devices.pb.swift */; };
 		BF70258A1AFD70A50085F6EE /* ServicesGroupActionsGetGroup_Get_group.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70257F1AFD70A50085F6EE /* ServicesGroupActionsGetGroup_Get_group.pb.swift */; };
 		BF70258B1AFD70A50085F6EE /* ServicesGroupActionsJoinGroup_Join_group.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7025801AFD70A50085F6EE /* ServicesGroupActionsJoinGroup_Join_group.pb.swift */; };
 		BF70258C1AFD70A50085F6EE /* ServicesGroupActionsLeaveGroup_Leave_group.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7025811AFD70A50085F6EE /* ServicesGroupActionsLeaveGroup_Leave_group.pb.swift */; };
@@ -250,6 +251,7 @@
 		BF608BB91B23AE6700F4736C /* ServicesNotificationContainers_Containers.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesNotificationContainers_Containers.pb.swift; sourceTree = "<group>"; };
 		BF608BBF1B23D23800F4736C /* ServicesNotificationActionsGetPreferences_Get_preferences.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesNotificationActionsGetPreferences_Get_preferences.pb.swift; sourceTree = "<group>"; };
 		BF608BC01B23D23800F4736C /* ServicesNotificationActionsUpdatePreference_Update_preference.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesNotificationActionsUpdatePreference_Update_preference.pb.swift; sourceTree = "<group>"; };
+		BF608BC41B2536BC00F4736C /* ServicesUserActionsGetActiveDevices_Get_active_devices.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesUserActionsGetActiveDevices_Get_active_devices.pb.swift; sourceTree = "<group>"; };
 		BF70257F1AFD70A50085F6EE /* ServicesGroupActionsGetGroup_Get_group.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesGroupActionsGetGroup_Get_group.pb.swift; sourceTree = "<group>"; };
 		BF7025801AFD70A50085F6EE /* ServicesGroupActionsJoinGroup_Join_group.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesGroupActionsJoinGroup_Join_group.pb.swift; sourceTree = "<group>"; };
 		BF7025811AFD70A50085F6EE /* ServicesGroupActionsLeaveGroup_Leave_group.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesGroupActionsLeaveGroup_Leave_group.pb.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				BF1B14071AE1944300F36620 /* ServicesUserActionsCompleteAuthorization_Complete_authorization.pb.swift */,
 				BF1B14081AE1944300F36620 /* ServicesUserActionsCreateUser_Create_user.pb.swift */,
 				BF1B14091AE1944300F36620 /* ServicesUserActionsDeleteIdentity_Delete_identity.pb.swift */,
+				BF608BC41B2536BC00F4736C /* ServicesUserActionsGetActiveDevices_Get_active_devices.pb.swift */,
 				BF7A4B031B0A64D9007B6BFB /* ServicesUserActionsGetAuthenticationInstructions_Get_authentication_instructions.pb.swift */,
 				BF1B140A1AE1944300F36620 /* ServicesUserActionsGetAuthorizationInstructions_Get_authorization_instructions.pb.swift */,
 				BF1B140B1AE1944300F36620 /* ServicesUserActionsGetIdentities_Get_identities.pb.swift */,
@@ -674,6 +677,7 @@
 				BF1B14571AE1944300F36620 /* ServicesSearchContainersSearch_Search.pb.swift in Sources */,
 				BF1B14581AE1944300F36620 /* ServicesUserActionsAuthenticateUser_Authenticate_user.pb.swift in Sources */,
 				BF7A4B051B0A64D9007B6BFB /* ServicesUserActionsGetAuthenticationInstructions_Get_authentication_instructions.pb.swift in Sources */,
+				BF608BC51B2536BC00F4736C /* ServicesUserActionsGetActiveDevices_Get_active_devices.pb.swift in Sources */,
 				BFC376211B155B3800D46640 /* ServicesOrganizationActionsEnableIntegration_Enable_integration.pb.swift in Sources */,
 				BF1B14591AE1944300F36620 /* ServicesUserActionsBulkCreateUsers_Bulk_create_users.pb.swift in Sources */,
 				BFDDE3091B1E529900334541 /* ServicesGlossaryActionsDeleteTerm_Delete_term.pb.swift in Sources */,

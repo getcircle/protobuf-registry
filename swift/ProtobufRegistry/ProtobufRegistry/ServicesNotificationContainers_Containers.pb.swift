@@ -3,17 +3,6 @@
 import Foundation
 public extension Services.Notification{ public struct Containers { }}
 
-public func == (lhs: Services.Notification.Containers.GroupMembershipRequestNotificationV1, rhs: Services.Notification.Containers.GroupMembershipRequestNotificationV1) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasRequesterProfileId == rhs.hasRequesterProfileId) && (!lhs.hasRequesterProfileId || lhs.requesterProfileId == rhs.requesterProfileId)
-  fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
-  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-}
-
 public func == (lhs: Services.Notification.Containers.NotificationTokenV1, rhs: Services.Notification.Containers.NotificationTokenV1) -> Bool {
   if (lhs === rhs) {
     return true
@@ -55,6 +44,28 @@ public func == (lhs: Services.Notification.Containers.NotificationTypeV1, rhs: S
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: Services.Notification.Containers.NotificationV1, rhs: Services.Notification.Containers.NotificationV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasNotificationTypeId == rhs.hasNotificationTypeId) && (!lhs.hasNotificationTypeId || lhs.notificationTypeId == rhs.notificationTypeId)
+  fieldCheck = fieldCheck && (lhs.hasGroupMembershipRequest == rhs.hasGroupMembershipRequest) && (!lhs.hasGroupMembershipRequest || lhs.groupMembershipRequest == rhs.groupMembershipRequest)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
+public func == (lhs: Services.Notification.Containers.GroupMembershipRequestNotificationV1, rhs: Services.Notification.Containers.GroupMembershipRequestNotificationV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasRequesterProfileId == rhs.hasRequesterProfileId) && (!lhs.hasRequesterProfileId || lhs.requesterProfileId == rhs.requesterProfileId)
+  fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public extension Services.Notification.Containers {
   public struct ContainersRoot {
     public static var sharedInstance : ContainersRoot {
@@ -83,287 +94,6 @@ public extension Services.Notification.Containers {
   }
 
   //Enum type declaration end 
-
-  final public class GroupMembershipRequestNotificationV1 : GeneratedMessage, GeneratedMessageProtocol {
-    override public subscript(key: String) -> Any? {
-           switch key {
-           case "version": return version
-           case "requesterProfileId": return requesterProfileId
-           case "groupId": return groupId
-           default: return nil
-           }
-    }
-
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
-    public private(set) var hasRequesterProfileId:Bool = false
-    public private(set) var requesterProfileId:String = ""
-
-    public private(set) var hasGroupId:Bool = false
-    public private(set) var groupId:String = ""
-
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) {
-      if hasVersion {
-        output.writeUInt32(1, value:version)
-      }
-      if hasRequesterProfileId {
-        output.writeString(2, value:requesterProfileId)
-      }
-      if hasGroupId {
-        output.writeString(3, value:groupId)
-      }
-      unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
-      if hasRequesterProfileId {
-        serialize_size += requesterProfileId.computeStringSize(2)
-      }
-      if hasGroupId {
-        serialize_size += groupId.computeStringSize(3)
-      }
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseFromData(data:NSData) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromData(data, extensionRegistry:Services.Notification.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func builder() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.classBuilder() as! Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder
-    }
-    public func builder() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      return classBuilder() as! Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder()
-    }
-    public func toBuilder() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Notification.Containers.GroupMembershipRequestNotificationV1) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
-      if hasRequesterProfileId {
-        output += "\(indent) requesterProfileId: \(requesterProfileId) \n"
-      }
-      if hasGroupId {
-        output += "\(indent) groupId: \(groupId) \n"
-      }
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            if hasRequesterProfileId {
-               hashCode = (hashCode &* 31) &+ requesterProfileId.hashValue
-            }
-            if hasGroupId {
-               hashCode = (hashCode &* 31) &+ groupId.hashValue
-            }
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Notification.Containers.GroupMembershipRequestNotificationV1"
-    }
-    override public func className() -> String {
-        return "Services.Notification.Containers.GroupMembershipRequestNotificationV1"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Notification.Containers.GroupMembershipRequestNotificationV1.self
-    }
-    //Meta information declaration end
-
-  }
-
-  final public class GroupMembershipRequestNotificationV1Builder : GeneratedMessageBuilder {
-    private var builderResult:Services.Notification.Containers.GroupMembershipRequestNotificationV1
-
-    required override public init () {
-       builderResult = Services.Notification.Containers.GroupMembershipRequestNotificationV1()
-       super.init()
-    }
-    public var hasVersion:Bool {
-         get {
-              return builderResult.hasVersion
-         }
-    }
-    public var version:UInt32 {
-         get {
-              return builderResult.version
-         }
-         set (value) {
-             builderResult.hasVersion = true
-             builderResult.version = value
-         }
-    }
-    public func setVersion(value:UInt32)-> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      self.version = value
-      return self
-    }
-    public func clearVersion() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder{
-         builderResult.hasVersion = false
-         builderResult.version = UInt32(1)
-         return self
-    }
-    public var hasRequesterProfileId:Bool {
-         get {
-              return builderResult.hasRequesterProfileId
-         }
-    }
-    public var requesterProfileId:String {
-         get {
-              return builderResult.requesterProfileId
-         }
-         set (value) {
-             builderResult.hasRequesterProfileId = true
-             builderResult.requesterProfileId = value
-         }
-    }
-    public func setRequesterProfileId(value:String)-> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      self.requesterProfileId = value
-      return self
-    }
-    public func clearRequesterProfileId() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder{
-         builderResult.hasRequesterProfileId = false
-         builderResult.requesterProfileId = ""
-         return self
-    }
-    public var hasGroupId:Bool {
-         get {
-              return builderResult.hasGroupId
-         }
-    }
-    public var groupId:String {
-         get {
-              return builderResult.groupId
-         }
-         set (value) {
-             builderResult.hasGroupId = true
-             builderResult.groupId = value
-         }
-    }
-    public func setGroupId(value:String)-> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      self.groupId = value
-      return self
-    }
-    public func clearGroupId() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder{
-         builderResult.hasGroupId = false
-         builderResult.groupId = ""
-         return self
-    }
-    override public var internalGetResult:GeneratedMessage {
-         get {
-            return builderResult
-         }
-    }
-    public override func clear() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      builderResult = Services.Notification.Containers.GroupMembershipRequestNotificationV1()
-      return self
-    }
-    public override func clone() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builderWithPrototype(builderResult)
-    }
-    public override func build() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
-         checkInitialized()
-         return buildPartial()
-    }
-    public func buildPartial() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
-      var returnMe:Services.Notification.Containers.GroupMembershipRequestNotificationV1 = builderResult
-      return returnMe
-    }
-    public func mergeFrom(other:Services.Notification.Containers.GroupMembershipRequestNotificationV1) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      if (other == Services.Notification.Containers.GroupMembershipRequestNotificationV1()) {
-       return self
-      }
-      if other.hasVersion {
-           version = other.version
-      }
-      if other.hasRequesterProfileId {
-           requesterProfileId = other.requesterProfileId
-      }
-      if other.hasGroupId {
-           groupId = other.groupId
-      }
-      mergeUnknownFields(other.unknownFields)
-      return self
-    }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-    }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-      while (true) {
-        var tag = input.readTag()
-        switch tag {
-        case 0: 
-          self.unknownFields = unknownFieldsBuilder.build()
-          return self
-
-        case 8 :
-          version = input.readUInt32()
-
-        case 18 :
-          requesterProfileId = input.readString()
-
-        case 26 :
-          groupId = input.readString()
-
-        default:
-          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
-             unknownFields = unknownFieldsBuilder.build()
-             return self
-          }
-        }
-      }
-    }
-  }
 
   final public class NotificationTokenV1 : GeneratedMessage, GeneratedMessageProtocol {
 
@@ -818,7 +548,7 @@ public extension Services.Notification.Containers {
            case "version": return version
            case "id": return id
            case "profileId": return profileId
-           case "notificationTypeId": return notificationTypeId
+           case "notificationTypeId": return self.notificationTypeId
            case "subscribed": return subscribed
            case "notificationType": return notificationType
            default: return nil
@@ -834,9 +564,8 @@ public extension Services.Notification.Containers {
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
+    public private(set) var notificationTypeId:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GroupMembershipRequest
     public private(set) var hasNotificationTypeId:Bool = false
-    public private(set) var notificationTypeId:UInt32 = UInt32(0)
-
     public private(set) var hasSubscribed:Bool = false
     public private(set) var subscribed:Bool = false
 
@@ -859,7 +588,7 @@ public extension Services.Notification.Containers {
         output.writeString(3, value:profileId)
       }
       if hasNotificationTypeId {
-        output.writeUInt32(4, value:notificationTypeId)
+        output.writeEnum(4, value:notificationTypeId.rawValue)
       }
       if hasSubscribed {
         output.writeBool(5, value:subscribed)
@@ -885,8 +614,8 @@ public extension Services.Notification.Containers {
       if hasProfileId {
         serialize_size += profileId.computeStringSize(3)
       }
-      if hasNotificationTypeId {
-        serialize_size += notificationTypeId.computeUInt32Size(4)
+      if (hasNotificationTypeId) {
+        serialize_size += notificationTypeId.rawValue.computeEnumSize(4)
       }
       if hasSubscribed {
         serialize_size += subscribed.computeBoolSize(5)
@@ -946,8 +675,8 @@ public extension Services.Notification.Containers {
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
-      if hasNotificationTypeId {
-        output += "\(indent) notificationTypeId: \(notificationTypeId) \n"
+      if (hasNotificationTypeId) {
+        output += "\(indent) notificationTypeId: \(notificationTypeId.rawValue)\n"
       }
       if hasSubscribed {
         output += "\(indent) subscribed: \(subscribed) \n"
@@ -972,7 +701,7 @@ public extension Services.Notification.Containers {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
             if hasNotificationTypeId {
-               hashCode = (hashCode &* 31) &+ notificationTypeId.hashValue
+               hashCode = (hashCode &* 31) &+ Int(notificationTypeId.rawValue)
             }
             if hasSubscribed {
                hashCode = (hashCode &* 31) &+ subscribed.hashValue
@@ -1079,29 +808,29 @@ public extension Services.Notification.Containers {
          builderResult.profileId = ""
          return self
     }
-    public var hasNotificationTypeId:Bool {
-         get {
+      public var hasNotificationTypeId:Bool{
+          get {
               return builderResult.hasNotificationTypeId
-         }
-    }
-    public var notificationTypeId:UInt32 {
-         get {
+          }
+      }
+      public var notificationTypeId:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 {
+          get {
               return builderResult.notificationTypeId
-         }
-         set (value) {
-             builderResult.hasNotificationTypeId = true
-             builderResult.notificationTypeId = value
-         }
-    }
-    public func setNotificationTypeId(value:UInt32)-> Services.Notification.Containers.NotificationPreferenceV1Builder {
-      self.notificationTypeId = value
-      return self
-    }
-    public func clearNotificationTypeId() -> Services.Notification.Containers.NotificationPreferenceV1Builder{
+          }
+          set (value) {
+              builderResult.hasNotificationTypeId = true
+              builderResult.notificationTypeId = value
+          }
+      }
+      public func setNotificationTypeId(value:Services.Notification.Containers.NotificationTypeV1.TypeIdV1)-> Services.Notification.Containers.NotificationPreferenceV1Builder {
+        self.notificationTypeId = value
+        return self
+      }
+      public func clearNotificationTypeId() -> Services.Notification.Containers.NotificationPreferenceV1Builder {
          builderResult.hasNotificationTypeId = false
-         builderResult.notificationTypeId = UInt32(0)
+         builderResult.notificationTypeId = .GroupMembershipRequest
          return self
-    }
+      }
     public var hasSubscribed:Bool {
          get {
               return builderResult.hasSubscribed
@@ -1224,7 +953,12 @@ public extension Services.Notification.Containers {
           profileId = input.readString()
 
         case 32 :
-          notificationTypeId = input.readUInt32()
+          let valueIntnotificationTypeId = input.readEnum()
+          if let enumsnotificationTypeId = Services.Notification.Containers.NotificationTypeV1.TypeIdV1(rawValue:valueIntnotificationTypeId){
+               notificationTypeId = enumsnotificationTypeId
+          } else {
+               unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntnotificationTypeId))
+          }
 
         case 40 :
           subscribed = input.readBool()
@@ -1252,7 +986,7 @@ public extension Services.Notification.Containers {
 
       //Enum type declaration start 
 
-      public enum TypeV1:Int32 {
+      public enum TypeIdV1:Int32 {
         case GroupMembershipRequest = 0
         case UpcomingBirthdayTeam = 1
 
@@ -1274,7 +1008,7 @@ public extension Services.Notification.Containers {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var id:Services.Notification.Containers.NotificationTypeV1.TypeV1 = Services.Notification.Containers.NotificationTypeV1.TypeV1.GroupMembershipRequest
+    public private(set) var id:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GroupMembershipRequest
     public private(set) var hasId:Bool = false
     public private(set) var hasDescription:Bool = false
     public private(set) var description_:String = ""
@@ -1463,7 +1197,7 @@ public extension Services.Notification.Containers {
               return builderResult.hasId
           }
       }
-      public var id:Services.Notification.Containers.NotificationTypeV1.TypeV1 {
+      public var id:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 {
           get {
               return builderResult.id
           }
@@ -1472,7 +1206,7 @@ public extension Services.Notification.Containers {
               builderResult.id = value
           }
       }
-      public func setId(value:Services.Notification.Containers.NotificationTypeV1.TypeV1)-> Services.Notification.Containers.NotificationTypeV1Builder {
+      public func setId(value:Services.Notification.Containers.NotificationTypeV1.TypeIdV1)-> Services.Notification.Containers.NotificationTypeV1Builder {
         self.id = value
         return self
       }
@@ -1609,7 +1343,7 @@ public extension Services.Notification.Containers {
 
         case 16 :
           let valueIntid = input.readEnum()
-          if let enumsid = Services.Notification.Containers.NotificationTypeV1.TypeV1(rawValue:valueIntid){
+          if let enumsid = Services.Notification.Containers.NotificationTypeV1.TypeIdV1(rawValue:valueIntid){
                id = enumsid
           } else {
                unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntid))
@@ -1623,6 +1357,591 @@ public extension Services.Notification.Containers {
 
         case 40 :
           mobilePush = input.readBool()
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class NotificationV1 : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           case "version": return version
+           case "notificationTypeId": return self.notificationTypeId
+           case "groupMembershipRequest": return groupMembershipRequest
+           default: return nil
+           }
+    }
+
+    public private(set) var hasVersion:Bool = false
+    public private(set) var version:UInt32 = UInt32(1)
+
+    public private(set) var notificationTypeId:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GroupMembershipRequest
+    public private(set) var hasNotificationTypeId:Bool = false
+    public private(set) var hasGroupMembershipRequest:Bool = false
+    public private(set) var groupMembershipRequest:Services.Notification.Containers.GroupMembershipRequestNotificationV1!
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      if hasVersion {
+        output.writeUInt32(1, value:version)
+      }
+      if hasNotificationTypeId {
+        output.writeEnum(2, value:notificationTypeId.rawValue)
+      }
+      if hasGroupMembershipRequest {
+        output.writeMessage(3, value:groupMembershipRequest)
+      }
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasVersion {
+        serialize_size += version.computeUInt32Size(1)
+      }
+      if (hasNotificationTypeId) {
+        serialize_size += notificationTypeId.rawValue.computeEnumSize(2)
+      }
+      if hasGroupMembershipRequest {
+          if let varSizegroupMembershipRequest = groupMembershipRequest?.computeMessageSize(3) {
+              serialize_size += varSizegroupMembershipRequest
+          }
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Notification.Containers.NotificationV1 {
+      return Services.Notification.Containers.NotificationV1.builder().mergeFromData(data, extensionRegistry:Services.Notification.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.NotificationV1 {
+      return Services.Notification.Containers.NotificationV1.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Notification.Containers.NotificationV1 {
+      return Services.Notification.Containers.NotificationV1.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Notification.Containers.NotificationV1 {
+      return Services.Notification.Containers.NotificationV1.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Notification.Containers.NotificationV1 {
+      return Services.Notification.Containers.NotificationV1.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.NotificationV1 {
+      return Services.Notification.Containers.NotificationV1.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Notification.Containers.NotificationV1Builder {
+      return Services.Notification.Containers.NotificationV1.classBuilder() as! Services.Notification.Containers.NotificationV1Builder
+    }
+    public func builder() -> Services.Notification.Containers.NotificationV1Builder {
+      return classBuilder() as! Services.Notification.Containers.NotificationV1Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Notification.Containers.NotificationV1Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Notification.Containers.NotificationV1.builder()
+    }
+    public func toBuilder() -> Services.Notification.Containers.NotificationV1Builder {
+      return Services.Notification.Containers.NotificationV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Notification.Containers.NotificationV1) -> Services.Notification.Containers.NotificationV1Builder {
+      return Services.Notification.Containers.NotificationV1.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      if hasVersion {
+        output += "\(indent) version: \(version) \n"
+      }
+      if (hasNotificationTypeId) {
+        output += "\(indent) notificationTypeId: \(notificationTypeId.rawValue)\n"
+      }
+      if hasGroupMembershipRequest {
+        output += "\(indent) groupMembershipRequest {\n"
+        groupMembershipRequest?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasVersion {
+               hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasNotificationTypeId {
+               hashCode = (hashCode &* 31) &+ Int(notificationTypeId.rawValue)
+            }
+            if hasGroupMembershipRequest {
+                if let hashValuegroupMembershipRequest = groupMembershipRequest?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuegroupMembershipRequest
+                }
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Notification.Containers.NotificationV1"
+    }
+    override public func className() -> String {
+        return "Services.Notification.Containers.NotificationV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Notification.Containers.NotificationV1.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class NotificationV1Builder : GeneratedMessageBuilder {
+    private var builderResult:Services.Notification.Containers.NotificationV1
+
+    required override public init () {
+       builderResult = Services.Notification.Containers.NotificationV1()
+       super.init()
+    }
+    public var hasVersion:Bool {
+         get {
+              return builderResult.hasVersion
+         }
+    }
+    public var version:UInt32 {
+         get {
+              return builderResult.version
+         }
+         set (value) {
+             builderResult.hasVersion = true
+             builderResult.version = value
+         }
+    }
+    public func setVersion(value:UInt32)-> Services.Notification.Containers.NotificationV1Builder {
+      self.version = value
+      return self
+    }
+    public func clearVersion() -> Services.Notification.Containers.NotificationV1Builder{
+         builderResult.hasVersion = false
+         builderResult.version = UInt32(1)
+         return self
+    }
+      public var hasNotificationTypeId:Bool{
+          get {
+              return builderResult.hasNotificationTypeId
+          }
+      }
+      public var notificationTypeId:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 {
+          get {
+              return builderResult.notificationTypeId
+          }
+          set (value) {
+              builderResult.hasNotificationTypeId = true
+              builderResult.notificationTypeId = value
+          }
+      }
+      public func setNotificationTypeId(value:Services.Notification.Containers.NotificationTypeV1.TypeIdV1)-> Services.Notification.Containers.NotificationV1Builder {
+        self.notificationTypeId = value
+        return self
+      }
+      public func clearNotificationTypeId() -> Services.Notification.Containers.NotificationV1Builder {
+         builderResult.hasNotificationTypeId = false
+         builderResult.notificationTypeId = .GroupMembershipRequest
+         return self
+      }
+    public var hasGroupMembershipRequest:Bool {
+         get {
+             return builderResult.hasGroupMembershipRequest
+         }
+    }
+    public var groupMembershipRequest:Services.Notification.Containers.GroupMembershipRequestNotificationV1! {
+         get {
+             return builderResult.groupMembershipRequest
+         }
+         set (value) {
+             builderResult.hasGroupMembershipRequest = true
+             builderResult.groupMembershipRequest = value
+         }
+    }
+    public func setGroupMembershipRequest(value:Services.Notification.Containers.GroupMembershipRequestNotificationV1!)-> Services.Notification.Containers.NotificationV1Builder {
+      self.groupMembershipRequest = value
+      return self
+    }
+    public func mergeGroupMembershipRequest(value:Services.Notification.Containers.GroupMembershipRequestNotificationV1) -> Services.Notification.Containers.NotificationV1Builder {
+      if (builderResult.hasGroupMembershipRequest) {
+        builderResult.groupMembershipRequest = Services.Notification.Containers.GroupMembershipRequestNotificationV1.builderWithPrototype(builderResult.groupMembershipRequest).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.groupMembershipRequest = value
+      }
+      builderResult.hasGroupMembershipRequest = true
+      return self
+    }
+    public func clearGroupMembershipRequest() -> Services.Notification.Containers.NotificationV1Builder {
+      builderResult.hasGroupMembershipRequest = false
+      builderResult.groupMembershipRequest = nil
+      return self
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Notification.Containers.NotificationV1Builder {
+      builderResult = Services.Notification.Containers.NotificationV1()
+      return self
+    }
+    public override func clone() -> Services.Notification.Containers.NotificationV1Builder {
+      return Services.Notification.Containers.NotificationV1.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Notification.Containers.NotificationV1 {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Notification.Containers.NotificationV1 {
+      var returnMe:Services.Notification.Containers.NotificationV1 = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Notification.Containers.NotificationV1) -> Services.Notification.Containers.NotificationV1Builder {
+      if (other == Services.Notification.Containers.NotificationV1()) {
+       return self
+      }
+      if other.hasVersion {
+           version = other.version
+      }
+      if other.hasNotificationTypeId {
+           notificationTypeId = other.notificationTypeId
+      }
+      if (other.hasGroupMembershipRequest) {
+          mergeGroupMembershipRequest(other.groupMembershipRequest)
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Notification.Containers.NotificationV1Builder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.NotificationV1Builder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        case 8 :
+          version = input.readUInt32()
+
+        case 16 :
+          let valueIntnotificationTypeId = input.readEnum()
+          if let enumsnotificationTypeId = Services.Notification.Containers.NotificationTypeV1.TypeIdV1(rawValue:valueIntnotificationTypeId){
+               notificationTypeId = enumsnotificationTypeId
+          } else {
+               unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntnotificationTypeId))
+          }
+
+        case 26 :
+          var subBuilder:Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder = Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder()
+          if hasGroupMembershipRequest {
+            subBuilder.mergeFrom(groupMembershipRequest)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          groupMembershipRequest = subBuilder.buildPartial()
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class GroupMembershipRequestNotificationV1 : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           case "version": return version
+           case "requesterProfileId": return requesterProfileId
+           case "groupId": return groupId
+           default: return nil
+           }
+    }
+
+    public private(set) var hasVersion:Bool = false
+    public private(set) var version:UInt32 = UInt32(1)
+
+    public private(set) var hasRequesterProfileId:Bool = false
+    public private(set) var requesterProfileId:String = ""
+
+    public private(set) var hasGroupId:Bool = false
+    public private(set) var groupId:String = ""
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      if hasVersion {
+        output.writeUInt32(1, value:version)
+      }
+      if hasRequesterProfileId {
+        output.writeString(2, value:requesterProfileId)
+      }
+      if hasGroupId {
+        output.writeString(3, value:groupId)
+      }
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasVersion {
+        serialize_size += version.computeUInt32Size(1)
+      }
+      if hasRequesterProfileId {
+        serialize_size += requesterProfileId.computeStringSize(2)
+      }
+      if hasGroupId {
+        serialize_size += groupId.computeStringSize(3)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromData(data, extensionRegistry:Services.Notification.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.classBuilder() as! Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder
+    }
+    public func builder() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      return classBuilder() as! Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder()
+    }
+    public func toBuilder() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Notification.Containers.GroupMembershipRequestNotificationV1) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      if hasVersion {
+        output += "\(indent) version: \(version) \n"
+      }
+      if hasRequesterProfileId {
+        output += "\(indent) requesterProfileId: \(requesterProfileId) \n"
+      }
+      if hasGroupId {
+        output += "\(indent) groupId: \(groupId) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasVersion {
+               hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasRequesterProfileId {
+               hashCode = (hashCode &* 31) &+ requesterProfileId.hashValue
+            }
+            if hasGroupId {
+               hashCode = (hashCode &* 31) &+ groupId.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Notification.Containers.GroupMembershipRequestNotificationV1"
+    }
+    override public func className() -> String {
+        return "Services.Notification.Containers.GroupMembershipRequestNotificationV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Notification.Containers.GroupMembershipRequestNotificationV1.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class GroupMembershipRequestNotificationV1Builder : GeneratedMessageBuilder {
+    private var builderResult:Services.Notification.Containers.GroupMembershipRequestNotificationV1
+
+    required override public init () {
+       builderResult = Services.Notification.Containers.GroupMembershipRequestNotificationV1()
+       super.init()
+    }
+    public var hasVersion:Bool {
+         get {
+              return builderResult.hasVersion
+         }
+    }
+    public var version:UInt32 {
+         get {
+              return builderResult.version
+         }
+         set (value) {
+             builderResult.hasVersion = true
+             builderResult.version = value
+         }
+    }
+    public func setVersion(value:UInt32)-> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      self.version = value
+      return self
+    }
+    public func clearVersion() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder{
+         builderResult.hasVersion = false
+         builderResult.version = UInt32(1)
+         return self
+    }
+    public var hasRequesterProfileId:Bool {
+         get {
+              return builderResult.hasRequesterProfileId
+         }
+    }
+    public var requesterProfileId:String {
+         get {
+              return builderResult.requesterProfileId
+         }
+         set (value) {
+             builderResult.hasRequesterProfileId = true
+             builderResult.requesterProfileId = value
+         }
+    }
+    public func setRequesterProfileId(value:String)-> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      self.requesterProfileId = value
+      return self
+    }
+    public func clearRequesterProfileId() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder{
+         builderResult.hasRequesterProfileId = false
+         builderResult.requesterProfileId = ""
+         return self
+    }
+    public var hasGroupId:Bool {
+         get {
+              return builderResult.hasGroupId
+         }
+    }
+    public var groupId:String {
+         get {
+              return builderResult.groupId
+         }
+         set (value) {
+             builderResult.hasGroupId = true
+             builderResult.groupId = value
+         }
+    }
+    public func setGroupId(value:String)-> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      self.groupId = value
+      return self
+    }
+    public func clearGroupId() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder{
+         builderResult.hasGroupId = false
+         builderResult.groupId = ""
+         return self
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      builderResult = Services.Notification.Containers.GroupMembershipRequestNotificationV1()
+      return self
+    }
+    public override func clone() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      return Services.Notification.Containers.GroupMembershipRequestNotificationV1.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1 {
+      var returnMe:Services.Notification.Containers.GroupMembershipRequestNotificationV1 = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Notification.Containers.GroupMembershipRequestNotificationV1) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      if (other == Services.Notification.Containers.GroupMembershipRequestNotificationV1()) {
+       return self
+      }
+      if other.hasVersion {
+           version = other.version
+      }
+      if other.hasRequesterProfileId {
+           requesterProfileId = other.requesterProfileId
+      }
+      if other.hasGroupId {
+           groupId = other.groupId
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        case 8 :
+          version = input.readUInt32()
+
+        case 18 :
+          requesterProfileId = input.readString()
+
+        case 26 :
+          groupId = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
