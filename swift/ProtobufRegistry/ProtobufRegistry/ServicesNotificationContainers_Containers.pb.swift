@@ -63,7 +63,7 @@ public func == (lhs: Services.Notification.Containers.GroupMembershipRequestNoti
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasRequesterProfileId == rhs.hasRequesterProfileId) && (!lhs.hasRequesterProfileId || lhs.requesterProfileId == rhs.requesterProfileId)
-  fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
+  fieldCheck = fieldCheck && (lhs.hasGroupKey == rhs.hasGroupKey) && (!lhs.hasGroupKey || lhs.groupKey == rhs.groupKey)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -1753,7 +1753,7 @@ public extension Services.Notification.Containers {
            switch key {
            case "version": return version
            case "requesterProfileId": return requesterProfileId
-           case "groupId": return groupId
+           case "groupKey": return groupKey
            default: return nil
            }
     }
@@ -1764,8 +1764,8 @@ public extension Services.Notification.Containers {
     public private(set) var hasRequesterProfileId:Bool = false
     public private(set) var requesterProfileId:String = ""
 
-    public private(set) var hasGroupId:Bool = false
-    public private(set) var groupId:String = ""
+    public private(set) var hasGroupKey:Bool = false
+    public private(set) var groupKey:String = ""
 
     required public init() {
          super.init()
@@ -1780,8 +1780,8 @@ public extension Services.Notification.Containers {
       if hasRequesterProfileId {
         output.writeString(2, value:requesterProfileId)
       }
-      if hasGroupId {
-        output.writeString(3, value:groupId)
+      if hasGroupKey {
+        output.writeString(3, value:groupKey)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -1798,8 +1798,8 @@ public extension Services.Notification.Containers {
       if hasRequesterProfileId {
         serialize_size += requesterProfileId.computeStringSize(2)
       }
-      if hasGroupId {
-        serialize_size += groupId.computeStringSize(3)
+      if hasGroupKey {
+        serialize_size += groupKey.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1848,8 +1848,8 @@ public extension Services.Notification.Containers {
       if hasRequesterProfileId {
         output += "\(indent) requesterProfileId: \(requesterProfileId) \n"
       }
-      if hasGroupId {
-        output += "\(indent) groupId: \(groupId) \n"
+      if hasGroupKey {
+        output += "\(indent) groupKey: \(groupKey) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -1862,8 +1862,8 @@ public extension Services.Notification.Containers {
             if hasRequesterProfileId {
                hashCode = (hashCode &* 31) &+ requesterProfileId.hashValue
             }
-            if hasGroupId {
-               hashCode = (hashCode &* 31) &+ groupId.hashValue
+            if hasGroupKey {
+               hashCode = (hashCode &* 31) &+ groupKey.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1939,27 +1939,27 @@ public extension Services.Notification.Containers {
          builderResult.requesterProfileId = ""
          return self
     }
-    public var hasGroupId:Bool {
+    public var hasGroupKey:Bool {
          get {
-              return builderResult.hasGroupId
+              return builderResult.hasGroupKey
          }
     }
-    public var groupId:String {
+    public var groupKey:String {
          get {
-              return builderResult.groupId
+              return builderResult.groupKey
          }
          set (value) {
-             builderResult.hasGroupId = true
-             builderResult.groupId = value
+             builderResult.hasGroupKey = true
+             builderResult.groupKey = value
          }
     }
-    public func setGroupId(value:String)-> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
-      self.groupId = value
+    public func setGroupKey(value:String)-> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder {
+      self.groupKey = value
       return self
     }
-    public func clearGroupId() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder{
-         builderResult.hasGroupId = false
-         builderResult.groupId = ""
+    public func clearGroupKey() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1Builder{
+         builderResult.hasGroupKey = false
+         builderResult.groupKey = ""
          return self
     }
     override public var internalGetResult:GeneratedMessage {
@@ -1992,8 +1992,8 @@ public extension Services.Notification.Containers {
       if other.hasRequesterProfileId {
            requesterProfileId = other.requesterProfileId
       }
-      if other.hasGroupId {
-           groupId = other.groupId
+      if other.hasGroupKey {
+           groupKey = other.groupKey
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -2017,7 +2017,7 @@ public extension Services.Notification.Containers {
           requesterProfileId = input.readString()
 
         case 26 :
-          groupId = input.readString()
+          groupKey = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

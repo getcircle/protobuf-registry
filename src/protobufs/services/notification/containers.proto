@@ -56,7 +56,7 @@ message NotificationV1 {
 message GroupMembershipRequestNotificationV1 {
     optional uint32 version = 1 [default = 1];
     optional string requester_profile_id = 2;
-    optional string group_id = 3;
+    optional string group_key = 3;
 }
 
 message GroupMembershipRequestResponseNotificationV1 {
