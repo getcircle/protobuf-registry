@@ -1,5 +1,8 @@
 package services.notification.actions.send_notification;
 
+// GENERATED OPTIONS FOR: JAVA
+option java_package = "com.rhlabs.protobufs.services.notification.actions.send_notification";
+
 import "protobufs/services/notification/containers.proto";
 
 message RequestV1 {

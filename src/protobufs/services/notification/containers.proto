@@ -1,5 +1,8 @@
 package services.notification.containers;
 
+// GENERATED OPTIONS FOR: JAVA
+option java_package = "com.rhlabs.protobufs.services.notification.containers";
+
 enum NotificationChannelV1 {
     MOBILE_PUSH = 0;
 }
