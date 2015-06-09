@@ -19,7 +19,7 @@ import protobufs.services.user.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/get_active_devices.proto',
   package='services.user.actions.get_active_devices',
-  serialized_pb=_b('\n8protobufs/services/user/actions/get_active_devices.proto\x12(services.user.actions.get_active_devices\x1a(protobufs/services/user/containers.proto\"0\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07user_id\x18\x02 \x01(\t\"U\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x33\n\x07\x64\x65vices\x18\x02 \x03(\x0b\x32\".services.user.containers.DeviceV1')
+  serialized_pb=_b('\n8protobufs/services/user/actions/get_active_devices.proto\x12(services.user.actions.get_active_devices\x1a(protobufs/services/user/containers.proto\"0\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07user_id\x18\x02 \x01(\t\"U\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x33\n\x07\x64\x65vices\x18\x02 \x03(\x0b\x32\".services.user.containers.DeviceV1B?\n=com.rhlabs.protobufs.services.user.actions.get_active_devices')
   ,
   dependencies=[protobufs.services.user.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -119,4 +119,6 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n=com.rhlabs.protobufs.services.user.actions.get_active_devices'))
 # @@protoc_insertion_point(module_scope)

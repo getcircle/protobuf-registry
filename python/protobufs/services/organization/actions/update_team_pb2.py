@@ -19,7 +19,7 @@ import protobufs.services.organization.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/update_team.proto',
   package='services.organization.actions.update_team',
-  serialized_pb=_b('\n9protobufs/services/organization/actions/update_team.proto\x12)services.organization.actions.update_team\x1a\x30protobufs/services/organization/containers.proto\"W\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x36\n\x04team\x18\x02 \x01(\x0b\x32(.services.organization.containers.TeamV1\"X\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x36\n\x04team\x18\x02 \x01(\x0b\x32(.services.organization.containers.TeamV1')
+  serialized_pb=_b('\n9protobufs/services/organization/actions/update_team.proto\x12)services.organization.actions.update_team\x1a\x30protobufs/services/organization/containers.proto\"W\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x36\n\x04team\x18\x02 \x01(\x0b\x32(.services.organization.containers.TeamV1\"X\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x36\n\x04team\x18\x02 \x01(\x0b\x32(.services.organization.containers.TeamV1B@\n>com.rhlabs.protobufs.services.organization.actions.update_team')
   ,
   dependencies=[protobufs.services.organization.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -120,4 +120,6 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n>com.rhlabs.protobufs.services.organization.actions.update_team'))
 # @@protoc_insertion_point(module_scope)
