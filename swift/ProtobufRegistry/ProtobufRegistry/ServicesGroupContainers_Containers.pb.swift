@@ -73,7 +73,7 @@ public func == (lhs: Services.Group.Containers.MembershipRequestV1, rhs: Service
   fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
   fieldCheck = fieldCheck && (lhs.hasRequesterProfileId == rhs.hasRequesterProfileId) && (!lhs.hasRequesterProfileId || lhs.requesterProfileId == rhs.requesterProfileId)
   fieldCheck = fieldCheck && (lhs.approverProfileIds == rhs.approverProfileIds)
-  fieldCheck = fieldCheck && (lhs.hasGroupKey == rhs.hasGroupKey) && (!lhs.hasGroupKey || lhs.groupKey == rhs.groupKey)
+  fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   fieldCheck = fieldCheck && (lhs.meta == rhs.meta)
   fieldCheck = fieldCheck && (lhs.hasCreated == rhs.hasCreated) && (!lhs.hasCreated || lhs.created == rhs.created)
@@ -2031,7 +2031,7 @@ public extension Services.Group.Containers {
            case "id": return id
            case "status": return self.status
            case "requesterProfileId": return requesterProfileId
-           case "groupKey": return groupKey
+           case "groupId": return groupId
            case "provider": return self.provider
            case "created": return created
            default: return nil
@@ -2049,8 +2049,8 @@ public extension Services.Group.Containers {
     public private(set) var hasRequesterProfileId:Bool = false
     public private(set) var requesterProfileId:String = ""
 
-    public private(set) var hasGroupKey:Bool = false
-    public private(set) var groupKey:String = ""
+    public private(set) var hasGroupId:Bool = false
+    public private(set) var groupId:String = ""
 
     public private(set) var provider:Services.Group.Containers.GroupProviderV1 = Services.Group.Containers.GroupProviderV1.Google
     public private(set) var hasProvider:Bool = false
@@ -2083,8 +2083,8 @@ public extension Services.Group.Containers {
           output.writeString(5, value:oneValueapproverProfileIds)
         }
       }
-      if hasGroupKey {
-        output.writeString(6, value:groupKey)
+      if hasGroupId {
+        output.writeString(6, value:groupId)
       }
       if hasProvider {
         output.writeEnum(7, value:provider.rawValue)
@@ -2122,8 +2122,8 @@ public extension Services.Group.Containers {
       }
       serialize_size += dataSizeApproverProfileIds
       serialize_size += 1 * Int32(approverProfileIds.count)
-      if hasGroupKey {
-        serialize_size += groupKey.computeStringSize(6)
+      if hasGroupId {
+        serialize_size += groupId.computeStringSize(6)
       }
       if (hasProvider) {
         serialize_size += provider.rawValue.computeEnumSize(7)
@@ -2192,8 +2192,8 @@ public extension Services.Group.Containers {
           output += "\(indent) approverProfileIds[\(approverProfileIdsElementIndex)]: \(oneValueapproverProfileIds)\n"
           approverProfileIdsElementIndex++
       }
-      if hasGroupKey {
-        output += "\(indent) groupKey: \(groupKey) \n"
+      if hasGroupId {
+        output += "\(indent) groupId: \(groupId) \n"
       }
       if (hasProvider) {
         output += "\(indent) provider: \(provider.rawValue)\n"
@@ -2228,8 +2228,8 @@ public extension Services.Group.Containers {
             for oneValueapproverProfileIds in approverProfileIds {
                 hashCode = (hashCode &* 31) &+ oneValueapproverProfileIds.hashValue
             }
-            if hasGroupKey {
-               hashCode = (hashCode &* 31) &+ groupKey.hashValue
+            if hasGroupId {
+               hashCode = (hashCode &* 31) &+ groupId.hashValue
             }
             if hasProvider {
                hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
@@ -2376,27 +2376,27 @@ public extension Services.Group.Containers {
        builderResult.approverProfileIds.removeAll(keepCapacity: false)
        return self
     }
-    public var hasGroupKey:Bool {
+    public var hasGroupId:Bool {
          get {
-              return builderResult.hasGroupKey
+              return builderResult.hasGroupId
          }
     }
-    public var groupKey:String {
+    public var groupId:String {
          get {
-              return builderResult.groupKey
+              return builderResult.groupId
          }
          set (value) {
-             builderResult.hasGroupKey = true
-             builderResult.groupKey = value
+             builderResult.hasGroupId = true
+             builderResult.groupId = value
          }
     }
-    public func setGroupKey(value:String)-> Services.Group.Containers.MembershipRequestV1Builder {
-      self.groupKey = value
+    public func setGroupId(value:String)-> Services.Group.Containers.MembershipRequestV1Builder {
+      self.groupId = value
       return self
     }
-    public func clearGroupKey() -> Services.Group.Containers.MembershipRequestV1Builder{
-         builderResult.hasGroupKey = false
-         builderResult.groupKey = ""
+    public func clearGroupId() -> Services.Group.Containers.MembershipRequestV1Builder{
+         builderResult.hasGroupId = false
+         builderResult.groupId = ""
          return self
     }
       public var hasProvider:Bool{
@@ -2500,8 +2500,8 @@ public extension Services.Group.Containers {
       if !other.approverProfileIds.isEmpty {
           builderResult.approverProfileIds += other.approverProfileIds
       }
-      if other.hasGroupKey {
-           groupKey = other.groupKey
+      if other.hasGroupId {
+           groupId = other.groupId
       }
       if other.hasProvider {
            provider = other.provider
@@ -2548,7 +2548,7 @@ public extension Services.Group.Containers {
           approverProfileIds += [input.readString()]
 
         case 50 :
-          groupKey = input.readString()
+          groupId = input.readString()
 
         case 56 :
           let valueIntprovider = input.readEnum()
