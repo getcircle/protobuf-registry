@@ -2,7 +2,7 @@
 // Source file: ./src/protobufs/services/user/actions/get_authentication_instructions.proto
 package com.rhlabs.protobufs.services.user.actions.get_authentication_instructions;
 
-import com.rhlabs.protobufs.services.user.actions.authenticate_user.RequestV1;
+import com.rhlabs.protobufs.services.user.actions.authenticate_user.AuthenticateUserRequestV1;
 import com.squareup.wire.Message;
 import com.squareup.wire.ProtoField;
 
@@ -15,7 +15,7 @@ public final class GetAuthenticationInstructionsResponseV1 extends Message {
   private static final long serialVersionUID = 0L;
 
   public static final Integer DEFAULT_VERSION = 1;
-  public static final RequestV1.AuthBackendV1 DEFAULT_BACKEND = RequestV1.AuthBackendV1.INTERNAL;
+  public static final AuthenticateUserRequestV1.AuthBackendV1 DEFAULT_BACKEND = AuthenticateUserRequestV1.AuthBackendV1.INTERNAL;
   public static final Boolean DEFAULT_USER_EXISTS = false;
   public static final String DEFAULT_AUTHORIZATION_URL = "";
 
@@ -23,7 +23,7 @@ public final class GetAuthenticationInstructionsResponseV1 extends Message {
   public final Integer version;
 
   @ProtoField(tag = 2, type = ENUM)
-  public final RequestV1.AuthBackendV1 backend;
+  public final AuthenticateUserRequestV1.AuthBackendV1 backend;
 
   @ProtoField(tag = 3, type = BOOL)
   public final Boolean user_exists;
@@ -31,7 +31,7 @@ public final class GetAuthenticationInstructionsResponseV1 extends Message {
   @ProtoField(tag = 4, type = STRING)
   public final String authorization_url;
 
-  public GetAuthenticationInstructionsResponseV1(Integer version, RequestV1.AuthBackendV1 backend, Boolean user_exists, String authorization_url) {
+  public GetAuthenticationInstructionsResponseV1(Integer version, AuthenticateUserRequestV1.AuthBackendV1 backend, Boolean user_exists, String authorization_url) {
     this.version = version;
     this.backend = backend;
     this.user_exists = user_exists;
@@ -70,7 +70,7 @@ public final class GetAuthenticationInstructionsResponseV1 extends Message {
   public static final class Builder extends Message.Builder<GetAuthenticationInstructionsResponseV1> {
 
     public Integer version;
-    public RequestV1.AuthBackendV1 backend;
+    public AuthenticateUserRequestV1.AuthBackendV1 backend;
     public Boolean user_exists;
     public String authorization_url;
 
@@ -91,7 +91,7 @@ public final class GetAuthenticationInstructionsResponseV1 extends Message {
       return this;
     }
 
-    public Builder backend(RequestV1.AuthBackendV1 backend) {
+    public Builder backend(AuthenticateUserRequestV1.AuthBackendV1 backend) {
       this.backend = backend;
       return this;
     }
