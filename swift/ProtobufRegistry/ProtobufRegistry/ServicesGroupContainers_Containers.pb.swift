@@ -51,6 +51,7 @@ public func == (lhs: Services.Group.Containers.MemberV1, rhs: Services.Group.Con
   fieldCheck = fieldCheck && (lhs.hasRole == rhs.hasRole) && (!lhs.hasRole || lhs.role == rhs.role)
   fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
+  fieldCheck = fieldCheck && (lhs.hasProviderUid == rhs.hasProviderUid) && (!lhs.hasProviderUid || lhs.providerUid == rhs.providerUid)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -1405,6 +1406,7 @@ public extension Services.Group.Containers {
            case "role": return self.role
            case "groupId": return groupId
            case "provider": return self.provider
+           case "providerUid": return providerUid
            default: return nil
            }
     }
@@ -1424,6 +1426,9 @@ public extension Services.Group.Containers {
 
     public private(set) var provider:Services.Group.Containers.GroupProviderV1 = Services.Group.Containers.GroupProviderV1.Google
     public private(set) var hasProvider:Bool = false
+    public private(set) var hasProviderUid:Bool = false
+    public private(set) var providerUid:String = ""
+
     required public init() {
          super.init()
     }
@@ -1448,6 +1453,9 @@ public extension Services.Group.Containers {
       }
       if hasProvider {
         output.writeEnum(6, value:provider.rawValue)
+      }
+      if hasProviderUid {
+        output.writeString(7, value:providerUid)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -1477,6 +1485,9 @@ public extension Services.Group.Containers {
       }
       if (hasProvider) {
         serialize_size += provider.rawValue.computeEnumSize(6)
+      }
+      if hasProviderUid {
+        serialize_size += providerUid.computeStringSize(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1539,6 +1550,9 @@ public extension Services.Group.Containers {
       if (hasProvider) {
         output += "\(indent) provider: \(provider.rawValue)\n"
       }
+      if hasProviderUid {
+        output += "\(indent) providerUid: \(providerUid) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1563,6 +1577,9 @@ public extension Services.Group.Containers {
             }
             if hasProvider {
                hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
+            }
+            if hasProviderUid {
+               hashCode = (hashCode &* 31) &+ providerUid.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1739,6 +1756,29 @@ public extension Services.Group.Containers {
          builderResult.provider = .Google
          return self
       }
+    public var hasProviderUid:Bool {
+         get {
+              return builderResult.hasProviderUid
+         }
+    }
+    public var providerUid:String {
+         get {
+              return builderResult.providerUid
+         }
+         set (value) {
+             builderResult.hasProviderUid = true
+             builderResult.providerUid = value
+         }
+    }
+    public func setProviderUid(value:String)-> Services.Group.Containers.MemberV1Builder {
+      self.providerUid = value
+      return self
+    }
+    public func clearProviderUid() -> Services.Group.Containers.MemberV1Builder{
+         builderResult.hasProviderUid = false
+         builderResult.providerUid = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -1780,6 +1820,9 @@ public extension Services.Group.Containers {
       }
       if other.hasProvider {
            provider = other.provider
+      }
+      if other.hasProviderUid {
+           providerUid = other.providerUid
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -1828,6 +1871,9 @@ public extension Services.Group.Containers {
           } else {
                unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntprovider))
           }
+
+        case 58 :
+          providerUid = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

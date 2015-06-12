@@ -54,6 +54,7 @@ message MemberV1 {
     optional RoleV1 role = 4;
     optional string group_id = 5;
     optional GroupProviderV1 provider = 6;
+    optional string provider_uid = 7;
 }
 
 enum MembershipRequestStatusV1 {
