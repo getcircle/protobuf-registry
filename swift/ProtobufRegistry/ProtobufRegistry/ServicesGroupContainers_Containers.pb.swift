@@ -49,6 +49,8 @@ public func == (lhs: Services.Group.Containers.MemberV1, rhs: Services.Group.Con
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
   fieldCheck = fieldCheck && (lhs.hasRole == rhs.hasRole) && (!lhs.hasRole || lhs.role == rhs.role)
+  fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
+  fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -1401,6 +1403,8 @@ public extension Services.Group.Containers {
            case "id": return id
            case "profile": return profile
            case "role": return self.role
+           case "groupId": return groupId
+           case "provider": return self.provider
            default: return nil
            }
     }
@@ -1415,6 +1419,11 @@ public extension Services.Group.Containers {
     public private(set) var profile:Services.Profile.Containers.ProfileV1!
     public private(set) var role:Services.Group.Containers.RoleV1 = Services.Group.Containers.RoleV1.Owner
     public private(set) var hasRole:Bool = false
+    public private(set) var hasGroupId:Bool = false
+    public private(set) var groupId:String = ""
+
+    public private(set) var provider:Services.Group.Containers.GroupProviderV1 = Services.Group.Containers.GroupProviderV1.Google
+    public private(set) var hasProvider:Bool = false
     required public init() {
          super.init()
     }
@@ -1433,6 +1442,12 @@ public extension Services.Group.Containers {
       }
       if hasRole {
         output.writeEnum(4, value:role.rawValue)
+      }
+      if hasGroupId {
+        output.writeString(5, value:groupId)
+      }
+      if hasProvider {
+        output.writeEnum(6, value:provider.rawValue)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -1456,6 +1471,12 @@ public extension Services.Group.Containers {
       }
       if (hasRole) {
         serialize_size += role.rawValue.computeEnumSize(4)
+      }
+      if hasGroupId {
+        serialize_size += groupId.computeStringSize(5)
+      }
+      if (hasProvider) {
+        serialize_size += provider.rawValue.computeEnumSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1512,6 +1533,12 @@ public extension Services.Group.Containers {
       if (hasRole) {
         output += "\(indent) role: \(role.rawValue)\n"
       }
+      if hasGroupId {
+        output += "\(indent) groupId: \(groupId) \n"
+      }
+      if (hasProvider) {
+        output += "\(indent) provider: \(provider.rawValue)\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1530,6 +1557,12 @@ public extension Services.Group.Containers {
             }
             if hasRole {
                hashCode = (hashCode &* 31) &+ Int(role.rawValue)
+            }
+            if hasGroupId {
+               hashCode = (hashCode &* 31) &+ groupId.hashValue
+            }
+            if hasProvider {
+               hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1660,6 +1693,52 @@ public extension Services.Group.Containers {
          builderResult.role = .Owner
          return self
       }
+    public var hasGroupId:Bool {
+         get {
+              return builderResult.hasGroupId
+         }
+    }
+    public var groupId:String {
+         get {
+              return builderResult.groupId
+         }
+         set (value) {
+             builderResult.hasGroupId = true
+             builderResult.groupId = value
+         }
+    }
+    public func setGroupId(value:String)-> Services.Group.Containers.MemberV1Builder {
+      self.groupId = value
+      return self
+    }
+    public func clearGroupId() -> Services.Group.Containers.MemberV1Builder{
+         builderResult.hasGroupId = false
+         builderResult.groupId = ""
+         return self
+    }
+      public var hasProvider:Bool{
+          get {
+              return builderResult.hasProvider
+          }
+      }
+      public var provider:Services.Group.Containers.GroupProviderV1 {
+          get {
+              return builderResult.provider
+          }
+          set (value) {
+              builderResult.hasProvider = true
+              builderResult.provider = value
+          }
+      }
+      public func setProvider(value:Services.Group.Containers.GroupProviderV1)-> Services.Group.Containers.MemberV1Builder {
+        self.provider = value
+        return self
+      }
+      public func clearProvider() -> Services.Group.Containers.MemberV1Builder {
+         builderResult.hasProvider = false
+         builderResult.provider = .Google
+         return self
+      }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -1696,6 +1775,12 @@ public extension Services.Group.Containers {
       if other.hasRole {
            role = other.role
       }
+      if other.hasGroupId {
+           groupId = other.groupId
+      }
+      if other.hasProvider {
+           provider = other.provider
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -1731,6 +1816,17 @@ public extension Services.Group.Containers {
                role = enumsrole
           } else {
                unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntrole))
+          }
+
+        case 42 :
+          groupId = input.readString()
+
+        case 48 :
+          let valueIntprovider = input.readEnum()
+          if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
+               provider = enumsprovider
+          } else {
+               unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntprovider))
           }
 
         default:

@@ -52,6 +52,8 @@ message MemberV1 {
     optional string id = 2;
     optional services.profile.containers.ProfileV1 profile = 3;
     optional RoleV1 role = 4;
+    optional string group_id = 5;
+    optional GroupProviderV1 provider = 6;
 }
 
 enum MembershipRequestStatusV1 {
