@@ -34,19 +34,20 @@ message ProfileV1 {
     optional string last_name = 8;
     optional string image_url = 9;
     optional string team_id = 10;
-    optional string full_name = 11;
-    optional string birth_date = 12;
-    optional string hire_date = 13;
-    optional bool verified = 14;
-    repeated ProfileItemV1 items = 15;
-    optional string about = 16;
-    optional string location_id = 17;
-    optional string nickname = 18;
-    repeated ContactMethodV1 contact_methods = 19;
-    optional string seating_info = 20;
-    optional string email = 21;
-    optional bool is_admin = 22;
-    optional string small_image_url = 23;
+    optional string team_name = 11;
+    optional string full_name = 12;
+    optional string birth_date = 13;
+    optional string hire_date = 14;
+    optional bool verified = 15;
+    repeated ProfileItemV1 items = 16;
+    optional string about = 17;
+    optional string location_id = 18;
+    optional string nickname = 19;
+    repeated ContactMethodV1 contact_methods = 20;
+    optional string seating_info = 21;
+    optional string email = 22;
+    optional bool is_admin = 23;
+    optional string small_image_url = 24;
 }
 
 message ProfileItemV1 {
