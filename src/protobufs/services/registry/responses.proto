@@ -73,11 +73,6 @@ import "protobufs/services/feed/actions/get_organization_feed.proto";
 import "protobufs/services/media/actions/start_image_upload.proto";
 import "protobufs/services/media/actions/complete_image_upload.proto";
 
-import "protobufs/services/note/actions/create_note.proto";
-import "protobufs/services/note/actions/get_notes.proto";
-import "protobufs/services/note/actions/delete_note.proto";
-import "protobufs/services/note/actions/update_note.proto";
-
 import "protobufs/services/resume/actions/bulk_create_educations.proto";
 import "protobufs/services/resume/actions/bulk_create_positions.proto";
 import "protobufs/services/resume/actions/create_company.proto";
@@ -197,15 +192,6 @@ message Media {
     extend soa.ActionResultV1 {
         optional services.media.actions.start_image_upload.ResponseV1 start_image_upload = 600;
         optional services.media.actions.complete_image_upload.ResponseV1 complete_image_upload = 601;
-    }
-}
-
-message Note {
-    extend soa.ActionResultV1 {
-        optional services.note.actions.create_note.ResponseV1 create_note = 700;
-        optional services.note.actions.get_notes.ResponseV1 get_notes = 701;
-        optional services.note.actions.delete_note.ResponseV1 delete_note = 702;
-        optional services.note.actions.update_note.ResponseV1 update_note = 703;
     }
 }
 

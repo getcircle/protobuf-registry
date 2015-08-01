@@ -17,7 +17,6 @@ public func == (lhs: Services.Feed.Containers.CategoryV1, rhs: Services.Feed.Con
   fieldCheck = fieldCheck && (lhs.addresses == rhs.addresses)
   fieldCheck = fieldCheck && (lhs.tags == rhs.tags)
   fieldCheck = fieldCheck && (lhs.teams == rhs.teams)
-  fieldCheck = fieldCheck && (lhs.notes == rhs.notes)
   fieldCheck = fieldCheck && (lhs.locations == rhs.locations)
   fieldCheck = fieldCheck && (lhs.groupMembershipRequests == rhs.groupMembershipRequests)
   fieldCheck = fieldCheck && (lhs.groups == rhs.groups)
@@ -38,7 +37,6 @@ public extension Services.Feed.Containers {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Services.Group.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Note.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
@@ -62,7 +60,6 @@ public extension Services.Feed.Containers {
         case Departments = 8
         case Executives = 9
         case Organization = 10
-        case Notes = 11
         case Skills = 12
         case GroupMembershipRequests = 13
 
@@ -99,7 +96,6 @@ public extension Services.Feed.Containers {
     public private(set) var addresses:Array<Services.Organization.Containers.AddressV1>  = Array<Services.Organization.Containers.AddressV1>()
     public private(set) var tags:Array<Services.Profile.Containers.TagV1>  = Array<Services.Profile.Containers.TagV1>()
     public private(set) var teams:Array<Services.Organization.Containers.TeamV1>  = Array<Services.Organization.Containers.TeamV1>()
-    public private(set) var notes:Array<Services.Note.Containers.NoteV1>  = Array<Services.Note.Containers.NoteV1>()
     public private(set) var locations:Array<Services.Organization.Containers.LocationV1>  = Array<Services.Organization.Containers.LocationV1>()
     public private(set) var groupMembershipRequests:Array<Services.Group.Containers.MembershipRequestV1>  = Array<Services.Group.Containers.MembershipRequestV1>()
     public private(set) var groups:Array<Services.Group.Containers.GroupV1>  = Array<Services.Group.Containers.GroupV1>()
@@ -136,9 +132,6 @@ public extension Services.Feed.Containers {
       }
       for oneElementteams in teams {
           output.writeMessage(9, value:oneElementteams)
-      }
-      for oneElementnotes in notes {
-          output.writeMessage(10, value:oneElementnotes)
       }
       for oneElementlocations in locations {
           output.writeMessage(11, value:oneElementlocations)
@@ -184,9 +177,6 @@ public extension Services.Feed.Containers {
       }
       for oneElementteams in teams {
           serialize_size += oneElementteams.computeMessageSize(9)
-      }
-      for oneElementnotes in notes {
-          serialize_size += oneElementnotes.computeMessageSize(10)
       }
       for oneElementlocations in locations {
           serialize_size += oneElementlocations.computeMessageSize(11)
@@ -281,13 +271,6 @@ public extension Services.Feed.Containers {
           output += "\(indent)}\n"
           teamsElementIndex++
       }
-      var notesElementIndex:Int = 0
-      for oneElementnotes in notes {
-          output += "\(indent) notes[\(notesElementIndex)] {\n"
-          oneElementnotes.writeDescriptionTo(&output, indent:"\(indent)  ")
-          output += "\(indent)}\n"
-          notesElementIndex++
-      }
       var locationsElementIndex:Int = 0
       for oneElementlocations in locations {
           output += "\(indent) locations[\(locationsElementIndex)] {\n"
@@ -340,9 +323,6 @@ public extension Services.Feed.Containers {
             }
             for oneElementteams in teams {
                 hashCode = (hashCode &* 31) &+ oneElementteams.hashValue
-            }
-            for oneElementnotes in notes {
-                hashCode = (hashCode &* 31) &+ oneElementnotes.hashValue
             }
             for oneElementlocations in locations {
                 hashCode = (hashCode &* 31) &+ oneElementlocations.hashValue
@@ -560,22 +540,6 @@ public extension Services.Feed.Containers {
       builderResult.teams.removeAll(keepCapacity: false)
       return self
     }
-    public var notes:Array<Services.Note.Containers.NoteV1> {
-         get {
-             return builderResult.notes
-         }
-         set (value) {
-             builderResult.notes = value
-         }
-    }
-    public func setNotes(value:Array<Services.Note.Containers.NoteV1>)-> Services.Feed.Containers.CategoryV1Builder {
-      self.notes = value
-      return self
-    }
-    public func clearNotes() -> Services.Feed.Containers.CategoryV1Builder {
-      builderResult.notes.removeAll(keepCapacity: false)
-      return self
-    }
     public var locations:Array<Services.Organization.Containers.LocationV1> {
          get {
              return builderResult.locations
@@ -675,9 +639,6 @@ public extension Services.Feed.Containers {
       if !other.teams.isEmpty  {
          builderResult.teams += other.teams
       }
-      if !other.notes.isEmpty  {
-         builderResult.notes += other.notes
-      }
       if !other.locations.isEmpty  {
          builderResult.locations += other.locations
       }
@@ -741,11 +702,6 @@ public extension Services.Feed.Containers {
           var subBuilder = Services.Organization.Containers.TeamV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           teams += [subBuilder.buildPartial()]
-
-        case 82 :
-          var subBuilder = Services.Note.Containers.NoteV1.builder()
-          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-          notes += [subBuilder.buildPartial()]
 
         case 90 :
           var subBuilder = Services.Organization.Containers.LocationV1.builder()

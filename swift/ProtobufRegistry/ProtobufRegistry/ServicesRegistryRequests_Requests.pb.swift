@@ -51,14 +51,6 @@ public func == (lhs: Services.Registry.Requests.Media, rhs: Services.Registry.Re
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: Services.Registry.Requests.Note, rhs: Services.Registry.Requests.Note) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-}
-
 public func == (lhs: Services.Registry.Requests.Resume, rhs: Services.Registry.Requests.Resume) -> Bool {
   if (lhs === rhs) {
     return true
@@ -409,26 +401,6 @@ public var ServicesRegistryRequestsMediacompleteImageUpload:ConcreateExtensionFi
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsMediacompleteImageUploadStatic
    }
 }
-public var ServicesRegistryRequestsNotecreateNote:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNotecreateNoteStatic
-   }
-}
-public var ServicesRegistryRequestsNotegetNotes:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNotegetNotesStatic
-   }
-}
-public var ServicesRegistryRequestsNotedeleteNote:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNotedeleteNoteStatic
-   }
-}
-public var ServicesRegistryRequestsNoteupdateNote:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNoteupdateNoteStatic
-   }
-}
 public var ServicesRegistryRequestsResumebulkCreateEducations:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsResumebulkCreateEducationsStatic
@@ -624,10 +596,6 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsFeedgetOrganizationFeedStatic:ConcreateExtensionField
     var ServicesRegistryRequestsMediastartImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryRequestsMediacompleteImageUploadStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsNotecreateNoteStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsNotegetNotesStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsNotedeleteNoteStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsNoteupdateNoteStatic:ConcreateExtensionField
     var ServicesRegistryRequestsResumebulkCreateEducationsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsResumebulkCreatePositionsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsResumecreateCompanyStatic:ConcreateExtensionField
@@ -718,10 +686,6 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsFeedgetOrganizationFeedStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 501, defaultValue:Services.Feed.Actions.GetOrganizationFeed.RequestV1(), messageOrGroupClass:Services.Feed.Actions.GetOrganizationFeed.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsMediastartImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsMediacompleteImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsNotecreateNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 700, defaultValue:Services.Note.Actions.CreateNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.CreateNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsNotegetNotesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 701, defaultValue:Services.Note.Actions.GetNotes.RequestV1(), messageOrGroupClass:Services.Note.Actions.GetNotes.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsNotedeleteNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 702, defaultValue:Services.Note.Actions.DeleteNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.DeleteNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsNoteupdateNoteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 703, defaultValue:Services.Note.Actions.UpdateNote.RequestV1(), messageOrGroupClass:Services.Note.Actions.UpdateNote.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsResumebulkCreateEducationsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 800, defaultValue:Services.Resume.Actions.BulkCreateEducations.RequestV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreateEducations.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsResumebulkCreatePositionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 801, defaultValue:Services.Resume.Actions.BulkCreatePositions.RequestV1(), messageOrGroupClass:Services.Resume.Actions.BulkCreatePositions.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsResumecreateCompanyStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 802, defaultValue:Services.Resume.Actions.CreateCompany.RequestV1(), messageOrGroupClass:Services.Resume.Actions.CreateCompany.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -812,10 +776,6 @@ public extension Services.Registry.Requests {
       Services.Feed.Actions.GetOrganizationFeed.GetOrganizationFeedRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Actions.StartImageUpload.StartImageUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Actions.CompleteImageUpload.CompleteImageUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Note.Actions.CreateNote.CreateNoteRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Note.Actions.GetNotes.GetNotesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Note.Actions.DeleteNote.DeleteNoteRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Note.Actions.UpdateNote.UpdateNoteRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Resume.Actions.BulkCreateEducations.BulkCreateEducationsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Resume.Actions.BulkCreatePositions.BulkCreatePositionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Resume.Actions.CreateCompany.CreateCompanyRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -905,10 +865,6 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsFeedgetOrganizationFeedStatic)
       registry.addExtension(ServicesRegistryRequestsMediastartImageUploadStatic)
       registry.addExtension(ServicesRegistryRequestsMediacompleteImageUploadStatic)
-      registry.addExtension(ServicesRegistryRequestsNotecreateNoteStatic)
-      registry.addExtension(ServicesRegistryRequestsNotegetNotesStatic)
-      registry.addExtension(ServicesRegistryRequestsNotedeleteNoteStatic)
-      registry.addExtension(ServicesRegistryRequestsNoteupdateNoteStatic)
       registry.addExtension(ServicesRegistryRequestsResumebulkCreateEducationsStatic)
       registry.addExtension(ServicesRegistryRequestsResumebulkCreatePositionsStatic)
       registry.addExtension(ServicesRegistryRequestsResumecreateCompanyStatic)
@@ -1981,164 +1937,6 @@ public extension Services.Registry.Requests {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
     public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.MediaBuilder {
-      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-      while (true) {
-        var tag = input.readTag()
-        switch tag {
-        case 0: 
-          self.unknownFields = unknownFieldsBuilder.build()
-          return self
-
-        default:
-          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
-             unknownFields = unknownFieldsBuilder.build()
-             return self
-          }
-        }
-      }
-    }
-  }
-
-  final public class Note : GeneratedMessage, GeneratedMessageProtocol {
-    override public subscript(key: String) -> Any? {
-           switch key {
-           default: return nil
-           }
-    }
-
-    public class func createNote() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsNotecreateNote
-    }
-    public class func getNotes() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsNotegetNotes
-    }
-    public class func deleteNote() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsNotedeleteNote
-    }
-    public class func updateNote() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsNoteupdateNote
-    }
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) {
-      unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseFromData(data:NSData) -> Services.Registry.Requests.Note {
-      return Services.Registry.Requests.Note.builder().mergeFromData(data, extensionRegistry:Services.Registry.Requests.RequestsRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.Note {
-      return Services.Registry.Requests.Note.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Requests.Note {
-      return Services.Registry.Requests.Note.builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Requests.Note {
-      return Services.Registry.Requests.Note.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Requests.Note {
-      return Services.Registry.Requests.Note.builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.Note {
-      return Services.Registry.Requests.Note.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func builder() -> Services.Registry.Requests.NoteBuilder {
-      return Services.Registry.Requests.Note.classBuilder() as! Services.Registry.Requests.NoteBuilder
-    }
-    public func builder() -> Services.Registry.Requests.NoteBuilder {
-      return classBuilder() as! Services.Registry.Requests.NoteBuilder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Requests.NoteBuilder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Requests.Note.builder()
-    }
-    public func toBuilder() -> Services.Registry.Requests.NoteBuilder {
-      return Services.Registry.Requests.Note.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Registry.Requests.Note) -> Services.Registry.Requests.NoteBuilder {
-      return Services.Registry.Requests.Note.builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) {
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Registry.Requests.Note"
-    }
-    override public func className() -> String {
-        return "Services.Registry.Requests.Note"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Requests.Note.self
-    }
-    //Meta information declaration end
-
-  }
-
-  final public class NoteBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Requests.Note
-
-    required override public init () {
-       builderResult = Services.Registry.Requests.Note()
-       super.init()
-    }
-    override public var internalGetResult:GeneratedMessage {
-         get {
-            return builderResult
-         }
-    }
-    public override func clear() -> Services.Registry.Requests.NoteBuilder {
-      builderResult = Services.Registry.Requests.Note()
-      return self
-    }
-    public override func clone() -> Services.Registry.Requests.NoteBuilder {
-      return Services.Registry.Requests.Note.builderWithPrototype(builderResult)
-    }
-    public override func build() -> Services.Registry.Requests.Note {
-         checkInitialized()
-         return buildPartial()
-    }
-    public func buildPartial() -> Services.Registry.Requests.Note {
-      var returnMe:Services.Registry.Requests.Note = builderResult
-      return returnMe
-    }
-    public func mergeFrom(other:Services.Registry.Requests.Note) -> Services.Registry.Requests.NoteBuilder {
-      if (other == Services.Registry.Requests.Note()) {
-       return self
-      }
-      mergeUnknownFields(other.unknownFields)
-      return self
-    }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Requests.NoteBuilder {
-         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-    }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.NoteBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
