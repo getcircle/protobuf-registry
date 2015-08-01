@@ -5,7 +5,6 @@ option java_package = "com.rhlabs.protobufs.services.profile.actions.get_extende
 
 import "protobufs/services/organization/containers.proto";
 import "protobufs/services/profile/containers.proto";
-import "protobufs/services/resume/containers.proto";
 import "protobufs/services/user/containers.proto";
 
 message RequestV1 {
@@ -22,8 +21,7 @@ message ResponseV1 {
     optional services.organization.containers.TeamV1 team = 5;
     repeated services.user.containers.IdentityV1 identities = 6;
     repeated services.profile.containers.ProfileV1 direct_reports = 7;
-    optional services.resume.containers.ResumeV1 resume = 8;
-    optional services.organization.containers.LocationV1 location = 9;
-    repeated services.profile.containers.TagV1 interests = 10;
-    repeated services.profile.containers.TagV1 skills = 11;
+    optional services.organization.containers.LocationV1 location = 8;
+    repeated services.profile.containers.TagV1 interests = 9;
+    repeated services.profile.containers.TagV1 skills = 10;
 }

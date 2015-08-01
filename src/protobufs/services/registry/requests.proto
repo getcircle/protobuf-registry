@@ -73,12 +73,6 @@ import "protobufs/services/feed/actions/get_organization_feed.proto";
 import "protobufs/services/media/actions/start_image_upload.proto";
 import "protobufs/services/media/actions/complete_image_upload.proto";
 
-import "protobufs/services/resume/actions/bulk_create_educations.proto";
-import "protobufs/services/resume/actions/bulk_create_positions.proto";
-import "protobufs/services/resume/actions/create_company.proto";
-import "protobufs/services/resume/actions/get_resume.proto";
-import "protobufs/services/resume/actions/bulk_create_companies.proto";
-
 import "protobufs/services/sync/actions/start_sync.proto";
 import "protobufs/services/sync/actions/sync.proto";
 import "protobufs/services/sync/actions/complete_sync.proto";
@@ -193,16 +187,6 @@ message Media {
     extend soa.ActionRequestParamsV1 {
         optional services.media.actions.start_image_upload.RequestV1 start_image_upload = 600;
         optional services.media.actions.complete_image_upload.RequestV1 complete_image_upload = 601;
-    }
-}
-
-message Resume {
-    extend soa.ActionRequestParamsV1 {
-        optional services.resume.actions.bulk_create_educations.RequestV1 bulk_create_educations = 800;
-        optional services.resume.actions.bulk_create_positions.RequestV1 bulk_create_positions = 801;
-        optional services.resume.actions.create_company.RequestV1 create_company = 802;
-        optional services.resume.actions.get_resume.RequestV1 get_resume = 803;
-        optional services.resume.actions.bulk_create_companies.RequestV1 bulk_create_companies = 804;
     }
 }
 

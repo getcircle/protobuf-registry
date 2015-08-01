@@ -26,7 +26,6 @@ public func == (lhs: Services.Profile.Actions.GetExtendedProfile.ResponseV1, rhs
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
   fieldCheck = fieldCheck && (lhs.identities == rhs.identities)
   fieldCheck = fieldCheck && (lhs.directReports == rhs.directReports)
-  fieldCheck = fieldCheck && (lhs.hasResume == rhs.hasResume) && (!lhs.hasResume || lhs.resume == rhs.resume)
   fieldCheck = fieldCheck && (lhs.hasLocation == rhs.hasLocation) && (!lhs.hasLocation || lhs.location == rhs.location)
   fieldCheck = fieldCheck && (lhs.interests == rhs.interests)
   fieldCheck = fieldCheck && (lhs.skills == rhs.skills)
@@ -48,7 +47,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       registerAllExtensions(extensionRegistry)
       Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Resume.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.User.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
@@ -344,7 +342,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
            case "address": return address
            case "manager": return manager
            case "team": return team
-           case "resume": return resume
            case "location": return location
            default: return nil
            }
@@ -361,8 +358,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
     public private(set) var manager:Services.Profile.Containers.ProfileV1!
     public private(set) var hasTeam:Bool = false
     public private(set) var team:Services.Organization.Containers.TeamV1!
-    public private(set) var hasResume:Bool = false
-    public private(set) var resume:Services.Resume.Containers.ResumeV1!
     public private(set) var hasLocation:Bool = false
     public private(set) var location:Services.Organization.Containers.LocationV1!
     public private(set) var identities:Array<Services.User.Containers.IdentityV1>  = Array<Services.User.Containers.IdentityV1>()
@@ -397,17 +392,14 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       for oneElementdirectReports in directReports {
           output.writeMessage(7, value:oneElementdirectReports)
       }
-      if hasResume {
-        output.writeMessage(8, value:resume)
-      }
       if hasLocation {
-        output.writeMessage(9, value:location)
+        output.writeMessage(8, value:location)
       }
       for oneElementinterests in interests {
-          output.writeMessage(10, value:oneElementinterests)
+          output.writeMessage(9, value:oneElementinterests)
       }
       for oneElementskills in skills {
-          output.writeMessage(11, value:oneElementskills)
+          output.writeMessage(10, value:oneElementskills)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -447,21 +439,16 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       for oneElementdirectReports in directReports {
           serialize_size += oneElementdirectReports.computeMessageSize(7)
       }
-      if hasResume {
-          if let varSizeresume = resume?.computeMessageSize(8) {
-              serialize_size += varSizeresume
-          }
-      }
       if hasLocation {
-          if let varSizelocation = location?.computeMessageSize(9) {
+          if let varSizelocation = location?.computeMessageSize(8) {
               serialize_size += varSizelocation
           }
       }
       for oneElementinterests in interests {
-          serialize_size += oneElementinterests.computeMessageSize(10)
+          serialize_size += oneElementinterests.computeMessageSize(9)
       }
       for oneElementskills in skills {
-          serialize_size += oneElementskills.computeMessageSize(11)
+          serialize_size += oneElementskills.computeMessageSize(10)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -541,11 +528,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           output += "\(indent)}\n"
           directReportsElementIndex++
       }
-      if hasResume {
-        output += "\(indent) resume {\n"
-        resume?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
-      }
       if hasLocation {
         output += "\(indent) location {\n"
         location?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -598,11 +580,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
             }
             for oneElementdirectReports in directReports {
                 hashCode = (hashCode &* 31) &+ oneElementdirectReports.hashValue
-            }
-            if hasResume {
-                if let hashValueresume = resume?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValueresume
-                }
             }
             if hasLocation {
                 if let hashValuelocation = location?.hashValue {
@@ -826,38 +803,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       builderResult.directReports.removeAll(keepCapacity: false)
       return self
     }
-    public var hasResume:Bool {
-         get {
-             return builderResult.hasResume
-         }
-    }
-    public var resume:Services.Resume.Containers.ResumeV1! {
-         get {
-             return builderResult.resume
-         }
-         set (value) {
-             builderResult.hasResume = true
-             builderResult.resume = value
-         }
-    }
-    public func setResume(value:Services.Resume.Containers.ResumeV1!)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      self.resume = value
-      return self
-    }
-    public func mergeResume(value:Services.Resume.Containers.ResumeV1) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      if (builderResult.hasResume) {
-        builderResult.resume = Services.Resume.Containers.ResumeV1.builderWithPrototype(builderResult.resume).mergeFrom(value).buildPartial()
-      } else {
-        builderResult.resume = value
-      }
-      builderResult.hasResume = true
-      return self
-    }
-    public func clearResume() -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      builderResult.hasResume = false
-      builderResult.resume = nil
-      return self
-    }
     public var hasLocation:Bool {
          get {
              return builderResult.hasLocation
@@ -967,9 +912,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       if !other.directReports.isEmpty  {
          builderResult.directReports += other.directReports
       }
-      if (other.hasResume) {
-          mergeResume(other.resume)
-      }
       if (other.hasLocation) {
           mergeLocation(other.location)
       }
@@ -1040,14 +982,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           directReports += [subBuilder.buildPartial()]
 
         case 66 :
-          var subBuilder:Services.Resume.Containers.ResumeV1Builder = Services.Resume.Containers.ResumeV1.builder()
-          if hasResume {
-            subBuilder.mergeFrom(resume)
-          }
-          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-          resume = subBuilder.buildPartial()
-
-        case 74 :
           var subBuilder:Services.Organization.Containers.LocationV1Builder = Services.Organization.Containers.LocationV1.builder()
           if hasLocation {
             subBuilder.mergeFrom(location)
@@ -1055,12 +989,12 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
           location = subBuilder.buildPartial()
 
-        case 82 :
+        case 74 :
           var subBuilder = Services.Profile.Containers.TagV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           interests += [subBuilder.buildPartial()]
 
-        case 90 :
+        case 82 :
           var subBuilder = Services.Profile.Containers.TagV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           skills += [subBuilder.buildPartial()]
