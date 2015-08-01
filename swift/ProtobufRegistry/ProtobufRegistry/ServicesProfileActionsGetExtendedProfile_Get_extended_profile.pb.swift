@@ -27,8 +27,6 @@ public func == (lhs: Services.Profile.Actions.GetExtendedProfile.ResponseV1, rhs
   fieldCheck = fieldCheck && (lhs.identities == rhs.identities)
   fieldCheck = fieldCheck && (lhs.directReports == rhs.directReports)
   fieldCheck = fieldCheck && (lhs.hasLocation == rhs.hasLocation) && (!lhs.hasLocation || lhs.location == rhs.location)
-  fieldCheck = fieldCheck && (lhs.interests == rhs.interests)
-  fieldCheck = fieldCheck && (lhs.skills == rhs.skills)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -362,8 +360,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
     public private(set) var location:Services.Organization.Containers.LocationV1!
     public private(set) var identities:Array<Services.User.Containers.IdentityV1>  = Array<Services.User.Containers.IdentityV1>()
     public private(set) var directReports:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
-    public private(set) var interests:Array<Services.Profile.Containers.TagV1>  = Array<Services.Profile.Containers.TagV1>()
-    public private(set) var skills:Array<Services.Profile.Containers.TagV1>  = Array<Services.Profile.Containers.TagV1>()
     required public init() {
          super.init()
     }
@@ -394,12 +390,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       }
       if hasLocation {
         output.writeMessage(8, value:location)
-      }
-      for oneElementinterests in interests {
-          output.writeMessage(9, value:oneElementinterests)
-      }
-      for oneElementskills in skills {
-          output.writeMessage(10, value:oneElementskills)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -443,12 +433,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           if let varSizelocation = location?.computeMessageSize(8) {
               serialize_size += varSizelocation
           }
-      }
-      for oneElementinterests in interests {
-          serialize_size += oneElementinterests.computeMessageSize(9)
-      }
-      for oneElementskills in skills {
-          serialize_size += oneElementskills.computeMessageSize(10)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -533,20 +517,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
         location?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
-      var interestsElementIndex:Int = 0
-      for oneElementinterests in interests {
-          output += "\(indent) interests[\(interestsElementIndex)] {\n"
-          oneElementinterests.writeDescriptionTo(&output, indent:"\(indent)  ")
-          output += "\(indent)}\n"
-          interestsElementIndex++
-      }
-      var skillsElementIndex:Int = 0
-      for oneElementskills in skills {
-          output += "\(indent) skills[\(skillsElementIndex)] {\n"
-          oneElementskills.writeDescriptionTo(&output, indent:"\(indent)  ")
-          output += "\(indent)}\n"
-          skillsElementIndex++
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -585,12 +555,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
                 if let hashValuelocation = location?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuelocation
                 }
-            }
-            for oneElementinterests in interests {
-                hashCode = (hashCode &* 31) &+ oneElementinterests.hashValue
-            }
-            for oneElementskills in skills {
-                hashCode = (hashCode &* 31) &+ oneElementskills.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -835,38 +799,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       builderResult.location = nil
       return self
     }
-    public var interests:Array<Services.Profile.Containers.TagV1> {
-         get {
-             return builderResult.interests
-         }
-         set (value) {
-             builderResult.interests = value
-         }
-    }
-    public func setInterests(value:Array<Services.Profile.Containers.TagV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      self.interests = value
-      return self
-    }
-    public func clearInterests() -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      builderResult.interests.removeAll(keepCapacity: false)
-      return self
-    }
-    public var skills:Array<Services.Profile.Containers.TagV1> {
-         get {
-             return builderResult.skills
-         }
-         set (value) {
-             builderResult.skills = value
-         }
-    }
-    public func setSkills(value:Array<Services.Profile.Containers.TagV1>)-> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      self.skills = value
-      return self
-    }
-    public func clearSkills() -> Services.Profile.Actions.GetExtendedProfile.ResponseV1Builder {
-      builderResult.skills.removeAll(keepCapacity: false)
-      return self
-    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -914,12 +846,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       }
       if (other.hasLocation) {
           mergeLocation(other.location)
-      }
-      if !other.interests.isEmpty  {
-         builderResult.interests += other.interests
-      }
-      if !other.skills.isEmpty  {
-         builderResult.skills += other.skills
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -988,16 +914,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
           }
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
           location = subBuilder.buildPartial()
-
-        case 74 :
-          var subBuilder = Services.Profile.Containers.TagV1.builder()
-          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-          interests += [subBuilder.buildPartial()]
-
-        case 82 :
-          var subBuilder = Services.Profile.Containers.TagV1.builder()
-          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-          skills += [subBuilder.buildPartial()]
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
