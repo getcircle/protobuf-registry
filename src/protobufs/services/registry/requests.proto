@@ -67,9 +67,6 @@ import "protobufs/services/profile/actions/remove_tags.proto";
 
 import "protobufs/services/search/actions/search.proto";
 
-import "protobufs/services/feed/actions/get_profile_feed.proto";
-import "protobufs/services/feed/actions/get_organization_feed.proto";
-
 import "protobufs/services/media/actions/start_image_upload.proto";
 import "protobufs/services/media/actions/complete_image_upload.proto";
 
@@ -173,13 +170,6 @@ message Profile {
 message Search {
     extend soa.ActionRequestParamsV1 {
         optional services.search.actions.search.RequestV1 search = 400;
-    }
-}
-
-message Feed {
-    extend soa.ActionRequestParamsV1 {
-        optional services.feed.actions.get_profile_feed.RequestV1 get_profile_feed = 500;
-        optional services.feed.actions.get_organization_feed.RequestV1 get_organization_feed = 501;
     }
 }
 

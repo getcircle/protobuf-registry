@@ -35,14 +35,6 @@ public func == (lhs: Services.Registry.Responses.Search, rhs: Services.Registry.
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
-public func == (lhs: Services.Registry.Responses.Feed, rhs: Services.Registry.Responses.Feed) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-}
-
 public func == (lhs: Services.Registry.Responses.Media, rhs: Services.Registry.Responses.Media) -> Bool {
   if (lhs === rhs) {
     return true
@@ -373,16 +365,6 @@ public var ServicesRegistryResponsesSearchsearch:ConcreateExtensionField {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesSearchsearchStatic
    }
 }
-public var ServicesRegistryResponsesFeedgetProfileFeed:ConcreateExtensionField {
-   get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesFeedgetProfileFeedStatic
-   }
-}
-public var ServicesRegistryResponsesFeedgetOrganizationFeed:ConcreateExtensionField {
-   get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesFeedgetOrganizationFeedStatic
-   }
-}
 public var ServicesRegistryResponsesMediastartImageUpload:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesMediastartImageUploadStatic
@@ -559,8 +541,6 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesProfilegetAttributesForProfilesStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfileremoveTagsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSearchsearchStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesFeedgetProfileFeedStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesFeedgetOrganizationFeedStatic:ConcreateExtensionField
     var ServicesRegistryResponsesMediastartImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryResponsesMediacompleteImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSyncstartSyncStatic:ConcreateExtensionField
@@ -644,8 +624,6 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesProfilegetAttributesForProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 317, defaultValue:Services.Profile.Actions.GetAttributesForProfiles.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetAttributesForProfiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfileremoveTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 318, defaultValue:Services.Profile.Actions.RemoveTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.RemoveTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSearchsearchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 400, defaultValue:Services.Search.Actions.Search.ResponseV1(), messageOrGroupClass:Services.Search.Actions.Search.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesFeedgetProfileFeedStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 500, defaultValue:Services.Feed.Actions.GetProfileFeed.ResponseV1(), messageOrGroupClass:Services.Feed.Actions.GetProfileFeed.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesFeedgetOrganizationFeedStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 501, defaultValue:Services.Feed.Actions.GetOrganizationFeed.ResponseV1(), messageOrGroupClass:Services.Feed.Actions.GetOrganizationFeed.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesMediastartImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.ResponseV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesMediacompleteImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.ResponseV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSyncstartSyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1000, defaultValue:Services.Sync.Actions.StartSync.ResponseV1(), messageOrGroupClass:Services.Sync.Actions.StartSync.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -729,8 +707,6 @@ public extension Services.Registry.Responses {
       Services.Profile.Actions.GetAttributesForProfiles.GetAttributesForProfilesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.RemoveTags.RemoveTagsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Search.Actions.Search.SearchRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Feed.Actions.GetProfileFeed.GetProfileFeedRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Feed.Actions.GetOrganizationFeed.GetOrganizationFeedRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Actions.StartImageUpload.StartImageUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Actions.CompleteImageUpload.CompleteImageUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Sync.Actions.StartSync.StartSyncRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -813,8 +789,6 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesProfilegetAttributesForProfilesStatic)
       registry.addExtension(ServicesRegistryResponsesProfileremoveTagsStatic)
       registry.addExtension(ServicesRegistryResponsesSearchsearchStatic)
-      registry.addExtension(ServicesRegistryResponsesFeedgetProfileFeedStatic)
-      registry.addExtension(ServicesRegistryResponsesFeedgetOrganizationFeedStatic)
       registry.addExtension(ServicesRegistryResponsesMediastartImageUploadStatic)
       registry.addExtension(ServicesRegistryResponsesMediacompleteImageUploadStatic)
       registry.addExtension(ServicesRegistryResponsesSyncstartSyncStatic)
@@ -1580,158 +1554,6 @@ public extension Services.Registry.Responses {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
     public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.SearchBuilder {
-      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-      while (true) {
-        var tag = input.readTag()
-        switch tag {
-        case 0: 
-          self.unknownFields = unknownFieldsBuilder.build()
-          return self
-
-        default:
-          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
-             unknownFields = unknownFieldsBuilder.build()
-             return self
-          }
-        }
-      }
-    }
-  }
-
-  final public class Feed : GeneratedMessage, GeneratedMessageProtocol {
-    override public subscript(key: String) -> Any? {
-           switch key {
-           default: return nil
-           }
-    }
-
-    public class func getProfileFeed() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesFeedgetProfileFeed
-    }
-    public class func getOrganizationFeed() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesFeedgetOrganizationFeed
-    }
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) {
-      unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Feed {
-      return Services.Registry.Responses.Feed.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Feed {
-      return Services.Registry.Responses.Feed.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Feed {
-      return Services.Registry.Responses.Feed.builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Feed {
-      return Services.Registry.Responses.Feed.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Feed {
-      return Services.Registry.Responses.Feed.builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Feed {
-      return Services.Registry.Responses.Feed.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func builder() -> Services.Registry.Responses.FeedBuilder {
-      return Services.Registry.Responses.Feed.classBuilder() as! Services.Registry.Responses.FeedBuilder
-    }
-    public func builder() -> Services.Registry.Responses.FeedBuilder {
-      return classBuilder() as! Services.Registry.Responses.FeedBuilder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.FeedBuilder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Responses.Feed.builder()
-    }
-    public func toBuilder() -> Services.Registry.Responses.FeedBuilder {
-      return Services.Registry.Responses.Feed.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Registry.Responses.Feed) -> Services.Registry.Responses.FeedBuilder {
-      return Services.Registry.Responses.Feed.builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) {
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Registry.Responses.Feed"
-    }
-    override public func className() -> String {
-        return "Services.Registry.Responses.Feed"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Responses.Feed.self
-    }
-    //Meta information declaration end
-
-  }
-
-  final public class FeedBuilder : GeneratedMessageBuilder {
-    private var builderResult:Services.Registry.Responses.Feed
-
-    required override public init () {
-       builderResult = Services.Registry.Responses.Feed()
-       super.init()
-    }
-    override public var internalGetResult:GeneratedMessage {
-         get {
-            return builderResult
-         }
-    }
-    public override func clear() -> Services.Registry.Responses.FeedBuilder {
-      builderResult = Services.Registry.Responses.Feed()
-      return self
-    }
-    public override func clone() -> Services.Registry.Responses.FeedBuilder {
-      return Services.Registry.Responses.Feed.builderWithPrototype(builderResult)
-    }
-    public override func build() -> Services.Registry.Responses.Feed {
-         checkInitialized()
-         return buildPartial()
-    }
-    public func buildPartial() -> Services.Registry.Responses.Feed {
-      var returnMe:Services.Registry.Responses.Feed = builderResult
-      return returnMe
-    }
-    public func mergeFrom(other:Services.Registry.Responses.Feed) -> Services.Registry.Responses.FeedBuilder {
-      if (other == Services.Registry.Responses.Feed()) {
-       return self
-      }
-      mergeUnknownFields(other.unknownFields)
-      return self
-    }
-    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.FeedBuilder {
-         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-    }
-    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.FeedBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
