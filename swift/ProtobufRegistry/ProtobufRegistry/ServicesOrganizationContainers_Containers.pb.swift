@@ -50,7 +50,7 @@ public func == (lhs: Services.Organization.Containers.LocationV1, rhs: Services.
   fieldCheck = fieldCheck && (lhs.hasProfileCount == rhs.hasProfileCount) && (!lhs.hasProfileCount || lhs.profileCount == rhs.profileCount)
   fieldCheck = fieldCheck && (lhs.hasImageUrl == rhs.hasImageUrl) && (!lhs.hasImageUrl || lhs.imageUrl == rhs.imageUrl)
   fieldCheck = fieldCheck && (lhs.hasDescription == rhs.hasDescription) && (!lhs.hasDescription || lhs.description_ == rhs.description_)
-  fieldCheck = fieldCheck && (lhs.hasEstablished == rhs.hasEstablished) && (!lhs.hasEstablished || lhs.established == rhs.established)
+  fieldCheck = fieldCheck && (lhs.hasEstablishedDate == rhs.hasEstablishedDate) && (!lhs.hasEstablishedDate || lhs.establishedDate == rhs.establishedDate)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -1255,7 +1255,7 @@ public extension Services.Organization.Containers {
            case "profileCount": return profileCount
            case "imageUrl": return imageUrl
            case "description_": return description_
-           case "established": return established
+           case "establishedDate": return establishedDate
            default: return nil
            }
     }
@@ -1283,8 +1283,8 @@ public extension Services.Organization.Containers {
     public private(set) var hasDescription:Bool = false
     public private(set) var description_:String = ""
 
-    public private(set) var hasEstablished:Bool = false
-    public private(set) var established:String = ""
+    public private(set) var hasEstablishedDate:Bool = false
+    public private(set) var establishedDate:String = ""
 
     required public init() {
          super.init()
@@ -1317,8 +1317,8 @@ public extension Services.Organization.Containers {
       if hasDescription {
         output.writeString(8, value:description_)
       }
-      if hasEstablished {
-        output.writeString(9, value:established)
+      if hasEstablishedDate {
+        output.writeString(9, value:establishedDate)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -1355,8 +1355,8 @@ public extension Services.Organization.Containers {
       if hasDescription {
         serialize_size += description_.computeStringSize(8)
       }
-      if hasEstablished {
-        serialize_size += established.computeStringSize(9)
+      if hasEstablishedDate {
+        serialize_size += establishedDate.computeStringSize(9)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1425,8 +1425,8 @@ public extension Services.Organization.Containers {
       if hasDescription {
         output += "\(indent) description_: \(description_) \n"
       }
-      if hasEstablished {
-        output += "\(indent) established: \(established) \n"
+      if hasEstablishedDate {
+        output += "\(indent) establishedDate: \(establishedDate) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -1459,8 +1459,8 @@ public extension Services.Organization.Containers {
             if hasDescription {
                hashCode = (hashCode &* 31) &+ description_.hashValue
             }
-            if hasEstablished {
-               hashCode = (hashCode &* 31) &+ established.hashValue
+            if hasEstablishedDate {
+               hashCode = (hashCode &* 31) &+ establishedDate.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1683,27 +1683,27 @@ public extension Services.Organization.Containers {
          builderResult.description_ = ""
          return self
     }
-    public var hasEstablished:Bool {
+    public var hasEstablishedDate:Bool {
          get {
-              return builderResult.hasEstablished
+              return builderResult.hasEstablishedDate
          }
     }
-    public var established:String {
+    public var establishedDate:String {
          get {
-              return builderResult.established
+              return builderResult.establishedDate
          }
          set (value) {
-             builderResult.hasEstablished = true
-             builderResult.established = value
+             builderResult.hasEstablishedDate = true
+             builderResult.establishedDate = value
          }
     }
-    public func setEstablished(value:String)-> Services.Organization.Containers.LocationV1Builder {
-      self.established = value
+    public func setEstablishedDate(value:String)-> Services.Organization.Containers.LocationV1Builder {
+      self.establishedDate = value
       return self
     }
-    public func clearEstablished() -> Services.Organization.Containers.LocationV1Builder{
-         builderResult.hasEstablished = false
-         builderResult.established = ""
+    public func clearEstablishedDate() -> Services.Organization.Containers.LocationV1Builder{
+         builderResult.hasEstablishedDate = false
+         builderResult.establishedDate = ""
          return self
     }
     override public var internalGetResult:GeneratedMessage {
@@ -1754,8 +1754,8 @@ public extension Services.Organization.Containers {
       if other.hasDescription {
            description_ = other.description_
       }
-      if other.hasEstablished {
-           established = other.established
+      if other.hasEstablishedDate {
+           establishedDate = other.establishedDate
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -1802,7 +1802,7 @@ public extension Services.Organization.Containers {
           description_ = input.readString()
 
         case 74 :
-          established = input.readString()
+          establishedDate = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
