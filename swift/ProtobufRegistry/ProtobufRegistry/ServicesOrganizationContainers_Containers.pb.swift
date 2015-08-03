@@ -50,6 +50,7 @@ public func == (lhs: Services.Organization.Containers.LocationV1, rhs: Services.
   fieldCheck = fieldCheck && (lhs.hasProfileCount == rhs.hasProfileCount) && (!lhs.hasProfileCount || lhs.profileCount == rhs.profileCount)
   fieldCheck = fieldCheck && (lhs.hasImageUrl == rhs.hasImageUrl) && (!lhs.hasImageUrl || lhs.imageUrl == rhs.imageUrl)
   fieldCheck = fieldCheck && (lhs.hasDescription == rhs.hasDescription) && (!lhs.hasDescription || lhs.description_ == rhs.description_)
+  fieldCheck = fieldCheck && (lhs.hasEstablished == rhs.hasEstablished) && (!lhs.hasEstablished || lhs.established == rhs.established)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -1254,6 +1255,7 @@ public extension Services.Organization.Containers {
            case "profileCount": return profileCount
            case "imageUrl": return imageUrl
            case "description_": return description_
+           case "established": return established
            default: return nil
            }
     }
@@ -1280,6 +1282,9 @@ public extension Services.Organization.Containers {
 
     public private(set) var hasDescription:Bool = false
     public private(set) var description_:String = ""
+
+    public private(set) var hasEstablished:Bool = false
+    public private(set) var established:String = ""
 
     required public init() {
          super.init()
@@ -1311,6 +1316,9 @@ public extension Services.Organization.Containers {
       }
       if hasDescription {
         output.writeString(8, value:description_)
+      }
+      if hasEstablished {
+        output.writeString(9, value:established)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -1346,6 +1354,9 @@ public extension Services.Organization.Containers {
       }
       if hasDescription {
         serialize_size += description_.computeStringSize(8)
+      }
+      if hasEstablished {
+        serialize_size += established.computeStringSize(9)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1414,6 +1425,9 @@ public extension Services.Organization.Containers {
       if hasDescription {
         output += "\(indent) description_: \(description_) \n"
       }
+      if hasEstablished {
+        output += "\(indent) established: \(established) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1444,6 +1458,9 @@ public extension Services.Organization.Containers {
             }
             if hasDescription {
                hashCode = (hashCode &* 31) &+ description_.hashValue
+            }
+            if hasEstablished {
+               hashCode = (hashCode &* 31) &+ established.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1666,6 +1683,29 @@ public extension Services.Organization.Containers {
          builderResult.description_ = ""
          return self
     }
+    public var hasEstablished:Bool {
+         get {
+              return builderResult.hasEstablished
+         }
+    }
+    public var established:String {
+         get {
+              return builderResult.established
+         }
+         set (value) {
+             builderResult.hasEstablished = true
+             builderResult.established = value
+         }
+    }
+    public func setEstablished(value:String)-> Services.Organization.Containers.LocationV1Builder {
+      self.established = value
+      return self
+    }
+    public func clearEstablished() -> Services.Organization.Containers.LocationV1Builder{
+         builderResult.hasEstablished = false
+         builderResult.established = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -1714,6 +1754,9 @@ public extension Services.Organization.Containers {
       if other.hasDescription {
            description_ = other.description_
       }
+      if other.hasEstablished {
+           established = other.established
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -1757,6 +1800,9 @@ public extension Services.Organization.Containers {
 
         case 66 :
           description_ = input.readString()
+
+        case 74 :
+          established = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

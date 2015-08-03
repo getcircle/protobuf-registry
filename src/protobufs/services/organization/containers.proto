@@ -39,6 +39,7 @@ message LocationV1 {
     optional uint32 profile_count = 6;
     optional string image_url = 7;
     optional string description = 8;
+    optional string established = 9;
 }
 
 message OrganizationV1 {
