@@ -36,7 +36,6 @@ public func == (lhs: Services.Profile.Containers.ProfileV1, rhs: Services.Profil
   fieldCheck = fieldCheck && (lhs.hasHireDate == rhs.hasHireDate) && (!lhs.hasHireDate || lhs.hireDate == rhs.hireDate)
   fieldCheck = fieldCheck && (lhs.hasVerified == rhs.hasVerified) && (!lhs.hasVerified || lhs.verified == rhs.verified)
   fieldCheck = fieldCheck && (lhs.items == rhs.items)
-  fieldCheck = fieldCheck && (lhs.hasAbout == rhs.hasAbout) && (!lhs.hasAbout || lhs.about == rhs.about)
   fieldCheck = fieldCheck && (lhs.hasLocationId == rhs.hasLocationId) && (!lhs.hasLocationId || lhs.locationId == rhs.locationId)
   fieldCheck = fieldCheck && (lhs.hasNickname == rhs.hasNickname) && (!lhs.hasNickname || lhs.nickname == rhs.nickname)
   fieldCheck = fieldCheck && (lhs.contactMethods == rhs.contactMethods)
@@ -520,7 +519,6 @@ public extension Services.Profile.Containers {
            case "birthDate": return birthDate
            case "hireDate": return hireDate
            case "verified": return verified
-           case "about": return about
            case "locationId": return locationId
            case "nickname": return nickname
            case "seatingInfo": return seatingInfo
@@ -572,9 +570,6 @@ public extension Services.Profile.Containers {
 
     public private(set) var hasVerified:Bool = false
     public private(set) var verified:Bool = false
-
-    public private(set) var hasAbout:Bool = false
-    public private(set) var about:String = ""
 
     public private(set) var hasLocationId:Bool = false
     public private(set) var locationId:String = ""
@@ -648,29 +643,26 @@ public extension Services.Profile.Containers {
       for oneElementitems in items {
           output.writeMessage(15, value:oneElementitems)
       }
-      if hasAbout {
-        output.writeString(16, value:about)
-      }
       if hasLocationId {
-        output.writeString(17, value:locationId)
+        output.writeString(16, value:locationId)
       }
       if hasNickname {
-        output.writeString(18, value:nickname)
+        output.writeString(17, value:nickname)
       }
       for oneElementcontactMethods in contactMethods {
-          output.writeMessage(19, value:oneElementcontactMethods)
+          output.writeMessage(18, value:oneElementcontactMethods)
       }
       if hasSeatingInfo {
-        output.writeString(20, value:seatingInfo)
+        output.writeString(19, value:seatingInfo)
       }
       if hasEmail {
-        output.writeString(21, value:email)
+        output.writeString(20, value:email)
       }
       if hasIsAdmin {
-        output.writeBool(22, value:isAdmin)
+        output.writeBool(21, value:isAdmin)
       }
       if hasSmallImageUrl {
-        output.writeString(23, value:smallImageUrl)
+        output.writeString(22, value:smallImageUrl)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -726,29 +718,26 @@ public extension Services.Profile.Containers {
       for oneElementitems in items {
           serialize_size += oneElementitems.computeMessageSize(15)
       }
-      if hasAbout {
-        serialize_size += about.computeStringSize(16)
-      }
       if hasLocationId {
-        serialize_size += locationId.computeStringSize(17)
+        serialize_size += locationId.computeStringSize(16)
       }
       if hasNickname {
-        serialize_size += nickname.computeStringSize(18)
+        serialize_size += nickname.computeStringSize(17)
       }
       for oneElementcontactMethods in contactMethods {
-          serialize_size += oneElementcontactMethods.computeMessageSize(19)
+          serialize_size += oneElementcontactMethods.computeMessageSize(18)
       }
       if hasSeatingInfo {
-        serialize_size += seatingInfo.computeStringSize(20)
+        serialize_size += seatingInfo.computeStringSize(19)
       }
       if hasEmail {
-        serialize_size += email.computeStringSize(21)
+        serialize_size += email.computeStringSize(20)
       }
       if hasIsAdmin {
-        serialize_size += isAdmin.computeBoolSize(22)
+        serialize_size += isAdmin.computeBoolSize(21)
       }
       if hasSmallImageUrl {
-        serialize_size += smallImageUrl.computeStringSize(23)
+        serialize_size += smallImageUrl.computeStringSize(22)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -840,9 +829,6 @@ public extension Services.Profile.Containers {
           output += "\(indent)}\n"
           itemsElementIndex++
       }
-      if hasAbout {
-        output += "\(indent) about: \(about) \n"
-      }
       if hasLocationId {
         output += "\(indent) locationId: \(locationId) \n"
       }
@@ -917,9 +903,6 @@ public extension Services.Profile.Containers {
             }
             for oneElementitems in items {
                 hashCode = (hashCode &* 31) &+ oneElementitems.hashValue
-            }
-            if hasAbout {
-               hashCode = (hashCode &* 31) &+ about.hashValue
             }
             if hasLocationId {
                hashCode = (hashCode &* 31) &+ locationId.hashValue
@@ -1308,29 +1291,6 @@ public extension Services.Profile.Containers {
       builderResult.items.removeAll(keepCapacity: false)
       return self
     }
-    public var hasAbout:Bool {
-         get {
-              return builderResult.hasAbout
-         }
-    }
-    public var about:String {
-         get {
-              return builderResult.about
-         }
-         set (value) {
-             builderResult.hasAbout = true
-             builderResult.about = value
-         }
-    }
-    public func setAbout(value:String)-> Services.Profile.Containers.ProfileV1Builder {
-      self.about = value
-      return self
-    }
-    public func clearAbout() -> Services.Profile.Containers.ProfileV1Builder{
-         builderResult.hasAbout = false
-         builderResult.about = ""
-         return self
-    }
     public var hasLocationId:Bool {
          get {
               return builderResult.hasLocationId
@@ -1554,9 +1514,6 @@ public extension Services.Profile.Containers {
       if !other.items.isEmpty  {
          builderResult.items += other.items
       }
-      if other.hasAbout {
-           about = other.about
-      }
       if other.hasLocationId {
            locationId = other.locationId
       }
@@ -1641,29 +1598,26 @@ public extension Services.Profile.Containers {
           items += [subBuilder.buildPartial()]
 
         case 130 :
-          about = input.readString()
-
-        case 138 :
           locationId = input.readString()
 
-        case 146 :
+        case 138 :
           nickname = input.readString()
 
-        case 154 :
+        case 146 :
           var subBuilder = Services.Profile.Containers.ContactMethodV1.builder()
           input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
           contactMethods += [subBuilder.buildPartial()]
 
-        case 162 :
+        case 154 :
           seatingInfo = input.readString()
 
-        case 170 :
+        case 162 :
           email = input.readString()
 
-        case 176 :
+        case 168 :
           isAdmin = input.readBool()
 
-        case 186 :
+        case 178 :
           smallImageUrl = input.readString()
 
         default:
