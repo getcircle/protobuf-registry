@@ -47,6 +47,17 @@ public func == (lhs: Services.Profile.Containers.ProfileV1, rhs: Services.Profil
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: Services.Profile.Containers.ProfileStatusV1, rhs: Services.Profile.Containers.ProfileStatusV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
+  fieldCheck = fieldCheck && (lhs.hasCreated == rhs.hasCreated) && (!lhs.hasCreated || lhs.created == rhs.created)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public func == (lhs: Services.Profile.Containers.ProfileItemV1, rhs: Services.Profile.Containers.ProfileItemV1) -> Bool {
   if (lhs === rhs) {
     return true
@@ -592,8 +603,7 @@ public extension Services.Profile.Containers {
     public private(set) var smallImageUrl:String = ""
 
     public private(set) var hasStatus:Bool = false
-    public private(set) var status:String = ""
-
+    public private(set) var status:Services.Profile.Containers.ProfileStatusV1!
     public private(set) var items:Array<Services.Profile.Containers.ProfileItemV1>  = Array<Services.Profile.Containers.ProfileItemV1>()
     public private(set) var contactMethods:Array<Services.Profile.Containers.ContactMethodV1>  = Array<Services.Profile.Containers.ContactMethodV1>()
     required public init() {
@@ -670,7 +680,7 @@ public extension Services.Profile.Containers {
         output.writeString(22, value:smallImageUrl)
       }
       if hasStatus {
-        output.writeString(23, value:status)
+        output.writeMessage(23, value:status)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -748,7 +758,9 @@ public extension Services.Profile.Containers {
         serialize_size += smallImageUrl.computeStringSize(22)
       }
       if hasStatus {
-        serialize_size += status.computeStringSize(23)
+          if let varSizestatus = status?.computeMessageSize(23) {
+              serialize_size += varSizestatus
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -866,7 +878,9 @@ public extension Services.Profile.Containers {
         output += "\(indent) smallImageUrl: \(smallImageUrl) \n"
       }
       if hasStatus {
-        output += "\(indent) status: \(status) \n"
+        output += "\(indent) status {\n"
+        status?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -940,7 +954,9 @@ public extension Services.Profile.Containers {
                hashCode = (hashCode &* 31) &+ smallImageUrl.hashValue
             }
             if hasStatus {
-               hashCode = (hashCode &* 31) &+ status.hashValue
+                if let hashValuestatus = status?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuestatus
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1464,26 +1480,35 @@ public extension Services.Profile.Containers {
     }
     public var hasStatus:Bool {
          get {
-              return builderResult.hasStatus
+             return builderResult.hasStatus
          }
     }
-    public var status:String {
+    public var status:Services.Profile.Containers.ProfileStatusV1! {
          get {
-              return builderResult.status
+             return builderResult.status
          }
          set (value) {
              builderResult.hasStatus = true
              builderResult.status = value
          }
     }
-    public func setStatus(value:String)-> Services.Profile.Containers.ProfileV1Builder {
+    public func setStatus(value:Services.Profile.Containers.ProfileStatusV1!)-> Services.Profile.Containers.ProfileV1Builder {
       self.status = value
       return self
     }
-    public func clearStatus() -> Services.Profile.Containers.ProfileV1Builder{
-         builderResult.hasStatus = false
-         builderResult.status = ""
-         return self
+    public func mergeStatus(value:Services.Profile.Containers.ProfileStatusV1) -> Services.Profile.Containers.ProfileV1Builder {
+      if (builderResult.hasStatus) {
+        builderResult.status = Services.Profile.Containers.ProfileStatusV1.builderWithPrototype(builderResult.status).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.status = value
+      }
+      builderResult.hasStatus = true
+      return self
+    }
+    public func clearStatus() -> Services.Profile.Containers.ProfileV1Builder {
+      builderResult.hasStatus = false
+      builderResult.status = nil
+      return self
     }
     override public var internalGetResult:GeneratedMessage {
          get {
@@ -1575,8 +1600,8 @@ public extension Services.Profile.Containers {
       if other.hasSmallImageUrl {
            smallImageUrl = other.smallImageUrl
       }
-      if other.hasStatus {
-           status = other.status
+      if (other.hasStatus) {
+          mergeStatus(other.status)
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -1664,7 +1689,293 @@ public extension Services.Profile.Containers {
           smallImageUrl = input.readString()
 
         case 186 :
+          var subBuilder:Services.Profile.Containers.ProfileStatusV1Builder = Services.Profile.Containers.ProfileStatusV1.builder()
+          if hasStatus {
+            subBuilder.mergeFrom(status)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          status = subBuilder.buildPartial()
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class ProfileStatusV1 : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           case "version": return version
+           case "status": return status
+           case "created": return created
+           default: return nil
+           }
+    }
+
+    public private(set) var hasVersion:Bool = false
+    public private(set) var version:UInt32 = UInt32(0)
+
+    public private(set) var hasStatus:Bool = false
+    public private(set) var status:String = ""
+
+    public private(set) var hasCreated:Bool = false
+    public private(set) var created:String = ""
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      if hasVersion {
+        output.writeUInt32(1, value:version)
+      }
+      if hasStatus {
+        output.writeString(2, value:status)
+      }
+      if hasCreated {
+        output.writeString(3, value:created)
+      }
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasVersion {
+        serialize_size += version.computeUInt32Size(1)
+      }
+      if hasStatus {
+        serialize_size += status.computeStringSize(2)
+      }
+      if hasCreated {
+        serialize_size += created.computeStringSize(3)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Profile.Containers.ProfileStatusV1 {
+      return Services.Profile.Containers.ProfileStatusV1.builder().mergeFromData(data, extensionRegistry:Services.Profile.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Profile.Containers.ProfileStatusV1 {
+      return Services.Profile.Containers.ProfileStatusV1.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Profile.Containers.ProfileStatusV1 {
+      return Services.Profile.Containers.ProfileStatusV1.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Profile.Containers.ProfileStatusV1 {
+      return Services.Profile.Containers.ProfileStatusV1.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Profile.Containers.ProfileStatusV1 {
+      return Services.Profile.Containers.ProfileStatusV1.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Profile.Containers.ProfileStatusV1 {
+      return Services.Profile.Containers.ProfileStatusV1.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Profile.Containers.ProfileStatusV1Builder {
+      return Services.Profile.Containers.ProfileStatusV1.classBuilder() as! Services.Profile.Containers.ProfileStatusV1Builder
+    }
+    public func builder() -> Services.Profile.Containers.ProfileStatusV1Builder {
+      return classBuilder() as! Services.Profile.Containers.ProfileStatusV1Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Profile.Containers.ProfileStatusV1Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Profile.Containers.ProfileStatusV1.builder()
+    }
+    public func toBuilder() -> Services.Profile.Containers.ProfileStatusV1Builder {
+      return Services.Profile.Containers.ProfileStatusV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Profile.Containers.ProfileStatusV1) -> Services.Profile.Containers.ProfileStatusV1Builder {
+      return Services.Profile.Containers.ProfileStatusV1.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      if hasVersion {
+        output += "\(indent) version: \(version) \n"
+      }
+      if hasStatus {
+        output += "\(indent) status: \(status) \n"
+      }
+      if hasCreated {
+        output += "\(indent) created: \(created) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasVersion {
+               hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasStatus {
+               hashCode = (hashCode &* 31) &+ status.hashValue
+            }
+            if hasCreated {
+               hashCode = (hashCode &* 31) &+ created.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Profile.Containers.ProfileStatusV1"
+    }
+    override public func className() -> String {
+        return "Services.Profile.Containers.ProfileStatusV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Profile.Containers.ProfileStatusV1.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class ProfileStatusV1Builder : GeneratedMessageBuilder {
+    private var builderResult:Services.Profile.Containers.ProfileStatusV1
+
+    required override public init () {
+       builderResult = Services.Profile.Containers.ProfileStatusV1()
+       super.init()
+    }
+    public var hasVersion:Bool {
+         get {
+              return builderResult.hasVersion
+         }
+    }
+    public var version:UInt32 {
+         get {
+              return builderResult.version
+         }
+         set (value) {
+             builderResult.hasVersion = true
+             builderResult.version = value
+         }
+    }
+    public func setVersion(value:UInt32)-> Services.Profile.Containers.ProfileStatusV1Builder {
+      self.version = value
+      return self
+    }
+    public func clearVersion() -> Services.Profile.Containers.ProfileStatusV1Builder{
+         builderResult.hasVersion = false
+         builderResult.version = UInt32(0)
+         return self
+    }
+    public var hasStatus:Bool {
+         get {
+              return builderResult.hasStatus
+         }
+    }
+    public var status:String {
+         get {
+              return builderResult.status
+         }
+         set (value) {
+             builderResult.hasStatus = true
+             builderResult.status = value
+         }
+    }
+    public func setStatus(value:String)-> Services.Profile.Containers.ProfileStatusV1Builder {
+      self.status = value
+      return self
+    }
+    public func clearStatus() -> Services.Profile.Containers.ProfileStatusV1Builder{
+         builderResult.hasStatus = false
+         builderResult.status = ""
+         return self
+    }
+    public var hasCreated:Bool {
+         get {
+              return builderResult.hasCreated
+         }
+    }
+    public var created:String {
+         get {
+              return builderResult.created
+         }
+         set (value) {
+             builderResult.hasCreated = true
+             builderResult.created = value
+         }
+    }
+    public func setCreated(value:String)-> Services.Profile.Containers.ProfileStatusV1Builder {
+      self.created = value
+      return self
+    }
+    public func clearCreated() -> Services.Profile.Containers.ProfileStatusV1Builder{
+         builderResult.hasCreated = false
+         builderResult.created = ""
+         return self
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Profile.Containers.ProfileStatusV1Builder {
+      builderResult = Services.Profile.Containers.ProfileStatusV1()
+      return self
+    }
+    public override func clone() -> Services.Profile.Containers.ProfileStatusV1Builder {
+      return Services.Profile.Containers.ProfileStatusV1.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Profile.Containers.ProfileStatusV1 {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Profile.Containers.ProfileStatusV1 {
+      var returnMe:Services.Profile.Containers.ProfileStatusV1 = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Profile.Containers.ProfileStatusV1) -> Services.Profile.Containers.ProfileStatusV1Builder {
+      if (other == Services.Profile.Containers.ProfileStatusV1()) {
+       return self
+      }
+      if other.hasVersion {
+           version = other.version
+      }
+      if other.hasStatus {
+           status = other.status
+      }
+      if other.hasCreated {
+           created = other.created
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Profile.Containers.ProfileStatusV1Builder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Profile.Containers.ProfileStatusV1Builder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        case 8 :
+          version = input.readUInt32()
+
+        case 18 :
           status = input.readString()
+
+        case 26 :
+          created = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
