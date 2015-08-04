@@ -43,6 +43,7 @@ public func == (lhs: Services.Profile.Containers.ProfileV1, rhs: Services.Profil
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   fieldCheck = fieldCheck && (lhs.hasIsAdmin == rhs.hasIsAdmin) && (!lhs.hasIsAdmin || lhs.isAdmin == rhs.isAdmin)
   fieldCheck = fieldCheck && (lhs.hasSmallImageUrl == rhs.hasSmallImageUrl) && (!lhs.hasSmallImageUrl || lhs.smallImageUrl == rhs.smallImageUrl)
+  fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -525,6 +526,7 @@ public extension Services.Profile.Containers {
            case "email": return email
            case "isAdmin": return isAdmin
            case "smallImageUrl": return smallImageUrl
+           case "status": return status
            default: return nil
            }
     }
@@ -588,6 +590,9 @@ public extension Services.Profile.Containers {
 
     public private(set) var hasSmallImageUrl:Bool = false
     public private(set) var smallImageUrl:String = ""
+
+    public private(set) var hasStatus:Bool = false
+    public private(set) var status:String = ""
 
     public private(set) var items:Array<Services.Profile.Containers.ProfileItemV1>  = Array<Services.Profile.Containers.ProfileItemV1>()
     public private(set) var contactMethods:Array<Services.Profile.Containers.ContactMethodV1>  = Array<Services.Profile.Containers.ContactMethodV1>()
@@ -664,6 +669,9 @@ public extension Services.Profile.Containers {
       if hasSmallImageUrl {
         output.writeString(22, value:smallImageUrl)
       }
+      if hasStatus {
+        output.writeString(23, value:status)
+      }
       unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -738,6 +746,9 @@ public extension Services.Profile.Containers {
       }
       if hasSmallImageUrl {
         serialize_size += smallImageUrl.computeStringSize(22)
+      }
+      if hasStatus {
+        serialize_size += status.computeStringSize(23)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -854,6 +865,9 @@ public extension Services.Profile.Containers {
       if hasSmallImageUrl {
         output += "\(indent) smallImageUrl: \(smallImageUrl) \n"
       }
+      if hasStatus {
+        output += "\(indent) status: \(status) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -924,6 +938,9 @@ public extension Services.Profile.Containers {
             }
             if hasSmallImageUrl {
                hashCode = (hashCode &* 31) &+ smallImageUrl.hashValue
+            }
+            if hasStatus {
+               hashCode = (hashCode &* 31) &+ status.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1445,6 +1462,29 @@ public extension Services.Profile.Containers {
          builderResult.smallImageUrl = ""
          return self
     }
+    public var hasStatus:Bool {
+         get {
+              return builderResult.hasStatus
+         }
+    }
+    public var status:String {
+         get {
+              return builderResult.status
+         }
+         set (value) {
+             builderResult.hasStatus = true
+             builderResult.status = value
+         }
+    }
+    public func setStatus(value:String)-> Services.Profile.Containers.ProfileV1Builder {
+      self.status = value
+      return self
+    }
+    public func clearStatus() -> Services.Profile.Containers.ProfileV1Builder{
+         builderResult.hasStatus = false
+         builderResult.status = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -1535,6 +1575,9 @@ public extension Services.Profile.Containers {
       if other.hasSmallImageUrl {
            smallImageUrl = other.smallImageUrl
       }
+      if other.hasStatus {
+           status = other.status
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -1619,6 +1662,9 @@ public extension Services.Profile.Containers {
 
         case 178 :
           smallImageUrl = input.readString()
+
+        case 186 :
+          status = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
