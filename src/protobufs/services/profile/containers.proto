@@ -51,7 +51,7 @@ message ProfileV1 {
 
 message ProfileStatusV1 {
     optional uint32 version = 1;
-    optional string status = 2;
+    optional string value = 2;
     optional string created = 3;
 }
 
