@@ -53,7 +53,7 @@ public func == (lhs: Services.Profile.Containers.ProfileStatusV1, rhs: Services.
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
+  fieldCheck = fieldCheck && (lhs.hasValue == rhs.hasValue) && (!lhs.hasValue || lhs.value == rhs.value)
   fieldCheck = fieldCheck && (lhs.hasCreated == rhs.hasCreated) && (!lhs.hasCreated || lhs.created == rhs.created)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
@@ -1710,7 +1710,7 @@ public extension Services.Profile.Containers {
     override public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
-           case "status": return status
+           case "value": return value
            case "created": return created
            default: return nil
            }
@@ -1719,8 +1719,8 @@ public extension Services.Profile.Containers {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(0)
 
-    public private(set) var hasStatus:Bool = false
-    public private(set) var status:String = ""
+    public private(set) var hasValue:Bool = false
+    public private(set) var value:String = ""
 
     public private(set) var hasCreated:Bool = false
     public private(set) var created:String = ""
@@ -1735,8 +1735,8 @@ public extension Services.Profile.Containers {
       if hasVersion {
         output.writeUInt32(1, value:version)
       }
-      if hasStatus {
-        output.writeString(2, value:status)
+      if hasValue {
+        output.writeString(2, value:value)
       }
       if hasCreated {
         output.writeString(3, value:created)
@@ -1753,8 +1753,8 @@ public extension Services.Profile.Containers {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
-      if hasStatus {
-        serialize_size += status.computeStringSize(2)
+      if hasValue {
+        serialize_size += value.computeStringSize(2)
       }
       if hasCreated {
         serialize_size += created.computeStringSize(3)
@@ -1803,8 +1803,8 @@ public extension Services.Profile.Containers {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
-      if hasStatus {
-        output += "\(indent) status: \(status) \n"
+      if hasValue {
+        output += "\(indent) value: \(value) \n"
       }
       if hasCreated {
         output += "\(indent) created: \(created) \n"
@@ -1817,8 +1817,8 @@ public extension Services.Profile.Containers {
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
             }
-            if hasStatus {
-               hashCode = (hashCode &* 31) &+ status.hashValue
+            if hasValue {
+               hashCode = (hashCode &* 31) &+ value.hashValue
             }
             if hasCreated {
                hashCode = (hashCode &* 31) &+ created.hashValue
@@ -1874,27 +1874,27 @@ public extension Services.Profile.Containers {
          builderResult.version = UInt32(0)
          return self
     }
-    public var hasStatus:Bool {
+    public var hasValue:Bool {
          get {
-              return builderResult.hasStatus
+              return builderResult.hasValue
          }
     }
-    public var status:String {
+    public var value:String {
          get {
-              return builderResult.status
+              return builderResult.value
          }
          set (value) {
-             builderResult.hasStatus = true
-             builderResult.status = value
+             builderResult.hasValue = true
+             builderResult.value = value
          }
     }
-    public func setStatus(value:String)-> Services.Profile.Containers.ProfileStatusV1Builder {
-      self.status = value
+    public func setValue(value:String)-> Services.Profile.Containers.ProfileStatusV1Builder {
+      self.value = value
       return self
     }
-    public func clearStatus() -> Services.Profile.Containers.ProfileStatusV1Builder{
-         builderResult.hasStatus = false
-         builderResult.status = ""
+    public func clearValue() -> Services.Profile.Containers.ProfileStatusV1Builder{
+         builderResult.hasValue = false
+         builderResult.value = ""
          return self
     }
     public var hasCreated:Bool {
@@ -1947,8 +1947,8 @@ public extension Services.Profile.Containers {
       if other.hasVersion {
            version = other.version
       }
-      if other.hasStatus {
-           status = other.status
+      if other.hasValue {
+           value = other.value
       }
       if other.hasCreated {
            created = other.created
@@ -1972,7 +1972,7 @@ public extension Services.Profile.Containers {
           version = input.readUInt32()
 
         case 18 :
-          status = input.readString()
+          value = input.readString()
 
         case 26 :
           created = input.readString()

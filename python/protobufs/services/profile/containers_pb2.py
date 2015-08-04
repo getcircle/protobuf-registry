@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/containers.proto',
   package='services.profile.containers',
-  serialized_pb=_b('\n+protobufs/services/profile/containers.proto\x12\x1bservices.profile.containers\"\xa9\x02\n\x0f\x43ontactMethodV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05label\x18\x03 \x01(\t\x12\r\n\x05value\x18\x04 \x01(\t\x12]\n\x13\x63ontact_method_type\x18\x05 \x01(\x0e\x32@.services.profile.containers.ContactMethodV1.ContactMethodTypeV1\"y\n\x13\x43ontactMethodTypeV1\x12\x0e\n\nCELL_PHONE\x10\x00\x12\t\n\x05PHONE\x10\x01\x12\t\n\x05\x45MAIL\x10\x02\x12\t\n\x05SLACK\x10\x03\x12\x0b\n\x07TWITTER\x10\x04\x12\x0b\n\x07HIPCHAT\x10\x05\x12\x0c\n\x08\x46\x41\x43\x45\x42OOK\x10\x06\x12\t\n\x05SKYPE\x10\x07\"\xc6\x04\n\tProfileV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x0f\n\x07user_id\x18\x04 \x01(\t\x12\x12\n\naddress_id\x18\x05 \x01(\t\x12\r\n\x05title\x18\x06 \x01(\t\x12\x12\n\nfirst_name\x18\x07 \x01(\t\x12\x11\n\tlast_name\x18\x08 \x01(\t\x12\x11\n\timage_url\x18\t \x01(\t\x12\x0f\n\x07team_id\x18\n \x01(\t\x12\x11\n\tfull_name\x18\x0b \x01(\t\x12\x12\n\nbirth_date\x18\x0c \x01(\t\x12\x11\n\thire_date\x18\r \x01(\t\x12\x10\n\x08verified\x18\x0e \x01(\x08\x12\x39\n\x05items\x18\x0f \x03(\x0b\x32*.services.profile.containers.ProfileItemV1\x12\x13\n\x0blocation_id\x18\x10 \x01(\t\x12\x10\n\x08nickname\x18\x11 \x01(\t\x12\x45\n\x0f\x63ontact_methods\x18\x12 \x03(\x0b\x32,.services.profile.containers.ContactMethodV1\x12\x14\n\x0cseating_info\x18\x13 \x01(\t\x12\r\n\x05\x65mail\x18\x14 \x01(\t\x12\x10\n\x08is_admin\x18\x15 \x01(\x08\x12\x17\n\x0fsmall_image_url\x18\x16 \x01(\t\x12<\n\x06status\x18\x17 \x01(\x0b\x32,.services.profile.containers.ProfileStatusV1\"C\n\x0fProfileStatusV1\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x0e\n\x06status\x18\x02 \x01(\t\x12\x0f\n\x07\x63reated\x18\x03 \x01(\t\"<\n\rProfileItemV1\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\">\n\x0b\x41ttributeV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\"7\n\x06StatV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05\x63ount\x18\x03 \x01(\r\"\xb6\x01\n\x05TagV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12>\n\x08tag_type\x18\x04 \x01(\x0e\x32,.services.profile.containers.TagV1.TagTypeV1\"?\n\tTagTypeV1\x12\t\n\x05SKILL\x10\x00\x12\x0c\n\x08INTEREST\x10\x01\x12\x0c\n\x08LANGUAGE\x10\x02\x12\x0b\n\x07PROJECT\x10\x03\x42\x32\n0com.rhlabs.protobufs.services.profile.containers')
+  serialized_pb=_b('\n+protobufs/services/profile/containers.proto\x12\x1bservices.profile.containers\"\xa9\x02\n\x0f\x43ontactMethodV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05label\x18\x03 \x01(\t\x12\r\n\x05value\x18\x04 \x01(\t\x12]\n\x13\x63ontact_method_type\x18\x05 \x01(\x0e\x32@.services.profile.containers.ContactMethodV1.ContactMethodTypeV1\"y\n\x13\x43ontactMethodTypeV1\x12\x0e\n\nCELL_PHONE\x10\x00\x12\t\n\x05PHONE\x10\x01\x12\t\n\x05\x45MAIL\x10\x02\x12\t\n\x05SLACK\x10\x03\x12\x0b\n\x07TWITTER\x10\x04\x12\x0b\n\x07HIPCHAT\x10\x05\x12\x0c\n\x08\x46\x41\x43\x45\x42OOK\x10\x06\x12\t\n\x05SKYPE\x10\x07\"\xc6\x04\n\tProfileV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x0f\n\x07user_id\x18\x04 \x01(\t\x12\x12\n\naddress_id\x18\x05 \x01(\t\x12\r\n\x05title\x18\x06 \x01(\t\x12\x12\n\nfirst_name\x18\x07 \x01(\t\x12\x11\n\tlast_name\x18\x08 \x01(\t\x12\x11\n\timage_url\x18\t \x01(\t\x12\x0f\n\x07team_id\x18\n \x01(\t\x12\x11\n\tfull_name\x18\x0b \x01(\t\x12\x12\n\nbirth_date\x18\x0c \x01(\t\x12\x11\n\thire_date\x18\r \x01(\t\x12\x10\n\x08verified\x18\x0e \x01(\x08\x12\x39\n\x05items\x18\x0f \x03(\x0b\x32*.services.profile.containers.ProfileItemV1\x12\x13\n\x0blocation_id\x18\x10 \x01(\t\x12\x10\n\x08nickname\x18\x11 \x01(\t\x12\x45\n\x0f\x63ontact_methods\x18\x12 \x03(\x0b\x32,.services.profile.containers.ContactMethodV1\x12\x14\n\x0cseating_info\x18\x13 \x01(\t\x12\r\n\x05\x65mail\x18\x14 \x01(\t\x12\x10\n\x08is_admin\x18\x15 \x01(\x08\x12\x17\n\x0fsmall_image_url\x18\x16 \x01(\t\x12<\n\x06status\x18\x17 \x01(\x0b\x32,.services.profile.containers.ProfileStatusV1\"B\n\x0fProfileStatusV1\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\r\n\x05value\x18\x02 \x01(\t\x12\x0f\n\x07\x63reated\x18\x03 \x01(\t\"<\n\rProfileItemV1\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\">\n\x0b\x41ttributeV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\"7\n\x06StatV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05\x63ount\x18\x03 \x01(\r\"\xb6\x01\n\x05TagV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12>\n\x08tag_type\x18\x04 \x01(\x0e\x32,.services.profile.containers.TagV1.TagTypeV1\"?\n\tTagTypeV1\x12\t\n\x05SKILL\x10\x00\x12\x0c\n\x08INTEREST\x10\x01\x12\x0c\n\x08LANGUAGE\x10\x02\x12\x0b\n\x07PROJECT\x10\x03\x42\x32\n0com.rhlabs.protobufs.services.profile.containers')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -95,8 +95,8 @@ _TAGV1_TAGTYPEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1333,
-  serialized_end=1396,
+  serialized_start=1332,
+  serialized_end=1395,
 )
 _sym_db.RegisterEnumDescriptor(_TAGV1_TAGTYPEV1)
 
@@ -359,7 +359,7 @@ _PROFILESTATUSV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='status', full_name='services.profile.containers.ProfileStatusV1.status', index=1,
+      name='value', full_name='services.profile.containers.ProfileStatusV1.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -384,7 +384,7 @@ _PROFILESTATUSV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=961,
-  serialized_end=1028,
+  serialized_end=1027,
 )
 
 
@@ -427,8 +427,8 @@ _PROFILEITEMV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1030,
-  serialized_end=1090,
+  serialized_start=1029,
+  serialized_end=1089,
 )
 
 
@@ -471,8 +471,8 @@ _ATTRIBUTEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1092,
-  serialized_end=1154,
+  serialized_start=1091,
+  serialized_end=1153,
 )
 
 
@@ -515,8 +515,8 @@ _STATV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1156,
-  serialized_end=1211,
+  serialized_start=1155,
+  serialized_end=1210,
 )
 
 
@@ -567,8 +567,8 @@ _TAGV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1214,
-  serialized_end=1396,
+  serialized_start=1213,
+  serialized_end=1395,
 )
 
 _CONTACTMETHODV1.fields_by_name['contact_method_type'].enum_type = _CONTACTMETHODV1_CONTACTMETHODTYPEV1
