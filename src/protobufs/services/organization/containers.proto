@@ -70,6 +70,7 @@ message TeamV1 {
     optional ColorV1 color = 9;
     optional services.common.containers.PermissionsV1 permissions = 10;
     optional string description = 11;
+    optional string status = 12;
 }
 
 message TeamDescendantsV1 {
