@@ -96,6 +96,7 @@ public func == (lhs: Services.Organization.Containers.TeamV1, rhs: Services.Orga
   fieldCheck = fieldCheck && (lhs.hasColor == rhs.hasColor) && (!lhs.hasColor || lhs.color == rhs.color)
   fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
   fieldCheck = fieldCheck && (lhs.hasDescription == rhs.hasDescription) && (!lhs.hasDescription || lhs.description_ == rhs.description_)
+  fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -2588,6 +2589,7 @@ public extension Services.Organization.Containers {
            case "color": return color
            case "permissions": return permissions
            case "description_": return description_
+           case "status": return status
            default: return nil
            }
     }
@@ -2619,6 +2621,9 @@ public extension Services.Organization.Containers {
     public private(set) var permissions:Services.Common.Containers.PermissionsV1!
     public private(set) var hasDescription:Bool = false
     public private(set) var description_:String = ""
+
+    public private(set) var hasStatus:Bool = false
+    public private(set) var status:String = ""
 
     public private(set) var path:Array<Services.Organization.Containers.PathPartV1>  = Array<Services.Organization.Containers.PathPartV1>()
     required public init() {
@@ -2660,6 +2665,9 @@ public extension Services.Organization.Containers {
       }
       if hasDescription {
         output.writeString(11, value:description_)
+      }
+      if hasStatus {
+        output.writeString(12, value:status)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -2706,6 +2714,9 @@ public extension Services.Organization.Containers {
       }
       if hasDescription {
         serialize_size += description_.computeStringSize(11)
+      }
+      if hasStatus {
+        serialize_size += status.computeStringSize(12)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2789,6 +2800,9 @@ public extension Services.Organization.Containers {
       if hasDescription {
         output += "\(indent) description_: \(description_) \n"
       }
+      if hasStatus {
+        output += "\(indent) status: \(status) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2830,6 +2844,9 @@ public extension Services.Organization.Containers {
             }
             if hasDescription {
                hashCode = (hashCode &* 31) &+ description_.hashValue
+            }
+            if hasStatus {
+               hashCode = (hashCode &* 31) &+ status.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -3123,6 +3140,29 @@ public extension Services.Organization.Containers {
          builderResult.description_ = ""
          return self
     }
+    public var hasStatus:Bool {
+         get {
+              return builderResult.hasStatus
+         }
+    }
+    public var status:String {
+         get {
+              return builderResult.status
+         }
+         set (value) {
+             builderResult.hasStatus = true
+             builderResult.status = value
+         }
+    }
+    public func setStatus(value:String)-> Services.Organization.Containers.TeamV1Builder {
+      self.status = value
+      return self
+    }
+    public func clearStatus() -> Services.Organization.Containers.TeamV1Builder{
+         builderResult.hasStatus = false
+         builderResult.status = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -3179,6 +3219,9 @@ public extension Services.Organization.Containers {
       }
       if other.hasDescription {
            description_ = other.description_
+      }
+      if other.hasStatus {
+           status = other.status
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -3239,6 +3282,9 @@ public extension Services.Organization.Containers {
 
         case 90 :
           description_ = input.readString()
+
+        case 98 :
+          status = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
