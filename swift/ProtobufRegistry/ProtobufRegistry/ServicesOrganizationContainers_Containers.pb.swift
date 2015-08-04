@@ -97,6 +97,7 @@ public func == (lhs: Services.Organization.Containers.TeamV1, rhs: Services.Orga
   fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
   fieldCheck = fieldCheck && (lhs.hasDescription == rhs.hasDescription) && (!lhs.hasDescription || lhs.description_ == rhs.description_)
   fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
+  fieldCheck = fieldCheck && (lhs.hasImageUrl == rhs.hasImageUrl) && (!lhs.hasImageUrl || lhs.imageUrl == rhs.imageUrl)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -2602,6 +2603,7 @@ public extension Services.Organization.Containers {
            case "permissions": return permissions
            case "description_": return description_
            case "status": return status
+           case "imageUrl": return imageUrl
            default: return nil
            }
     }
@@ -2636,6 +2638,9 @@ public extension Services.Organization.Containers {
 
     public private(set) var hasStatus:Bool = false
     public private(set) var status:Services.Organization.Containers.TeamStatusV1!
+    public private(set) var hasImageUrl:Bool = false
+    public private(set) var imageUrl:String = ""
+
     public private(set) var path:Array<Services.Organization.Containers.PathPartV1>  = Array<Services.Organization.Containers.PathPartV1>()
     required public init() {
          super.init()
@@ -2679,6 +2684,9 @@ public extension Services.Organization.Containers {
       }
       if hasStatus {
         output.writeMessage(12, value:status)
+      }
+      if hasImageUrl {
+        output.writeString(13, value:imageUrl)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -2730,6 +2738,9 @@ public extension Services.Organization.Containers {
           if let varSizestatus = status?.computeMessageSize(12) {
               serialize_size += varSizestatus
           }
+      }
+      if hasImageUrl {
+        serialize_size += imageUrl.computeStringSize(13)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2818,6 +2829,9 @@ public extension Services.Organization.Containers {
         status?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasImageUrl {
+        output += "\(indent) imageUrl: \(imageUrl) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2864,6 +2878,9 @@ public extension Services.Organization.Containers {
                 if let hashValuestatus = status?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuestatus
                 }
+            }
+            if hasImageUrl {
+               hashCode = (hashCode &* 31) &+ imageUrl.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -3189,6 +3206,29 @@ public extension Services.Organization.Containers {
       builderResult.status = nil
       return self
     }
+    public var hasImageUrl:Bool {
+         get {
+              return builderResult.hasImageUrl
+         }
+    }
+    public var imageUrl:String {
+         get {
+              return builderResult.imageUrl
+         }
+         set (value) {
+             builderResult.hasImageUrl = true
+             builderResult.imageUrl = value
+         }
+    }
+    public func setImageUrl(value:String)-> Services.Organization.Containers.TeamV1Builder {
+      self.imageUrl = value
+      return self
+    }
+    public func clearImageUrl() -> Services.Organization.Containers.TeamV1Builder{
+         builderResult.hasImageUrl = false
+         builderResult.imageUrl = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -3248,6 +3288,9 @@ public extension Services.Organization.Containers {
       }
       if (other.hasStatus) {
           mergeStatus(other.status)
+      }
+      if other.hasImageUrl {
+           imageUrl = other.imageUrl
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -3316,6 +3359,9 @@ public extension Services.Organization.Containers {
           }
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
           status = subBuilder.buildPartial()
+
+        case 106 :
+          imageUrl = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

@@ -71,6 +71,7 @@ message TeamV1 {
     optional services.common.containers.PermissionsV1 permissions = 10;
     optional string description = 11;
     optional TeamStatusV1 status = 12;
+    optional string image_url = 13;
 }
 
 message TeamDescendantsV1 {
