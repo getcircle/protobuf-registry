@@ -46,6 +46,7 @@ message ProfileV1 {
     optional string email = 20;
     optional bool is_admin = 21;
     optional string small_image_url = 22;
+    optional string status = 23;
 }
 
 message ProfileItemV1 {
