@@ -99,6 +99,7 @@ public func == (lhs: Services.Organization.Containers.TeamV1, rhs: Services.Orga
   fieldCheck = fieldCheck && (lhs.hasDescription == rhs.hasDescription) && (!lhs.hasDescription || lhs.description_ == rhs.description_)
   fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
   fieldCheck = fieldCheck && (lhs.hasImageUrl == rhs.hasImageUrl) && (!lhs.hasImageUrl || lhs.imageUrl == rhs.imageUrl)
+  fieldCheck = fieldCheck && (lhs.hasChildTeamCount == rhs.hasChildTeamCount) && (!lhs.hasChildTeamCount || lhs.childTeamCount == rhs.childTeamCount)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -2647,6 +2648,7 @@ public extension Services.Organization.Containers {
            case "description_": return description_
            case "status": return status
            case "imageUrl": return imageUrl
+           case "childTeamCount": return childTeamCount
            default: return nil
            }
     }
@@ -2683,6 +2685,9 @@ public extension Services.Organization.Containers {
     public private(set) var status:Services.Organization.Containers.TeamStatusV1!
     public private(set) var hasImageUrl:Bool = false
     public private(set) var imageUrl:String = ""
+
+    public private(set) var hasChildTeamCount:Bool = false
+    public private(set) var childTeamCount:UInt32 = UInt32(0)
 
     public private(set) var path:Array<Services.Organization.Containers.PathPartV1>  = Array<Services.Organization.Containers.PathPartV1>()
     required public init() {
@@ -2730,6 +2735,9 @@ public extension Services.Organization.Containers {
       }
       if hasImageUrl {
         output.writeString(13, value:imageUrl)
+      }
+      if hasChildTeamCount {
+        output.writeUInt32(14, value:childTeamCount)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -2784,6 +2792,9 @@ public extension Services.Organization.Containers {
       }
       if hasImageUrl {
         serialize_size += imageUrl.computeStringSize(13)
+      }
+      if hasChildTeamCount {
+        serialize_size += childTeamCount.computeUInt32Size(14)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2875,6 +2886,9 @@ public extension Services.Organization.Containers {
       if hasImageUrl {
         output += "\(indent) imageUrl: \(imageUrl) \n"
       }
+      if hasChildTeamCount {
+        output += "\(indent) childTeamCount: \(childTeamCount) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2924,6 +2938,9 @@ public extension Services.Organization.Containers {
             }
             if hasImageUrl {
                hashCode = (hashCode &* 31) &+ imageUrl.hashValue
+            }
+            if hasChildTeamCount {
+               hashCode = (hashCode &* 31) &+ childTeamCount.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -3272,6 +3289,29 @@ public extension Services.Organization.Containers {
          builderResult.imageUrl = ""
          return self
     }
+    public var hasChildTeamCount:Bool {
+         get {
+              return builderResult.hasChildTeamCount
+         }
+    }
+    public var childTeamCount:UInt32 {
+         get {
+              return builderResult.childTeamCount
+         }
+         set (value) {
+             builderResult.hasChildTeamCount = true
+             builderResult.childTeamCount = value
+         }
+    }
+    public func setChildTeamCount(value:UInt32)-> Services.Organization.Containers.TeamV1Builder {
+      self.childTeamCount = value
+      return self
+    }
+    public func clearChildTeamCount() -> Services.Organization.Containers.TeamV1Builder{
+         builderResult.hasChildTeamCount = false
+         builderResult.childTeamCount = UInt32(0)
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -3334,6 +3374,9 @@ public extension Services.Organization.Containers {
       }
       if other.hasImageUrl {
            imageUrl = other.imageUrl
+      }
+      if other.hasChildTeamCount {
+           childTeamCount = other.childTeamCount
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -3405,6 +3448,9 @@ public extension Services.Organization.Containers {
 
         case 106 :
           imageUrl = input.readString()
+
+        case 112 :
+          childTeamCount = input.readUInt32()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
