@@ -4,6 +4,7 @@ package services.organization.containers;
 option java_package = "com.rhlabs.protobufs.services.organization.containers";
 
 import "protobufs/services/common/containers.proto";
+import "protobufs/services/profile/containers.proto";
 
 
 message AddressV1 {
@@ -40,6 +41,7 @@ message LocationV1 {
     optional string image_url = 7;
     optional string description = 8;
     optional string established_date = 9;
+    repeated services.profile.containers.ProfileV1 points_of_contact = 10;
 }
 
 message OrganizationV1 {

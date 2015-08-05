@@ -51,6 +51,7 @@ public func == (lhs: Services.Organization.Containers.LocationV1, rhs: Services.
   fieldCheck = fieldCheck && (lhs.hasImageUrl == rhs.hasImageUrl) && (!lhs.hasImageUrl || lhs.imageUrl == rhs.imageUrl)
   fieldCheck = fieldCheck && (lhs.hasDescription == rhs.hasDescription) && (!lhs.hasDescription || lhs.description_ == rhs.description_)
   fieldCheck = fieldCheck && (lhs.hasEstablishedDate == rhs.hasEstablishedDate) && (!lhs.hasEstablishedDate || lhs.establishedDate == rhs.establishedDate)
+  fieldCheck = fieldCheck && (lhs.pointsOfContact == rhs.pointsOfContact)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -151,6 +152,7 @@ public extension Services.Organization.Containers {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -1300,6 +1302,7 @@ public extension Services.Organization.Containers {
     public private(set) var hasEstablishedDate:Bool = false
     public private(set) var establishedDate:String = ""
 
+    public private(set) var pointsOfContact:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
     required public init() {
          super.init()
     }
@@ -1333,6 +1336,9 @@ public extension Services.Organization.Containers {
       }
       if hasEstablishedDate {
         output.writeString(9, value:establishedDate)
+      }
+      for oneElementpointsOfContact in pointsOfContact {
+          output.writeMessage(10, value:oneElementpointsOfContact)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -1371,6 +1377,9 @@ public extension Services.Organization.Containers {
       }
       if hasEstablishedDate {
         serialize_size += establishedDate.computeStringSize(9)
+      }
+      for oneElementpointsOfContact in pointsOfContact {
+          serialize_size += oneElementpointsOfContact.computeMessageSize(10)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1442,6 +1451,13 @@ public extension Services.Organization.Containers {
       if hasEstablishedDate {
         output += "\(indent) establishedDate: \(establishedDate) \n"
       }
+      var pointsOfContactElementIndex:Int = 0
+      for oneElementpointsOfContact in pointsOfContact {
+          output += "\(indent) pointsOfContact[\(pointsOfContactElementIndex)] {\n"
+          oneElementpointsOfContact.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          pointsOfContactElementIndex++
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1475,6 +1491,9 @@ public extension Services.Organization.Containers {
             }
             if hasEstablishedDate {
                hashCode = (hashCode &* 31) &+ establishedDate.hashValue
+            }
+            for oneElementpointsOfContact in pointsOfContact {
+                hashCode = (hashCode &* 31) &+ oneElementpointsOfContact.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1720,6 +1739,22 @@ public extension Services.Organization.Containers {
          builderResult.establishedDate = ""
          return self
     }
+    public var pointsOfContact:Array<Services.Profile.Containers.ProfileV1> {
+         get {
+             return builderResult.pointsOfContact
+         }
+         set (value) {
+             builderResult.pointsOfContact = value
+         }
+    }
+    public func setPointsOfContact(value:Array<Services.Profile.Containers.ProfileV1>)-> Services.Organization.Containers.LocationV1Builder {
+      self.pointsOfContact = value
+      return self
+    }
+    public func clearPointsOfContact() -> Services.Organization.Containers.LocationV1Builder {
+      builderResult.pointsOfContact.removeAll(keepCapacity: false)
+      return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -1771,6 +1806,9 @@ public extension Services.Organization.Containers {
       if other.hasEstablishedDate {
            establishedDate = other.establishedDate
       }
+      if !other.pointsOfContact.isEmpty  {
+         builderResult.pointsOfContact += other.pointsOfContact
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -1817,6 +1855,11 @@ public extension Services.Organization.Containers {
 
         case 74 :
           establishedDate = input.readString()
+
+        case 82 :
+          var subBuilder = Services.Profile.Containers.ProfileV1.builder()
+          input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+          pointsOfContact += [subBuilder.buildPartial()]
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
