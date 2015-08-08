@@ -51,6 +51,9 @@ message OrganizationV1 {
     optional string domain = 4;
     optional string image_url = 5;
     optional ColorV1 tint_color = 6;
+    optional uint32 profile_count = 7;
+    optional uint32 team_count = 8;
+    optional uint32 location_count = 9;
 }
 
 message PathPartV1 {

@@ -67,6 +67,9 @@ public func == (lhs: Services.Organization.Containers.OrganizationV1, rhs: Servi
   fieldCheck = fieldCheck && (lhs.hasDomain == rhs.hasDomain) && (!lhs.hasDomain || lhs.domain == rhs.domain)
   fieldCheck = fieldCheck && (lhs.hasImageUrl == rhs.hasImageUrl) && (!lhs.hasImageUrl || lhs.imageUrl == rhs.imageUrl)
   fieldCheck = fieldCheck && (lhs.hasTintColor == rhs.hasTintColor) && (!lhs.hasTintColor || lhs.tintColor == rhs.tintColor)
+  fieldCheck = fieldCheck && (lhs.hasProfileCount == rhs.hasProfileCount) && (!lhs.hasProfileCount || lhs.profileCount == rhs.profileCount)
+  fieldCheck = fieldCheck && (lhs.hasTeamCount == rhs.hasTeamCount) && (!lhs.hasTeamCount || lhs.teamCount == rhs.teamCount)
+  fieldCheck = fieldCheck && (lhs.hasLocationCount == rhs.hasLocationCount) && (!lhs.hasLocationCount || lhs.locationCount == rhs.locationCount)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -1946,6 +1949,9 @@ public extension Services.Organization.Containers {
            case "domain": return domain
            case "imageUrl": return imageUrl
            case "tintColor": return tintColor
+           case "profileCount": return profileCount
+           case "teamCount": return teamCount
+           case "locationCount": return locationCount
            default: return nil
            }
     }
@@ -1967,6 +1973,15 @@ public extension Services.Organization.Containers {
 
     public private(set) var hasTintColor:Bool = false
     public private(set) var tintColor:Services.Organization.Containers.ColorV1!
+    public private(set) var hasProfileCount:Bool = false
+    public private(set) var profileCount:UInt32 = UInt32(0)
+
+    public private(set) var hasTeamCount:Bool = false
+    public private(set) var teamCount:UInt32 = UInt32(0)
+
+    public private(set) var hasLocationCount:Bool = false
+    public private(set) var locationCount:UInt32 = UInt32(0)
+
     required public init() {
          super.init()
     }
@@ -1991,6 +2006,15 @@ public extension Services.Organization.Containers {
       }
       if hasTintColor {
         output.writeMessage(6, value:tintColor)
+      }
+      if hasProfileCount {
+        output.writeUInt32(7, value:profileCount)
+      }
+      if hasTeamCount {
+        output.writeUInt32(8, value:teamCount)
+      }
+      if hasLocationCount {
+        output.writeUInt32(9, value:locationCount)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -2020,6 +2044,15 @@ public extension Services.Organization.Containers {
           if let varSizetintColor = tintColor?.computeMessageSize(6) {
               serialize_size += varSizetintColor
           }
+      }
+      if hasProfileCount {
+        serialize_size += profileCount.computeUInt32Size(7)
+      }
+      if hasTeamCount {
+        serialize_size += teamCount.computeUInt32Size(8)
+      }
+      if hasLocationCount {
+        serialize_size += locationCount.computeUInt32Size(9)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2082,6 +2115,15 @@ public extension Services.Organization.Containers {
         tintColor?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasProfileCount {
+        output += "\(indent) profileCount: \(profileCount) \n"
+      }
+      if hasTeamCount {
+        output += "\(indent) teamCount: \(teamCount) \n"
+      }
+      if hasLocationCount {
+        output += "\(indent) locationCount: \(locationCount) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2106,6 +2148,15 @@ public extension Services.Organization.Containers {
                 if let hashValuetintColor = tintColor?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuetintColor
                 }
+            }
+            if hasProfileCount {
+               hashCode = (hashCode &* 31) &+ profileCount.hashValue
+            }
+            if hasTeamCount {
+               hashCode = (hashCode &* 31) &+ teamCount.hashValue
+            }
+            if hasLocationCount {
+               hashCode = (hashCode &* 31) &+ locationCount.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2282,6 +2333,75 @@ public extension Services.Organization.Containers {
       builderResult.tintColor = nil
       return self
     }
+    public var hasProfileCount:Bool {
+         get {
+              return builderResult.hasProfileCount
+         }
+    }
+    public var profileCount:UInt32 {
+         get {
+              return builderResult.profileCount
+         }
+         set (value) {
+             builderResult.hasProfileCount = true
+             builderResult.profileCount = value
+         }
+    }
+    public func setProfileCount(value:UInt32)-> Services.Organization.Containers.OrganizationV1Builder {
+      self.profileCount = value
+      return self
+    }
+    public func clearProfileCount() -> Services.Organization.Containers.OrganizationV1Builder{
+         builderResult.hasProfileCount = false
+         builderResult.profileCount = UInt32(0)
+         return self
+    }
+    public var hasTeamCount:Bool {
+         get {
+              return builderResult.hasTeamCount
+         }
+    }
+    public var teamCount:UInt32 {
+         get {
+              return builderResult.teamCount
+         }
+         set (value) {
+             builderResult.hasTeamCount = true
+             builderResult.teamCount = value
+         }
+    }
+    public func setTeamCount(value:UInt32)-> Services.Organization.Containers.OrganizationV1Builder {
+      self.teamCount = value
+      return self
+    }
+    public func clearTeamCount() -> Services.Organization.Containers.OrganizationV1Builder{
+         builderResult.hasTeamCount = false
+         builderResult.teamCount = UInt32(0)
+         return self
+    }
+    public var hasLocationCount:Bool {
+         get {
+              return builderResult.hasLocationCount
+         }
+    }
+    public var locationCount:UInt32 {
+         get {
+              return builderResult.locationCount
+         }
+         set (value) {
+             builderResult.hasLocationCount = true
+             builderResult.locationCount = value
+         }
+    }
+    public func setLocationCount(value:UInt32)-> Services.Organization.Containers.OrganizationV1Builder {
+      self.locationCount = value
+      return self
+    }
+    public func clearLocationCount() -> Services.Organization.Containers.OrganizationV1Builder{
+         builderResult.hasLocationCount = false
+         builderResult.locationCount = UInt32(0)
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -2324,6 +2444,15 @@ public extension Services.Organization.Containers {
       if (other.hasTintColor) {
           mergeTintColor(other.tintColor)
       }
+      if other.hasProfileCount {
+           profileCount = other.profileCount
+      }
+      if other.hasTeamCount {
+           teamCount = other.teamCount
+      }
+      if other.hasLocationCount {
+           locationCount = other.locationCount
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -2361,6 +2490,15 @@ public extension Services.Organization.Containers {
           }
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
           tintColor = subBuilder.buildPartial()
+
+        case 56 :
+          profileCount = input.readUInt32()
+
+        case 64 :
+          teamCount = input.readUInt32()
+
+        case 72 :
+          locationCount = input.readUInt32()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
