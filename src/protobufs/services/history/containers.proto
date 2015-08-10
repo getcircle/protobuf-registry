@@ -21,4 +21,5 @@ message ActionV1 {
     optional string organization_id = 9;
     optional string correlation_id = 10;
     optional string by_profile_id = 11;
+    optional string table_name = 12;
 }

@@ -19,6 +19,7 @@ public func == (lhs: Services.History.Containers.ActionV1, rhs: Services.History
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = fieldCheck && (lhs.hasCorrelationId == rhs.hasCorrelationId) && (!lhs.hasCorrelationId || lhs.correlationId == rhs.correlationId)
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
+  fieldCheck = fieldCheck && (lhs.hasTableName == rhs.hasTableName) && (!lhs.hasTableName || lhs.tableName == rhs.tableName)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -77,6 +78,7 @@ public extension Services.History.Containers {
            case "organizationId": return organizationId
            case "correlationId": return correlationId
            case "byProfileId": return byProfileId
+           case "tableName": return tableName
            default: return nil
            }
     }
@@ -111,6 +113,9 @@ public extension Services.History.Containers {
 
     public private(set) var hasByProfileId:Bool = false
     public private(set) var byProfileId:String = ""
+
+    public private(set) var hasTableName:Bool = false
+    public private(set) var tableName:String = ""
 
     required public init() {
          super.init()
@@ -151,6 +156,9 @@ public extension Services.History.Containers {
       }
       if hasByProfileId {
         output.writeString(11, value:byProfileId)
+      }
+      if hasTableName {
+        output.writeString(12, value:tableName)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -193,6 +201,9 @@ public extension Services.History.Containers {
       }
       if hasByProfileId {
         serialize_size += byProfileId.computeStringSize(11)
+      }
+      if hasTableName {
+        serialize_size += tableName.computeStringSize(12)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -268,6 +279,9 @@ public extension Services.History.Containers {
       if hasByProfileId {
         output += "\(indent) byProfileId: \(byProfileId) \n"
       }
+      if hasTableName {
+        output += "\(indent) tableName: \(tableName) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -305,6 +319,9 @@ public extension Services.History.Containers {
             }
             if hasByProfileId {
                hashCode = (hashCode &* 31) &+ byProfileId.hashValue
+            }
+            if hasTableName {
+               hashCode = (hashCode &* 31) &+ tableName.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -587,6 +604,29 @@ public extension Services.History.Containers {
          builderResult.byProfileId = ""
          return self
     }
+    public var hasTableName:Bool {
+         get {
+              return builderResult.hasTableName
+         }
+    }
+    public var tableName:String {
+         get {
+              return builderResult.tableName
+         }
+         set (value) {
+             builderResult.hasTableName = true
+             builderResult.tableName = value
+         }
+    }
+    public func setTableName(value:String)-> Services.History.Containers.ActionV1Builder {
+      self.tableName = value
+      return self
+    }
+    public func clearTableName() -> Services.History.Containers.ActionV1Builder{
+         builderResult.hasTableName = false
+         builderResult.tableName = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -643,6 +683,9 @@ public extension Services.History.Containers {
       }
       if other.hasByProfileId {
            byProfileId = other.byProfileId
+      }
+      if other.hasTableName {
+           tableName = other.tableName
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -701,6 +744,9 @@ public extension Services.History.Containers {
 
         case 90 :
           byProfileId = input.readString()
+
+        case 98 :
+          tableName = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
