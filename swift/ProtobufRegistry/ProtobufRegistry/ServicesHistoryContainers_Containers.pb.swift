@@ -20,6 +20,8 @@ public func == (lhs: Services.History.Containers.ActionV1, rhs: Services.History
   fieldCheck = fieldCheck && (lhs.hasCorrelationId == rhs.hasCorrelationId) && (!lhs.hasCorrelationId || lhs.correlationId == rhs.correlationId)
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
   fieldCheck = fieldCheck && (lhs.hasTableName == rhs.hasTableName) && (!lhs.hasTableName || lhs.tableName == rhs.tableName)
+  fieldCheck = fieldCheck && (lhs.hasPrimaryKeyName == rhs.hasPrimaryKeyName) && (!lhs.hasPrimaryKeyName || lhs.primaryKeyName == rhs.primaryKeyName)
+  fieldCheck = fieldCheck && (lhs.hasPrimaryKeyValue == rhs.hasPrimaryKeyValue) && (!lhs.hasPrimaryKeyValue || lhs.primaryKeyValue == rhs.primaryKeyValue)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -79,6 +81,8 @@ public extension Services.History.Containers {
            case "correlationId": return correlationId
            case "byProfileId": return byProfileId
            case "tableName": return tableName
+           case "primaryKeyName": return primaryKeyName
+           case "primaryKeyValue": return primaryKeyValue
            default: return nil
            }
     }
@@ -116,6 +120,12 @@ public extension Services.History.Containers {
 
     public private(set) var hasTableName:Bool = false
     public private(set) var tableName:String = ""
+
+    public private(set) var hasPrimaryKeyName:Bool = false
+    public private(set) var primaryKeyName:String = ""
+
+    public private(set) var hasPrimaryKeyValue:Bool = false
+    public private(set) var primaryKeyValue:String = ""
 
     required public init() {
          super.init()
@@ -159,6 +169,12 @@ public extension Services.History.Containers {
       }
       if hasTableName {
         output.writeString(12, value:tableName)
+      }
+      if hasPrimaryKeyName {
+        output.writeString(13, value:primaryKeyName)
+      }
+      if hasPrimaryKeyValue {
+        output.writeString(14, value:primaryKeyValue)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -204,6 +220,12 @@ public extension Services.History.Containers {
       }
       if hasTableName {
         serialize_size += tableName.computeStringSize(12)
+      }
+      if hasPrimaryKeyName {
+        serialize_size += primaryKeyName.computeStringSize(13)
+      }
+      if hasPrimaryKeyValue {
+        serialize_size += primaryKeyValue.computeStringSize(14)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -282,6 +304,12 @@ public extension Services.History.Containers {
       if hasTableName {
         output += "\(indent) tableName: \(tableName) \n"
       }
+      if hasPrimaryKeyName {
+        output += "\(indent) primaryKeyName: \(primaryKeyName) \n"
+      }
+      if hasPrimaryKeyValue {
+        output += "\(indent) primaryKeyValue: \(primaryKeyValue) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -322,6 +350,12 @@ public extension Services.History.Containers {
             }
             if hasTableName {
                hashCode = (hashCode &* 31) &+ tableName.hashValue
+            }
+            if hasPrimaryKeyName {
+               hashCode = (hashCode &* 31) &+ primaryKeyName.hashValue
+            }
+            if hasPrimaryKeyValue {
+               hashCode = (hashCode &* 31) &+ primaryKeyValue.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -627,6 +661,52 @@ public extension Services.History.Containers {
          builderResult.tableName = ""
          return self
     }
+    public var hasPrimaryKeyName:Bool {
+         get {
+              return builderResult.hasPrimaryKeyName
+         }
+    }
+    public var primaryKeyName:String {
+         get {
+              return builderResult.primaryKeyName
+         }
+         set (value) {
+             builderResult.hasPrimaryKeyName = true
+             builderResult.primaryKeyName = value
+         }
+    }
+    public func setPrimaryKeyName(value:String)-> Services.History.Containers.ActionV1Builder {
+      self.primaryKeyName = value
+      return self
+    }
+    public func clearPrimaryKeyName() -> Services.History.Containers.ActionV1Builder{
+         builderResult.hasPrimaryKeyName = false
+         builderResult.primaryKeyName = ""
+         return self
+    }
+    public var hasPrimaryKeyValue:Bool {
+         get {
+              return builderResult.hasPrimaryKeyValue
+         }
+    }
+    public var primaryKeyValue:String {
+         get {
+              return builderResult.primaryKeyValue
+         }
+         set (value) {
+             builderResult.hasPrimaryKeyValue = true
+             builderResult.primaryKeyValue = value
+         }
+    }
+    public func setPrimaryKeyValue(value:String)-> Services.History.Containers.ActionV1Builder {
+      self.primaryKeyValue = value
+      return self
+    }
+    public func clearPrimaryKeyValue() -> Services.History.Containers.ActionV1Builder{
+         builderResult.hasPrimaryKeyValue = false
+         builderResult.primaryKeyValue = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -686,6 +766,12 @@ public extension Services.History.Containers {
       }
       if other.hasTableName {
            tableName = other.tableName
+      }
+      if other.hasPrimaryKeyName {
+           primaryKeyName = other.primaryKeyName
+      }
+      if other.hasPrimaryKeyValue {
+           primaryKeyValue = other.primaryKeyValue
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -747,6 +833,12 @@ public extension Services.History.Containers {
 
         case 98 :
           tableName = input.readString()
+
+        case 106 :
+          primaryKeyName = input.readString()
+
+        case 114 :
+          primaryKeyValue = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
