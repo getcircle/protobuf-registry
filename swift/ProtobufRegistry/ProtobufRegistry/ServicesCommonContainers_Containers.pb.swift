@@ -45,6 +45,7 @@ public func == (lhs: Services.Common.Containers.DescriptionV1, rhs: Services.Com
   fieldCheck = fieldCheck && (lhs.hasValue == rhs.hasValue) && (!lhs.hasValue || lhs.value == rhs.value)
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
   fieldCheck = fieldCheck && (lhs.hasChanged == rhs.hasChanged) && (!lhs.hasChanged || lhs.changed == rhs.changed)
+  fieldCheck = fieldCheck && (lhs.hasByProfile == rhs.hasByProfile) && (!lhs.hasByProfile || lhs.byProfile == rhs.byProfile)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -61,6 +62,7 @@ public extension Services.Common.Containers {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -912,6 +914,7 @@ public extension Services.Common.Containers {
            case "value": return value
            case "byProfileId": return byProfileId
            case "changed": return changed
+           case "byProfile": return byProfile
            default: return nil
            }
     }
@@ -928,6 +931,8 @@ public extension Services.Common.Containers {
     public private(set) var hasChanged:Bool = false
     public private(set) var changed:String = ""
 
+    public private(set) var hasByProfile:Bool = false
+    public private(set) var byProfile:Services.Profile.Containers.ProfileV1!
     required public init() {
          super.init()
     }
@@ -946,6 +951,9 @@ public extension Services.Common.Containers {
       }
       if hasChanged {
         output.writeString(4, value:changed)
+      }
+      if hasByProfile {
+        output.writeMessage(5, value:byProfile)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -967,6 +975,11 @@ public extension Services.Common.Containers {
       }
       if hasChanged {
         serialize_size += changed.computeStringSize(4)
+      }
+      if hasByProfile {
+          if let varSizebyProfile = byProfile?.computeMessageSize(5) {
+              serialize_size += varSizebyProfile
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1021,6 +1034,11 @@ public extension Services.Common.Containers {
       if hasChanged {
         output += "\(indent) changed: \(changed) \n"
       }
+      if hasByProfile {
+        output += "\(indent) byProfile {\n"
+        byProfile?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1037,6 +1055,11 @@ public extension Services.Common.Containers {
             }
             if hasChanged {
                hashCode = (hashCode &* 31) &+ changed.hashValue
+            }
+            if hasByProfile {
+                if let hashValuebyProfile = byProfile?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuebyProfile
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1158,6 +1181,38 @@ public extension Services.Common.Containers {
          builderResult.changed = ""
          return self
     }
+    public var hasByProfile:Bool {
+         get {
+             return builderResult.hasByProfile
+         }
+    }
+    public var byProfile:Services.Profile.Containers.ProfileV1! {
+         get {
+             return builderResult.byProfile
+         }
+         set (value) {
+             builderResult.hasByProfile = true
+             builderResult.byProfile = value
+         }
+    }
+    public func setByProfile(value:Services.Profile.Containers.ProfileV1!)-> Services.Common.Containers.DescriptionV1Builder {
+      self.byProfile = value
+      return self
+    }
+    public func mergeByProfile(value:Services.Profile.Containers.ProfileV1) -> Services.Common.Containers.DescriptionV1Builder {
+      if (builderResult.hasByProfile) {
+        builderResult.byProfile = Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.byProfile).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.byProfile = value
+      }
+      builderResult.hasByProfile = true
+      return self
+    }
+    public func clearByProfile() -> Services.Common.Containers.DescriptionV1Builder {
+      builderResult.hasByProfile = false
+      builderResult.byProfile = nil
+      return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -1194,6 +1249,9 @@ public extension Services.Common.Containers {
       if other.hasChanged {
            changed = other.changed
       }
+      if (other.hasByProfile) {
+          mergeByProfile(other.byProfile)
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -1220,6 +1278,14 @@ public extension Services.Common.Containers {
 
         case 34 :
           changed = input.readString()
+
+        case 42 :
+          var subBuilder:Services.Profile.Containers.ProfileV1Builder = Services.Profile.Containers.ProfileV1.builder()
+          if hasByProfile {
+            subBuilder.mergeFrom(byProfile)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          byProfile = subBuilder.buildPartial()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
