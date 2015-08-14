@@ -268,6 +268,11 @@ public var ServicesRegistryRequestsOrganizationgetTeams:ConcreateExtensionField 
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationgetTeamsStatic
    }
 }
+public var ServicesRegistryRequestsOrganizationgetDescendants:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsOrganizationgetDescendantsStatic
+   }
+}
 public var ServicesRegistryRequestsProfilecreateProfile:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfilecreateProfileStatic
@@ -508,6 +513,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsOrganizationsetManagerStatic:ConcreateExtensionField
     var ServicesRegistryRequestsOrganizationaddLocationMembersStatic:ConcreateExtensionField
     var ServicesRegistryRequestsOrganizationgetTeamsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsOrganizationgetDescendantsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfilecreateProfileStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfilegetExtendedProfileStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfilegetProfileStatic:ConcreateExtensionField
@@ -587,6 +593,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsOrganizationsetManagerStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 217, defaultValue:Services.Organization.Actions.SetManager.RequestV1(), messageOrGroupClass:Services.Organization.Actions.SetManager.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsOrganizationaddLocationMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 218, defaultValue:Services.Organization.Actions.AddLocationMembers.RequestV1(), messageOrGroupClass:Services.Organization.Actions.AddLocationMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsOrganizationgetTeamsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 219, defaultValue:Services.Organization.Actions.GetTeams.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetTeams.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsOrganizationgetDescendantsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 220, defaultValue:Services.Organization.Actions.GetDescendants.RequestV1(), messageOrGroupClass:Services.Organization.Actions.GetDescendants.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfilecreateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 300, defaultValue:Services.Profile.Actions.CreateProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.CreateProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfilegetExtendedProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 301, defaultValue:Services.Profile.Actions.GetExtendedProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetExtendedProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfilegetProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 302, defaultValue:Services.Profile.Actions.GetProfile.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetProfile.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -666,6 +673,7 @@ public extension Services.Registry.Requests {
       Services.Organization.Actions.SetManager.SetManagerRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.AddLocationMembers.AddLocationMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.GetTeams.GetTeamsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetDescendants.GetDescendantsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.CreateProfile.CreateProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetExtendedProfile.GetExtendedProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetProfile.GetProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -744,6 +752,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsOrganizationsetManagerStatic)
       registry.addExtension(ServicesRegistryRequestsOrganizationaddLocationMembersStatic)
       registry.addExtension(ServicesRegistryRequestsOrganizationgetTeamsStatic)
+      registry.addExtension(ServicesRegistryRequestsOrganizationgetDescendantsStatic)
       registry.addExtension(ServicesRegistryRequestsProfilecreateProfileStatic)
       registry.addExtension(ServicesRegistryRequestsProfilegetExtendedProfileStatic)
       registry.addExtension(ServicesRegistryRequestsProfilegetProfileStatic)
@@ -1049,6 +1058,9 @@ public extension Services.Registry.Requests {
     }
     public class func getTeams() -> ConcreateExtensionField {
          return ServicesRegistryRequestsOrganizationgetTeams
+    }
+    public class func getDescendants() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsOrganizationgetDescendants
     }
     required public init() {
          super.init()
