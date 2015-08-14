@@ -19,7 +19,7 @@ import protobufs.services.profile.containers_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/get_profile.proto',
   package='services.profile.actions.get_profile',
-  serialized_pb=_b('\n4protobufs/services/profile/actions/get_profile.proto\x12$services.profile.actions.get_profile\x1a+protobufs/services/profile/containers.proto\"D\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\t\"Y\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x37\n\x07profile\x18\x02 \x01(\x0b\x32&.services.profile.containers.ProfileV1B;\n9com.rhlabs.protobufs.services.profile.actions.get_profile')
+  serialized_pb=_b('\n4protobufs/services/profile/actions/get_profile.proto\x12$services.profile.actions.get_profile\x1a+protobufs/services/profile/containers.proto\"3\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\"Y\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x37\n\x07profile\x18\x02 \x01(\x0b\x32&.services.profile.containers.ProfileV1B;\n9com.rhlabs.protobufs.services.profile.actions.get_profile')
   ,
   dependencies=[protobufs.services.profile.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -48,13 +48,6 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='user_id', full_name='services.profile.actions.get_profile.RequestV1.user_id', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -67,7 +60,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=139,
-  serialized_end=207,
+  serialized_end=190,
 )
 
 
@@ -103,8 +96,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=209,
-  serialized_end=298,
+  serialized_start=192,
+  serialized_end=281,
 )
 
 _RESPONSEV1.fields_by_name['profile'].message_type = protobufs.services.profile.containers_pb2._PROFILEV1
