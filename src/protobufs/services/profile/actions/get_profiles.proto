@@ -10,6 +10,7 @@ message RequestV1 {
     optional string tag_id = 2;
     repeated string ids = 3;
     optional string location_id = 4;
+    optional string team_id = 5;
 }
 
 message ResponseV1 {

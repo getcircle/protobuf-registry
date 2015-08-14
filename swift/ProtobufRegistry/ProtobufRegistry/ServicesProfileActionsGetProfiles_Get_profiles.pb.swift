@@ -12,6 +12,7 @@ public func == (lhs: Services.Profile.Actions.GetProfiles.RequestV1, rhs: Servic
   fieldCheck = fieldCheck && (lhs.hasTagId == rhs.hasTagId) && (!lhs.hasTagId || lhs.tagId == rhs.tagId)
   fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
   fieldCheck = fieldCheck && (lhs.hasLocationId == rhs.hasLocationId) && (!lhs.hasLocationId || lhs.locationId == rhs.locationId)
+  fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -50,6 +51,7 @@ public extension Services.Profile.Actions.GetProfiles {
            case "version": return version
            case "tagId": return tagId
            case "locationId": return locationId
+           case "teamId": return teamId
            default: return nil
            }
     }
@@ -62,6 +64,9 @@ public extension Services.Profile.Actions.GetProfiles {
 
     public private(set) var hasLocationId:Bool = false
     public private(set) var locationId:String = ""
+
+    public private(set) var hasTeamId:Bool = false
+    public private(set) var teamId:String = ""
 
     public private(set) var ids:Array<String> = Array<String>()
     required public init() {
@@ -84,6 +89,9 @@ public extension Services.Profile.Actions.GetProfiles {
       }
       if hasLocationId {
         output.writeString(4, value:locationId)
+      }
+      if hasTeamId {
+        output.writeString(5, value:teamId)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -108,6 +116,9 @@ public extension Services.Profile.Actions.GetProfiles {
       serialize_size += 1 * Int32(ids.count)
       if hasLocationId {
         serialize_size += locationId.computeStringSize(4)
+      }
+      if hasTeamId {
+        serialize_size += teamId.computeStringSize(5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -164,6 +175,9 @@ public extension Services.Profile.Actions.GetProfiles {
       if hasLocationId {
         output += "\(indent) locationId: \(locationId) \n"
       }
+      if hasTeamId {
+        output += "\(indent) teamId: \(teamId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -180,6 +194,9 @@ public extension Services.Profile.Actions.GetProfiles {
             }
             if hasLocationId {
                hashCode = (hashCode &* 31) &+ locationId.hashValue
+            }
+            if hasTeamId {
+               hashCode = (hashCode &* 31) &+ teamId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -294,6 +311,29 @@ public extension Services.Profile.Actions.GetProfiles {
          builderResult.locationId = ""
          return self
     }
+    public var hasTeamId:Bool {
+         get {
+              return builderResult.hasTeamId
+         }
+    }
+    public var teamId:String {
+         get {
+              return builderResult.teamId
+         }
+         set (value) {
+             builderResult.hasTeamId = true
+             builderResult.teamId = value
+         }
+    }
+    public func setTeamId(value:String)-> Services.Profile.Actions.GetProfiles.RequestV1Builder {
+      self.teamId = value
+      return self
+    }
+    public func clearTeamId() -> Services.Profile.Actions.GetProfiles.RequestV1Builder{
+         builderResult.hasTeamId = false
+         builderResult.teamId = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -330,6 +370,9 @@ public extension Services.Profile.Actions.GetProfiles {
       if other.hasLocationId {
            locationId = other.locationId
       }
+      if other.hasTeamId {
+           teamId = other.teamId
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -356,6 +399,9 @@ public extension Services.Profile.Actions.GetProfiles {
 
         case 34 :
           locationId = input.readString()
+
+        case 42 :
+          teamId = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
