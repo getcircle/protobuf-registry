@@ -13,15 +13,16 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+import protobufs.services.common.containers_pb2
 import protobufs.services.profile.containers_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/get_profiles.proto',
   package='services.profile.actions.get_profiles',
-  serialized_pb=_b('\n5protobufs/services/profile/actions/get_profiles.proto\x12%services.profile.actions.get_profiles\x1a+protobufs/services/profile/containers.proto\"y\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0e\n\x06tag_id\x18\x02 \x01(\t\x12\x0b\n\x03ids\x18\x03 \x03(\t\x12\x13\n\x0blocation_id\x18\x04 \x01(\t\x12\x0f\n\x07team_id\x18\x05 \x01(\t\x12\x15\n\x07inflate\x18\x06 \x01(\x08:\x04true\"Z\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x38\n\x08profiles\x18\x02 \x03(\x0b\x32&.services.profile.containers.ProfileV1B<\n:com.rhlabs.protobufs.services.profile.actions.get_profiles')
+  serialized_pb=_b('\n5protobufs/services/profile/actions/get_profiles.proto\x12%services.profile.actions.get_profiles\x1a*protobufs/services/common/containers.proto\x1a+protobufs/services/profile/containers.proto\"\xa0\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0e\n\x06tag_id\x18\x02 \x01(\t\x12\x0b\n\x03ids\x18\x03 \x03(\t\x12\x13\n\x0blocation_id\x18\x04 \x01(\t\x12\x0f\n\x07team_id\x18\x05 \x01(\t\x12<\n\ninflations\x18\x06 \x01(\x0b\x32(.services.common.containers.InflationsV1\"Z\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x38\n\x08profiles\x18\x02 \x03(\x0b\x32&.services.profile.containers.ProfileV1B<\n:com.rhlabs.protobufs.services.profile.actions.get_profiles')
   ,
-  dependencies=[protobufs.services.profile.containers_pb2.DESCRIPTOR,])
+  dependencies=[protobufs.services.common.containers_pb2.DESCRIPTOR,protobufs.services.profile.containers_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -70,9 +71,9 @@ _REQUESTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='inflate', full_name='services.profile.actions.get_profiles.RequestV1.inflate', index=5,
-      number=6, type=8, cpp_type=7, label=1,
-      has_default_value=True, default_value=True,
+      name='inflations', full_name='services.profile.actions.get_profiles.RequestV1.inflations', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -87,8 +88,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=141,
-  serialized_end=262,
+  serialized_start=186,
+  serialized_end=346,
 )
 
 
@@ -124,10 +125,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=264,
-  serialized_end=354,
+  serialized_start=348,
+  serialized_end=438,
 )
 
+_REQUESTV1.fields_by_name['inflations'].message_type = protobufs.services.common.containers_pb2._INFLATIONSV1
 _RESPONSEV1.fields_by_name['profiles'].message_type = protobufs.services.profile.containers_pb2._PROFILEV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1

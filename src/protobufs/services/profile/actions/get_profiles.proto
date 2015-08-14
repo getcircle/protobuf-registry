@@ -3,6 +3,7 @@ package services.profile.actions.get_profiles;
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.profile.actions.get_profiles";
 
+import "protobufs/services/common/containers.proto";
 import "protobufs/services/profile/containers.proto";
 
 message RequestV1 {
@@ -11,7 +12,7 @@ message RequestV1 {
     repeated string ids = 3;
     optional string location_id = 4;
     optional string team_id = 5;
-    optional bool inflate = 6 [default = true];
+    optional services.common.containers.InflationsV1 inflations = 6;
 }
 
 message ResponseV1 {

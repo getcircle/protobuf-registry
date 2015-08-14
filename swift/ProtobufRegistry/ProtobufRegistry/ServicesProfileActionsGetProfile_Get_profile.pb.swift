@@ -10,7 +10,7 @@ public func == (lhs: Services.Profile.Actions.GetProfile.RequestV1, rhs: Service
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
-  fieldCheck = fieldCheck && (lhs.hasInflate == rhs.hasInflate) && (!lhs.hasInflate || lhs.inflate == rhs.inflate)
+  fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -37,6 +37,7 @@ public extension Services.Profile.Actions.GetProfile {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
@@ -48,7 +49,7 @@ public extension Services.Profile.Actions.GetProfile {
            switch key {
            case "version": return version
            case "profileId": return profileId
-           case "inflate": return inflate
+           case "inflations": return inflations
            default: return nil
            }
     }
@@ -59,9 +60,8 @@ public extension Services.Profile.Actions.GetProfile {
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
-    public private(set) var hasInflate:Bool = false
-    public private(set) var inflate:Bool = true
-
+    public private(set) var hasInflations:Bool = false
+    public private(set) var inflations:Services.Common.Containers.InflationsV1!
     required public init() {
          super.init()
     }
@@ -75,8 +75,8 @@ public extension Services.Profile.Actions.GetProfile {
       if hasProfileId {
         output.writeString(2, value:profileId)
       }
-      if hasInflate {
-        output.writeBool(3, value:inflate)
+      if hasInflations {
+        output.writeMessage(3, value:inflations)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -93,8 +93,10 @@ public extension Services.Profile.Actions.GetProfile {
       if hasProfileId {
         serialize_size += profileId.computeStringSize(2)
       }
-      if hasInflate {
-        serialize_size += inflate.computeBoolSize(3)
+      if hasInflations {
+          if let varSizeinflations = inflations?.computeMessageSize(3) {
+              serialize_size += varSizeinflations
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -143,8 +145,10 @@ public extension Services.Profile.Actions.GetProfile {
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
-      if hasInflate {
-        output += "\(indent) inflate: \(inflate) \n"
+      if hasInflations {
+        output += "\(indent) inflations {\n"
+        inflations?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -157,8 +161,10 @@ public extension Services.Profile.Actions.GetProfile {
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
-            if hasInflate {
-               hashCode = (hashCode &* 31) &+ inflate.hashValue
+            if hasInflations {
+                if let hashValueinflations = inflations?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueinflations
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -234,28 +240,37 @@ public extension Services.Profile.Actions.GetProfile {
          builderResult.profileId = ""
          return self
     }
-    public var hasInflate:Bool {
+    public var hasInflations:Bool {
          get {
-              return builderResult.hasInflate
+             return builderResult.hasInflations
          }
     }
-    public var inflate:Bool {
+    public var inflations:Services.Common.Containers.InflationsV1! {
          get {
-              return builderResult.inflate
+             return builderResult.inflations
          }
          set (value) {
-             builderResult.hasInflate = true
-             builderResult.inflate = value
+             builderResult.hasInflations = true
+             builderResult.inflations = value
          }
     }
-    public func setInflate(value:Bool)-> Services.Profile.Actions.GetProfile.RequestV1Builder {
-      self.inflate = value
+    public func setInflations(value:Services.Common.Containers.InflationsV1!)-> Services.Profile.Actions.GetProfile.RequestV1Builder {
+      self.inflations = value
       return self
     }
-    public func clearInflate() -> Services.Profile.Actions.GetProfile.RequestV1Builder{
-         builderResult.hasInflate = false
-         builderResult.inflate = true
-         return self
+    public func mergeInflations(value:Services.Common.Containers.InflationsV1) -> Services.Profile.Actions.GetProfile.RequestV1Builder {
+      if (builderResult.hasInflations) {
+        builderResult.inflations = Services.Common.Containers.InflationsV1.builderWithPrototype(builderResult.inflations).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.inflations = value
+      }
+      builderResult.hasInflations = true
+      return self
+    }
+    public func clearInflations() -> Services.Profile.Actions.GetProfile.RequestV1Builder {
+      builderResult.hasInflations = false
+      builderResult.inflations = nil
+      return self
     }
     override public var internalGetResult:GeneratedMessage {
          get {
@@ -287,8 +302,8 @@ public extension Services.Profile.Actions.GetProfile {
       if other.hasProfileId {
            profileId = other.profileId
       }
-      if other.hasInflate {
-           inflate = other.inflate
+      if (other.hasInflations) {
+          mergeInflations(other.inflations)
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -311,8 +326,13 @@ public extension Services.Profile.Actions.GetProfile {
         case 18 :
           profileId = input.readString()
 
-        case 24 :
-          inflate = input.readBool()
+        case 26 :
+          var subBuilder:Services.Common.Containers.InflationsV1Builder = Services.Common.Containers.InflationsV1.builder()
+          if hasInflations {
+            subBuilder.mergeFrom(inflations)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          inflations = subBuilder.buildPartial()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
