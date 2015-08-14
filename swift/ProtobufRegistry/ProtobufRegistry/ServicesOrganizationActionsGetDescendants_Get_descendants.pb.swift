@@ -10,6 +10,7 @@ public func == (lhs: Services.Organization.Actions.GetDescendants.RequestV1, rhs
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
+  fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -46,6 +47,7 @@ public extension Services.Organization.Actions.GetDescendants {
            switch key {
            case "version": return version
            case "profileId": return profileId
+           case "teamId": return teamId
            default: return nil
            }
     }
@@ -55,6 +57,9 @@ public extension Services.Organization.Actions.GetDescendants {
 
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
+
+    public private(set) var hasTeamId:Bool = false
+    public private(set) var teamId:String = ""
 
     required public init() {
          super.init()
@@ -68,6 +73,9 @@ public extension Services.Organization.Actions.GetDescendants {
       }
       if hasProfileId {
         output.writeString(2, value:profileId)
+      }
+      if hasTeamId {
+        output.writeString(3, value:teamId)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -83,6 +91,9 @@ public extension Services.Organization.Actions.GetDescendants {
       }
       if hasProfileId {
         serialize_size += profileId.computeStringSize(2)
+      }
+      if hasTeamId {
+        serialize_size += teamId.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -131,6 +142,9 @@ public extension Services.Organization.Actions.GetDescendants {
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
+      if hasTeamId {
+        output += "\(indent) teamId: \(teamId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -141,6 +155,9 @@ public extension Services.Organization.Actions.GetDescendants {
             }
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
+            }
+            if hasTeamId {
+               hashCode = (hashCode &* 31) &+ teamId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -216,6 +233,29 @@ public extension Services.Organization.Actions.GetDescendants {
          builderResult.profileId = ""
          return self
     }
+    public var hasTeamId:Bool {
+         get {
+              return builderResult.hasTeamId
+         }
+    }
+    public var teamId:String {
+         get {
+              return builderResult.teamId
+         }
+         set (value) {
+             builderResult.hasTeamId = true
+             builderResult.teamId = value
+         }
+    }
+    public func setTeamId(value:String)-> Services.Organization.Actions.GetDescendants.RequestV1Builder {
+      self.teamId = value
+      return self
+    }
+    public func clearTeamId() -> Services.Organization.Actions.GetDescendants.RequestV1Builder{
+         builderResult.hasTeamId = false
+         builderResult.teamId = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -246,6 +286,9 @@ public extension Services.Organization.Actions.GetDescendants {
       if other.hasProfileId {
            profileId = other.profileId
       }
+      if other.hasTeamId {
+           teamId = other.teamId
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -266,6 +309,9 @@ public extension Services.Organization.Actions.GetDescendants {
 
         case 18 :
           profileId = input.readString()
+
+        case 26 :
+          teamId = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

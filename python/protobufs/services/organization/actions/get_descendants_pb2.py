@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/get_descendants.proto',
   package='services.organization.actions.get_descendants',
-  serialized_pb=_b('\n=protobufs/services/organization/actions/get_descendants.proto\x12-services.organization.actions.get_descendants\"3\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\"5\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x13\n\x0bprofile_ids\x18\x03 \x03(\t')
+  serialized_pb=_b('\n=protobufs/services/organization/actions/get_descendants.proto\x12-services.organization.actions.get_descendants\"D\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12\x0f\n\x07team_id\x18\x03 \x01(\t\"5\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x13\n\x0bprofile_ids\x18\x03 \x03(\t')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -46,6 +46,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='team_id', full_name='services.organization.actions.get_descendants.RequestV1.team_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -58,7 +65,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=112,
-  serialized_end=163,
+  serialized_end=180,
 )
 
 
@@ -94,8 +101,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=165,
-  serialized_end=218,
+  serialized_start=182,
+  serialized_end=235,
 )
 
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
