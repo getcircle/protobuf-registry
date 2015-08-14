@@ -10,6 +10,7 @@ public func == (lhs: Services.Profile.Actions.GetProfile.RequestV1, rhs: Service
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
+  fieldCheck = fieldCheck && (lhs.hasInflate == rhs.hasInflate) && (!lhs.hasInflate || lhs.inflate == rhs.inflate)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -47,6 +48,7 @@ public extension Services.Profile.Actions.GetProfile {
            switch key {
            case "version": return version
            case "profileId": return profileId
+           case "inflate": return inflate
            default: return nil
            }
     }
@@ -56,6 +58,9 @@ public extension Services.Profile.Actions.GetProfile {
 
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
+
+    public private(set) var hasInflate:Bool = false
+    public private(set) var inflate:Bool = true
 
     required public init() {
          super.init()
@@ -69,6 +74,9 @@ public extension Services.Profile.Actions.GetProfile {
       }
       if hasProfileId {
         output.writeString(2, value:profileId)
+      }
+      if hasInflate {
+        output.writeBool(3, value:inflate)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -84,6 +92,9 @@ public extension Services.Profile.Actions.GetProfile {
       }
       if hasProfileId {
         serialize_size += profileId.computeStringSize(2)
+      }
+      if hasInflate {
+        serialize_size += inflate.computeBoolSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -132,6 +143,9 @@ public extension Services.Profile.Actions.GetProfile {
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
+      if hasInflate {
+        output += "\(indent) inflate: \(inflate) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -142,6 +156,9 @@ public extension Services.Profile.Actions.GetProfile {
             }
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
+            }
+            if hasInflate {
+               hashCode = (hashCode &* 31) &+ inflate.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -217,6 +234,29 @@ public extension Services.Profile.Actions.GetProfile {
          builderResult.profileId = ""
          return self
     }
+    public var hasInflate:Bool {
+         get {
+              return builderResult.hasInflate
+         }
+    }
+    public var inflate:Bool {
+         get {
+              return builderResult.inflate
+         }
+         set (value) {
+             builderResult.hasInflate = true
+             builderResult.inflate = value
+         }
+    }
+    public func setInflate(value:Bool)-> Services.Profile.Actions.GetProfile.RequestV1Builder {
+      self.inflate = value
+      return self
+    }
+    public func clearInflate() -> Services.Profile.Actions.GetProfile.RequestV1Builder{
+         builderResult.hasInflate = false
+         builderResult.inflate = true
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -247,6 +287,9 @@ public extension Services.Profile.Actions.GetProfile {
       if other.hasProfileId {
            profileId = other.profileId
       }
+      if other.hasInflate {
+           inflate = other.inflate
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -267,6 +310,9 @@ public extension Services.Profile.Actions.GetProfile {
 
         case 18 :
           profileId = input.readString()
+
+        case 24 :
+          inflate = input.readBool()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

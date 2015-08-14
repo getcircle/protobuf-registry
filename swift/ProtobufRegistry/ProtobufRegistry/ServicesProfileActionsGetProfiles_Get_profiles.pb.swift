@@ -13,6 +13,7 @@ public func == (lhs: Services.Profile.Actions.GetProfiles.RequestV1, rhs: Servic
   fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
   fieldCheck = fieldCheck && (lhs.hasLocationId == rhs.hasLocationId) && (!lhs.hasLocationId || lhs.locationId == rhs.locationId)
   fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
+  fieldCheck = fieldCheck && (lhs.hasInflate == rhs.hasInflate) && (!lhs.hasInflate || lhs.inflate == rhs.inflate)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -52,6 +53,7 @@ public extension Services.Profile.Actions.GetProfiles {
            case "tagId": return tagId
            case "locationId": return locationId
            case "teamId": return teamId
+           case "inflate": return inflate
            default: return nil
            }
     }
@@ -67,6 +69,9 @@ public extension Services.Profile.Actions.GetProfiles {
 
     public private(set) var hasTeamId:Bool = false
     public private(set) var teamId:String = ""
+
+    public private(set) var hasInflate:Bool = false
+    public private(set) var inflate:Bool = true
 
     public private(set) var ids:Array<String> = Array<String>()
     required public init() {
@@ -92,6 +97,9 @@ public extension Services.Profile.Actions.GetProfiles {
       }
       if hasTeamId {
         output.writeString(5, value:teamId)
+      }
+      if hasInflate {
+        output.writeBool(6, value:inflate)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -119,6 +127,9 @@ public extension Services.Profile.Actions.GetProfiles {
       }
       if hasTeamId {
         serialize_size += teamId.computeStringSize(5)
+      }
+      if hasInflate {
+        serialize_size += inflate.computeBoolSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -178,6 +189,9 @@ public extension Services.Profile.Actions.GetProfiles {
       if hasTeamId {
         output += "\(indent) teamId: \(teamId) \n"
       }
+      if hasInflate {
+        output += "\(indent) inflate: \(inflate) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -197,6 +211,9 @@ public extension Services.Profile.Actions.GetProfiles {
             }
             if hasTeamId {
                hashCode = (hashCode &* 31) &+ teamId.hashValue
+            }
+            if hasInflate {
+               hashCode = (hashCode &* 31) &+ inflate.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -334,6 +351,29 @@ public extension Services.Profile.Actions.GetProfiles {
          builderResult.teamId = ""
          return self
     }
+    public var hasInflate:Bool {
+         get {
+              return builderResult.hasInflate
+         }
+    }
+    public var inflate:Bool {
+         get {
+              return builderResult.inflate
+         }
+         set (value) {
+             builderResult.hasInflate = true
+             builderResult.inflate = value
+         }
+    }
+    public func setInflate(value:Bool)-> Services.Profile.Actions.GetProfiles.RequestV1Builder {
+      self.inflate = value
+      return self
+    }
+    public func clearInflate() -> Services.Profile.Actions.GetProfiles.RequestV1Builder{
+         builderResult.hasInflate = false
+         builderResult.inflate = true
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -373,6 +413,9 @@ public extension Services.Profile.Actions.GetProfiles {
       if other.hasTeamId {
            teamId = other.teamId
       }
+      if other.hasInflate {
+           inflate = other.inflate
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -402,6 +445,9 @@ public extension Services.Profile.Actions.GetProfiles {
 
         case 42 :
           teamId = input.readString()
+
+        case 48 :
+          inflate = input.readBool()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
