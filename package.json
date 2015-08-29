@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/getcircle/protobuf-registry",
   "dependencies": {
-    "protobufjs": "mhahn/ProtoBuf.js"
+    "protobufjs": "~4.0.0"
   }
 }
