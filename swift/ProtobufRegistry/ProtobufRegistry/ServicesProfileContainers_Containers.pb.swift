@@ -40,6 +40,7 @@ public func == (lhs: Services.Profile.Containers.ProfileV1, rhs: Services.Profil
   fieldCheck = fieldCheck && (lhs.hasIsAdmin == rhs.hasIsAdmin) && (!lhs.hasIsAdmin || lhs.isAdmin == rhs.isAdmin)
   fieldCheck = fieldCheck && (lhs.hasSmallImageUrl == rhs.hasSmallImageUrl) && (!lhs.hasSmallImageUrl || lhs.smallImageUrl == rhs.smallImageUrl)
   fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
+  fieldCheck = fieldCheck && (lhs.hasDisplayName == rhs.hasDisplayName) && (!lhs.hasDisplayName || lhs.displayName == rhs.displayName)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -530,6 +531,7 @@ public extension Services.Profile.Containers {
            case "isAdmin": return isAdmin
            case "smallImageUrl": return smallImageUrl
            case "status": return status
+           case "displayName": return displayName
            default: return nil
            }
     }
@@ -584,6 +586,9 @@ public extension Services.Profile.Containers {
 
     public private(set) var hasStatus:Bool = false
     public private(set) var status:Services.Profile.Containers.ProfileStatusV1!
+    public private(set) var hasDisplayName:Bool = false
+    public private(set) var displayName:String = ""
+
     public private(set) var items:Array<Services.Profile.Containers.ProfileItemV1>  = Array<Services.Profile.Containers.ProfileItemV1>()
     public private(set) var contactMethods:Array<Services.Profile.Containers.ContactMethodV1>  = Array<Services.Profile.Containers.ContactMethodV1>()
     required public init() {
@@ -649,6 +654,9 @@ public extension Services.Profile.Containers {
       }
       if hasStatus {
         output.writeMessage(19, value:status)
+      }
+      if hasDisplayName {
+        output.writeString(20, value:displayName)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -717,6 +725,9 @@ public extension Services.Profile.Containers {
           if let varSizestatus = status?.computeMessageSize(19) {
               serialize_size += varSizestatus
           }
+      }
+      if hasDisplayName {
+        serialize_size += displayName.computeStringSize(20)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -826,6 +837,9 @@ public extension Services.Profile.Containers {
         status?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasDisplayName {
+        output += "\(indent) displayName: \(displayName) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -889,6 +903,9 @@ public extension Services.Profile.Containers {
                 if let hashValuestatus = status?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuestatus
                 }
+            }
+            if hasDisplayName {
+               hashCode = (hashCode &* 31) &+ displayName.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1350,6 +1367,29 @@ public extension Services.Profile.Containers {
       builderResult.status = nil
       return self
     }
+    public var hasDisplayName:Bool {
+         get {
+              return builderResult.hasDisplayName
+         }
+    }
+    public var displayName:String {
+         get {
+              return builderResult.displayName
+         }
+         set (value) {
+             builderResult.hasDisplayName = true
+             builderResult.displayName = value
+         }
+    }
+    public func setDisplayName(value:String)-> Services.Profile.Containers.ProfileV1Builder {
+      self.displayName = value
+      return self
+    }
+    public func clearDisplayName() -> Services.Profile.Containers.ProfileV1Builder{
+         builderResult.hasDisplayName = false
+         builderResult.displayName = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -1431,6 +1471,9 @@ public extension Services.Profile.Containers {
       if (other.hasStatus) {
           mergeStatus(other.status)
       }
+      if other.hasDisplayName {
+           displayName = other.displayName
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -1511,6 +1554,9 @@ public extension Services.Profile.Containers {
           }
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
           status = subBuilder.buildPartial()
+
+        case 162 :
+          displayName = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
