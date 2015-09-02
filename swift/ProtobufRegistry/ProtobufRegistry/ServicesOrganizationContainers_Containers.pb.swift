@@ -92,6 +92,17 @@ public func == (lhs: Services.Organization.Containers.TokenV1, rhs: Services.Org
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: Services.Organization.Containers.SSOV1, rhs: Services.Organization.Containers.SSOV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasMetadataUrl == rhs.hasMetadataUrl) && (!lhs.hasMetadataUrl || lhs.metadataUrl == rhs.metadataUrl)
+  fieldCheck = fieldCheck && (lhs.hasMetadata == rhs.hasMetadata) && (!lhs.hasMetadata || lhs.metadata == rhs.metadata)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public extension Services.Organization.Containers {
   public struct ContainersRoot {
     public static var sharedInstance : ContainersRoot {
@@ -3165,6 +3176,287 @@ public extension Services.Organization.Containers {
 
         case 34 :
           id = input.readString()
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class SSOV1 : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           case "version": return version
+           case "metadataUrl": return metadataUrl
+           case "metadata": return metadata
+           default: return nil
+           }
+    }
+
+    public private(set) var hasVersion:Bool = false
+    public private(set) var version:UInt32 = UInt32(1)
+
+    public private(set) var hasMetadataUrl:Bool = false
+    public private(set) var metadataUrl:String = ""
+
+    public private(set) var hasMetadata:Bool = false
+    public private(set) var metadata:String = ""
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      if hasVersion {
+        output.writeUInt32(1, value:version)
+      }
+      if hasMetadataUrl {
+        output.writeString(2, value:metadataUrl)
+      }
+      if hasMetadata {
+        output.writeString(3, value:metadata)
+      }
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasVersion {
+        serialize_size += version.computeUInt32Size(1)
+      }
+      if hasMetadataUrl {
+        serialize_size += metadataUrl.computeStringSize(2)
+      }
+      if hasMetadata {
+        serialize_size += metadata.computeStringSize(3)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Organization.Containers.SSOV1 {
+      return Services.Organization.Containers.SSOV1.builder().mergeFromData(data, extensionRegistry:Services.Organization.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Organization.Containers.SSOV1 {
+      return Services.Organization.Containers.SSOV1.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Organization.Containers.SSOV1 {
+      return Services.Organization.Containers.SSOV1.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Organization.Containers.SSOV1 {
+      return Services.Organization.Containers.SSOV1.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Organization.Containers.SSOV1 {
+      return Services.Organization.Containers.SSOV1.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Organization.Containers.SSOV1 {
+      return Services.Organization.Containers.SSOV1.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Organization.Containers.SSOV1Builder {
+      return Services.Organization.Containers.SSOV1.classBuilder() as! Services.Organization.Containers.SSOV1Builder
+    }
+    public func builder() -> Services.Organization.Containers.SSOV1Builder {
+      return classBuilder() as! Services.Organization.Containers.SSOV1Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Organization.Containers.SSOV1Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Organization.Containers.SSOV1.builder()
+    }
+    public func toBuilder() -> Services.Organization.Containers.SSOV1Builder {
+      return Services.Organization.Containers.SSOV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Organization.Containers.SSOV1) -> Services.Organization.Containers.SSOV1Builder {
+      return Services.Organization.Containers.SSOV1.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      if hasVersion {
+        output += "\(indent) version: \(version) \n"
+      }
+      if hasMetadataUrl {
+        output += "\(indent) metadataUrl: \(metadataUrl) \n"
+      }
+      if hasMetadata {
+        output += "\(indent) metadata: \(metadata) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasVersion {
+               hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasMetadataUrl {
+               hashCode = (hashCode &* 31) &+ metadataUrl.hashValue
+            }
+            if hasMetadata {
+               hashCode = (hashCode &* 31) &+ metadata.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Organization.Containers.SSOV1"
+    }
+    override public func className() -> String {
+        return "Services.Organization.Containers.SSOV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Organization.Containers.SSOV1.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class SSOV1Builder : GeneratedMessageBuilder {
+    private var builderResult:Services.Organization.Containers.SSOV1
+
+    required override public init () {
+       builderResult = Services.Organization.Containers.SSOV1()
+       super.init()
+    }
+    public var hasVersion:Bool {
+         get {
+              return builderResult.hasVersion
+         }
+    }
+    public var version:UInt32 {
+         get {
+              return builderResult.version
+         }
+         set (value) {
+             builderResult.hasVersion = true
+             builderResult.version = value
+         }
+    }
+    public func setVersion(value:UInt32)-> Services.Organization.Containers.SSOV1Builder {
+      self.version = value
+      return self
+    }
+    public func clearVersion() -> Services.Organization.Containers.SSOV1Builder{
+         builderResult.hasVersion = false
+         builderResult.version = UInt32(1)
+         return self
+    }
+    public var hasMetadataUrl:Bool {
+         get {
+              return builderResult.hasMetadataUrl
+         }
+    }
+    public var metadataUrl:String {
+         get {
+              return builderResult.metadataUrl
+         }
+         set (value) {
+             builderResult.hasMetadataUrl = true
+             builderResult.metadataUrl = value
+         }
+    }
+    public func setMetadataUrl(value:String)-> Services.Organization.Containers.SSOV1Builder {
+      self.metadataUrl = value
+      return self
+    }
+    public func clearMetadataUrl() -> Services.Organization.Containers.SSOV1Builder{
+         builderResult.hasMetadataUrl = false
+         builderResult.metadataUrl = ""
+         return self
+    }
+    public var hasMetadata:Bool {
+         get {
+              return builderResult.hasMetadata
+         }
+    }
+    public var metadata:String {
+         get {
+              return builderResult.metadata
+         }
+         set (value) {
+             builderResult.hasMetadata = true
+             builderResult.metadata = value
+         }
+    }
+    public func setMetadata(value:String)-> Services.Organization.Containers.SSOV1Builder {
+      self.metadata = value
+      return self
+    }
+    public func clearMetadata() -> Services.Organization.Containers.SSOV1Builder{
+         builderResult.hasMetadata = false
+         builderResult.metadata = ""
+         return self
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Organization.Containers.SSOV1Builder {
+      builderResult = Services.Organization.Containers.SSOV1()
+      return self
+    }
+    public override func clone() -> Services.Organization.Containers.SSOV1Builder {
+      return Services.Organization.Containers.SSOV1.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Organization.Containers.SSOV1 {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Organization.Containers.SSOV1 {
+      var returnMe:Services.Organization.Containers.SSOV1 = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Organization.Containers.SSOV1) -> Services.Organization.Containers.SSOV1Builder {
+      if (other == Services.Organization.Containers.SSOV1()) {
+       return self
+      }
+      if other.hasVersion {
+           version = other.version
+      }
+      if other.hasMetadataUrl {
+           metadataUrl = other.metadataUrl
+      }
+      if other.hasMetadata {
+           metadata = other.metadata
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Organization.Containers.SSOV1Builder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Organization.Containers.SSOV1Builder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        case 8 :
+          version = input.readUInt32()
+
+        case 18 :
+          metadataUrl = input.readString()
+
+        case 26 :
+          metadata = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

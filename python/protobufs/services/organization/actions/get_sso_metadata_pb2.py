@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/get_sso_metadata.proto',
   package='services.organization.actions.get_sso_metadata',
   syntax='proto2',
-  serialized_pb=_b('\n>protobufs/services/organization/actions/get_sso_metadata.proto\x12.services.organization.actions.get_sso_metadata\x1a\x30protobufs/services/organization/containers.proto\"<\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x1b\n\x13organization_domain\x18\x02 \x01(\t\"H\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x14\n\x0cmetadata_url\x18\x02 \x01(\t\x12\x10\n\x08metadata\x18\x03 \x01(\t')
+  serialized_pb=_b('\n>protobufs/services/organization/actions/get_sso_metadata.proto\x12.services.organization.actions.get_sso_metadata\x1a\x30protobufs/services/organization/containers.proto\"<\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x1b\n\x13organization_domain\x18\x02 \x01(\t\"V\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x34\n\x03sso\x18\x02 \x01(\x0b\x32\'.services.organization.containers.SSOV1')
   ,
   dependencies=[protobufs_dot_services_dot_organization_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -81,16 +81,9 @@ _RESPONSEV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='metadata_url', full_name='services.organization.actions.get_sso_metadata.ResponseV1.metadata_url', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='metadata', full_name='services.organization.actions.get_sso_metadata.ResponseV1.metadata', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='sso', full_name='services.organization.actions.get_sso_metadata.ResponseV1.sso', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -107,9 +100,10 @@ _RESPONSEV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=226,
-  serialized_end=298,
+  serialized_end=312,
 )
 
+_RESPONSEV1.fields_by_name['sso'].message_type = protobufs_dot_services_dot_organization_dot_containers__pb2._SSOV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

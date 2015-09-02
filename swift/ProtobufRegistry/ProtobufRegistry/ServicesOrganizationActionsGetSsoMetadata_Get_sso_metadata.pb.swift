@@ -19,8 +19,7 @@ public func == (lhs: Services.Organization.Actions.GetSsoMetadata.ResponseV1, rh
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasMetadataUrl == rhs.hasMetadataUrl) && (!lhs.hasMetadataUrl || lhs.metadataUrl == rhs.metadataUrl)
-  fieldCheck = fieldCheck && (lhs.hasMetadata == rhs.hasMetadata) && (!lhs.hasMetadata || lhs.metadata == rhs.metadata)
+  fieldCheck = fieldCheck && (lhs.hasSso == rhs.hasSso) && (!lhs.hasSso || lhs.sso == rhs.sso)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -283,8 +282,7 @@ public extension Services.Organization.Actions.GetSsoMetadata {
     override public subscript(key: String) -> Any? {
            switch key {
            case "version": return version
-           case "metadataUrl": return metadataUrl
-           case "metadata": return metadata
+           case "sso": return sso
            default: return nil
            }
     }
@@ -292,12 +290,8 @@ public extension Services.Organization.Actions.GetSsoMetadata {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var hasMetadataUrl:Bool = false
-    public private(set) var metadataUrl:String = ""
-
-    public private(set) var hasMetadata:Bool = false
-    public private(set) var metadata:String = ""
-
+    public private(set) var hasSso:Bool = false
+    public private(set) var sso:Services.Organization.Containers.SSOV1!
     required public init() {
          super.init()
     }
@@ -308,11 +302,8 @@ public extension Services.Organization.Actions.GetSsoMetadata {
       if hasVersion {
         output.writeUInt32(1, value:version)
       }
-      if hasMetadataUrl {
-        output.writeString(2, value:metadataUrl)
-      }
-      if hasMetadata {
-        output.writeString(3, value:metadata)
+      if hasSso {
+        output.writeMessage(2, value:sso)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -326,11 +317,10 @@ public extension Services.Organization.Actions.GetSsoMetadata {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
-      if hasMetadataUrl {
-        serialize_size += metadataUrl.computeStringSize(2)
-      }
-      if hasMetadata {
-        serialize_size += metadata.computeStringSize(3)
+      if hasSso {
+          if let varSizesso = sso?.computeMessageSize(2) {
+              serialize_size += varSizesso
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -376,11 +366,10 @@ public extension Services.Organization.Actions.GetSsoMetadata {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
-      if hasMetadataUrl {
-        output += "\(indent) metadataUrl: \(metadataUrl) \n"
-      }
-      if hasMetadata {
-        output += "\(indent) metadata: \(metadata) \n"
+      if hasSso {
+        output += "\(indent) sso {\n"
+        sso?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -390,11 +379,10 @@ public extension Services.Organization.Actions.GetSsoMetadata {
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
             }
-            if hasMetadataUrl {
-               hashCode = (hashCode &* 31) &+ metadataUrl.hashValue
-            }
-            if hasMetadata {
-               hashCode = (hashCode &* 31) &+ metadata.hashValue
+            if hasSso {
+                if let hashValuesso = sso?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuesso
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -447,51 +435,37 @@ public extension Services.Organization.Actions.GetSsoMetadata {
          builderResult.version = UInt32(1)
          return self
     }
-    public var hasMetadataUrl:Bool {
+    public var hasSso:Bool {
          get {
-              return builderResult.hasMetadataUrl
+             return builderResult.hasSso
          }
     }
-    public var metadataUrl:String {
+    public var sso:Services.Organization.Containers.SSOV1! {
          get {
-              return builderResult.metadataUrl
+             return builderResult.sso
          }
          set (value) {
-             builderResult.hasMetadataUrl = true
-             builderResult.metadataUrl = value
+             builderResult.hasSso = true
+             builderResult.sso = value
          }
     }
-    public func setMetadataUrl(value:String)-> Services.Organization.Actions.GetSsoMetadata.ResponseV1Builder {
-      self.metadataUrl = value
+    public func setSso(value:Services.Organization.Containers.SSOV1!)-> Services.Organization.Actions.GetSsoMetadata.ResponseV1Builder {
+      self.sso = value
       return self
     }
-    public func clearMetadataUrl() -> Services.Organization.Actions.GetSsoMetadata.ResponseV1Builder{
-         builderResult.hasMetadataUrl = false
-         builderResult.metadataUrl = ""
-         return self
-    }
-    public var hasMetadata:Bool {
-         get {
-              return builderResult.hasMetadata
-         }
-    }
-    public var metadata:String {
-         get {
-              return builderResult.metadata
-         }
-         set (value) {
-             builderResult.hasMetadata = true
-             builderResult.metadata = value
-         }
-    }
-    public func setMetadata(value:String)-> Services.Organization.Actions.GetSsoMetadata.ResponseV1Builder {
-      self.metadata = value
+    public func mergeSso(value:Services.Organization.Containers.SSOV1) -> Services.Organization.Actions.GetSsoMetadata.ResponseV1Builder {
+      if (builderResult.hasSso) {
+        builderResult.sso = Services.Organization.Containers.SSOV1.builderWithPrototype(builderResult.sso).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.sso = value
+      }
+      builderResult.hasSso = true
       return self
     }
-    public func clearMetadata() -> Services.Organization.Actions.GetSsoMetadata.ResponseV1Builder{
-         builderResult.hasMetadata = false
-         builderResult.metadata = ""
-         return self
+    public func clearSso() -> Services.Organization.Actions.GetSsoMetadata.ResponseV1Builder {
+      builderResult.hasSso = false
+      builderResult.sso = nil
+      return self
     }
     override public var internalGetResult:GeneratedMessage {
          get {
@@ -520,11 +494,8 @@ public extension Services.Organization.Actions.GetSsoMetadata {
       if other.hasVersion {
            version = other.version
       }
-      if other.hasMetadataUrl {
-           metadataUrl = other.metadataUrl
-      }
-      if other.hasMetadata {
-           metadata = other.metadata
+      if (other.hasSso) {
+          mergeSso(other.sso)
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -545,10 +516,12 @@ public extension Services.Organization.Actions.GetSsoMetadata {
           version = input.readUInt32()
 
         case 18 :
-          metadataUrl = input.readString()
-
-        case 26 :
-          metadata = input.readString()
+          var subBuilder:Services.Organization.Containers.SSOV1Builder = Services.Organization.Containers.SSOV1.builder()
+          if hasSso {
+            subBuilder.mergeFrom(sso)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          sso = subBuilder.buildPartial()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
