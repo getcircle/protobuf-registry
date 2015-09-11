@@ -94,6 +94,8 @@ import "protobufs/services/notification/actions/send_notification.proto";
 
 import "protobufs/services/history/actions/record_action.proto";
 
+import "protobufs/services/payment/actions/store_token.proto";
+
 message User {
     extend soa.ActionResultV1 {
         optional services.user.actions.create_user.ResponseV1 create_user = 100;
@@ -219,6 +221,12 @@ message Notification {
 
 message History {
     extend soa.ActionResultV1 {
-        optional services.history.actions.record_action.RequestV1 record_action = 1400;
+        optional services.history.actions.record_action.ResponseV1 record_action = 1400;
+    }
+}
+
+message Payment {
+    extend soa.ActionResultV1 {
+        optional services.payment.actions.store_token.ResponseV1 store_token = 1500;
     }
 }

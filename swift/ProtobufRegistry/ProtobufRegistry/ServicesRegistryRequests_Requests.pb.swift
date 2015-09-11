@@ -83,6 +83,14 @@ public func == (lhs: Services.Registry.Requests.History, rhs: Services.Registry.
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: Services.Registry.Requests.Payment, rhs: Services.Registry.Requests.Payment) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public var ServicesRegistryRequestsUsercreateUser:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsUsercreateUserStatic
@@ -473,6 +481,11 @@ public var ServicesRegistryRequestsHistoryrecordAction:ConcreateExtensionField {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsHistoryrecordActionStatic
    }
 }
+public var ServicesRegistryRequestsPaymentstoreToken:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPaymentstoreTokenStatic
+   }
+}
 public extension Services.Registry.Requests {
   public struct RequestsRoot {
     public static var sharedInstance : RequestsRoot {
@@ -559,6 +572,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsNotificationupdatePreferenceStatic:ConcreateExtensionField
     var ServicesRegistryRequestsNotificationsendNotificationStatic:ConcreateExtensionField
     var ServicesRegistryRequestsHistoryrecordActionStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPaymentstoreTokenStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -640,6 +654,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsNotificationupdatePreferenceStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1302, defaultValue:Services.Notification.Actions.UpdatePreference.RequestV1(), messageOrGroupClass:Services.Notification.Actions.UpdatePreference.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsNotificationsendNotificationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1303, defaultValue:Services.Notification.Actions.SendNotification.RequestV1(), messageOrGroupClass:Services.Notification.Actions.SendNotification.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsHistoryrecordActionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1400, defaultValue:Services.History.Actions.RecordAction.RequestV1(), messageOrGroupClass:Services.History.Actions.RecordAction.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPaymentstoreTokenStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1500, defaultValue:Services.Payment.Actions.StoreToken.RequestV1(), messageOrGroupClass:Services.Payment.Actions.StoreToken.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -721,6 +736,7 @@ public extension Services.Registry.Requests {
       Services.Notification.Actions.UpdatePreference.UpdatePreferenceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Notification.Actions.SendNotification.SendNotificationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.History.Actions.RecordAction.RecordActionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Payment.Actions.StoreToken.StoreTokenRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryRequestsUsercreateUserStatic)
@@ -801,6 +817,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsNotificationupdatePreferenceStatic)
       registry.addExtension(ServicesRegistryRequestsNotificationsendNotificationStatic)
       registry.addExtension(ServicesRegistryRequestsHistoryrecordActionStatic)
+      registry.addExtension(ServicesRegistryRequestsPaymentstoreTokenStatic)
     }
   }
 
@@ -2480,6 +2497,155 @@ public extension Services.Registry.Requests {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
     public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.HistoryBuilder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class Payment : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           default: return nil
+           }
+    }
+
+    public class func storeToken() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPaymentstoreToken
+    }
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Registry.Requests.Payment {
+      return Services.Registry.Requests.Payment.builder().mergeFromData(data, extensionRegistry:Services.Registry.Requests.RequestsRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.Payment {
+      return Services.Registry.Requests.Payment.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Requests.Payment {
+      return Services.Registry.Requests.Payment.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Requests.Payment {
+      return Services.Registry.Requests.Payment.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Requests.Payment {
+      return Services.Registry.Requests.Payment.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.Payment {
+      return Services.Registry.Requests.Payment.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Registry.Requests.PaymentBuilder {
+      return Services.Registry.Requests.Payment.classBuilder() as! Services.Registry.Requests.PaymentBuilder
+    }
+    public func builder() -> Services.Registry.Requests.PaymentBuilder {
+      return classBuilder() as! Services.Registry.Requests.PaymentBuilder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Registry.Requests.PaymentBuilder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Registry.Requests.Payment.builder()
+    }
+    public func toBuilder() -> Services.Registry.Requests.PaymentBuilder {
+      return Services.Registry.Requests.Payment.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Registry.Requests.Payment) -> Services.Registry.Requests.PaymentBuilder {
+      return Services.Registry.Requests.Payment.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Registry.Requests.Payment"
+    }
+    override public func className() -> String {
+        return "Services.Registry.Requests.Payment"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Registry.Requests.Payment.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class PaymentBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Requests.Payment
+
+    required override public init () {
+       builderResult = Services.Registry.Requests.Payment()
+       super.init()
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Registry.Requests.PaymentBuilder {
+      builderResult = Services.Registry.Requests.Payment()
+      return self
+    }
+    public override func clone() -> Services.Registry.Requests.PaymentBuilder {
+      return Services.Registry.Requests.Payment.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Registry.Requests.Payment {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Registry.Requests.Payment {
+      var returnMe:Services.Registry.Requests.Payment = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Registry.Requests.Payment) -> Services.Registry.Requests.PaymentBuilder {
+      if (other == Services.Registry.Requests.Payment()) {
+       return self
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Requests.PaymentBuilder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Requests.PaymentBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()

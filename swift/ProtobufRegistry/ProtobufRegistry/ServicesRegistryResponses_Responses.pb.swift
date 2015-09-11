@@ -83,6 +83,14 @@ public func == (lhs: Services.Registry.Responses.History, rhs: Services.Registry
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: Services.Registry.Responses.Payment, rhs: Services.Registry.Responses.Payment) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public var ServicesRegistryResponsesUsercreateUser:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsercreateUserStatic
@@ -473,6 +481,11 @@ public var ServicesRegistryResponsesHistoryrecordAction:ConcreateExtensionField 
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesHistoryrecordActionStatic
    }
 }
+public var ServicesRegistryResponsesPaymentstoreToken:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPaymentstoreTokenStatic
+   }
+}
 public extension Services.Registry.Responses {
   public struct ResponsesRoot {
     public static var sharedInstance : ResponsesRoot {
@@ -559,6 +572,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesNotificationupdatePreferenceStatic:ConcreateExtensionField
     var ServicesRegistryResponsesNotificationsendNotificationStatic:ConcreateExtensionField
     var ServicesRegistryResponsesHistoryrecordActionStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesPaymentstoreTokenStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -639,7 +653,8 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesNotificationgetPreferencesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1301, defaultValue:Services.Notification.Actions.GetPreferences.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.GetPreferences.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesNotificationupdatePreferenceStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1302, defaultValue:Services.Notification.Actions.UpdatePreference.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.UpdatePreference.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesNotificationsendNotificationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1303, defaultValue:Services.Notification.Actions.SendNotification.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.SendNotification.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesHistoryrecordActionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1400, defaultValue:Services.History.Actions.RecordAction.RequestV1(), messageOrGroupClass:Services.History.Actions.RecordAction.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesHistoryrecordActionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1400, defaultValue:Services.History.Actions.RecordAction.ResponseV1(), messageOrGroupClass:Services.History.Actions.RecordAction.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesPaymentstoreTokenStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1500, defaultValue:Services.Payment.Actions.StoreToken.ResponseV1(), messageOrGroupClass:Services.Payment.Actions.StoreToken.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -721,6 +736,7 @@ public extension Services.Registry.Responses {
       Services.Notification.Actions.UpdatePreference.UpdatePreferenceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Notification.Actions.SendNotification.SendNotificationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.History.Actions.RecordAction.RecordActionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Payment.Actions.StoreToken.StoreTokenRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryResponsesUsercreateUserStatic)
@@ -801,6 +817,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesNotificationupdatePreferenceStatic)
       registry.addExtension(ServicesRegistryResponsesNotificationsendNotificationStatic)
       registry.addExtension(ServicesRegistryResponsesHistoryrecordActionStatic)
+      registry.addExtension(ServicesRegistryResponsesPaymentstoreTokenStatic)
     }
   }
 
@@ -2480,6 +2497,155 @@ public extension Services.Registry.Responses {
          return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
     }
     public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.HistoryBuilder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class Payment : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           default: return nil
+           }
+    }
+
+    public class func storeToken() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesPaymentstoreToken
+    }
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.Registry.Responses.Payment {
+      return Services.Registry.Responses.Payment.builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Payment {
+      return Services.Registry.Responses.Payment.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.Registry.Responses.Payment {
+      return Services.Registry.Responses.Payment.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.Registry.Responses.Payment {
+      return Services.Registry.Responses.Payment.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.Registry.Responses.Payment {
+      return Services.Registry.Responses.Payment.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.Payment {
+      return Services.Registry.Responses.Payment.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.Registry.Responses.PaymentBuilder {
+      return Services.Registry.Responses.Payment.classBuilder() as! Services.Registry.Responses.PaymentBuilder
+    }
+    public func builder() -> Services.Registry.Responses.PaymentBuilder {
+      return classBuilder() as! Services.Registry.Responses.PaymentBuilder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Registry.Responses.PaymentBuilder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Registry.Responses.Payment.builder()
+    }
+    public func toBuilder() -> Services.Registry.Responses.PaymentBuilder {
+      return Services.Registry.Responses.Payment.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Payment) -> Services.Registry.Responses.PaymentBuilder {
+      return Services.Registry.Responses.Payment.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Registry.Responses.Payment"
+    }
+    override public func className() -> String {
+        return "Services.Registry.Responses.Payment"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Registry.Responses.Payment.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class PaymentBuilder : GeneratedMessageBuilder {
+    private var builderResult:Services.Registry.Responses.Payment
+
+    required override public init () {
+       builderResult = Services.Registry.Responses.Payment()
+       super.init()
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.Registry.Responses.PaymentBuilder {
+      builderResult = Services.Registry.Responses.Payment()
+      return self
+    }
+    public override func clone() -> Services.Registry.Responses.PaymentBuilder {
+      return Services.Registry.Responses.Payment.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.Registry.Responses.Payment {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.Registry.Responses.Payment {
+      var returnMe:Services.Registry.Responses.Payment = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.Registry.Responses.Payment) -> Services.Registry.Responses.PaymentBuilder {
+      if (other == Services.Registry.Responses.Payment()) {
+       return self
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.Registry.Responses.PaymentBuilder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.Registry.Responses.PaymentBuilder {
       var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
       while (true) {
         var tag = input.readTag()
