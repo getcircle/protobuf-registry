@@ -10,6 +10,7 @@ public func == (lhs: Services.Payment.Actions.StoreToken.RequestV1, rhs: Service
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasToken == rhs.hasToken) && (!lhs.hasToken || lhs.token == rhs.token)
+  fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -45,6 +46,7 @@ public extension Services.Payment.Actions.StoreToken {
            switch key {
            case "version": return version
            case "token": return token
+           case "email": return email
            default: return nil
            }
     }
@@ -54,6 +56,9 @@ public extension Services.Payment.Actions.StoreToken {
 
     public private(set) var hasToken:Bool = false
     public private(set) var token:String = ""
+
+    public private(set) var hasEmail:Bool = false
+    public private(set) var email:String = ""
 
     required public init() {
          super.init()
@@ -67,6 +72,9 @@ public extension Services.Payment.Actions.StoreToken {
       }
       if hasToken {
         output.writeString(2, value:token)
+      }
+      if hasEmail {
+        output.writeString(3, value:email)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -82,6 +90,9 @@ public extension Services.Payment.Actions.StoreToken {
       }
       if hasToken {
         serialize_size += token.computeStringSize(2)
+      }
+      if hasEmail {
+        serialize_size += email.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -130,6 +141,9 @@ public extension Services.Payment.Actions.StoreToken {
       if hasToken {
         output += "\(indent) token: \(token) \n"
       }
+      if hasEmail {
+        output += "\(indent) email: \(email) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -140,6 +154,9 @@ public extension Services.Payment.Actions.StoreToken {
             }
             if hasToken {
                hashCode = (hashCode &* 31) &+ token.hashValue
+            }
+            if hasEmail {
+               hashCode = (hashCode &* 31) &+ email.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -215,6 +232,29 @@ public extension Services.Payment.Actions.StoreToken {
          builderResult.token = ""
          return self
     }
+    public var hasEmail:Bool {
+         get {
+              return builderResult.hasEmail
+         }
+    }
+    public var email:String {
+         get {
+              return builderResult.email
+         }
+         set (value) {
+             builderResult.hasEmail = true
+             builderResult.email = value
+         }
+    }
+    public func setEmail(value:String)-> Services.Payment.Actions.StoreToken.RequestV1Builder {
+      self.email = value
+      return self
+    }
+    public func clearEmail() -> Services.Payment.Actions.StoreToken.RequestV1Builder{
+         builderResult.hasEmail = false
+         builderResult.email = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -245,6 +285,9 @@ public extension Services.Payment.Actions.StoreToken {
       if other.hasToken {
            token = other.token
       }
+      if other.hasEmail {
+           email = other.email
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -265,6 +308,9 @@ public extension Services.Payment.Actions.StoreToken {
 
         case 18 :
           token = input.readString()
+
+        case 26 :
+          email = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

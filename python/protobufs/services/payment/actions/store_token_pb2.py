@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/payment/actions/store_token.proto',
   package='services.payment.actions.store_token',
   syntax='proto2',
-  serialized_pb=_b('\n4protobufs/services/payment/actions/store_token.proto\x12$services.payment.actions.store_token\".\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05token\x18\x02 \x01(\t\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31')
+  serialized_pb=_b('\n4protobufs/services/payment/actions/store_token.proto\x12$services.payment.actions.store_token\"=\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05token\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -47,6 +47,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='email', full_name='services.payment.actions.store_token.RequestV1.email', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -60,7 +67,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=94,
-  serialized_end=140,
+  serialized_end=155,
 )
 
 
@@ -90,8 +97,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=142,
-  serialized_end=174,
+  serialized_start=157,
+  serialized_end=189,
 )
 
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
