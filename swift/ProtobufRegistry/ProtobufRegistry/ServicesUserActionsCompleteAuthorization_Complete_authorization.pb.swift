@@ -26,6 +26,7 @@ public func == (lhs: Services.User.Actions.CompleteAuthorization.ResponseV1, rhs
   fieldCheck = fieldCheck && (lhs.hasIdentity == rhs.hasIdentity) && (!lhs.hasIdentity || lhs.identity == rhs.identity)
   fieldCheck = fieldCheck && (lhs.hasNewUser == rhs.hasNewUser) && (!lhs.hasNewUser || lhs.newUser == rhs.newUser)
   fieldCheck = fieldCheck && (lhs.hasOauthSdkDetails == rhs.hasOauthSdkDetails) && (!lhs.hasOauthSdkDetails || lhs.oauthSdkDetails == rhs.oauthSdkDetails)
+  fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -474,6 +475,7 @@ public extension Services.User.Actions.CompleteAuthorization {
            case "identity": return identity
            case "newUser": return newUser
            case "oauthSdkDetails": return oauthSdkDetails
+           case "redirectUri": return redirectUri
            default: return nil
            }
     }
@@ -490,6 +492,9 @@ public extension Services.User.Actions.CompleteAuthorization {
 
     public private(set) var hasOauthSdkDetails:Bool = false
     public private(set) var oauthSdkDetails:Services.User.Containers.OAuthSDKDetailsV1!
+    public private(set) var hasRedirectUri:Bool = false
+    public private(set) var redirectUri:String = ""
+
     required public init() {
          super.init()
     }
@@ -511,6 +516,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if hasOauthSdkDetails {
         output.writeMessage(5, value:oauthSdkDetails)
+      }
+      if hasRedirectUri {
+        output.writeString(6, value:redirectUri)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -541,6 +549,9 @@ public extension Services.User.Actions.CompleteAuthorization {
           if let varSizeoauthSdkDetails = oauthSdkDetails?.computeMessageSize(5) {
               serialize_size += varSizeoauthSdkDetails
           }
+      }
+      if hasRedirectUri {
+        serialize_size += redirectUri.computeStringSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -604,6 +615,9 @@ public extension Services.User.Actions.CompleteAuthorization {
         oauthSdkDetails?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasRedirectUri {
+        output += "\(indent) redirectUri: \(redirectUri) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -629,6 +643,9 @@ public extension Services.User.Actions.CompleteAuthorization {
                 if let hashValueoauthSdkDetails = oauthSdkDetails?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueoauthSdkDetails
                 }
+            }
+            if hasRedirectUri {
+               hashCode = (hashCode &* 31) &+ redirectUri.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -800,6 +817,29 @@ public extension Services.User.Actions.CompleteAuthorization {
       builderResult.oauthSdkDetails = nil
       return self
     }
+    public var hasRedirectUri:Bool {
+         get {
+              return builderResult.hasRedirectUri
+         }
+    }
+    public var redirectUri:String {
+         get {
+              return builderResult.redirectUri
+         }
+         set (value) {
+             builderResult.hasRedirectUri = true
+             builderResult.redirectUri = value
+         }
+    }
+    public func setRedirectUri(value:String)-> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
+      self.redirectUri = value
+      return self
+    }
+    public func clearRedirectUri() -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder{
+         builderResult.hasRedirectUri = false
+         builderResult.redirectUri = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -838,6 +878,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if (other.hasOauthSdkDetails) {
           mergeOauthSdkDetails(other.oauthSdkDetails)
+      }
+      if other.hasRedirectUri {
+           redirectUri = other.redirectUri
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -883,6 +926,9 @@ public extension Services.User.Actions.CompleteAuthorization {
           }
           input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
           oauthSdkDetails = subBuilder.buildPartial()
+
+        case 50 :
+          redirectUri = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/complete_authorization.proto',
   package='services.user.actions.complete_authorization',
   syntax='proto2',
-  serialized_pb=_b('\n<protobufs/services/user/actions/complete_authorization.proto\x12,services.user.actions.complete_authorization\x1a(protobufs/services/user/containers.proto\x1a.protobufs/services/user/containers/token.proto\"\xb0\x02\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x41\n\x08provider\x18\x02 \x01(\x0e\x32/.services.user.containers.IdentityV1.ProviderV1\x12\x41\n\x0eoauth2_details\x18\x03 \x01(\x0b\x32).services.user.containers.OAuth2DetailsV1\x12\x46\n\x11oauth_sdk_details\x18\x04 \x01(\x0b\x32+.services.user.containers.OAuthSDKDetailsV1\x12\x41\n\x0b\x63lient_type\x18\x05 \x01(\x0e\x32,.services.user.containers.token.ClientTypeV1\"\xe2\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12.\n\x04user\x18\x02 \x01(\x0b\x32 .services.user.containers.UserV1\x12\x36\n\x08identity\x18\x03 \x01(\x0b\x32$.services.user.containers.IdentityV1\x12\x10\n\x08new_user\x18\x04 \x01(\x08\x12\x46\n\x11oauth_sdk_details\x18\x05 \x01(\x0b\x32+.services.user.containers.OAuthSDKDetailsV1BC\nAcom.rhlabs.protobufs.services.user.actions.complete_authorization')
+  serialized_pb=_b('\n<protobufs/services/user/actions/complete_authorization.proto\x12,services.user.actions.complete_authorization\x1a(protobufs/services/user/containers.proto\x1a.protobufs/services/user/containers/token.proto\"\xb0\x02\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x41\n\x08provider\x18\x02 \x01(\x0e\x32/.services.user.containers.IdentityV1.ProviderV1\x12\x41\n\x0eoauth2_details\x18\x03 \x01(\x0b\x32).services.user.containers.OAuth2DetailsV1\x12\x46\n\x11oauth_sdk_details\x18\x04 \x01(\x0b\x32+.services.user.containers.OAuthSDKDetailsV1\x12\x41\n\x0b\x63lient_type\x18\x05 \x01(\x0e\x32,.services.user.containers.token.ClientTypeV1\"\xf8\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12.\n\x04user\x18\x02 \x01(\x0b\x32 .services.user.containers.UserV1\x12\x36\n\x08identity\x18\x03 \x01(\x0b\x32$.services.user.containers.IdentityV1\x12\x10\n\x08new_user\x18\x04 \x01(\x08\x12\x46\n\x11oauth_sdk_details\x18\x05 \x01(\x0b\x32+.services.user.containers.OAuthSDKDetailsV1\x12\x14\n\x0credirect_uri\x18\x06 \x01(\tBC\nAcom.rhlabs.protobufs.services.user.actions.complete_authorization')
   ,
   dependencies=[protobufs_dot_services_dot_user_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_containers_dot_token__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -130,6 +130,13 @@ _RESPONSEV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='redirect_uri', full_name='services.user.actions.complete_authorization.ResponseV1.redirect_uri', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -143,7 +150,7 @@ _RESPONSEV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=508,
-  serialized_end=734,
+  serialized_end=756,
 )
 
 _REQUESTV1.fields_by_name['provider'].enum_type = protobufs_dot_services_dot_user_dot_containers__pb2._IDENTITYV1_PROVIDERV1
