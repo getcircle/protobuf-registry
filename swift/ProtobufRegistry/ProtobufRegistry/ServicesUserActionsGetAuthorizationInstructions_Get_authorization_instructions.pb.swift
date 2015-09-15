@@ -11,6 +11,7 @@ public func == (lhs: Services.User.Actions.GetAuthorizationInstructions.RequestV
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   fieldCheck = fieldCheck && (lhs.hasLoginHint == rhs.hasLoginHint) && (!lhs.hasLoginHint || lhs.loginHint == rhs.loginHint)
+  fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -49,6 +50,7 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
            case "version": return version
            case "provider": return self.provider
            case "loginHint": return loginHint
+           case "redirectUri": return redirectUri
            default: return nil
            }
     }
@@ -60,6 +62,9 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
     public private(set) var hasProvider:Bool = false
     public private(set) var hasLoginHint:Bool = false
     public private(set) var loginHint:String = ""
+
+    public private(set) var hasRedirectUri:Bool = false
+    public private(set) var redirectUri:String = ""
 
     required public init() {
          super.init()
@@ -76,6 +81,9 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
       }
       if hasLoginHint {
         output.writeString(3, value:loginHint)
+      }
+      if hasRedirectUri {
+        output.writeString(4, value:redirectUri)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -94,6 +102,9 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
       }
       if hasLoginHint {
         serialize_size += loginHint.computeStringSize(3)
+      }
+      if hasRedirectUri {
+        serialize_size += redirectUri.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -145,6 +156,9 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
       if hasLoginHint {
         output += "\(indent) loginHint: \(loginHint) \n"
       }
+      if hasRedirectUri {
+        output += "\(indent) redirectUri: \(redirectUri) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -158,6 +172,9 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
             }
             if hasLoginHint {
                hashCode = (hashCode &* 31) &+ loginHint.hashValue
+            }
+            if hasRedirectUri {
+               hashCode = (hashCode &* 31) &+ redirectUri.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -256,6 +273,29 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
          builderResult.loginHint = ""
          return self
     }
+    public var hasRedirectUri:Bool {
+         get {
+              return builderResult.hasRedirectUri
+         }
+    }
+    public var redirectUri:String {
+         get {
+              return builderResult.redirectUri
+         }
+         set (value) {
+             builderResult.hasRedirectUri = true
+             builderResult.redirectUri = value
+         }
+    }
+    public func setRedirectUri(value:String)-> Services.User.Actions.GetAuthorizationInstructions.RequestV1Builder {
+      self.redirectUri = value
+      return self
+    }
+    public func clearRedirectUri() -> Services.User.Actions.GetAuthorizationInstructions.RequestV1Builder{
+         builderResult.hasRedirectUri = false
+         builderResult.redirectUri = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -289,6 +329,9 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
       if other.hasLoginHint {
            loginHint = other.loginHint
       }
+      if other.hasRedirectUri {
+           redirectUri = other.redirectUri
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -317,6 +360,9 @@ public extension Services.User.Actions.GetAuthorizationInstructions {
 
         case 26 :
           loginHint = input.readString()
+
+        case 34 :
+          redirectUri = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
