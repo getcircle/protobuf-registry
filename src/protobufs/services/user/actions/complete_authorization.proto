@@ -21,4 +21,5 @@ message ResponseV1 {
     optional services.user.containers.IdentityV1 identity = 3;
     optional bool new_user = 4;
     optional services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 5;
+    optional string redirect_uri = 6;
 }
