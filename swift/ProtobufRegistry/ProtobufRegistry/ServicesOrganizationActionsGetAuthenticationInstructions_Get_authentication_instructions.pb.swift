@@ -10,6 +10,7 @@ public func == (lhs: Services.Organization.Actions.GetAuthenticationInstructions
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasDomain == rhs.hasDomain) && (!lhs.hasDomain || lhs.domain == rhs.domain)
+  fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -49,6 +50,7 @@ public extension Services.Organization.Actions.GetAuthenticationInstructions {
            switch key {
            case "version": return version
            case "domain": return domain
+           case "redirectUri": return redirectUri
            default: return nil
            }
     }
@@ -58,6 +60,9 @@ public extension Services.Organization.Actions.GetAuthenticationInstructions {
 
     public private(set) var hasDomain:Bool = false
     public private(set) var domain:String = ""
+
+    public private(set) var hasRedirectUri:Bool = false
+    public private(set) var redirectUri:String = ""
 
     required public init() {
          super.init()
@@ -71,6 +76,9 @@ public extension Services.Organization.Actions.GetAuthenticationInstructions {
       }
       if hasDomain {
         output.writeString(2, value:domain)
+      }
+      if hasRedirectUri {
+        output.writeString(3, value:redirectUri)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -86,6 +94,9 @@ public extension Services.Organization.Actions.GetAuthenticationInstructions {
       }
       if hasDomain {
         serialize_size += domain.computeStringSize(2)
+      }
+      if hasRedirectUri {
+        serialize_size += redirectUri.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -134,6 +145,9 @@ public extension Services.Organization.Actions.GetAuthenticationInstructions {
       if hasDomain {
         output += "\(indent) domain: \(domain) \n"
       }
+      if hasRedirectUri {
+        output += "\(indent) redirectUri: \(redirectUri) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -144,6 +158,9 @@ public extension Services.Organization.Actions.GetAuthenticationInstructions {
             }
             if hasDomain {
                hashCode = (hashCode &* 31) &+ domain.hashValue
+            }
+            if hasRedirectUri {
+               hashCode = (hashCode &* 31) &+ redirectUri.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -219,6 +236,29 @@ public extension Services.Organization.Actions.GetAuthenticationInstructions {
          builderResult.domain = ""
          return self
     }
+    public var hasRedirectUri:Bool {
+         get {
+              return builderResult.hasRedirectUri
+         }
+    }
+    public var redirectUri:String {
+         get {
+              return builderResult.redirectUri
+         }
+         set (value) {
+             builderResult.hasRedirectUri = true
+             builderResult.redirectUri = value
+         }
+    }
+    public func setRedirectUri(value:String)-> Services.Organization.Actions.GetAuthenticationInstructions.RequestV1Builder {
+      self.redirectUri = value
+      return self
+    }
+    public func clearRedirectUri() -> Services.Organization.Actions.GetAuthenticationInstructions.RequestV1Builder{
+         builderResult.hasRedirectUri = false
+         builderResult.redirectUri = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -249,6 +289,9 @@ public extension Services.Organization.Actions.GetAuthenticationInstructions {
       if other.hasDomain {
            domain = other.domain
       }
+      if other.hasRedirectUri {
+           redirectUri = other.redirectUri
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -269,6 +312,9 @@ public extension Services.Organization.Actions.GetAuthenticationInstructions {
 
         case 18 :
           domain = input.readString()
+
+        case 26 :
+          redirectUri = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
