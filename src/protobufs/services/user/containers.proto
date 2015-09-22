@@ -77,4 +77,5 @@ message SAMLDetailsV1 {
     optional uint32 version = 1 [default = 1];
     optional string saml_response = 2;
     optional string relay_state = 3;
+    optional string domain = 4;
 }
