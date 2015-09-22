@@ -88,6 +88,17 @@ public func == (lhs: Services.User.Containers.UserV1, rhs: Services.User.Contain
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
+public func == (lhs: Services.User.Containers.SAMLDetailsV1, rhs: Services.User.Containers.SAMLDetailsV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasSamlResponse == rhs.hasSamlResponse) && (!lhs.hasSamlResponse || lhs.samlResponse == rhs.samlResponse)
+  fieldCheck = fieldCheck && (lhs.hasRelayState == rhs.hasRelayState) && (!lhs.hasRelayState || lhs.relayState == rhs.relayState)
+  return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+}
+
 public extension Services.User.Containers {
   public struct ContainersRoot {
     public static var sharedInstance : ContainersRoot {
@@ -2670,6 +2681,287 @@ public extension Services.User.Containers {
 
         case 66 :
           password = input.readString()
+
+        default:
+          if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
+             unknownFields = unknownFieldsBuilder.build()
+             return self
+          }
+        }
+      }
+    }
+  }
+
+  final public class SAMLDetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
+    override public subscript(key: String) -> Any? {
+           switch key {
+           case "version": return version
+           case "samlResponse": return samlResponse
+           case "relayState": return relayState
+           default: return nil
+           }
+    }
+
+    public private(set) var hasVersion:Bool = false
+    public private(set) var version:UInt32 = UInt32(1)
+
+    public private(set) var hasSamlResponse:Bool = false
+    public private(set) var samlResponse:String = ""
+
+    public private(set) var hasRelayState:Bool = false
+    public private(set) var relayState:String = ""
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) {
+      if hasVersion {
+        output.writeUInt32(1, value:version)
+      }
+      if hasSamlResponse {
+        output.writeString(2, value:samlResponse)
+      }
+      if hasRelayState {
+        output.writeString(3, value:relayState)
+      }
+      unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasVersion {
+        serialize_size += version.computeUInt32Size(1)
+      }
+      if hasSamlResponse {
+        serialize_size += samlResponse.computeStringSize(2)
+      }
+      if hasRelayState {
+        serialize_size += relayState.computeStringSize(3)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseFromData(data:NSData) -> Services.User.Containers.SAMLDetailsV1 {
+      return Services.User.Containers.SAMLDetailsV1.builder().mergeFromData(data, extensionRegistry:Services.User.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) -> Services.User.Containers.SAMLDetailsV1 {
+      return Services.User.Containers.SAMLDetailsV1.builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) -> Services.User.Containers.SAMLDetailsV1 {
+      return Services.User.Containers.SAMLDetailsV1.builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) ->Services.User.Containers.SAMLDetailsV1 {
+      return Services.User.Containers.SAMLDetailsV1.builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) -> Services.User.Containers.SAMLDetailsV1 {
+      return Services.User.Containers.SAMLDetailsV1.builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.User.Containers.SAMLDetailsV1 {
+      return Services.User.Containers.SAMLDetailsV1.builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func builder() -> Services.User.Containers.SAMLDetailsV1Builder {
+      return Services.User.Containers.SAMLDetailsV1.classBuilder() as! Services.User.Containers.SAMLDetailsV1Builder
+    }
+    public func builder() -> Services.User.Containers.SAMLDetailsV1Builder {
+      return classBuilder() as! Services.User.Containers.SAMLDetailsV1Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.User.Containers.SAMLDetailsV1Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.User.Containers.SAMLDetailsV1.builder()
+    }
+    public func toBuilder() -> Services.User.Containers.SAMLDetailsV1Builder {
+      return Services.User.Containers.SAMLDetailsV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.User.Containers.SAMLDetailsV1) -> Services.User.Containers.SAMLDetailsV1Builder {
+      return Services.User.Containers.SAMLDetailsV1.builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) {
+      if hasVersion {
+        output += "\(indent) version: \(version) \n"
+      }
+      if hasSamlResponse {
+        output += "\(indent) samlResponse: \(samlResponse) \n"
+      }
+      if hasRelayState {
+        output += "\(indent) relayState: \(relayState) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasVersion {
+               hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasSamlResponse {
+               hashCode = (hashCode &* 31) &+ samlResponse.hashValue
+            }
+            if hasRelayState {
+               hashCode = (hashCode &* 31) &+ relayState.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.User.Containers.SAMLDetailsV1"
+    }
+    override public func className() -> String {
+        return "Services.User.Containers.SAMLDetailsV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.User.Containers.SAMLDetailsV1.self
+    }
+    //Meta information declaration end
+
+  }
+
+  final public class SAMLDetailsV1Builder : GeneratedMessageBuilder {
+    private var builderResult:Services.User.Containers.SAMLDetailsV1
+
+    required override public init () {
+       builderResult = Services.User.Containers.SAMLDetailsV1()
+       super.init()
+    }
+    public var hasVersion:Bool {
+         get {
+              return builderResult.hasVersion
+         }
+    }
+    public var version:UInt32 {
+         get {
+              return builderResult.version
+         }
+         set (value) {
+             builderResult.hasVersion = true
+             builderResult.version = value
+         }
+    }
+    public func setVersion(value:UInt32)-> Services.User.Containers.SAMLDetailsV1Builder {
+      self.version = value
+      return self
+    }
+    public func clearVersion() -> Services.User.Containers.SAMLDetailsV1Builder{
+         builderResult.hasVersion = false
+         builderResult.version = UInt32(1)
+         return self
+    }
+    public var hasSamlResponse:Bool {
+         get {
+              return builderResult.hasSamlResponse
+         }
+    }
+    public var samlResponse:String {
+         get {
+              return builderResult.samlResponse
+         }
+         set (value) {
+             builderResult.hasSamlResponse = true
+             builderResult.samlResponse = value
+         }
+    }
+    public func setSamlResponse(value:String)-> Services.User.Containers.SAMLDetailsV1Builder {
+      self.samlResponse = value
+      return self
+    }
+    public func clearSamlResponse() -> Services.User.Containers.SAMLDetailsV1Builder{
+         builderResult.hasSamlResponse = false
+         builderResult.samlResponse = ""
+         return self
+    }
+    public var hasRelayState:Bool {
+         get {
+              return builderResult.hasRelayState
+         }
+    }
+    public var relayState:String {
+         get {
+              return builderResult.relayState
+         }
+         set (value) {
+             builderResult.hasRelayState = true
+             builderResult.relayState = value
+         }
+    }
+    public func setRelayState(value:String)-> Services.User.Containers.SAMLDetailsV1Builder {
+      self.relayState = value
+      return self
+    }
+    public func clearRelayState() -> Services.User.Containers.SAMLDetailsV1Builder{
+         builderResult.hasRelayState = false
+         builderResult.relayState = ""
+         return self
+    }
+    override public var internalGetResult:GeneratedMessage {
+         get {
+            return builderResult
+         }
+    }
+    public override func clear() -> Services.User.Containers.SAMLDetailsV1Builder {
+      builderResult = Services.User.Containers.SAMLDetailsV1()
+      return self
+    }
+    public override func clone() -> Services.User.Containers.SAMLDetailsV1Builder {
+      return Services.User.Containers.SAMLDetailsV1.builderWithPrototype(builderResult)
+    }
+    public override func build() -> Services.User.Containers.SAMLDetailsV1 {
+         checkInitialized()
+         return buildPartial()
+    }
+    public func buildPartial() -> Services.User.Containers.SAMLDetailsV1 {
+      var returnMe:Services.User.Containers.SAMLDetailsV1 = builderResult
+      return returnMe
+    }
+    public func mergeFrom(other:Services.User.Containers.SAMLDetailsV1) -> Services.User.Containers.SAMLDetailsV1Builder {
+      if (other == Services.User.Containers.SAMLDetailsV1()) {
+       return self
+      }
+      if other.hasVersion {
+           version = other.version
+      }
+      if other.hasSamlResponse {
+           samlResponse = other.samlResponse
+      }
+      if other.hasRelayState {
+           relayState = other.relayState
+      }
+      mergeUnknownFields(other.unknownFields)
+      return self
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream) ->Services.User.Containers.SAMLDetailsV1Builder {
+         return mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+    }
+    public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) -> Services.User.Containers.SAMLDetailsV1Builder {
+      var unknownFieldsBuilder:UnknownFieldSetBuilder = UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      while (true) {
+        var tag = input.readTag()
+        switch tag {
+        case 0: 
+          self.unknownFields = unknownFieldsBuilder.build()
+          return self
+
+        case 8 :
+          version = input.readUInt32()
+
+        case 18 :
+          samlResponse = input.readString()
+
+        case 26 :
+          relayState = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

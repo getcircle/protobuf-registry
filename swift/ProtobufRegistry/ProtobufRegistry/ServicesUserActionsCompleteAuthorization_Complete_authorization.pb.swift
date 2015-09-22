@@ -14,6 +14,7 @@ public func == (lhs: Services.User.Actions.CompleteAuthorization.RequestV1, rhs:
   fieldCheck = fieldCheck && (lhs.hasOauthSdkDetails == rhs.hasOauthSdkDetails) && (!lhs.hasOauthSdkDetails || lhs.oauthSdkDetails == rhs.oauthSdkDetails)
   fieldCheck = fieldCheck && (lhs.hasClientType == rhs.hasClientType) && (!lhs.hasClientType || lhs.clientType == rhs.clientType)
   fieldCheck = fieldCheck && (lhs.hasAuthenticate == rhs.hasAuthenticate) && (!lhs.hasAuthenticate || lhs.authenticate == rhs.authenticate)
+  fieldCheck = fieldCheck && (lhs.hasSamlDetails == rhs.hasSamlDetails) && (!lhs.hasSamlDetails || lhs.samlDetails == rhs.samlDetails)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -61,6 +62,7 @@ public extension Services.User.Actions.CompleteAuthorization {
            case "oauthSdkDetails": return oauthSdkDetails
            case "clientType": return self.clientType
            case "authenticate": return authenticate
+           case "samlDetails": return samlDetails
            default: return nil
            }
     }
@@ -79,6 +81,8 @@ public extension Services.User.Actions.CompleteAuthorization {
     public private(set) var hasAuthenticate:Bool = false
     public private(set) var authenticate:Bool = false
 
+    public private(set) var hasSamlDetails:Bool = false
+    public private(set) var samlDetails:Services.User.Containers.SAMLDetailsV1!
     required public init() {
          super.init()
     }
@@ -103,6 +107,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if hasAuthenticate {
         output.writeBool(6, value:authenticate)
+      }
+      if hasSamlDetails {
+        output.writeMessage(7, value:samlDetails)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -134,6 +141,11 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if hasAuthenticate {
         serialize_size += authenticate.computeBoolSize(6)
+      }
+      if hasSamlDetails {
+          if let varSizesamlDetails = samlDetails?.computeMessageSize(7) {
+              serialize_size += varSizesamlDetails
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -198,6 +210,11 @@ public extension Services.User.Actions.CompleteAuthorization {
       if hasAuthenticate {
         output += "\(indent) authenticate: \(authenticate) \n"
       }
+      if hasSamlDetails {
+        output += "\(indent) samlDetails {\n"
+        samlDetails?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -224,6 +241,11 @@ public extension Services.User.Actions.CompleteAuthorization {
             }
             if hasAuthenticate {
                hashCode = (hashCode &* 31) &+ authenticate.hashValue
+            }
+            if hasSamlDetails {
+                if let hashValuesamlDetails = samlDetails?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuesamlDetails
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -409,6 +431,38 @@ public extension Services.User.Actions.CompleteAuthorization {
          builderResult.authenticate = false
          return self
     }
+    public var hasSamlDetails:Bool {
+         get {
+             return builderResult.hasSamlDetails
+         }
+    }
+    public var samlDetails:Services.User.Containers.SAMLDetailsV1! {
+         get {
+             return builderResult.samlDetails
+         }
+         set (value) {
+             builderResult.hasSamlDetails = true
+             builderResult.samlDetails = value
+         }
+    }
+    public func setSamlDetails(value:Services.User.Containers.SAMLDetailsV1!)-> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
+      self.samlDetails = value
+      return self
+    }
+    public func mergeSamlDetails(value:Services.User.Containers.SAMLDetailsV1) -> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
+      if (builderResult.hasSamlDetails) {
+        builderResult.samlDetails = Services.User.Containers.SAMLDetailsV1.builderWithPrototype(builderResult.samlDetails).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.samlDetails = value
+      }
+      builderResult.hasSamlDetails = true
+      return self
+    }
+    public func clearSamlDetails() -> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
+      builderResult.hasSamlDetails = false
+      builderResult.samlDetails = nil
+      return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -450,6 +504,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if other.hasAuthenticate {
            authenticate = other.authenticate
+      }
+      if (other.hasSamlDetails) {
+          mergeSamlDetails(other.samlDetails)
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -503,6 +560,14 @@ public extension Services.User.Actions.CompleteAuthorization {
 
         case 48 :
           authenticate = input.readBool()
+
+        case 58 :
+          var subBuilder:Services.User.Containers.SAMLDetailsV1Builder = Services.User.Containers.SAMLDetailsV1.builder()
+          if hasSamlDetails {
+            subBuilder.mergeFrom(samlDetails)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          samlDetails = subBuilder.buildPartial()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
