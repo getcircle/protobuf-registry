@@ -96,6 +96,7 @@ public func == (lhs: Services.User.Containers.SAMLDetailsV1, rhs: Services.User.
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasSamlResponse == rhs.hasSamlResponse) && (!lhs.hasSamlResponse || lhs.samlResponse == rhs.samlResponse)
   fieldCheck = fieldCheck && (lhs.hasRelayState == rhs.hasRelayState) && (!lhs.hasRelayState || lhs.relayState == rhs.relayState)
+  fieldCheck = fieldCheck && (lhs.hasDomain == rhs.hasDomain) && (!lhs.hasDomain || lhs.domain == rhs.domain)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -2698,6 +2699,7 @@ public extension Services.User.Containers {
            case "version": return version
            case "samlResponse": return samlResponse
            case "relayState": return relayState
+           case "domain": return domain
            default: return nil
            }
     }
@@ -2710,6 +2712,9 @@ public extension Services.User.Containers {
 
     public private(set) var hasRelayState:Bool = false
     public private(set) var relayState:String = ""
+
+    public private(set) var hasDomain:Bool = false
+    public private(set) var domain:String = ""
 
     required public init() {
          super.init()
@@ -2726,6 +2731,9 @@ public extension Services.User.Containers {
       }
       if hasRelayState {
         output.writeString(3, value:relayState)
+      }
+      if hasDomain {
+        output.writeString(4, value:domain)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -2744,6 +2752,9 @@ public extension Services.User.Containers {
       }
       if hasRelayState {
         serialize_size += relayState.computeStringSize(3)
+      }
+      if hasDomain {
+        serialize_size += domain.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2795,6 +2806,9 @@ public extension Services.User.Containers {
       if hasRelayState {
         output += "\(indent) relayState: \(relayState) \n"
       }
+      if hasDomain {
+        output += "\(indent) domain: \(domain) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2808,6 +2822,9 @@ public extension Services.User.Containers {
             }
             if hasRelayState {
                hashCode = (hashCode &* 31) &+ relayState.hashValue
+            }
+            if hasDomain {
+               hashCode = (hashCode &* 31) &+ domain.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2906,6 +2923,29 @@ public extension Services.User.Containers {
          builderResult.relayState = ""
          return self
     }
+    public var hasDomain:Bool {
+         get {
+              return builderResult.hasDomain
+         }
+    }
+    public var domain:String {
+         get {
+              return builderResult.domain
+         }
+         set (value) {
+             builderResult.hasDomain = true
+             builderResult.domain = value
+         }
+    }
+    public func setDomain(value:String)-> Services.User.Containers.SAMLDetailsV1Builder {
+      self.domain = value
+      return self
+    }
+    public func clearDomain() -> Services.User.Containers.SAMLDetailsV1Builder{
+         builderResult.hasDomain = false
+         builderResult.domain = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -2939,6 +2979,9 @@ public extension Services.User.Containers {
       if other.hasRelayState {
            relayState = other.relayState
       }
+      if other.hasDomain {
+           domain = other.domain
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -2962,6 +3005,9 @@ public extension Services.User.Containers {
 
         case 26 :
           relayState = input.readString()
+
+        case 34 :
+          domain = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
