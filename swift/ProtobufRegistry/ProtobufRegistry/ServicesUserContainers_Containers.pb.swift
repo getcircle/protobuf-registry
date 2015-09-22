@@ -1008,6 +1008,7 @@ public extension Services.User.Containers {
         case Internal = 0
         case Linkedin = 1
         case Google = 2
+        case Saml = 3
 
       }
 

@@ -13,6 +13,7 @@ public func == (lhs: Services.User.Actions.CompleteAuthorization.RequestV1, rhs:
   fieldCheck = fieldCheck && (lhs.hasOauth2Details == rhs.hasOauth2Details) && (!lhs.hasOauth2Details || lhs.oauth2Details == rhs.oauth2Details)
   fieldCheck = fieldCheck && (lhs.hasOauthSdkDetails == rhs.hasOauthSdkDetails) && (!lhs.hasOauthSdkDetails || lhs.oauthSdkDetails == rhs.oauthSdkDetails)
   fieldCheck = fieldCheck && (lhs.hasClientType == rhs.hasClientType) && (!lhs.hasClientType || lhs.clientType == rhs.clientType)
+  fieldCheck = fieldCheck && (lhs.hasAuthenticate == rhs.hasAuthenticate) && (!lhs.hasAuthenticate || lhs.authenticate == rhs.authenticate)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -27,6 +28,7 @@ public func == (lhs: Services.User.Actions.CompleteAuthorization.ResponseV1, rhs
   fieldCheck = fieldCheck && (lhs.hasNewUser == rhs.hasNewUser) && (!lhs.hasNewUser || lhs.newUser == rhs.newUser)
   fieldCheck = fieldCheck && (lhs.hasOauthSdkDetails == rhs.hasOauthSdkDetails) && (!lhs.hasOauthSdkDetails || lhs.oauthSdkDetails == rhs.oauthSdkDetails)
   fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
+  fieldCheck = fieldCheck && (lhs.hasToken == rhs.hasToken) && (!lhs.hasToken || lhs.token == rhs.token)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -58,6 +60,7 @@ public extension Services.User.Actions.CompleteAuthorization {
            case "oauth2Details": return oauth2Details
            case "oauthSdkDetails": return oauthSdkDetails
            case "clientType": return self.clientType
+           case "authenticate": return authenticate
            default: return nil
            }
     }
@@ -73,6 +76,9 @@ public extension Services.User.Actions.CompleteAuthorization {
     public private(set) var oauthSdkDetails:Services.User.Containers.OAuthSDKDetailsV1!
     public private(set) var clientType:Services.User.Containers.Token.ClientTypeV1 = Services.User.Containers.Token.ClientTypeV1.Ios
     public private(set) var hasClientType:Bool = false
+    public private(set) var hasAuthenticate:Bool = false
+    public private(set) var authenticate:Bool = false
+
     required public init() {
          super.init()
     }
@@ -94,6 +100,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if hasClientType {
         output.writeEnum(5, value:clientType.rawValue)
+      }
+      if hasAuthenticate {
+        output.writeBool(6, value:authenticate)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -122,6 +131,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if (hasClientType) {
         serialize_size += clientType.rawValue.computeEnumSize(5)
+      }
+      if hasAuthenticate {
+        serialize_size += authenticate.computeBoolSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -183,6 +195,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       if (hasClientType) {
         output += "\(indent) clientType: \(clientType.rawValue)\n"
       }
+      if hasAuthenticate {
+        output += "\(indent) authenticate: \(authenticate) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -206,6 +221,9 @@ public extension Services.User.Actions.CompleteAuthorization {
             }
             if hasClientType {
                hashCode = (hashCode &* 31) &+ Int(clientType.rawValue)
+            }
+            if hasAuthenticate {
+               hashCode = (hashCode &* 31) &+ authenticate.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -368,6 +386,29 @@ public extension Services.User.Actions.CompleteAuthorization {
          builderResult.clientType = .Ios
          return self
       }
+    public var hasAuthenticate:Bool {
+         get {
+              return builderResult.hasAuthenticate
+         }
+    }
+    public var authenticate:Bool {
+         get {
+              return builderResult.authenticate
+         }
+         set (value) {
+             builderResult.hasAuthenticate = true
+             builderResult.authenticate = value
+         }
+    }
+    public func setAuthenticate(value:Bool)-> Services.User.Actions.CompleteAuthorization.RequestV1Builder {
+      self.authenticate = value
+      return self
+    }
+    public func clearAuthenticate() -> Services.User.Actions.CompleteAuthorization.RequestV1Builder{
+         builderResult.hasAuthenticate = false
+         builderResult.authenticate = false
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -406,6 +447,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if other.hasClientType {
            clientType = other.clientType
+      }
+      if other.hasAuthenticate {
+           authenticate = other.authenticate
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -457,6 +501,9 @@ public extension Services.User.Actions.CompleteAuthorization {
                unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueIntclientType))
           }
 
+        case 48 :
+          authenticate = input.readBool()
+
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
              unknownFields = unknownFieldsBuilder.build()
@@ -476,6 +523,7 @@ public extension Services.User.Actions.CompleteAuthorization {
            case "newUser": return newUser
            case "oauthSdkDetails": return oauthSdkDetails
            case "redirectUri": return redirectUri
+           case "token": return token
            default: return nil
            }
     }
@@ -494,6 +542,9 @@ public extension Services.User.Actions.CompleteAuthorization {
     public private(set) var oauthSdkDetails:Services.User.Containers.OAuthSDKDetailsV1!
     public private(set) var hasRedirectUri:Bool = false
     public private(set) var redirectUri:String = ""
+
+    public private(set) var hasToken:Bool = false
+    public private(set) var token:String = ""
 
     required public init() {
          super.init()
@@ -519,6 +570,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if hasRedirectUri {
         output.writeString(6, value:redirectUri)
+      }
+      if hasToken {
+        output.writeString(7, value:token)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -552,6 +606,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if hasRedirectUri {
         serialize_size += redirectUri.computeStringSize(6)
+      }
+      if hasToken {
+        serialize_size += token.computeStringSize(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -618,6 +675,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       if hasRedirectUri {
         output += "\(indent) redirectUri: \(redirectUri) \n"
       }
+      if hasToken {
+        output += "\(indent) token: \(token) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -646,6 +706,9 @@ public extension Services.User.Actions.CompleteAuthorization {
             }
             if hasRedirectUri {
                hashCode = (hashCode &* 31) &+ redirectUri.hashValue
+            }
+            if hasToken {
+               hashCode = (hashCode &* 31) &+ token.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -840,6 +903,29 @@ public extension Services.User.Actions.CompleteAuthorization {
          builderResult.redirectUri = ""
          return self
     }
+    public var hasToken:Bool {
+         get {
+              return builderResult.hasToken
+         }
+    }
+    public var token:String {
+         get {
+              return builderResult.token
+         }
+         set (value) {
+             builderResult.hasToken = true
+             builderResult.token = value
+         }
+    }
+    public func setToken(value:String)-> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
+      self.token = value
+      return self
+    }
+    public func clearToken() -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder{
+         builderResult.hasToken = false
+         builderResult.token = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -881,6 +967,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if other.hasRedirectUri {
            redirectUri = other.redirectUri
+      }
+      if other.hasToken {
+           token = other.token
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -929,6 +1018,9 @@ public extension Services.User.Actions.CompleteAuthorization {
 
         case 50 :
           redirectUri = input.readString()
+
+        case 58 :
+          token = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
