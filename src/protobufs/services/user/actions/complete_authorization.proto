@@ -13,6 +13,7 @@ message RequestV1 {
     optional services.user.containers.OAuth2DetailsV1 oauth2_details = 3;
     optional services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 4;
     optional services.user.containers.token.ClientTypeV1 client_type = 5;
+    optional bool authenticate = 6;
 }
 
 message ResponseV1 {
@@ -22,4 +23,5 @@ message ResponseV1 {
     optional bool new_user = 4;
     optional services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 5;
     optional string redirect_uri = 6;
+    optional string token = 7;
 }
