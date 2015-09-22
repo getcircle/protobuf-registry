@@ -78,4 +78,5 @@ message SAMLDetailsV1 {
     optional string saml_response = 2;
     optional string relay_state = 3;
     optional string domain = 4;
+    optional string auth_state = 5;
 }
