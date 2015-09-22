@@ -29,7 +29,7 @@ public func == (lhs: Services.User.Actions.CompleteAuthorization.ResponseV1, rhs
   fieldCheck = fieldCheck && (lhs.hasNewUser == rhs.hasNewUser) && (!lhs.hasNewUser || lhs.newUser == rhs.newUser)
   fieldCheck = fieldCheck && (lhs.hasOauthSdkDetails == rhs.hasOauthSdkDetails) && (!lhs.hasOauthSdkDetails || lhs.oauthSdkDetails == rhs.oauthSdkDetails)
   fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
-  fieldCheck = fieldCheck && (lhs.hasSamlState == rhs.hasSamlState) && (!lhs.hasSamlState || lhs.samlState == rhs.samlState)
+  fieldCheck = fieldCheck && (lhs.hasSamlDetails == rhs.hasSamlDetails) && (!lhs.hasSamlDetails || lhs.samlDetails == rhs.samlDetails)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -588,7 +588,7 @@ public extension Services.User.Actions.CompleteAuthorization {
            case "newUser": return newUser
            case "oauthSdkDetails": return oauthSdkDetails
            case "redirectUri": return redirectUri
-           case "samlState": return samlState
+           case "samlDetails": return samlDetails
            default: return nil
            }
     }
@@ -608,9 +608,8 @@ public extension Services.User.Actions.CompleteAuthorization {
     public private(set) var hasRedirectUri:Bool = false
     public private(set) var redirectUri:String = ""
 
-    public private(set) var hasSamlState:Bool = false
-    public private(set) var samlState:String = ""
-
+    public private(set) var hasSamlDetails:Bool = false
+    public private(set) var samlDetails:Services.User.Containers.SAMLDetailsV1!
     required public init() {
          super.init()
     }
@@ -636,8 +635,8 @@ public extension Services.User.Actions.CompleteAuthorization {
       if hasRedirectUri {
         output.writeString(6, value:redirectUri)
       }
-      if hasSamlState {
-        output.writeString(7, value:samlState)
+      if hasSamlDetails {
+        output.writeMessage(7, value:samlDetails)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -672,8 +671,10 @@ public extension Services.User.Actions.CompleteAuthorization {
       if hasRedirectUri {
         serialize_size += redirectUri.computeStringSize(6)
       }
-      if hasSamlState {
-        serialize_size += samlState.computeStringSize(7)
+      if hasSamlDetails {
+          if let varSizesamlDetails = samlDetails?.computeMessageSize(7) {
+              serialize_size += varSizesamlDetails
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -740,8 +741,10 @@ public extension Services.User.Actions.CompleteAuthorization {
       if hasRedirectUri {
         output += "\(indent) redirectUri: \(redirectUri) \n"
       }
-      if hasSamlState {
-        output += "\(indent) samlState: \(samlState) \n"
+      if hasSamlDetails {
+        output += "\(indent) samlDetails {\n"
+        samlDetails?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -772,8 +775,10 @@ public extension Services.User.Actions.CompleteAuthorization {
             if hasRedirectUri {
                hashCode = (hashCode &* 31) &+ redirectUri.hashValue
             }
-            if hasSamlState {
-               hashCode = (hashCode &* 31) &+ samlState.hashValue
+            if hasSamlDetails {
+                if let hashValuesamlDetails = samlDetails?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuesamlDetails
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -968,28 +973,37 @@ public extension Services.User.Actions.CompleteAuthorization {
          builderResult.redirectUri = ""
          return self
     }
-    public var hasSamlState:Bool {
+    public var hasSamlDetails:Bool {
          get {
-              return builderResult.hasSamlState
+             return builderResult.hasSamlDetails
          }
     }
-    public var samlState:String {
+    public var samlDetails:Services.User.Containers.SAMLDetailsV1! {
          get {
-              return builderResult.samlState
+             return builderResult.samlDetails
          }
          set (value) {
-             builderResult.hasSamlState = true
-             builderResult.samlState = value
+             builderResult.hasSamlDetails = true
+             builderResult.samlDetails = value
          }
     }
-    public func setSamlState(value:String)-> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
-      self.samlState = value
+    public func setSamlDetails(value:Services.User.Containers.SAMLDetailsV1!)-> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
+      self.samlDetails = value
       return self
     }
-    public func clearSamlState() -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder{
-         builderResult.hasSamlState = false
-         builderResult.samlState = ""
-         return self
+    public func mergeSamlDetails(value:Services.User.Containers.SAMLDetailsV1) -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
+      if (builderResult.hasSamlDetails) {
+        builderResult.samlDetails = Services.User.Containers.SAMLDetailsV1.builderWithPrototype(builderResult.samlDetails).mergeFrom(value).buildPartial()
+      } else {
+        builderResult.samlDetails = value
+      }
+      builderResult.hasSamlDetails = true
+      return self
+    }
+    public func clearSamlDetails() -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
+      builderResult.hasSamlDetails = false
+      builderResult.samlDetails = nil
+      return self
     }
     override public var internalGetResult:GeneratedMessage {
          get {
@@ -1033,8 +1047,8 @@ public extension Services.User.Actions.CompleteAuthorization {
       if other.hasRedirectUri {
            redirectUri = other.redirectUri
       }
-      if other.hasSamlState {
-           samlState = other.samlState
+      if (other.hasSamlDetails) {
+          mergeSamlDetails(other.samlDetails)
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -1085,7 +1099,12 @@ public extension Services.User.Actions.CompleteAuthorization {
           redirectUri = input.readString()
 
         case 58 :
-          samlState = input.readString()
+          var subBuilder:Services.User.Containers.SAMLDetailsV1Builder = Services.User.Containers.SAMLDetailsV1.builder()
+          if hasSamlDetails {
+            subBuilder.mergeFrom(samlDetails)
+          }
+          input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+          samlDetails = subBuilder.buildPartial()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {

@@ -97,6 +97,7 @@ public func == (lhs: Services.User.Containers.SAMLDetailsV1, rhs: Services.User.
   fieldCheck = fieldCheck && (lhs.hasSamlResponse == rhs.hasSamlResponse) && (!lhs.hasSamlResponse || lhs.samlResponse == rhs.samlResponse)
   fieldCheck = fieldCheck && (lhs.hasRelayState == rhs.hasRelayState) && (!lhs.hasRelayState || lhs.relayState == rhs.relayState)
   fieldCheck = fieldCheck && (lhs.hasDomain == rhs.hasDomain) && (!lhs.hasDomain || lhs.domain == rhs.domain)
+  fieldCheck = fieldCheck && (lhs.hasAuthState == rhs.hasAuthState) && (!lhs.hasAuthState || lhs.authState == rhs.authState)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -2700,6 +2701,7 @@ public extension Services.User.Containers {
            case "samlResponse": return samlResponse
            case "relayState": return relayState
            case "domain": return domain
+           case "authState": return authState
            default: return nil
            }
     }
@@ -2715,6 +2717,9 @@ public extension Services.User.Containers {
 
     public private(set) var hasDomain:Bool = false
     public private(set) var domain:String = ""
+
+    public private(set) var hasAuthState:Bool = false
+    public private(set) var authState:String = ""
 
     required public init() {
          super.init()
@@ -2734,6 +2739,9 @@ public extension Services.User.Containers {
       }
       if hasDomain {
         output.writeString(4, value:domain)
+      }
+      if hasAuthState {
+        output.writeString(5, value:authState)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -2755,6 +2763,9 @@ public extension Services.User.Containers {
       }
       if hasDomain {
         serialize_size += domain.computeStringSize(4)
+      }
+      if hasAuthState {
+        serialize_size += authState.computeStringSize(5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2809,6 +2820,9 @@ public extension Services.User.Containers {
       if hasDomain {
         output += "\(indent) domain: \(domain) \n"
       }
+      if hasAuthState {
+        output += "\(indent) authState: \(authState) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2825,6 +2839,9 @@ public extension Services.User.Containers {
             }
             if hasDomain {
                hashCode = (hashCode &* 31) &+ domain.hashValue
+            }
+            if hasAuthState {
+               hashCode = (hashCode &* 31) &+ authState.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2946,6 +2963,29 @@ public extension Services.User.Containers {
          builderResult.domain = ""
          return self
     }
+    public var hasAuthState:Bool {
+         get {
+              return builderResult.hasAuthState
+         }
+    }
+    public var authState:String {
+         get {
+              return builderResult.authState
+         }
+         set (value) {
+             builderResult.hasAuthState = true
+             builderResult.authState = value
+         }
+    }
+    public func setAuthState(value:String)-> Services.User.Containers.SAMLDetailsV1Builder {
+      self.authState = value
+      return self
+    }
+    public func clearAuthState() -> Services.User.Containers.SAMLDetailsV1Builder{
+         builderResult.hasAuthState = false
+         builderResult.authState = ""
+         return self
+    }
     override public var internalGetResult:GeneratedMessage {
          get {
             return builderResult
@@ -2982,6 +3022,9 @@ public extension Services.User.Containers {
       if other.hasDomain {
            domain = other.domain
       }
+      if other.hasAuthState {
+           authState = other.authState
+      }
       mergeUnknownFields(other.unknownFields)
       return self
     }
@@ -3008,6 +3051,9 @@ public extension Services.User.Containers {
 
         case 34 :
           domain = input.readString()
+
+        case 42 :
+          authState = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
