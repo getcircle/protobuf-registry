@@ -29,7 +29,7 @@ public func == (lhs: Services.User.Actions.CompleteAuthorization.ResponseV1, rhs
   fieldCheck = fieldCheck && (lhs.hasNewUser == rhs.hasNewUser) && (!lhs.hasNewUser || lhs.newUser == rhs.newUser)
   fieldCheck = fieldCheck && (lhs.hasOauthSdkDetails == rhs.hasOauthSdkDetails) && (!lhs.hasOauthSdkDetails || lhs.oauthSdkDetails == rhs.oauthSdkDetails)
   fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
-  fieldCheck = fieldCheck && (lhs.hasToken == rhs.hasToken) && (!lhs.hasToken || lhs.token == rhs.token)
+  fieldCheck = fieldCheck && (lhs.hasSamlState == rhs.hasSamlState) && (!lhs.hasSamlState || lhs.samlState == rhs.samlState)
   return (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
 }
 
@@ -588,7 +588,7 @@ public extension Services.User.Actions.CompleteAuthorization {
            case "newUser": return newUser
            case "oauthSdkDetails": return oauthSdkDetails
            case "redirectUri": return redirectUri
-           case "token": return token
+           case "samlState": return samlState
            default: return nil
            }
     }
@@ -608,8 +608,8 @@ public extension Services.User.Actions.CompleteAuthorization {
     public private(set) var hasRedirectUri:Bool = false
     public private(set) var redirectUri:String = ""
 
-    public private(set) var hasToken:Bool = false
-    public private(set) var token:String = ""
+    public private(set) var hasSamlState:Bool = false
+    public private(set) var samlState:String = ""
 
     required public init() {
          super.init()
@@ -636,8 +636,8 @@ public extension Services.User.Actions.CompleteAuthorization {
       if hasRedirectUri {
         output.writeString(6, value:redirectUri)
       }
-      if hasToken {
-        output.writeString(7, value:token)
+      if hasSamlState {
+        output.writeString(7, value:samlState)
       }
       unknownFields.writeToCodedOutputStream(output)
     }
@@ -672,8 +672,8 @@ public extension Services.User.Actions.CompleteAuthorization {
       if hasRedirectUri {
         serialize_size += redirectUri.computeStringSize(6)
       }
-      if hasToken {
-        serialize_size += token.computeStringSize(7)
+      if hasSamlState {
+        serialize_size += samlState.computeStringSize(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -740,8 +740,8 @@ public extension Services.User.Actions.CompleteAuthorization {
       if hasRedirectUri {
         output += "\(indent) redirectUri: \(redirectUri) \n"
       }
-      if hasToken {
-        output += "\(indent) token: \(token) \n"
+      if hasSamlState {
+        output += "\(indent) samlState: \(samlState) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -772,8 +772,8 @@ public extension Services.User.Actions.CompleteAuthorization {
             if hasRedirectUri {
                hashCode = (hashCode &* 31) &+ redirectUri.hashValue
             }
-            if hasToken {
-               hashCode = (hashCode &* 31) &+ token.hashValue
+            if hasSamlState {
+               hashCode = (hashCode &* 31) &+ samlState.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -968,27 +968,27 @@ public extension Services.User.Actions.CompleteAuthorization {
          builderResult.redirectUri = ""
          return self
     }
-    public var hasToken:Bool {
+    public var hasSamlState:Bool {
          get {
-              return builderResult.hasToken
+              return builderResult.hasSamlState
          }
     }
-    public var token:String {
+    public var samlState:String {
          get {
-              return builderResult.token
+              return builderResult.samlState
          }
          set (value) {
-             builderResult.hasToken = true
-             builderResult.token = value
+             builderResult.hasSamlState = true
+             builderResult.samlState = value
          }
     }
-    public func setToken(value:String)-> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
-      self.token = value
+    public func setSamlState(value:String)-> Services.User.Actions.CompleteAuthorization.ResponseV1Builder {
+      self.samlState = value
       return self
     }
-    public func clearToken() -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder{
-         builderResult.hasToken = false
-         builderResult.token = ""
+    public func clearSamlState() -> Services.User.Actions.CompleteAuthorization.ResponseV1Builder{
+         builderResult.hasSamlState = false
+         builderResult.samlState = ""
          return self
     }
     override public var internalGetResult:GeneratedMessage {
@@ -1033,8 +1033,8 @@ public extension Services.User.Actions.CompleteAuthorization {
       if other.hasRedirectUri {
            redirectUri = other.redirectUri
       }
-      if other.hasToken {
-           token = other.token
+      if other.hasSamlState {
+           samlState = other.samlState
       }
       mergeUnknownFields(other.unknownFields)
       return self
@@ -1085,7 +1085,7 @@ public extension Services.User.Actions.CompleteAuthorization {
           redirectUri = input.readString()
 
         case 58 :
-          token = input.readString()
+          samlState = input.readString()
 
         default:
           if (!parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag)) {
