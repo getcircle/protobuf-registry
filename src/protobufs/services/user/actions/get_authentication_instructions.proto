@@ -4,7 +4,6 @@ package services.user.actions.get_authentication_instructions;
 // GENERATED OPTIONS FOR: JAVA
 option java_package = "com.rhlabs.protobufs.services.user.actions.get_authentication_instructions";
 
-import "protobufs/services/user/containers.proto";
 import "protobufs/services/user/containers/token.proto";
 import "protobufs/services/user/actions/authenticate_user.proto";
 
