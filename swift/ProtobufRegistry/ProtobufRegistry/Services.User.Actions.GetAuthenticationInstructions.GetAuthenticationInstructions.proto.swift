@@ -13,7 +13,7 @@ public func == (lhs: Services.User.Actions.GetAuthenticationInstructions.Request
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
-  fieldCheck = fieldCheck && (lhs.hasClientType == rhs.hasClientType) && (!lhs.hasClientType || lhs.clientType == rhs.clientType)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationDomain == rhs.hasOrganizationDomain) && (!lhs.hasOrganizationDomain || lhs.organizationDomain == rhs.organizationDomain)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -61,8 +61,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
     public private(set) var hasRedirectUri:Bool = false
     public private(set) var redirectUri:String = ""
 
-    public private(set) var clientType:Services.User.Containers.Token.ClientTypeV1 = Services.User.Containers.Token.ClientTypeV1.Ios
-    public private(set) var hasClientType:Bool = false
+    public private(set) var hasOrganizationDomain:Bool = false
+    public private(set) var organizationDomain:String = ""
+
     required public init() {
          super.init()
     }
@@ -79,8 +80,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if hasRedirectUri {
         try output.writeString(3, value:redirectUri)
       }
-      if hasClientType {
-        try output.writeEnum(4, value:clientType.rawValue)
+      if hasOrganizationDomain {
+        try output.writeString(4, value:organizationDomain)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -100,8 +101,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if hasRedirectUri {
         serialize_size += redirectUri.computeStringSize(3)
       }
-      if (hasClientType) {
-        serialize_size += clientType.rawValue.computeEnumSize(4)
+      if hasOrganizationDomain {
+        serialize_size += organizationDomain.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -163,8 +164,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if hasRedirectUri {
         output += "\(indent) redirectUri: \(redirectUri) \n"
       }
-      if (hasClientType) {
-        output += "\(indent) clientType: \(clientType.rawValue)\n"
+      if hasOrganizationDomain {
+        output += "\(indent) organizationDomain: \(organizationDomain) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -180,8 +181,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
             if hasRedirectUri {
                hashCode = (hashCode &* 31) &+ redirectUri.hashValue
             }
-            if hasClientType {
-               hashCode = (hashCode &* 31) &+ Int(clientType.rawValue)
+            if hasOrganizationDomain {
+               hashCode = (hashCode &* 31) &+ organizationDomain.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -280,29 +281,29 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
            builderResult.redirectUri = ""
            return self
       }
-        public var hasClientType:Bool{
-            get {
-                return builderResult.hasClientType
-            }
-        }
-        public var clientType:Services.User.Containers.Token.ClientTypeV1 {
-            get {
-                return builderResult.clientType
-            }
-            set (value) {
-                builderResult.hasClientType = true
-                builderResult.clientType = value
-            }
-        }
-        public func setClientType(value:Services.User.Containers.Token.ClientTypeV1) -> Services.User.Actions.GetAuthenticationInstructions.RequestV1.Builder {
-          self.clientType = value
-          return self
-        }
-        public func clearClientType() -> Services.User.Actions.GetAuthenticationInstructions.RequestV1.Builder {
-           builderResult.hasClientType = false
-           builderResult.clientType = .Ios
+      public var hasOrganizationDomain:Bool {
+           get {
+                return builderResult.hasOrganizationDomain
+           }
+      }
+      public var organizationDomain:String {
+           get {
+                return builderResult.organizationDomain
+           }
+           set (value) {
+               builderResult.hasOrganizationDomain = true
+               builderResult.organizationDomain = value
+           }
+      }
+      public func setOrganizationDomain(value:String) -> Services.User.Actions.GetAuthenticationInstructions.RequestV1.Builder {
+        self.organizationDomain = value
+        return self
+      }
+      public func clearOrganizationDomain() -> Services.User.Actions.GetAuthenticationInstructions.RequestV1.Builder{
+           builderResult.hasOrganizationDomain = false
+           builderResult.organizationDomain = ""
            return self
-        }
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -336,8 +337,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
         if other.hasRedirectUri {
              redirectUri = other.redirectUri
         }
-        if other.hasClientType {
-             clientType = other.clientType
+        if other.hasOrganizationDomain {
+             organizationDomain = other.organizationDomain
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -363,13 +364,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
           case 26 :
             redirectUri = try input.readString()
 
-          case 32 :
-            let valueIntclientType = try input.readEnum()
-            if let enumsclientType = Services.User.Containers.Token.ClientTypeV1(rawValue:valueIntclientType){
-                 clientType = enumsclientType
-            } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntclientType))
-            }
+          case 34 :
+            organizationDomain = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
