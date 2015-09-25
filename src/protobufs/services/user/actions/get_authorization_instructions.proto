@@ -11,7 +11,7 @@ message RequestV1 {
     optional services.user.containers.IdentityV1.ProviderV1 provider = 2;
     optional string login_hint = 3;
     optional string redirect_uri = 4;
-    optional string domain = 5;
+    optional string organization_domain = 5;
 }
 
 message ResponseV1 {
