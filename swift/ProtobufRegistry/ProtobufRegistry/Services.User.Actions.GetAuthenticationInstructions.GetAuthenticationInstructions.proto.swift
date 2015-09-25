@@ -27,6 +27,7 @@ public func == (lhs: Services.User.Actions.GetAuthenticationInstructions.Respons
   fieldCheck = fieldCheck && (lhs.hasBackend == rhs.hasBackend) && (!lhs.hasBackend || lhs.backend == rhs.backend)
   fieldCheck = fieldCheck && (lhs.hasUserExists == rhs.hasUserExists) && (!lhs.hasUserExists || lhs.userExists == rhs.userExists)
   fieldCheck = fieldCheck && (lhs.hasAuthorizationUrl == rhs.hasAuthorizationUrl) && (!lhs.hasAuthorizationUrl || lhs.authorizationUrl == rhs.authorizationUrl)
+  fieldCheck = fieldCheck && (lhs.hasProviderName == rhs.hasProviderName) && (!lhs.hasProviderName || lhs.providerName == rhs.providerName)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -391,6 +392,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
     public private(set) var hasAuthorizationUrl:Bool = false
     public private(set) var authorizationUrl:String = ""
 
+    public private(set) var hasProviderName:Bool = false
+    public private(set) var providerName:String = ""
+
     required public init() {
          super.init()
     }
@@ -409,6 +413,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       }
       if hasAuthorizationUrl {
         try output.writeString(4, value:authorizationUrl)
+      }
+      if hasProviderName {
+        try output.writeString(5, value:providerName)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -430,6 +437,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       }
       if hasAuthorizationUrl {
         serialize_size += authorizationUrl.computeStringSize(4)
+      }
+      if hasProviderName {
+        serialize_size += providerName.computeStringSize(5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -494,6 +504,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if hasAuthorizationUrl {
         output += "\(indent) authorizationUrl: \(authorizationUrl) \n"
       }
+      if hasProviderName {
+        output += "\(indent) providerName: \(providerName) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -510,6 +523,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
             }
             if hasAuthorizationUrl {
                hashCode = (hashCode &* 31) &+ authorizationUrl.hashValue
+            }
+            if hasProviderName {
+               hashCode = (hashCode &* 31) &+ providerName.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -631,6 +647,29 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
            builderResult.authorizationUrl = ""
            return self
       }
+      public var hasProviderName:Bool {
+           get {
+                return builderResult.hasProviderName
+           }
+      }
+      public var providerName:String {
+           get {
+                return builderResult.providerName
+           }
+           set (value) {
+               builderResult.hasProviderName = true
+               builderResult.providerName = value
+           }
+      }
+      public func setProviderName(value:String) -> Services.User.Actions.GetAuthenticationInstructions.ResponseV1.Builder {
+        self.providerName = value
+        return self
+      }
+      public func clearProviderName() -> Services.User.Actions.GetAuthenticationInstructions.ResponseV1.Builder{
+           builderResult.hasProviderName = false
+           builderResult.providerName = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -667,6 +706,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
         if other.hasAuthorizationUrl {
              authorizationUrl = other.authorizationUrl
         }
+        if other.hasProviderName {
+             providerName = other.providerName
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -698,6 +740,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
 
           case 34 :
             authorizationUrl = try input.readString()
+
+          case 42 :
+            providerName = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/get_authentication_instructions.proto',
   package='services.user.actions.get_authentication_instructions',
   syntax='proto2',
-  serialized_pb=_b('\nEprotobufs/services/user/actions/get_authentication_instructions.proto\x12\x35services.user.actions.get_authentication_instructions\x1a.protobufs/services/user/containers/token.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\"a\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x14\n\x0credirect_uri\x18\x03 \x01(\t\x12\x1b\n\x13organization_domain\x18\x04 \x01(\t\"\xa3\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12Q\n\x07\x62\x61\x63kend\x18\x02 \x01(\x0e\x32@.services.user.actions.authenticate_user.RequestV1.AuthBackendV1\x12\x13\n\x0buser_exists\x18\x03 \x01(\x08\x12\x19\n\x11\x61uthorization_url\x18\x04 \x01(\tBL\nJcom.rhlabs.protobufs.services.user.actions.get_authentication_instructions')
+  serialized_pb=_b('\nEprotobufs/services/user/actions/get_authentication_instructions.proto\x12\x35services.user.actions.get_authentication_instructions\x1a.protobufs/services/user/containers/token.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\"a\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x14\n\x0credirect_uri\x18\x03 \x01(\t\x12\x1b\n\x13organization_domain\x18\x04 \x01(\t\"\xba\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12Q\n\x07\x62\x61\x63kend\x18\x02 \x01(\x0e\x32@.services.user.actions.authenticate_user.RequestV1.AuthBackendV1\x12\x13\n\x0buser_exists\x18\x03 \x01(\x08\x12\x19\n\x11\x61uthorization_url\x18\x04 \x01(\t\x12\x15\n\rprovider_name\x18\x05 \x01(\tBL\nJcom.rhlabs.protobufs.services.user.actions.get_authentication_instructions')
   ,
   dependencies=[protobufs_dot_services_dot_user_dot_containers_dot_token__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_authenticate__user__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -116,6 +116,13 @@ _RESPONSEV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='provider_name', full_name='services.user.actions.get_authentication_instructions.ResponseV1.provider_name', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -129,7 +136,7 @@ _RESPONSEV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=333,
-  serialized_end=496,
+  serialized_end=519,
 )
 
 _RESPONSEV1.fields_by_name['backend'].enum_type = protobufs_dot_services_dot_user_dot_actions_dot_authenticate__user__pb2._REQUESTV1_AUTHBACKENDV1

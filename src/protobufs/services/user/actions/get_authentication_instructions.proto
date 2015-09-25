@@ -19,4 +19,5 @@ message ResponseV1 {
     optional services.user.actions.authenticate_user.RequestV1.AuthBackendV1 backend = 2;
     optional bool user_exists = 3;
     optional string authorization_url = 4;
+    optional string provider_name = 5;
 }
