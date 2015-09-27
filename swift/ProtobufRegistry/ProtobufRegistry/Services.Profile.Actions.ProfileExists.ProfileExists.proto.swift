@@ -11,7 +11,7 @@ public func == (lhs: Services.Profile.Actions.ProfileExists.RequestV1, rhs: Serv
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
+  fieldCheck = fieldCheck && (lhs.hasDomain == rhs.hasDomain) && (!lhs.hasDomain || lhs.domain == rhs.domain)
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -50,8 +50,8 @@ public extension Services.Profile.Actions.ProfileExists {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var hasOrganizationId:Bool = false
-    public private(set) var organizationId:String = ""
+    public private(set) var hasDomain:Bool = false
+    public private(set) var domain:String = ""
 
     public private(set) var hasEmail:Bool = false
     public private(set) var email:String = ""
@@ -66,8 +66,8 @@ public extension Services.Profile.Actions.ProfileExists {
       if hasVersion {
         try output.writeUInt32(1, value:version)
       }
-      if hasOrganizationId {
-        try output.writeString(2, value:organizationId)
+      if hasDomain {
+        try output.writeString(2, value:domain)
       }
       if hasEmail {
         try output.writeString(3, value:email)
@@ -84,8 +84,8 @@ public extension Services.Profile.Actions.ProfileExists {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
-      if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(2)
+      if hasDomain {
+        serialize_size += domain.computeStringSize(2)
       }
       if hasEmail {
         serialize_size += email.computeStringSize(3)
@@ -144,8 +144,8 @@ public extension Services.Profile.Actions.ProfileExists {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
-      if hasOrganizationId {
-        output += "\(indent) organizationId: \(organizationId) \n"
+      if hasDomain {
+        output += "\(indent) domain: \(domain) \n"
       }
       if hasEmail {
         output += "\(indent) email: \(email) \n"
@@ -158,8 +158,8 @@ public extension Services.Profile.Actions.ProfileExists {
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
             }
-            if hasOrganizationId {
-               hashCode = (hashCode &* 31) &+ organizationId.hashValue
+            if hasDomain {
+               hashCode = (hashCode &* 31) &+ domain.hashValue
             }
             if hasEmail {
                hashCode = (hashCode &* 31) &+ email.hashValue
@@ -215,27 +215,27 @@ public extension Services.Profile.Actions.ProfileExists {
            builderResult.version = UInt32(1)
            return self
       }
-      public var hasOrganizationId:Bool {
+      public var hasDomain:Bool {
            get {
-                return builderResult.hasOrganizationId
+                return builderResult.hasDomain
            }
       }
-      public var organizationId:String {
+      public var domain:String {
            get {
-                return builderResult.organizationId
+                return builderResult.domain
            }
            set (value) {
-               builderResult.hasOrganizationId = true
-               builderResult.organizationId = value
+               builderResult.hasDomain = true
+               builderResult.domain = value
            }
       }
-      public func setOrganizationId(value:String) -> Services.Profile.Actions.ProfileExists.RequestV1.Builder {
-        self.organizationId = value
+      public func setDomain(value:String) -> Services.Profile.Actions.ProfileExists.RequestV1.Builder {
+        self.domain = value
         return self
       }
-      public func clearOrganizationId() -> Services.Profile.Actions.ProfileExists.RequestV1.Builder{
-           builderResult.hasOrganizationId = false
-           builderResult.organizationId = ""
+      public func clearDomain() -> Services.Profile.Actions.ProfileExists.RequestV1.Builder{
+           builderResult.hasDomain = false
+           builderResult.domain = ""
            return self
       }
       public var hasEmail:Bool {
@@ -288,8 +288,8 @@ public extension Services.Profile.Actions.ProfileExists {
         if other.hasVersion {
              version = other.version
         }
-        if other.hasOrganizationId {
-             organizationId = other.organizationId
+        if other.hasDomain {
+             domain = other.domain
         }
         if other.hasEmail {
              email = other.email
@@ -313,7 +313,7 @@ public extension Services.Profile.Actions.ProfileExists {
             version = try input.readUInt32()
 
           case 18 :
-            organizationId = try input.readString()
+            domain = try input.readString()
 
           case 26 :
             email = try input.readString()
