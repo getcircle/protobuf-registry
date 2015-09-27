@@ -62,6 +62,7 @@ import "protobufs/services/profile/actions/get_active_tags.proto";
 import "protobufs/services/profile/actions/bulk_create_profiles.proto";
 import "protobufs/services/profile/actions/bulk_update_profiles.proto";
 import "protobufs/services/profile/actions/remove_tags.proto";
+import "protobufs/services/profile/actions/profile_exists.proto";
 
 import "protobufs/services/search/actions/search.proto";
 
@@ -162,6 +163,7 @@ message Profile {
         optional services.profile.actions.bulk_create_profiles.ResponseV1 bulk_create_profiles = 312;
         optional services.profile.actions.bulk_update_profiles.ResponseV1 bulk_update_profiles = 313;
         optional services.profile.actions.remove_tags.ResponseV1 remove_tags = 314;
+        optional services.profile.actions.profile_exists.ResponseV1 profile_exists = 315;
     }
 }
 
