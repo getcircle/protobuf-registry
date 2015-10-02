@@ -43,6 +43,7 @@ public func == (lhs: Services.Profile.Containers.ProfileV1, rhs: Services.Profil
   fieldCheck = fieldCheck && (lhs.hasIsAdmin == rhs.hasIsAdmin) && (!lhs.hasIsAdmin || lhs.isAdmin == rhs.isAdmin)
   fieldCheck = fieldCheck && (lhs.hasSmallImageUrl == rhs.hasSmallImageUrl) && (!lhs.hasSmallImageUrl || lhs.smallImageUrl == rhs.smallImageUrl)
   fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
+  fieldCheck = fieldCheck && (lhs.hasDisplayTitle == rhs.hasDisplayTitle) && (!lhs.hasDisplayTitle || lhs.displayTitle == rhs.displayTitle)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -573,6 +574,9 @@ public extension Services.Profile.Containers {
 
     public private(set) var hasStatus:Bool = false
     public private(set) var status:Services.Profile.Containers.ProfileStatusV1!
+    public private(set) var hasDisplayTitle:Bool = false
+    public private(set) var displayTitle:String = ""
+
     required public init() {
          super.init()
     }
@@ -636,6 +640,9 @@ public extension Services.Profile.Containers {
       }
       if hasStatus {
         try output.writeMessage(19, value:status)
+      }
+      if hasDisplayTitle {
+        try output.writeString(20, value:displayTitle)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -704,6 +711,9 @@ public extension Services.Profile.Containers {
           if let varSizestatus = status?.computeMessageSize(19) {
               serialize_size += varSizestatus
           }
+      }
+      if hasDisplayTitle {
+        serialize_size += displayTitle.computeStringSize(20)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -823,6 +833,9 @@ public extension Services.Profile.Containers {
         try status?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasDisplayTitle {
+        output += "\(indent) displayTitle: \(displayTitle) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -886,6 +899,9 @@ public extension Services.Profile.Containers {
                 if let hashValuestatus = status?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuestatus
                 }
+            }
+            if hasDisplayTitle {
+               hashCode = (hashCode &* 31) &+ displayTitle.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1366,6 +1382,29 @@ public extension Services.Profile.Containers {
         builderResult.status = nil
         return self
       }
+      public var hasDisplayTitle:Bool {
+           get {
+                return builderResult.hasDisplayTitle
+           }
+      }
+      public var displayTitle:String {
+           get {
+                return builderResult.displayTitle
+           }
+           set (value) {
+               builderResult.hasDisplayTitle = true
+               builderResult.displayTitle = value
+           }
+      }
+      public func setDisplayTitle(value:String) -> Services.Profile.Containers.ProfileV1.Builder {
+        self.displayTitle = value
+        return self
+      }
+      public func clearDisplayTitle() -> Services.Profile.Containers.ProfileV1.Builder{
+           builderResult.hasDisplayTitle = false
+           builderResult.displayTitle = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1447,6 +1486,9 @@ public extension Services.Profile.Containers {
         if (other.hasStatus) {
             try mergeStatus(other.status)
         }
+        if other.hasDisplayTitle {
+             displayTitle = other.displayTitle
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -1527,6 +1569,9 @@ public extension Services.Profile.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             status = subBuilder.buildPartial()
+
+          case 162 :
+            displayTitle = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
