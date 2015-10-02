@@ -19,5 +19,5 @@ message ResponseV1 {
     }
 
     optional uint32 version = 1 [default = 1];
-    repeated ProfileTeamV1 profile_teams = 2;
+    repeated ProfileTeamV1 profiles_teams = 2;
 }
