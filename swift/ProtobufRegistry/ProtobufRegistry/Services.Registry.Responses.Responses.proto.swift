@@ -299,6 +299,11 @@ public var ServicesRegistryResponsesOrganizationgetSsoMetadata:ConcreateExtensio
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetSsoMetadataStatic
    }
 }
+public var ServicesRegistryResponsesOrganizationgetTeamsForProfileIds:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationgetTeamsForProfileIdsStatic
+   }
+}
 public var ServicesRegistryResponsesProfilecreateProfile:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilecreateProfileStatic
@@ -551,6 +556,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesOrganizationgetTeamsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationgetDescendantsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationgetSsoMetadataStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesOrganizationgetTeamsForProfileIdsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfilecreateProfileStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfilegetExtendedProfileStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfilegetProfileStatic:ConcreateExtensionField
@@ -634,6 +640,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesOrganizationgetTeamsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 219, defaultValue:Services.Organization.Actions.GetTeams.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTeams.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationgetDescendantsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 220, defaultValue:Services.Organization.Actions.GetDescendants.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetDescendants.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationgetSsoMetadataStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 221, defaultValue:Services.Organization.Actions.GetSsoMetadata.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetSsoMetadata.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesOrganizationgetTeamsForProfileIdsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 222, defaultValue:Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfilecreateProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 300, defaultValue:Services.Profile.Actions.CreateProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.CreateProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfilegetExtendedProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 301, defaultValue:Services.Profile.Actions.GetExtendedProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetExtendedProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfilegetProfileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 302, defaultValue:Services.Profile.Actions.GetProfile.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetProfile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -717,6 +724,7 @@ public extension Services.Registry.Responses {
       Services.Organization.Actions.GetTeams.GetTeamsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.GetDescendants.GetDescendantsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.GetSsoMetadata.GetSsoMetadataRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Organization.Actions.GetTeamsForProfileIds.GetTeamsForProfileIdsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.CreateProfile.CreateProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetExtendedProfile.GetExtendedProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetProfile.GetProfileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -799,6 +807,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesOrganizationgetTeamsStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationgetDescendantsStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationgetSsoMetadataStatic)
+      registry.addExtension(ServicesRegistryResponsesOrganizationgetTeamsForProfileIdsStatic)
       registry.addExtension(ServicesRegistryResponsesProfilecreateProfileStatic)
       registry.addExtension(ServicesRegistryResponsesProfilegetExtendedProfileStatic)
       registry.addExtension(ServicesRegistryResponsesProfilegetProfileStatic)
@@ -1112,6 +1121,9 @@ public extension Services.Registry.Responses {
     }
     public class func getSsoMetadata() -> ConcreateExtensionField {
          return ServicesRegistryResponsesOrganizationgetSsoMetadata
+    }
+    public class func getTeamsForProfileIds() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesOrganizationgetTeamsForProfileIds
     }
     required public init() {
          super.init()
