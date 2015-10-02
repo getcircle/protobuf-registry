@@ -23,7 +23,7 @@ public func == (lhs: Services.Organization.Actions.GetTeamsForProfileIds.Respons
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.profileTeams == rhs.profileTeams)
+  fieldCheck = fieldCheck && (lhs.profilesTeams == rhs.profilesTeams)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -712,7 +712,7 @@ public extension Services.Organization.Actions.GetTeamsForProfileIds {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var profileTeams:Array<Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.ProfileTeamV1>  = Array<Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.ProfileTeamV1>()
+    public private(set) var profilesTeams:Array<Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.ProfileTeamV1>  = Array<Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.ProfileTeamV1>()
     required public init() {
          super.init()
     }
@@ -723,8 +723,8 @@ public extension Services.Organization.Actions.GetTeamsForProfileIds {
       if hasVersion {
         try output.writeUInt32(1, value:version)
       }
-      for oneElementprofileTeams in profileTeams {
-          try output.writeMessage(2, value:oneElementprofileTeams)
+      for oneElementprofilesTeams in profilesTeams {
+          try output.writeMessage(2, value:oneElementprofilesTeams)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -738,8 +738,8 @@ public extension Services.Organization.Actions.GetTeamsForProfileIds {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
-      for oneElementprofileTeams in profileTeams {
-          serialize_size += oneElementprofileTeams.computeMessageSize(2)
+      for oneElementprofilesTeams in profilesTeams {
+          serialize_size += oneElementprofilesTeams.computeMessageSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -795,12 +795,12 @@ public extension Services.Organization.Actions.GetTeamsForProfileIds {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
-      var profileTeamsElementIndex:Int = 0
-      for oneElementprofileTeams in profileTeams {
-          output += "\(indent) profileTeams[\(profileTeamsElementIndex)] {\n"
-          try oneElementprofileTeams.writeDescriptionTo(&output, indent:"\(indent)  ")
+      var profilesTeamsElementIndex:Int = 0
+      for oneElementprofilesTeams in profilesTeams {
+          output += "\(indent) profilesTeams[\(profilesTeamsElementIndex)] {\n"
+          try oneElementprofilesTeams.writeDescriptionTo(&output, indent:"\(indent)  ")
           output += "\(indent)}\n"
-          profileTeamsElementIndex++
+          profilesTeamsElementIndex++
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -810,8 +810,8 @@ public extension Services.Organization.Actions.GetTeamsForProfileIds {
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
             }
-            for oneElementprofileTeams in profileTeams {
-                hashCode = (hashCode &* 31) &+ oneElementprofileTeams.hashValue
+            for oneElementprofilesTeams in profilesTeams {
+                hashCode = (hashCode &* 31) &+ oneElementprofilesTeams.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -864,20 +864,20 @@ public extension Services.Organization.Actions.GetTeamsForProfileIds {
            builderResult.version = UInt32(1)
            return self
       }
-      public var profileTeams:Array<Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.ProfileTeamV1> {
+      public var profilesTeams:Array<Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.ProfileTeamV1> {
            get {
-               return builderResult.profileTeams
+               return builderResult.profilesTeams
            }
            set (value) {
-               builderResult.profileTeams = value
+               builderResult.profilesTeams = value
            }
       }
-      public func setProfileTeams(value:Array<Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.ProfileTeamV1>) -> Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.Builder {
-        self.profileTeams = value
+      public func setProfilesTeams(value:Array<Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.ProfileTeamV1>) -> Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.Builder {
+        self.profilesTeams = value
         return self
       }
-      public func clearProfileTeams() -> Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.Builder {
-        builderResult.profileTeams.removeAll(keepCapacity: false)
+      public func clearProfilesTeams() -> Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.Builder {
+        builderResult.profilesTeams.removeAll(keepCapacity: false)
         return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -907,8 +907,8 @@ public extension Services.Organization.Actions.GetTeamsForProfileIds {
         if other.hasVersion {
              version = other.version
         }
-        if !other.profileTeams.isEmpty  {
-           builderResult.profileTeams += other.profileTeams
+        if !other.profilesTeams.isEmpty  {
+           builderResult.profilesTeams += other.profilesTeams
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -931,7 +931,7 @@ public extension Services.Organization.Actions.GetTeamsForProfileIds {
           case 18 :
             let subBuilder = Services.Organization.Actions.GetTeamsForProfileIds.ResponseV1.ProfileTeamV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            profileTeams += [subBuilder.buildPartial()]
+            profilesTeams += [subBuilder.buildPartial()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
