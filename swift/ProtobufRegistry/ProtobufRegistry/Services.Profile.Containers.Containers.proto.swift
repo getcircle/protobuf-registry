@@ -56,6 +56,7 @@ public func == (lhs: Services.Profile.Containers.ProfileStatusV1, rhs: Services.
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasValue == rhs.hasValue) && (!lhs.hasValue || lhs.value == rhs.value)
   fieldCheck = fieldCheck && (lhs.hasCreated == rhs.hasCreated) && (!lhs.hasCreated || lhs.created == rhs.created)
+  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1595,6 +1596,9 @@ public extension Services.Profile.Containers {
     public private(set) var hasCreated:Bool = false
     public private(set) var created:String = ""
 
+    public private(set) var hasId:Bool = false
+    public private(set) var id:String = ""
+
     required public init() {
          super.init()
     }
@@ -1610,6 +1614,9 @@ public extension Services.Profile.Containers {
       }
       if hasCreated {
         try output.writeString(3, value:created)
+      }
+      if hasId {
+        try output.writeString(4, value:id)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1628,6 +1635,9 @@ public extension Services.Profile.Containers {
       }
       if hasCreated {
         serialize_size += created.computeStringSize(3)
+      }
+      if hasId {
+        serialize_size += id.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1689,6 +1699,9 @@ public extension Services.Profile.Containers {
       if hasCreated {
         output += "\(indent) created: \(created) \n"
       }
+      if hasId {
+        output += "\(indent) id: \(id) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1702,6 +1715,9 @@ public extension Services.Profile.Containers {
             }
             if hasCreated {
                hashCode = (hashCode &* 31) &+ created.hashValue
+            }
+            if hasId {
+               hashCode = (hashCode &* 31) &+ id.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1800,6 +1816,29 @@ public extension Services.Profile.Containers {
            builderResult.created = ""
            return self
       }
+      public var hasId:Bool {
+           get {
+                return builderResult.hasId
+           }
+      }
+      public var id:String {
+           get {
+                return builderResult.id
+           }
+           set (value) {
+               builderResult.hasId = true
+               builderResult.id = value
+           }
+      }
+      public func setId(value:String) -> Services.Profile.Containers.ProfileStatusV1.Builder {
+        self.id = value
+        return self
+      }
+      public func clearId() -> Services.Profile.Containers.ProfileStatusV1.Builder{
+           builderResult.hasId = false
+           builderResult.id = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1833,6 +1872,9 @@ public extension Services.Profile.Containers {
         if other.hasCreated {
              created = other.created
         }
+        if other.hasId {
+             id = other.id
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -1856,6 +1898,9 @@ public extension Services.Profile.Containers {
 
           case 26 :
             created = try input.readString()
+
+          case 34 :
+            id = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
