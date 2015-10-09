@@ -83,6 +83,7 @@ public func == (lhs: Services.Organization.Containers.TeamStatusV1, rhs: Service
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
   fieldCheck = fieldCheck && (lhs.hasByProfile == rhs.hasByProfile) && (!lhs.hasByProfile || lhs.byProfile == rhs.byProfile)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
+  fieldCheck = fieldCheck && (lhs.hasChanged == rhs.hasChanged) && (!lhs.hasChanged || lhs.changed == rhs.changed)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -2592,6 +2593,9 @@ public extension Services.Organization.Containers {
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
+    public private(set) var hasChanged:Bool = false
+    public private(set) var changed:String = ""
+
     required public init() {
          super.init()
     }
@@ -2616,6 +2620,9 @@ public extension Services.Organization.Containers {
       }
       if hasId {
         try output.writeString(6, value:id)
+      }
+      if hasChanged {
+        try output.writeString(7, value:changed)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -2645,6 +2652,9 @@ public extension Services.Organization.Containers {
       }
       if hasId {
         serialize_size += id.computeStringSize(6)
+      }
+      if hasChanged {
+        serialize_size += changed.computeStringSize(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2717,6 +2727,9 @@ public extension Services.Organization.Containers {
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
+      if hasChanged {
+        output += "\(indent) changed: \(changed) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2741,6 +2754,9 @@ public extension Services.Organization.Containers {
             }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
+            }
+            if hasChanged {
+               hashCode = (hashCode &* 31) &+ changed.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2936,6 +2952,29 @@ public extension Services.Organization.Containers {
            builderResult.id = ""
            return self
       }
+      public var hasChanged:Bool {
+           get {
+                return builderResult.hasChanged
+           }
+      }
+      public var changed:String {
+           get {
+                return builderResult.changed
+           }
+           set (value) {
+               builderResult.hasChanged = true
+               builderResult.changed = value
+           }
+      }
+      public func setChanged(value:String) -> Services.Organization.Containers.TeamStatusV1.Builder {
+        self.changed = value
+        return self
+      }
+      public func clearChanged() -> Services.Organization.Containers.TeamStatusV1.Builder{
+           builderResult.hasChanged = false
+           builderResult.changed = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -2978,6 +3017,9 @@ public extension Services.Organization.Containers {
         if other.hasId {
              id = other.id
         }
+        if other.hasChanged {
+             changed = other.changed
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -3015,6 +3057,9 @@ public extension Services.Organization.Containers {
 
           case 50 :
             id = try input.readString()
+
+          case 58 :
+            changed = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
