@@ -82,6 +82,7 @@ public func == (lhs: Services.Organization.Containers.TeamStatusV1, rhs: Service
   fieldCheck = fieldCheck && (lhs.hasCreated == rhs.hasCreated) && (!lhs.hasCreated || lhs.created == rhs.created)
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
   fieldCheck = fieldCheck && (lhs.hasByProfile == rhs.hasByProfile) && (!lhs.hasByProfile || lhs.byProfile == rhs.byProfile)
+  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -2588,6 +2589,9 @@ public extension Services.Organization.Containers {
 
     public private(set) var hasByProfile:Bool = false
     public private(set) var byProfile:Services.Profile.Containers.ProfileV1!
+    public private(set) var hasId:Bool = false
+    public private(set) var id:String = ""
+
     required public init() {
          super.init()
     }
@@ -2609,6 +2613,9 @@ public extension Services.Organization.Containers {
       }
       if hasByProfile {
         try output.writeMessage(5, value:byProfile)
+      }
+      if hasId {
+        try output.writeString(6, value:id)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -2635,6 +2642,9 @@ public extension Services.Organization.Containers {
           if let varSizebyProfile = byProfile?.computeMessageSize(5) {
               serialize_size += varSizebyProfile
           }
+      }
+      if hasId {
+        serialize_size += id.computeStringSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2704,6 +2714,9 @@ public extension Services.Organization.Containers {
         try byProfile?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasId {
+        output += "\(indent) id: \(id) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2725,6 +2738,9 @@ public extension Services.Organization.Containers {
                 if let hashValuebyProfile = byProfile?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuebyProfile
                 }
+            }
+            if hasId {
+               hashCode = (hashCode &* 31) &+ id.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2897,6 +2913,29 @@ public extension Services.Organization.Containers {
         builderResult.byProfile = nil
         return self
       }
+      public var hasId:Bool {
+           get {
+                return builderResult.hasId
+           }
+      }
+      public var id:String {
+           get {
+                return builderResult.id
+           }
+           set (value) {
+               builderResult.hasId = true
+               builderResult.id = value
+           }
+      }
+      public func setId(value:String) -> Services.Organization.Containers.TeamStatusV1.Builder {
+        self.id = value
+        return self
+      }
+      public func clearId() -> Services.Organization.Containers.TeamStatusV1.Builder{
+           builderResult.hasId = false
+           builderResult.id = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -2936,6 +2975,9 @@ public extension Services.Organization.Containers {
         if (other.hasByProfile) {
             try mergeByProfile(other.byProfile)
         }
+        if other.hasId {
+             id = other.id
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -2970,6 +3012,9 @@ public extension Services.Organization.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             byProfile = subBuilder.buildPartial()
+
+          case 50 :
+            id = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
