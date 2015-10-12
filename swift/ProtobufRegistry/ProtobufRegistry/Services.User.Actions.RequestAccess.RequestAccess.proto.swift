@@ -12,6 +12,7 @@ public func == (lhs: Services.User.Actions.RequestAccess.RequestV1, rhs: Service
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
+  fieldCheck = fieldCheck && (lhs.hasUserInfo == rhs.hasUserInfo) && (!lhs.hasUserInfo || lhs.userInfo == rhs.userInfo)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -53,6 +54,9 @@ public extension Services.User.Actions.RequestAccess {
     public private(set) var hasUserId:Bool = false
     public private(set) var userId:String = ""
 
+    public private(set) var hasUserInfo:Bool = false
+    public private(set) var userInfo:String = ""
+
     required public init() {
          super.init()
     }
@@ -65,6 +69,9 @@ public extension Services.User.Actions.RequestAccess {
       }
       if hasUserId {
         try output.writeString(2, value:userId)
+      }
+      if hasUserInfo {
+        try output.writeString(3, value:userInfo)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -80,6 +87,9 @@ public extension Services.User.Actions.RequestAccess {
       }
       if hasUserId {
         serialize_size += userId.computeStringSize(2)
+      }
+      if hasUserInfo {
+        serialize_size += userInfo.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -138,6 +148,9 @@ public extension Services.User.Actions.RequestAccess {
       if hasUserId {
         output += "\(indent) userId: \(userId) \n"
       }
+      if hasUserInfo {
+        output += "\(indent) userInfo: \(userInfo) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -148,6 +161,9 @@ public extension Services.User.Actions.RequestAccess {
             }
             if hasUserId {
                hashCode = (hashCode &* 31) &+ userId.hashValue
+            }
+            if hasUserInfo {
+               hashCode = (hashCode &* 31) &+ userInfo.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -223,6 +239,29 @@ public extension Services.User.Actions.RequestAccess {
            builderResult.userId = ""
            return self
       }
+      public var hasUserInfo:Bool {
+           get {
+                return builderResult.hasUserInfo
+           }
+      }
+      public var userInfo:String {
+           get {
+                return builderResult.userInfo
+           }
+           set (value) {
+               builderResult.hasUserInfo = true
+               builderResult.userInfo = value
+           }
+      }
+      public func setUserInfo(value:String) -> Services.User.Actions.RequestAccess.RequestV1.Builder {
+        self.userInfo = value
+        return self
+      }
+      public func clearUserInfo() -> Services.User.Actions.RequestAccess.RequestV1.Builder{
+           builderResult.hasUserInfo = false
+           builderResult.userInfo = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -253,6 +292,9 @@ public extension Services.User.Actions.RequestAccess {
         if other.hasUserId {
              userId = other.userId
         }
+        if other.hasUserInfo {
+             userInfo = other.userInfo
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -273,6 +315,9 @@ public extension Services.User.Actions.RequestAccess {
 
           case 18 :
             userId = try input.readString()
+
+          case 26 :
+            userInfo = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/request_access.proto',
   package='services.user.actions.request_access',
   syntax='proto2',
-  serialized_pb=_b('\n4protobufs/services/user/actions/request_access.proto\x12$services.user.actions.request_access\x1a(protobufs/services/user/containers.proto\"0\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07user_id\x18\x02 \x01(\t\"c\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x41\n\x0e\x61\x63\x63\x65ss_request\x18\x02 \x01(\x0b\x32).services.user.containers.AccessRequestV1B;\n9com.rhlabs.protobufs.services.user.actions.request_access')
+  serialized_pb=_b('\n4protobufs/services/user/actions/request_access.proto\x12$services.user.actions.request_access\x1a(protobufs/services/user/containers.proto\"C\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12\x11\n\tuser_info\x18\x03 \x01(\t\"c\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x41\n\x0e\x61\x63\x63\x65ss_request\x18\x02 \x01(\x0b\x32).services.user.containers.AccessRequestV1B;\n9com.rhlabs.protobufs.services.user.actions.request_access')
   ,
   dependencies=[protobufs_dot_services_dot_user_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -49,6 +49,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='user_info', full_name='services.user.actions.request_access.RequestV1.user_info', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -62,7 +69,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=136,
-  serialized_end=184,
+  serialized_end=203,
 )
 
 
@@ -99,8 +106,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=186,
-  serialized_end=285,
+  serialized_start=205,
+  serialized_end=304,
 )
 
 _RESPONSEV1.fields_by_name['access_request'].message_type = protobufs_dot_services_dot_user_dot_containers__pb2._ACCESSREQUESTV1
