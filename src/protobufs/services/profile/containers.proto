@@ -54,6 +54,7 @@ message ProfileStatusV1 {
     optional string created = 3;
     optional string id = 4;
     optional string changed = 5;
+    optional ProfileV1 profile = 6;
 }
 
 message ProfileItemV1 {
