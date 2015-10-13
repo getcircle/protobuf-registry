@@ -44,6 +44,7 @@ public func == (lhs: Services.Profile.Containers.ProfileV1, rhs: Services.Profil
   fieldCheck = fieldCheck && (lhs.hasSmallImageUrl == rhs.hasSmallImageUrl) && (!lhs.hasSmallImageUrl || lhs.smallImageUrl == rhs.smallImageUrl)
   fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
   fieldCheck = fieldCheck && (lhs.hasDisplayTitle == rhs.hasDisplayTitle) && (!lhs.hasDisplayTitle || lhs.displayTitle == rhs.displayTitle)
+  fieldCheck = fieldCheck && (lhs.hasAuthenticationIdentifier == rhs.hasAuthenticationIdentifier) && (!lhs.hasAuthenticationIdentifier || lhs.authenticationIdentifier == rhs.authenticationIdentifier)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -579,6 +580,9 @@ public extension Services.Profile.Containers {
     public private(set) var hasDisplayTitle:Bool = false
     public private(set) var displayTitle:String = ""
 
+    public private(set) var hasAuthenticationIdentifier:Bool = false
+    public private(set) var authenticationIdentifier:String = ""
+
     required public init() {
          super.init()
     }
@@ -645,6 +649,9 @@ public extension Services.Profile.Containers {
       }
       if hasDisplayTitle {
         try output.writeString(20, value:displayTitle)
+      }
+      if hasAuthenticationIdentifier {
+        try output.writeString(21, value:authenticationIdentifier)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -716,6 +723,9 @@ public extension Services.Profile.Containers {
       }
       if hasDisplayTitle {
         serialize_size += displayTitle.computeStringSize(20)
+      }
+      if hasAuthenticationIdentifier {
+        serialize_size += authenticationIdentifier.computeStringSize(21)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -838,6 +848,9 @@ public extension Services.Profile.Containers {
       if hasDisplayTitle {
         output += "\(indent) displayTitle: \(displayTitle) \n"
       }
+      if hasAuthenticationIdentifier {
+        output += "\(indent) authenticationIdentifier: \(authenticationIdentifier) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -904,6 +917,9 @@ public extension Services.Profile.Containers {
             }
             if hasDisplayTitle {
                hashCode = (hashCode &* 31) &+ displayTitle.hashValue
+            }
+            if hasAuthenticationIdentifier {
+               hashCode = (hashCode &* 31) &+ authenticationIdentifier.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1407,6 +1423,29 @@ public extension Services.Profile.Containers {
            builderResult.displayTitle = ""
            return self
       }
+      public var hasAuthenticationIdentifier:Bool {
+           get {
+                return builderResult.hasAuthenticationIdentifier
+           }
+      }
+      public var authenticationIdentifier:String {
+           get {
+                return builderResult.authenticationIdentifier
+           }
+           set (value) {
+               builderResult.hasAuthenticationIdentifier = true
+               builderResult.authenticationIdentifier = value
+           }
+      }
+      public func setAuthenticationIdentifier(value:String) -> Services.Profile.Containers.ProfileV1.Builder {
+        self.authenticationIdentifier = value
+        return self
+      }
+      public func clearAuthenticationIdentifier() -> Services.Profile.Containers.ProfileV1.Builder{
+           builderResult.hasAuthenticationIdentifier = false
+           builderResult.authenticationIdentifier = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1491,6 +1530,9 @@ public extension Services.Profile.Containers {
         if other.hasDisplayTitle {
              displayTitle = other.displayTitle
         }
+        if other.hasAuthenticationIdentifier {
+             authenticationIdentifier = other.authenticationIdentifier
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -1574,6 +1616,9 @@ public extension Services.Profile.Containers {
 
           case 162 :
             displayTitle = try input.readString()
+
+          case 170 :
+            authenticationIdentifier = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
