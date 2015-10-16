@@ -504,6 +504,11 @@ public var ServicesRegistryResponsesNotificationsendNotification:ConcreateExtens
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNotificationsendNotificationStatic
    }
 }
+public var ServicesRegistryResponsesNotificationnoSearchResults:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesNotificationnoSearchResultsStatic
+   }
+}
 public var ServicesRegistryResponsesHistoryrecordAction:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesHistoryrecordActionStatic
@@ -602,6 +607,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesNotificationgetPreferencesStatic:ConcreateExtensionField
     var ServicesRegistryResponsesNotificationupdatePreferenceStatic:ConcreateExtensionField
     var ServicesRegistryResponsesNotificationsendNotificationStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesNotificationnoSearchResultsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesHistoryrecordActionStatic:ConcreateExtensionField
     var ServicesRegistryResponsesPaymentstoreTokenStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
@@ -687,6 +693,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesNotificationgetPreferencesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1301, defaultValue:Services.Notification.Actions.GetPreferences.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.GetPreferences.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesNotificationupdatePreferenceStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1302, defaultValue:Services.Notification.Actions.UpdatePreference.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.UpdatePreference.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesNotificationsendNotificationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1303, defaultValue:Services.Notification.Actions.SendNotification.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.SendNotification.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesNotificationnoSearchResultsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1304, defaultValue:Services.Notification.Actions.NoSearchResults.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.NoSearchResults.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesHistoryrecordActionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1400, defaultValue:Services.History.Actions.RecordAction.ResponseV1(), messageOrGroupClass:Services.History.Actions.RecordAction.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesPaymentstoreTokenStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1500, defaultValue:Services.Payment.Actions.StoreToken.ResponseV1(), messageOrGroupClass:Services.Payment.Actions.StoreToken.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
@@ -772,6 +779,7 @@ public extension Services.Registry.Responses {
       Services.Notification.Actions.GetPreferences.GetPreferencesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Notification.Actions.UpdatePreference.UpdatePreferenceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Notification.Actions.SendNotification.SendNotificationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Notification.Actions.NoSearchResults.NoSearchResultsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.History.Actions.RecordAction.RecordActionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Payment.Actions.StoreToken.StoreTokenRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
@@ -856,6 +864,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesNotificationgetPreferencesStatic)
       registry.addExtension(ServicesRegistryResponsesNotificationupdatePreferenceStatic)
       registry.addExtension(ServicesRegistryResponsesNotificationsendNotificationStatic)
+      registry.addExtension(ServicesRegistryResponsesNotificationnoSearchResultsStatic)
       registry.addExtension(ServicesRegistryResponsesHistoryrecordActionStatic)
       registry.addExtension(ServicesRegistryResponsesPaymentstoreTokenStatic)
     }
@@ -2317,6 +2326,9 @@ public extension Services.Registry.Responses {
     }
     public class func sendNotification() -> ConcreateExtensionField {
          return ServicesRegistryResponsesNotificationsendNotification
+    }
+    public class func noSearchResults() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesNotificationnoSearchResults
     }
     required public init() {
          super.init()

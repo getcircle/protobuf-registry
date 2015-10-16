@@ -1,0 +1,16 @@
+syntax = "proto2";
+package services.notification.actions.no_search_results;
+
+import "protobufs/services/user/containers/token.proto";
+
+message RequestV1 {
+    optional uint32 version = 1 [default = 1];
+    optional string profile_id = 2;
+    optional services.user.containers.token.ClientTypeV1 client_type = 3;
+    optional string query = 4;
+    optional string comment = 5;
+}
+
+message ResponseV1 {
+    optional uint32 version = 1 [default = 1];
+}

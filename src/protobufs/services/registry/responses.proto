@@ -94,6 +94,7 @@ import "protobufs/services/notification/actions/register_device.proto";
 import "protobufs/services/notification/actions/get_preferences.proto";
 import "protobufs/services/notification/actions/update_preference.proto";
 import "protobufs/services/notification/actions/send_notification.proto";
+import "protobufs/services/notification/actions/no_search_results.proto";
 
 import "protobufs/services/history/actions/record_action.proto";
 
@@ -221,6 +222,7 @@ message Notification {
         optional services.notification.actions.get_preferences.ResponseV1 get_preferences = 1301;
         optional services.notification.actions.update_preference.ResponseV1 update_preference = 1302;
         optional services.notification.actions.send_notification.ResponseV1 send_notification = 1303;
+        optional services.notification.actions.no_search_results.ResponseV1 no_search_results = 1304;
     }
 }
 
