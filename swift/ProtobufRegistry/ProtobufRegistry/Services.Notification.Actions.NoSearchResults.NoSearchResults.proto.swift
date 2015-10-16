@@ -11,7 +11,6 @@ public func == (lhs: Services.Notification.Actions.NoSearchResults.RequestV1, rh
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = fieldCheck && (lhs.hasClientType == rhs.hasClientType) && (!lhs.hasClientType || lhs.clientType == rhs.clientType)
   fieldCheck = fieldCheck && (lhs.hasQuery == rhs.hasQuery) && (!lhs.hasQuery || lhs.query == rhs.query)
   fieldCheck = fieldCheck && (lhs.hasComment == rhs.hasComment) && (!lhs.hasComment || lhs.comment == rhs.comment)
@@ -52,9 +51,6 @@ public extension Services.Notification.Actions.NoSearchResults {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var hasProfileId:Bool = false
-    public private(set) var profileId:String = ""
-
     public private(set) var clientType:Services.User.Containers.Token.ClientTypeV1 = Services.User.Containers.Token.ClientTypeV1.Ios
     public private(set) var hasClientType:Bool = false
     public private(set) var hasQuery:Bool = false
@@ -73,17 +69,14 @@ public extension Services.Notification.Actions.NoSearchResults {
       if hasVersion {
         try output.writeUInt32(1, value:version)
       }
-      if hasProfileId {
-        try output.writeString(2, value:profileId)
-      }
       if hasClientType {
-        try output.writeEnum(3, value:clientType.rawValue)
+        try output.writeEnum(2, value:clientType.rawValue)
       }
       if hasQuery {
-        try output.writeString(4, value:query)
+        try output.writeString(3, value:query)
       }
       if hasComment {
-        try output.writeString(5, value:comment)
+        try output.writeString(4, value:comment)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -97,17 +90,14 @@ public extension Services.Notification.Actions.NoSearchResults {
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
       }
-      if hasProfileId {
-        serialize_size += profileId.computeStringSize(2)
-      }
       if (hasClientType) {
-        serialize_size += clientType.rawValue.computeEnumSize(3)
+        serialize_size += clientType.rawValue.computeEnumSize(2)
       }
       if hasQuery {
-        serialize_size += query.computeStringSize(4)
+        serialize_size += query.computeStringSize(3)
       }
       if hasComment {
-        serialize_size += comment.computeStringSize(5)
+        serialize_size += comment.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -163,9 +153,6 @@ public extension Services.Notification.Actions.NoSearchResults {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
-      if hasProfileId {
-        output += "\(indent) profileId: \(profileId) \n"
-      }
       if (hasClientType) {
         output += "\(indent) clientType: \(clientType.rawValue)\n"
       }
@@ -182,9 +169,6 @@ public extension Services.Notification.Actions.NoSearchResults {
             var hashCode:Int = 7
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            if hasProfileId {
-               hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
             if hasClientType {
                hashCode = (hashCode &* 31) &+ Int(clientType.rawValue)
@@ -244,29 +228,6 @@ public extension Services.Notification.Actions.NoSearchResults {
       public func clearVersion() -> Services.Notification.Actions.NoSearchResults.RequestV1.Builder{
            builderResult.hasVersion = false
            builderResult.version = UInt32(1)
-           return self
-      }
-      public var hasProfileId:Bool {
-           get {
-                return builderResult.hasProfileId
-           }
-      }
-      public var profileId:String {
-           get {
-                return builderResult.profileId
-           }
-           set (value) {
-               builderResult.hasProfileId = true
-               builderResult.profileId = value
-           }
-      }
-      public func setProfileId(value:String) -> Services.Notification.Actions.NoSearchResults.RequestV1.Builder {
-        self.profileId = value
-        return self
-      }
-      public func clearProfileId() -> Services.Notification.Actions.NoSearchResults.RequestV1.Builder{
-           builderResult.hasProfileId = false
-           builderResult.profileId = ""
            return self
       }
         public var hasClientType:Bool{
@@ -365,9 +326,6 @@ public extension Services.Notification.Actions.NoSearchResults {
         if other.hasVersion {
              version = other.version
         }
-        if other.hasProfileId {
-             profileId = other.profileId
-        }
         if other.hasClientType {
              clientType = other.clientType
         }
@@ -395,21 +353,18 @@ public extension Services.Notification.Actions.NoSearchResults {
           case 8 :
             version = try input.readUInt32()
 
-          case 18 :
-            profileId = try input.readString()
-
-          case 24 :
+          case 16 :
             let valueIntclientType = try input.readEnum()
             if let enumsclientType = Services.User.Containers.Token.ClientTypeV1(rawValue:valueIntclientType){
                  clientType = enumsclientType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntclientType))
+                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntclientType))
             }
 
-          case 34 :
+          case 26 :
             query = try input.readString()
 
-          case 42 :
+          case 34 :
             comment = try input.readString()
 
           default:
