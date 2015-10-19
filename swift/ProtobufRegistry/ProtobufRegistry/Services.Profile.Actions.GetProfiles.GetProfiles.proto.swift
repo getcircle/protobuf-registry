@@ -19,6 +19,7 @@ public func == (lhs: Services.Profile.Actions.GetProfiles.RequestV1, rhs: Servic
   fieldCheck = fieldCheck && (lhs.hasManagerId == rhs.hasManagerId) && (!lhs.hasManagerId || lhs.managerId == rhs.managerId)
   fieldCheck = fieldCheck && (lhs.emails == rhs.emails)
   fieldCheck = fieldCheck && (lhs.hasIsAdmin == rhs.hasIsAdmin) && (!lhs.hasIsAdmin || lhs.isAdmin == rhs.isAdmin)
+  fieldCheck = fieldCheck && (lhs.authenticationIdentifiers == rhs.authenticationIdentifiers)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -77,6 +78,7 @@ public extension Services.Profile.Actions.GetProfiles {
     public private(set) var hasIsAdmin:Bool = false
     public private(set) var isAdmin:Bool = false
 
+    public private(set) var authenticationIdentifiers:Array<String> = Array<String>()
     required public init() {
          super.init()
     }
@@ -114,6 +116,11 @@ public extension Services.Profile.Actions.GetProfiles {
       }
       if hasIsAdmin {
         try output.writeBool(9, value:isAdmin)
+      }
+      if !authenticationIdentifiers.isEmpty {
+        for oneValueauthenticationIdentifiers in authenticationIdentifiers {
+          try output.writeString(10, value:oneValueauthenticationIdentifiers)
+        }
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -159,6 +166,12 @@ public extension Services.Profile.Actions.GetProfiles {
       if hasIsAdmin {
         serialize_size += isAdmin.computeBoolSize(9)
       }
+      var dataSizeAuthenticationIdentifiers:Int32 = 0
+      for oneValueauthenticationIdentifiers in authenticationIdentifiers {
+          dataSizeAuthenticationIdentifiers += oneValueauthenticationIdentifiers.computeStringSizeNoTag()
+      }
+      serialize_size += dataSizeAuthenticationIdentifiers
+      serialize_size += 1 * Int32(authenticationIdentifiers.count)
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -243,6 +256,11 @@ public extension Services.Profile.Actions.GetProfiles {
       if hasIsAdmin {
         output += "\(indent) isAdmin: \(isAdmin) \n"
       }
+      var authenticationIdentifiersElementIndex:Int = 0
+      for oneValueauthenticationIdentifiers in authenticationIdentifiers  {
+          output += "\(indent) authenticationIdentifiers[\(authenticationIdentifiersElementIndex)]: \(oneValueauthenticationIdentifiers)\n"
+          authenticationIdentifiersElementIndex++
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -276,6 +294,9 @@ public extension Services.Profile.Actions.GetProfiles {
             }
             if hasIsAdmin {
                hashCode = (hashCode &* 31) &+ isAdmin.hashValue
+            }
+            for oneValueauthenticationIdentifiers in authenticationIdentifiers {
+                hashCode = (hashCode &* 31) &+ oneValueauthenticationIdentifiers.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -526,6 +547,22 @@ public extension Services.Profile.Actions.GetProfiles {
            builderResult.isAdmin = false
            return self
       }
+      public var authenticationIdentifiers:Array<String> {
+           get {
+               return builderResult.authenticationIdentifiers
+           }
+           set (array) {
+               builderResult.authenticationIdentifiers = array
+           }
+      }
+      public func setAuthenticationIdentifiers(value:Array<String>) -> Services.Profile.Actions.GetProfiles.RequestV1.Builder {
+        self.authenticationIdentifiers = value
+        return self
+      }
+      public func clearAuthenticationIdentifiers() -> Services.Profile.Actions.GetProfiles.RequestV1.Builder {
+         builderResult.authenticationIdentifiers.removeAll(keepCapacity: false)
+         return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -577,6 +614,9 @@ public extension Services.Profile.Actions.GetProfiles {
         if other.hasIsAdmin {
              isAdmin = other.isAdmin
         }
+        if !other.authenticationIdentifiers.isEmpty {
+            builderResult.authenticationIdentifiers += other.authenticationIdentifiers
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -623,6 +663,9 @@ public extension Services.Profile.Actions.GetProfiles {
 
           case 72 :
             isAdmin = try input.readBool()
+
+          case 82 :
+            authenticationIdentifiers += [try input.readString()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

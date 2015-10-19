@@ -12,6 +12,7 @@ message RequestV1 {
     optional string profile_id = 2;
     optional services.common.containers.InflationsV1 inflations = 3;
     optional string email = 4;
+    optional string authentication_identifier = 5;
 }
 
 message ResponseV1 {
