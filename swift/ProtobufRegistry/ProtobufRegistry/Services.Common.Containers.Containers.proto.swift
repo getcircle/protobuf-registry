@@ -64,6 +64,7 @@ public func == (lhs: Services.Common.Containers.InflationsV1, rhs: Services.Comm
   fieldCheck = fieldCheck && (lhs.hasEnabled == rhs.hasEnabled) && (!lhs.hasEnabled || lhs.enabled == rhs.enabled)
   fieldCheck = fieldCheck && (lhs.only == rhs.only)
   fieldCheck = fieldCheck && (lhs.exclude == rhs.exclude)
+  fieldCheck = fieldCheck && (lhs.hasDisabled == rhs.hasDisabled) && (!lhs.hasDisabled || lhs.disabled == rhs.disabled)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1367,6 +1368,9 @@ public extension Services.Common.Containers {
 
     public private(set) var only:Array<String> = Array<String>()
     public private(set) var exclude:Array<String> = Array<String>()
+    public private(set) var hasDisabled:Bool = false
+    public private(set) var disabled:Bool = false
+
     required public init() {
          super.init()
     }
@@ -1389,6 +1393,9 @@ public extension Services.Common.Containers {
         for oneValueexclude in exclude {
           try output.writeString(4, value:oneValueexclude)
         }
+      }
+      if hasDisabled {
+        try output.writeBool(5, value:disabled)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1417,6 +1424,9 @@ public extension Services.Common.Containers {
       }
       serialize_size += dataSizeExclude
       serialize_size += 1 * Int32(exclude.count)
+      if hasDisabled {
+        serialize_size += disabled.computeBoolSize(5)
+      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -1484,6 +1494,9 @@ public extension Services.Common.Containers {
           output += "\(indent) exclude[\(excludeElementIndex)]: \(oneValueexclude)\n"
           excludeElementIndex++
       }
+      if hasDisabled {
+        output += "\(indent) disabled: \(disabled) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1500,6 +1513,9 @@ public extension Services.Common.Containers {
             }
             for oneValueexclude in exclude {
                 hashCode = (hashCode &* 31) &+ oneValueexclude.hashValue
+            }
+            if hasDisabled {
+               hashCode = (hashCode &* 31) &+ disabled.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1607,6 +1623,29 @@ public extension Services.Common.Containers {
          builderResult.exclude.removeAll(keepCapacity: false)
          return self
       }
+      public var hasDisabled:Bool {
+           get {
+                return builderResult.hasDisabled
+           }
+      }
+      public var disabled:Bool {
+           get {
+                return builderResult.disabled
+           }
+           set (value) {
+               builderResult.hasDisabled = true
+               builderResult.disabled = value
+           }
+      }
+      public func setDisabled(value:Bool) -> Services.Common.Containers.InflationsV1.Builder {
+        self.disabled = value
+        return self
+      }
+      public func clearDisabled() -> Services.Common.Containers.InflationsV1.Builder{
+           builderResult.hasDisabled = false
+           builderResult.disabled = false
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1643,6 +1682,9 @@ public extension Services.Common.Containers {
         if !other.exclude.isEmpty {
             builderResult.exclude += other.exclude
         }
+        if other.hasDisabled {
+             disabled = other.disabled
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -1669,6 +1711,9 @@ public extension Services.Common.Containers {
 
           case 34 :
             exclude += [try input.readString()]
+
+          case 40 :
+            disabled = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

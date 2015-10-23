@@ -38,6 +38,7 @@ message InflationsV1 {
     optional bool enabled = 2 [default = true];
     repeated string only = 3;
     repeated string exclude = 4;
+    optional bool disabled = 5;
 }
 
 message FieldsV1 {

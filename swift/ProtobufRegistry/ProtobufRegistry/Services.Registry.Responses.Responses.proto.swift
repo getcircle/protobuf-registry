@@ -104,6 +104,15 @@ public func == (lhs: Services.Registry.Responses.Payment, rhs: Services.Registry
   return fieldCheck
 }
 
+public func == (lhs: Services.Registry.Responses.Post, rhs: Services.Registry.Responses.Post) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
 public var ServicesRegistryResponsesUsercreateUser:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsercreateUserStatic
@@ -519,6 +528,31 @@ public var ServicesRegistryResponsesPaymentstoreToken:ConcreateExtensionField {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPaymentstoreTokenStatic
    }
 }
+public var ServicesRegistryResponsesPostcreatePost:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPostcreatePostStatic
+   }
+}
+public var ServicesRegistryResponsesPostupdatePost:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPostupdatePostStatic
+   }
+}
+public var ServicesRegistryResponsesPostgetPost:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPostgetPostStatic
+   }
+}
+public var ServicesRegistryResponsesPostgetPosts:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPostgetPostsStatic
+   }
+}
+public var ServicesRegistryResponsesPostdeletePost:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPostdeletePostStatic
+   }
+}
 public extension Services.Registry.Responses {
   public struct ResponsesRoot {
     public static var sharedInstance : ResponsesRoot {
@@ -610,6 +644,11 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesNotificationnoSearchResultsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesHistoryrecordActionStatic:ConcreateExtensionField
     var ServicesRegistryResponsesPaymentstoreTokenStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesPostcreatePostStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesPostupdatePostStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesPostgetPostStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesPostgetPostsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesPostdeletePostStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -696,6 +735,11 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesNotificationnoSearchResultsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1304, defaultValue:Services.Notification.Actions.NoSearchResults.ResponseV1(), messageOrGroupClass:Services.Notification.Actions.NoSearchResults.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesHistoryrecordActionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1400, defaultValue:Services.History.Actions.RecordAction.ResponseV1(), messageOrGroupClass:Services.History.Actions.RecordAction.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesPaymentstoreTokenStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1500, defaultValue:Services.Payment.Actions.StoreToken.ResponseV1(), messageOrGroupClass:Services.Payment.Actions.StoreToken.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesPostcreatePostStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1600, defaultValue:Services.Post.Actions.CreatePost.ResponseV1(), messageOrGroupClass:Services.Post.Actions.CreatePost.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesPostupdatePostStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1601, defaultValue:Services.Post.Actions.UpdatePost.ResponseV1(), messageOrGroupClass:Services.Post.Actions.UpdatePost.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesPostgetPostStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1602, defaultValue:Services.Post.Actions.GetPost.ResponseV1(), messageOrGroupClass:Services.Post.Actions.GetPost.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesPostgetPostsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1603, defaultValue:Services.Post.Actions.GetPosts.ResponseV1(), messageOrGroupClass:Services.Post.Actions.GetPosts.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesPostdeletePostStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1604, defaultValue:Services.Post.Actions.DeletePost.ResponseV1(), messageOrGroupClass:Services.Post.Actions.DeletePost.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -782,6 +826,11 @@ public extension Services.Registry.Responses {
       Services.Notification.Actions.NoSearchResults.NoSearchResultsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.History.Actions.RecordAction.RecordActionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Payment.Actions.StoreToken.StoreTokenRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.CreatePost.CreatePostRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.GetPost.GetPostRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.GetPosts.GetPostsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.UpdatePost.UpdatePostRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.DeletePost.DeletePostRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryResponsesUsercreateUserStatic)
@@ -867,6 +916,11 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesNotificationnoSearchResultsStatic)
       registry.addExtension(ServicesRegistryResponsesHistoryrecordActionStatic)
       registry.addExtension(ServicesRegistryResponsesPaymentstoreTokenStatic)
+      registry.addExtension(ServicesRegistryResponsesPostcreatePostStatic)
+      registry.addExtension(ServicesRegistryResponsesPostupdatePostStatic)
+      registry.addExtension(ServicesRegistryResponsesPostgetPostStatic)
+      registry.addExtension(ServicesRegistryResponsesPostgetPostsStatic)
+      registry.addExtension(ServicesRegistryResponsesPostdeletePostStatic)
     }
   }
 
@@ -2771,6 +2825,173 @@ public extension Services.Registry.Responses {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
       public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Responses.Payment.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class Post : GeneratedMessage, GeneratedMessageProtocol {
+    public class func createPost() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesPostcreatePost
+    }
+    public class func updatePost() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesPostupdatePost
+    }
+    public class func getPost() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesPostgetPost
+    }
+    public class func getPosts() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesPostgetPosts
+    }
+    public class func deletePost() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesPostdeletePost
+    }
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Registry.Responses.Post> {
+      var mergedArray = Array<Services.Registry.Responses.Post>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Registry.Responses.Post? {
+      return try Services.Registry.Responses.Post.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.Registry.Responses.Post {
+      return try Services.Registry.Responses.Post.Builder().mergeFromData(data, extensionRegistry:Services.Registry.Responses.ResponsesRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Responses.Post {
+      return try Services.Registry.Responses.Post.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Registry.Responses.Post {
+      return try Services.Registry.Responses.Post.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Responses.Post {
+      return try Services.Registry.Responses.Post.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Registry.Responses.Post {
+      return try Services.Registry.Responses.Post.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Responses.Post {
+      return try Services.Registry.Responses.Post.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.Registry.Responses.Post.Builder {
+      return Services.Registry.Responses.Post.classBuilder() as! Services.Registry.Responses.Post.Builder
+    }
+    public func getBuilder() -> Services.Registry.Responses.Post.Builder {
+      return classBuilder() as! Services.Registry.Responses.Post.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Registry.Responses.Post.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Registry.Responses.Post.Builder()
+    }
+    public func toBuilder() throws -> Services.Registry.Responses.Post.Builder {
+      return try Services.Registry.Responses.Post.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Registry.Responses.Post) throws -> Services.Registry.Responses.Post.Builder {
+      return try Services.Registry.Responses.Post.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Registry.Responses.Post"
+    }
+    override public func className() -> String {
+        return "Services.Registry.Responses.Post"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Registry.Responses.Post.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.Registry.Responses.Post = Services.Registry.Responses.Post()
+      public func getMessage() -> Services.Registry.Responses.Post {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.Registry.Responses.Post.Builder {
+        builderResult = Services.Registry.Responses.Post()
+        return self
+      }
+      public override func clone() throws -> Services.Registry.Responses.Post.Builder {
+        return try Services.Registry.Responses.Post.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.Registry.Responses.Post {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.Registry.Responses.Post {
+        let returnMe:Services.Registry.Responses.Post = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.Registry.Responses.Post) throws -> Services.Registry.Responses.Post.Builder {
+        if other == Services.Registry.Responses.Post() {
+         return self
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Registry.Responses.Post.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Responses.Post.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let tag = try input.readTag()

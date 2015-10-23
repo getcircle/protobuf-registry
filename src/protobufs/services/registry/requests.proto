@@ -100,6 +100,12 @@ import "protobufs/services/history/actions/record_action.proto";
 
 import "protobufs/services/payment/actions/store_token.proto";
 
+import "protobufs/services/post/actions/create_post.proto";
+import "protobufs/services/post/actions/get_post.proto";
+import "protobufs/services/post/actions/get_posts.proto";
+import "protobufs/services/post/actions/update_post.proto";
+import "protobufs/services/post/actions/delete_post.proto";
+
 message User {
     extend soa.ActionRequestParamsV1 {
         optional services.user.actions.create_user.RequestV1 create_user = 100;
@@ -235,5 +241,15 @@ message History {
 message Payment {
     extend soa.ActionRequestParamsV1 {
         optional services.payment.actions.store_token.RequestV1 store_token = 1500;
+    }
+}
+
+message Post {
+    extend soa.ActionRequestParamsV1 {
+        optional services.post.actions.create_post.RequestV1 create_post = 1600;
+        optional services.post.actions.update_post.RequestV1 update_post = 1601;
+        optional services.post.actions.get_post.RequestV1 get_post = 1602;
+        optional services.post.actions.get_posts.RequestV1 get_posts = 1603;
+        optional services.post.actions.delete_post.RequestV1 delete_post = 1604;
     }
 }
