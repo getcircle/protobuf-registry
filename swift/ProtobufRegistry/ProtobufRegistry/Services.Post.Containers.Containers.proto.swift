@@ -21,6 +21,7 @@ public func == (lhs: Services.Post.Containers.PostV1, rhs: Services.Post.Contain
   fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -39,6 +40,7 @@ public extension Services.Post.Containers {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -80,14 +82,15 @@ public extension Services.Post.Containers {
     public private(set) var changed:String = ""
 
     public private(set) var hasByProfile:Bool = false
-    public private(set) var byProfile:String = ""
-
+    public private(set) var byProfile:Services.Profile.Containers.ProfileV1!
     public private(set) var state:Services.Post.Containers.PostStateV1 = Services.Post.Containers.PostStateV1.Draft
     public private(set) var hasState:Bool = false
     public private(set) var hasInflations:Bool = false
     public private(set) var inflations:Services.Common.Containers.InflationsV1!
     public private(set) var hasFields:Bool = false
     public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var hasPermissions:Bool = false
+    public private(set) var permissions:Services.Common.Containers.PermissionsV1!
     required public init() {
          super.init()
     }
@@ -117,7 +120,7 @@ public extension Services.Post.Containers {
         try output.writeString(7, value:changed)
       }
       if hasByProfile {
-        try output.writeString(8, value:byProfile)
+        try output.writeMessage(8, value:byProfile)
       }
       if hasState {
         try output.writeEnum(9, value:state.rawValue)
@@ -127,6 +130,9 @@ public extension Services.Post.Containers {
       }
       if hasFields {
         try output.writeMessage(11, value:fields)
+      }
+      if hasPermissions {
+        try output.writeMessage(12, value:permissions)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -159,7 +165,9 @@ public extension Services.Post.Containers {
         serialize_size += changed.computeStringSize(7)
       }
       if hasByProfile {
-        serialize_size += byProfile.computeStringSize(8)
+          if let varSizebyProfile = byProfile?.computeMessageSize(8) {
+              serialize_size += varSizebyProfile
+          }
       }
       if (hasState) {
         serialize_size += state.rawValue.computeEnumSize(9)
@@ -172,6 +180,11 @@ public extension Services.Post.Containers {
       if hasFields {
           if let varSizefields = fields?.computeMessageSize(11) {
               serialize_size += varSizefields
+          }
+      }
+      if hasPermissions {
+          if let varSizepermissions = permissions?.computeMessageSize(12) {
+              serialize_size += varSizepermissions
           }
       }
       serialize_size += unknownFields.serializedSize()
@@ -247,7 +260,9 @@ public extension Services.Post.Containers {
         output += "\(indent) changed: \(changed) \n"
       }
       if hasByProfile {
-        output += "\(indent) byProfile: \(byProfile) \n"
+        output += "\(indent) byProfile {\n"
+        try byProfile?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
       if (hasState) {
         output += "\(indent) state: \(state.rawValue)\n"
@@ -260,6 +275,11 @@ public extension Services.Post.Containers {
       if hasFields {
         output += "\(indent) fields {\n"
         try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      if hasPermissions {
+        output += "\(indent) permissions {\n"
+        try permissions?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -289,7 +309,9 @@ public extension Services.Post.Containers {
                hashCode = (hashCode &* 31) &+ changed.hashValue
             }
             if hasByProfile {
-               hashCode = (hashCode &* 31) &+ byProfile.hashValue
+                if let hashValuebyProfile = byProfile?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuebyProfile
+                }
             }
             if hasState {
                hashCode = (hashCode &* 31) &+ Int(state.rawValue)
@@ -302,6 +324,11 @@ public extension Services.Post.Containers {
             if hasFields {
                 if let hashValuefields = fields?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuefields
+                }
+            }
+            if hasPermissions {
+                if let hashValuepermissions = permissions?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuepermissions
                 }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -495,26 +522,54 @@ public extension Services.Post.Containers {
       }
       public var hasByProfile:Bool {
            get {
-                return builderResult.hasByProfile
+               return builderResult.hasByProfile
            }
       }
-      public var byProfile:String {
+      public var byProfile:Services.Profile.Containers.ProfileV1! {
            get {
-                return builderResult.byProfile
+               if byProfileBuilder_ != nil {
+                  builderResult.byProfile = byProfileBuilder_.getMessage()
+               }
+               return builderResult.byProfile
            }
            set (value) {
                builderResult.hasByProfile = true
                builderResult.byProfile = value
            }
       }
-      public func setByProfile(value:String) -> Services.Post.Containers.PostV1.Builder {
+      private var byProfileBuilder_:Services.Profile.Containers.ProfileV1.Builder! {
+           didSet {
+              builderResult.hasByProfile = true
+           }
+      }
+      public func getByProfileBuilder() -> Services.Profile.Containers.ProfileV1.Builder {
+        if byProfileBuilder_ == nil {
+           byProfileBuilder_ = Services.Profile.Containers.ProfileV1.Builder()
+           builderResult.byProfile = byProfileBuilder_.getMessage()
+           if byProfile != nil {
+              try! byProfileBuilder_.mergeFrom(byProfile)
+           }
+        }
+        return byProfileBuilder_
+      }
+      public func setByProfile(value:Services.Profile.Containers.ProfileV1!) -> Services.Post.Containers.PostV1.Builder {
         self.byProfile = value
         return self
       }
-      public func clearByProfile() -> Services.Post.Containers.PostV1.Builder{
-           builderResult.hasByProfile = false
-           builderResult.byProfile = ""
-           return self
+      public func mergeByProfile(value:Services.Profile.Containers.ProfileV1) throws -> Services.Post.Containers.PostV1.Builder {
+        if builderResult.hasByProfile {
+          builderResult.byProfile = try Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.byProfile).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.byProfile = value
+        }
+        builderResult.hasByProfile = true
+        return self
+      }
+      public func clearByProfile() -> Services.Post.Containers.PostV1.Builder {
+        byProfileBuilder_ = nil
+        builderResult.hasByProfile = false
+        builderResult.byProfile = nil
+        return self
       }
         public var hasState:Bool{
             get {
@@ -641,6 +696,57 @@ public extension Services.Post.Containers {
         builderResult.fields = nil
         return self
       }
+      public var hasPermissions:Bool {
+           get {
+               return builderResult.hasPermissions
+           }
+      }
+      public var permissions:Services.Common.Containers.PermissionsV1! {
+           get {
+               if permissionsBuilder_ != nil {
+                  builderResult.permissions = permissionsBuilder_.getMessage()
+               }
+               return builderResult.permissions
+           }
+           set (value) {
+               builderResult.hasPermissions = true
+               builderResult.permissions = value
+           }
+      }
+      private var permissionsBuilder_:Services.Common.Containers.PermissionsV1.Builder! {
+           didSet {
+              builderResult.hasPermissions = true
+           }
+      }
+      public func getPermissionsBuilder() -> Services.Common.Containers.PermissionsV1.Builder {
+        if permissionsBuilder_ == nil {
+           permissionsBuilder_ = Services.Common.Containers.PermissionsV1.Builder()
+           builderResult.permissions = permissionsBuilder_.getMessage()
+           if permissions != nil {
+              try! permissionsBuilder_.mergeFrom(permissions)
+           }
+        }
+        return permissionsBuilder_
+      }
+      public func setPermissions(value:Services.Common.Containers.PermissionsV1!) -> Services.Post.Containers.PostV1.Builder {
+        self.permissions = value
+        return self
+      }
+      public func mergePermissions(value:Services.Common.Containers.PermissionsV1) throws -> Services.Post.Containers.PostV1.Builder {
+        if builderResult.hasPermissions {
+          builderResult.permissions = try Services.Common.Containers.PermissionsV1.builderWithPrototype(builderResult.permissions).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.permissions = value
+        }
+        builderResult.hasPermissions = true
+        return self
+      }
+      public func clearPermissions() -> Services.Post.Containers.PostV1.Builder {
+        permissionsBuilder_ = nil
+        builderResult.hasPermissions = false
+        builderResult.permissions = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -686,8 +792,8 @@ public extension Services.Post.Containers {
         if other.hasChanged {
              changed = other.changed
         }
-        if other.hasByProfile {
-             byProfile = other.byProfile
+        if (other.hasByProfile) {
+            try mergeByProfile(other.byProfile)
         }
         if other.hasState {
              state = other.state
@@ -697,6 +803,9 @@ public extension Services.Post.Containers {
         }
         if (other.hasFields) {
             try mergeFields(other.fields)
+        }
+        if (other.hasPermissions) {
+            try mergePermissions(other.permissions)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -735,7 +844,12 @@ public extension Services.Post.Containers {
             changed = try input.readString()
 
           case 66 :
-            byProfile = try input.readString()
+            let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
+            if hasByProfile {
+              try subBuilder.mergeFrom(byProfile)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            byProfile = subBuilder.buildPartial()
 
           case 72 :
             let valueIntstate = try input.readEnum()
@@ -760,6 +874,14 @@ public extension Services.Post.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             fields = subBuilder.buildPartial()
+
+          case 98 :
+            let subBuilder:Services.Common.Containers.PermissionsV1.Builder = Services.Common.Containers.PermissionsV1.Builder()
+            if hasPermissions {
+              try subBuilder.mergeFrom(permissions)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            permissions = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

@@ -13,6 +13,7 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+from protobufs.services.common import containers_pb2 as protobufs_dot_services_dot_common_dot_containers__pb2
 from protobufs.services.post import containers_pb2 as protobufs_dot_services_dot_post_dot_containers__pb2
 
 
@@ -20,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/get_post.proto',
   package='services.post.actions.get_post',
   syntax='proto3',
-  serialized_pb=_b('\n.protobufs/services/post/actions/get_post.proto\x12\x1eservices.post.actions.get_post\x1a(protobufs/services/post/containers.proto\"\x17\n\tRequestV1\x12\n\n\x02id\x18\x01 \x01(\t\"<\n\nResponseV1\x12.\n\x04post\x18\x01 \x01(\x0b\x32 .services.post.containers.PostV1b\x06proto3')
+  serialized_pb=_b('\n.protobufs/services/post/actions/get_post.proto\x12\x1eservices.post.actions.get_post\x1a*protobufs/services/common/containers.proto\x1a(protobufs/services/post/containers.proto\"U\n\tRequestV1\x12\n\n\x02id\x18\x01 \x01(\t\x12<\n\ninflations\x18\x02 \x01(\x0b\x32(.services.common.containers.InflationsV1\"<\n\nResponseV1\x12.\n\x04post\x18\x01 \x01(\x0b\x32 .services.post.containers.PostV1b\x06proto3')
   ,
-  dependencies=[protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
+  dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -42,6 +43,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='inflations', full_name='services.post.actions.get_post.RequestV1.inflations', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -54,8 +62,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=124,
-  serialized_end=147,
+  serialized_start=168,
+  serialized_end=253,
 )
 
 
@@ -85,10 +93,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=149,
-  serialized_end=209,
+  serialized_start=255,
+  serialized_end=315,
 )
 
+_REQUESTV1.fields_by_name['inflations'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._INFLATIONSV1
 _RESPONSEV1.fields_by_name['post'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._POSTV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
