@@ -403,6 +403,11 @@ public var ServicesRegistryResponsesSearchsearch:ConcreateExtensionField {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesSearchsearchStatic
    }
 }
+public var ServicesRegistryResponsesSearchsearchV2:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesSearchsearchV2Static
+   }
+}
 public var ServicesRegistryResponsesMediastartImageUpload:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesMediastartImageUploadStatic
@@ -619,6 +624,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesProfileprofileExistsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfilegetStatusStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSearchsearchStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesSearchsearchV2Static:ConcreateExtensionField
     var ServicesRegistryResponsesMediastartImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryResponsesMediacompleteImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSyncstartSyncStatic:ConcreateExtensionField
@@ -710,6 +716,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesProfileprofileExistsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 315, defaultValue:Services.Profile.Actions.ProfileExists.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.ProfileExists.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfilegetStatusStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 316, defaultValue:Services.Profile.Actions.GetStatus.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetStatus.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSearchsearchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 400, defaultValue:Services.Search.Actions.Search.ResponseV1(), messageOrGroupClass:Services.Search.Actions.Search.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesSearchsearchV2Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 401, defaultValue:Services.Search.Actions.Search.ResponseV1(), messageOrGroupClass:Services.Search.Actions.Search.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesMediastartImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.ResponseV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesMediacompleteImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.ResponseV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSyncstartSyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1000, defaultValue:Services.Sync.Actions.StartSync.ResponseV1(), messageOrGroupClass:Services.Sync.Actions.StartSync.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -891,6 +898,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesProfileprofileExistsStatic)
       registry.addExtension(ServicesRegistryResponsesProfilegetStatusStatic)
       registry.addExtension(ServicesRegistryResponsesSearchsearchStatic)
+      registry.addExtension(ServicesRegistryResponsesSearchsearchV2Static)
       registry.addExtension(ServicesRegistryResponsesMediastartImageUploadStatic)
       registry.addExtension(ServicesRegistryResponsesMediacompleteImageUploadStatic)
       registry.addExtension(ServicesRegistryResponsesSyncstartSyncStatic)
@@ -1554,6 +1562,9 @@ public extension Services.Registry.Responses {
   final public class Search : GeneratedMessage, GeneratedMessageProtocol {
     public class func search() -> ConcreateExtensionField {
          return ServicesRegistryResponsesSearchsearch
+    }
+    public class func searchV2() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesSearchsearchV2
     }
     required public init() {
          super.init()
