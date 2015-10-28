@@ -44,6 +44,10 @@ message ProfileV1 {
     ProfileStatusV1 status = 19;
     string display_title = 20;
     string authentication_identifier = 21;
+    string manager_id = 22;
+    string team_id = 23;
+    repeated location_ids = 24;
+    string manages_team_id = 25;
 }
 
 message ProfileStatusV1 {
