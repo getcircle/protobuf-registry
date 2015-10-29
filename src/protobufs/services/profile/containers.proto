@@ -46,7 +46,7 @@ message ProfileV1 {
     string authentication_identifier = 21;
     string manager_id = 22;
     string team_id = 23;
-    repeated location_ids = 24;
+    repeated string location_ids = 24;
     string manages_team_id = 25;
 }
 
