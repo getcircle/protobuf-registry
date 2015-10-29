@@ -43,10 +43,8 @@ public func == (lhs: Services.Profile.Containers.ProfileV1, rhs: Services.Profil
   fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
   fieldCheck = fieldCheck && (lhs.hasDisplayTitle == rhs.hasDisplayTitle) && (!lhs.hasDisplayTitle || lhs.displayTitle == rhs.displayTitle)
   fieldCheck = fieldCheck && (lhs.hasAuthenticationIdentifier == rhs.hasAuthenticationIdentifier) && (!lhs.hasAuthenticationIdentifier || lhs.authenticationIdentifier == rhs.authenticationIdentifier)
-  fieldCheck = fieldCheck && (lhs.hasManagerId == rhs.hasManagerId) && (!lhs.hasManagerId || lhs.managerId == rhs.managerId)
-  fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
-  fieldCheck = fieldCheck && (lhs.locationIds == rhs.locationIds)
-  fieldCheck = fieldCheck && (lhs.hasManagesTeamId == rhs.hasManagesTeamId) && (!lhs.hasManagesTeamId || lhs.managesTeamId == rhs.managesTeamId)
+  fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
+  fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -123,6 +121,7 @@ public extension Services.Profile.Containers {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -534,16 +533,10 @@ public extension Services.Profile.Containers {
     public private(set) var hasAuthenticationIdentifier:Bool = false
     public private(set) var authenticationIdentifier:String = ""
 
-    public private(set) var hasManagerId:Bool = false
-    public private(set) var managerId:String = ""
-
-    public private(set) var hasTeamId:Bool = false
-    public private(set) var teamId:String = ""
-
-    public private(set) var locationIds:Array<String> = Array<String>()
-    public private(set) var hasManagesTeamId:Bool = false
-    public private(set) var managesTeamId:String = ""
-
+    public private(set) var hasInflations:Bool = false
+    public private(set) var inflations:Services.Common.Containers.InflationsV1!
+    public private(set) var hasFields:Bool = false
+    public private(set) var fields:Services.Common.Containers.FieldsV1!
     required public init() {
          super.init()
     }
@@ -611,19 +604,11 @@ public extension Services.Profile.Containers {
       if hasAuthenticationIdentifier {
         try output.writeString(21, value:authenticationIdentifier)
       }
-      if hasManagerId {
-        try output.writeString(22, value:managerId)
+      if hasInflations {
+        try output.writeMessage(22, value:inflations)
       }
-      if hasTeamId {
-        try output.writeString(23, value:teamId)
-      }
-      if !locationIds.isEmpty {
-        for oneValuelocationIds in locationIds {
-          try output.writeString(24, value:oneValuelocationIds)
-        }
-      }
-      if hasManagesTeamId {
-        try output.writeString(25, value:managesTeamId)
+      if hasFields {
+        try output.writeMessage(23, value:fields)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -696,20 +681,15 @@ public extension Services.Profile.Containers {
       if hasAuthenticationIdentifier {
         serialize_size += authenticationIdentifier.computeStringSize(21)
       }
-      if hasManagerId {
-        serialize_size += managerId.computeStringSize(22)
+      if hasInflations {
+          if let varSizeinflations = inflations?.computeMessageSize(22) {
+              serialize_size += varSizeinflations
+          }
       }
-      if hasTeamId {
-        serialize_size += teamId.computeStringSize(23)
-      }
-      var dataSizeLocationIds:Int32 = 0
-      for oneValuelocationIds in locationIds {
-          dataSizeLocationIds += oneValuelocationIds.computeStringSizeNoTag()
-      }
-      serialize_size += dataSizeLocationIds
-      serialize_size += 2 * Int32(locationIds.count)
-      if hasManagesTeamId {
-        serialize_size += managesTeamId.computeStringSize(25)
+      if hasFields {
+          if let varSizefields = fields?.computeMessageSize(23) {
+              serialize_size += varSizefields
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -832,19 +812,15 @@ public extension Services.Profile.Containers {
       if hasAuthenticationIdentifier {
         output += "\(indent) authenticationIdentifier: \(authenticationIdentifier) \n"
       }
-      if hasManagerId {
-        output += "\(indent) managerId: \(managerId) \n"
+      if hasInflations {
+        output += "\(indent) inflations {\n"
+        try inflations?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
-      if hasTeamId {
-        output += "\(indent) teamId: \(teamId) \n"
-      }
-      var locationIdsElementIndex:Int = 0
-      for oneValuelocationIds in locationIds  {
-          output += "\(indent) locationIds[\(locationIdsElementIndex)]: \(oneValuelocationIds)\n"
-          locationIdsElementIndex++
-      }
-      if hasManagesTeamId {
-        output += "\(indent) managesTeamId: \(managesTeamId) \n"
+      if hasFields {
+        output += "\(indent) fields {\n"
+        try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -913,17 +889,15 @@ public extension Services.Profile.Containers {
             if hasAuthenticationIdentifier {
                hashCode = (hashCode &* 31) &+ authenticationIdentifier.hashValue
             }
-            if hasManagerId {
-               hashCode = (hashCode &* 31) &+ managerId.hashValue
+            if hasInflations {
+                if let hashValueinflations = inflations?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueinflations
+                }
             }
-            if hasTeamId {
-               hashCode = (hashCode &* 31) &+ teamId.hashValue
-            }
-            for oneValuelocationIds in locationIds {
-                hashCode = (hashCode &* 31) &+ oneValuelocationIds.hashValue
-            }
-            if hasManagesTeamId {
-               hashCode = (hashCode &* 31) &+ managesTeamId.hashValue
+            if hasFields {
+                if let hashValuefields = fields?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuefields
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1427,90 +1401,107 @@ public extension Services.Profile.Containers {
            builderResult.authenticationIdentifier = ""
            return self
       }
-      public var hasManagerId:Bool {
+      public var hasInflations:Bool {
            get {
-                return builderResult.hasManagerId
+               return builderResult.hasInflations
            }
       }
-      public var managerId:String {
+      public var inflations:Services.Common.Containers.InflationsV1! {
            get {
-                return builderResult.managerId
+               if inflationsBuilder_ != nil {
+                  builderResult.inflations = inflationsBuilder_.getMessage()
+               }
+               return builderResult.inflations
            }
            set (value) {
-               builderResult.hasManagerId = true
-               builderResult.managerId = value
+               builderResult.hasInflations = true
+               builderResult.inflations = value
            }
       }
-      public func setManagerId(value:String) -> Services.Profile.Containers.ProfileV1.Builder {
-        self.managerId = value
+      private var inflationsBuilder_:Services.Common.Containers.InflationsV1.Builder! {
+           didSet {
+              builderResult.hasInflations = true
+           }
+      }
+      public func getInflationsBuilder() -> Services.Common.Containers.InflationsV1.Builder {
+        if inflationsBuilder_ == nil {
+           inflationsBuilder_ = Services.Common.Containers.InflationsV1.Builder()
+           builderResult.inflations = inflationsBuilder_.getMessage()
+           if inflations != nil {
+              try! inflationsBuilder_.mergeFrom(inflations)
+           }
+        }
+        return inflationsBuilder_
+      }
+      public func setInflations(value:Services.Common.Containers.InflationsV1!) -> Services.Profile.Containers.ProfileV1.Builder {
+        self.inflations = value
         return self
       }
-      public func clearManagerId() -> Services.Profile.Containers.ProfileV1.Builder{
-           builderResult.hasManagerId = false
-           builderResult.managerId = ""
-           return self
+      public func mergeInflations(value:Services.Common.Containers.InflationsV1) throws -> Services.Profile.Containers.ProfileV1.Builder {
+        if builderResult.hasInflations {
+          builderResult.inflations = try Services.Common.Containers.InflationsV1.builderWithPrototype(builderResult.inflations).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.inflations = value
+        }
+        builderResult.hasInflations = true
+        return self
       }
-      public var hasTeamId:Bool {
+      public func clearInflations() -> Services.Profile.Containers.ProfileV1.Builder {
+        inflationsBuilder_ = nil
+        builderResult.hasInflations = false
+        builderResult.inflations = nil
+        return self
+      }
+      public var hasFields:Bool {
            get {
-                return builderResult.hasTeamId
+               return builderResult.hasFields
            }
       }
-      public var teamId:String {
+      public var fields:Services.Common.Containers.FieldsV1! {
            get {
-                return builderResult.teamId
+               if fieldsBuilder_ != nil {
+                  builderResult.fields = fieldsBuilder_.getMessage()
+               }
+               return builderResult.fields
            }
            set (value) {
-               builderResult.hasTeamId = true
-               builderResult.teamId = value
+               builderResult.hasFields = true
+               builderResult.fields = value
            }
       }
-      public func setTeamId(value:String) -> Services.Profile.Containers.ProfileV1.Builder {
-        self.teamId = value
+      private var fieldsBuilder_:Services.Common.Containers.FieldsV1.Builder! {
+           didSet {
+              builderResult.hasFields = true
+           }
+      }
+      public func getFieldsBuilder() -> Services.Common.Containers.FieldsV1.Builder {
+        if fieldsBuilder_ == nil {
+           fieldsBuilder_ = Services.Common.Containers.FieldsV1.Builder()
+           builderResult.fields = fieldsBuilder_.getMessage()
+           if fields != nil {
+              try! fieldsBuilder_.mergeFrom(fields)
+           }
+        }
+        return fieldsBuilder_
+      }
+      public func setFields(value:Services.Common.Containers.FieldsV1!) -> Services.Profile.Containers.ProfileV1.Builder {
+        self.fields = value
         return self
       }
-      public func clearTeamId() -> Services.Profile.Containers.ProfileV1.Builder{
-           builderResult.hasTeamId = false
-           builderResult.teamId = ""
-           return self
-      }
-      public var locationIds:Array<String> {
-           get {
-               return builderResult.locationIds
-           }
-           set (array) {
-               builderResult.locationIds = array
-           }
-      }
-      public func setLocationIds(value:Array<String>) -> Services.Profile.Containers.ProfileV1.Builder {
-        self.locationIds = value
+      public func mergeFields(value:Services.Common.Containers.FieldsV1) throws -> Services.Profile.Containers.ProfileV1.Builder {
+        if builderResult.hasFields {
+          builderResult.fields = try Services.Common.Containers.FieldsV1.builderWithPrototype(builderResult.fields).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.fields = value
+        }
+        builderResult.hasFields = true
         return self
       }
-      public func clearLocationIds() -> Services.Profile.Containers.ProfileV1.Builder {
-         builderResult.locationIds.removeAll(keepCapacity: false)
-         return self
-      }
-      public var hasManagesTeamId:Bool {
-           get {
-                return builderResult.hasManagesTeamId
-           }
-      }
-      public var managesTeamId:String {
-           get {
-                return builderResult.managesTeamId
-           }
-           set (value) {
-               builderResult.hasManagesTeamId = true
-               builderResult.managesTeamId = value
-           }
-      }
-      public func setManagesTeamId(value:String) -> Services.Profile.Containers.ProfileV1.Builder {
-        self.managesTeamId = value
+      public func clearFields() -> Services.Profile.Containers.ProfileV1.Builder {
+        fieldsBuilder_ = nil
+        builderResult.hasFields = false
+        builderResult.fields = nil
         return self
-      }
-      public func clearManagesTeamId() -> Services.Profile.Containers.ProfileV1.Builder{
-           builderResult.hasManagesTeamId = false
-           builderResult.managesTeamId = ""
-           return self
       }
       override public var internalGetResult:GeneratedMessage {
            get {
@@ -1596,17 +1587,11 @@ public extension Services.Profile.Containers {
         if other.hasAuthenticationIdentifier {
              authenticationIdentifier = other.authenticationIdentifier
         }
-        if other.hasManagerId {
-             managerId = other.managerId
+        if (other.hasInflations) {
+            try mergeInflations(other.inflations)
         }
-        if other.hasTeamId {
-             teamId = other.teamId
-        }
-        if !other.locationIds.isEmpty {
-            builderResult.locationIds += other.locationIds
-        }
-        if other.hasManagesTeamId {
-             managesTeamId = other.managesTeamId
+        if (other.hasFields) {
+            try mergeFields(other.fields)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1693,16 +1678,20 @@ public extension Services.Profile.Containers {
             authenticationIdentifier = try input.readString()
 
           case 178 :
-            managerId = try input.readString()
+            let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
+            if hasInflations {
+              try subBuilder.mergeFrom(inflations)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            inflations = subBuilder.buildPartial()
 
           case 186 :
-            teamId = try input.readString()
-
-          case 194 :
-            locationIds += [try input.readString()]
-
-          case 202 :
-            managesTeamId = try input.readString()
+            let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
+            if hasFields {
+              try subBuilder.mergeFrom(fields)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            fields = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
