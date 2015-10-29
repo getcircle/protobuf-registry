@@ -1,6 +1,8 @@
 syntax = "proto3";
 package services.profile.containers;
 
+import "protobufs/services/common/containers.proto";
+
 message ContactMethodV1 {
     // reserved 1;
 
@@ -44,10 +46,8 @@ message ProfileV1 {
     ProfileStatusV1 status = 19;
     string display_title = 20;
     string authentication_identifier = 21;
-    string manager_id = 22;
-    string team_id = 23;
-    repeated string location_ids = 24;
-    string manages_team_id = 25;
+    services.common.containers.InflationsV1 inflations = 22;
+    services.common.containers.FieldsV1 fields = 23;
 }
 
 message ProfileStatusV1 {

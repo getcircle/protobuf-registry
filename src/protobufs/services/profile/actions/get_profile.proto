@@ -13,6 +13,7 @@ message RequestV1 {
     optional services.common.containers.InflationsV1 inflations = 3;
     optional string email = 4;
     optional string authentication_identifier = 5;
+    optional services.common.containers.FieldsV1 fields = 6;
 }
 
 message ResponseV1 {
