@@ -408,6 +408,11 @@ public var ServicesRegistryResponsesSearchsearchV2:ConcreateExtensionField {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesSearchsearchV2Static
    }
 }
+public var ServicesRegistryResponsesSearchupdateEntities:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesSearchupdateEntitiesStatic
+   }
+}
 public var ServicesRegistryResponsesMediastartImageUpload:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesMediastartImageUploadStatic
@@ -625,6 +630,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesProfilegetStatusStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSearchsearchStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSearchsearchV2Static:ConcreateExtensionField
+    var ServicesRegistryResponsesSearchupdateEntitiesStatic:ConcreateExtensionField
     var ServicesRegistryResponsesMediastartImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryResponsesMediacompleteImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSyncstartSyncStatic:ConcreateExtensionField
@@ -717,6 +723,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesProfilegetStatusStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 316, defaultValue:Services.Profile.Actions.GetStatus.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetStatus.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSearchsearchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 400, defaultValue:Services.Search.Actions.Search.ResponseV1(), messageOrGroupClass:Services.Search.Actions.Search.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSearchsearchV2Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 401, defaultValue:Services.Search.Actions.Search.ResponseV1(), messageOrGroupClass:Services.Search.Actions.Search.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesSearchupdateEntitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 402, defaultValue:Services.Search.Actions.UpdateEntities.ResponseV1(), messageOrGroupClass:Services.Search.Actions.UpdateEntities.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesMediastartImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.ResponseV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesMediacompleteImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.ResponseV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSyncstartSyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1000, defaultValue:Services.Sync.Actions.StartSync.ResponseV1(), messageOrGroupClass:Services.Sync.Actions.StartSync.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -808,6 +815,7 @@ public extension Services.Registry.Responses {
       Services.Profile.Actions.ProfileExists.ProfileExistsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.GetStatus.GetStatusRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Search.Actions.Search.SearchRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Search.Actions.UpdateEntities.UpdateEntitiesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Actions.StartImageUpload.StartImageUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Actions.CompleteImageUpload.CompleteImageUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Sync.Actions.StartSync.StartSyncRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -899,6 +907,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesProfilegetStatusStatic)
       registry.addExtension(ServicesRegistryResponsesSearchsearchStatic)
       registry.addExtension(ServicesRegistryResponsesSearchsearchV2Static)
+      registry.addExtension(ServicesRegistryResponsesSearchupdateEntitiesStatic)
       registry.addExtension(ServicesRegistryResponsesMediastartImageUploadStatic)
       registry.addExtension(ServicesRegistryResponsesMediacompleteImageUploadStatic)
       registry.addExtension(ServicesRegistryResponsesSyncstartSyncStatic)
@@ -1565,6 +1574,9 @@ public extension Services.Registry.Responses {
     }
     public class func searchV2() -> ConcreateExtensionField {
          return ServicesRegistryResponsesSearchsearchV2
+    }
+    public class func updateEntities() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesSearchupdateEntities
     }
     required public init() {
          super.init()

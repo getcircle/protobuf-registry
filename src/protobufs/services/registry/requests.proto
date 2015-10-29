@@ -67,6 +67,7 @@ import "protobufs/services/profile/actions/profile_exists.proto";
 import "protobufs/services/profile/actions/get_status.proto";
 
 import "protobufs/services/search/actions/search.proto";
+import "protobufs/services/search/actions/update_entities.proto";
 
 import "protobufs/services/media/actions/start_image_upload.proto";
 import "protobufs/services/media/actions/complete_image_upload.proto";
@@ -182,6 +183,7 @@ message Search {
     extend soa.ActionRequestParamsV1 {
         optional services.search.actions.search.RequestV1 search = 400;
         optional services.search.actions.search.RequestV1 search_v2 = 401;
+        optional services.search.actions.update_entities.RequestV1 update_entities = 402;
     }
 }
 
