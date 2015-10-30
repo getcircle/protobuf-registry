@@ -18,6 +18,7 @@ message RequestV1 {
     repeated string emails = 8;
     optional bool is_admin = 9;
     repeated string authentication_identifiers = 10;
+    optional services.common.containers.FieldsV1 fields = 11;
 }
 
 message ResponseV1 {
