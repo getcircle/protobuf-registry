@@ -13,7 +13,7 @@ public func == (lhs: Services.Post.Actions.GetPosts.RequestV1, rhs: Services.Pos
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
   fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
   fieldCheck = fieldCheck && (lhs.hasAllStates == rhs.hasAllStates) && (!lhs.hasAllStates || lhs.allStates == rhs.allStates)
-  fieldCheck = fieldCheck && (lhs.hasIds == rhs.hasIds) && (!lhs.hasIds || lhs.ids == rhs.ids)
+  fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -56,9 +56,7 @@ public extension Services.Post.Actions.GetPosts {
     public private(set) var hasAllStates:Bool = false
     public private(set) var allStates:Bool = false
 
-    public private(set) var hasIds:Bool = false
-    public private(set) var ids:String = ""
-
+    public private(set) var ids:Array<String> = Array<String>()
     required public init() {
          super.init()
     }
@@ -75,8 +73,10 @@ public extension Services.Post.Actions.GetPosts {
       if hasAllStates {
         try output.writeBool(3, value:allStates)
       }
-      if hasIds {
-        try output.writeString(4, value:ids)
+      if !ids.isEmpty {
+        for oneValueids in ids {
+          try output.writeString(4, value:oneValueids)
+        }
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -96,9 +96,12 @@ public extension Services.Post.Actions.GetPosts {
       if hasAllStates {
         serialize_size += allStates.computeBoolSize(3)
       }
-      if hasIds {
-        serialize_size += ids.computeStringSize(4)
+      var dataSizeIds:Int32 = 0
+      for oneValueids in ids {
+          dataSizeIds += oneValueids.computeStringSizeNoTag()
       }
+      serialize_size += dataSizeIds
+      serialize_size += 1 * Int32(ids.count)
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -159,8 +162,10 @@ public extension Services.Post.Actions.GetPosts {
       if hasAllStates {
         output += "\(indent) allStates: \(allStates) \n"
       }
-      if hasIds {
-        output += "\(indent) ids: \(ids) \n"
+      var idsElementIndex:Int = 0
+      for oneValueids in ids  {
+          output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
+          idsElementIndex++
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -176,8 +181,8 @@ public extension Services.Post.Actions.GetPosts {
             if hasAllStates {
                hashCode = (hashCode &* 31) &+ allStates.hashValue
             }
-            if hasIds {
-               hashCode = (hashCode &* 31) &+ ids.hashValue
+            for oneValueids in ids {
+                hashCode = (hashCode &* 31) &+ oneValueids.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -276,28 +281,21 @@ public extension Services.Post.Actions.GetPosts {
            builderResult.allStates = false
            return self
       }
-      public var hasIds:Bool {
+      public var ids:Array<String> {
            get {
-                return builderResult.hasIds
+               return builderResult.ids
+           }
+           set (array) {
+               builderResult.ids = array
            }
       }
-      public var ids:String {
-           get {
-                return builderResult.ids
-           }
-           set (value) {
-               builderResult.hasIds = true
-               builderResult.ids = value
-           }
-      }
-      public func setIds(value:String) -> Services.Post.Actions.GetPosts.RequestV1.Builder {
+      public func setIds(value:Array<String>) -> Services.Post.Actions.GetPosts.RequestV1.Builder {
         self.ids = value
         return self
       }
-      public func clearIds() -> Services.Post.Actions.GetPosts.RequestV1.Builder{
-           builderResult.hasIds = false
-           builderResult.ids = ""
-           return self
+      public func clearIds() -> Services.Post.Actions.GetPosts.RequestV1.Builder {
+         builderResult.ids.removeAll(keepCapacity: false)
+         return self
       }
       override public var internalGetResult:GeneratedMessage {
            get {
@@ -332,8 +330,8 @@ public extension Services.Post.Actions.GetPosts {
         if other.hasAllStates {
              allStates = other.allStates
         }
-        if other.hasIds {
-             ids = other.ids
+        if !other.ids.isEmpty {
+            builderResult.ids += other.ids
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -365,7 +363,7 @@ public extension Services.Post.Actions.GetPosts {
             allStates = try input.readBool()
 
           case 34 :
-            ids = try input.readString()
+            ids += [try input.readString()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
