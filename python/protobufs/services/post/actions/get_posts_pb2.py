@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/get_posts.proto',
   package='services.post.actions.get_posts',
   syntax='proto3',
-  serialized_pb=_b('\n/protobufs/services/post/actions/get_posts.proto\x12\x1fservices.post.actions.get_posts\x1a(protobufs/services/post/containers.proto\"l\n\tRequestV1\x12\x15\n\rby_profile_id\x18\x01 \x01(\t\x12\x34\n\x05state\x18\x02 \x01(\x0e\x32%.services.post.containers.PostStateV1\x12\x12\n\nall_states\x18\x03 \x01(\x08\"=\n\nResponseV1\x12/\n\x05posts\x18\x01 \x03(\x0b\x32 .services.post.containers.PostV1b\x06proto3')
+  serialized_pb=_b('\n/protobufs/services/post/actions/get_posts.proto\x12\x1fservices.post.actions.get_posts\x1a(protobufs/services/post/containers.proto\"y\n\tRequestV1\x12\x15\n\rby_profile_id\x18\x01 \x01(\t\x12\x34\n\x05state\x18\x02 \x01(\x0e\x32%.services.post.containers.PostStateV1\x12\x12\n\nall_states\x18\x03 \x01(\x08\x12\x0b\n\x03ids\x18\x04 \x01(\t\"=\n\nResponseV1\x12/\n\x05posts\x18\x01 \x03(\x0b\x32 .services.post.containers.PostV1b\x06proto3')
   ,
   dependencies=[protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -56,6 +56,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='ids', full_name='services.post.actions.get_posts.RequestV1.ids', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -69,7 +76,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=126,
-  serialized_end=234,
+  serialized_end=247,
 )
 
 
@@ -99,8 +106,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=236,
-  serialized_end=297,
+  serialized_start=249,
+  serialized_end=310,
 )
 
 _REQUESTV1.fields_by_name['state'].enum_type = protobufs_dot_services_dot_post_dot_containers__pb2._POSTSTATEV1

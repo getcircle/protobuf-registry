@@ -13,6 +13,7 @@ public func == (lhs: Services.Post.Actions.GetPosts.RequestV1, rhs: Services.Pos
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
   fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
   fieldCheck = fieldCheck && (lhs.hasAllStates == rhs.hasAllStates) && (!lhs.hasAllStates || lhs.allStates == rhs.allStates)
+  fieldCheck = fieldCheck && (lhs.hasIds == rhs.hasIds) && (!lhs.hasIds || lhs.ids == rhs.ids)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -55,6 +56,9 @@ public extension Services.Post.Actions.GetPosts {
     public private(set) var hasAllStates:Bool = false
     public private(set) var allStates:Bool = false
 
+    public private(set) var hasIds:Bool = false
+    public private(set) var ids:String = ""
+
     required public init() {
          super.init()
     }
@@ -70,6 +74,9 @@ public extension Services.Post.Actions.GetPosts {
       }
       if hasAllStates {
         try output.writeBool(3, value:allStates)
+      }
+      if hasIds {
+        try output.writeString(4, value:ids)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -88,6 +95,9 @@ public extension Services.Post.Actions.GetPosts {
       }
       if hasAllStates {
         serialize_size += allStates.computeBoolSize(3)
+      }
+      if hasIds {
+        serialize_size += ids.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -149,6 +159,9 @@ public extension Services.Post.Actions.GetPosts {
       if hasAllStates {
         output += "\(indent) allStates: \(allStates) \n"
       }
+      if hasIds {
+        output += "\(indent) ids: \(ids) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -162,6 +175,9 @@ public extension Services.Post.Actions.GetPosts {
             }
             if hasAllStates {
                hashCode = (hashCode &* 31) &+ allStates.hashValue
+            }
+            if hasIds {
+               hashCode = (hashCode &* 31) &+ ids.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -260,6 +276,29 @@ public extension Services.Post.Actions.GetPosts {
            builderResult.allStates = false
            return self
       }
+      public var hasIds:Bool {
+           get {
+                return builderResult.hasIds
+           }
+      }
+      public var ids:String {
+           get {
+                return builderResult.ids
+           }
+           set (value) {
+               builderResult.hasIds = true
+               builderResult.ids = value
+           }
+      }
+      public func setIds(value:String) -> Services.Post.Actions.GetPosts.RequestV1.Builder {
+        self.ids = value
+        return self
+      }
+      public func clearIds() -> Services.Post.Actions.GetPosts.RequestV1.Builder{
+           builderResult.hasIds = false
+           builderResult.ids = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -293,6 +332,9 @@ public extension Services.Post.Actions.GetPosts {
         if other.hasAllStates {
              allStates = other.allStates
         }
+        if other.hasIds {
+             ids = other.ids
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -321,6 +363,9 @@ public extension Services.Post.Actions.GetPosts {
 
           case 24 :
             allStates = try input.readBool()
+
+          case 34 :
+            ids = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
