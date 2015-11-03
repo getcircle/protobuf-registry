@@ -19,4 +19,5 @@ message SearchResultV1 {
         services.profile.containers.ProfileStatusV1 profile_status = 6;
         services.organization.containers.TeamStatusV1 team_status = 7;
     }
+    optional float score = 8;
 }
