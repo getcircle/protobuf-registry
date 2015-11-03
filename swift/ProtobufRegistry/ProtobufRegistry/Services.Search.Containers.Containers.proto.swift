@@ -17,6 +17,7 @@ public func == (lhs: Services.Search.Containers.SearchResultV1, rhs: Services.Se
   fieldCheck = fieldCheck && (lhs.hasGroup == rhs.hasGroup) && (!lhs.hasGroup || lhs.group == rhs.group)
   fieldCheck = fieldCheck && (lhs.hasProfileStatus == rhs.hasProfileStatus) && (!lhs.hasProfileStatus || lhs.profileStatus == rhs.profileStatus)
   fieldCheck = fieldCheck && (lhs.hasTeamStatus == rhs.hasTeamStatus) && (!lhs.hasTeamStatus || lhs.teamStatus == rhs.teamStatus)
+  fieldCheck = fieldCheck && (lhs.hasScore == rhs.hasScore) && (!lhs.hasScore || lhs.score == rhs.score)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -234,6 +235,9 @@ public extension Services.Search.Containers {
               storageResultObject = SearchResultV1.ResultObject.TeamStatus(newvalue)
          }
     }
+    public private(set) var hasScore:Bool = false
+    public private(set) var score:Float = Float(0)
+
     required public init() {
          super.init()
     }
@@ -261,6 +265,9 @@ public extension Services.Search.Containers {
       }
       if hasTeamStatus {
         try output.writeMessage(7, value:teamStatus)
+      }
+      if hasScore {
+        try output.writeFloat(8, value:score)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -303,6 +310,9 @@ public extension Services.Search.Containers {
           if let varSizeteamStatus = teamStatus?.computeMessageSize(7) {
               serialize_size += varSizeteamStatus
           }
+      }
+      if hasScore {
+        serialize_size += score.computeFloatSize(8)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -388,6 +398,9 @@ public extension Services.Search.Containers {
         try teamStatus?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasScore {
+        output += "\(indent) score: \(score) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -425,6 +438,9 @@ public extension Services.Search.Containers {
                 if let hashValueteamStatus = teamStatus?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueteamStatus
                 }
+            }
+            if hasScore {
+               hashCode = (hashCode &* 31) &+ score.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -783,6 +799,29 @@ public extension Services.Search.Containers {
         builderResult.teamStatus = nil
         return self
       }
+      public var hasScore:Bool {
+           get {
+                return builderResult.hasScore
+           }
+      }
+      public var score:Float {
+           get {
+                return builderResult.score
+           }
+           set (value) {
+               builderResult.hasScore = true
+               builderResult.score = value
+           }
+      }
+      public func setScore(value:Float) -> Services.Search.Containers.SearchResultV1.Builder {
+        self.score = value
+        return self
+      }
+      public func clearScore() -> Services.Search.Containers.SearchResultV1.Builder{
+           builderResult.hasScore = false
+           builderResult.score = Float(0)
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -827,6 +866,9 @@ public extension Services.Search.Containers {
         }
         if (other.hasTeamStatus) {
             try mergeTeamStatus(other.teamStatus)
+        }
+        if other.hasScore {
+             score = other.score
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -893,6 +935,9 @@ public extension Services.Search.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             teamStatus = subBuilder.buildPartial()
+
+          case 69 :
+            score = try input.readFloat()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
