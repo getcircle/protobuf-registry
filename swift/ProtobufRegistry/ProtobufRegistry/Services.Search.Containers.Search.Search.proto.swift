@@ -34,6 +34,7 @@ public extension Services.Search.Containers.Search {
     case Skills = 3
     case Interests = 4
     case Groups = 5
+    case Posts = 6
 
   }
 
