@@ -184,7 +184,7 @@ message Profile {
 message Search {
     extend soa.ActionRequestParamsV1 {
         optional services.search.actions.search.RequestV1 search = 400;
-        optional services.search.actions.search.RequestV1 search_v2 = 401;
+        optional services.search.actions.search.RequestV2 search_v2 = 401;
         optional services.search.actions.update_entities.RequestV1 update_entities = 402;
     }
 }
