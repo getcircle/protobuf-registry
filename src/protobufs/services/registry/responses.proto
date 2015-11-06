@@ -107,6 +107,8 @@ import "protobufs/services/post/actions/get_posts.proto";
 import "protobufs/services/post/actions/update_post.proto";
 import "protobufs/services/post/actions/delete_post.proto";
 
+import "protobufs/services/feature/actions/get_flags.proto";
+
 message User {
     extend soa.ActionResultV1 {
         optional services.user.actions.create_user.ResponseV1 create_user = 100;
@@ -255,5 +257,11 @@ message Post {
         optional services.post.actions.get_post.ResponseV1 get_post = 1602;
         optional services.post.actions.get_posts.ResponseV1 get_posts = 1603;
         optional services.post.actions.delete_post.ResponseV1 delete_post = 1604;
+    }
+}
+
+message Feature {
+    extend soa.ActionResultV1 {
+        optional services.feature.actions.get_flags.ResponseV1 get_flags = 1700;
     }
 }
