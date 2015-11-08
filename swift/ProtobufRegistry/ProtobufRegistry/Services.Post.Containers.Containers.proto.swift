@@ -22,6 +22,7 @@ public func == (lhs: Services.Post.Containers.PostV1, rhs: Services.Post.Contain
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
+  fieldCheck = fieldCheck && (lhs.hasFileIds == rhs.hasFileIds) && (!lhs.hasFileIds || lhs.fileIds == rhs.fileIds)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -91,6 +92,9 @@ public extension Services.Post.Containers {
     public private(set) var fields:Services.Common.Containers.FieldsV1!
     public private(set) var hasPermissions:Bool = false
     public private(set) var permissions:Services.Common.Containers.PermissionsV1!
+    public private(set) var hasFileIds:Bool = false
+    public private(set) var fileIds:String = ""
+
     required public init() {
          super.init()
     }
@@ -133,6 +137,9 @@ public extension Services.Post.Containers {
       }
       if hasPermissions {
         try output.writeMessage(12, value:permissions)
+      }
+      if hasFileIds {
+        try output.writeString(13, value:fileIds)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -186,6 +193,9 @@ public extension Services.Post.Containers {
           if let varSizepermissions = permissions?.computeMessageSize(12) {
               serialize_size += varSizepermissions
           }
+      }
+      if hasFileIds {
+        serialize_size += fileIds.computeStringSize(13)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -282,6 +292,9 @@ public extension Services.Post.Containers {
         try permissions?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasFileIds {
+        output += "\(indent) fileIds: \(fileIds) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -330,6 +343,9 @@ public extension Services.Post.Containers {
                 if let hashValuepermissions = permissions?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuepermissions
                 }
+            }
+            if hasFileIds {
+               hashCode = (hashCode &* 31) &+ fileIds.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -747,6 +763,29 @@ public extension Services.Post.Containers {
         builderResult.permissions = nil
         return self
       }
+      public var hasFileIds:Bool {
+           get {
+                return builderResult.hasFileIds
+           }
+      }
+      public var fileIds:String {
+           get {
+                return builderResult.fileIds
+           }
+           set (value) {
+               builderResult.hasFileIds = true
+               builderResult.fileIds = value
+           }
+      }
+      public func setFileIds(value:String) -> Services.Post.Containers.PostV1.Builder {
+        self.fileIds = value
+        return self
+      }
+      public func clearFileIds() -> Services.Post.Containers.PostV1.Builder{
+           builderResult.hasFileIds = false
+           builderResult.fileIds = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -806,6 +845,9 @@ public extension Services.Post.Containers {
         }
         if (other.hasPermissions) {
             try mergePermissions(other.permissions)
+        }
+        if other.hasFileIds {
+             fileIds = other.fileIds
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -882,6 +924,9 @@ public extension Services.Post.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             permissions = subBuilder.buildPartial()
+
+          case 106 :
+            fileIds = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
