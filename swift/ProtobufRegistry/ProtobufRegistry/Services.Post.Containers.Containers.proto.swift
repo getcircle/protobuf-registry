@@ -22,7 +22,7 @@ public func == (lhs: Services.Post.Containers.PostV1, rhs: Services.Post.Contain
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
-  fieldCheck = fieldCheck && (lhs.hasFileIds == rhs.hasFileIds) && (!lhs.hasFileIds || lhs.fileIds == rhs.fileIds)
+  fieldCheck = fieldCheck && (lhs.fileIds == rhs.fileIds)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -92,9 +92,7 @@ public extension Services.Post.Containers {
     public private(set) var fields:Services.Common.Containers.FieldsV1!
     public private(set) var hasPermissions:Bool = false
     public private(set) var permissions:Services.Common.Containers.PermissionsV1!
-    public private(set) var hasFileIds:Bool = false
-    public private(set) var fileIds:String = ""
-
+    public private(set) var fileIds:Array<String> = Array<String>()
     required public init() {
          super.init()
     }
@@ -138,8 +136,10 @@ public extension Services.Post.Containers {
       if hasPermissions {
         try output.writeMessage(12, value:permissions)
       }
-      if hasFileIds {
-        try output.writeString(13, value:fileIds)
+      if !fileIds.isEmpty {
+        for oneValuefileIds in fileIds {
+          try output.writeString(13, value:oneValuefileIds)
+        }
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -194,9 +194,12 @@ public extension Services.Post.Containers {
               serialize_size += varSizepermissions
           }
       }
-      if hasFileIds {
-        serialize_size += fileIds.computeStringSize(13)
+      var dataSizeFileIds:Int32 = 0
+      for oneValuefileIds in fileIds {
+          dataSizeFileIds += oneValuefileIds.computeStringSizeNoTag()
       }
+      serialize_size += dataSizeFileIds
+      serialize_size += 1 * Int32(fileIds.count)
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -292,8 +295,10 @@ public extension Services.Post.Containers {
         try permissions?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
-      if hasFileIds {
-        output += "\(indent) fileIds: \(fileIds) \n"
+      var fileIdsElementIndex:Int = 0
+      for oneValuefileIds in fileIds  {
+          output += "\(indent) fileIds[\(fileIdsElementIndex)]: \(oneValuefileIds)\n"
+          fileIdsElementIndex++
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -344,8 +349,8 @@ public extension Services.Post.Containers {
                     hashCode = (hashCode &* 31) &+ hashValuepermissions
                 }
             }
-            if hasFileIds {
-               hashCode = (hashCode &* 31) &+ fileIds.hashValue
+            for oneValuefileIds in fileIds {
+                hashCode = (hashCode &* 31) &+ oneValuefileIds.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -763,28 +768,21 @@ public extension Services.Post.Containers {
         builderResult.permissions = nil
         return self
       }
-      public var hasFileIds:Bool {
+      public var fileIds:Array<String> {
            get {
-                return builderResult.hasFileIds
+               return builderResult.fileIds
+           }
+           set (array) {
+               builderResult.fileIds = array
            }
       }
-      public var fileIds:String {
-           get {
-                return builderResult.fileIds
-           }
-           set (value) {
-               builderResult.hasFileIds = true
-               builderResult.fileIds = value
-           }
-      }
-      public func setFileIds(value:String) -> Services.Post.Containers.PostV1.Builder {
+      public func setFileIds(value:Array<String>) -> Services.Post.Containers.PostV1.Builder {
         self.fileIds = value
         return self
       }
-      public func clearFileIds() -> Services.Post.Containers.PostV1.Builder{
-           builderResult.hasFileIds = false
-           builderResult.fileIds = ""
-           return self
+      public func clearFileIds() -> Services.Post.Containers.PostV1.Builder {
+         builderResult.fileIds.removeAll(keepCapacity: false)
+         return self
       }
       override public var internalGetResult:GeneratedMessage {
            get {
@@ -846,8 +844,8 @@ public extension Services.Post.Containers {
         if (other.hasPermissions) {
             try mergePermissions(other.permissions)
         }
-        if other.hasFileIds {
-             fileIds = other.fileIds
+        if !other.fileIds.isEmpty {
+            builderResult.fileIds += other.fileIds
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -926,7 +924,7 @@ public extension Services.Post.Containers {
             permissions = subBuilder.buildPartial()
 
           case 106 :
-            fileIds = try input.readString()
+            fileIds += [try input.readString()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

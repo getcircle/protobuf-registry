@@ -23,5 +23,5 @@ message PostV1 {
     services.common.containers.InflationsV1 inflations = 10;
     services.common.containers.FieldsV1 fields = 11;
     services.common.containers.PermissionsV1 permissions = 12;
-    string file_ids = 13;
+    repeated string file_ids = 13;
 }

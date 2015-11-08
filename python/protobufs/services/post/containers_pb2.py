@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/containers.proto',
   package='services.post.containers',
   syntax='proto3',
-  serialized_pb=_b('\n(protobufs/services/post/containers.proto\x12\x18services.post.containers\x1a*protobufs/services/common/containers.proto\x1a+protobufs/services/profile/containers.proto\"\xbe\x03\n\x06PostV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x15\n\rby_profile_id\x18\x03 \x01(\t\x12\r\n\x05title\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x01(\t\x12\x0f\n\x07\x63reated\x18\x06 \x01(\t\x12\x0f\n\x07\x63hanged\x18\x07 \x01(\t\x12:\n\nby_profile\x18\x08 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12\x34\n\x05state\x18\t \x01(\x0e\x32%.services.post.containers.PostStateV1\x12<\n\ninflations\x18\n \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x0b \x01(\x0b\x32$.services.common.containers.FieldsV1\x12>\n\x0bpermissions\x18\x0c \x01(\x0b\x32).services.common.containers.PermissionsV1\x12\x10\n\x08\x66ile_ids\x18\r \x01(\t*2\n\x0bPostStateV1\x12\t\n\x05\x44RAFT\x10\x00\x12\n\n\x06LISTED\x10\x01\x12\x0c\n\x08UNLISTED\x10\x02\x62\x06proto3')
+  serialized_pb=_b('\n(protobufs/services/post/containers.proto\x12\x18services.post.containers\x1a*protobufs/services/common/containers.proto\x1a+protobufs/services/profile/containers.proto\"\xbe\x03\n\x06PostV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x15\n\rby_profile_id\x18\x03 \x01(\t\x12\r\n\x05title\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x01(\t\x12\x0f\n\x07\x63reated\x18\x06 \x01(\t\x12\x0f\n\x07\x63hanged\x18\x07 \x01(\t\x12:\n\nby_profile\x18\x08 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12\x34\n\x05state\x18\t \x01(\x0e\x32%.services.post.containers.PostStateV1\x12<\n\ninflations\x18\n \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x0b \x01(\x0b\x32$.services.common.containers.FieldsV1\x12>\n\x0bpermissions\x18\x0c \x01(\x0b\x32).services.common.containers.PermissionsV1\x12\x10\n\x08\x66ile_ids\x18\r \x03(\t*2\n\x0bPostStateV1\x12\t\n\x05\x44RAFT\x10\x00\x12\n\n\x06LISTED\x10\x01\x12\x0c\n\x08UNLISTED\x10\x02\x62\x06proto3')
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -153,8 +153,8 @@ _POSTV1 = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='file_ids', full_name='services.post.containers.PostV1.file_ids', index=12,
-      number=13, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=13, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
