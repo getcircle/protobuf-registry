@@ -15,6 +15,7 @@ public func == (lhs: Services.Organization.Containers.Integration.IntegrationV1,
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = fieldCheck && (lhs.hasIntegrationType == rhs.hasIntegrationType) && (!lhs.hasIntegrationType || lhs.integrationType == rhs.integrationType)
   fieldCheck = fieldCheck && (lhs.hasGoogleGroups == rhs.hasGoogleGroups) && (!lhs.hasGoogleGroups || lhs.googleGroups == rhs.googleGroups)
+  fieldCheck = fieldCheck && (lhs.hasSlackSlashCommand == rhs.hasSlackSlashCommand) && (!lhs.hasSlackSlashCommand || lhs.slackSlashCommand == rhs.slackSlashCommand)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -28,6 +29,16 @@ public func == (lhs: Services.Organization.Containers.Integration.GoogleGroupDet
   fieldCheck = fieldCheck && (lhs.hasAdminEmail == rhs.hasAdminEmail) && (!lhs.hasAdminEmail || lhs.adminEmail == rhs.adminEmail)
   fieldCheck = fieldCheck && (lhs.scopes == rhs.scopes)
   fieldCheck = fieldCheck && (lhs.hasReadOnly == rhs.hasReadOnly) && (!lhs.hasReadOnly || lhs.readOnly == rhs.readOnly)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
+public func == (lhs: Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1, rhs: Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasToken == rhs.hasToken) && (!lhs.hasToken || lhs.token == rhs.token)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -57,6 +68,7 @@ public extension Services.Organization.Containers.Integration {
 
   public enum IntegrationTypeV1:Int32 {
     case GoogleGroups = 0
+    case SlackSlashCommand = 1
 
   }
 
@@ -83,6 +95,16 @@ public extension Services.Organization.Containers.Integration {
       public static func getGoogleGroups(value:Details) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1? {
            switch value {
            case .GoogleGroups(let enumValue):
+                return enumValue
+           default:
+                return nil
+           }
+      }
+      case SlackSlashCommand(Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1)
+
+      public static func getSlackSlashCommand(value:Details) -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1? {
+           switch value {
+           case .SlackSlashCommand(let enumValue):
                 return enumValue
            default:
                 return nil
@@ -121,6 +143,24 @@ public extension Services.Organization.Containers.Integration {
               storageDetails = IntegrationV1.Details.GoogleGroups(newvalue)
          }
     }
+    public private(set) var hasSlackSlashCommand:Bool {
+          get {
+               if IntegrationV1.Details.getSlackSlashCommand(storageDetails) == nil {
+                   return false
+               }
+               return true
+          }
+          set(newValue) {
+          }
+    }
+    public private(set) var slackSlashCommand:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1!{
+         get {
+              return IntegrationV1.Details.getSlackSlashCommand(storageDetails)
+         }
+         set (newvalue) {
+              storageDetails = IntegrationV1.Details.SlackSlashCommand(newvalue)
+         }
+    }
     required public init() {
          super.init()
     }
@@ -142,6 +182,9 @@ public extension Services.Organization.Containers.Integration {
       }
       if hasGoogleGroups {
         try output.writeMessage(5, value:googleGroups)
+      }
+      if hasSlackSlashCommand {
+        try output.writeMessage(6, value:slackSlashCommand)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -167,6 +210,11 @@ public extension Services.Organization.Containers.Integration {
       if hasGoogleGroups {
           if let varSizegoogleGroups = googleGroups?.computeMessageSize(5) {
               serialize_size += varSizegoogleGroups
+          }
+      }
+      if hasSlackSlashCommand {
+          if let varSizeslackSlashCommand = slackSlashCommand?.computeMessageSize(6) {
+              serialize_size += varSizeslackSlashCommand
           }
       }
       serialize_size += unknownFields.serializedSize()
@@ -237,6 +285,11 @@ public extension Services.Organization.Containers.Integration {
         try googleGroups?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasSlackSlashCommand {
+        output += "\(indent) slackSlashCommand {\n"
+        try slackSlashCommand?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -257,6 +310,11 @@ public extension Services.Organization.Containers.Integration {
             if hasGoogleGroups {
                 if let hashValuegoogleGroups = googleGroups?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuegoogleGroups
+                }
+            }
+            if hasSlackSlashCommand {
+                if let hashValueslackSlashCommand = slackSlashCommand?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueslackSlashCommand
                 }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -430,6 +488,57 @@ public extension Services.Organization.Containers.Integration {
         builderResult.googleGroups = nil
         return self
       }
+      public var hasSlackSlashCommand:Bool {
+           get {
+               return builderResult.hasSlackSlashCommand
+           }
+      }
+      public var slackSlashCommand:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1! {
+           get {
+               if slackSlashCommandBuilder_ != nil {
+                  builderResult.slackSlashCommand = slackSlashCommandBuilder_.getMessage()
+               }
+               return builderResult.slackSlashCommand
+           }
+           set (value) {
+               builderResult.hasSlackSlashCommand = true
+               builderResult.slackSlashCommand = value
+           }
+      }
+      private var slackSlashCommandBuilder_:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder! {
+           didSet {
+              builderResult.hasSlackSlashCommand = true
+           }
+      }
+      public func getSlackSlashCommandBuilder() -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+        if slackSlashCommandBuilder_ == nil {
+           slackSlashCommandBuilder_ = Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder()
+           builderResult.slackSlashCommand = slackSlashCommandBuilder_.getMessage()
+           if slackSlashCommand != nil {
+              try! slackSlashCommandBuilder_.mergeFrom(slackSlashCommand)
+           }
+        }
+        return slackSlashCommandBuilder_
+      }
+      public func setSlackSlashCommand(value:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1!) -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
+        self.slackSlashCommand = value
+        return self
+      }
+      public func mergeSlackSlashCommand(value:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1) throws -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
+        if builderResult.hasSlackSlashCommand {
+          builderResult.slackSlashCommand = try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.builderWithPrototype(builderResult.slackSlashCommand).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.slackSlashCommand = value
+        }
+        builderResult.hasSlackSlashCommand = true
+        return self
+      }
+      public func clearSlackSlashCommand() -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
+        slackSlashCommandBuilder_ = nil
+        builderResult.hasSlackSlashCommand = false
+        builderResult.slackSlashCommand = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -468,6 +577,9 @@ public extension Services.Organization.Containers.Integration {
         }
         if (other.hasGoogleGroups) {
             try mergeGoogleGroups(other.googleGroups)
+        }
+        if (other.hasSlackSlashCommand) {
+            try mergeSlackSlashCommand(other.slackSlashCommand)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -508,6 +620,14 @@ public extension Services.Organization.Containers.Integration {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             googleGroups = subBuilder.buildPartial()
+
+          case 50 :
+            let subBuilder:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder = Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder()
+            if hasSlackSlashCommand {
+              try subBuilder.mergeFrom(slackSlashCommand)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            slackSlashCommand = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
@@ -834,6 +954,202 @@ public extension Services.Organization.Containers.Integration {
 
           case 32 :
             readOnly = try input.readBool()
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class SlackSlashCommandDetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hasToken:Bool = false
+    public private(set) var token:String = ""
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasToken {
+        try output.writeString(1, value:token)
+      }
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasToken {
+        serialize_size += token.computeStringSize(1)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1> {
+      var mergedArray = Array<Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1? {
+      return try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder().mergeFromData(data, extensionRegistry:Services.Organization.Containers.Integration.IntegrationRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+      return Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.classBuilder() as! Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder
+    }
+    public func getBuilder() -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+      return classBuilder() as! Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder()
+    }
+    public func toBuilder() throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+      return try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+      return try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasToken {
+        output += "\(indent) token: \(token) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasToken {
+               hashCode = (hashCode &* 31) &+ token.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1"
+    }
+    override public func className() -> String {
+        return "Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 = Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1()
+      public func getMessage() -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      public var hasToken:Bool {
+           get {
+                return builderResult.hasToken
+           }
+      }
+      public var token:String {
+           get {
+                return builderResult.token
+           }
+           set (value) {
+               builderResult.hasToken = true
+               builderResult.token = value
+           }
+      }
+      public func setToken(value:String) -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+        self.token = value
+        return self
+      }
+      public func clearToken() -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder{
+           builderResult.hasToken = false
+           builderResult.token = ""
+           return self
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+        builderResult = Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1()
+        return self
+      }
+      public override func clone() throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+        return try Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 {
+        let returnMe:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1 = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+        if other == Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1() {
+         return self
+        }
+        if other.hasToken {
+             token = other.token
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 10 :
+            token = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
