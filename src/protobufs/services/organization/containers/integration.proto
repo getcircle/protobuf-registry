@@ -9,6 +9,7 @@ import "protobufs/services/common/containers.proto";
 enum IntegrationTypeV1 {
     GOOGLE_GROUPS = 0;
     SLACK_SLASH_COMMAND = 1;
+    SLACK_WEB_API = 2;
 }
 
 message IntegrationV1 {
@@ -19,6 +20,7 @@ message IntegrationV1 {
     oneof details {
         GoogleGroupDetailsV1 google_groups = 5;
         SlackSlashCommandDetailsV1 slack_slash_command = 6;
+        SlackWebApiDetailsV1 SLACK_WEB_API = 8;
     }
     optional string provider_uid = 7;
 }
@@ -32,4 +34,11 @@ message GoogleGroupDetailsV1 {
 
 message SlackSlashCommandDetailsV1 {
     optional string token = 1;
+}
+
+message SlackWebApiDetailsV1 {
+    optional string token = 1;
+    optional string by_profile_id = 2;
+    repeated string scopes = 3;
+    optional string team_id = 4;
 }
