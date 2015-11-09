@@ -28,6 +28,7 @@ public func == (lhs: Services.File.Containers.FileV1, rhs: Services.File.Contain
   fieldCheck = fieldCheck && (lhs.hasSourceUrl == rhs.hasSourceUrl) && (!lhs.hasSourceUrl || lhs.sourceUrl == rhs.sourceUrl)
   fieldCheck = fieldCheck && (lhs.hasContentType == rhs.hasContentType) && (!lhs.hasContentType || lhs.contentType == rhs.contentType)
   fieldCheck = fieldCheck && (lhs.hasCreated == rhs.hasCreated) && (!lhs.hasCreated || lhs.created == rhs.created)
+  fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -353,6 +354,9 @@ public extension Services.File.Containers {
     public private(set) var hasCreated:Bool = false
     public private(set) var created:String = ""
 
+    public private(set) var hasName:Bool = false
+    public private(set) var name:String = ""
+
     required public init() {
          super.init()
     }
@@ -377,6 +381,9 @@ public extension Services.File.Containers {
       }
       if hasCreated {
         try output.writeString(6, value:created)
+      }
+      if hasName {
+        try output.writeString(7, value:name)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -404,6 +411,9 @@ public extension Services.File.Containers {
       }
       if hasCreated {
         serialize_size += created.computeStringSize(6)
+      }
+      if hasName {
+        serialize_size += name.computeStringSize(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -474,6 +484,9 @@ public extension Services.File.Containers {
       if hasCreated {
         output += "\(indent) created: \(created) \n"
       }
+      if hasName {
+        output += "\(indent) name: \(name) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -496,6 +509,9 @@ public extension Services.File.Containers {
             }
             if hasCreated {
                hashCode = (hashCode &* 31) &+ created.hashValue
+            }
+            if hasName {
+               hashCode = (hashCode &* 31) &+ name.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -663,6 +679,29 @@ public extension Services.File.Containers {
            builderResult.created = ""
            return self
       }
+      public var hasName:Bool {
+           get {
+                return builderResult.hasName
+           }
+      }
+      public var name:String {
+           get {
+                return builderResult.name
+           }
+           set (value) {
+               builderResult.hasName = true
+               builderResult.name = value
+           }
+      }
+      public func setName(value:String) -> Services.File.Containers.FileV1.Builder {
+        self.name = value
+        return self
+      }
+      public func clearName() -> Services.File.Containers.FileV1.Builder{
+           builderResult.hasName = false
+           builderResult.name = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -705,6 +744,9 @@ public extension Services.File.Containers {
         if other.hasCreated {
              created = other.created
         }
+        if other.hasName {
+             name = other.name
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -737,6 +779,9 @@ public extension Services.File.Containers {
 
           case 50 :
             created = try input.readString()
+
+          case 58 :
+            name = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

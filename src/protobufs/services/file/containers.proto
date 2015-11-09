@@ -14,4 +14,5 @@ message FileV1 {
     string source_url = 4;
     string content_type = 5;
     string created = 6;
+    string name = 7;
 }

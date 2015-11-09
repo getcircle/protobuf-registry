@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/file/actions/complete_upload.proto',
   package='services.file.actions.complete_upload',
   syntax='proto3',
-  serialized_pb=_b('\n5protobufs/services/file/actions/complete_upload.proto\x12%services.file.actions.complete_upload\x1a(protobufs/services/file/containers.proto\"2\n\tRequestV1\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x12\n\nupload_key\x18\x02 \x01(\t\"<\n\nResponseV1\x12.\n\x04\x66ile\x18\x01 \x01(\x0b\x32 .services.file.containers.FileV1b\x06proto3')
+  serialized_pb=_b('\n5protobufs/services/file/actions/complete_upload.proto\x12%services.file.actions.complete_upload\x1a(protobufs/services/file/containers.proto\"E\n\tRequestV1\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x12\n\nupload_key\x18\x02 \x01(\t\x12\x11\n\tfile_name\x18\x03 \x01(\t\"<\n\nResponseV1\x12.\n\x04\x66ile\x18\x01 \x01(\x0b\x32 .services.file.containers.FileV1b\x06proto3')
   ,
   dependencies=[protobufs_dot_services_dot_file_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -49,6 +49,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='file_name', full_name='services.file.actions.complete_upload.RequestV1.file_name', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -62,7 +69,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=138,
-  serialized_end=188,
+  serialized_end=207,
 )
 
 
@@ -92,8 +99,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=190,
-  serialized_end=250,
+  serialized_start=209,
+  serialized_end=269,
 )
 
 _RESPONSEV1.fields_by_name['file'].message_type = protobufs_dot_services_dot_file_dot_containers__pb2._FILEV1

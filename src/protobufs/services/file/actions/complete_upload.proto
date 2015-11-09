@@ -6,6 +6,7 @@ import "protobufs/services/file/containers.proto";
 message RequestV1 {
     string upload_id = 1;
     string upload_key = 2;
+    string file_name = 3;
 }
 
 message ResponseV1 {

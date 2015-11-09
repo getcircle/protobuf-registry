@@ -12,6 +12,7 @@ public func == (lhs: Services.File.Actions.CompleteUpload.RequestV1, rhs: Servic
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasUploadId == rhs.hasUploadId) && (!lhs.hasUploadId || lhs.uploadId == rhs.uploadId)
   fieldCheck = fieldCheck && (lhs.hasUploadKey == rhs.hasUploadKey) && (!lhs.hasUploadKey || lhs.uploadKey == rhs.uploadKey)
+  fieldCheck = fieldCheck && (lhs.hasFileName == rhs.hasFileName) && (!lhs.hasFileName || lhs.fileName == rhs.fileName)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -52,6 +53,9 @@ public extension Services.File.Actions.CompleteUpload {
     public private(set) var hasUploadKey:Bool = false
     public private(set) var uploadKey:String = ""
 
+    public private(set) var hasFileName:Bool = false
+    public private(set) var fileName:String = ""
+
     required public init() {
          super.init()
     }
@@ -64,6 +68,9 @@ public extension Services.File.Actions.CompleteUpload {
       }
       if hasUploadKey {
         try output.writeString(2, value:uploadKey)
+      }
+      if hasFileName {
+        try output.writeString(3, value:fileName)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -79,6 +86,9 @@ public extension Services.File.Actions.CompleteUpload {
       }
       if hasUploadKey {
         serialize_size += uploadKey.computeStringSize(2)
+      }
+      if hasFileName {
+        serialize_size += fileName.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -137,6 +147,9 @@ public extension Services.File.Actions.CompleteUpload {
       if hasUploadKey {
         output += "\(indent) uploadKey: \(uploadKey) \n"
       }
+      if hasFileName {
+        output += "\(indent) fileName: \(fileName) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -147,6 +160,9 @@ public extension Services.File.Actions.CompleteUpload {
             }
             if hasUploadKey {
                hashCode = (hashCode &* 31) &+ uploadKey.hashValue
+            }
+            if hasFileName {
+               hashCode = (hashCode &* 31) &+ fileName.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -222,6 +238,29 @@ public extension Services.File.Actions.CompleteUpload {
            builderResult.uploadKey = ""
            return self
       }
+      public var hasFileName:Bool {
+           get {
+                return builderResult.hasFileName
+           }
+      }
+      public var fileName:String {
+           get {
+                return builderResult.fileName
+           }
+           set (value) {
+               builderResult.hasFileName = true
+               builderResult.fileName = value
+           }
+      }
+      public func setFileName(value:String) -> Services.File.Actions.CompleteUpload.RequestV1.Builder {
+        self.fileName = value
+        return self
+      }
+      public func clearFileName() -> Services.File.Actions.CompleteUpload.RequestV1.Builder{
+           builderResult.hasFileName = false
+           builderResult.fileName = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -252,6 +291,9 @@ public extension Services.File.Actions.CompleteUpload {
         if other.hasUploadKey {
              uploadKey = other.uploadKey
         }
+        if other.hasFileName {
+             fileName = other.fileName
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -272,6 +314,9 @@ public extension Services.File.Actions.CompleteUpload {
 
           case 18 :
             uploadKey = try input.readString()
+
+          case 26 :
+            fileName = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
