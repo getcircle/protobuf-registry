@@ -20,6 +20,7 @@ message IntegrationV1 {
         GoogleGroupDetailsV1 google_groups = 5;
         SlackSlashCommandDetailsV1 slack_slash_command = 6;
     }
+    optional string provider_uid = 7;
 }
 
 message GoogleGroupDetailsV1 {

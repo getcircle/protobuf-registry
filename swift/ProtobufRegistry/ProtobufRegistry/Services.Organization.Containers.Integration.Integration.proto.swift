@@ -16,6 +16,7 @@ public func == (lhs: Services.Organization.Containers.Integration.IntegrationV1,
   fieldCheck = fieldCheck && (lhs.hasIntegrationType == rhs.hasIntegrationType) && (!lhs.hasIntegrationType || lhs.integrationType == rhs.integrationType)
   fieldCheck = fieldCheck && (lhs.hasGoogleGroups == rhs.hasGoogleGroups) && (!lhs.hasGoogleGroups || lhs.googleGroups == rhs.googleGroups)
   fieldCheck = fieldCheck && (lhs.hasSlackSlashCommand == rhs.hasSlackSlashCommand) && (!lhs.hasSlackSlashCommand || lhs.slackSlashCommand == rhs.slackSlashCommand)
+  fieldCheck = fieldCheck && (lhs.hasProviderUid == rhs.hasProviderUid) && (!lhs.hasProviderUid || lhs.providerUid == rhs.providerUid)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -161,6 +162,9 @@ public extension Services.Organization.Containers.Integration {
               storageDetails = IntegrationV1.Details.SlackSlashCommand(newvalue)
          }
     }
+    public private(set) var hasProviderUid:Bool = false
+    public private(set) var providerUid:String = ""
+
     required public init() {
          super.init()
     }
@@ -185,6 +189,9 @@ public extension Services.Organization.Containers.Integration {
       }
       if hasSlackSlashCommand {
         try output.writeMessage(6, value:slackSlashCommand)
+      }
+      if hasProviderUid {
+        try output.writeString(7, value:providerUid)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -216,6 +223,9 @@ public extension Services.Organization.Containers.Integration {
           if let varSizeslackSlashCommand = slackSlashCommand?.computeMessageSize(6) {
               serialize_size += varSizeslackSlashCommand
           }
+      }
+      if hasProviderUid {
+        serialize_size += providerUid.computeStringSize(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -290,6 +300,9 @@ public extension Services.Organization.Containers.Integration {
         try slackSlashCommand?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasProviderUid {
+        output += "\(indent) providerUid: \(providerUid) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -316,6 +329,9 @@ public extension Services.Organization.Containers.Integration {
                 if let hashValueslackSlashCommand = slackSlashCommand?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueslackSlashCommand
                 }
+            }
+            if hasProviderUid {
+               hashCode = (hashCode &* 31) &+ providerUid.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -539,6 +555,29 @@ public extension Services.Organization.Containers.Integration {
         builderResult.slackSlashCommand = nil
         return self
       }
+      public var hasProviderUid:Bool {
+           get {
+                return builderResult.hasProviderUid
+           }
+      }
+      public var providerUid:String {
+           get {
+                return builderResult.providerUid
+           }
+           set (value) {
+               builderResult.hasProviderUid = true
+               builderResult.providerUid = value
+           }
+      }
+      public func setProviderUid(value:String) -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
+        self.providerUid = value
+        return self
+      }
+      public func clearProviderUid() -> Services.Organization.Containers.Integration.IntegrationV1.Builder{
+           builderResult.hasProviderUid = false
+           builderResult.providerUid = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -580,6 +619,9 @@ public extension Services.Organization.Containers.Integration {
         }
         if (other.hasSlackSlashCommand) {
             try mergeSlackSlashCommand(other.slackSlashCommand)
+        }
+        if other.hasProviderUid {
+             providerUid = other.providerUid
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -628,6 +670,9 @@ public extension Services.Organization.Containers.Integration {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             slackSlashCommand = subBuilder.buildPartial()
+
+          case 58 :
+            providerUid = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
