@@ -2,7 +2,7 @@ syntax = "proto3";
 package services.file.actions.delete;
 
 message RequestV1 {
-    string file_id = 1;
+    string id = 1;
 }
 
 message ResponseV1 {}

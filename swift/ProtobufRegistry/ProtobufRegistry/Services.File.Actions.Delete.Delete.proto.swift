@@ -10,7 +10,7 @@ public func == (lhs: Services.File.Actions.Delete.RequestV1, rhs: Services.File.
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasFileId == rhs.hasFileId) && (!lhs.hasFileId || lhs.fileId == rhs.fileId)
+  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -43,8 +43,8 @@ public extension Services.File.Actions.Delete {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasFileId:Bool = false
-    public private(set) var fileId:String = ""
+    public private(set) var hasId:Bool = false
+    public private(set) var id:String = ""
 
     required public init() {
          super.init()
@@ -53,8 +53,8 @@ public extension Services.File.Actions.Delete {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasFileId {
-        try output.writeString(1, value:fileId)
+      if hasId {
+        try output.writeString(1, value:id)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -65,8 +65,8 @@ public extension Services.File.Actions.Delete {
       }
 
       serialize_size = 0
-      if hasFileId {
-        serialize_size += fileId.computeStringSize(1)
+      if hasId {
+        serialize_size += id.computeStringSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -119,16 +119,16 @@ public extension Services.File.Actions.Delete {
       return try Services.File.Actions.Delete.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasFileId {
-        output += "\(indent) fileId: \(fileId) \n"
+      if hasId {
+        output += "\(indent) id: \(id) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasFileId {
-               hashCode = (hashCode &* 31) &+ fileId.hashValue
+            if hasId {
+               hashCode = (hashCode &* 31) &+ id.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -158,27 +158,27 @@ public extension Services.File.Actions.Delete {
       required override public init () {
          super.init()
       }
-      public var hasFileId:Bool {
+      public var hasId:Bool {
            get {
-                return builderResult.hasFileId
+                return builderResult.hasId
            }
       }
-      public var fileId:String {
+      public var id:String {
            get {
-                return builderResult.fileId
+                return builderResult.id
            }
            set (value) {
-               builderResult.hasFileId = true
-               builderResult.fileId = value
+               builderResult.hasId = true
+               builderResult.id = value
            }
       }
-      public func setFileId(value:String) -> Services.File.Actions.Delete.RequestV1.Builder {
-        self.fileId = value
+      public func setId(value:String) -> Services.File.Actions.Delete.RequestV1.Builder {
+        self.id = value
         return self
       }
-      public func clearFileId() -> Services.File.Actions.Delete.RequestV1.Builder{
-           builderResult.hasFileId = false
-           builderResult.fileId = ""
+      public func clearId() -> Services.File.Actions.Delete.RequestV1.Builder{
+           builderResult.hasId = false
+           builderResult.id = ""
            return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -205,8 +205,8 @@ public extension Services.File.Actions.Delete {
         if other == Services.File.Actions.Delete.RequestV1() {
          return self
         }
-        if other.hasFileId {
-             fileId = other.fileId
+        if other.hasId {
+             id = other.id
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -224,7 +224,7 @@ public extension Services.File.Actions.Delete {
             return self
 
           case 10 :
-            fileId = try input.readString()
+            id = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
