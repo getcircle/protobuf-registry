@@ -23,6 +23,7 @@ public func == (lhs: Services.Post.Containers.PostV1, rhs: Services.Post.Contain
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
   fieldCheck = fieldCheck && (lhs.fileIds == rhs.fileIds)
+  fieldCheck = fieldCheck && (lhs.files == rhs.files)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -41,6 +42,7 @@ public extension Services.Post.Containers {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.File.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
@@ -93,6 +95,7 @@ public extension Services.Post.Containers {
     public private(set) var hasPermissions:Bool = false
     public private(set) var permissions:Services.Common.Containers.PermissionsV1!
     public private(set) var fileIds:Array<String> = Array<String>()
+    public private(set) var files:Array<Services.File.Containers.FileV1>  = Array<Services.File.Containers.FileV1>()
     required public init() {
          super.init()
     }
@@ -140,6 +143,9 @@ public extension Services.Post.Containers {
         for oneValuefileIds in fileIds {
           try output.writeString(13, value:oneValuefileIds)
         }
+      }
+      for oneElementfiles in files {
+          try output.writeMessage(14, value:oneElementfiles)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -200,6 +206,9 @@ public extension Services.Post.Containers {
       }
       serialize_size += dataSizeFileIds
       serialize_size += 1 * Int32(fileIds.count)
+      for oneElementfiles in files {
+          serialize_size += oneElementfiles.computeMessageSize(14)
+      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -300,6 +309,13 @@ public extension Services.Post.Containers {
           output += "\(indent) fileIds[\(fileIdsElementIndex)]: \(oneValuefileIds)\n"
           fileIdsElementIndex++
       }
+      var filesElementIndex:Int = 0
+      for oneElementfiles in files {
+          output += "\(indent) files[\(filesElementIndex)] {\n"
+          try oneElementfiles.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          filesElementIndex++
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -351,6 +367,9 @@ public extension Services.Post.Containers {
             }
             for oneValuefileIds in fileIds {
                 hashCode = (hashCode &* 31) &+ oneValuefileIds.hashValue
+            }
+            for oneElementfiles in files {
+                hashCode = (hashCode &* 31) &+ oneElementfiles.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -784,6 +803,22 @@ public extension Services.Post.Containers {
          builderResult.fileIds.removeAll(keepCapacity: false)
          return self
       }
+      public var files:Array<Services.File.Containers.FileV1> {
+           get {
+               return builderResult.files
+           }
+           set (value) {
+               builderResult.files = value
+           }
+      }
+      public func setFiles(value:Array<Services.File.Containers.FileV1>) -> Services.Post.Containers.PostV1.Builder {
+        self.files = value
+        return self
+      }
+      public func clearFiles() -> Services.Post.Containers.PostV1.Builder {
+        builderResult.files.removeAll(keepCapacity: false)
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -846,6 +881,9 @@ public extension Services.Post.Containers {
         }
         if !other.fileIds.isEmpty {
             builderResult.fileIds += other.fileIds
+        }
+        if !other.files.isEmpty  {
+           builderResult.files += other.files
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -925,6 +963,11 @@ public extension Services.Post.Containers {
 
           case 106 :
             fileIds += [try input.readString()]
+
+          case 114 :
+            let subBuilder = Services.File.Containers.FileV1.Builder()
+            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+            files += [subBuilder.buildPartial()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
