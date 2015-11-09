@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/integration.proto',
   package='services.organization.containers.integration',
   syntax='proto2',
-  serialized_pb=_b('\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\xe7\x03\n\rIntegrationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12Y\n\x10integration_type\x18\x04 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12[\n\rgoogle_groups\x18\x05 \x01(\x0b\x32\x42.services.organization.containers.integration.GoogleGroupDetailsV1H\x00\x12g\n\x13slack_slash_command\x18\x06 \x01(\x0b\x32H.services.organization.containers.integration.SlackSlashCommandDetailsV1H\x00\x12[\n\rSLACK_WEB_API\x18\x08 \x01(\x0b\x32\x42.services.organization.containers.integration.SlackWebApiDetailsV1H\x00\x12\x14\n\x0cprovider_uid\x18\x07 \x01(\tB\t\n\x07\x64\x65tails\"b\n\x14GoogleGroupDetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x13\n\x0b\x61\x64min_email\x18\x02 \x01(\t\x12\x0e\n\x06scopes\x18\x03 \x03(\t\x12\x11\n\tread_only\x18\x04 \x01(\x08\"+\n\x1aSlackSlashCommandDetailsV1\x12\r\n\x05token\x18\x01 \x01(\t\"]\n\x14SlackWebApiDetailsV1\x12\r\n\x05token\x18\x01 \x01(\t\x12\x15\n\rby_profile_id\x18\x02 \x01(\t\x12\x0e\n\x06scopes\x18\x03 \x03(\t\x12\x0f\n\x07team_id\x18\x04 \x01(\t*R\n\x11IntegrationTypeV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00\x12\x17\n\x13SLACK_SLASH_COMMAND\x10\x01\x12\x11\n\rSLACK_WEB_API\x10\x02\x42\x43\nAcom.rhlabs.protobufs.services.organization.containers.integration')
+  serialized_pb=_b('\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\xe7\x03\n\rIntegrationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12Y\n\x10integration_type\x18\x04 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12[\n\rgoogle_groups\x18\x05 \x01(\x0b\x32\x42.services.organization.containers.integration.GoogleGroupDetailsV1H\x00\x12g\n\x13slack_slash_command\x18\x06 \x01(\x0b\x32H.services.organization.containers.integration.SlackSlashCommandDetailsV1H\x00\x12[\n\rslack_web_api\x18\x08 \x01(\x0b\x32\x42.services.organization.containers.integration.SlackWebApiDetailsV1H\x00\x12\x14\n\x0cprovider_uid\x18\x07 \x01(\tB\t\n\x07\x64\x65tails\"b\n\x14GoogleGroupDetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x13\n\x0b\x61\x64min_email\x18\x02 \x01(\t\x12\x0e\n\x06scopes\x18\x03 \x03(\t\x12\x11\n\tread_only\x18\x04 \x01(\x08\"+\n\x1aSlackSlashCommandDetailsV1\x12\r\n\x05token\x18\x01 \x01(\t\"]\n\x14SlackWebApiDetailsV1\x12\r\n\x05token\x18\x01 \x01(\t\x12\x15\n\rby_profile_id\x18\x02 \x01(\t\x12\x0e\n\x06scopes\x18\x03 \x03(\t\x12\x0f\n\x07team_id\x18\x04 \x01(\t*R\n\x11IntegrationTypeV1\x12\x11\n\rGOOGLE_GROUPS\x10\x00\x12\x17\n\x13SLACK_SLASH_COMMAND\x10\x01\x12\x11\n\rSLACK_WEB_API\x10\x02\x42\x43\nAcom.rhlabs.protobufs.services.organization.containers.integration')
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -109,7 +109,7 @@ _INTEGRATIONV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='SLACK_WEB_API', full_name='services.organization.containers.integration.IntegrationV1.SLACK_WEB_API', index=6,
+      name='slack_web_api', full_name='services.organization.containers.integration.IntegrationV1.slack_web_api', index=6,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -279,7 +279,7 @@ _SLACKWEBAPIDETAILSV1 = _descriptor.Descriptor(
 _INTEGRATIONV1.fields_by_name['integration_type'].enum_type = _INTEGRATIONTYPEV1
 _INTEGRATIONV1.fields_by_name['google_groups'].message_type = _GOOGLEGROUPDETAILSV1
 _INTEGRATIONV1.fields_by_name['slack_slash_command'].message_type = _SLACKSLASHCOMMANDDETAILSV1
-_INTEGRATIONV1.fields_by_name['SLACK_WEB_API'].message_type = _SLACKWEBAPIDETAILSV1
+_INTEGRATIONV1.fields_by_name['slack_web_api'].message_type = _SLACKWEBAPIDETAILSV1
 _INTEGRATIONV1.oneofs_by_name['details'].fields.append(
   _INTEGRATIONV1.fields_by_name['google_groups'])
 _INTEGRATIONV1.fields_by_name['google_groups'].containing_oneof = _INTEGRATIONV1.oneofs_by_name['details']
@@ -287,8 +287,8 @@ _INTEGRATIONV1.oneofs_by_name['details'].fields.append(
   _INTEGRATIONV1.fields_by_name['slack_slash_command'])
 _INTEGRATIONV1.fields_by_name['slack_slash_command'].containing_oneof = _INTEGRATIONV1.oneofs_by_name['details']
 _INTEGRATIONV1.oneofs_by_name['details'].fields.append(
-  _INTEGRATIONV1.fields_by_name['SLACK_WEB_API'])
-_INTEGRATIONV1.fields_by_name['SLACK_WEB_API'].containing_oneof = _INTEGRATIONV1.oneofs_by_name['details']
+  _INTEGRATIONV1.fields_by_name['slack_web_api'])
+_INTEGRATIONV1.fields_by_name['slack_web_api'].containing_oneof = _INTEGRATIONV1.oneofs_by_name['details']
 DESCRIPTOR.message_types_by_name['IntegrationV1'] = _INTEGRATIONV1
 DESCRIPTOR.message_types_by_name['GoogleGroupDetailsV1'] = _GOOGLEGROUPDETAILSV1
 DESCRIPTOR.message_types_by_name['SlackSlashCommandDetailsV1'] = _SLACKSLASHCOMMANDDETAILSV1
