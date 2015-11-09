@@ -13,6 +13,7 @@ public func == (lhs: Services.File.Actions.CompleteUpload.RequestV1, rhs: Servic
   fieldCheck = fieldCheck && (lhs.hasUploadId == rhs.hasUploadId) && (!lhs.hasUploadId || lhs.uploadId == rhs.uploadId)
   fieldCheck = fieldCheck && (lhs.hasUploadKey == rhs.hasUploadKey) && (!lhs.hasUploadKey || lhs.uploadKey == rhs.uploadKey)
   fieldCheck = fieldCheck && (lhs.hasFileName == rhs.hasFileName) && (!lhs.hasFileName || lhs.fileName == rhs.fileName)
+  fieldCheck = fieldCheck && (lhs.hasContentType == rhs.hasContentType) && (!lhs.hasContentType || lhs.contentType == rhs.contentType)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -56,6 +57,9 @@ public extension Services.File.Actions.CompleteUpload {
     public private(set) var hasFileName:Bool = false
     public private(set) var fileName:String = ""
 
+    public private(set) var hasContentType:Bool = false
+    public private(set) var contentType:String = ""
+
     required public init() {
          super.init()
     }
@@ -71,6 +75,9 @@ public extension Services.File.Actions.CompleteUpload {
       }
       if hasFileName {
         try output.writeString(3, value:fileName)
+      }
+      if hasContentType {
+        try output.writeString(4, value:contentType)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -89,6 +96,9 @@ public extension Services.File.Actions.CompleteUpload {
       }
       if hasFileName {
         serialize_size += fileName.computeStringSize(3)
+      }
+      if hasContentType {
+        serialize_size += contentType.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -150,6 +160,9 @@ public extension Services.File.Actions.CompleteUpload {
       if hasFileName {
         output += "\(indent) fileName: \(fileName) \n"
       }
+      if hasContentType {
+        output += "\(indent) contentType: \(contentType) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -163,6 +176,9 @@ public extension Services.File.Actions.CompleteUpload {
             }
             if hasFileName {
                hashCode = (hashCode &* 31) &+ fileName.hashValue
+            }
+            if hasContentType {
+               hashCode = (hashCode &* 31) &+ contentType.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -261,6 +277,29 @@ public extension Services.File.Actions.CompleteUpload {
            builderResult.fileName = ""
            return self
       }
+      public var hasContentType:Bool {
+           get {
+                return builderResult.hasContentType
+           }
+      }
+      public var contentType:String {
+           get {
+                return builderResult.contentType
+           }
+           set (value) {
+               builderResult.hasContentType = true
+               builderResult.contentType = value
+           }
+      }
+      public func setContentType(value:String) -> Services.File.Actions.CompleteUpload.RequestV1.Builder {
+        self.contentType = value
+        return self
+      }
+      public func clearContentType() -> Services.File.Actions.CompleteUpload.RequestV1.Builder{
+           builderResult.hasContentType = false
+           builderResult.contentType = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -294,6 +333,9 @@ public extension Services.File.Actions.CompleteUpload {
         if other.hasFileName {
              fileName = other.fileName
         }
+        if other.hasContentType {
+             contentType = other.contentType
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -317,6 +359,9 @@ public extension Services.File.Actions.CompleteUpload {
 
           case 26 :
             fileName = try input.readString()
+
+          case 34 :
+            contentType = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
