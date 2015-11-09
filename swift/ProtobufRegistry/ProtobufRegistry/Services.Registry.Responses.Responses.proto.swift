@@ -601,6 +601,11 @@ public var ServicesRegistryResponsesFiledelete:ConcreateExtensionField {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesFiledeleteStatic
    }
 }
+public var ServicesRegistryResponsesFilegetFiles:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesFilegetFilesStatic
+   }
+}
 public extension Services.Registry.Responses {
   public struct ResponsesRoot {
     public static var sharedInstance : ResponsesRoot {
@@ -703,6 +708,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesFilestartUploadStatic:ConcreateExtensionField
     var ServicesRegistryResponsesFilecompleteUploadStatic:ConcreateExtensionField
     var ServicesRegistryResponsesFiledeleteStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesFilegetFilesStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -800,6 +806,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesFilestartUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1800, defaultValue:Services.File.Actions.StartUpload.ResponseV1(), messageOrGroupClass:Services.File.Actions.StartUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesFilecompleteUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1801, defaultValue:Services.File.Actions.CompleteUpload.ResponseV1(), messageOrGroupClass:Services.File.Actions.CompleteUpload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesFiledeleteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1802, defaultValue:Services.File.Actions.Delete.ResponseV1(), messageOrGroupClass:Services.File.Actions.Delete.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesFilegetFilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1803, defaultValue:Services.File.Actions.GetFiles.ResponseV1(), messageOrGroupClass:Services.File.Actions.GetFiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -897,6 +904,7 @@ public extension Services.Registry.Responses {
       Services.File.Actions.StartUpload.StartUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.CompleteUpload.CompleteUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.Delete.DeleteRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.File.Actions.GetFiles.GetFilesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryResponsesUsercreateUserStatic)
@@ -993,6 +1001,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesFilestartUploadStatic)
       registry.addExtension(ServicesRegistryResponsesFilecompleteUploadStatic)
       registry.addExtension(ServicesRegistryResponsesFiledeleteStatic)
+      registry.addExtension(ServicesRegistryResponsesFilegetFilesStatic)
     }
   }
 
@@ -3254,6 +3263,9 @@ public extension Services.Registry.Responses {
     }
     public class func delete() -> ConcreateExtensionField {
          return ServicesRegistryResponsesFiledelete
+    }
+    public class func getFiles() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesFilegetFiles
     }
     required public init() {
          super.init()
