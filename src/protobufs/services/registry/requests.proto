@@ -112,6 +112,7 @@ import "protobufs/services/feature/actions/get_flags.proto";
 
 import "protobufs/services/file/actions/start_upload.proto";
 import "protobufs/services/file/actions/complete_upload.proto";
+import "protobufs/services/file/actions/delete.proto";
 
 message User {
     extend soa.ActionRequestParamsV1 {
@@ -273,5 +274,6 @@ message File {
     extend soa.ActionRequestParamsV1 {
         optional services.file.actions.start_upload.RequestV1 start_upload = 1800;
         optional services.file.actions.complete_upload.RequestV1 complete_upload = 1801;
+        optional services.file.actions.delete.RequestV1 delete = 1802;
     }
 }

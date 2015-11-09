@@ -596,6 +596,11 @@ public var ServicesRegistryRequestsFilecompleteUpload:ConcreateExtensionField {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsFilecompleteUploadStatic
    }
 }
+public var ServicesRegistryRequestsFiledelete:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsFiledeleteStatic
+   }
+}
 public extension Services.Registry.Requests {
   public struct RequestsRoot {
     public static var sharedInstance : RequestsRoot {
@@ -697,6 +702,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsFeaturegetFlagsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsFilestartUploadStatic:ConcreateExtensionField
     var ServicesRegistryRequestsFilecompleteUploadStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsFiledeleteStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -793,6 +799,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsFeaturegetFlagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1700, defaultValue:Services.Feature.Actions.GetFlags.RequestV1(), messageOrGroupClass:Services.Feature.Actions.GetFlags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsFilestartUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1800, defaultValue:Services.File.Actions.StartUpload.RequestV1(), messageOrGroupClass:Services.File.Actions.StartUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsFilecompleteUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1801, defaultValue:Services.File.Actions.CompleteUpload.RequestV1(), messageOrGroupClass:Services.File.Actions.CompleteUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsFiledeleteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1802, defaultValue:Services.File.Actions.Delete.RequestV1(), messageOrGroupClass:Services.File.Actions.Delete.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -889,6 +896,7 @@ public extension Services.Registry.Requests {
       Services.Feature.Actions.GetFlags.GetFlagsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.StartUpload.StartUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.CompleteUpload.CompleteUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.File.Actions.Delete.DeleteRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryRequestsUsercreateUserStatic)
@@ -984,6 +992,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsFeaturegetFlagsStatic)
       registry.addExtension(ServicesRegistryRequestsFilestartUploadStatic)
       registry.addExtension(ServicesRegistryRequestsFilecompleteUploadStatic)
+      registry.addExtension(ServicesRegistryRequestsFiledeleteStatic)
     }
   }
 
@@ -3242,6 +3251,9 @@ public extension Services.Registry.Requests {
     }
     public class func completeUpload() -> ConcreateExtensionField {
          return ServicesRegistryRequestsFilecompleteUpload
+    }
+    public class func delete() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsFiledelete
     }
     required public init() {
          super.init()
