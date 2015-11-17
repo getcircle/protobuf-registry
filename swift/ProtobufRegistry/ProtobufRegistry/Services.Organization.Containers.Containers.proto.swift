@@ -46,6 +46,7 @@ public func == (lhs: Services.Organization.Containers.OrganizationV1, rhs: Servi
   fieldCheck = fieldCheck && (lhs.hasProfileCount == rhs.hasProfileCount) && (!lhs.hasProfileCount || lhs.profileCount == rhs.profileCount)
   fieldCheck = fieldCheck && (lhs.hasTeamCount == rhs.hasTeamCount) && (!lhs.hasTeamCount || lhs.teamCount == rhs.teamCount)
   fieldCheck = fieldCheck && (lhs.hasLocationCount == rhs.hasLocationCount) && (!lhs.hasLocationCount || lhs.locationCount == rhs.locationCount)
+  fieldCheck = fieldCheck && (lhs.hasPostCount == rhs.hasPostCount) && (!lhs.hasPostCount || lhs.postCount == rhs.postCount)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1221,6 +1222,9 @@ public extension Services.Organization.Containers {
     public private(set) var hasLocationCount:Bool = false
     public private(set) var locationCount:UInt32 = UInt32(0)
 
+    public private(set) var hasPostCount:Bool = false
+    public private(set) var postCount:UInt32 = UInt32(0)
+
     required public init() {
          super.init()
     }
@@ -1251,6 +1255,9 @@ public extension Services.Organization.Containers {
       }
       if hasLocationCount {
         try output.writeUInt32(8, value:locationCount)
+      }
+      if hasPostCount {
+        try output.writeUInt32(9, value:postCount)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1284,6 +1291,9 @@ public extension Services.Organization.Containers {
       }
       if hasLocationCount {
         serialize_size += locationCount.computeUInt32Size(8)
+      }
+      if hasPostCount {
+        serialize_size += postCount.computeUInt32Size(9)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1360,6 +1370,9 @@ public extension Services.Organization.Containers {
       if hasLocationCount {
         output += "\(indent) locationCount: \(locationCount) \n"
       }
+      if hasPostCount {
+        output += "\(indent) postCount: \(postCount) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1388,6 +1401,9 @@ public extension Services.Organization.Containers {
             }
             if hasLocationCount {
                hashCode = (hashCode &* 31) &+ locationCount.hashValue
+            }
+            if hasPostCount {
+               hashCode = (hashCode &* 31) &+ postCount.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1601,6 +1617,29 @@ public extension Services.Organization.Containers {
            builderResult.locationCount = UInt32(0)
            return self
       }
+      public var hasPostCount:Bool {
+           get {
+                return builderResult.hasPostCount
+           }
+      }
+      public var postCount:UInt32 {
+           get {
+                return builderResult.postCount
+           }
+           set (value) {
+               builderResult.hasPostCount = true
+               builderResult.postCount = value
+           }
+      }
+      public func setPostCount(value:UInt32) -> Services.Organization.Containers.OrganizationV1.Builder {
+        self.postCount = value
+        return self
+      }
+      public func clearPostCount() -> Services.Organization.Containers.OrganizationV1.Builder{
+           builderResult.hasPostCount = false
+           builderResult.postCount = UInt32(0)
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1649,6 +1688,9 @@ public extension Services.Organization.Containers {
         if other.hasLocationCount {
              locationCount = other.locationCount
         }
+        if other.hasPostCount {
+             postCount = other.postCount
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -1687,6 +1729,9 @@ public extension Services.Organization.Containers {
 
           case 64 :
             locationCount = try input.readUInt32()
+
+          case 72 :
+            postCount = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
