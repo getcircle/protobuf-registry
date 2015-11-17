@@ -39,6 +39,7 @@ message OrganizationV1 {
     optional uint32 profile_count = 6;
     optional uint32 team_count = 7;
     optional uint32 location_count = 8;
+    optional uint32 post_count = 9;
 }
 
 message TeamV1 {
