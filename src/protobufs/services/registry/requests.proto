@@ -65,7 +65,6 @@ import "protobufs/services/profile/actions/bulk_create_profiles.proto";
 import "protobufs/services/profile/actions/bulk_update_profiles.proto";
 import "protobufs/services/profile/actions/remove_tags.proto";
 import "protobufs/services/profile/actions/profile_exists.proto";
-import "protobufs/services/profile/actions/get_status.proto";
 
 import "protobufs/services/search/actions/search.proto";
 import "protobufs/services/search/actions/update_entities.proto";
@@ -187,7 +186,7 @@ message Profile {
         optional services.profile.actions.bulk_update_profiles.RequestV1 bulk_update_profiles = 313;
         optional services.profile.actions.remove_tags.RequestV1 remove_tags = 314;
         optional services.profile.actions.profile_exists.RequestV1 profile_exists = 315;
-        optional services.profile.actions.get_status.RequestV1 get_status = 316;
+        optional string DEPRECATED_get_status = 316;
     }
 }
 

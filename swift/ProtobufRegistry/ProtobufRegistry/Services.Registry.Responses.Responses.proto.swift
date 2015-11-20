@@ -416,9 +416,9 @@ public var ServicesRegistryResponsesProfileprofileExists:ConcreateExtensionField
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfileprofileExistsStatic
    }
 }
-public var ServicesRegistryResponsesProfilegetStatus:ConcreateExtensionField {
+public var ServicesRegistryResponsesProfiledEPRECATEDGetStatus:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfilegetStatusStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesProfiledEPRECATEDGetStatusStatic
    }
 }
 public var ServicesRegistryResponsesSearchsearch:ConcreateExtensionField {
@@ -686,7 +686,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesProfilebulkUpdateProfilesStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfileremoveTagsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesProfileprofileExistsStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesProfilegetStatusStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesProfiledEPRECATEDGetStatusStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSearchsearchStatic:ConcreateExtensionField
     var ServicesRegistryResponsesSearchsearchV2Static:ConcreateExtensionField
     var ServicesRegistryResponsesSearchupdateEntitiesStatic:ConcreateExtensionField
@@ -787,7 +787,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesProfilebulkUpdateProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 313, defaultValue:Services.Profile.Actions.BulkUpdateProfiles.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.BulkUpdateProfiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfileremoveTagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 314, defaultValue:Services.Profile.Actions.RemoveTags.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.RemoveTags.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesProfileprofileExistsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 315, defaultValue:Services.Profile.Actions.ProfileExists.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.ProfileExists.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesProfilegetStatusStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 316, defaultValue:Services.Profile.Actions.GetStatus.ResponseV1(), messageOrGroupClass:Services.Profile.Actions.GetStatus.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesProfiledEPRECATEDGetStatusStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeString, extendedClass:Soa.ActionResultV1.self, fieldNumber: 316, defaultValue:"", messageOrGroupClass:String.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSearchsearchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 400, defaultValue:Services.Search.Actions.Search.ResponseV1(), messageOrGroupClass:Services.Search.Actions.Search.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSearchsearchV2Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 401, defaultValue:Services.Search.Actions.SearchV2.ResponseV1(), messageOrGroupClass:Services.Search.Actions.SearchV2.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesSearchupdateEntitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 402, defaultValue:Services.Search.Actions.UpdateEntities.ResponseV1(), messageOrGroupClass:Services.Search.Actions.UpdateEntities.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -888,7 +888,6 @@ public extension Services.Registry.Responses {
       Services.Profile.Actions.BulkUpdateProfiles.BulkUpdateProfilesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.RemoveTags.RemoveTagsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.ProfileExists.ProfileExistsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Profile.Actions.GetStatus.GetStatusRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Search.Actions.Search.SearchRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Search.Actions.SearchV2.SearchV2Root.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Search.Actions.UpdateEntities.UpdateEntitiesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -988,7 +987,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesProfilebulkUpdateProfilesStatic)
       registry.addExtension(ServicesRegistryResponsesProfileremoveTagsStatic)
       registry.addExtension(ServicesRegistryResponsesProfileprofileExistsStatic)
-      registry.addExtension(ServicesRegistryResponsesProfilegetStatusStatic)
+      registry.addExtension(ServicesRegistryResponsesProfiledEPRECATEDGetStatusStatic)
       registry.addExtension(ServicesRegistryResponsesSearchsearchStatic)
       registry.addExtension(ServicesRegistryResponsesSearchsearchV2Static)
       registry.addExtension(ServicesRegistryResponsesSearchupdateEntitiesStatic)
@@ -1508,8 +1507,8 @@ public extension Services.Registry.Responses {
     public class func profileExists() -> ConcreateExtensionField {
          return ServicesRegistryResponsesProfileprofileExists
     }
-    public class func getStatus() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesProfilegetStatus
+    public class func dEPRECATEDGetStatus() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesProfiledEPRECATEDGetStatus
     }
     required public init() {
          super.init()
