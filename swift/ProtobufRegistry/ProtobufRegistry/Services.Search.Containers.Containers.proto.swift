@@ -10,13 +10,24 @@ public func == (lhs: Services.Search.Containers.SearchResultV1, rhs: Services.Se
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
   fieldCheck = fieldCheck && (lhs.hasLocation == rhs.hasLocation) && (!lhs.hasLocation || lhs.location == rhs.location)
   fieldCheck = fieldCheck && (lhs.hasGroup == rhs.hasGroup) && (!lhs.hasGroup || lhs.group == rhs.group)
   fieldCheck = fieldCheck && (lhs.hasScore == rhs.hasScore) && (!lhs.hasScore || lhs.score == rhs.score)
   fieldCheck = fieldCheck && (lhs.hasPost == rhs.hasPost) && (!lhs.hasPost || lhs.post == rhs.post)
+  fieldCheck = fieldCheck && (lhs.highlight == rhs.highlight)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
+public func == (lhs: Services.Search.Containers.SearchResultV1.HighlightEntry, rhs: Services.Search.Containers.SearchResultV1.HighlightEntry) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasKey == rhs.hasKey) && (!lhs.hasKey || lhs.key == rhs.key)
+  fieldCheck = fieldCheck && (lhs.hasValue == rhs.hasValue) && (!lhs.hasValue || lhs.value == rhs.value)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -45,6 +56,252 @@ public extension Services.Search.Containers {
   }
 
   final public class SearchResultV1 : GeneratedMessage, GeneratedMessageProtocol {
+
+
+    //Nested type declaration start
+
+      final public class HighlightEntry : GeneratedMessage, GeneratedMessageProtocol {
+        public private(set) var hasKey:Bool = false
+        public private(set) var key:String = ""
+
+        public private(set) var hasValue:Bool = false
+        public private(set) var value:String = ""
+
+        required public init() {
+             super.init()
+        }
+        override public func isInitialized() -> Bool {
+         return true
+        }
+        override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+          if hasKey {
+            try output.writeString(1, value:key)
+          }
+          if hasValue {
+            try output.writeString(2, value:value)
+          }
+          try unknownFields.writeToCodedOutputStream(output)
+        }
+        override public func serializedSize() -> Int32 {
+          var serialize_size:Int32 = memoizedSerializedSize
+          if serialize_size != -1 {
+           return serialize_size
+          }
+
+          serialize_size = 0
+          if hasKey {
+            serialize_size += key.computeStringSize(1)
+          }
+          if hasValue {
+            serialize_size += value.computeStringSize(2)
+          }
+          serialize_size += unknownFields.serializedSize()
+          memoizedSerializedSize = serialize_size
+          return serialize_size
+        }
+        public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Search.Containers.SearchResultV1.HighlightEntry> {
+          var mergedArray = Array<Services.Search.Containers.SearchResultV1.HighlightEntry>()
+          while let value = try parseFromDelimitedFromInputStream(input) {
+            mergedArray += [value]
+          }
+          return mergedArray
+        }
+        public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry? {
+          return try Services.Search.Containers.SearchResultV1.HighlightEntry.Builder().mergeDelimitedFromInputStream(input)?.build()
+        }
+        public class func parseFromData(data:NSData) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry {
+          return try Services.Search.Containers.SearchResultV1.HighlightEntry.Builder().mergeFromData(data, extensionRegistry:Services.Search.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+        }
+        public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry {
+          return try Services.Search.Containers.SearchResultV1.HighlightEntry.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+        }
+        public class func parseFromInputStream(input:NSInputStream) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry {
+          return try Services.Search.Containers.SearchResultV1.HighlightEntry.Builder().mergeFromInputStream(input).build()
+        }
+        public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry {
+          return try Services.Search.Containers.SearchResultV1.HighlightEntry.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+        }
+        public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry {
+          return try Services.Search.Containers.SearchResultV1.HighlightEntry.Builder().mergeFromCodedInputStream(input).build()
+        }
+        public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry {
+          return try Services.Search.Containers.SearchResultV1.HighlightEntry.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+        }
+        public class func getBuilder() -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+          return Services.Search.Containers.SearchResultV1.HighlightEntry.classBuilder() as! Services.Search.Containers.SearchResultV1.HighlightEntry.Builder
+        }
+        public func getBuilder() -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+          return classBuilder() as! Services.Search.Containers.SearchResultV1.HighlightEntry.Builder
+        }
+        public override class func classBuilder() -> MessageBuilder {
+          return Services.Search.Containers.SearchResultV1.HighlightEntry.Builder()
+        }
+        public override func classBuilder() -> MessageBuilder {
+          return Services.Search.Containers.SearchResultV1.HighlightEntry.Builder()
+        }
+        public func toBuilder() throws -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+          return try Services.Search.Containers.SearchResultV1.HighlightEntry.builderWithPrototype(self)
+        }
+        public class func builderWithPrototype(prototype:Services.Search.Containers.SearchResultV1.HighlightEntry) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+          return try Services.Search.Containers.SearchResultV1.HighlightEntry.Builder().mergeFrom(prototype)
+        }
+        override public func writeDescriptionTo(inout output:String, indent:String) throws {
+          if hasKey {
+            output += "\(indent) key: \(key) \n"
+          }
+          if hasValue {
+            output += "\(indent) value: \(value) \n"
+          }
+          unknownFields.writeDescriptionTo(&output, indent:indent)
+        }
+        override public var hashValue:Int {
+            get {
+                var hashCode:Int = 7
+                if hasKey {
+                   hashCode = (hashCode &* 31) &+ key.hashValue
+                }
+                if hasValue {
+                   hashCode = (hashCode &* 31) &+ value.hashValue
+                }
+                hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                return hashCode
+            }
+        }
+
+
+        //Meta information declaration start
+
+        override public class func className() -> String {
+            return "Services.Search.Containers.SearchResultV1.HighlightEntry"
+        }
+        override public func className() -> String {
+            return "Services.Search.Containers.SearchResultV1.HighlightEntry"
+        }
+        override public func classMetaType() -> GeneratedMessage.Type {
+            return Services.Search.Containers.SearchResultV1.HighlightEntry.self
+        }
+        //Meta information declaration end
+
+        final public class Builder : GeneratedMessageBuilder {
+          private var builderResult:Services.Search.Containers.SearchResultV1.HighlightEntry = Services.Search.Containers.SearchResultV1.HighlightEntry()
+          public func getMessage() -> Services.Search.Containers.SearchResultV1.HighlightEntry {
+              return builderResult
+          }
+
+          required override public init () {
+             super.init()
+          }
+          public var hasKey:Bool {
+               get {
+                    return builderResult.hasKey
+               }
+          }
+          public var key:String {
+               get {
+                    return builderResult.key
+               }
+               set (value) {
+                   builderResult.hasKey = true
+                   builderResult.key = value
+               }
+          }
+          public func setKey(value:String) -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+            self.key = value
+            return self
+          }
+          public func clearKey() -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder{
+               builderResult.hasKey = false
+               builderResult.key = ""
+               return self
+          }
+          public var hasValue:Bool {
+               get {
+                    return builderResult.hasValue
+               }
+          }
+          public var value:String {
+               get {
+                    return builderResult.value
+               }
+               set (value) {
+                   builderResult.hasValue = true
+                   builderResult.value = value
+               }
+          }
+          public func setValue(value:String) -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+            self.value = value
+            return self
+          }
+          public func clearValue() -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder{
+               builderResult.hasValue = false
+               builderResult.value = ""
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          public override func clear() -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+            builderResult = Services.Search.Containers.SearchResultV1.HighlightEntry()
+            return self
+          }
+          public override func clone() throws -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+            return try Services.Search.Containers.SearchResultV1.HighlightEntry.builderWithPrototype(builderResult)
+          }
+          public override func build() throws -> Services.Search.Containers.SearchResultV1.HighlightEntry {
+               try checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> Services.Search.Containers.SearchResultV1.HighlightEntry {
+            let returnMe:Services.Search.Containers.SearchResultV1.HighlightEntry = builderResult
+            return returnMe
+          }
+          public func mergeFrom(other:Services.Search.Containers.SearchResultV1.HighlightEntry) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+            if other == Services.Search.Containers.SearchResultV1.HighlightEntry() {
+             return self
+            }
+            if other.hasKey {
+                 key = other.key
+            }
+            if other.hasValue {
+                 value = other.value
+            }
+            try mergeUnknownFields(other.unknownFields)
+            return self
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+               return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+          }
+          public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Search.Containers.SearchResultV1.HighlightEntry.Builder {
+            let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+            while (true) {
+              let tag = try input.readTag()
+              switch tag {
+              case 0: 
+                self.unknownFields = try unknownFieldsBuilder.build()
+                return self
+
+              case 10 :
+                key = try input.readString()
+
+              case 18 :
+                value = try input.readString()
+
+              default:
+                if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+                   unknownFields = try unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+        }
+
+      }
+
+    //Nested type declaration end
+
 
 
     //OneOf declaration start
@@ -114,9 +371,6 @@ public extension Services.Search.Containers {
     //OneOf declaration end
 
     private var storageResultObject:SearchResultV1.ResultObject =  SearchResultV1.ResultObject.ResultObjectOneOfNotSet
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasProfile:Bool {
           get {
                if SearchResultV1.ResultObject.getProfile(storageResultObject) == nil {
@@ -210,6 +464,7 @@ public extension Services.Search.Containers {
     public private(set) var hasScore:Bool = false
     public private(set) var score:Float = Float(0)
 
+    public private(set) var highlight:Array<Services.Search.Containers.SearchResultV1.HighlightEntry>  = Array<Services.Search.Containers.SearchResultV1.HighlightEntry>()
     required public init() {
          super.init()
     }
@@ -217,9 +472,6 @@ public extension Services.Search.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasProfile {
         try output.writeMessage(2, value:profile)
       }
@@ -238,6 +490,9 @@ public extension Services.Search.Containers {
       if hasPost {
         try output.writeMessage(9, value:post)
       }
+      for oneElementhighlight in highlight {
+          try output.writeMessage(10, value:oneElementhighlight)
+      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -247,9 +502,6 @@ public extension Services.Search.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasProfile {
           if let varSizeprofile = profile?.computeMessageSize(2) {
               serialize_size += varSizeprofile
@@ -277,6 +529,9 @@ public extension Services.Search.Containers {
           if let varSizepost = post?.computeMessageSize(9) {
               serialize_size += varSizepost
           }
+      }
+      for oneElementhighlight in highlight {
+          serialize_size += oneElementhighlight.computeMessageSize(10)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -329,9 +584,6 @@ public extension Services.Search.Containers {
       return try Services.Search.Containers.SearchResultV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasProfile {
         output += "\(indent) profile {\n"
         try profile?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -360,14 +612,18 @@ public extension Services.Search.Containers {
         try post?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      var highlightElementIndex:Int = 0
+      for oneElementhighlight in highlight {
+          output += "\(indent) highlight[\(highlightElementIndex)] {\n"
+          try oneElementhighlight.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          highlightElementIndex++
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasProfile {
                 if let hashValueprofile = profile?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueprofile
@@ -396,6 +652,9 @@ public extension Services.Search.Containers {
                     hashCode = (hashCode &* 31) &+ hashValuepost
                 }
             }
+            for oneElementhighlight in highlight {
+                hashCode = (hashCode &* 31) &+ oneElementhighlight.hashValue
+            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -423,29 +682,6 @@ public extension Services.Search.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Search.Containers.SearchResultV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Search.Containers.SearchResultV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasProfile:Bool {
            get {
@@ -725,6 +961,22 @@ public extension Services.Search.Containers {
            builderResult.score = Float(0)
            return self
       }
+      public var highlight:Array<Services.Search.Containers.SearchResultV1.HighlightEntry> {
+           get {
+               return builderResult.highlight
+           }
+           set (value) {
+               builderResult.highlight = value
+           }
+      }
+      public func setHighlight(value:Array<Services.Search.Containers.SearchResultV1.HighlightEntry>) -> Services.Search.Containers.SearchResultV1.Builder {
+        self.highlight = value
+        return self
+      }
+      public func clearHighlight() -> Services.Search.Containers.SearchResultV1.Builder {
+        builderResult.highlight.removeAll(keepCapacity: false)
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -749,9 +1001,6 @@ public extension Services.Search.Containers {
         if other == Services.Search.Containers.SearchResultV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasProfile) {
             try mergeProfile(other.profile)
         }
@@ -770,6 +1019,9 @@ public extension Services.Search.Containers {
         if other.hasScore {
              score = other.score
         }
+        if !other.highlight.isEmpty  {
+           builderResult.highlight += other.highlight
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -784,9 +1036,6 @@ public extension Services.Search.Containers {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           case 18 :
             let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
@@ -830,6 +1079,11 @@ public extension Services.Search.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             post = subBuilder.buildPartial()
+
+          case 82 :
+            let subBuilder = Services.Search.Containers.SearchResultV1.HighlightEntry.Builder()
+            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+            highlight += [subBuilder.buildPartial()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
