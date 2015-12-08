@@ -24,6 +24,7 @@ public func == (lhs: Services.Post.Containers.PostV1, rhs: Services.Post.Contain
   fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
   fieldCheck = fieldCheck && (lhs.fileIds == rhs.fileIds)
   fieldCheck = fieldCheck && (lhs.files == rhs.files)
+  fieldCheck = fieldCheck && (lhs.hasIsRichText == rhs.hasIsRichText) && (!lhs.hasIsRichText || lhs.isRichText == rhs.isRichText)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -96,6 +97,9 @@ public extension Services.Post.Containers {
     public private(set) var permissions:Services.Common.Containers.PermissionsV1!
     public private(set) var fileIds:Array<String> = Array<String>()
     public private(set) var files:Array<Services.File.Containers.FileV1>  = Array<Services.File.Containers.FileV1>()
+    public private(set) var hasIsRichText:Bool = false
+    public private(set) var isRichText:Bool = false
+
     required public init() {
          super.init()
     }
@@ -146,6 +150,9 @@ public extension Services.Post.Containers {
       }
       for oneElementfiles in files {
           try output.writeMessage(14, value:oneElementfiles)
+      }
+      if hasIsRichText {
+        try output.writeBool(15, value:isRichText)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -208,6 +215,9 @@ public extension Services.Post.Containers {
       serialize_size += 1 * Int32(fileIds.count)
       for oneElementfiles in files {
           serialize_size += oneElementfiles.computeMessageSize(14)
+      }
+      if hasIsRichText {
+        serialize_size += isRichText.computeBoolSize(15)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -316,6 +326,9 @@ public extension Services.Post.Containers {
           output += "\(indent)}\n"
           filesElementIndex++
       }
+      if hasIsRichText {
+        output += "\(indent) isRichText: \(isRichText) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -370,6 +383,9 @@ public extension Services.Post.Containers {
             }
             for oneElementfiles in files {
                 hashCode = (hashCode &* 31) &+ oneElementfiles.hashValue
+            }
+            if hasIsRichText {
+               hashCode = (hashCode &* 31) &+ isRichText.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -819,6 +835,29 @@ public extension Services.Post.Containers {
         builderResult.files.removeAll(keepCapacity: false)
         return self
       }
+      public var hasIsRichText:Bool {
+           get {
+                return builderResult.hasIsRichText
+           }
+      }
+      public var isRichText:Bool {
+           get {
+                return builderResult.isRichText
+           }
+           set (value) {
+               builderResult.hasIsRichText = true
+               builderResult.isRichText = value
+           }
+      }
+      public func setIsRichText(value:Bool) -> Services.Post.Containers.PostV1.Builder {
+        self.isRichText = value
+        return self
+      }
+      public func clearIsRichText() -> Services.Post.Containers.PostV1.Builder{
+           builderResult.hasIsRichText = false
+           builderResult.isRichText = false
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -884,6 +923,9 @@ public extension Services.Post.Containers {
         }
         if !other.files.isEmpty  {
            builderResult.files += other.files
+        }
+        if other.hasIsRichText {
+             isRichText = other.isRichText
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -968,6 +1010,9 @@ public extension Services.Post.Containers {
             let subBuilder = Services.File.Containers.FileV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             files += [subBuilder.buildPartial()]
+
+          case 120 :
+            isRichText = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
