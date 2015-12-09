@@ -17,7 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/file/containers.proto',
   package='services.file.containers',
   syntax='proto3',
-  serialized_pb=b'\n(protobufs/services/file/containers.proto\x12\x18services.file.containers\"Q\n\x14UploadInstructionsV1\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x12\n\nupload_url\x18\x02 \x01(\t\x12\x12\n\nupload_key\x18\x03 \x01(\t\"\x8d\x01\n\x06\x46ileV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rby_profile_id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x12\n\nsource_url\x18\x04 \x01(\t\x12\x14\n\x0c\x63ontent_type\x18\x05 \x01(\t\x12\x0f\n\x07\x63reated\x18\x06 \x01(\t\x12\x0c\n\x04name\x18\x07 \x01(\tb\x06proto3'
+  serialized_pb=b'\n(protobufs/services/file/containers.proto\x12\x18services.file.containers\"Q\n\x14UploadInstructionsV1\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x12\n\nupload_url\x18\x02 \x01(\t\x12\x12\n\nupload_key\x18\x03 \x01(\t\"\x9c\x01\n\x06\x46ileV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rby_profile_id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x12\n\nsource_url\x18\x04 \x01(\t\x12\x14\n\x0c\x63ontent_type\x18\x05 \x01(\t\x12\x0f\n\x07\x63reated\x18\x06 \x01(\t\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\r\n\x05\x62ytes\x18\x08 \x01(\x0c\x62\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -125,6 +125,13 @@ _FILEV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='bytes', full_name='services.file.containers.FileV1.bytes', index=7,
+      number=8, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -138,7 +145,7 @@ _FILEV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=154,
-  serialized_end=295,
+  serialized_end=310,
 )
 
 DESCRIPTOR.message_types_by_name['UploadInstructionsV1'] = _UPLOADINSTRUCTIONSV1
