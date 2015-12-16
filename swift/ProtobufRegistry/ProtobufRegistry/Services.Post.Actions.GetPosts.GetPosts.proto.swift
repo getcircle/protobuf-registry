@@ -14,6 +14,7 @@ public func == (lhs: Services.Post.Actions.GetPosts.RequestV1, rhs: Services.Pos
   fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
   fieldCheck = fieldCheck && (lhs.hasAllStates == rhs.hasAllStates) && (!lhs.hasAllStates || lhs.allStates == rhs.allStates)
   fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
+  fieldCheck = fieldCheck && (lhs.hasFullContent == rhs.hasFullContent) && (!lhs.hasFullContent || lhs.fullContent == rhs.fullContent)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -57,6 +58,9 @@ public extension Services.Post.Actions.GetPosts {
     public private(set) var allStates:Bool = false
 
     public private(set) var ids:Array<String> = Array<String>()
+    public private(set) var hasFullContent:Bool = false
+    public private(set) var fullContent:Bool = false
+
     required public init() {
          super.init()
     }
@@ -77,6 +81,9 @@ public extension Services.Post.Actions.GetPosts {
         for oneValueids in ids {
           try output.writeString(4, value:oneValueids)
         }
+      }
+      if hasFullContent {
+        try output.writeBool(5, value:fullContent)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -102,6 +109,9 @@ public extension Services.Post.Actions.GetPosts {
       }
       serialize_size += dataSizeIds
       serialize_size += 1 * Int32(ids.count)
+      if hasFullContent {
+        serialize_size += fullContent.computeBoolSize(5)
+      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -167,6 +177,9 @@ public extension Services.Post.Actions.GetPosts {
           output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
           idsElementIndex++
       }
+      if hasFullContent {
+        output += "\(indent) fullContent: \(fullContent) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -183,6 +196,9 @@ public extension Services.Post.Actions.GetPosts {
             }
             for oneValueids in ids {
                 hashCode = (hashCode &* 31) &+ oneValueids.hashValue
+            }
+            if hasFullContent {
+               hashCode = (hashCode &* 31) &+ fullContent.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -297,6 +313,29 @@ public extension Services.Post.Actions.GetPosts {
          builderResult.ids.removeAll(keepCapacity: false)
          return self
       }
+      public var hasFullContent:Bool {
+           get {
+                return builderResult.hasFullContent
+           }
+      }
+      public var fullContent:Bool {
+           get {
+                return builderResult.fullContent
+           }
+           set (value) {
+               builderResult.hasFullContent = true
+               builderResult.fullContent = value
+           }
+      }
+      public func setFullContent(value:Bool) -> Services.Post.Actions.GetPosts.RequestV1.Builder {
+        self.fullContent = value
+        return self
+      }
+      public func clearFullContent() -> Services.Post.Actions.GetPosts.RequestV1.Builder{
+           builderResult.hasFullContent = false
+           builderResult.fullContent = false
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -333,6 +372,9 @@ public extension Services.Post.Actions.GetPosts {
         if !other.ids.isEmpty {
             builderResult.ids += other.ids
         }
+        if other.hasFullContent {
+             fullContent = other.fullContent
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -364,6 +406,9 @@ public extension Services.Post.Actions.GetPosts {
 
           case 34 :
             ids += [try input.readString()]
+
+          case 40 :
+            fullContent = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
