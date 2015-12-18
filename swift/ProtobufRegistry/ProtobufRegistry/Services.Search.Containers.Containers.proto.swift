@@ -27,7 +27,7 @@ public func == (lhs: Services.Search.Containers.SearchResultV1, rhs: Services.Se
   fieldCheck = fieldCheck && (lhs.hasGroup == rhs.hasGroup) && (!lhs.hasGroup || lhs.group == rhs.group)
   fieldCheck = fieldCheck && (lhs.hasScore == rhs.hasScore) && (!lhs.hasScore || lhs.score == rhs.score)
   fieldCheck = fieldCheck && (lhs.hasPost == rhs.hasPost) && (!lhs.hasPost || lhs.post == rhs.post)
-  fieldCheck = fieldCheck && (lhs.hasHighlight == rhs.hasHighlight) && (!lhs.hasHighlight || lhs.highlight == rhs.highlight)
+  fieldCheck = fieldCheck && (lhs.highlight == rhs.highlight)
   fieldCheck = fieldCheck && (lhs.hasTrackingDetails == rhs.hasTrackingDetails) && (!lhs.hasTrackingDetails || lhs.trackingDetails == rhs.trackingDetails)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -730,9 +730,7 @@ public extension Services.Search.Containers {
     public private(set) var hasScore:Bool = false
     public private(set) var score:Float = Float(0)
 
-    public private(set) var hasHighlight:Bool = false
-    public private(set) var highlight:Dictionary<String,String> = Dictionary<String,String>()
-
+    public private(set) var highlight:Array<Services.Search.Containers.SearchResultV1.HighlightEntry>  = Array<Services.Search.Containers.SearchResultV1.HighlightEntry>()
     public private(set) var hasTrackingDetails:Bool = false
     public private(set) var trackingDetails:Services.Search.Containers.TrackingDetailsV1!
     required public init() {
@@ -760,11 +758,8 @@ public extension Services.Search.Containers {
       if hasPost {
         try output.writeMessage(9, value:post)
       }
-      if hasHighlight {
-          for (keyHighlight, valueHighlight) in highlight {
-              let valueOfHighlight = try! Services.Search.Containers.SearchResultV1.HighlightEntry.Builder().setKey(keyHighlight).setValue(valueHighlight).build()
-              try output.writeMessage(10, value:valueOfHighlight)
-          }
+      for oneElementhighlight in highlight {
+          try output.writeMessage(10, value:oneElementhighlight)
       }
       if hasTrackingDetails {
         try output.writeMessage(11, value:trackingDetails)
@@ -806,11 +801,8 @@ public extension Services.Search.Containers {
               serialize_size += varSizepost
           }
       }
-      if hasHighlight {
-          for (keyHighlight, valueHighlight) in highlight {
-              let valueOfHighlight = try! Services.Search.Containers.SearchResultV1.HighlightEntry.Builder().setKey(keyHighlight).setValue(valueHighlight).build()
-              serialize_size += valueOfHighlight.computeMessageSize(10)
-          }
+      for oneElementhighlight in highlight {
+          serialize_size += oneElementhighlight.computeMessageSize(10)
       }
       if hasTrackingDetails {
           if let varSizetrackingDetails = trackingDetails?.computeMessageSize(11) {
@@ -896,8 +888,12 @@ public extension Services.Search.Containers {
         try post?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
-      if hasHighlight {
-        output += "\(indent) highlight: \(highlight) \n"
+      var highlightElementIndex:Int = 0
+      for oneElementhighlight in highlight {
+          output += "\(indent) highlight[\(highlightElementIndex)] {\n"
+          try oneElementhighlight.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          highlightElementIndex++
       }
       if hasTrackingDetails {
         output += "\(indent) trackingDetails {\n"
@@ -937,11 +933,8 @@ public extension Services.Search.Containers {
                     hashCode = (hashCode &* 31) &+ hashValuepost
                 }
             }
-            if hasHighlight {
-                for (keyHighlight, valueHighlight) in highlight {
-                    hashCode = (hashCode &* 31) &+ keyHighlight.hashValue
-                    hashCode = (hashCode &* 31) &+ valueHighlight.hashValue
-                }
+            for oneElementhighlight in highlight {
+                hashCode = (hashCode &* 31) &+ oneElementhighlight.hashValue
             }
             if hasTrackingDetails {
                 if let hashValuetrackingDetails = trackingDetails?.hashValue {
@@ -1254,28 +1247,21 @@ public extension Services.Search.Containers {
            builderResult.score = Float(0)
            return self
       }
-      public var hasHighlight:Bool {
+      public var highlight:Array<Services.Search.Containers.SearchResultV1.HighlightEntry> {
            get {
-                return builderResult.hasHighlight
-           }
-      }
-      public var highlight:Dictionary<String,String> {
-           get {
-                return builderResult.highlight
+               return builderResult.highlight
            }
            set (value) {
-               builderResult.hasHighlight = true
                builderResult.highlight = value
            }
       }
-      public func setHighlight(value:Dictionary<String,String>) -> Services.Search.Containers.SearchResultV1.Builder {
+      public func setHighlight(value:Array<Services.Search.Containers.SearchResultV1.HighlightEntry>) -> Services.Search.Containers.SearchResultV1.Builder {
         self.highlight = value
         return self
       }
-      public func clearHighlight() -> Services.Search.Containers.SearchResultV1.Builder{
-           builderResult.hasHighlight = false
-           builderResult.highlight = Dictionary<String,String>()
-           return self
+      public func clearHighlight() -> Services.Search.Containers.SearchResultV1.Builder {
+        builderResult.highlight.removeAll(keepCapacity: false)
+        return self
       }
       public var hasTrackingDetails:Bool {
            get {
@@ -1370,8 +1356,8 @@ public extension Services.Search.Containers {
         if other.hasScore {
              score = other.score
         }
-        if other.hasHighlight {
-             highlight = other.highlight
+        if !other.highlight.isEmpty  {
+           builderResult.highlight += other.highlight
         }
         if (other.hasTrackingDetails) {
             try mergeTrackingDetails(other.trackingDetails)
@@ -1437,8 +1423,7 @@ public extension Services.Search.Containers {
           case 82 :
             let subBuilder = Services.Search.Containers.SearchResultV1.HighlightEntry.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            let buildOfHighlight = subBuilder.buildPartial()
-            highlight[buildOfHighlight.key] = buildOfHighlight.value
+            highlight += [subBuilder.buildPartial()]
 
           case 90 :
             let subBuilder:Services.Search.Containers.TrackingDetailsV1.Builder = Services.Search.Containers.TrackingDetailsV1.Builder()

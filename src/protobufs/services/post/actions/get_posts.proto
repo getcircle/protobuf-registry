@@ -8,7 +8,6 @@ message RequestV1 {
     services.post.containers.PostStateV1 state = 2;
     bool all_states = 3;
     repeated string ids = 4;
-    bool full_content = 5;
 }
 
 message ResponseV1 {
