@@ -11,11 +11,11 @@ import "protobufs/services/organization/containers.proto";
 message RequestV1 {
     optional uint32 version = 1 [default = 1];
     optional string domain = 2;
+    optional services.common.containers.InflationsV1 inflations = 3;
+    optional services.common.containers.FieldsV1 fields = 4;
 }
 
 message ResponseV1 {
     optional uint32 version = 1 [default = 1];
     optional services.organization.containers.OrganizationV1 organization = 2;
-    optional services.common.containers.InflationsV1 inflations = 3;
-    optional services.common.containers.FieldsV1 fields = 4;
 }
