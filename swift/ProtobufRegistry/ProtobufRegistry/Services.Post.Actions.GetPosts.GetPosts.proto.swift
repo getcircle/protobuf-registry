@@ -14,6 +14,7 @@ public func == (lhs: Services.Post.Actions.GetPosts.RequestV1, rhs: Services.Pos
   fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
   fieldCheck = fieldCheck && (lhs.hasAllStates == rhs.hasAllStates) && (!lhs.hasAllStates || lhs.allStates == rhs.allStates)
   fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
+  fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -41,6 +42,7 @@ public extension Services.Post.Actions.GetPosts {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
@@ -57,6 +59,8 @@ public extension Services.Post.Actions.GetPosts {
     public private(set) var allStates:Bool = false
 
     public private(set) var ids:Array<String> = Array<String>()
+    public private(set) var hasFields:Bool = false
+    public private(set) var fields:Services.Common.Containers.FieldsV1!
     required public init() {
          super.init()
     }
@@ -77,6 +81,9 @@ public extension Services.Post.Actions.GetPosts {
         for oneValueids in ids {
           try output.writeString(4, value:oneValueids)
         }
+      }
+      if hasFields {
+        try output.writeMessage(5, value:fields)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -102,6 +109,11 @@ public extension Services.Post.Actions.GetPosts {
       }
       serialize_size += dataSizeIds
       serialize_size += 1 * Int32(ids.count)
+      if hasFields {
+          if let varSizefields = fields?.computeMessageSize(5) {
+              serialize_size += varSizefields
+          }
+      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -167,6 +179,11 @@ public extension Services.Post.Actions.GetPosts {
           output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
           idsElementIndex++
       }
+      if hasFields {
+        output += "\(indent) fields {\n"
+        try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -183,6 +200,11 @@ public extension Services.Post.Actions.GetPosts {
             }
             for oneValueids in ids {
                 hashCode = (hashCode &* 31) &+ oneValueids.hashValue
+            }
+            if hasFields {
+                if let hashValuefields = fields?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuefields
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -297,6 +319,57 @@ public extension Services.Post.Actions.GetPosts {
          builderResult.ids.removeAll(keepCapacity: false)
          return self
       }
+      public var hasFields:Bool {
+           get {
+               return builderResult.hasFields
+           }
+      }
+      public var fields:Services.Common.Containers.FieldsV1! {
+           get {
+               if fieldsBuilder_ != nil {
+                  builderResult.fields = fieldsBuilder_.getMessage()
+               }
+               return builderResult.fields
+           }
+           set (value) {
+               builderResult.hasFields = true
+               builderResult.fields = value
+           }
+      }
+      private var fieldsBuilder_:Services.Common.Containers.FieldsV1.Builder! {
+           didSet {
+              builderResult.hasFields = true
+           }
+      }
+      public func getFieldsBuilder() -> Services.Common.Containers.FieldsV1.Builder {
+        if fieldsBuilder_ == nil {
+           fieldsBuilder_ = Services.Common.Containers.FieldsV1.Builder()
+           builderResult.fields = fieldsBuilder_.getMessage()
+           if fields != nil {
+              try! fieldsBuilder_.mergeFrom(fields)
+           }
+        }
+        return fieldsBuilder_
+      }
+      public func setFields(value:Services.Common.Containers.FieldsV1!) -> Services.Post.Actions.GetPosts.RequestV1.Builder {
+        self.fields = value
+        return self
+      }
+      public func mergeFields(value:Services.Common.Containers.FieldsV1) throws -> Services.Post.Actions.GetPosts.RequestV1.Builder {
+        if builderResult.hasFields {
+          builderResult.fields = try Services.Common.Containers.FieldsV1.builderWithPrototype(builderResult.fields).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.fields = value
+        }
+        builderResult.hasFields = true
+        return self
+      }
+      public func clearFields() -> Services.Post.Actions.GetPosts.RequestV1.Builder {
+        fieldsBuilder_ = nil
+        builderResult.hasFields = false
+        builderResult.fields = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -333,6 +406,9 @@ public extension Services.Post.Actions.GetPosts {
         if !other.ids.isEmpty {
             builderResult.ids += other.ids
         }
+        if (other.hasFields) {
+            try mergeFields(other.fields)
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -364,6 +440,14 @@ public extension Services.Post.Actions.GetPosts {
 
           case 34 :
             ids += [try input.readString()]
+
+          case 42 :
+            let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
+            if hasFields {
+              try subBuilder.mergeFrom(fields)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            fields = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
