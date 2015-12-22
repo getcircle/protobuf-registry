@@ -14,7 +14,7 @@ public func == (lhs: Services.Post.Actions.GetPosts.RequestV1, rhs: Services.Pos
   fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
   fieldCheck = fieldCheck && (lhs.hasAllStates == rhs.hasAllStates) && (!lhs.hasAllStates || lhs.allStates == rhs.allStates)
   fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
-  fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -59,8 +59,8 @@ public extension Services.Post.Actions.GetPosts {
     public private(set) var allStates:Bool = false
 
     public private(set) var ids:Array<String> = Array<String>()
-    public private(set) var hasFields:Bool = false
-    public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var hasInflations:Bool = false
+    public private(set) var inflations:Services.Common.Containers.InflationsV1!
     required public init() {
          super.init()
     }
@@ -82,8 +82,8 @@ public extension Services.Post.Actions.GetPosts {
           try output.writeString(4, value:oneValueids)
         }
       }
-      if hasFields {
-        try output.writeMessage(5, value:fields)
+      if hasInflations {
+        try output.writeMessage(5, value:inflations)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -109,9 +109,9 @@ public extension Services.Post.Actions.GetPosts {
       }
       serialize_size += dataSizeIds
       serialize_size += 1 * Int32(ids.count)
-      if hasFields {
-          if let varSizefields = fields?.computeMessageSize(5) {
-              serialize_size += varSizefields
+      if hasInflations {
+          if let varSizeinflations = inflations?.computeMessageSize(5) {
+              serialize_size += varSizeinflations
           }
       }
       serialize_size += unknownFields.serializedSize()
@@ -179,9 +179,9 @@ public extension Services.Post.Actions.GetPosts {
           output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
           idsElementIndex++
       }
-      if hasFields {
-        output += "\(indent) fields {\n"
-        try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
+      if hasInflations {
+        output += "\(indent) inflations {\n"
+        try inflations?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -201,9 +201,9 @@ public extension Services.Post.Actions.GetPosts {
             for oneValueids in ids {
                 hashCode = (hashCode &* 31) &+ oneValueids.hashValue
             }
-            if hasFields {
-                if let hashValuefields = fields?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuefields
+            if hasInflations {
+                if let hashValueinflations = inflations?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueinflations
                 }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -319,55 +319,55 @@ public extension Services.Post.Actions.GetPosts {
          builderResult.ids.removeAll(keepCapacity: false)
          return self
       }
-      public var hasFields:Bool {
+      public var hasInflations:Bool {
            get {
-               return builderResult.hasFields
+               return builderResult.hasInflations
            }
       }
-      public var fields:Services.Common.Containers.FieldsV1! {
+      public var inflations:Services.Common.Containers.InflationsV1! {
            get {
-               if fieldsBuilder_ != nil {
-                  builderResult.fields = fieldsBuilder_.getMessage()
+               if inflationsBuilder_ != nil {
+                  builderResult.inflations = inflationsBuilder_.getMessage()
                }
-               return builderResult.fields
+               return builderResult.inflations
            }
            set (value) {
-               builderResult.hasFields = true
-               builderResult.fields = value
+               builderResult.hasInflations = true
+               builderResult.inflations = value
            }
       }
-      private var fieldsBuilder_:Services.Common.Containers.FieldsV1.Builder! {
+      private var inflationsBuilder_:Services.Common.Containers.InflationsV1.Builder! {
            didSet {
-              builderResult.hasFields = true
+              builderResult.hasInflations = true
            }
       }
-      public func getFieldsBuilder() -> Services.Common.Containers.FieldsV1.Builder {
-        if fieldsBuilder_ == nil {
-           fieldsBuilder_ = Services.Common.Containers.FieldsV1.Builder()
-           builderResult.fields = fieldsBuilder_.getMessage()
-           if fields != nil {
-              try! fieldsBuilder_.mergeFrom(fields)
+      public func getInflationsBuilder() -> Services.Common.Containers.InflationsV1.Builder {
+        if inflationsBuilder_ == nil {
+           inflationsBuilder_ = Services.Common.Containers.InflationsV1.Builder()
+           builderResult.inflations = inflationsBuilder_.getMessage()
+           if inflations != nil {
+              try! inflationsBuilder_.mergeFrom(inflations)
            }
         }
-        return fieldsBuilder_
+        return inflationsBuilder_
       }
-      public func setFields(value:Services.Common.Containers.FieldsV1!) -> Services.Post.Actions.GetPosts.RequestV1.Builder {
-        self.fields = value
+      public func setInflations(value:Services.Common.Containers.InflationsV1!) -> Services.Post.Actions.GetPosts.RequestV1.Builder {
+        self.inflations = value
         return self
       }
-      public func mergeFields(value:Services.Common.Containers.FieldsV1) throws -> Services.Post.Actions.GetPosts.RequestV1.Builder {
-        if builderResult.hasFields {
-          builderResult.fields = try Services.Common.Containers.FieldsV1.builderWithPrototype(builderResult.fields).mergeFrom(value).buildPartial()
+      public func mergeInflations(value:Services.Common.Containers.InflationsV1) throws -> Services.Post.Actions.GetPosts.RequestV1.Builder {
+        if builderResult.hasInflations {
+          builderResult.inflations = try Services.Common.Containers.InflationsV1.builderWithPrototype(builderResult.inflations).mergeFrom(value).buildPartial()
         } else {
-          builderResult.fields = value
+          builderResult.inflations = value
         }
-        builderResult.hasFields = true
+        builderResult.hasInflations = true
         return self
       }
-      public func clearFields() -> Services.Post.Actions.GetPosts.RequestV1.Builder {
-        fieldsBuilder_ = nil
-        builderResult.hasFields = false
-        builderResult.fields = nil
+      public func clearInflations() -> Services.Post.Actions.GetPosts.RequestV1.Builder {
+        inflationsBuilder_ = nil
+        builderResult.hasInflations = false
+        builderResult.inflations = nil
         return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -406,8 +406,8 @@ public extension Services.Post.Actions.GetPosts {
         if !other.ids.isEmpty {
             builderResult.ids += other.ids
         }
-        if (other.hasFields) {
-            try mergeFields(other.fields)
+        if (other.hasInflations) {
+            try mergeInflations(other.inflations)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -442,12 +442,12 @@ public extension Services.Post.Actions.GetPosts {
             ids += [try input.readString()]
 
           case 42 :
-            let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
-            if hasFields {
-              try subBuilder.mergeFrom(fields)
+            let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
+            if hasInflations {
+              try subBuilder.mergeFrom(inflations)
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-            fields = subBuilder.buildPartial()
+            inflations = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
