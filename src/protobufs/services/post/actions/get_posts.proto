@@ -10,6 +10,7 @@ message RequestV1 {
     bool all_states = 3;
     repeated string ids = 4;
     services.common.containers.InflationsV1 inflations = 5;
+    services.common.containers.FieldsV1 fields = 6;
 }
 
 message ResponseV1 {
