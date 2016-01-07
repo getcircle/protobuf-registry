@@ -26,6 +26,8 @@ public func == (lhs: Services.Post.Containers.PostV1, rhs: Services.Post.Contain
   fieldCheck = fieldCheck && (lhs.files == rhs.files)
   fieldCheck = fieldCheck && (lhs.hasSnippet == rhs.hasSnippet) && (!lhs.hasSnippet || lhs.snippet == rhs.snippet)
   fieldCheck = fieldCheck && (lhs.hasHtmlDocument == rhs.hasHtmlDocument) && (!lhs.hasHtmlDocument || lhs.htmlDocument == rhs.htmlDocument)
+  fieldCheck = fieldCheck && (lhs.hasSource == rhs.hasSource) && (!lhs.hasSource || lhs.source == rhs.source)
+  fieldCheck = fieldCheck && (lhs.hasSourceId == rhs.hasSourceId) && (!lhs.hasSourceId || lhs.sourceId == rhs.sourceId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -59,6 +61,19 @@ public extension Services.Post.Containers {
     case Draft = 0
     case Listed = 1
     case Unlisted = 2
+
+  }
+
+  //Enum type declaration end 
+
+
+
+  //Enum type declaration start 
+
+  public enum PostSourceV1:Int32 {
+    case Luno = 0
+    case Email = 1
+    case Slack = 2
 
   }
 
@@ -103,6 +118,11 @@ public extension Services.Post.Containers {
 
     public private(set) var hasHtmlDocument:Bool = false
     public private(set) var htmlDocument:String = ""
+
+    public private(set) var source:Services.Post.Containers.PostSourceV1 = Services.Post.Containers.PostSourceV1.Luno
+    public private(set) var hasSource:Bool = false
+    public private(set) var hasSourceId:Bool = false
+    public private(set) var sourceId:String = ""
 
     required public init() {
          super.init()
@@ -160,6 +180,12 @@ public extension Services.Post.Containers {
       }
       if hasHtmlDocument {
         try output.writeString(16, value:htmlDocument)
+      }
+      if hasSource {
+        try output.writeEnum(17, value:source.rawValue)
+      }
+      if hasSourceId {
+        try output.writeString(18, value:sourceId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -228,6 +254,12 @@ public extension Services.Post.Containers {
       }
       if hasHtmlDocument {
         serialize_size += htmlDocument.computeStringSize(16)
+      }
+      if (hasSource) {
+        serialize_size += source.rawValue.computeEnumSize(17)
+      }
+      if hasSourceId {
+        serialize_size += sourceId.computeStringSize(18)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -342,6 +374,12 @@ public extension Services.Post.Containers {
       if hasHtmlDocument {
         output += "\(indent) htmlDocument: \(htmlDocument) \n"
       }
+      if (hasSource) {
+        output += "\(indent) source: \(source.rawValue)\n"
+      }
+      if hasSourceId {
+        output += "\(indent) sourceId: \(sourceId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -402,6 +440,12 @@ public extension Services.Post.Containers {
             }
             if hasHtmlDocument {
                hashCode = (hashCode &* 31) &+ htmlDocument.hashValue
+            }
+            if hasSource {
+               hashCode = (hashCode &* 31) &+ Int(source.rawValue)
+            }
+            if hasSourceId {
+               hashCode = (hashCode &* 31) &+ sourceId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -897,6 +941,52 @@ public extension Services.Post.Containers {
            builderResult.htmlDocument = ""
            return self
       }
+        public var hasSource:Bool{
+            get {
+                return builderResult.hasSource
+            }
+        }
+        public var source:Services.Post.Containers.PostSourceV1 {
+            get {
+                return builderResult.source
+            }
+            set (value) {
+                builderResult.hasSource = true
+                builderResult.source = value
+            }
+        }
+        public func setSource(value:Services.Post.Containers.PostSourceV1) -> Services.Post.Containers.PostV1.Builder {
+          self.source = value
+          return self
+        }
+        public func clearSource() -> Services.Post.Containers.PostV1.Builder {
+           builderResult.hasSource = false
+           builderResult.source = .Luno
+           return self
+        }
+      public var hasSourceId:Bool {
+           get {
+                return builderResult.hasSourceId
+           }
+      }
+      public var sourceId:String {
+           get {
+                return builderResult.sourceId
+           }
+           set (value) {
+               builderResult.hasSourceId = true
+               builderResult.sourceId = value
+           }
+      }
+      public func setSourceId(value:String) -> Services.Post.Containers.PostV1.Builder {
+        self.sourceId = value
+        return self
+      }
+      public func clearSourceId() -> Services.Post.Containers.PostV1.Builder{
+           builderResult.hasSourceId = false
+           builderResult.sourceId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -968,6 +1058,12 @@ public extension Services.Post.Containers {
         }
         if other.hasHtmlDocument {
              htmlDocument = other.htmlDocument
+        }
+        if other.hasSource {
+             source = other.source
+        }
+        if other.hasSourceId {
+             sourceId = other.sourceId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1058,6 +1154,17 @@ public extension Services.Post.Containers {
 
           case 130 :
             htmlDocument = try input.readString()
+
+          case 136 :
+            let valueIntsource = try input.readEnum()
+            if let enumssource = Services.Post.Containers.PostSourceV1(rawValue:valueIntsource){
+                 source = enumssource
+            } else {
+                 try unknownFieldsBuilder.mergeVarintField(17, value:Int64(valueIntsource))
+            }
+
+          case 146 :
+            sourceId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
