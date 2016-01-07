@@ -71,7 +71,7 @@ public extension Services.Post.Containers {
   //Enum type declaration start 
 
   public enum PostSourceV1:Int32 {
-    case Luno = 0
+    case Web = 0
     case Email = 1
     case Slack = 2
 
@@ -119,7 +119,7 @@ public extension Services.Post.Containers {
     public private(set) var hasHtmlDocument:Bool = false
     public private(set) var htmlDocument:String = ""
 
-    public private(set) var source:Services.Post.Containers.PostSourceV1 = Services.Post.Containers.PostSourceV1.Luno
+    public private(set) var source:Services.Post.Containers.PostSourceV1 = Services.Post.Containers.PostSourceV1.Web
     public private(set) var hasSource:Bool = false
     public private(set) var hasSourceId:Bool = false
     public private(set) var sourceId:String = ""
@@ -961,7 +961,7 @@ public extension Services.Post.Containers {
         }
         public func clearSource() -> Services.Post.Containers.PostV1.Builder {
            builderResult.hasSource = false
-           builderResult.source = .Luno
+           builderResult.source = .Web
            return self
         }
       public var hasSourceId:Bool {

@@ -12,7 +12,7 @@ enum PostStateV1 {
 }
 
 enum PostSourceV1 {
-    LUNO = 0;
+    WEB = 0;
     EMAIL = 1;
     SLACK = 2;
 }
