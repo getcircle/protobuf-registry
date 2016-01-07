@@ -25,6 +25,7 @@ public func == (lhs: Services.Post.Containers.PostV1, rhs: Services.Post.Contain
   fieldCheck = fieldCheck && (lhs.fileIds == rhs.fileIds)
   fieldCheck = fieldCheck && (lhs.files == rhs.files)
   fieldCheck = fieldCheck && (lhs.hasSnippet == rhs.hasSnippet) && (!lhs.hasSnippet || lhs.snippet == rhs.snippet)
+  fieldCheck = fieldCheck && (lhs.hasHtmlDocument == rhs.hasHtmlDocument) && (!lhs.hasHtmlDocument || lhs.htmlDocument == rhs.htmlDocument)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -100,6 +101,9 @@ public extension Services.Post.Containers {
     public private(set) var hasSnippet:Bool = false
     public private(set) var snippet:String = ""
 
+    public private(set) var hasHtmlDocument:Bool = false
+    public private(set) var htmlDocument:String = ""
+
     required public init() {
          super.init()
     }
@@ -153,6 +157,9 @@ public extension Services.Post.Containers {
       }
       if hasSnippet {
         try output.writeString(15, value:snippet)
+      }
+      if hasHtmlDocument {
+        try output.writeString(16, value:htmlDocument)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -218,6 +225,9 @@ public extension Services.Post.Containers {
       }
       if hasSnippet {
         serialize_size += snippet.computeStringSize(15)
+      }
+      if hasHtmlDocument {
+        serialize_size += htmlDocument.computeStringSize(16)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -329,6 +339,9 @@ public extension Services.Post.Containers {
       if hasSnippet {
         output += "\(indent) snippet: \(snippet) \n"
       }
+      if hasHtmlDocument {
+        output += "\(indent) htmlDocument: \(htmlDocument) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -386,6 +399,9 @@ public extension Services.Post.Containers {
             }
             if hasSnippet {
                hashCode = (hashCode &* 31) &+ snippet.hashValue
+            }
+            if hasHtmlDocument {
+               hashCode = (hashCode &* 31) &+ htmlDocument.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -858,6 +874,29 @@ public extension Services.Post.Containers {
            builderResult.snippet = ""
            return self
       }
+      public var hasHtmlDocument:Bool {
+           get {
+                return builderResult.hasHtmlDocument
+           }
+      }
+      public var htmlDocument:String {
+           get {
+                return builderResult.htmlDocument
+           }
+           set (value) {
+               builderResult.hasHtmlDocument = true
+               builderResult.htmlDocument = value
+           }
+      }
+      public func setHtmlDocument(value:String) -> Services.Post.Containers.PostV1.Builder {
+        self.htmlDocument = value
+        return self
+      }
+      public func clearHtmlDocument() -> Services.Post.Containers.PostV1.Builder{
+           builderResult.hasHtmlDocument = false
+           builderResult.htmlDocument = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -926,6 +965,9 @@ public extension Services.Post.Containers {
         }
         if other.hasSnippet {
              snippet = other.snippet
+        }
+        if other.hasHtmlDocument {
+             htmlDocument = other.htmlDocument
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1013,6 +1055,9 @@ public extension Services.Post.Containers {
 
           case 122 :
             snippet = try input.readString()
+
+          case 130 :
+            htmlDocument = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

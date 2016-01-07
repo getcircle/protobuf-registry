@@ -27,4 +27,5 @@ message PostV1 {
     repeated string file_ids = 13;
     repeated services.file.containers.FileV1 files = 14;
     string snippet = 15;
+    string html_document = 16;
 }
