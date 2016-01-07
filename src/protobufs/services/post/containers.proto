@@ -11,6 +11,12 @@ enum PostStateV1 {
     UNLISTED = 2;
 }
 
+enum PostSourceV1 {
+    LUNO = 0;
+    EMAIL = 1;
+    SLACK = 2;
+}
+
 message PostV1 {
     string id = 1;
     string organization_id = 2;
@@ -28,4 +34,6 @@ message PostV1 {
     repeated services.file.containers.FileV1 files = 14;
     string snippet = 15;
     string html_document = 16;
+    PostSourceV1 source = 17;
+    string source_id = 18;
 }
