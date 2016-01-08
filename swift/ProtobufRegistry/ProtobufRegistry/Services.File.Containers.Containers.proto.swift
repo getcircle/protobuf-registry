@@ -30,6 +30,7 @@ public func == (lhs: Services.File.Containers.FileV1, rhs: Services.File.Contain
   fieldCheck = fieldCheck && (lhs.hasCreated == rhs.hasCreated) && (!lhs.hasCreated || lhs.created == rhs.created)
   fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
   fieldCheck = fieldCheck && (lhs.hasBytes == rhs.hasBytes) && (!lhs.hasBytes || lhs.bytes == rhs.bytes)
+  fieldCheck = fieldCheck && (lhs.hasSize == rhs.hasSize) && (!lhs.hasSize || lhs.size == rhs.size)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -361,6 +362,9 @@ public extension Services.File.Containers {
     public private(set) var hasBytes:Bool = false
     public private(set) var bytes:NSData = NSData()
 
+    public private(set) var hasSize:Bool = false
+    public private(set) var size:UInt32 = UInt32(0)
+
     required public init() {
          super.init()
     }
@@ -391,6 +395,9 @@ public extension Services.File.Containers {
       }
       if hasBytes {
         try output.writeData(8, value:bytes)
+      }
+      if hasSize {
+        try output.writeUInt32(9, value:size)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -424,6 +431,9 @@ public extension Services.File.Containers {
       }
       if hasBytes {
         serialize_size += bytes.computeDataSize(8)
+      }
+      if hasSize {
+        serialize_size += size.computeUInt32Size(9)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -500,6 +510,9 @@ public extension Services.File.Containers {
       if hasBytes {
         output += "\(indent) bytes: \(bytes) \n"
       }
+      if hasSize {
+        output += "\(indent) size: \(size) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -528,6 +541,9 @@ public extension Services.File.Containers {
             }
             if hasBytes {
                hashCode = (hashCode &* 31) &+ bytes.hashValue
+            }
+            if hasSize {
+               hashCode = (hashCode &* 31) &+ size.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -741,6 +757,29 @@ public extension Services.File.Containers {
            builderResult.bytes = NSData()
            return self
       }
+      public var hasSize:Bool {
+           get {
+                return builderResult.hasSize
+           }
+      }
+      public var size:UInt32 {
+           get {
+                return builderResult.size
+           }
+           set (value) {
+               builderResult.hasSize = true
+               builderResult.size = value
+           }
+      }
+      public func setSize(value:UInt32) -> Services.File.Containers.FileV1.Builder {
+        self.size = value
+        return self
+      }
+      public func clearSize() -> Services.File.Containers.FileV1.Builder{
+           builderResult.hasSize = false
+           builderResult.size = UInt32(0)
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -789,6 +828,9 @@ public extension Services.File.Containers {
         if other.hasBytes {
              bytes = other.bytes
         }
+        if other.hasSize {
+             size = other.size
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -827,6 +869,9 @@ public extension Services.File.Containers {
 
           case 66 :
             bytes = try input.readData()
+
+          case 72 :
+            size = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

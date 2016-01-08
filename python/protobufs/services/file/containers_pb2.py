@@ -17,7 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/file/containers.proto',
   package='services.file.containers',
   syntax='proto3',
-  serialized_pb=b'\n(protobufs/services/file/containers.proto\x12\x18services.file.containers\"Q\n\x14UploadInstructionsV1\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x12\n\nupload_url\x18\x02 \x01(\t\x12\x12\n\nupload_key\x18\x03 \x01(\t\"\x9c\x01\n\x06\x46ileV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rby_profile_id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x12\n\nsource_url\x18\x04 \x01(\t\x12\x14\n\x0c\x63ontent_type\x18\x05 \x01(\t\x12\x0f\n\x07\x63reated\x18\x06 \x01(\t\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\r\n\x05\x62ytes\x18\x08 \x01(\x0c\x62\x06proto3'
+  serialized_pb=b'\n(protobufs/services/file/containers.proto\x12\x18services.file.containers\"Q\n\x14UploadInstructionsV1\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x12\n\nupload_url\x18\x02 \x01(\t\x12\x12\n\nupload_key\x18\x03 \x01(\t\"\xaa\x01\n\x06\x46ileV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rby_profile_id\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x12\n\nsource_url\x18\x04 \x01(\t\x12\x14\n\x0c\x63ontent_type\x18\x05 \x01(\t\x12\x0f\n\x07\x63reated\x18\x06 \x01(\t\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\r\n\x05\x62ytes\x18\x08 \x01(\x0c\x12\x0c\n\x04size\x18\t \x01(\rb\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -132,6 +132,13 @@ _FILEV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='size', full_name='services.file.containers.FileV1.size', index=8,
+      number=9, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -145,7 +152,7 @@ _FILEV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=154,
-  serialized_end=310,
+  serialized_end=324,
 )
 
 DESCRIPTOR.message_types_by_name['UploadInstructionsV1'] = _UPLOADINSTRUCTIONSV1
