@@ -2,7 +2,8 @@ syntax = "proto3";
 package services.file.actions.delete;
 
 message RequestV1 {
-    string id = 1;
+    // reserved 1;
+    repeated string ids = 2;
 }
 
 message ResponseV1 {}

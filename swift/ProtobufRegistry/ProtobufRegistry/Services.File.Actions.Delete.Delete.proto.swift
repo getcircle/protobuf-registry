@@ -10,7 +10,7 @@ public func == (lhs: Services.File.Actions.Delete.RequestV1, rhs: Services.File.
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
+  fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -43,9 +43,7 @@ public extension Services.File.Actions.Delete {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasId:Bool = false
-    public private(set) var id:String = ""
-
+    public private(set) var ids:Array<String> = Array<String>()
     required public init() {
          super.init()
     }
@@ -53,8 +51,10 @@ public extension Services.File.Actions.Delete {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasId {
-        try output.writeString(1, value:id)
+      if !ids.isEmpty {
+        for oneValueids in ids {
+          try output.writeString(2, value:oneValueids)
+        }
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -65,9 +65,12 @@ public extension Services.File.Actions.Delete {
       }
 
       serialize_size = 0
-      if hasId {
-        serialize_size += id.computeStringSize(1)
+      var dataSizeIds:Int32 = 0
+      for oneValueids in ids {
+          dataSizeIds += oneValueids.computeStringSizeNoTag()
       }
+      serialize_size += dataSizeIds
+      serialize_size += 1 * Int32(ids.count)
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -119,16 +122,18 @@ public extension Services.File.Actions.Delete {
       return try Services.File.Actions.Delete.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasId {
-        output += "\(indent) id: \(id) \n"
+      var idsElementIndex:Int = 0
+      for oneValueids in ids  {
+          output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
+          idsElementIndex++
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasId {
-               hashCode = (hashCode &* 31) &+ id.hashValue
+            for oneValueids in ids {
+                hashCode = (hashCode &* 31) &+ oneValueids.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -158,28 +163,21 @@ public extension Services.File.Actions.Delete {
       required override public init () {
          super.init()
       }
-      public var hasId:Bool {
+      public var ids:Array<String> {
            get {
-                return builderResult.hasId
+               return builderResult.ids
+           }
+           set (array) {
+               builderResult.ids = array
            }
       }
-      public var id:String {
-           get {
-                return builderResult.id
-           }
-           set (value) {
-               builderResult.hasId = true
-               builderResult.id = value
-           }
-      }
-      public func setId(value:String) -> Services.File.Actions.Delete.RequestV1.Builder {
-        self.id = value
+      public func setIds(value:Array<String>) -> Services.File.Actions.Delete.RequestV1.Builder {
+        self.ids = value
         return self
       }
-      public func clearId() -> Services.File.Actions.Delete.RequestV1.Builder{
-           builderResult.hasId = false
-           builderResult.id = ""
-           return self
+      public func clearIds() -> Services.File.Actions.Delete.RequestV1.Builder {
+         builderResult.ids.removeAll(keepCapacity: false)
+         return self
       }
       override public var internalGetResult:GeneratedMessage {
            get {
@@ -205,8 +203,8 @@ public extension Services.File.Actions.Delete {
         if other == Services.File.Actions.Delete.RequestV1() {
          return self
         }
-        if other.hasId {
-             id = other.id
+        if !other.ids.isEmpty {
+            builderResult.ids += other.ids
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -223,8 +221,8 @@ public extension Services.File.Actions.Delete {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 10 :
-            id = try input.readString()
+          case 18 :
+            ids += [try input.readString()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

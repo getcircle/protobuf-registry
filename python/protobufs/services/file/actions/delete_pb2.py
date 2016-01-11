@@ -17,7 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/file/actions/delete.proto',
   package='services.file.actions.delete',
   syntax='proto3',
-  serialized_pb=b'\n,protobufs/services/file/actions/delete.proto\x12\x1cservices.file.actions.delete\"\x17\n\tRequestV1\x12\n\n\x02id\x18\x01 \x01(\t\"\x0c\n\nResponseV1b\x06proto3'
+  serialized_pb=b'\n,protobufs/services/file/actions/delete.proto\x12\x1cservices.file.actions.delete\"\x18\n\tRequestV1\x12\x0b\n\x03ids\x18\x02 \x03(\t\"\x0c\n\nResponseV1b\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -32,9 +32,9 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='services.file.actions.delete.RequestV1.id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='ids', full_name='services.file.actions.delete.RequestV1.ids', index=0,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -51,7 +51,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=78,
-  serialized_end=101,
+  serialized_end=102,
 )
 
 
@@ -74,8 +74,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=103,
-  serialized_end=115,
+  serialized_start=104,
+  serialized_end=116,
 )
 
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
