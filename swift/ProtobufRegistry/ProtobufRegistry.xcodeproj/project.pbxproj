@@ -71,7 +71,6 @@
 		BF9BAE231BB38F81008CCC7E /* Services.Organization.Actions.CreateToken.CreateToken.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BADB91BB38F81008CCC7E /* Services.Organization.Actions.CreateToken.CreateToken.proto.swift */; };
 		BF9BAE241BB38F81008CCC7E /* Services.Organization.Actions.DisableIntegration.DisableIntegration.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BADBA1BB38F81008CCC7E /* Services.Organization.Actions.DisableIntegration.DisableIntegration.proto.swift */; };
 		BF9BAE251BB38F81008CCC7E /* Services.Organization.Actions.EnableIntegration.EnableIntegration.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BADBB1BB38F81008CCC7E /* Services.Organization.Actions.EnableIntegration.EnableIntegration.proto.swift */; };
-		BF9BAE261BB38F81008CCC7E /* Services.Organization.Actions.GetAuthenticationInstructions.GetAuthenticationInstructions.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BADBC1BB38F81008CCC7E /* Services.Organization.Actions.GetAuthenticationInstructions.GetAuthenticationInstructions.proto.swift */; };
 		BF9BAE271BB38F81008CCC7E /* Services.Organization.Actions.GetDescendants.GetDescendants.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BADBD1BB38F81008CCC7E /* Services.Organization.Actions.GetDescendants.GetDescendants.proto.swift */; };
 		BF9BAE281BB38F81008CCC7E /* Services.Organization.Actions.GetIntegration.GetIntegration.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BADBE1BB38F81008CCC7E /* Services.Organization.Actions.GetIntegration.GetIntegration.proto.swift */; };
 		BF9BAE291BB38F81008CCC7E /* Services.Organization.Actions.GetLocation.GetLocation.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BADBF1BB38F81008CCC7E /* Services.Organization.Actions.GetLocation.GetLocation.proto.swift */; };
@@ -231,7 +230,6 @@
 		BF9BADB91BB38F81008CCC7E /* Services.Organization.Actions.CreateToken.CreateToken.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.Organization.Actions.CreateToken.CreateToken.proto.swift; sourceTree = "<group>"; };
 		BF9BADBA1BB38F81008CCC7E /* Services.Organization.Actions.DisableIntegration.DisableIntegration.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.Organization.Actions.DisableIntegration.DisableIntegration.proto.swift; sourceTree = "<group>"; };
 		BF9BADBB1BB38F81008CCC7E /* Services.Organization.Actions.EnableIntegration.EnableIntegration.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.Organization.Actions.EnableIntegration.EnableIntegration.proto.swift; sourceTree = "<group>"; };
-		BF9BADBC1BB38F81008CCC7E /* Services.Organization.Actions.GetAuthenticationInstructions.GetAuthenticationInstructions.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.Organization.Actions.GetAuthenticationInstructions.GetAuthenticationInstructions.proto.swift; sourceTree = "<group>"; };
 		BF9BADBD1BB38F81008CCC7E /* Services.Organization.Actions.GetDescendants.GetDescendants.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.Organization.Actions.GetDescendants.GetDescendants.proto.swift; sourceTree = "<group>"; };
 		BF9BADBE1BB38F81008CCC7E /* Services.Organization.Actions.GetIntegration.GetIntegration.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.Organization.Actions.GetIntegration.GetIntegration.proto.swift; sourceTree = "<group>"; };
 		BF9BADBF1BB38F81008CCC7E /* Services.Organization.Actions.GetLocation.GetLocation.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.Organization.Actions.GetLocation.GetLocation.proto.swift; sourceTree = "<group>"; };
@@ -408,7 +406,6 @@
 				BF9BADB91BB38F81008CCC7E /* Services.Organization.Actions.CreateToken.CreateToken.proto.swift */,
 				BF9BADBA1BB38F81008CCC7E /* Services.Organization.Actions.DisableIntegration.DisableIntegration.proto.swift */,
 				BF9BADBB1BB38F81008CCC7E /* Services.Organization.Actions.EnableIntegration.EnableIntegration.proto.swift */,
-				BF9BADBC1BB38F81008CCC7E /* Services.Organization.Actions.GetAuthenticationInstructions.GetAuthenticationInstructions.proto.swift */,
 				BF9BADBD1BB38F81008CCC7E /* Services.Organization.Actions.GetDescendants.GetDescendants.proto.swift */,
 				BF9BADBE1BB38F81008CCC7E /* Services.Organization.Actions.GetIntegration.GetIntegration.proto.swift */,
 				BF9BADBF1BB38F81008CCC7E /* Services.Organization.Actions.GetLocation.GetLocation.proto.swift */,
@@ -718,7 +715,6 @@
 				BF9BAE231BB38F81008CCC7E /* Services.Organization.Actions.CreateToken.CreateToken.proto.swift in Sources */,
 				BF9BAE241BB38F81008CCC7E /* Services.Organization.Actions.DisableIntegration.DisableIntegration.proto.swift in Sources */,
 				BF9BAE251BB38F81008CCC7E /* Services.Organization.Actions.EnableIntegration.EnableIntegration.proto.swift in Sources */,
-				BF9BAE261BB38F81008CCC7E /* Services.Organization.Actions.GetAuthenticationInstructions.GetAuthenticationInstructions.proto.swift in Sources */,
 				BFA734B81BEDABAF0087951B /* Services.Search.Actions.UpdateEntities.UpdateEntities.proto.swift in Sources */,
 				BF9BAE271BB38F81008CCC7E /* Services.Organization.Actions.GetDescendants.GetDescendants.proto.swift in Sources */,
 				BF9BAE281BB38F81008CCC7E /* Services.Organization.Actions.GetIntegration.GetIntegration.proto.swift in Sources */,
