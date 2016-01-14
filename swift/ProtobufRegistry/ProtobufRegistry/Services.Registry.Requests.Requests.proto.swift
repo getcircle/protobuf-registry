@@ -50,15 +50,6 @@ public func == (lhs: Services.Registry.Requests.Media, rhs: Services.Registry.Re
   return fieldCheck
 }
 
-public func == (lhs: Services.Registry.Requests.Sync, rhs: Services.Registry.Requests.Sync) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
 public func == (lhs: Services.Registry.Requests.Group, rhs: Services.Registry.Requests.Group) -> Bool {
   if (lhs === rhs) {
     return true
@@ -471,21 +462,6 @@ public var ServicesRegistryRequestsMediacompleteImageUpload:ConcreateExtensionFi
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsMediacompleteImageUploadStatic
    }
 }
-public var ServicesRegistryRequestsSyncstartSync:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsSyncstartSyncStatic
-   }
-}
-public var ServicesRegistryRequestsSyncsyncPayloads:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsSyncsyncPayloadsStatic
-   }
-}
-public var ServicesRegistryRequestsSynccompleteSync:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsSynccompleteSyncStatic
-   }
-}
 public var ServicesRegistryRequestsGroupgetGroups:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGroupgetGroupsStatic
@@ -717,9 +693,6 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsSearchdeleteRecentStatic:ConcreateExtensionField
     var ServicesRegistryRequestsMediastartImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryRequestsMediacompleteImageUploadStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsSyncstartSyncStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsSyncsyncPayloadsStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsSynccompleteSyncStatic:ConcreateExtensionField
     var ServicesRegistryRequestsGroupgetGroupsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsGroupjoinGroupStatic:ConcreateExtensionField
     var ServicesRegistryRequestsGrouprespondToMembershipRequestStatic:ConcreateExtensionField
@@ -822,9 +795,6 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsSearchdeleteRecentStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 407, defaultValue:Services.Search.Actions.DeleteRecent.RequestV1(), messageOrGroupClass:Services.Search.Actions.DeleteRecent.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsMediastartImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsMediacompleteImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsSyncstartSyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1000, defaultValue:Services.Sync.Actions.StartSync.RequestV1(), messageOrGroupClass:Services.Sync.Actions.StartSync.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsSyncsyncPayloadsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1001, defaultValue:Services.Sync.Actions.Sync.RequestV1(), messageOrGroupClass:Services.Sync.Actions.Sync.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsSynccompleteSyncStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1002, defaultValue:Services.Sync.Actions.CompleteSync.RequestV1(), messageOrGroupClass:Services.Sync.Actions.CompleteSync.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsGroupgetGroupsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1100, defaultValue:Services.Group.Actions.GetGroups.RequestV1(), messageOrGroupClass:Services.Group.Actions.GetGroups.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsGroupjoinGroupStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1101, defaultValue:Services.Group.Actions.JoinGroup.RequestV1(), messageOrGroupClass:Services.Group.Actions.JoinGroup.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsGrouprespondToMembershipRequestStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1102, defaultValue:Services.Group.Actions.RespondToMembershipRequest.RequestV1(), messageOrGroupClass:Services.Group.Actions.RespondToMembershipRequest.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -926,9 +896,6 @@ public extension Services.Registry.Requests {
       Services.Search.Actions.DeleteRecent.DeleteRecentRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Actions.StartImageUpload.StartImageUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Actions.CompleteImageUpload.CompleteImageUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Sync.Actions.StartSync.StartSyncRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Sync.Actions.Sync.SyncRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Sync.Actions.CompleteSync.CompleteSyncRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Group.Actions.GetGroups.GetGroupsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Group.Actions.JoinGroup.JoinGroupRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Group.Actions.RespondToMembershipRequest.RespondToMembershipRequestRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -1030,9 +997,6 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsSearchdeleteRecentStatic)
       registry.addExtension(ServicesRegistryRequestsMediastartImageUploadStatic)
       registry.addExtension(ServicesRegistryRequestsMediacompleteImageUploadStatic)
-      registry.addExtension(ServicesRegistryRequestsSyncstartSyncStatic)
-      registry.addExtension(ServicesRegistryRequestsSyncsyncPayloadsStatic)
-      registry.addExtension(ServicesRegistryRequestsSynccompleteSyncStatic)
       registry.addExtension(ServicesRegistryRequestsGroupgetGroupsStatic)
       registry.addExtension(ServicesRegistryRequestsGroupjoinGroupStatic)
       registry.addExtension(ServicesRegistryRequestsGrouprespondToMembershipRequestStatic)
@@ -2011,167 +1975,6 @@ public extension Services.Registry.Requests {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
       public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Media.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-        while (true) {
-          let tag = try input.readTag()
-          switch tag {
-          case 0: 
-            self.unknownFields = try unknownFieldsBuilder.build()
-            return self
-
-          default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
-               unknownFields = try unknownFieldsBuilder.build()
-               return self
-            }
-          }
-        }
-      }
-    }
-
-  }
-
-  final public class Sync : GeneratedMessage, GeneratedMessageProtocol {
-    public class func startSync() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsSyncstartSync
-    }
-    public class func syncPayloads() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsSyncsyncPayloads
-    }
-    public class func completeSync() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsSynccompleteSync
-    }
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      try unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Registry.Requests.Sync> {
-      var mergedArray = Array<Services.Registry.Requests.Sync>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Registry.Requests.Sync? {
-      return try Services.Registry.Requests.Sync.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Services.Registry.Requests.Sync {
-      return try Services.Registry.Requests.Sync.Builder().mergeFromData(data, extensionRegistry:Services.Registry.Requests.RequestsRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Sync {
-      return try Services.Registry.Requests.Sync.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Registry.Requests.Sync {
-      return try Services.Registry.Requests.Sync.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Sync {
-      return try Services.Registry.Requests.Sync.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Registry.Requests.Sync {
-      return try Services.Registry.Requests.Sync.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Sync {
-      return try Services.Registry.Requests.Sync.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func getBuilder() -> Services.Registry.Requests.Sync.Builder {
-      return Services.Registry.Requests.Sync.classBuilder() as! Services.Registry.Requests.Sync.Builder
-    }
-    public func getBuilder() -> Services.Registry.Requests.Sync.Builder {
-      return classBuilder() as! Services.Registry.Requests.Sync.Builder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Requests.Sync.Builder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Requests.Sync.Builder()
-    }
-    public func toBuilder() throws -> Services.Registry.Requests.Sync.Builder {
-      return try Services.Registry.Requests.Sync.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Registry.Requests.Sync) throws -> Services.Registry.Requests.Sync.Builder {
-      return try Services.Registry.Requests.Sync.Builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Registry.Requests.Sync"
-    }
-    override public func className() -> String {
-        return "Services.Registry.Requests.Sync"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Requests.Sync.self
-    }
-    //Meta information declaration end
-
-    final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Services.Registry.Requests.Sync = Services.Registry.Requests.Sync()
-      public func getMessage() -> Services.Registry.Requests.Sync {
-          return builderResult
-      }
-
-      required override public init () {
-         super.init()
-      }
-      override public var internalGetResult:GeneratedMessage {
-           get {
-              return builderResult
-           }
-      }
-      public override func clear() -> Services.Registry.Requests.Sync.Builder {
-        builderResult = Services.Registry.Requests.Sync()
-        return self
-      }
-      public override func clone() throws -> Services.Registry.Requests.Sync.Builder {
-        return try Services.Registry.Requests.Sync.builderWithPrototype(builderResult)
-      }
-      public override func build() throws -> Services.Registry.Requests.Sync {
-           try checkInitialized()
-           return buildPartial()
-      }
-      public func buildPartial() -> Services.Registry.Requests.Sync {
-        let returnMe:Services.Registry.Requests.Sync = builderResult
-        return returnMe
-      }
-      public func mergeFrom(other:Services.Registry.Requests.Sync) throws -> Services.Registry.Requests.Sync.Builder {
-        if other == Services.Registry.Requests.Sync() {
-         return self
-        }
-        try mergeUnknownFields(other.unknownFields)
-        return self
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Registry.Requests.Sync.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Sync.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let tag = try input.readTag()

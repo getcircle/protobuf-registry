@@ -1,9 +1,0 @@
-syntax = "proto2";
-package services.sync.containers.source;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.sync.containers.source";
-
-enum SourceV1 {
-    LDAP = 0;
-}
