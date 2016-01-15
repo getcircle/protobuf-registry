@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/request_access.proto',
   package='services.user.actions.request_access',
   syntax='proto2',
-  serialized_pb=b'\n4protobufs/services/user/actions/request_access.proto\x12$services.user.actions.request_access\x1a(protobufs/services/user/containers.proto\"\xd1\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12W\n\x0e\x61nonymous_user\x18\x03 \x01(\x0b\x32?.services.user.actions.request_access.RequestV1.AnonymousUserV1\x1a\x46\n\x0f\x41nonymousUserV1\x12\x11\n\tuser_info\x18\x03 \x01(\t\x12\x0e\n\x06\x64omain\x18\x04 \x01(\t\x12\x10\n\x08location\x18\x05 \x01(\t\"c\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x41\n\x0e\x61\x63\x63\x65ss_request\x18\x02 \x01(\x0b\x32).services.user.containers.AccessRequestV1B;\n9com.rhlabs.protobufs.services.user.actions.request_access'
+  serialized_pb=b'\n4protobufs/services/user/actions/request_access.proto\x12$services.user.actions.request_access\x1a(protobufs/services/user/containers.proto\"\xc0\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12W\n\x0e\x61nonymous_user\x18\x03 \x01(\x0b\x32?.services.user.actions.request_access.RequestV1.AnonymousUserV1\x1a\x46\n\x0f\x41nonymousUserV1\x12\x11\n\tuser_info\x18\x03 \x01(\t\x12\x0e\n\x06\x64omain\x18\x04 \x01(\t\x12\x10\n\x08location\x18\x05 \x01(\t\"c\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x41\n\x0e\x61\x63\x63\x65ss_request\x18\x02 \x01(\x0b\x32).services.user.containers.AccessRequestV1B;\n9com.rhlabs.protobufs.services.user.actions.request_access'
   ,
   dependencies=[protobufs_dot_services_dot_user_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -66,8 +66,8 @@ _REQUESTV1_ANONYMOUSUSERV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=276,
-  serialized_end=346,
+  serialized_start=259,
+  serialized_end=329,
 )
 
 _REQUESTV1 = _descriptor.Descriptor(
@@ -85,14 +85,7 @@ _REQUESTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='user_id', full_name='services.user.actions.request_access.RequestV1.user_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='anonymous_user', full_name='services.user.actions.request_access.RequestV1.anonymous_user', index=2,
+      name='anonymous_user', full_name='services.user.actions.request_access.RequestV1.anonymous_user', index=1,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -111,7 +104,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=137,
-  serialized_end=346,
+  serialized_end=329,
 )
 
 
@@ -148,8 +141,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=348,
-  serialized_end=447,
+  serialized_start=331,
+  serialized_end=430,
 )
 
 _REQUESTV1_ANONYMOUSUSERV1.containing_type = _REQUESTV1

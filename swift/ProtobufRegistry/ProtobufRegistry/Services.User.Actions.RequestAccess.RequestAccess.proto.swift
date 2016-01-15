@@ -11,7 +11,6 @@ public func == (lhs: Services.User.Actions.RequestAccess.RequestV1, rhs: Service
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = fieldCheck && (lhs.hasAnonymousUser == rhs.hasAnonymousUser) && (!lhs.hasAnonymousUser || lhs.anonymousUser == rhs.anonymousUser)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -353,9 +352,6 @@ public extension Services.User.Actions.RequestAccess {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
-    public private(set) var hasUserId:Bool = false
-    public private(set) var userId:String = ""
-
     public private(set) var hasAnonymousUser:Bool = false
     public private(set) var anonymousUser:Services.User.Actions.RequestAccess.RequestV1.AnonymousUserV1!
     required public init() {
@@ -367,9 +363,6 @@ public extension Services.User.Actions.RequestAccess {
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasVersion {
         try output.writeUInt32(1, value:version)
-      }
-      if hasUserId {
-        try output.writeString(2, value:userId)
       }
       if hasAnonymousUser {
         try output.writeMessage(3, value:anonymousUser)
@@ -385,9 +378,6 @@ public extension Services.User.Actions.RequestAccess {
       serialize_size = 0
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
-      }
-      if hasUserId {
-        serialize_size += userId.computeStringSize(2)
       }
       if hasAnonymousUser {
           if let varSizeanonymousUser = anonymousUser?.computeMessageSize(3) {
@@ -448,9 +438,6 @@ public extension Services.User.Actions.RequestAccess {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
-      if hasUserId {
-        output += "\(indent) userId: \(userId) \n"
-      }
       if hasAnonymousUser {
         output += "\(indent) anonymousUser {\n"
         try anonymousUser?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -463,9 +450,6 @@ public extension Services.User.Actions.RequestAccess {
             var hashCode:Int = 7
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            if hasUserId {
-               hashCode = (hashCode &* 31) &+ userId.hashValue
             }
             if hasAnonymousUser {
                 if let hashValueanonymousUser = anonymousUser?.hashValue {
@@ -521,29 +505,6 @@ public extension Services.User.Actions.RequestAccess {
       public func clearVersion() -> Services.User.Actions.RequestAccess.RequestV1.Builder{
            builderResult.hasVersion = false
            builderResult.version = UInt32(1)
-           return self
-      }
-      public var hasUserId:Bool {
-           get {
-                return builderResult.hasUserId
-           }
-      }
-      public var userId:String {
-           get {
-                return builderResult.userId
-           }
-           set (value) {
-               builderResult.hasUserId = true
-               builderResult.userId = value
-           }
-      }
-      public func setUserId(value:String) -> Services.User.Actions.RequestAccess.RequestV1.Builder {
-        self.userId = value
-        return self
-      }
-      public func clearUserId() -> Services.User.Actions.RequestAccess.RequestV1.Builder{
-           builderResult.hasUserId = false
-           builderResult.userId = ""
            return self
       }
       public var hasAnonymousUser:Bool {
@@ -624,9 +585,6 @@ public extension Services.User.Actions.RequestAccess {
         if other.hasVersion {
              version = other.version
         }
-        if other.hasUserId {
-             userId = other.userId
-        }
         if (other.hasAnonymousUser) {
             try mergeAnonymousUser(other.anonymousUser)
         }
@@ -647,9 +605,6 @@ public extension Services.User.Actions.RequestAccess {
 
           case 8 :
             version = try input.readUInt32()
-
-          case 18 :
-            userId = try input.readString()
 
           case 26 :
             let subBuilder:Services.User.Actions.RequestAccess.RequestV1.AnonymousUserV1.Builder = Services.User.Actions.RequestAccess.RequestV1.AnonymousUserV1.Builder()
