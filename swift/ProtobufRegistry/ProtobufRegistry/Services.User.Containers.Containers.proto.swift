@@ -80,6 +80,7 @@ public func == (lhs: Services.User.Containers.UserV1, rhs: Services.User.Contain
   fieldCheck = fieldCheck && (lhs.hasPhoneNumber == rhs.hasPhoneNumber) && (!lhs.hasPhoneNumber || lhs.phoneNumber == rhs.phoneNumber)
   fieldCheck = fieldCheck && (lhs.hasPhoneNumberVerified == rhs.hasPhoneNumberVerified) && (!lhs.hasPhoneNumberVerified || lhs.phoneNumberVerified == rhs.phoneNumberVerified)
   fieldCheck = fieldCheck && (lhs.hasPassword == rhs.hasPassword) && (!lhs.hasPassword || lhs.password == rhs.password)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1927,6 +1928,9 @@ public extension Services.User.Containers {
     public private(set) var hasPassword:Bool = false
     public private(set) var password:String = ""
 
+    public private(set) var hasOrganizationId:Bool = false
+    public private(set) var organizationId:String = ""
+
     required public init() {
          super.init()
     }
@@ -1957,6 +1961,9 @@ public extension Services.User.Containers {
       }
       if hasPassword {
         try output.writeString(8, value:password)
+      }
+      if hasOrganizationId {
+        try output.writeString(9, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1990,6 +1997,9 @@ public extension Services.User.Containers {
       }
       if hasPassword {
         serialize_size += password.computeStringSize(8)
+      }
+      if hasOrganizationId {
+        serialize_size += organizationId.computeStringSize(9)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2066,6 +2076,9 @@ public extension Services.User.Containers {
       if hasPassword {
         output += "\(indent) password: \(password) \n"
       }
+      if hasOrganizationId {
+        output += "\(indent) organizationId: \(organizationId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2094,6 +2107,9 @@ public extension Services.User.Containers {
             }
             if hasPassword {
                hashCode = (hashCode &* 31) &+ password.hashValue
+            }
+            if hasOrganizationId {
+               hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2307,6 +2323,29 @@ public extension Services.User.Containers {
            builderResult.password = ""
            return self
       }
+      public var hasOrganizationId:Bool {
+           get {
+                return builderResult.hasOrganizationId
+           }
+      }
+      public var organizationId:String {
+           get {
+                return builderResult.organizationId
+           }
+           set (value) {
+               builderResult.hasOrganizationId = true
+               builderResult.organizationId = value
+           }
+      }
+      public func setOrganizationId(value:String) -> Services.User.Containers.UserV1.Builder {
+        self.organizationId = value
+        return self
+      }
+      public func clearOrganizationId() -> Services.User.Containers.UserV1.Builder{
+           builderResult.hasOrganizationId = false
+           builderResult.organizationId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -2355,6 +2394,9 @@ public extension Services.User.Containers {
         if other.hasPassword {
              password = other.password
         }
+        if other.hasOrganizationId {
+             organizationId = other.organizationId
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -2393,6 +2435,9 @@ public extension Services.User.Containers {
 
           case 66 :
             password = try input.readString()
+
+          case 74 :
+            organizationId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

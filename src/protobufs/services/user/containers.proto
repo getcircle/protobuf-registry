@@ -65,6 +65,7 @@ message UserV1 {
     optional string phone_number = 6;
     optional bool phone_number_verified = 7;
     optional string password = 8;
+    optional string organization_id = 9;
 }
 
 message SAMLDetailsV1 {
