@@ -10,7 +10,6 @@ public func == (lhs: Services.User.Actions.RequestAccess.RequestV1, rhs: Service
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasAnonymousUser == rhs.hasAnonymousUser) && (!lhs.hasAnonymousUser || lhs.anonymousUser == rhs.anonymousUser)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -33,8 +32,6 @@ public func == (lhs: Services.User.Actions.RequestAccess.ResponseV1, rhs: Servic
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasAccessRequest == rhs.hasAccessRequest) && (!lhs.hasAccessRequest || lhs.accessRequest == rhs.accessRequest)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -349,9 +346,6 @@ public extension Services.User.Actions.RequestAccess {
 
     //Nested type declaration end
 
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasAnonymousUser:Bool = false
     public private(set) var anonymousUser:Services.User.Actions.RequestAccess.RequestV1.AnonymousUserV1!
     required public init() {
@@ -361,9 +355,6 @@ public extension Services.User.Actions.RequestAccess {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasAnonymousUser {
         try output.writeMessage(3, value:anonymousUser)
       }
@@ -376,9 +367,6 @@ public extension Services.User.Actions.RequestAccess {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasAnonymousUser {
           if let varSizeanonymousUser = anonymousUser?.computeMessageSize(3) {
               serialize_size += varSizeanonymousUser
@@ -435,9 +423,6 @@ public extension Services.User.Actions.RequestAccess {
       return try Services.User.Actions.RequestAccess.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasAnonymousUser {
         output += "\(indent) anonymousUser {\n"
         try anonymousUser?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -448,9 +433,6 @@ public extension Services.User.Actions.RequestAccess {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasAnonymousUser {
                 if let hashValueanonymousUser = anonymousUser?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueanonymousUser
@@ -483,29 +465,6 @@ public extension Services.User.Actions.RequestAccess {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.RequestAccess.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.RequestAccess.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasAnonymousUser:Bool {
            get {
@@ -582,9 +541,6 @@ public extension Services.User.Actions.RequestAccess {
         if other == Services.User.Actions.RequestAccess.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasAnonymousUser) {
             try mergeAnonymousUser(other.anonymousUser)
         }
@@ -602,9 +558,6 @@ public extension Services.User.Actions.RequestAccess {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           case 26 :
             let subBuilder:Services.User.Actions.RequestAccess.RequestV1.AnonymousUserV1.Builder = Services.User.Actions.RequestAccess.RequestV1.AnonymousUserV1.Builder()
@@ -627,11 +580,6 @@ public extension Services.User.Actions.RequestAccess {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
-    public private(set) var hasAccessRequest:Bool = false
-    public private(set) var accessRequest:Services.User.Containers.AccessRequestV1!
     required public init() {
          super.init()
     }
@@ -639,12 +587,6 @@ public extension Services.User.Actions.RequestAccess {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
-      if hasAccessRequest {
-        try output.writeMessage(2, value:accessRequest)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -654,14 +596,6 @@ public extension Services.User.Actions.RequestAccess {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
-      if hasAccessRequest {
-          if let varSizeaccessRequest = accessRequest?.computeMessageSize(2) {
-              serialize_size += varSizeaccessRequest
-          }
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -713,27 +647,11 @@ public extension Services.User.Actions.RequestAccess {
       return try Services.User.Actions.RequestAccess.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
-      if hasAccessRequest {
-        output += "\(indent) accessRequest {\n"
-        try accessRequest?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            if hasAccessRequest {
-                if let hashValueaccessRequest = accessRequest?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValueaccessRequest
-                }
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -762,80 +680,6 @@ public extension Services.User.Actions.RequestAccess {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.RequestAccess.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.RequestAccess.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
-      public var hasAccessRequest:Bool {
-           get {
-               return builderResult.hasAccessRequest
-           }
-      }
-      public var accessRequest:Services.User.Containers.AccessRequestV1! {
-           get {
-               if accessRequestBuilder_ != nil {
-                  builderResult.accessRequest = accessRequestBuilder_.getMessage()
-               }
-               return builderResult.accessRequest
-           }
-           set (value) {
-               builderResult.hasAccessRequest = true
-               builderResult.accessRequest = value
-           }
-      }
-      private var accessRequestBuilder_:Services.User.Containers.AccessRequestV1.Builder! {
-           didSet {
-              builderResult.hasAccessRequest = true
-           }
-      }
-      public func getAccessRequestBuilder() -> Services.User.Containers.AccessRequestV1.Builder {
-        if accessRequestBuilder_ == nil {
-           accessRequestBuilder_ = Services.User.Containers.AccessRequestV1.Builder()
-           builderResult.accessRequest = accessRequestBuilder_.getMessage()
-           if accessRequest != nil {
-              try! accessRequestBuilder_.mergeFrom(accessRequest)
-           }
-        }
-        return accessRequestBuilder_
-      }
-      public func setAccessRequest(value:Services.User.Containers.AccessRequestV1!) -> Services.User.Actions.RequestAccess.ResponseV1.Builder {
-        self.accessRequest = value
-        return self
-      }
-      public func mergeAccessRequest(value:Services.User.Containers.AccessRequestV1) throws -> Services.User.Actions.RequestAccess.ResponseV1.Builder {
-        if builderResult.hasAccessRequest {
-          builderResult.accessRequest = try Services.User.Containers.AccessRequestV1.builderWithPrototype(builderResult.accessRequest).mergeFrom(value).buildPartial()
-        } else {
-          builderResult.accessRequest = value
-        }
-        builderResult.hasAccessRequest = true
-        return self
-      }
-      public func clearAccessRequest() -> Services.User.Actions.RequestAccess.ResponseV1.Builder {
-        accessRequestBuilder_ = nil
-        builderResult.hasAccessRequest = false
-        builderResult.accessRequest = nil
-        return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -860,12 +704,6 @@ public extension Services.User.Actions.RequestAccess {
         if other == Services.User.Actions.RequestAccess.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
-        if (other.hasAccessRequest) {
-            try mergeAccessRequest(other.accessRequest)
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -880,17 +718,6 @@ public extension Services.User.Actions.RequestAccess {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
-            let subBuilder:Services.User.Containers.AccessRequestV1.Builder = Services.User.Containers.AccessRequestV1.Builder()
-            if hasAccessRequest {
-              try subBuilder.mergeFrom(accessRequest)
-            }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-            accessRequest = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

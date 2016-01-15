@@ -1,26 +1,19 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.user.actions.request_access;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.user.actions.request_access";
 
 import "protobufs/services/user/containers.proto";
 
 message RequestV1 {
 
-    // reserved 2;
+    // reserved 1, 2;
 
     message AnonymousUserV1 {
-        optional string user_info = 3;
-        optional string domain = 4;
-        optional string location = 5;
+        string user_info = 3;
+        string domain = 4;
+        string location = 5;
     }
 
-    optional uint32 version = 1 [default = 1];
-    optional AnonymousUserV1 anonymous_user = 3;
+    AnonymousUserV1 anonymous_user = 3;
 }
 
-message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.user.containers.AccessRequestV1 access_request = 2;
-}
+message ResponseV1 {}

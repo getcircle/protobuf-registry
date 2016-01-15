@@ -17,8 +17,8 @@ from protobufs.services.user import containers_pb2 as protobufs_dot_services_dot
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/request_access.proto',
   package='services.user.actions.request_access',
-  syntax='proto2',
-  serialized_pb=b'\n4protobufs/services/user/actions/request_access.proto\x12$services.user.actions.request_access\x1a(protobufs/services/user/containers.proto\"\xc0\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12W\n\x0e\x61nonymous_user\x18\x03 \x01(\x0b\x32?.services.user.actions.request_access.RequestV1.AnonymousUserV1\x1a\x46\n\x0f\x41nonymousUserV1\x12\x11\n\tuser_info\x18\x03 \x01(\t\x12\x0e\n\x06\x64omain\x18\x04 \x01(\t\x12\x10\n\x08location\x18\x05 \x01(\t\"c\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x41\n\x0e\x61\x63\x63\x65ss_request\x18\x02 \x01(\x0b\x32).services.user.containers.AccessRequestV1B;\n9com.rhlabs.protobufs.services.user.actions.request_access'
+  syntax='proto3',
+  serialized_pb=b'\n4protobufs/services/user/actions/request_access.proto\x12$services.user.actions.request_access\x1a(protobufs/services/user/containers.proto\"\xac\x01\n\tRequestV1\x12W\n\x0e\x61nonymous_user\x18\x03 \x01(\x0b\x32?.services.user.actions.request_access.RequestV1.AnonymousUserV1\x1a\x46\n\x0f\x41nonymousUserV1\x12\x11\n\tuser_info\x18\x03 \x01(\t\x12\x0e\n\x06\x64omain\x18\x04 \x01(\t\x12\x10\n\x08location\x18\x05 \x01(\t\"\x0c\n\nResponseV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_user_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -62,12 +62,12 @@ _REQUESTV1_ANONYMOUSUSERV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=259,
-  serialized_end=329,
+  serialized_start=239,
+  serialized_end=309,
 )
 
 _REQUESTV1 = _descriptor.Descriptor(
@@ -78,14 +78,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.user.actions.request_access.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='anonymous_user', full_name='services.user.actions.request_access.RequestV1.anonymous_user', index=1,
+      name='anonymous_user', full_name='services.user.actions.request_access.RequestV1.anonymous_user', index=0,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -99,12 +92,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=137,
-  serialized_end=329,
+  serialized_end=309,
 )
 
 
@@ -115,20 +108,6 @@ _RESPONSEV1 = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
-    _descriptor.FieldDescriptor(
-      name='version', full_name='services.user.actions.request_access.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='access_request', full_name='services.user.actions.request_access.ResponseV1.access_request', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -137,17 +116,16 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=331,
-  serialized_end=430,
+  serialized_start=311,
+  serialized_end=323,
 )
 
 _REQUESTV1_ANONYMOUSUSERV1.containing_type = _REQUESTV1
 _REQUESTV1.fields_by_name['anonymous_user'].message_type = _REQUESTV1_ANONYMOUSUSERV1
-_RESPONSEV1.fields_by_name['access_request'].message_type = protobufs_dot_services_dot_user_dot_containers__pb2._ACCESSREQUESTV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 
@@ -174,6 +152,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n9com.rhlabs.protobufs.services.user.actions.request_access')
 # @@protoc_insertion_point(module_scope)
