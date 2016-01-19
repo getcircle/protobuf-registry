@@ -28,6 +28,7 @@ message NotificationTokenV1 {
     optional string provider_token = 4;
     optional ProviderV1 provider = 5;
     optional ProviderPlatformV1 provider_platform = 6;
+    optional string organization_id = 7;
 }
 
 message NotificationPreferenceV1 {
@@ -37,6 +38,7 @@ message NotificationPreferenceV1 {
     optional NotificationTypeV1.TypeIdV1 notification_type_id = 4;
     optional bool subscribed = 5;
     optional NotificationTypeV1 notification_type = 6;
+    optional string organization_id = 7;
 }
 
 message NotificationTypeV1 {
