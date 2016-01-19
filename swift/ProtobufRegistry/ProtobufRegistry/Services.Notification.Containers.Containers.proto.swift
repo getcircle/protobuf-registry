@@ -11,12 +11,12 @@ public func == (lhs: Services.Notification.Containers.NotificationTokenV1, rhs: 
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
+  fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = fieldCheck && (lhs.hasDeviceId == rhs.hasDeviceId) && (!lhs.hasDeviceId || lhs.deviceId == rhs.deviceId)
   fieldCheck = fieldCheck && (lhs.hasProviderToken == rhs.hasProviderToken) && (!lhs.hasProviderToken || lhs.providerToken == rhs.providerToken)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   fieldCheck = fieldCheck && (lhs.hasProviderPlatform == rhs.hasProviderPlatform) && (!lhs.hasProviderPlatform || lhs.providerPlatform == rhs.providerPlatform)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
-  fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -149,6 +149,9 @@ public extension Services.Notification.Containers {
     public private(set) var hasVersion:Bool = false
     public private(set) var version:UInt32 = UInt32(1)
 
+    public private(set) var hasUserId:Bool = false
+    public private(set) var userId:String = ""
+
     public private(set) var hasDeviceId:Bool = false
     public private(set) var deviceId:String = ""
 
@@ -162,9 +165,6 @@ public extension Services.Notification.Containers {
     public private(set) var hasOrganizationId:Bool = false
     public private(set) var organizationId:String = ""
 
-    public private(set) var hasProfileId:Bool = false
-    public private(set) var profileId:String = ""
-
     required public init() {
          super.init()
     }
@@ -174,6 +174,9 @@ public extension Services.Notification.Containers {
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasVersion {
         try output.writeUInt32(1, value:version)
+      }
+      if hasUserId {
+        try output.writeString(2, value:userId)
       }
       if hasDeviceId {
         try output.writeString(3, value:deviceId)
@@ -190,9 +193,6 @@ public extension Services.Notification.Containers {
       if hasOrganizationId {
         try output.writeString(7, value:organizationId)
       }
-      if hasProfileId {
-        try output.writeString(8, value:profileId)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -204,6 +204,9 @@ public extension Services.Notification.Containers {
       serialize_size = 0
       if hasVersion {
         serialize_size += version.computeUInt32Size(1)
+      }
+      if hasUserId {
+        serialize_size += userId.computeStringSize(2)
       }
       if hasDeviceId {
         serialize_size += deviceId.computeStringSize(3)
@@ -219,9 +222,6 @@ public extension Services.Notification.Containers {
       }
       if hasOrganizationId {
         serialize_size += organizationId.computeStringSize(7)
-      }
-      if hasProfileId {
-        serialize_size += profileId.computeStringSize(8)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -277,6 +277,9 @@ public extension Services.Notification.Containers {
       if hasVersion {
         output += "\(indent) version: \(version) \n"
       }
+      if hasUserId {
+        output += "\(indent) userId: \(userId) \n"
+      }
       if hasDeviceId {
         output += "\(indent) deviceId: \(deviceId) \n"
       }
@@ -292,9 +295,6 @@ public extension Services.Notification.Containers {
       if hasOrganizationId {
         output += "\(indent) organizationId: \(organizationId) \n"
       }
-      if hasProfileId {
-        output += "\(indent) profileId: \(profileId) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -302,6 +302,9 @@ public extension Services.Notification.Containers {
             var hashCode:Int = 7
             if hasVersion {
                hashCode = (hashCode &* 31) &+ version.hashValue
+            }
+            if hasUserId {
+               hashCode = (hashCode &* 31) &+ userId.hashValue
             }
             if hasDeviceId {
                hashCode = (hashCode &* 31) &+ deviceId.hashValue
@@ -317,9 +320,6 @@ public extension Services.Notification.Containers {
             }
             if hasOrganizationId {
                hashCode = (hashCode &* 31) &+ organizationId.hashValue
-            }
-            if hasProfileId {
-               hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -370,6 +370,29 @@ public extension Services.Notification.Containers {
       public func clearVersion() -> Services.Notification.Containers.NotificationTokenV1.Builder{
            builderResult.hasVersion = false
            builderResult.version = UInt32(1)
+           return self
+      }
+      public var hasUserId:Bool {
+           get {
+                return builderResult.hasUserId
+           }
+      }
+      public var userId:String {
+           get {
+                return builderResult.userId
+           }
+           set (value) {
+               builderResult.hasUserId = true
+               builderResult.userId = value
+           }
+      }
+      public func setUserId(value:String) -> Services.Notification.Containers.NotificationTokenV1.Builder {
+        self.userId = value
+        return self
+      }
+      public func clearUserId() -> Services.Notification.Containers.NotificationTokenV1.Builder{
+           builderResult.hasUserId = false
+           builderResult.userId = ""
            return self
       }
       public var hasDeviceId:Bool {
@@ -487,29 +510,6 @@ public extension Services.Notification.Containers {
            builderResult.organizationId = ""
            return self
       }
-      public var hasProfileId:Bool {
-           get {
-                return builderResult.hasProfileId
-           }
-      }
-      public var profileId:String {
-           get {
-                return builderResult.profileId
-           }
-           set (value) {
-               builderResult.hasProfileId = true
-               builderResult.profileId = value
-           }
-      }
-      public func setProfileId(value:String) -> Services.Notification.Containers.NotificationTokenV1.Builder {
-        self.profileId = value
-        return self
-      }
-      public func clearProfileId() -> Services.Notification.Containers.NotificationTokenV1.Builder{
-           builderResult.hasProfileId = false
-           builderResult.profileId = ""
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -537,6 +537,9 @@ public extension Services.Notification.Containers {
         if other.hasVersion {
              version = other.version
         }
+        if other.hasUserId {
+             userId = other.userId
+        }
         if other.hasDeviceId {
              deviceId = other.deviceId
         }
@@ -551,9 +554,6 @@ public extension Services.Notification.Containers {
         }
         if other.hasOrganizationId {
              organizationId = other.organizationId
-        }
-        if other.hasProfileId {
-             profileId = other.profileId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -572,6 +572,9 @@ public extension Services.Notification.Containers {
 
           case 8 :
             version = try input.readUInt32()
+
+          case 18 :
+            userId = try input.readString()
 
           case 26 :
             deviceId = try input.readString()
@@ -597,9 +600,6 @@ public extension Services.Notification.Containers {
 
           case 58 :
             organizationId = try input.readString()
-
-          case 66 :
-            profileId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
