@@ -21,6 +21,7 @@ message DeviceV1 {
     optional string user_id = 8;
     optional string language_preference = 9;
     optional ProviderV1 provider = 10;
+    optional string organization_id = 11;
 }
 
 message IdentityV1 {
@@ -42,6 +43,7 @@ message IdentityV1 {
     optional string provider_uid = 8;
     optional string user_id = 9;
     optional string refresh_token = 10;
+    optional string organization_id = 11;
 }
 
 message OAuth2DetailsV1 {
