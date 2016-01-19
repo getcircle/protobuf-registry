@@ -20,6 +20,7 @@ public func == (lhs: Services.User.Containers.DeviceV1, rhs: Services.User.Conta
   fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = fieldCheck && (lhs.hasLanguagePreference == rhs.hasLanguagePreference) && (!lhs.hasLanguagePreference || lhs.languagePreference == rhs.languagePreference)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -39,6 +40,7 @@ public func == (lhs: Services.User.Containers.IdentityV1, rhs: Services.User.Con
   fieldCheck = fieldCheck && (lhs.hasProviderUid == rhs.hasProviderUid) && (!lhs.hasProviderUid || lhs.providerUid == rhs.providerUid)
   fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = fieldCheck && (lhs.hasRefreshToken == rhs.hasRefreshToken) && (!lhs.hasRefreshToken || lhs.refreshToken == rhs.refreshToken)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -159,6 +161,9 @@ public extension Services.User.Containers {
 
     public private(set) var provider:Services.User.Containers.DeviceV1.ProviderV1 = Services.User.Containers.DeviceV1.ProviderV1.Apple
     public private(set) var hasProvider:Bool = false
+    public private(set) var hasOrganizationId:Bool = false
+    public private(set) var organizationId:String = ""
+
     required public init() {
          super.init()
     }
@@ -195,6 +200,9 @@ public extension Services.User.Containers {
       }
       if hasProvider {
         try output.writeEnum(10, value:provider.rawValue)
+      }
+      if hasOrganizationId {
+        try output.writeString(11, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -234,6 +242,9 @@ public extension Services.User.Containers {
       }
       if (hasProvider) {
         serialize_size += provider.rawValue.computeEnumSize(10)
+      }
+      if hasOrganizationId {
+        serialize_size += organizationId.computeStringSize(11)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -316,6 +327,9 @@ public extension Services.User.Containers {
       if (hasProvider) {
         output += "\(indent) provider: \(provider.rawValue)\n"
       }
+      if hasOrganizationId {
+        output += "\(indent) organizationId: \(organizationId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -350,6 +364,9 @@ public extension Services.User.Containers {
             }
             if hasProvider {
                hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
+            }
+            if hasOrganizationId {
+               hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -609,6 +626,29 @@ public extension Services.User.Containers {
            builderResult.provider = .Apple
            return self
         }
+      public var hasOrganizationId:Bool {
+           get {
+                return builderResult.hasOrganizationId
+           }
+      }
+      public var organizationId:String {
+           get {
+                return builderResult.organizationId
+           }
+           set (value) {
+               builderResult.hasOrganizationId = true
+               builderResult.organizationId = value
+           }
+      }
+      public func setOrganizationId(value:String) -> Services.User.Containers.DeviceV1.Builder {
+        self.organizationId = value
+        return self
+      }
+      public func clearOrganizationId() -> Services.User.Containers.DeviceV1.Builder{
+           builderResult.hasOrganizationId = false
+           builderResult.organizationId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -663,6 +703,9 @@ public extension Services.User.Containers {
         if other.hasProvider {
              provider = other.provider
         }
+        if other.hasOrganizationId {
+             organizationId = other.organizationId
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -712,6 +755,9 @@ public extension Services.User.Containers {
             } else {
                  try unknownFieldsBuilder.mergeVarintField(10, value:Int64(valueIntprovider))
             }
+
+          case 90 :
+            organizationId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
@@ -769,6 +815,9 @@ public extension Services.User.Containers {
     public private(set) var hasRefreshToken:Bool = false
     public private(set) var refreshToken:String = ""
 
+    public private(set) var hasOrganizationId:Bool = false
+    public private(set) var organizationId:String = ""
+
     required public init() {
          super.init()
     }
@@ -805,6 +854,9 @@ public extension Services.User.Containers {
       }
       if hasRefreshToken {
         try output.writeString(10, value:refreshToken)
+      }
+      if hasOrganizationId {
+        try output.writeString(11, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -844,6 +896,9 @@ public extension Services.User.Containers {
       }
       if hasRefreshToken {
         serialize_size += refreshToken.computeStringSize(10)
+      }
+      if hasOrganizationId {
+        serialize_size += organizationId.computeStringSize(11)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -926,6 +981,9 @@ public extension Services.User.Containers {
       if hasRefreshToken {
         output += "\(indent) refreshToken: \(refreshToken) \n"
       }
+      if hasOrganizationId {
+        output += "\(indent) organizationId: \(organizationId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -960,6 +1018,9 @@ public extension Services.User.Containers {
             }
             if hasRefreshToken {
                hashCode = (hashCode &* 31) &+ refreshToken.hashValue
+            }
+            if hasOrganizationId {
+               hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1219,6 +1280,29 @@ public extension Services.User.Containers {
            builderResult.refreshToken = ""
            return self
       }
+      public var hasOrganizationId:Bool {
+           get {
+                return builderResult.hasOrganizationId
+           }
+      }
+      public var organizationId:String {
+           get {
+                return builderResult.organizationId
+           }
+           set (value) {
+               builderResult.hasOrganizationId = true
+               builderResult.organizationId = value
+           }
+      }
+      public func setOrganizationId(value:String) -> Services.User.Containers.IdentityV1.Builder {
+        self.organizationId = value
+        return self
+      }
+      public func clearOrganizationId() -> Services.User.Containers.IdentityV1.Builder{
+           builderResult.hasOrganizationId = false
+           builderResult.organizationId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1273,6 +1357,9 @@ public extension Services.User.Containers {
         if other.hasRefreshToken {
              refreshToken = other.refreshToken
         }
+        if other.hasOrganizationId {
+             organizationId = other.organizationId
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -1322,6 +1409,9 @@ public extension Services.User.Containers {
 
           case 82 :
             refreshToken = try input.readString()
+
+          case 90 :
+            organizationId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

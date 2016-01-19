@@ -16,6 +16,7 @@ public func == (lhs: Services.Notification.Containers.NotificationTokenV1, rhs: 
   fieldCheck = fieldCheck && (lhs.hasProviderToken == rhs.hasProviderToken) && (!lhs.hasProviderToken || lhs.providerToken == rhs.providerToken)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   fieldCheck = fieldCheck && (lhs.hasProviderPlatform == rhs.hasProviderPlatform) && (!lhs.hasProviderPlatform || lhs.providerPlatform == rhs.providerPlatform)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -31,6 +32,7 @@ public func == (lhs: Services.Notification.Containers.NotificationPreferenceV1, 
   fieldCheck = fieldCheck && (lhs.hasNotificationTypeId == rhs.hasNotificationTypeId) && (!lhs.hasNotificationTypeId || lhs.notificationTypeId == rhs.notificationTypeId)
   fieldCheck = fieldCheck && (lhs.hasSubscribed == rhs.hasSubscribed) && (!lhs.hasSubscribed || lhs.subscribed == rhs.subscribed)
   fieldCheck = fieldCheck && (lhs.hasNotificationType == rhs.hasNotificationType) && (!lhs.hasNotificationType || lhs.notificationType == rhs.notificationType)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -160,6 +162,9 @@ public extension Services.Notification.Containers {
     public private(set) var hasProvider:Bool = false
     public private(set) var providerPlatform:Services.Notification.Containers.NotificationTokenV1.ProviderPlatformV1 = Services.Notification.Containers.NotificationTokenV1.ProviderPlatformV1.Apns
     public private(set) var hasProviderPlatform:Bool = false
+    public private(set) var hasOrganizationId:Bool = false
+    public private(set) var organizationId:String = ""
+
     required public init() {
          super.init()
     }
@@ -184,6 +189,9 @@ public extension Services.Notification.Containers {
       }
       if hasProviderPlatform {
         try output.writeEnum(6, value:providerPlatform.rawValue)
+      }
+      if hasOrganizationId {
+        try output.writeString(7, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -211,6 +219,9 @@ public extension Services.Notification.Containers {
       }
       if (hasProviderPlatform) {
         serialize_size += providerPlatform.rawValue.computeEnumSize(6)
+      }
+      if hasOrganizationId {
+        serialize_size += organizationId.computeStringSize(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -281,6 +292,9 @@ public extension Services.Notification.Containers {
       if (hasProviderPlatform) {
         output += "\(indent) providerPlatform: \(providerPlatform.rawValue)\n"
       }
+      if hasOrganizationId {
+        output += "\(indent) organizationId: \(organizationId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -303,6 +317,9 @@ public extension Services.Notification.Containers {
             }
             if hasProviderPlatform {
                hashCode = (hashCode &* 31) &+ Int(providerPlatform.rawValue)
+            }
+            if hasOrganizationId {
+               hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -470,6 +487,29 @@ public extension Services.Notification.Containers {
            builderResult.providerPlatform = .Apns
            return self
         }
+      public var hasOrganizationId:Bool {
+           get {
+                return builderResult.hasOrganizationId
+           }
+      }
+      public var organizationId:String {
+           get {
+                return builderResult.organizationId
+           }
+           set (value) {
+               builderResult.hasOrganizationId = true
+               builderResult.organizationId = value
+           }
+      }
+      public func setOrganizationId(value:String) -> Services.Notification.Containers.NotificationTokenV1.Builder {
+        self.organizationId = value
+        return self
+      }
+      public func clearOrganizationId() -> Services.Notification.Containers.NotificationTokenV1.Builder{
+           builderResult.hasOrganizationId = false
+           builderResult.organizationId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -511,6 +551,9 @@ public extension Services.Notification.Containers {
         }
         if other.hasProviderPlatform {
              providerPlatform = other.providerPlatform
+        }
+        if other.hasOrganizationId {
+             organizationId = other.organizationId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -555,6 +598,9 @@ public extension Services.Notification.Containers {
                  try unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntproviderPlatform))
             }
 
+          case 58 :
+            organizationId = try input.readString()
+
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
                unknownFields = try unknownFieldsBuilder.build()
@@ -584,6 +630,9 @@ public extension Services.Notification.Containers {
 
     public private(set) var hasNotificationType:Bool = false
     public private(set) var notificationType:Services.Notification.Containers.NotificationTypeV1!
+    public private(set) var hasOrganizationId:Bool = false
+    public private(set) var organizationId:String = ""
+
     required public init() {
          super.init()
     }
@@ -608,6 +657,9 @@ public extension Services.Notification.Containers {
       }
       if hasNotificationType {
         try output.writeMessage(6, value:notificationType)
+      }
+      if hasOrganizationId {
+        try output.writeString(7, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -637,6 +689,9 @@ public extension Services.Notification.Containers {
           if let varSizenotificationType = notificationType?.computeMessageSize(6) {
               serialize_size += varSizenotificationType
           }
+      }
+      if hasOrganizationId {
+        serialize_size += organizationId.computeStringSize(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -709,6 +764,9 @@ public extension Services.Notification.Containers {
         try notificationType?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasOrganizationId {
+        output += "\(indent) organizationId: \(organizationId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -733,6 +791,9 @@ public extension Services.Notification.Containers {
                 if let hashValuenotificationType = notificationType?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuenotificationType
                 }
+            }
+            if hasOrganizationId {
+               hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -928,6 +989,29 @@ public extension Services.Notification.Containers {
         builderResult.notificationType = nil
         return self
       }
+      public var hasOrganizationId:Bool {
+           get {
+                return builderResult.hasOrganizationId
+           }
+      }
+      public var organizationId:String {
+           get {
+                return builderResult.organizationId
+           }
+           set (value) {
+               builderResult.hasOrganizationId = true
+               builderResult.organizationId = value
+           }
+      }
+      public func setOrganizationId(value:String) -> Services.Notification.Containers.NotificationPreferenceV1.Builder {
+        self.organizationId = value
+        return self
+      }
+      public func clearOrganizationId() -> Services.Notification.Containers.NotificationPreferenceV1.Builder{
+           builderResult.hasOrganizationId = false
+           builderResult.organizationId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -969,6 +1053,9 @@ public extension Services.Notification.Containers {
         }
         if (other.hasNotificationType) {
             try mergeNotificationType(other.notificationType)
+        }
+        if other.hasOrganizationId {
+             organizationId = other.organizationId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1012,6 +1099,9 @@ public extension Services.Notification.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             notificationType = subBuilder.buildPartial()
+
+          case 58 :
+            organizationId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
