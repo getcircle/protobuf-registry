@@ -21,7 +21,6 @@ import "protobufs/services/user/actions/delete_identity.proto";
 import "protobufs/services/user/actions/logout.proto";
 import "protobufs/services/user/actions/get_authentication_instructions.proto";
 import "protobufs/services/user/actions/get_active_devices.proto";
-import "protobufs/services/user/actions/xauth.proto";
 
 import "protobufs/services/organization/actions/create_organization.proto";
 import "protobufs/services/organization/actions/get_team.proto";
@@ -102,7 +101,7 @@ import "protobufs/services/file/actions/get_files.proto";
 import "protobufs/services/file/actions/upload.proto";
 
 message User {
-    // reserved 104, 105;
+    // reserved 104, 105, 117;
     extend soa.ActionRequestParamsV1 {
         optional services.user.actions.create_user.RequestV1 create_user = 100;
         optional services.user.actions.valid_user.RequestV1 valid_user = 101;
@@ -119,7 +118,6 @@ message User {
         optional services.user.actions.logout.RequestV1 logout = 114;
         optional services.user.actions.get_authentication_instructions.RequestV1 get_authentication_instructions = 115;
         optional services.user.actions.get_active_devices.RequestV1 get_active_devices = 116;
-        optional services.user.actions.xauth.RequestV1 xauth = 117;
     }
 }
 
