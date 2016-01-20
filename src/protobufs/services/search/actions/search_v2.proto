@@ -10,6 +10,7 @@ message RequestV1 {
     services.search.containers.search.CategoryV1 category = 2;
     services.search.containers.search.AttributeV1 attribute = 3;
     string attribute_value = 4;
+    bool has_category = 5;
 }
 
 message ResponseV1 {
