@@ -5,15 +5,15 @@ import "protobufs/services/user/containers/token.proto";
 import "protobufs/services/user/actions/authenticate_user.proto";
 
 message RequestV1 {
-    string email = 2;
-    string redirect_uri = 3;
-    string organization_domain = 4;
+    string email = 1;
+    string redirect_uri = 2;
+    string organization_domain = 3;
 }
 
 message ResponseV1 {
-    services.user.actions.authenticate_user.RequestV1.AuthBackendV1 backend = 2;
-    bool user_exists = 3;
-    string authorization_url = 4;
-    string provider_name = 5;
-    string organization_image_url = 6;
+    services.user.actions.authenticate_user.RequestV1.AuthBackendV1 backend = 1;
+    bool user_exists = 2;
+    string authorization_url = 3;
+    string provider_name = 4;
+    string organization_image_url = 5;
 }
