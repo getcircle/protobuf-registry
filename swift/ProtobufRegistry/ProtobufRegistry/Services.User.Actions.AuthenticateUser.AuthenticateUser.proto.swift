@@ -14,6 +14,7 @@ public func == (lhs: Services.User.Actions.AuthenticateUser.RequestV1, rhs: Serv
   fieldCheck = fieldCheck && (lhs.hasBackend == rhs.hasBackend) && (!lhs.hasBackend || lhs.backend == rhs.backend)
   fieldCheck = fieldCheck && (lhs.hasCredentials == rhs.hasCredentials) && (!lhs.hasCredentials || lhs.credentials == rhs.credentials)
   fieldCheck = fieldCheck && (lhs.hasClientType == rhs.hasClientType) && (!lhs.hasClientType || lhs.clientType == rhs.clientType)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationDomain == rhs.hasOrganizationDomain) && (!lhs.hasOrganizationDomain || lhs.organizationDomain == rhs.organizationDomain)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -376,6 +377,9 @@ public extension Services.User.Actions.AuthenticateUser {
     public private(set) var credentials:Services.User.Actions.AuthenticateUser.RequestV1.CredentialsV1!
     public private(set) var clientType:Services.User.Containers.Token.ClientTypeV1 = Services.User.Containers.Token.ClientTypeV1.Ios
     public private(set) var hasClientType:Bool = false
+    public private(set) var hasOrganizationDomain:Bool = false
+    public private(set) var organizationDomain:String = ""
+
     required public init() {
          super.init()
     }
@@ -394,6 +398,9 @@ public extension Services.User.Actions.AuthenticateUser {
       }
       if hasClientType {
         try output.writeEnum(4, value:clientType.rawValue)
+      }
+      if hasOrganizationDomain {
+        try output.writeString(5, value:organizationDomain)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -417,6 +424,9 @@ public extension Services.User.Actions.AuthenticateUser {
       }
       if (hasClientType) {
         serialize_size += clientType.rawValue.computeEnumSize(4)
+      }
+      if hasOrganizationDomain {
+        serialize_size += organizationDomain.computeStringSize(5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -483,6 +493,9 @@ public extension Services.User.Actions.AuthenticateUser {
       if (hasClientType) {
         output += "\(indent) clientType: \(clientType.rawValue)\n"
       }
+      if hasOrganizationDomain {
+        output += "\(indent) organizationDomain: \(organizationDomain) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -501,6 +514,9 @@ public extension Services.User.Actions.AuthenticateUser {
             }
             if hasClientType {
                hashCode = (hashCode &* 31) &+ Int(clientType.rawValue)
+            }
+            if hasOrganizationDomain {
+               hashCode = (hashCode &* 31) &+ organizationDomain.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -650,6 +666,29 @@ public extension Services.User.Actions.AuthenticateUser {
            builderResult.clientType = .Ios
            return self
         }
+      public var hasOrganizationDomain:Bool {
+           get {
+                return builderResult.hasOrganizationDomain
+           }
+      }
+      public var organizationDomain:String {
+           get {
+                return builderResult.organizationDomain
+           }
+           set (value) {
+               builderResult.hasOrganizationDomain = true
+               builderResult.organizationDomain = value
+           }
+      }
+      public func setOrganizationDomain(value:String) -> Services.User.Actions.AuthenticateUser.RequestV1.Builder {
+        self.organizationDomain = value
+        return self
+      }
+      public func clearOrganizationDomain() -> Services.User.Actions.AuthenticateUser.RequestV1.Builder{
+           builderResult.hasOrganizationDomain = false
+           builderResult.organizationDomain = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -685,6 +724,9 @@ public extension Services.User.Actions.AuthenticateUser {
         }
         if other.hasClientType {
              clientType = other.clientType
+        }
+        if other.hasOrganizationDomain {
+             organizationDomain = other.organizationDomain
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -727,6 +769,9 @@ public extension Services.User.Actions.AuthenticateUser {
             } else {
                  try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntclientType))
             }
+
+          case 42 :
+            organizationDomain = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

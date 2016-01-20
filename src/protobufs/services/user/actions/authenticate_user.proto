@@ -25,6 +25,7 @@ message RequestV1 {
     optional AuthBackendV1 backend = 2;
     optional CredentialsV1 credentials = 3;
     optional services.user.containers.token.ClientTypeV1 client_type = 4;
+    optional string organization_domain = 5;
 }
 
 message ResponseV1 {
