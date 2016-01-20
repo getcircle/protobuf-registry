@@ -8,7 +8,7 @@ message PermissionsV1 {
 }
 
 message InflationsV1 {
-    bool enabled = 1;
+    bool disabled = 1;
     repeated string only = 2;
     repeated string exclude = 3;
 }
