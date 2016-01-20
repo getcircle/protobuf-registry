@@ -101,7 +101,7 @@ import "protobufs/services/file/actions/get_files.proto";
 import "protobufs/services/file/actions/upload.proto";
 
 message User {
-    // reserved 104, 105, 117;
+    reserved 104, 105, 117;
     extend soa.ActionRequestParamsV1 {
         optional services.user.actions.create_user.RequestV1 create_user = 100;
         optional services.user.actions.valid_user.RequestV1 valid_user = 101;
@@ -150,7 +150,7 @@ message Organization {
 }
 
 message Profile {
-    // reserved 303, 304, 305, 308, 309, 310, 311, 314, 316;
+    reserved 303, 304, 305, 308, 309, 310, 311, 314, 316;
     extend soa.ActionRequestParamsV1 {
         optional services.profile.actions.create_profile.RequestV1 create_profile = 300;
         optional services.profile.actions.get_extended_profile.RequestV1 get_extended_profile = 301;
