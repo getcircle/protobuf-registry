@@ -60,17 +60,3 @@ message StatV1 {
     string id = 1;
     uint32 count = 2;
 }
-
-message TagV1 {
-
-    enum TagTypeV1 {
-        SKILL = 0;
-        INTEREST = 1;
-        LANGUAGE = 2;
-        PROJECT = 3;
-    }
-
-    string id = 1;
-    string name = 2;
-    TagTypeV1 tag_type = 3;
-}

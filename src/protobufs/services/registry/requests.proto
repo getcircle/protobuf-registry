@@ -52,15 +52,10 @@ import "protobufs/services/organization/actions/get_teams_for_profile_ids.proto"
 import "protobufs/services/profile/actions/create_profile.proto";
 import "protobufs/services/profile/actions/get_extended_profile.proto";
 import "protobufs/services/profile/actions/get_profile.proto";
-import "protobufs/services/profile/actions/create_tags.proto";
-import "protobufs/services/profile/actions/get_tags.proto";
-import "protobufs/services/profile/actions/add_tags.proto";
 import "protobufs/services/profile/actions/update_profile.proto";
 import "protobufs/services/profile/actions/get_profiles.proto";
-import "protobufs/services/profile/actions/get_active_tags.proto";
 import "protobufs/services/profile/actions/bulk_create_profiles.proto";
 import "protobufs/services/profile/actions/bulk_update_profiles.proto";
-import "protobufs/services/profile/actions/remove_tags.proto";
 import "protobufs/services/profile/actions/profile_exists.proto";
 
 import "protobufs/services/search/actions/search.proto";
@@ -160,22 +155,16 @@ message Organization {
 }
 
 message Profile {
-    // reserved 308, 309, 310;
+    // reserved 303, 304, 305, 308, 309, 310, 311, 314, 316;
     extend soa.ActionRequestParamsV1 {
         optional services.profile.actions.create_profile.RequestV1 create_profile = 300;
         optional services.profile.actions.get_extended_profile.RequestV1 get_extended_profile = 301;
         optional services.profile.actions.get_profile.RequestV1 get_profile = 302;
-        optional services.profile.actions.create_tags.RequestV1 create_tags = 303;
-        optional services.profile.actions.get_tags.RequestV1 get_tags = 304;
-        optional services.profile.actions.add_tags.RequestV1 add_tags = 305;
         optional services.profile.actions.update_profile.RequestV1 update_profile = 306;
         optional services.profile.actions.get_profiles.RequestV1 get_profiles = 307;
-        optional services.profile.actions.get_active_tags.RequestV1 get_active_tags = 311;
         optional services.profile.actions.bulk_create_profiles.RequestV1 bulk_create_profiles = 312;
         optional services.profile.actions.bulk_update_profiles.RequestV1 bulk_update_profiles = 313;
-        optional services.profile.actions.remove_tags.RequestV1 remove_tags = 314;
         optional services.profile.actions.profile_exists.RequestV1 profile_exists = 315;
-        optional string DEPRECATED_get_status = 316;
     }
 }
 
