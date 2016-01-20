@@ -10,8 +10,6 @@ import "protobufs/services/user/actions/create_user.proto";
 import "protobufs/services/user/actions/valid_user.proto";
 import "protobufs/services/user/actions/authenticate_user.proto";
 import "protobufs/services/user/actions/get_user.proto";
-import "protobufs/services/user/actions/send_verification_code.proto";
-import "protobufs/services/user/actions/verify_verification_code.proto";
 import "protobufs/services/user/actions/update_user.proto";
 import "protobufs/services/user/actions/get_authorization_instructions.proto";
 import "protobufs/services/user/actions/complete_authorization.proto";
@@ -104,13 +102,12 @@ import "protobufs/services/file/actions/get_files.proto";
 import "protobufs/services/file/actions/upload.proto";
 
 message User {
+    // reserved 104, 105;
     extend soa.ActionRequestParamsV1 {
         optional services.user.actions.create_user.RequestV1 create_user = 100;
         optional services.user.actions.valid_user.RequestV1 valid_user = 101;
         optional services.user.actions.authenticate_user.RequestV1 authenticate_user = 102;
         optional services.user.actions.get_user.RequestV1 get_user = 103;
-        optional services.user.actions.send_verification_code.RequestV1 send_verification_code = 104;
-        optional services.user.actions.verify_verification_code.RequestV1 verify_verification_code = 105;
         optional services.user.actions.update_user.RequestV1 update_user = 106;
         optional services.user.actions.get_authorization_instructions.RequestV1 get_authorization_instructions = 107;
         optional services.user.actions.complete_authorization.RequestV1 complete_authorization = 108;
