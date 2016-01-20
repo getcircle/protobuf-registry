@@ -12,6 +12,7 @@ public func == (lhs: Services.User.Actions.BulkCreateUsers.RequestV1, rhs: Servi
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.users == rhs.users)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -51,6 +52,9 @@ public extension Services.User.Actions.BulkCreateUsers {
     public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var users:Array<Services.User.Containers.UserV1>  = Array<Services.User.Containers.UserV1>()
+    public private(set) var hasOrganizationId:Bool = false
+    public private(set) var organizationId:String = ""
+
     required public init() {
          super.init()
     }
@@ -63,6 +67,9 @@ public extension Services.User.Actions.BulkCreateUsers {
       }
       for oneElementusers in users {
           try output.writeMessage(2, value:oneElementusers)
+      }
+      if hasOrganizationId {
+        try output.writeString(3, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -78,6 +85,9 @@ public extension Services.User.Actions.BulkCreateUsers {
       }
       for oneElementusers in users {
           serialize_size += oneElementusers.computeMessageSize(2)
+      }
+      if hasOrganizationId {
+        serialize_size += organizationId.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -140,6 +150,9 @@ public extension Services.User.Actions.BulkCreateUsers {
           output += "\(indent)}\n"
           usersElementIndex++
       }
+      if hasOrganizationId {
+        output += "\(indent) organizationId: \(organizationId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -150,6 +163,9 @@ public extension Services.User.Actions.BulkCreateUsers {
             }
             for oneElementusers in users {
                 hashCode = (hashCode &* 31) &+ oneElementusers.hashValue
+            }
+            if hasOrganizationId {
+               hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -218,6 +234,29 @@ public extension Services.User.Actions.BulkCreateUsers {
         builderResult.users.removeAll(keepCapacity: false)
         return self
       }
+      public var hasOrganizationId:Bool {
+           get {
+                return builderResult.hasOrganizationId
+           }
+      }
+      public var organizationId:String {
+           get {
+                return builderResult.organizationId
+           }
+           set (value) {
+               builderResult.hasOrganizationId = true
+               builderResult.organizationId = value
+           }
+      }
+      public func setOrganizationId(value:String) -> Services.User.Actions.BulkCreateUsers.RequestV1.Builder {
+        self.organizationId = value
+        return self
+      }
+      public func clearOrganizationId() -> Services.User.Actions.BulkCreateUsers.RequestV1.Builder{
+           builderResult.hasOrganizationId = false
+           builderResult.organizationId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -248,6 +287,9 @@ public extension Services.User.Actions.BulkCreateUsers {
         if !other.users.isEmpty  {
            builderResult.users += other.users
         }
+        if other.hasOrganizationId {
+             organizationId = other.organizationId
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -270,6 +312,9 @@ public extension Services.User.Actions.BulkCreateUsers {
             let subBuilder = Services.User.Containers.UserV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             users += [subBuilder.buildPartial()]
+
+          case 26 :
+            organizationId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

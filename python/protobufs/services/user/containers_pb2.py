@@ -17,7 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/containers.proto',
   package='services.user.containers',
   syntax='proto2',
-  serialized_pb=b'\n(protobufs/services/user/containers.proto\x12\x18services.user.containers\"\xc3\x02\n\x08\x44\x65viceV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x1a\n\x12notification_token\x18\x03 \x01(\t\x12\x10\n\x08platform\x18\x04 \x01(\t\x12\x12\n\nos_version\x18\x05 \x01(\t\x12\x13\n\x0b\x61pp_version\x18\x06 \x01(\t\x12\x13\n\x0b\x64\x65vice_uuid\x18\x07 \x01(\t\x12\x0f\n\x07user_id\x18\x08 \x01(\t\x12\x1b\n\x13language_preference\x18\t \x01(\t\x12?\n\x08provider\x18\n \x01(\x0e\x32-.services.user.containers.DeviceV1.ProviderV1\x12\x17\n\x0forganization_id\x18\x0b \x01(\t\"#\n\nProviderV1\x12\t\n\x05\x41PPLE\x10\x00\x12\n\n\x06GOOGLE\x10\x01\"\xd2\x02\n\nIdentityV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x41\n\x08provider\x18\x03 \x01(\x0e\x32/.services.user.containers.IdentityV1.ProviderV1\x12\x11\n\tfull_name\x18\x04 \x01(\t\x12\r\n\x05\x65mail\x18\x05 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x06 \x01(\t\x12\x12\n\nexpires_at\x18\x07 \x01(\t\x12\x14\n\x0cprovider_uid\x18\x08 \x01(\t\x12\x0f\n\x07user_id\x18\t \x01(\t\x12\x15\n\rrefresh_token\x18\n \x01(\t\x12\x17\n\x0forganization_id\x18\x0b \x01(\t\">\n\nProviderV1\x12\x0c\n\x08INTERNAL\x10\x00\x12\x0c\n\x08LINKEDIN\x10\x01\x12\n\n\x06GOOGLE\x10\x02\x12\x08\n\x04OKTA\x10\x03\"B\n\x0fOAuth2DetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\r\n\x05state\x18\x03 \x01(\t\"G\n\x11OAuthSDKDetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x10\n\x08id_token\x18\x03 \x01(\t\"\xc4\x01\n\x06UserV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x15\n\rprimary_email\x18\x03 \x01(\t\x12\x10\n\x08is_admin\x18\x04 \x01(\x08\x12\x11\n\tis_active\x18\x05 \x01(\x08\x12\x14\n\x0cphone_number\x18\x06 \x01(\t\x12\x1d\n\x15phone_number_verified\x18\x07 \x01(\x08\x12\x10\n\x08password\x18\x08 \x01(\t\x12\x17\n\x0forganization_id\x18\t \x01(\t\"s\n\rSAMLDetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x15\n\rsaml_response\x18\x02 \x01(\t\x12\x13\n\x0brelay_state\x18\x03 \x01(\t\x12\x0e\n\x06\x64omain\x18\x04 \x01(\t\x12\x12\n\nauth_state\x18\x05 \x01(\tB/\n-com.rhlabs.protobufs.services.user.containers'
+  serialized_pb=b'\n(protobufs/services/user/containers.proto\x12\x18services.user.containers\"\xc3\x02\n\x08\x44\x65viceV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x1a\n\x12notification_token\x18\x03 \x01(\t\x12\x10\n\x08platform\x18\x04 \x01(\t\x12\x12\n\nos_version\x18\x05 \x01(\t\x12\x13\n\x0b\x61pp_version\x18\x06 \x01(\t\x12\x13\n\x0b\x64\x65vice_uuid\x18\x07 \x01(\t\x12\x0f\n\x07user_id\x18\x08 \x01(\t\x12\x1b\n\x13language_preference\x18\t \x01(\t\x12?\n\x08provider\x18\n \x01(\x0e\x32-.services.user.containers.DeviceV1.ProviderV1\x12\x17\n\x0forganization_id\x18\x0b \x01(\t\"#\n\nProviderV1\x12\t\n\x05\x41PPLE\x10\x00\x12\n\n\x06GOOGLE\x10\x01\"\xd2\x02\n\nIdentityV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x41\n\x08provider\x18\x03 \x01(\x0e\x32/.services.user.containers.IdentityV1.ProviderV1\x12\x11\n\tfull_name\x18\x04 \x01(\t\x12\r\n\x05\x65mail\x18\x05 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x06 \x01(\t\x12\x12\n\nexpires_at\x18\x07 \x01(\t\x12\x14\n\x0cprovider_uid\x18\x08 \x01(\t\x12\x0f\n\x07user_id\x18\t \x01(\t\x12\x15\n\rrefresh_token\x18\n \x01(\t\x12\x17\n\x0forganization_id\x18\x0b \x01(\t\">\n\nProviderV1\x12\x0c\n\x08INTERNAL\x10\x00\x12\x0c\n\x08LINKEDIN\x10\x01\x12\n\n\x06GOOGLE\x10\x02\x12\x08\n\x04OKTA\x10\x03\"B\n\x0fOAuth2DetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\r\n\x05state\x18\x03 \x01(\t\"G\n\x11OAuthSDKDetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x10\n\x08id_token\x18\x03 \x01(\t\"\x8f\x01\n\x06UserV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x15\n\rprimary_email\x18\x03 \x01(\t\x12\x10\n\x08is_admin\x18\x04 \x01(\x08\x12\x11\n\tis_active\x18\x05 \x01(\x08\x12\x10\n\x08password\x18\x08 \x01(\t\x12\x17\n\x0forganization_id\x18\t \x01(\t\"s\n\rSAMLDetailsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x15\n\rsaml_response\x18\x02 \x01(\t\x12\x13\n\x0brelay_state\x18\x03 \x01(\t\x12\x0e\n\x06\x64omain\x18\x04 \x01(\t\x12\x12\n\nauth_state\x18\x05 \x01(\tB/\n-com.rhlabs.protobufs.services.user.containers'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -413,28 +413,14 @@ _USERV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='phone_number', full_name='services.user.containers.UserV1.phone_number', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='phone_number_verified', full_name='services.user.containers.UserV1.phone_number_verified', index=6,
-      number=7, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='password', full_name='services.user.containers.UserV1.password', index=7,
+      name='password', full_name='services.user.containers.UserV1.password', index=5,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='organization_id', full_name='services.user.containers.UserV1.organization_id', index=8,
+      name='organization_id', full_name='services.user.containers.UserV1.organization_id', index=6,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -453,7 +439,7 @@ _USERV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=879,
-  serialized_end=1075,
+  serialized_end=1022,
 )
 
 
@@ -511,8 +497,8 @@ _SAMLDETAILSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1077,
-  serialized_end=1192,
+  serialized_start=1024,
+  serialized_end=1139,
 )
 
 _DEVICEV1.fields_by_name['provider'].enum_type = _DEVICEV1_PROVIDERV1

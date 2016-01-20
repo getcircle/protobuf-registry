@@ -79,8 +79,6 @@ public func == (lhs: Services.User.Containers.UserV1, rhs: Services.User.Contain
   fieldCheck = fieldCheck && (lhs.hasPrimaryEmail == rhs.hasPrimaryEmail) && (!lhs.hasPrimaryEmail || lhs.primaryEmail == rhs.primaryEmail)
   fieldCheck = fieldCheck && (lhs.hasIsAdmin == rhs.hasIsAdmin) && (!lhs.hasIsAdmin || lhs.isAdmin == rhs.isAdmin)
   fieldCheck = fieldCheck && (lhs.hasIsActive == rhs.hasIsActive) && (!lhs.hasIsActive || lhs.isActive == rhs.isActive)
-  fieldCheck = fieldCheck && (lhs.hasPhoneNumber == rhs.hasPhoneNumber) && (!lhs.hasPhoneNumber || lhs.phoneNumber == rhs.phoneNumber)
-  fieldCheck = fieldCheck && (lhs.hasPhoneNumberVerified == rhs.hasPhoneNumberVerified) && (!lhs.hasPhoneNumberVerified || lhs.phoneNumberVerified == rhs.phoneNumberVerified)
   fieldCheck = fieldCheck && (lhs.hasPassword == rhs.hasPassword) && (!lhs.hasPassword || lhs.password == rhs.password)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -2009,12 +2007,6 @@ public extension Services.User.Containers {
     public private(set) var hasIsActive:Bool = false
     public private(set) var isActive:Bool = false
 
-    public private(set) var hasPhoneNumber:Bool = false
-    public private(set) var phoneNumber:String = ""
-
-    public private(set) var hasPhoneNumberVerified:Bool = false
-    public private(set) var phoneNumberVerified:Bool = false
-
     public private(set) var hasPassword:Bool = false
     public private(set) var password:String = ""
 
@@ -2042,12 +2034,6 @@ public extension Services.User.Containers {
       }
       if hasIsActive {
         try output.writeBool(5, value:isActive)
-      }
-      if hasPhoneNumber {
-        try output.writeString(6, value:phoneNumber)
-      }
-      if hasPhoneNumberVerified {
-        try output.writeBool(7, value:phoneNumberVerified)
       }
       if hasPassword {
         try output.writeString(8, value:password)
@@ -2078,12 +2064,6 @@ public extension Services.User.Containers {
       }
       if hasIsActive {
         serialize_size += isActive.computeBoolSize(5)
-      }
-      if hasPhoneNumber {
-        serialize_size += phoneNumber.computeStringSize(6)
-      }
-      if hasPhoneNumberVerified {
-        serialize_size += phoneNumberVerified.computeBoolSize(7)
       }
       if hasPassword {
         serialize_size += password.computeStringSize(8)
@@ -2157,12 +2137,6 @@ public extension Services.User.Containers {
       if hasIsActive {
         output += "\(indent) isActive: \(isActive) \n"
       }
-      if hasPhoneNumber {
-        output += "\(indent) phoneNumber: \(phoneNumber) \n"
-      }
-      if hasPhoneNumberVerified {
-        output += "\(indent) phoneNumberVerified: \(phoneNumberVerified) \n"
-      }
       if hasPassword {
         output += "\(indent) password: \(password) \n"
       }
@@ -2188,12 +2162,6 @@ public extension Services.User.Containers {
             }
             if hasIsActive {
                hashCode = (hashCode &* 31) &+ isActive.hashValue
-            }
-            if hasPhoneNumber {
-               hashCode = (hashCode &* 31) &+ phoneNumber.hashValue
-            }
-            if hasPhoneNumberVerified {
-               hashCode = (hashCode &* 31) &+ phoneNumberVerified.hashValue
             }
             if hasPassword {
                hashCode = (hashCode &* 31) &+ password.hashValue
@@ -2344,52 +2312,6 @@ public extension Services.User.Containers {
            builderResult.isActive = false
            return self
       }
-      public var hasPhoneNumber:Bool {
-           get {
-                return builderResult.hasPhoneNumber
-           }
-      }
-      public var phoneNumber:String {
-           get {
-                return builderResult.phoneNumber
-           }
-           set (value) {
-               builderResult.hasPhoneNumber = true
-               builderResult.phoneNumber = value
-           }
-      }
-      public func setPhoneNumber(value:String) -> Services.User.Containers.UserV1.Builder {
-        self.phoneNumber = value
-        return self
-      }
-      public func clearPhoneNumber() -> Services.User.Containers.UserV1.Builder{
-           builderResult.hasPhoneNumber = false
-           builderResult.phoneNumber = ""
-           return self
-      }
-      public var hasPhoneNumberVerified:Bool {
-           get {
-                return builderResult.hasPhoneNumberVerified
-           }
-      }
-      public var phoneNumberVerified:Bool {
-           get {
-                return builderResult.phoneNumberVerified
-           }
-           set (value) {
-               builderResult.hasPhoneNumberVerified = true
-               builderResult.phoneNumberVerified = value
-           }
-      }
-      public func setPhoneNumberVerified(value:Bool) -> Services.User.Containers.UserV1.Builder {
-        self.phoneNumberVerified = value
-        return self
-      }
-      public func clearPhoneNumberVerified() -> Services.User.Containers.UserV1.Builder{
-           builderResult.hasPhoneNumberVerified = false
-           builderResult.phoneNumberVerified = false
-           return self
-      }
       public var hasPassword:Bool {
            get {
                 return builderResult.hasPassword
@@ -2475,12 +2397,6 @@ public extension Services.User.Containers {
         if other.hasIsActive {
              isActive = other.isActive
         }
-        if other.hasPhoneNumber {
-             phoneNumber = other.phoneNumber
-        }
-        if other.hasPhoneNumberVerified {
-             phoneNumberVerified = other.phoneNumberVerified
-        }
         if other.hasPassword {
              password = other.password
         }
@@ -2516,12 +2432,6 @@ public extension Services.User.Containers {
 
           case 40 :
             isActive = try input.readBool()
-
-          case 50 :
-            phoneNumber = try input.readString()
-
-          case 56 :
-            phoneNumberVerified = try input.readBool()
 
           case 66 :
             password = try input.readString()

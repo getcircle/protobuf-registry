@@ -13,6 +13,7 @@ public func == (lhs: Services.User.Actions.CreateUser.RequestV1, rhs: Services.U
   fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasPassword == rhs.hasPassword) && (!lhs.hasPassword || lhs.password == rhs.password)
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -57,6 +58,9 @@ public extension Services.User.Actions.CreateUser {
     public private(set) var hasEmail:Bool = false
     public private(set) var email:String = ""
 
+    public private(set) var hasOrganizationId:Bool = false
+    public private(set) var organizationId:String = ""
+
     required public init() {
          super.init()
     }
@@ -72,6 +76,9 @@ public extension Services.User.Actions.CreateUser {
       }
       if hasEmail {
         try output.writeString(3, value:email)
+      }
+      if hasOrganizationId {
+        try output.writeString(4, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -90,6 +97,9 @@ public extension Services.User.Actions.CreateUser {
       }
       if hasEmail {
         serialize_size += email.computeStringSize(3)
+      }
+      if hasOrganizationId {
+        serialize_size += organizationId.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -151,6 +161,9 @@ public extension Services.User.Actions.CreateUser {
       if hasEmail {
         output += "\(indent) email: \(email) \n"
       }
+      if hasOrganizationId {
+        output += "\(indent) organizationId: \(organizationId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -164,6 +177,9 @@ public extension Services.User.Actions.CreateUser {
             }
             if hasEmail {
                hashCode = (hashCode &* 31) &+ email.hashValue
+            }
+            if hasOrganizationId {
+               hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -262,6 +278,29 @@ public extension Services.User.Actions.CreateUser {
            builderResult.email = ""
            return self
       }
+      public var hasOrganizationId:Bool {
+           get {
+                return builderResult.hasOrganizationId
+           }
+      }
+      public var organizationId:String {
+           get {
+                return builderResult.organizationId
+           }
+           set (value) {
+               builderResult.hasOrganizationId = true
+               builderResult.organizationId = value
+           }
+      }
+      public func setOrganizationId(value:String) -> Services.User.Actions.CreateUser.RequestV1.Builder {
+        self.organizationId = value
+        return self
+      }
+      public func clearOrganizationId() -> Services.User.Actions.CreateUser.RequestV1.Builder{
+           builderResult.hasOrganizationId = false
+           builderResult.organizationId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -295,6 +334,9 @@ public extension Services.User.Actions.CreateUser {
         if other.hasEmail {
              email = other.email
         }
+        if other.hasOrganizationId {
+             organizationId = other.organizationId
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -318,6 +360,9 @@ public extension Services.User.Actions.CreateUser {
 
           case 26 :
             email = try input.readString()
+
+          case 34 :
+            organizationId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

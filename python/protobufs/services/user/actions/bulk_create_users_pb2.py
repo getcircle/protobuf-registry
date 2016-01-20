@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/bulk_create_users.proto',
   package='services.user.actions.bulk_create_users',
   syntax='proto2',
-  serialized_pb=b'\n7protobufs/services/user/actions/bulk_create_users.proto\x12\'services.user.actions.bulk_create_users\x1a(protobufs/services/user/containers.proto\"P\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12/\n\x05users\x18\x02 \x03(\x0b\x32 .services.user.containers.UserV1\"Q\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12/\n\x05users\x18\x02 \x03(\x0b\x32 .services.user.containers.UserV1B>\n<com.rhlabs.protobufs.services.user.actions.bulk_create_users'
+  serialized_pb=b'\n7protobufs/services/user/actions/bulk_create_users.proto\x12\'services.user.actions.bulk_create_users\x1a(protobufs/services/user/containers.proto\"i\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12/\n\x05users\x18\x02 \x03(\x0b\x32 .services.user.containers.UserV1\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\"Q\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12/\n\x05users\x18\x02 \x03(\x0b\x32 .services.user.containers.UserV1B>\n<com.rhlabs.protobufs.services.user.actions.bulk_create_users'
   ,
   dependencies=[protobufs_dot_services_dot_user_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -47,6 +47,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='organization_id', full_name='services.user.actions.bulk_create_users.RequestV1.organization_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -60,7 +67,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=142,
-  serialized_end=222,
+  serialized_end=247,
 )
 
 
@@ -97,8 +104,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=224,
-  serialized_end=305,
+  serialized_start=249,
+  serialized_end=330,
 )
 
 _REQUESTV1.fields_by_name['users'].message_type = protobufs_dot_services_dot_user_dot_containers__pb2._USERV1
