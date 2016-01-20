@@ -57,8 +57,6 @@ import "protobufs/services/profile/actions/get_tags.proto";
 import "protobufs/services/profile/actions/add_tags.proto";
 import "protobufs/services/profile/actions/update_profile.proto";
 import "protobufs/services/profile/actions/get_profiles.proto";
-import "protobufs/services/profile/actions/get_upcoming_anniversaries.proto";
-import "protobufs/services/profile/actions/get_upcoming_birthdays.proto";
 import "protobufs/services/profile/actions/get_active_tags.proto";
 import "protobufs/services/profile/actions/bulk_create_profiles.proto";
 import "protobufs/services/profile/actions/bulk_update_profiles.proto";
@@ -162,7 +160,7 @@ message Organization {
 }
 
 message Profile {
-    // reserved 310;
+    // reserved 308, 309, 310;
     extend soa.ActionRequestParamsV1 {
         optional services.profile.actions.create_profile.RequestV1 create_profile = 300;
         optional services.profile.actions.get_extended_profile.RequestV1 get_extended_profile = 301;
@@ -172,8 +170,6 @@ message Profile {
         optional services.profile.actions.add_tags.RequestV1 add_tags = 305;
         optional services.profile.actions.update_profile.RequestV1 update_profile = 306;
         optional services.profile.actions.get_profiles.RequestV1 get_profiles = 307;
-        optional services.profile.actions.get_upcoming_anniversaries.RequestV1 get_upcoming_anniversaries = 308;
-        optional services.profile.actions.get_upcoming_birthdays.RequestV1 get_upcoming_birthdays = 309;
         optional services.profile.actions.get_active_tags.RequestV1 get_active_tags = 311;
         optional services.profile.actions.bulk_create_profiles.RequestV1 bulk_create_profiles = 312;
         optional services.profile.actions.bulk_update_profiles.RequestV1 bulk_update_profiles = 313;
