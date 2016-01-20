@@ -9,7 +9,6 @@ import "service_protobufs/soa.proto";
 import "protobufs/services/user/actions/create_user.proto";
 import "protobufs/services/user/actions/authenticate_user.proto";
 import "protobufs/services/user/actions/get_user.proto";
-import "protobufs/services/user/actions/update_user.proto";
 import "protobufs/services/user/actions/get_authorization_instructions.proto";
 import "protobufs/services/user/actions/complete_authorization.proto";
 import "protobufs/services/user/actions/get_identities.proto";
@@ -98,12 +97,11 @@ import "protobufs/services/file/actions/get_files.proto";
 import "protobufs/services/file/actions/upload.proto";
 
 message User {
-    reserved 101, 104, 105, 117;
+    reserved 101, 104, 105, 106, 117;
     extend soa.ActionRequestParamsV1 {
         optional services.user.actions.create_user.RequestV1 create_user = 100;
         optional services.user.actions.authenticate_user.RequestV1 authenticate_user = 102;
         optional services.user.actions.get_user.RequestV1 get_user = 103;
-        optional services.user.actions.update_user.RequestV1 update_user = 106;
         optional services.user.actions.get_authorization_instructions.RequestV1 get_authorization_instructions = 107;
         optional services.user.actions.complete_authorization.RequestV1 complete_authorization = 108;
         optional services.user.actions.get_identities.RequestV1 get_identities = 109;
