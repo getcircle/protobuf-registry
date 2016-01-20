@@ -53,12 +53,6 @@ message TeamV1 {
     string display_name = 11;
 }
 
-message TokenV1 {
-    string key = 1;
-    string requested_by_user_id = 2;
-    string id = 3;
-}
-
 message SSOV1 {
 
     enum ProviderV1 {

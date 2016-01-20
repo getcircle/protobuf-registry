@@ -29,8 +29,6 @@ import "protobufs/services/organization/actions/create_location.proto";
 import "protobufs/services/organization/actions/update_location.proto";
 import "protobufs/services/organization/actions/get_locations.proto";
 import "protobufs/services/organization/actions/get_location.proto";
-import "protobufs/services/organization/actions/create_token.proto";
-import "protobufs/services/organization/actions/get_tokens.proto";
 import "protobufs/services/organization/actions/enable_integration.proto";
 import "protobufs/services/organization/actions/get_integration.proto";
 import "protobufs/services/organization/actions/disable_integration.proto";
@@ -122,6 +120,7 @@ message User {
 }
 
 message Organization {
+    reserved 207, 208;
     extend soa.ActionRequestParamsV1 {
         optional services.organization.actions.create_organization.RequestV1 create_organization = 200;
         optional services.organization.actions.get_organization.RequestV1 get_organization = 201;
@@ -130,8 +129,6 @@ message Organization {
         optional services.organization.actions.update_location.RequestV1 update_location = 204;
         optional services.organization.actions.get_locations.RequestV1 get_locations = 205;
         optional services.organization.actions.get_location.RequestV1 get_location = 206;
-        optional services.organization.actions.create_token.RequestV1 create_token = 207;
-        optional services.organization.actions.get_tokens.RequestV1 get_tokens = 208;
         optional services.organization.actions.enable_integration.RequestV1 enable_integration = 209;
         optional services.organization.actions.get_integration.RequestV1 get_integration = 210;
         optional services.organization.actions.disable_integration.RequestV1 disable_integration = 211;
