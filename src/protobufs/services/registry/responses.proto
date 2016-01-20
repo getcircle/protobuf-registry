@@ -7,7 +7,6 @@ option java_package = "com.rhlabs.protobufs.services.registry.responses";
 import "service_protobufs/soa.proto";
 
 import "protobufs/services/user/actions/create_user.proto";
-import "protobufs/services/user/actions/valid_user.proto";
 import "protobufs/services/user/actions/authenticate_user.proto";
 import "protobufs/services/user/actions/get_user.proto";
 import "protobufs/services/user/actions/update_user.proto";
@@ -99,10 +98,9 @@ import "protobufs/services/file/actions/get_files.proto";
 import "protobufs/services/file/actions/upload.proto";
 
 message User {
-    reserved 104, 105, 117;
+    reserved 101, 104, 105, 117;
     extend soa.ActionResultV1 {
         optional services.user.actions.create_user.ResponseV1 create_user = 100;
-        optional services.user.actions.valid_user.ResponseV1 valid_user = 101;
         optional services.user.actions.authenticate_user.ResponseV1 authenticate_user = 102;
         optional services.user.actions.get_user.ResponseV1 get_user = 103;
         optional services.user.actions.update_user.ResponseV1 update_user = 106;
