@@ -1,19 +1,14 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.media.actions.start_image_upload;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.media.actions.start_image_upload";
 
 import "protobufs/services/media/containers.proto";
 import "protobufs/services/media/containers/media.proto";
 
 message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.media.containers.media.MediaTypeV1 media_type = 2;
-    optional string media_key = 3;
+    services.media.containers.media.MediaTypeV1 media_type = 1;
+    string media_key = 2;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.media.containers.UploadInstructionsV1 upload_instructions = 2;
+    services.media.containers.UploadInstructionsV1 upload_instructions = 1;
 }

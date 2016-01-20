@@ -1,18 +1,12 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.organization.actions.enable_integration;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.organization.actions.enable_integration";
 
 import "protobufs/services/organization/containers/integration.proto";
 
-
 message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.organization.containers.integration.IntegrationV1 integration = 2;
+    services.organization.containers.integration.IntegrationV1 integration = 1;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.organization.containers.integration.IntegrationV1 integration = 2;
+    services.organization.containers.integration.IntegrationV1 integration = 1;
 }

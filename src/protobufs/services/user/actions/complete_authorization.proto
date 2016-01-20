@@ -1,28 +1,23 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.user.actions.complete_authorization;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.user.actions.complete_authorization";
 
 import "protobufs/services/user/containers.proto";
 import "protobufs/services/user/containers/token.proto";
 
 message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.user.containers.IdentityV1.ProviderV1 provider = 2;
-    optional services.user.containers.OAuth2DetailsV1 oauth2_details = 3;
-    optional services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 4;
-    optional services.user.containers.token.ClientTypeV1 client_type = 5;
-    optional bool authenticate = 6;
-    optional services.user.containers.SAMLDetailsV1 saml_details = 7;
+    services.user.containers.IdentityV1.ProviderV1 provider = 1;
+    services.user.containers.OAuth2DetailsV1 oauth2_details = 2;
+    services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 3;
+    services.user.containers.token.ClientTypeV1 client_type = 4;
+    bool authenticate = 5;
+    services.user.containers.SAMLDetailsV1 saml_details = 6;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.user.containers.UserV1 user = 2;
-    optional services.user.containers.IdentityV1 identity = 3;
-    optional bool new_user = 4;
-    optional services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 5;
-    optional string redirect_uri = 6;
-    optional services.user.containers.SAMLDetailsV1 saml_details = 7;
+    services.user.containers.UserV1 user = 1;
+    services.user.containers.IdentityV1 identity = 2;
+    bool new_user = 3;
+    services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 4;
+    string redirect_uri = 5;
+    services.user.containers.SAMLDetailsV1 saml_details = 6;
 }

@@ -1,9 +1,6 @@
 syntax = "proto3";
 package services.search.containers;
 
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.search.containers";
-
 import "protobufs/services/group/containers.proto";
 import "protobufs/services/organization/containers.proto";
 import "protobufs/services/post/containers.proto";
@@ -16,17 +13,16 @@ message TrackingDetailsV1 {
 }
 
 message SearchResultV1 {
-    // reserved 1, 6, 7;
     oneof result_object {
-        services.profile.containers.ProfileV1 profile = 2;
-        services.organization.containers.TeamV1 team = 3;
-        services.organization.containers.LocationV1 location = 4;
-        services.group.containers.GroupV1 group = 5;
-        services.post.containers.PostV1 post = 9;
+        services.profile.containers.ProfileV1 profile = 1;
+        services.organization.containers.TeamV1 team = 2;
+        services.organization.containers.LocationV1 location = 3;
+        services.group.containers.GroupV1 group = 4;
+        services.post.containers.PostV1 post = 5;
     }
-    float score = 8;
-    map<string, string> highlight = 10;
-    TrackingDetailsV1 tracking_details = 11;
+    float score = 6;
+    map<string, string> highlight = 7;
+    TrackingDetailsV1 tracking_details = 8;
 }
 
 message RecentResultV1 {

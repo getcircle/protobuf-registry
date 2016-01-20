@@ -1,8 +1,5 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.user.actions.authenticate_user;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.user.actions.authenticate_user";
 
 import "protobufs/services/user/containers.proto";
 import "protobufs/services/user/containers/token.proto";
@@ -16,21 +13,18 @@ message RequestV1 {
     }
 
     message CredentialsV1 {
-        optional uint32 version = 1 [default = 1];
-        optional string key = 2;
-        optional string secret = 3;
+        string key = 1;
+        string secret = 2;
     }
 
-    optional uint32 version = 1 [default = 1];
-    optional AuthBackendV1 backend = 2;
-    optional CredentialsV1 credentials = 3;
-    optional services.user.containers.token.ClientTypeV1 client_type = 4;
-    optional string organization_domain = 5;
+    AuthBackendV1 backend = 1;
+    CredentialsV1 credentials = 2;
+    services.user.containers.token.ClientTypeV1 client_type = 3;
+    string organization_domain = 4;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.user.containers.UserV1 user = 2;
-    optional string token = 3;
-    optional bool new_user = 4;
+    services.user.containers.UserV1 user = 1;
+    string token = 2;
+    bool new_user = 3;
 }

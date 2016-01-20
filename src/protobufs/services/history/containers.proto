@@ -1,8 +1,5 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.history.containers;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.history.containers";
 
 enum ActionTypeV1 {
     UPDATE_DESCRIPTION = 0;
@@ -14,18 +11,17 @@ enum MethodTypeV1 {
 }
 
 message ActionV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string id = 2;
-    optional string column_name = 3;
-    optional string data_type = 4;
-    optional string old_value = 5;
-    optional string new_value = 6;
-    optional ActionTypeV1 action_type = 7;
-    optional MethodTypeV1 method_type = 8;
-    optional string organization_id = 9;
-    optional string correlation_id = 10;
-    optional string by_profile_id = 11;
-    optional string table_name = 12;
-    optional string primary_key_name = 13;
-    optional string primary_key_value = 14;
+    string id = 1;
+    string column_name = 2;
+    string data_type = 3;
+    string old_value = 4;
+    string new_value = 5;
+    ActionTypeV1 action_type = 6;
+    MethodTypeV1 method_type = 7;
+    string organization_id = 8;
+    string correlation_id = 9;
+    string by_profile_id = 10;
+    string table_name = 11;
+    string primary_key_name = 12;
+    string primary_key_value = 13;
 }

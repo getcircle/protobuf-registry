@@ -1,8 +1,5 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.search.containers.search;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.search.containers.search";
 
 enum CategoryV1 {
     PROFILES = 0;

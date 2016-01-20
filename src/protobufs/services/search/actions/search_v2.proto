@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.search.actions.search_v2;
 
 import "protobufs/services/search/containers.proto";
@@ -6,14 +6,12 @@ import "protobufs/services/search/containers/search.proto";
 
 
 message RequestV1 {
-    // reserved 1;
-    optional string query = 2;
-    optional services.search.containers.search.CategoryV1 category = 3;
-    optional services.search.containers.search.AttributeV1 attribute = 4;
-    optional string attribute_value = 5;
+    string query = 1;
+    services.search.containers.search.CategoryV1 category = 2;
+    services.search.containers.search.AttributeV1 attribute = 3;
+    string attribute_value = 4;
 }
 
 message ResponseV1 {
-    // reserved 1;
-    repeated services.search.containers.SearchResultV1 results = 2;
+    repeated services.search.containers.SearchResultV1 results = 1;
 }

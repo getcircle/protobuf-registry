@@ -1,17 +1,12 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.organization.actions.update_location;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.organization.actions.update_location";
 
 import "protobufs/services/organization/containers.proto";
 
 message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.organization.containers.LocationV1 location = 2;
+    services.organization.containers.LocationV1 location = 1;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.organization.containers.LocationV1 location = 2;
+    services.organization.containers.LocationV1 location = 1;
 }

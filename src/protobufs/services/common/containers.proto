@@ -1,37 +1,19 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.common.containers;
 
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.common.containers";
-
-message KeyValueV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string key = 2;
-    optional string value = 3;
-}
-
-message MapV1 {
-    optional uint32 version = 1 [default = 1];
-    repeated KeyValueV1 content = 2;
-}
-
 message PermissionsV1 {
-    optional uint32 version = 1 [default = 1];
-    optional bool can_edit = 2;
-    optional bool can_delete = 3;
-    optional bool can_add = 4;
+    bool can_edit = 1;
+    bool can_delete = 2;
+    bool can_add = 3;
 }
 
 message InflationsV1 {
-    optional uint32 version = 1 [default = 1];
-    optional bool enabled = 2 [default = true];
-    repeated string only = 3;
-    repeated string exclude = 4;
-    optional bool disabled = 5;
+    bool enabled = 1;
+    repeated string only = 2;
+    repeated string exclude = 3;
 }
 
 message FieldsV1 {
-    optional uint32 version = 1 [default = 1];
-    repeated string only = 2;
-    repeated string exclude = 3;
+    string only = 1;
+    string exclude = 2;
 }

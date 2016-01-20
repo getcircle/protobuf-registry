@@ -1,27 +1,22 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.profile.actions.get_profiles;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.profile.actions.get_profiles";
 
 import "protobufs/services/common/containers.proto";
 import "protobufs/services/profile/containers.proto";
 
 message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string tag_id = 2;
-    repeated string ids = 3;
-    optional string location_id = 4;
-    optional string team_id = 5;
-    optional services.common.containers.InflationsV1 inflations = 6;
-    optional string manager_id = 7;
-    repeated string emails = 8;
-    optional bool is_admin = 9;
-    repeated string authentication_identifiers = 10;
-    optional services.common.containers.FieldsV1 fields = 11;
+    string tag_id = 1;
+    repeated string ids = 2;
+    string location_id = 3;
+    string team_id = 4;
+    services.common.containers.InflationsV1 inflations = 5;
+    string manager_id = 6;
+    repeated string emails = 7;
+    bool is_admin = 8;
+    repeated string authentication_identifiers = 9;
+    services.common.containers.FieldsV1 fields = 10;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    repeated services.profile.containers.ProfileV1 profiles = 2;
+    repeated services.profile.containers.ProfileV1 profiles = 1;
 }

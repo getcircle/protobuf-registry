@@ -1,15 +1,10 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.organization.actions.get_location_members;
 
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.organization.actions.get_location_members";
-
 message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string location_id = 2;
+    string location_id = 1;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    repeated string member_profile_ids = 2;
+    repeated string member_profile_ids = 1;
 }

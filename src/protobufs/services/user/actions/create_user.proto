@@ -1,19 +1,14 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.user.actions.create_user;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.user.actions.create_user";
 
 import "protobufs/services/user/containers.proto";
 
 message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string password = 2;
-    optional string email = 3;
-    optional string organization_id = 4;
+    string password = 1;
+    string email = 2;
+    string organization_id = 3;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.user.containers.UserV1 user = 2;
+    services.user.containers.UserV1 user = 1;
 }

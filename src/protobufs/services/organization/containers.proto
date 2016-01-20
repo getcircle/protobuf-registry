@@ -1,70 +1,62 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.organization.containers;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.organization.containers";
 
 import "protobufs/services/common/containers.proto";
 import "protobufs/services/common/containers/description.proto";
 import "protobufs/services/profile/containers.proto";
 
 message LocationV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string id = 2;
-    optional string name = 3;
-    optional string address_1 = 4;
-    optional string address_2 = 5;
-    optional string city = 6;
-    optional string region = 7;
-    optional string postal_code = 8;
-    optional string country_code = 9;
-    optional string latitude = 10;
-    optional string longitude = 11;
-    optional string timezone = 12;
-    optional string organization_id = 13;
-    optional uint32 profile_count = 14;
-    optional string image_url = 15;
-    optional services.common.containers.description.DescriptionV1 description = 16;
-    optional string established_date = 17;
-    repeated services.profile.containers.ProfileV1 points_of_contact = 18;
-    optional services.common.containers.PermissionsV1 permissions = 19;
+    string id = 1;
+    string name = 2;
+    string address_1 = 3;
+    string address_2 = 4;
+    string city = 5;
+    string region = 6;
+    string postal_code = 7;
+    string country_code = 8;
+    string latitude = 9;
+    string longitude = 10;
+    string timezone = 11;
+    string organization_id = 12;
+    uint32 profile_count = 13;
+    string image_url = 14;
+    services.common.containers.description.DescriptionV1 description = 15;
+    string established_date = 16;
+    repeated services.profile.containers.ProfileV1 points_of_contact = 17;
+    services.common.containers.PermissionsV1 permissions = 18;
 }
 
 message OrganizationV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string id = 2;
-    optional string name = 3;
-    optional string domain = 4;
-    optional string image_url = 5;
-    optional uint32 profile_count = 6;
-    optional uint32 team_count = 7;
-    optional uint32 location_count = 8;
-    optional uint32 post_count = 9;
-    optional services.common.containers.InflationsV1 inflations = 10;
-    optional services.common.containers.FieldsV1 fields = 11;
+    string id = 1;
+    string name = 2;
+    string domain = 3;
+    string image_url = 4;
+    uint32 profile_count = 5;
+    uint32 team_count = 6;
+    uint32 location_count = 7;
+    uint32 post_count = 8;
+    services.common.containers.InflationsV1 inflations = 9;
+    services.common.containers.FieldsV1 fields = 10;
 }
 
 message TeamV1 {
-    // reserved 9;
-    optional uint32 version = 1 [default = 1];
-    optional string id = 2;
-    optional string name = 3;
-    optional string organization_id = 4;
-    optional string manager_profile_id = 5;
-    optional services.profile.containers.ProfileV1 manager = 6;
-    optional services.common.containers.PermissionsV1 permissions = 7;
-    optional services.common.containers.description.DescriptionV1 description = 8;
-    optional string image_url = 10;
-    optional uint32 child_team_count = 11;
-    optional uint32 profile_count = 12;
-    optional string display_name = 13;
+    string id = 1;
+    string name = 2;
+    string organization_id = 3;
+    string manager_profile_id = 4;
+    services.profile.containers.ProfileV1 manager = 5;
+    services.common.containers.PermissionsV1 permissions = 6;
+    services.common.containers.description.DescriptionV1 description = 7;
+    string image_url = 8;
+    uint32 child_team_count = 9;
+    uint32 profile_count = 10;
+    string display_name = 11;
 }
 
 message TokenV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string key = 2;
-    optional string requested_by_user_id = 3;
-    optional string id = 4;
+    string key = 1;
+    string requested_by_user_id = 2;
+    string id = 3;
 }
 
 message SSOV1 {
@@ -73,8 +65,7 @@ message SSOV1 {
         OKTA = 0;
     }
 
-    optional uint32 version = 1 [default = 1];
-    optional string metadata_url = 2;
-    optional string metadata = 3;
-    optional ProviderV1 provider = 4;
+    string metadata_url = 1;
+    string metadata = 2;
+    ProviderV1 provider = 3;
 }

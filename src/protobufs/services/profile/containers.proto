@@ -4,7 +4,6 @@ package services.profile.containers;
 import "protobufs/services/common/containers.proto";
 
 message ContactMethodV1 {
-    // reserved 1;
 
     enum ContactMethodTypeV1 {
         CELL_PHONE = 0;
@@ -17,61 +16,52 @@ message ContactMethodV1 {
         SKYPE = 7;
     }
 
-    string id = 2;
-    string label = 3;
-    string value = 4;
-    ContactMethodTypeV1 contact_method_type = 5;
+    string id = 1;
+    string label = 2;
+    string value = 3;
+    ContactMethodTypeV1 contact_method_type = 4;
 }
 
 message ProfileV1 {
-    // reserved 1, 19;
-
-    string id = 2;
-    string organization_id = 3;
-    string user_id = 4;
-    string title = 5;
-    string first_name = 6;
-    string last_name = 7;
-    string image_url = 8;
-    string full_name = 9;
-    string birth_date = 10;
-    string hire_date = 11;
-    bool verified = 12;
-    repeated ProfileItemV1 items = 13;
-    string nickname = 14;
-    repeated ContactMethodV1 contact_methods = 15;
-    string email = 16;
-    bool is_admin = 17;
-    string small_image_url = 18;
-    string display_title = 20;
-    string authentication_identifier = 21;
-    services.common.containers.InflationsV1 inflations = 22;
-    services.common.containers.FieldsV1 fields = 23;
+    string id = 1;
+    string organization_id = 2;
+    string user_id = 3;
+    string title = 4;
+    string first_name = 5;
+    string last_name = 6;
+    string image_url = 7;
+    string full_name = 8;
+    string birth_date = 9;
+    string hire_date = 10;
+    bool verified = 11;
+    repeated ProfileItemV1 items = 12;
+    string nickname = 13;
+    repeated ContactMethodV1 contact_methods = 14;
+    string email = 15;
+    bool is_admin = 16;
+    string small_image_url = 17;
+    string display_title = 18;
+    string authentication_identifier = 19;
+    services.common.containers.InflationsV1 inflations = 20;
+    services.common.containers.FieldsV1 fields = 21;
 }
 
 message ProfileItemV1 {
-    // reserved 1;
-
-    string key = 2;
-    string value = 3;
+    string key = 1;
+    string value = 2;
 }
 
 message AttributeV1 {
-    // reserved 1;
-
-    string name = 2;
-    string value = 3;
+    string name = 1;
+    string value = 2;
 }
 
 message StatV1 {
-    // reserved 1;
-
-    string id = 2;
-    uint32 count = 3;
+    string id = 1;
+    uint32 count = 2;
 }
 
 message TagV1 {
-    // reserved 1;
 
     enum TagTypeV1 {
         SKILL = 0;
@@ -80,7 +70,7 @@ message TagV1 {
         PROJECT = 3;
     }
 
-    string id = 2;
-    string name = 3;
-    TagTypeV1 tag_type = 4;
+    string id = 1;
+    string name = 2;
+    TagTypeV1 tag_type = 3;
 }

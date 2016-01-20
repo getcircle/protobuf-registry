@@ -1,8 +1,5 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.group.containers.permissions.who_can_view_membership;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.group.containers.permissions.who_can_view_membership";
 
 enum WhoCanViewMembershipPermissionsV1 {
     ALL_IN_DOMAIN = 0;

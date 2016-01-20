@@ -1,16 +1,10 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.user.actions.delete_identity;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.user.actions.delete_identity";
 
 import "protobufs/services/user/containers.proto";
 
 message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-    optional services.user.containers.IdentityV1 identity = 2;
+    services.user.containers.IdentityV1 identity = 1;
 }
 
-message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-}
+message ResponseV1 {}

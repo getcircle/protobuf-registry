@@ -1,15 +1,10 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.user.actions.send_verification_code;
 
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.user.actions.send_verification_code";
-
 message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string user_id = 2;
+    string user_id = 1;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string message_id = 2;
+    string message_id = 1;
 }

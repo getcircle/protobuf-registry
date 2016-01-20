@@ -1,16 +1,10 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.organization.actions.get_tokens;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.organization.actions.get_tokens";
 
 import "protobufs/services/organization/containers.proto";
 
-message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-}
+message RequestV1 {}
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    repeated services.organization.containers.TokenV1 tokens = 2;
+    repeated services.organization.containers.TokenV1 tokens = 1;
 }

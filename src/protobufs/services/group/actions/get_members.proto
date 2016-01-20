@@ -1,19 +1,14 @@
-syntax = "proto2";
+syntax = "proto3";
 package services.group.actions.get_members;
-
-// GENERATED OPTIONS FOR: JAVA
-option java_package = "com.rhlabs.protobufs.services.group.actions.get_members";
 
 import "protobufs/services/group/containers.proto";
 
 message RequestV1 {
-    optional uint32 version = 1 [default = 1];
-    optional string group_id = 2;
-    optional services.group.containers.RoleV1 role = 3 [default = MEMBER];
-    optional services.group.containers.GroupProviderV1 provider = 4;
+    string group_id = 1;
+    services.group.containers.RoleV1 role = 2;
+    services.group.containers.GroupProviderV1 provider = 3;
 }
 
 message ResponseV1 {
-    optional uint32 version = 1 [default = 1];
-    repeated services.group.containers.MemberV1 members = 2;
+    repeated services.group.containers.MemberV1 members = 1;
 }
