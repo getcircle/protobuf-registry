@@ -7,7 +7,6 @@ import "protobufs/services/user/containers.proto";
 
 message RequestV1 {
     string profile_id = 1;
-    string user_id = 2;
 }
 
 message ResponseV1 {
