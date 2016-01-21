@@ -9,8 +9,8 @@ message RequestV1 {
     services.user.containers.OAuth2DetailsV1 oauth2_details = 2;
     services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 3;
     services.user.containers.token.ClientTypeV1 client_type = 4;
-    bool authenticate = 5;
-    services.user.containers.SAMLDetailsV1 saml_details = 6;
+    services.user.containers.SAMLDetailsV1 saml_details = 5;
+    string organization_id = 6;
 }
 
 message ResponseV1 {
