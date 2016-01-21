@@ -7,7 +7,6 @@ message RequestV1 {
     services.user.containers.IdentityV1.ProviderV1 provider = 1;
     string login_hint = 2;
     string redirect_uri = 3;
-    string organization_domain = 4;
 }
 
 message ResponseV1 {
