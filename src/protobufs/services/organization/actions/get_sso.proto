@@ -1,5 +1,5 @@
 syntax = "proto3";
-package services.organization.actions.get_sso_metadata;
+package services.organization.actions.get_sso;
 
 import "protobufs/services/organization/containers.proto";
 
