@@ -52,15 +52,3 @@ message TeamV1 {
     uint32 profile_count = 10;
     string display_name = 11;
 }
-
-message SSOV1 {
-
-    enum ProviderV1 {
-        OKTA = 0;
-        GOOGLE = 1;
-    }
-
-    string metadata_url = 1;
-    string metadata = 2;
-    ProviderV1 provider = 3;
-}
