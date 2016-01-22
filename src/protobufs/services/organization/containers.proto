@@ -57,6 +57,7 @@ message SSOV1 {
 
     enum ProviderV1 {
         OKTA = 0;
+        GOOGLE = 1;
     }
 
     string metadata_url = 1;
