@@ -7,17 +7,18 @@ import "protobufs/services/user/containers/token.proto";
 message RequestV1 {
     services.user.containers.IdentityV1.ProviderV1 provider = 1;
     services.user.containers.OAuth2DetailsV1 oauth2_details = 2;
-    services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 3;
-    services.user.containers.token.ClientTypeV1 client_type = 4;
-    services.user.containers.SAMLDetailsV1 saml_details = 5;
-    string organization_id = 6;
+    services.user.containers.token.ClientTypeV1 client_type = 3;
+    services.user.containers.SAMLDetailsV1 saml_details = 4;
+    string organization_id = 5;
 }
 
 message ResponseV1 {
     services.user.containers.UserV1 user = 1;
     services.user.containers.IdentityV1 identity = 2;
     bool new_user = 3;
-    services.user.containers.OAuthSDKDetailsV1 oauth_sdk_details = 4;
-    string redirect_uri = 5;
-    services.user.containers.SAMLDetailsV1 saml_details = 6;
+    string redirect_uri = 4;
+    oneof credentials {
+        services.user.containers.GoogleCredentialsV1 google_credentials = 5;
+        services.user.containers.SAMLCredentialsV1 saml_credentials = 6;
+    }
 }

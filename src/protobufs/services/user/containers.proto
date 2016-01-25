@@ -46,11 +46,6 @@ message OAuth2DetailsV1 {
     string state = 2;
 }
 
-message OAuthSDKDetailsV1 {
-    string code = 1;
-    string id_token = 2;
-}
-
 message UserV1 {
     string id = 1;
     string primary_email = 2;
@@ -64,5 +59,13 @@ message SAMLDetailsV1 {
     string saml_response = 1;
     string relay_state = 2;
     string domain = 3;
-    string auth_state = 4;
+}
+
+message SAMLCredentialsV1 {
+    string state = 1;
+}
+
+message GoogleCredentialsV1 {
+    string code = 1;
+    string id_token = 2;
 }
