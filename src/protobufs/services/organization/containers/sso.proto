@@ -12,6 +12,7 @@ message SSOV1 {
         SAMLDetailsV1 saml = 2;
         GoogleDetailsV1 google = 3;
     }
+    string organization_id = 4;
 }
 
 message SAMLDetailsV1 {
