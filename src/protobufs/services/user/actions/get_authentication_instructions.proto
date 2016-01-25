@@ -12,8 +12,7 @@ message RequestV1 {
 
 message ResponseV1 {
     services.user.actions.authenticate_user.RequestV1.AuthBackendV1 backend = 1;
-    bool user_exists = 2;
-    string authorization_url = 3;
-    string provider_name = 4;
-    string organization_image_url = 5;
+    string authorization_url = 2;
+    string provider_name = 3;
+    string organization_image_url = 4;
 }
