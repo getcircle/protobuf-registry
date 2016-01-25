@@ -17,8 +17,8 @@ from protobufs.services.user import containers_pb2 as protobufs_dot_services_dot
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/record_device.proto',
   package='services.user.actions.record_device',
-  syntax='proto2',
-  serialized_pb=b'\n3protobufs/services/user/actions/record_device.proto\x12#services.user.actions.record_device\x1a(protobufs/services/user/containers.proto\"S\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x32\n\x06\x64\x65vice\x18\x02 \x01(\x0b\x32\".services.user.containers.DeviceV1\"T\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x32\n\x06\x64\x65vice\x18\x02 \x01(\x0b\x32\".services.user.containers.DeviceV1B:\n8com.rhlabs.protobufs.services.user.actions.record_device'
+  syntax='proto3',
+  serialized_pb=b'\n3protobufs/services/user/actions/record_device.proto\x12#services.user.actions.record_device\x1a(protobufs/services/user/containers.proto\"?\n\tRequestV1\x12\x32\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\".services.user.containers.DeviceV1\"@\n\nResponseV1\x12\x32\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\".services.user.containers.DeviceV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_user_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -34,15 +34,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.user.actions.record_device.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='device', full_name='services.user.actions.record_device.RequestV1.device', index=1,
-      number=2, type=11, cpp_type=10, label=1,
+      name='device', full_name='services.user.actions.record_device.RequestV1.device', index=0,
+      number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -55,12 +48,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=134,
-  serialized_end=217,
+  serialized_end=197,
 )
 
 
@@ -72,15 +65,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.user.actions.record_device.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='device', full_name='services.user.actions.record_device.ResponseV1.device', index=1,
-      number=2, type=11, cpp_type=10, label=1,
+      name='device', full_name='services.user.actions.record_device.ResponseV1.device', index=0,
+      number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -93,12 +79,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=219,
-  serialized_end=303,
+  serialized_start=199,
+  serialized_end=263,
 )
 
 _REQUESTV1.fields_by_name['device'].message_type = protobufs_dot_services_dot_user_dot_containers__pb2._DEVICEV1
@@ -121,6 +107,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n8com.rhlabs.protobufs.services.user.actions.record_device')
 # @@protoc_insertion_point(module_scope)

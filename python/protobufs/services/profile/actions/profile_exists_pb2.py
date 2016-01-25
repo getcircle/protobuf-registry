@@ -16,8 +16,8 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/profile_exists.proto',
   package='services.profile.actions.profile_exists',
-  syntax='proto2',
-  serialized_pb=b'\n7protobufs/services/profile/actions/profile_exists.proto\x12\'services.profile.actions.profile_exists\"a\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0e\n\x06\x64omain\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12!\n\x19\x61uthentication_identifier\x18\x04 \x01(\t\"n\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0e\n\x06\x65xists\x18\x02 \x01(\x08\x12\x0f\n\x07user_id\x18\x03 \x01(\t\x12\x12\n\nprofile_id\x18\x04 \x01(\t\x12\x17\n\x0forganization_id\x18\x05 \x01(\tB>\n<com.rhlabs.protobufs.services.profile.actions.profile_exists'
+  syntax='proto3',
+  serialized_pb=b'\n7protobufs/services/profile/actions/profile_exists.proto\x12\'services.profile.actions.profile_exists\"M\n\tRequestV1\x12\x0e\n\x06\x64omain\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12!\n\x19\x61uthentication_identifier\x18\x03 \x01(\t\"Z\n\nResponseV1\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12\x12\n\nprofile_id\x18\x03 \x01(\t\x12\x17\n\x0forganization_id\x18\x04 \x01(\tb\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -32,29 +32,22 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.profile.actions.profile_exists.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='domain', full_name='services.profile.actions.profile_exists.RequestV1.domain', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='domain', full_name='services.profile.actions.profile_exists.RequestV1.domain', index=1,
+      name='email', full_name='services.profile.actions.profile_exists.RequestV1.email', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='email', full_name='services.profile.actions.profile_exists.RequestV1.email', index=2,
+      name='authentication_identifier', full_name='services.profile.actions.profile_exists.RequestV1.authentication_identifier', index=2,
       number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='authentication_identifier', full_name='services.profile.actions.profile_exists.RequestV1.authentication_identifier', index=3,
-      number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -67,12 +60,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=100,
-  serialized_end=197,
+  serialized_end=177,
 )
 
 
@@ -84,36 +77,29 @@ _RESPONSEV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.profile.actions.profile_exists.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='exists', full_name='services.profile.actions.profile_exists.ResponseV1.exists', index=1,
-      number=2, type=8, cpp_type=7, label=1,
+      name='exists', full_name='services.profile.actions.profile_exists.ResponseV1.exists', index=0,
+      number=1, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='user_id', full_name='services.profile.actions.profile_exists.ResponseV1.user_id', index=2,
+      name='user_id', full_name='services.profile.actions.profile_exists.ResponseV1.user_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='profile_id', full_name='services.profile.actions.profile_exists.ResponseV1.profile_id', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='profile_id', full_name='services.profile.actions.profile_exists.ResponseV1.profile_id', index=3,
+      name='organization_id', full_name='services.profile.actions.profile_exists.ResponseV1.organization_id', index=3,
       number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='organization_id', full_name='services.profile.actions.profile_exists.ResponseV1.organization_id', index=4,
-      number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -126,12 +112,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=199,
-  serialized_end=309,
+  serialized_start=179,
+  serialized_end=269,
 )
 
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
@@ -152,6 +138,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n<com.rhlabs.protobufs.services.profile.actions.profile_exists')
 # @@protoc_insertion_point(module_scope)

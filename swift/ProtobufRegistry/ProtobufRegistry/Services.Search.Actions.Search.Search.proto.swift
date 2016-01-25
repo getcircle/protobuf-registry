@@ -10,11 +10,12 @@ public func == (lhs: Services.Search.Actions.Search.RequestV1, rhs: Services.Sea
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasQuery == rhs.hasQuery) && (!lhs.hasQuery || lhs.query == rhs.query)
   fieldCheck = fieldCheck && (lhs.hasCategory == rhs.hasCategory) && (!lhs.hasCategory || lhs.category == rhs.category)
   fieldCheck = fieldCheck && (lhs.hasAttribute == rhs.hasAttribute) && (!lhs.hasAttribute || lhs.attribute == rhs.attribute)
   fieldCheck = fieldCheck && (lhs.hasAttributeValue == rhs.hasAttributeValue) && (!lhs.hasAttributeValue || lhs.attributeValue == rhs.attributeValue)
+  fieldCheck = fieldCheck && (lhs.hasHasCategory == rhs.hasHasCategory) && (!lhs.hasHasCategory || lhs.hasCategory == rhs.hasCategory)
+  fieldCheck = fieldCheck && (lhs.hasHasAttribute == rhs.hasHasAttribute) && (!lhs.hasHasAttribute || lhs.hasAttribute == rhs.hasAttribute)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -24,7 +25,6 @@ public func == (lhs: Services.Search.Actions.Search.ResponseV1, rhs: Services.Se
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.results == rhs.results)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -51,9 +51,6 @@ public extension Services.Search.Actions.Search {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasQuery:Bool = false
     public private(set) var query:String = ""
 
@@ -64,6 +61,12 @@ public extension Services.Search.Actions.Search {
     public private(set) var hasAttributeValue:Bool = false
     public private(set) var attributeValue:String = ""
 
+    public private(set) var hasHasCategory:Bool = false
+    public private(set) var hasCategory:Bool = false
+
+    public private(set) var hasHasAttribute:Bool = false
+    public private(set) var hasAttribute:Bool = false
+
     required public init() {
          super.init()
     }
@@ -71,20 +74,23 @@ public extension Services.Search.Actions.Search {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasQuery {
-        try output.writeString(2, value:query)
+        try output.writeString(1, value:query)
       }
       if hasCategory {
-        try output.writeEnum(3, value:category.rawValue)
+        try output.writeEnum(2, value:category.rawValue)
       }
       if hasAttribute {
-        try output.writeEnum(4, value:attribute.rawValue)
+        try output.writeEnum(3, value:attribute.rawValue)
       }
       if hasAttributeValue {
-        try output.writeString(5, value:attributeValue)
+        try output.writeString(4, value:attributeValue)
+      }
+      if hasHasCategory {
+        try output.writeBool(5, value:hasCategory)
+      }
+      if hasHasAttribute {
+        try output.writeBool(6, value:hasAttribute)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -95,20 +101,23 @@ public extension Services.Search.Actions.Search {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasQuery {
-        serialize_size += query.computeStringSize(2)
+        serialize_size += query.computeStringSize(1)
       }
       if (hasCategory) {
-        serialize_size += category.rawValue.computeEnumSize(3)
+        serialize_size += category.rawValue.computeEnumSize(2)
       }
       if (hasAttribute) {
-        serialize_size += attribute.rawValue.computeEnumSize(4)
+        serialize_size += attribute.rawValue.computeEnumSize(3)
       }
       if hasAttributeValue {
-        serialize_size += attributeValue.computeStringSize(5)
+        serialize_size += attributeValue.computeStringSize(4)
+      }
+      if hasHasCategory {
+        serialize_size += hasCategory.computeBoolSize(5)
+      }
+      if hasHasAttribute {
+        serialize_size += hasAttribute.computeBoolSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -161,9 +170,6 @@ public extension Services.Search.Actions.Search {
       return try Services.Search.Actions.Search.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasQuery {
         output += "\(indent) query: \(query) \n"
       }
@@ -176,14 +182,17 @@ public extension Services.Search.Actions.Search {
       if hasAttributeValue {
         output += "\(indent) attributeValue: \(attributeValue) \n"
       }
+      if hasHasCategory {
+        output += "\(indent) hasCategory: \(hasCategory) \n"
+      }
+      if hasHasAttribute {
+        output += "\(indent) hasAttribute: \(hasAttribute) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasQuery {
                hashCode = (hashCode &* 31) &+ query.hashValue
             }
@@ -195,6 +204,12 @@ public extension Services.Search.Actions.Search {
             }
             if hasAttributeValue {
                hashCode = (hashCode &* 31) &+ attributeValue.hashValue
+            }
+            if hasHasCategory {
+               hashCode = (hashCode &* 31) &+ hasCategory.hashValue
+            }
+            if hasHasAttribute {
+               hashCode = (hashCode &* 31) &+ hasAttribute.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -223,29 +238,6 @@ public extension Services.Search.Actions.Search {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Search.Actions.Search.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Search.Actions.Search.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasQuery:Bool {
            get {
@@ -339,6 +331,52 @@ public extension Services.Search.Actions.Search {
            builderResult.attributeValue = ""
            return self
       }
+      public var hasHasCategory:Bool {
+           get {
+                return builderResult.hasHasCategory
+           }
+      }
+      public var hasCategory:Bool {
+           get {
+                return builderResult.hasCategory
+           }
+           set (value) {
+               builderResult.hasHasCategory = true
+               builderResult.hasCategory = value
+           }
+      }
+      public func setHasCategory(value:Bool) -> Services.Search.Actions.Search.RequestV1.Builder {
+        self.hasCategory = value
+        return self
+      }
+      public func clearHasCategory() -> Services.Search.Actions.Search.RequestV1.Builder{
+           builderResult.hasHasCategory = false
+           builderResult.hasCategory = false
+           return self
+      }
+      public var hasHasAttribute:Bool {
+           get {
+                return builderResult.hasHasAttribute
+           }
+      }
+      public var hasAttribute:Bool {
+           get {
+                return builderResult.hasAttribute
+           }
+           set (value) {
+               builderResult.hasHasAttribute = true
+               builderResult.hasAttribute = value
+           }
+      }
+      public func setHasAttribute(value:Bool) -> Services.Search.Actions.Search.RequestV1.Builder {
+        self.hasAttribute = value
+        return self
+      }
+      public func clearHasAttribute() -> Services.Search.Actions.Search.RequestV1.Builder{
+           builderResult.hasHasAttribute = false
+           builderResult.hasAttribute = false
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -363,9 +401,6 @@ public extension Services.Search.Actions.Search {
         if other == Services.Search.Actions.Search.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasQuery {
              query = other.query
         }
@@ -377,6 +412,12 @@ public extension Services.Search.Actions.Search {
         }
         if other.hasAttributeValue {
              attributeValue = other.attributeValue
+        }
+        if other.hasHasCategory {
+             hasCategory = other.hasCategory
+        }
+        if other.hasHasAttribute {
+             hasAttribute = other.hasAttribute
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -393,30 +434,33 @@ public extension Services.Search.Actions.Search {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             query = try input.readString()
 
-          case 24 :
+          case 16 :
             let valueIntcategory = try input.readEnum()
             if let enumscategory = Services.Search.Containers.Search.CategoryV1(rawValue:valueIntcategory){
                  category = enumscategory
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntcategory))
+                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntcategory))
             }
 
-          case 32 :
+          case 24 :
             let valueIntattribute = try input.readEnum()
             if let enumsattribute = Services.Search.Containers.Search.AttributeV1(rawValue:valueIntattribute){
                  attribute = enumsattribute
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntattribute))
+                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntattribute))
             }
 
-          case 42 :
+          case 34 :
             attributeValue = try input.readString()
+
+          case 40 :
+            hasCategory = try input.readBool()
+
+          case 48 :
+            hasAttribute = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
@@ -431,9 +475,6 @@ public extension Services.Search.Actions.Search {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var results:Array<Services.Search.Containers.SearchResultV1>  = Array<Services.Search.Containers.SearchResultV1>()
     required public init() {
          super.init()
@@ -442,11 +483,8 @@ public extension Services.Search.Actions.Search {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementresults in results {
-          try output.writeMessage(2, value:oneElementresults)
+          try output.writeMessage(1, value:oneElementresults)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -457,11 +495,8 @@ public extension Services.Search.Actions.Search {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementresults in results {
-          serialize_size += oneElementresults.computeMessageSize(2)
+          serialize_size += oneElementresults.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -514,9 +549,6 @@ public extension Services.Search.Actions.Search {
       return try Services.Search.Actions.Search.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var resultsElementIndex:Int = 0
       for oneElementresults in results {
           output += "\(indent) results[\(resultsElementIndex)] {\n"
@@ -529,9 +561,6 @@ public extension Services.Search.Actions.Search {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementresults in results {
                 hashCode = (hashCode &* 31) &+ oneElementresults.hashValue
             }
@@ -562,29 +591,6 @@ public extension Services.Search.Actions.Search {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Search.Actions.Search.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Search.Actions.Search.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var results:Array<Services.Search.Containers.SearchResultV1> {
            get {
@@ -626,9 +632,6 @@ public extension Services.Search.Actions.Search {
         if other == Services.Search.Actions.Search.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.results.isEmpty  {
            builderResult.results += other.results
         }
@@ -647,10 +650,7 @@ public extension Services.Search.Actions.Search {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.Search.Containers.SearchResultV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             results += [subBuilder.buildPartial()]

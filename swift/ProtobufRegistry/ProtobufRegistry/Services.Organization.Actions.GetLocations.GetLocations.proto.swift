@@ -10,7 +10,6 @@ public func == (lhs: Services.Organization.Actions.GetLocations.RequestV1, rhs: 
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
@@ -23,7 +22,6 @@ public func == (lhs: Services.Organization.Actions.GetLocations.ResponseV1, rhs:
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.locations == rhs.locations)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -50,9 +48,6 @@ public extension Services.Organization.Actions.GetLocations {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
@@ -66,18 +61,15 @@ public extension Services.Organization.Actions.GetLocations {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasProfileId {
-        try output.writeString(2, value:profileId)
+        try output.writeString(1, value:profileId)
       }
       if hasInflations {
-        try output.writeMessage(3, value:inflations)
+        try output.writeMessage(2, value:inflations)
       }
       if !ids.isEmpty {
         for oneValueids in ids {
-          try output.writeString(4, value:oneValueids)
+          try output.writeString(3, value:oneValueids)
         }
       }
       try unknownFields.writeToCodedOutputStream(output)
@@ -89,14 +81,11 @@ public extension Services.Organization.Actions.GetLocations {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasProfileId {
-        serialize_size += profileId.computeStringSize(2)
+        serialize_size += profileId.computeStringSize(1)
       }
       if hasInflations {
-          if let varSizeinflations = inflations?.computeMessageSize(3) {
+          if let varSizeinflations = inflations?.computeMessageSize(2) {
               serialize_size += varSizeinflations
           }
       }
@@ -157,9 +146,6 @@ public extension Services.Organization.Actions.GetLocations {
       return try Services.Organization.Actions.GetLocations.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
@@ -178,9 +164,6 @@ public extension Services.Organization.Actions.GetLocations {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
@@ -219,29 +202,6 @@ public extension Services.Organization.Actions.GetLocations {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetLocations.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetLocations.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasProfileId:Bool {
            get {
@@ -357,9 +317,6 @@ public extension Services.Organization.Actions.GetLocations {
         if other == Services.Organization.Actions.GetLocations.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasProfileId {
              profileId = other.profileId
         }
@@ -384,13 +341,10 @@ public extension Services.Organization.Actions.GetLocations {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             profileId = try input.readString()
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
             if hasInflations {
               try subBuilder.mergeFrom(inflations)
@@ -398,7 +352,7 @@ public extension Services.Organization.Actions.GetLocations {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             inflations = subBuilder.buildPartial()
 
-          case 34 :
+          case 26 :
             ids += [try input.readString()]
 
           default:
@@ -414,9 +368,6 @@ public extension Services.Organization.Actions.GetLocations {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var locations:Array<Services.Organization.Containers.LocationV1>  = Array<Services.Organization.Containers.LocationV1>()
     required public init() {
          super.init()
@@ -425,11 +376,8 @@ public extension Services.Organization.Actions.GetLocations {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementlocations in locations {
-          try output.writeMessage(2, value:oneElementlocations)
+          try output.writeMessage(1, value:oneElementlocations)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -440,11 +388,8 @@ public extension Services.Organization.Actions.GetLocations {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementlocations in locations {
-          serialize_size += oneElementlocations.computeMessageSize(2)
+          serialize_size += oneElementlocations.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -497,9 +442,6 @@ public extension Services.Organization.Actions.GetLocations {
       return try Services.Organization.Actions.GetLocations.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var locationsElementIndex:Int = 0
       for oneElementlocations in locations {
           output += "\(indent) locations[\(locationsElementIndex)] {\n"
@@ -512,9 +454,6 @@ public extension Services.Organization.Actions.GetLocations {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementlocations in locations {
                 hashCode = (hashCode &* 31) &+ oneElementlocations.hashValue
             }
@@ -545,29 +484,6 @@ public extension Services.Organization.Actions.GetLocations {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetLocations.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetLocations.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var locations:Array<Services.Organization.Containers.LocationV1> {
            get {
@@ -609,9 +525,6 @@ public extension Services.Organization.Actions.GetLocations {
         if other == Services.Organization.Actions.GetLocations.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.locations.isEmpty  {
            builderResult.locations += other.locations
         }
@@ -630,10 +543,7 @@ public extension Services.Organization.Actions.GetLocations {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.Organization.Containers.LocationV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             locations += [subBuilder.buildPartial()]

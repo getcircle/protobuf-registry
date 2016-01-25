@@ -10,7 +10,6 @@ public func == (lhs: Services.Profile.Actions.GetProfileStats.RequestV1, rhs: Se
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.addressIds == rhs.addressIds)
   fieldCheck = fieldCheck && (lhs.locationIds == rhs.locationIds)
   fieldCheck = fieldCheck && (lhs.teamIds == rhs.teamIds)
@@ -23,7 +22,6 @@ public func == (lhs: Services.Profile.Actions.GetProfileStats.ResponseV1, rhs: S
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.stats == rhs.stats)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -49,9 +47,6 @@ public extension Services.Profile.Actions.GetProfileStats {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var addressIds:Array<String> = Array<String>()
     public private(set) var locationIds:Array<String> = Array<String>()
     public private(set) var teamIds:Array<String> = Array<String>()
@@ -62,22 +57,19 @@ public extension Services.Profile.Actions.GetProfileStats {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if !addressIds.isEmpty {
         for oneValueaddressIds in addressIds {
-          try output.writeString(2, value:oneValueaddressIds)
+          try output.writeString(1, value:oneValueaddressIds)
         }
       }
       if !locationIds.isEmpty {
         for oneValuelocationIds in locationIds {
-          try output.writeString(3, value:oneValuelocationIds)
+          try output.writeString(2, value:oneValuelocationIds)
         }
       }
       if !teamIds.isEmpty {
         for oneValueteamIds in teamIds {
-          try output.writeString(4, value:oneValueteamIds)
+          try output.writeString(3, value:oneValueteamIds)
         }
       }
       try unknownFields.writeToCodedOutputStream(output)
@@ -89,9 +81,6 @@ public extension Services.Profile.Actions.GetProfileStats {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       var dataSizeAddressIds:Int32 = 0
       for oneValueaddressIds in addressIds {
           dataSizeAddressIds += oneValueaddressIds.computeStringSizeNoTag()
@@ -161,9 +150,6 @@ public extension Services.Profile.Actions.GetProfileStats {
       return try Services.Profile.Actions.GetProfileStats.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var addressIdsElementIndex:Int = 0
       for oneValueaddressIds in addressIds  {
           output += "\(indent) addressIds[\(addressIdsElementIndex)]: \(oneValueaddressIds)\n"
@@ -184,9 +170,6 @@ public extension Services.Profile.Actions.GetProfileStats {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneValueaddressIds in addressIds {
                 hashCode = (hashCode &* 31) &+ oneValueaddressIds.hashValue
             }
@@ -223,29 +206,6 @@ public extension Services.Profile.Actions.GetProfileStats {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.GetProfileStats.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.GetProfileStats.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var addressIds:Array<String> {
            get {
@@ -319,9 +279,6 @@ public extension Services.Profile.Actions.GetProfileStats {
         if other == Services.Profile.Actions.GetProfileStats.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.addressIds.isEmpty {
             builderResult.addressIds += other.addressIds
         }
@@ -346,16 +303,13 @@ public extension Services.Profile.Actions.GetProfileStats {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             addressIds += [try input.readString()]
 
-          case 26 :
+          case 18 :
             locationIds += [try input.readString()]
 
-          case 34 :
+          case 26 :
             teamIds += [try input.readString()]
 
           default:
@@ -371,9 +325,6 @@ public extension Services.Profile.Actions.GetProfileStats {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var stats:Array<Services.Profile.Containers.StatV1>  = Array<Services.Profile.Containers.StatV1>()
     required public init() {
          super.init()
@@ -382,11 +333,8 @@ public extension Services.Profile.Actions.GetProfileStats {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementstats in stats {
-          try output.writeMessage(2, value:oneElementstats)
+          try output.writeMessage(1, value:oneElementstats)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -397,11 +345,8 @@ public extension Services.Profile.Actions.GetProfileStats {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementstats in stats {
-          serialize_size += oneElementstats.computeMessageSize(2)
+          serialize_size += oneElementstats.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -454,9 +399,6 @@ public extension Services.Profile.Actions.GetProfileStats {
       return try Services.Profile.Actions.GetProfileStats.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var statsElementIndex:Int = 0
       for oneElementstats in stats {
           output += "\(indent) stats[\(statsElementIndex)] {\n"
@@ -469,9 +411,6 @@ public extension Services.Profile.Actions.GetProfileStats {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementstats in stats {
                 hashCode = (hashCode &* 31) &+ oneElementstats.hashValue
             }
@@ -502,29 +441,6 @@ public extension Services.Profile.Actions.GetProfileStats {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.GetProfileStats.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.GetProfileStats.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var stats:Array<Services.Profile.Containers.StatV1> {
            get {
@@ -566,9 +482,6 @@ public extension Services.Profile.Actions.GetProfileStats {
         if other == Services.Profile.Actions.GetProfileStats.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.stats.isEmpty  {
            builderResult.stats += other.stats
         }
@@ -587,10 +500,7 @@ public extension Services.Profile.Actions.GetProfileStats {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.Profile.Containers.StatV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             stats += [subBuilder.buildPartial()]

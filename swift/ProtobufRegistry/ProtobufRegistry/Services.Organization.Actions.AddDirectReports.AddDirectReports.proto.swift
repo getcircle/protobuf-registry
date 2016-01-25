@@ -10,7 +10,6 @@ public func == (lhs: Services.Organization.Actions.AddDirectReports.RequestV1, r
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = fieldCheck && (lhs.directReportsProfileIds == rhs.directReportsProfileIds)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -22,7 +21,6 @@ public func == (lhs: Services.Organization.Actions.AddDirectReports.ResponseV1, 
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
   fieldCheck = fieldCheck && (lhs.hasCreated == rhs.hasCreated) && (!lhs.hasCreated || lhs.created == rhs.created)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -49,9 +47,6 @@ public extension Services.Organization.Actions.AddDirectReports {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
@@ -63,15 +58,12 @@ public extension Services.Organization.Actions.AddDirectReports {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasProfileId {
-        try output.writeString(2, value:profileId)
+        try output.writeString(1, value:profileId)
       }
       if !directReportsProfileIds.isEmpty {
         for oneValuedirectReportsProfileIds in directReportsProfileIds {
-          try output.writeString(3, value:oneValuedirectReportsProfileIds)
+          try output.writeString(2, value:oneValuedirectReportsProfileIds)
         }
       }
       try unknownFields.writeToCodedOutputStream(output)
@@ -83,11 +75,8 @@ public extension Services.Organization.Actions.AddDirectReports {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasProfileId {
-        serialize_size += profileId.computeStringSize(2)
+        serialize_size += profileId.computeStringSize(1)
       }
       var dataSizeDirectReportsProfileIds:Int32 = 0
       for oneValuedirectReportsProfileIds in directReportsProfileIds {
@@ -146,9 +135,6 @@ public extension Services.Organization.Actions.AddDirectReports {
       return try Services.Organization.Actions.AddDirectReports.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
@@ -162,9 +148,6 @@ public extension Services.Organization.Actions.AddDirectReports {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
@@ -198,29 +181,6 @@ public extension Services.Organization.Actions.AddDirectReports {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.AddDirectReports.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.AddDirectReports.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasProfileId:Bool {
            get {
@@ -285,9 +245,6 @@ public extension Services.Organization.Actions.AddDirectReports {
         if other == Services.Organization.Actions.AddDirectReports.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasProfileId {
              profileId = other.profileId
         }
@@ -309,13 +266,10 @@ public extension Services.Organization.Actions.AddDirectReports {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             profileId = try input.readString()
 
-          case 26 :
+          case 18 :
             directReportsProfileIds += [try input.readString()]
 
           default:
@@ -331,9 +285,6 @@ public extension Services.Organization.Actions.AddDirectReports {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasTeam:Bool = false
     public private(set) var team:Services.Organization.Containers.TeamV1!
     public private(set) var hasCreated:Bool = false
@@ -346,14 +297,11 @@ public extension Services.Organization.Actions.AddDirectReports {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasTeam {
-        try output.writeMessage(2, value:team)
+        try output.writeMessage(1, value:team)
       }
       if hasCreated {
-        try output.writeBool(3, value:created)
+        try output.writeBool(2, value:created)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -364,16 +312,13 @@ public extension Services.Organization.Actions.AddDirectReports {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasTeam {
-          if let varSizeteam = team?.computeMessageSize(2) {
+          if let varSizeteam = team?.computeMessageSize(1) {
               serialize_size += varSizeteam
           }
       }
       if hasCreated {
-        serialize_size += created.computeBoolSize(3)
+        serialize_size += created.computeBoolSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -426,9 +371,6 @@ public extension Services.Organization.Actions.AddDirectReports {
       return try Services.Organization.Actions.AddDirectReports.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasTeam {
         output += "\(indent) team {\n"
         try team?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -442,9 +384,6 @@ public extension Services.Organization.Actions.AddDirectReports {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasTeam {
                 if let hashValueteam = team?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueteam
@@ -480,29 +419,6 @@ public extension Services.Organization.Actions.AddDirectReports {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.AddDirectReports.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.AddDirectReports.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasTeam:Bool {
            get {
@@ -602,9 +518,6 @@ public extension Services.Organization.Actions.AddDirectReports {
         if other == Services.Organization.Actions.AddDirectReports.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasTeam) {
             try mergeTeam(other.team)
         }
@@ -626,10 +539,7 @@ public extension Services.Organization.Actions.AddDirectReports {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.Organization.Containers.TeamV1.Builder = Services.Organization.Containers.TeamV1.Builder()
             if hasTeam {
               try subBuilder.mergeFrom(team)
@@ -637,7 +547,7 @@ public extension Services.Organization.Actions.AddDirectReports {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             team = subBuilder.buildPartial()
 
-          case 24 :
+          case 16 :
             created = try input.readBool()
 
           default:

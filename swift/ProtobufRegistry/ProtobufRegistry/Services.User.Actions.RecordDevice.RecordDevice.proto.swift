@@ -10,7 +10,6 @@ public func == (lhs: Services.User.Actions.RecordDevice.RequestV1, rhs: Services
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasDevice == rhs.hasDevice) && (!lhs.hasDevice || lhs.device == rhs.device)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -21,7 +20,6 @@ public func == (lhs: Services.User.Actions.RecordDevice.ResponseV1, rhs: Service
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasDevice == rhs.hasDevice) && (!lhs.hasDevice || lhs.device == rhs.device)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -47,9 +45,6 @@ public extension Services.User.Actions.RecordDevice {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasDevice:Bool = false
     public private(set) var device:Services.User.Containers.DeviceV1!
     required public init() {
@@ -59,11 +54,8 @@ public extension Services.User.Actions.RecordDevice {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasDevice {
-        try output.writeMessage(2, value:device)
+        try output.writeMessage(1, value:device)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -74,11 +66,8 @@ public extension Services.User.Actions.RecordDevice {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasDevice {
-          if let varSizedevice = device?.computeMessageSize(2) {
+          if let varSizedevice = device?.computeMessageSize(1) {
               serialize_size += varSizedevice
           }
       }
@@ -133,9 +122,6 @@ public extension Services.User.Actions.RecordDevice {
       return try Services.User.Actions.RecordDevice.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasDevice {
         output += "\(indent) device {\n"
         try device?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -146,9 +132,6 @@ public extension Services.User.Actions.RecordDevice {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasDevice {
                 if let hashValuedevice = device?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuedevice
@@ -181,29 +164,6 @@ public extension Services.User.Actions.RecordDevice {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.RecordDevice.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.RecordDevice.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasDevice:Bool {
            get {
@@ -280,9 +240,6 @@ public extension Services.User.Actions.RecordDevice {
         if other == Services.User.Actions.RecordDevice.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasDevice) {
             try mergeDevice(other.device)
         }
@@ -301,10 +258,7 @@ public extension Services.User.Actions.RecordDevice {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.User.Containers.DeviceV1.Builder = Services.User.Containers.DeviceV1.Builder()
             if hasDevice {
               try subBuilder.mergeFrom(device)
@@ -325,9 +279,6 @@ public extension Services.User.Actions.RecordDevice {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasDevice:Bool = false
     public private(set) var device:Services.User.Containers.DeviceV1!
     required public init() {
@@ -337,11 +288,8 @@ public extension Services.User.Actions.RecordDevice {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasDevice {
-        try output.writeMessage(2, value:device)
+        try output.writeMessage(1, value:device)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -352,11 +300,8 @@ public extension Services.User.Actions.RecordDevice {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasDevice {
-          if let varSizedevice = device?.computeMessageSize(2) {
+          if let varSizedevice = device?.computeMessageSize(1) {
               serialize_size += varSizedevice
           }
       }
@@ -411,9 +356,6 @@ public extension Services.User.Actions.RecordDevice {
       return try Services.User.Actions.RecordDevice.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasDevice {
         output += "\(indent) device {\n"
         try device?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -424,9 +366,6 @@ public extension Services.User.Actions.RecordDevice {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasDevice {
                 if let hashValuedevice = device?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuedevice
@@ -459,29 +398,6 @@ public extension Services.User.Actions.RecordDevice {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.RecordDevice.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.RecordDevice.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasDevice:Bool {
            get {
@@ -558,9 +474,6 @@ public extension Services.User.Actions.RecordDevice {
         if other == Services.User.Actions.RecordDevice.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasDevice) {
             try mergeDevice(other.device)
         }
@@ -579,10 +492,7 @@ public extension Services.User.Actions.RecordDevice {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.User.Containers.DeviceV1.Builder = Services.User.Containers.DeviceV1.Builder()
             if hasDevice {
               try subBuilder.mergeFrom(device)

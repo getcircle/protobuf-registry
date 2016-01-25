@@ -10,7 +10,6 @@ public func == (lhs: Services.User.Actions.DeleteIdentity.RequestV1, rhs: Servic
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasIdentity == rhs.hasIdentity) && (!lhs.hasIdentity || lhs.identity == rhs.identity)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -21,7 +20,6 @@ public func == (lhs: Services.User.Actions.DeleteIdentity.ResponseV1, rhs: Servi
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -46,9 +44,6 @@ public extension Services.User.Actions.DeleteIdentity {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasIdentity:Bool = false
     public private(set) var identity:Services.User.Containers.IdentityV1!
     required public init() {
@@ -58,11 +53,8 @@ public extension Services.User.Actions.DeleteIdentity {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasIdentity {
-        try output.writeMessage(2, value:identity)
+        try output.writeMessage(1, value:identity)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -73,11 +65,8 @@ public extension Services.User.Actions.DeleteIdentity {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasIdentity {
-          if let varSizeidentity = identity?.computeMessageSize(2) {
+          if let varSizeidentity = identity?.computeMessageSize(1) {
               serialize_size += varSizeidentity
           }
       }
@@ -132,9 +121,6 @@ public extension Services.User.Actions.DeleteIdentity {
       return try Services.User.Actions.DeleteIdentity.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasIdentity {
         output += "\(indent) identity {\n"
         try identity?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -145,9 +131,6 @@ public extension Services.User.Actions.DeleteIdentity {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasIdentity {
                 if let hashValueidentity = identity?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueidentity
@@ -180,29 +163,6 @@ public extension Services.User.Actions.DeleteIdentity {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.DeleteIdentity.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.DeleteIdentity.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasIdentity:Bool {
            get {
@@ -279,9 +239,6 @@ public extension Services.User.Actions.DeleteIdentity {
         if other == Services.User.Actions.DeleteIdentity.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasIdentity) {
             try mergeIdentity(other.identity)
         }
@@ -300,10 +257,7 @@ public extension Services.User.Actions.DeleteIdentity {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.User.Containers.IdentityV1.Builder = Services.User.Containers.IdentityV1.Builder()
             if hasIdentity {
               try subBuilder.mergeFrom(identity)
@@ -324,9 +278,6 @@ public extension Services.User.Actions.DeleteIdentity {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     required public init() {
          super.init()
     }
@@ -334,9 +285,6 @@ public extension Services.User.Actions.DeleteIdentity {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -346,9 +294,6 @@ public extension Services.User.Actions.DeleteIdentity {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -400,17 +345,11 @@ public extension Services.User.Actions.DeleteIdentity {
       return try Services.User.Actions.DeleteIdentity.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -439,29 +378,6 @@ public extension Services.User.Actions.DeleteIdentity {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.DeleteIdentity.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.DeleteIdentity.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -486,9 +402,6 @@ public extension Services.User.Actions.DeleteIdentity {
         if other == Services.User.Actions.DeleteIdentity.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -503,9 +416,6 @@ public extension Services.User.Actions.DeleteIdentity {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

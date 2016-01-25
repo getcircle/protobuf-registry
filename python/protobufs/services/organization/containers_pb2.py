@@ -19,31 +19,13 @@ from protobufs.services.profile import containers_pb2 as protobufs_dot_services_
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers.proto',
   package='services.organization.containers',
-  syntax='proto2',
-  serialized_pb=b'\n0protobufs/services/organization/containers.proto\x12 services.organization.containers\x1a*protobufs/services/common/containers.proto\x1a\x36protobufs/services/common/containers/description.proto\x1a+protobufs/services/profile/containers.proto\"\x8c\x04\n\nLocationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x11\n\taddress_1\x18\x04 \x01(\t\x12\x11\n\taddress_2\x18\x05 \x01(\t\x12\x0c\n\x04\x63ity\x18\x06 \x01(\t\x12\x0e\n\x06region\x18\x07 \x01(\t\x12\x13\n\x0bpostal_code\x18\x08 \x01(\t\x12\x14\n\x0c\x63ountry_code\x18\t \x01(\t\x12\x10\n\x08latitude\x18\n \x01(\t\x12\x11\n\tlongitude\x18\x0b \x01(\t\x12\x10\n\x08timezone\x18\x0c \x01(\t\x12\x17\n\x0forganization_id\x18\r \x01(\t\x12\x15\n\rprofile_count\x18\x0e \x01(\r\x12\x11\n\timage_url\x18\x0f \x01(\t\x12J\n\x0b\x64\x65scription\x18\x10 \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12\x18\n\x10\x65stablished_date\x18\x11 \x01(\t\x12\x41\n\x11points_of_contact\x18\x12 \x03(\x0b\x32&.services.profile.containers.ProfileV1\x12>\n\x0bpermissions\x18\x13 \x01(\x0b\x32).services.common.containers.PermissionsV1\"\xac\x02\n\x0eOrganizationV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0e\n\x06\x64omain\x18\x04 \x01(\t\x12\x11\n\timage_url\x18\x05 \x01(\t\x12\x15\n\rprofile_count\x18\x06 \x01(\r\x12\x12\n\nteam_count\x18\x07 \x01(\r\x12\x16\n\x0elocation_count\x18\x08 \x01(\r\x12\x12\n\npost_count\x18\t \x01(\r\x12<\n\ninflations\x18\n \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x0b \x01(\x0b\x32$.services.common.containers.FieldsV1\"\x8a\x03\n\x06TeamV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x17\n\x0forganization_id\x18\x04 \x01(\t\x12\x1a\n\x12manager_profile_id\x18\x05 \x01(\t\x12\x37\n\x07manager\x18\x06 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12>\n\x0bpermissions\x18\x07 \x01(\x0b\x32).services.common.containers.PermissionsV1\x12J\n\x0b\x64\x65scription\x18\x08 \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12\x11\n\timage_url\x18\n \x01(\t\x12\x18\n\x10\x63hild_team_count\x18\x0b \x01(\r\x12\x15\n\rprofile_count\x18\x0c \x01(\r\x12\x14\n\x0c\x64isplay_name\x18\r \x01(\t\"T\n\x07TokenV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x1c\n\x14requested_by_user_id\x18\x03 \x01(\t\x12\n\n\x02id\x18\x04 \x01(\t\"\xa1\x01\n\x05SSOV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x14\n\x0cmetadata_url\x18\x02 \x01(\t\x12\x10\n\x08metadata\x18\x03 \x01(\t\x12\x44\n\x08provider\x18\x04 \x01(\x0e\x32\x32.services.organization.containers.SSOV1.ProviderV1\"\x16\n\nProviderV1\x12\x08\n\x04OKTA\x10\x00\x42\x37\n5com.rhlabs.protobufs.services.organization.containers'
+  syntax='proto3',
+  serialized_pb=b'\n0protobufs/services/organization/containers.proto\x12 services.organization.containers\x1a*protobufs/services/common/containers.proto\x1a\x36protobufs/services/common/containers/description.proto\x1a+protobufs/services/profile/containers.proto\"\xf8\x03\n\nLocationV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x11\n\taddress_1\x18\x03 \x01(\t\x12\x11\n\taddress_2\x18\x04 \x01(\t\x12\x0c\n\x04\x63ity\x18\x05 \x01(\t\x12\x0e\n\x06region\x18\x06 \x01(\t\x12\x13\n\x0bpostal_code\x18\x07 \x01(\t\x12\x14\n\x0c\x63ountry_code\x18\x08 \x01(\t\x12\x10\n\x08latitude\x18\t \x01(\t\x12\x11\n\tlongitude\x18\n \x01(\t\x12\x10\n\x08timezone\x18\x0b \x01(\t\x12\x17\n\x0forganization_id\x18\x0c \x01(\t\x12\x15\n\rprofile_count\x18\r \x01(\r\x12\x11\n\timage_url\x18\x0e \x01(\t\x12J\n\x0b\x64\x65scription\x18\x0f \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12\x18\n\x10\x65stablished_date\x18\x10 \x01(\t\x12\x41\n\x11points_of_contact\x18\x11 \x03(\x0b\x32&.services.profile.containers.ProfileV1\x12>\n\x0bpermissions\x18\x12 \x01(\x0b\x32).services.common.containers.PermissionsV1\"\x98\x02\n\x0eOrganizationV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\x12\x11\n\timage_url\x18\x04 \x01(\t\x12\x15\n\rprofile_count\x18\x05 \x01(\r\x12\x12\n\nteam_count\x18\x06 \x01(\r\x12\x16\n\x0elocation_count\x18\x07 \x01(\r\x12\x12\n\npost_count\x18\x08 \x01(\r\x12<\n\ninflations\x18\t \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\n \x01(\x0b\x32$.services.common.containers.FieldsV1\"\xf6\x02\n\x06TeamV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x1a\n\x12manager_profile_id\x18\x04 \x01(\t\x12\x37\n\x07manager\x18\x05 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12>\n\x0bpermissions\x18\x06 \x01(\x0b\x32).services.common.containers.PermissionsV1\x12J\n\x0b\x64\x65scription\x18\x07 \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12\x11\n\timage_url\x18\x08 \x01(\t\x12\x18\n\x10\x63hild_team_count\x18\t \x01(\r\x12\x15\n\rprofile_count\x18\n \x01(\r\x12\x14\n\x0c\x64isplay_name\x18\x0b \x01(\tb\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_common_dot_containers_dot_description__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
-
-_SSOV1_PROVIDERV1 = _descriptor.EnumDescriptor(
-  name='ProviderV1',
-  full_name='services.organization.containers.SSOV1.ProviderV1',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='OKTA', index=0, number=0,
-      options=None,
-      type=None),
-  ],
-  containing_type=None,
-  options=None,
-  serialized_start=1684,
-  serialized_end=1706,
-)
-_sym_db.RegisterEnumDescriptor(_SSOV1_PROVIDERV1)
 
 
 _LOCATIONV1 = _descriptor.Descriptor(
@@ -54,134 +36,127 @@ _LOCATIONV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.containers.LocationV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='id', full_name='services.organization.containers.LocationV1.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='id', full_name='services.organization.containers.LocationV1.id', index=1,
+      name='name', full_name='services.organization.containers.LocationV1.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='name', full_name='services.organization.containers.LocationV1.name', index=2,
+      name='address_1', full_name='services.organization.containers.LocationV1.address_1', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='address_1', full_name='services.organization.containers.LocationV1.address_1', index=3,
+      name='address_2', full_name='services.organization.containers.LocationV1.address_2', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='address_2', full_name='services.organization.containers.LocationV1.address_2', index=4,
+      name='city', full_name='services.organization.containers.LocationV1.city', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='city', full_name='services.organization.containers.LocationV1.city', index=5,
+      name='region', full_name='services.organization.containers.LocationV1.region', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='region', full_name='services.organization.containers.LocationV1.region', index=6,
+      name='postal_code', full_name='services.organization.containers.LocationV1.postal_code', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='postal_code', full_name='services.organization.containers.LocationV1.postal_code', index=7,
+      name='country_code', full_name='services.organization.containers.LocationV1.country_code', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='country_code', full_name='services.organization.containers.LocationV1.country_code', index=8,
+      name='latitude', full_name='services.organization.containers.LocationV1.latitude', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='latitude', full_name='services.organization.containers.LocationV1.latitude', index=9,
+      name='longitude', full_name='services.organization.containers.LocationV1.longitude', index=9,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='longitude', full_name='services.organization.containers.LocationV1.longitude', index=10,
+      name='timezone', full_name='services.organization.containers.LocationV1.timezone', index=10,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='timezone', full_name='services.organization.containers.LocationV1.timezone', index=11,
+      name='organization_id', full_name='services.organization.containers.LocationV1.organization_id', index=11,
       number=12, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='organization_id', full_name='services.organization.containers.LocationV1.organization_id', index=12,
-      number=13, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='profile_count', full_name='services.organization.containers.LocationV1.profile_count', index=13,
-      number=14, type=13, cpp_type=3, label=1,
+      name='profile_count', full_name='services.organization.containers.LocationV1.profile_count', index=12,
+      number=13, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='image_url', full_name='services.organization.containers.LocationV1.image_url', index=14,
-      number=15, type=9, cpp_type=9, label=1,
+      name='image_url', full_name='services.organization.containers.LocationV1.image_url', index=13,
+      number=14, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='description', full_name='services.organization.containers.LocationV1.description', index=15,
-      number=16, type=11, cpp_type=10, label=1,
+      name='description', full_name='services.organization.containers.LocationV1.description', index=14,
+      number=15, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='established_date', full_name='services.organization.containers.LocationV1.established_date', index=16,
-      number=17, type=9, cpp_type=9, label=1,
+      name='established_date', full_name='services.organization.containers.LocationV1.established_date', index=15,
+      number=16, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='points_of_contact', full_name='services.organization.containers.LocationV1.points_of_contact', index=17,
-      number=18, type=11, cpp_type=10, label=3,
+      name='points_of_contact', full_name='services.organization.containers.LocationV1.points_of_contact', index=16,
+      number=17, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='permissions', full_name='services.organization.containers.LocationV1.permissions', index=18,
-      number=19, type=11, cpp_type=10, label=1,
+      name='permissions', full_name='services.organization.containers.LocationV1.permissions', index=17,
+      number=18, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -194,12 +169,12 @@ _LOCATIONV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=232,
-  serialized_end=756,
+  serialized_end=736,
 )
 
 
@@ -211,78 +186,71 @@ _ORGANIZATIONV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.containers.OrganizationV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='id', full_name='services.organization.containers.OrganizationV1.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='id', full_name='services.organization.containers.OrganizationV1.id', index=1,
+      name='name', full_name='services.organization.containers.OrganizationV1.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='name', full_name='services.organization.containers.OrganizationV1.name', index=2,
+      name='domain', full_name='services.organization.containers.OrganizationV1.domain', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='domain', full_name='services.organization.containers.OrganizationV1.domain', index=3,
+      name='image_url', full_name='services.organization.containers.OrganizationV1.image_url', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='image_url', full_name='services.organization.containers.OrganizationV1.image_url', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='profile_count', full_name='services.organization.containers.OrganizationV1.profile_count', index=4,
+      number=5, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='profile_count', full_name='services.organization.containers.OrganizationV1.profile_count', index=5,
+      name='team_count', full_name='services.organization.containers.OrganizationV1.team_count', index=5,
       number=6, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='team_count', full_name='services.organization.containers.OrganizationV1.team_count', index=6,
+      name='location_count', full_name='services.organization.containers.OrganizationV1.location_count', index=6,
       number=7, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='location_count', full_name='services.organization.containers.OrganizationV1.location_count', index=7,
+      name='post_count', full_name='services.organization.containers.OrganizationV1.post_count', index=7,
       number=8, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='post_count', full_name='services.organization.containers.OrganizationV1.post_count', index=8,
-      number=9, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='inflations', full_name='services.organization.containers.OrganizationV1.inflations', index=9,
-      number=10, type=11, cpp_type=10, label=1,
+      name='inflations', full_name='services.organization.containers.OrganizationV1.inflations', index=8,
+      number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='fields', full_name='services.organization.containers.OrganizationV1.fields', index=10,
-      number=11, type=11, cpp_type=10, label=1,
+      name='fields', full_name='services.organization.containers.OrganizationV1.fields', index=9,
+      number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -295,12 +263,12 @@ _ORGANIZATIONV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=759,
-  serialized_end=1059,
+  serialized_start=739,
+  serialized_end=1019,
 )
 
 
@@ -312,85 +280,78 @@ _TEAMV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.containers.TeamV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='id', full_name='services.organization.containers.TeamV1.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='id', full_name='services.organization.containers.TeamV1.id', index=1,
+      name='name', full_name='services.organization.containers.TeamV1.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='name', full_name='services.organization.containers.TeamV1.name', index=2,
+      name='organization_id', full_name='services.organization.containers.TeamV1.organization_id', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='organization_id', full_name='services.organization.containers.TeamV1.organization_id', index=3,
+      name='manager_profile_id', full_name='services.organization.containers.TeamV1.manager_profile_id', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='manager_profile_id', full_name='services.organization.containers.TeamV1.manager_profile_id', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='manager', full_name='services.organization.containers.TeamV1.manager', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='manager', full_name='services.organization.containers.TeamV1.manager', index=5,
+      name='permissions', full_name='services.organization.containers.TeamV1.permissions', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='permissions', full_name='services.organization.containers.TeamV1.permissions', index=6,
+      name='description', full_name='services.organization.containers.TeamV1.description', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='description', full_name='services.organization.containers.TeamV1.description', index=7,
-      number=8, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='image_url', full_name='services.organization.containers.TeamV1.image_url', index=8,
-      number=10, type=9, cpp_type=9, label=1,
+      name='image_url', full_name='services.organization.containers.TeamV1.image_url', index=7,
+      number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='child_team_count', full_name='services.organization.containers.TeamV1.child_team_count', index=9,
-      number=11, type=13, cpp_type=3, label=1,
+      name='child_team_count', full_name='services.organization.containers.TeamV1.child_team_count', index=8,
+      number=9, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='profile_count', full_name='services.organization.containers.TeamV1.profile_count', index=10,
-      number=12, type=13, cpp_type=3, label=1,
+      name='profile_count', full_name='services.organization.containers.TeamV1.profile_count', index=9,
+      number=10, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='display_name', full_name='services.organization.containers.TeamV1.display_name', index=11,
-      number=13, type=9, cpp_type=9, label=1,
+      name='display_name', full_name='services.organization.containers.TeamV1.display_name', index=10,
+      number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -403,117 +364,12 @@ _TEAMV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1062,
-  serialized_end=1456,
-)
-
-
-_TOKENV1 = _descriptor.Descriptor(
-  name='TokenV1',
-  full_name='services.organization.containers.TokenV1',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.containers.TokenV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='key', full_name='services.organization.containers.TokenV1.key', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='requested_by_user_id', full_name='services.organization.containers.TokenV1.requested_by_user_id', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='id', full_name='services.organization.containers.TokenV1.id', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1458,
-  serialized_end=1542,
-)
-
-
-_SSOV1 = _descriptor.Descriptor(
-  name='SSOV1',
-  full_name='services.organization.containers.SSOV1',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.containers.SSOV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='metadata_url', full_name='services.organization.containers.SSOV1.metadata_url', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='metadata', full_name='services.organization.containers.SSOV1.metadata', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='provider', full_name='services.organization.containers.SSOV1.provider', index=3,
-      number=4, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-    _SSOV1_PROVIDERV1,
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1545,
-  serialized_end=1706,
+  serialized_start=1022,
+  serialized_end=1396,
 )
 
 _LOCATIONV1.fields_by_name['description'].message_type = protobufs_dot_services_dot_common_dot_containers_dot_description__pb2._DESCRIPTIONV1
@@ -524,13 +380,9 @@ _ORGANIZATIONV1.fields_by_name['fields'].message_type = protobufs_dot_services_d
 _TEAMV1.fields_by_name['manager'].message_type = protobufs_dot_services_dot_profile_dot_containers__pb2._PROFILEV1
 _TEAMV1.fields_by_name['permissions'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._PERMISSIONSV1
 _TEAMV1.fields_by_name['description'].message_type = protobufs_dot_services_dot_common_dot_containers_dot_description__pb2._DESCRIPTIONV1
-_SSOV1.fields_by_name['provider'].enum_type = _SSOV1_PROVIDERV1
-_SSOV1_PROVIDERV1.containing_type = _SSOV1
 DESCRIPTOR.message_types_by_name['LocationV1'] = _LOCATIONV1
 DESCRIPTOR.message_types_by_name['OrganizationV1'] = _ORGANIZATIONV1
 DESCRIPTOR.message_types_by_name['TeamV1'] = _TEAMV1
-DESCRIPTOR.message_types_by_name['TokenV1'] = _TOKENV1
-DESCRIPTOR.message_types_by_name['SSOV1'] = _SSOV1
 
 LocationV1 = _reflection.GeneratedProtocolMessageType('LocationV1', (_message.Message,), dict(
   DESCRIPTOR = _LOCATIONV1,
@@ -553,21 +405,5 @@ TeamV1 = _reflection.GeneratedProtocolMessageType('TeamV1', (_message.Message,),
   ))
 _sym_db.RegisterMessage(TeamV1)
 
-TokenV1 = _reflection.GeneratedProtocolMessageType('TokenV1', (_message.Message,), dict(
-  DESCRIPTOR = _TOKENV1,
-  __module__ = 'protobufs.services.organization.containers_pb2'
-  # @@protoc_insertion_point(class_scope:services.organization.containers.TokenV1)
-  ))
-_sym_db.RegisterMessage(TokenV1)
 
-SSOV1 = _reflection.GeneratedProtocolMessageType('SSOV1', (_message.Message,), dict(
-  DESCRIPTOR = _SSOV1,
-  __module__ = 'protobufs.services.organization.containers_pb2'
-  # @@protoc_insertion_point(class_scope:services.organization.containers.SSOV1)
-  ))
-_sym_db.RegisterMessage(SSOV1)
-
-
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n5com.rhlabs.protobufs.services.organization.containers')
 # @@protoc_insertion_point(module_scope)

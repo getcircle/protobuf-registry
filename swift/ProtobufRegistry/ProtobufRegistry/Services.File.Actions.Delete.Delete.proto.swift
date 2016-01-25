@@ -53,7 +53,7 @@ public extension Services.File.Actions.Delete {
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if !ids.isEmpty {
         for oneValueids in ids {
-          try output.writeString(2, value:oneValueids)
+          try output.writeString(1, value:oneValueids)
         }
       }
       try unknownFields.writeToCodedOutputStream(output)
@@ -221,7 +221,7 @@ public extension Services.File.Actions.Delete {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 18 :
+          case 10 :
             ids += [try input.readString()]
 
           default:

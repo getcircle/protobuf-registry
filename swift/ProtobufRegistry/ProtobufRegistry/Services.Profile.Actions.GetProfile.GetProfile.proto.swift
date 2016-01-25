@@ -10,7 +10,6 @@ public func == (lhs: Services.Profile.Actions.GetProfile.RequestV1, rhs: Service
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
@@ -25,7 +24,6 @@ public func == (lhs: Services.Profile.Actions.GetProfile.ResponseV1, rhs: Servic
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -52,9 +50,6 @@ public extension Services.Profile.Actions.GetProfile {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
@@ -75,23 +70,20 @@ public extension Services.Profile.Actions.GetProfile {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasProfileId {
-        try output.writeString(2, value:profileId)
+        try output.writeString(1, value:profileId)
       }
       if hasInflations {
-        try output.writeMessage(3, value:inflations)
+        try output.writeMessage(2, value:inflations)
       }
       if hasEmail {
-        try output.writeString(4, value:email)
+        try output.writeString(3, value:email)
       }
       if hasAuthenticationIdentifier {
-        try output.writeString(5, value:authenticationIdentifier)
+        try output.writeString(4, value:authenticationIdentifier)
       }
       if hasFields {
-        try output.writeMessage(6, value:fields)
+        try output.writeMessage(5, value:fields)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -102,25 +94,22 @@ public extension Services.Profile.Actions.GetProfile {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasProfileId {
-        serialize_size += profileId.computeStringSize(2)
+        serialize_size += profileId.computeStringSize(1)
       }
       if hasInflations {
-          if let varSizeinflations = inflations?.computeMessageSize(3) {
+          if let varSizeinflations = inflations?.computeMessageSize(2) {
               serialize_size += varSizeinflations
           }
       }
       if hasEmail {
-        serialize_size += email.computeStringSize(4)
+        serialize_size += email.computeStringSize(3)
       }
       if hasAuthenticationIdentifier {
-        serialize_size += authenticationIdentifier.computeStringSize(5)
+        serialize_size += authenticationIdentifier.computeStringSize(4)
       }
       if hasFields {
-          if let varSizefields = fields?.computeMessageSize(6) {
+          if let varSizefields = fields?.computeMessageSize(5) {
               serialize_size += varSizefields
           }
       }
@@ -175,9 +164,6 @@ public extension Services.Profile.Actions.GetProfile {
       return try Services.Profile.Actions.GetProfile.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
@@ -202,9 +188,6 @@ public extension Services.Profile.Actions.GetProfile {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
@@ -251,29 +234,6 @@ public extension Services.Profile.Actions.GetProfile {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.GetProfile.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.GetProfile.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasProfileId:Bool {
            get {
@@ -470,9 +430,6 @@ public extension Services.Profile.Actions.GetProfile {
         if other == Services.Profile.Actions.GetProfile.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasProfileId {
              profileId = other.profileId
         }
@@ -503,13 +460,10 @@ public extension Services.Profile.Actions.GetProfile {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             profileId = try input.readString()
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
             if hasInflations {
               try subBuilder.mergeFrom(inflations)
@@ -517,13 +471,13 @@ public extension Services.Profile.Actions.GetProfile {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             inflations = subBuilder.buildPartial()
 
-          case 34 :
+          case 26 :
             email = try input.readString()
 
-          case 42 :
+          case 34 :
             authenticationIdentifier = try input.readString()
 
-          case 50 :
+          case 42 :
             let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
             if hasFields {
               try subBuilder.mergeFrom(fields)
@@ -544,9 +498,6 @@ public extension Services.Profile.Actions.GetProfile {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasProfile:Bool = false
     public private(set) var profile:Services.Profile.Containers.ProfileV1!
     required public init() {
@@ -556,11 +507,8 @@ public extension Services.Profile.Actions.GetProfile {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasProfile {
-        try output.writeMessage(2, value:profile)
+        try output.writeMessage(1, value:profile)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -571,11 +519,8 @@ public extension Services.Profile.Actions.GetProfile {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasProfile {
-          if let varSizeprofile = profile?.computeMessageSize(2) {
+          if let varSizeprofile = profile?.computeMessageSize(1) {
               serialize_size += varSizeprofile
           }
       }
@@ -630,9 +575,6 @@ public extension Services.Profile.Actions.GetProfile {
       return try Services.Profile.Actions.GetProfile.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasProfile {
         output += "\(indent) profile {\n"
         try profile?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -643,9 +585,6 @@ public extension Services.Profile.Actions.GetProfile {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasProfile {
                 if let hashValueprofile = profile?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueprofile
@@ -678,29 +617,6 @@ public extension Services.Profile.Actions.GetProfile {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.GetProfile.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.GetProfile.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasProfile:Bool {
            get {
@@ -777,9 +693,6 @@ public extension Services.Profile.Actions.GetProfile {
         if other == Services.Profile.Actions.GetProfile.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasProfile) {
             try mergeProfile(other.profile)
         }
@@ -798,10 +711,7 @@ public extension Services.Profile.Actions.GetProfile {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
             if hasProfile {
               try subBuilder.mergeFrom(profile)

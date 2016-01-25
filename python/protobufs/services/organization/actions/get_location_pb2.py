@@ -17,8 +17,8 @@ from protobufs.services.organization import containers_pb2 as protobufs_dot_serv
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/get_location.proto',
   package='services.organization.actions.get_location',
-  syntax='proto2',
-  serialized_pb=b'\n:protobufs/services/organization/actions/get_location.proto\x12*services.organization.actions.get_location\x1a\x30protobufs/services/organization/containers.proto\"B\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x13\n\x0blocation_id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"`\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12>\n\x08location\x18\x02 \x01(\x0b\x32,.services.organization.containers.LocationV1BA\n?com.rhlabs.protobufs.services.organization.actions.get_location'
+  syntax='proto3',
+  serialized_pb=b'\n:protobufs/services/organization/actions/get_location.proto\x12*services.organization.actions.get_location\x1a\x30protobufs/services/organization/containers.proto\".\n\tRequestV1\x12\x13\n\x0blocation_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"L\n\nResponseV1\x12>\n\x08location\x18\x01 \x01(\x0b\x32,.services.organization.containers.LocationV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_organization_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -34,22 +34,15 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.actions.get_location.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='location_id', full_name='services.organization.actions.get_location.RequestV1.location_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='location_id', full_name='services.organization.actions.get_location.RequestV1.location_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='name', full_name='services.organization.actions.get_location.RequestV1.name', index=2,
-      number=3, type=9, cpp_type=9, label=1,
+      name='name', full_name='services.organization.actions.get_location.RequestV1.name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -62,12 +55,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=156,
-  serialized_end=222,
+  serialized_end=202,
 )
 
 
@@ -79,15 +72,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.actions.get_location.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='location', full_name='services.organization.actions.get_location.ResponseV1.location', index=1,
-      number=2, type=11, cpp_type=10, label=1,
+      name='location', full_name='services.organization.actions.get_location.ResponseV1.location', index=0,
+      number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -100,12 +86,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=224,
-  serialized_end=320,
+  serialized_start=204,
+  serialized_end=280,
 )
 
 _RESPONSEV1.fields_by_name['location'].message_type = protobufs_dot_services_dot_organization_dot_containers__pb2._LOCATIONV1
@@ -127,6 +113,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n?com.rhlabs.protobufs.services.organization.actions.get_location')
 # @@protoc_insertion_point(module_scope)

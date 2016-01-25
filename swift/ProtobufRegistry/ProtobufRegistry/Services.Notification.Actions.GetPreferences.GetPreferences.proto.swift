@@ -10,7 +10,6 @@ public func == (lhs: Services.Notification.Actions.GetPreferences.RequestV1, rhs
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasChannel == rhs.hasChannel) && (!lhs.hasChannel || lhs.channel == rhs.channel)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -21,7 +20,6 @@ public func == (lhs: Services.Notification.Actions.GetPreferences.ResponseV1, rh
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.preferences == rhs.preferences)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -47,9 +45,6 @@ public extension Services.Notification.Actions.GetPreferences {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var channel:Services.Notification.Containers.NotificationChannelV1 = Services.Notification.Containers.NotificationChannelV1.MobilePush
     public private(set) var hasChannel:Bool = false
     required public init() {
@@ -59,11 +54,8 @@ public extension Services.Notification.Actions.GetPreferences {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasChannel {
-        try output.writeEnum(2, value:channel.rawValue)
+        try output.writeEnum(1, value:channel.rawValue)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -74,11 +66,8 @@ public extension Services.Notification.Actions.GetPreferences {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if (hasChannel) {
-        serialize_size += channel.rawValue.computeEnumSize(2)
+        serialize_size += channel.rawValue.computeEnumSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -131,9 +120,6 @@ public extension Services.Notification.Actions.GetPreferences {
       return try Services.Notification.Actions.GetPreferences.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if (hasChannel) {
         output += "\(indent) channel: \(channel.rawValue)\n"
       }
@@ -142,9 +128,6 @@ public extension Services.Notification.Actions.GetPreferences {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasChannel {
                hashCode = (hashCode &* 31) &+ Int(channel.rawValue)
             }
@@ -175,29 +158,6 @@ public extension Services.Notification.Actions.GetPreferences {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Actions.GetPreferences.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Actions.GetPreferences.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
         public var hasChannel:Bool{
             get {
@@ -246,9 +206,6 @@ public extension Services.Notification.Actions.GetPreferences {
         if other == Services.Notification.Actions.GetPreferences.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasChannel {
              channel = other.channel
         }
@@ -268,14 +225,11 @@ public extension Services.Notification.Actions.GetPreferences {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             let valueIntchannel = try input.readEnum()
             if let enumschannel = Services.Notification.Containers.NotificationChannelV1(rawValue:valueIntchannel){
                  channel = enumschannel
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntchannel))
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntchannel))
             }
 
           default:
@@ -291,9 +245,6 @@ public extension Services.Notification.Actions.GetPreferences {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var preferences:Array<Services.Notification.Containers.NotificationPreferenceV1>  = Array<Services.Notification.Containers.NotificationPreferenceV1>()
     required public init() {
          super.init()
@@ -302,11 +253,8 @@ public extension Services.Notification.Actions.GetPreferences {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementpreferences in preferences {
-          try output.writeMessage(2, value:oneElementpreferences)
+          try output.writeMessage(1, value:oneElementpreferences)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -317,11 +265,8 @@ public extension Services.Notification.Actions.GetPreferences {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementpreferences in preferences {
-          serialize_size += oneElementpreferences.computeMessageSize(2)
+          serialize_size += oneElementpreferences.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -374,9 +319,6 @@ public extension Services.Notification.Actions.GetPreferences {
       return try Services.Notification.Actions.GetPreferences.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var preferencesElementIndex:Int = 0
       for oneElementpreferences in preferences {
           output += "\(indent) preferences[\(preferencesElementIndex)] {\n"
@@ -389,9 +331,6 @@ public extension Services.Notification.Actions.GetPreferences {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementpreferences in preferences {
                 hashCode = (hashCode &* 31) &+ oneElementpreferences.hashValue
             }
@@ -422,29 +361,6 @@ public extension Services.Notification.Actions.GetPreferences {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Actions.GetPreferences.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Actions.GetPreferences.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var preferences:Array<Services.Notification.Containers.NotificationPreferenceV1> {
            get {
@@ -486,9 +402,6 @@ public extension Services.Notification.Actions.GetPreferences {
         if other == Services.Notification.Actions.GetPreferences.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.preferences.isEmpty  {
            builderResult.preferences += other.preferences
         }
@@ -507,10 +420,7 @@ public extension Services.Notification.Actions.GetPreferences {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.Notification.Containers.NotificationPreferenceV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             preferences += [subBuilder.buildPartial()]

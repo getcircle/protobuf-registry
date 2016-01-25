@@ -17,8 +17,8 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/group/containers/permissions/who_can_view_group.proto',
   package='services.group.containers.permissions.who_can_view_group',
-  syntax='proto2',
-  serialized_pb=b'\nHprotobufs/services/group/containers/permissions/who_can_view_group.proto\x12\x38services.group.containers.permissions.who_can_view_group*`\n\x1cWhoCanViewGroupPermissionsV1\x12\n\n\x06\x41NYONE\x10\x00\x12\x11\n\rALL_IN_DOMAIN\x10\x01\x12\x0f\n\x0b\x41LL_MEMBERS\x10\x02\x12\x10\n\x0c\x41LL_MANAGERS\x10\x03\x42O\nMcom.rhlabs.protobufs.services.group.containers.permissions.who_can_view_group'
+  syntax='proto3',
+  serialized_pb=b'\nHprotobufs/services/group/containers/permissions/who_can_view_group.proto\x12\x38services.group.containers.permissions.who_can_view_group*`\n\x1cWhoCanViewGroupPermissionsV1\x12\n\n\x06\x41NYONE\x10\x00\x12\x11\n\rALL_IN_DOMAIN\x10\x01\x12\x0f\n\x0b\x41LL_MEMBERS\x10\x02\x12\x10\n\x0c\x41LL_MANAGERS\x10\x03\x62\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -62,6 +62,4 @@ ALL_MANAGERS = 3
 DESCRIPTOR.enum_types_by_name['WhoCanViewGroupPermissionsV1'] = _WHOCANVIEWGROUPPERMISSIONSV1
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\nMcom.rhlabs.protobufs.services.group.containers.permissions.who_can_view_group')
 # @@protoc_insertion_point(module_scope)

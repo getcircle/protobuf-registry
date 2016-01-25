@@ -10,7 +10,6 @@ public func == (lhs: Services.Group.Actions.RespondToMembershipRequest.RequestV1
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasRequestId == rhs.hasRequestId) && (!lhs.hasRequestId || lhs.requestId == rhs.requestId)
   fieldCheck = fieldCheck && (lhs.hasAction == rhs.hasAction) && (!lhs.hasAction || lhs.action == rhs.action)
   fieldCheck = fieldCheck && (lhs.hasMessage_ == rhs.hasMessage_) && (!lhs.hasMessage_ || lhs.message_ == rhs.message_)
@@ -23,7 +22,6 @@ public func == (lhs: Services.Group.Actions.RespondToMembershipRequest.ResponseV
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -59,9 +57,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
 
       //Enum type declaration end 
 
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasRequestId:Bool = false
     public private(set) var requestId:String = ""
 
@@ -77,9 +72,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasRequestId {
         try output.writeString(2, value:requestId)
       }
@@ -98,9 +90,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasRequestId {
         serialize_size += requestId.computeStringSize(2)
       }
@@ -161,9 +150,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
       return try Services.Group.Actions.RespondToMembershipRequest.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasRequestId {
         output += "\(indent) requestId: \(requestId) \n"
       }
@@ -178,9 +164,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasRequestId {
                hashCode = (hashCode &* 31) &+ requestId.hashValue
             }
@@ -217,29 +200,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Actions.RespondToMembershipRequest.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Actions.RespondToMembershipRequest.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasRequestId:Bool {
            get {
@@ -334,9 +294,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
         if other == Services.Group.Actions.RespondToMembershipRequest.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasRequestId {
              requestId = other.requestId
         }
@@ -360,9 +317,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           case 18 :
             requestId = try input.readString()
@@ -391,9 +345,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     required public init() {
          super.init()
     }
@@ -401,9 +352,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -413,9 +361,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -467,17 +412,11 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
       return try Services.Group.Actions.RespondToMembershipRequest.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -506,29 +445,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Actions.RespondToMembershipRequest.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Actions.RespondToMembershipRequest.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -553,9 +469,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
         if other == Services.Group.Actions.RespondToMembershipRequest.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -570,9 +483,6 @@ public extension Services.Group.Actions.RespondToMembershipRequest {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

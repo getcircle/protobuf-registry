@@ -81,18 +81,6 @@ public func == (lhs: Services.Profile.Containers.StatV1, rhs: Services.Profile.C
   return fieldCheck
 }
 
-public func == (lhs: Services.Profile.Containers.TagV1, rhs: Services.Profile.Containers.TagV1) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
-  fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
-  fieldCheck = fieldCheck && (lhs.hasTagType == rhs.hasTagType) && (!lhs.hasTagType || lhs.tagType == rhs.tagType)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
 public extension Services.Profile.Containers {
   public struct ContainersRoot {
     public static var sharedInstance : ContainersRoot {
@@ -150,16 +138,16 @@ public extension Services.Profile.Containers {
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasLabel {
-        try output.writeString(3, value:label)
+        try output.writeString(2, value:label)
       }
       if hasValue {
-        try output.writeString(4, value:value)
+        try output.writeString(3, value:value)
       }
       if hasContactMethodType {
-        try output.writeEnum(5, value:contactMethodType.rawValue)
+        try output.writeEnum(4, value:contactMethodType.rawValue)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -171,16 +159,16 @@ public extension Services.Profile.Containers {
 
       serialize_size = 0
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasLabel {
-        serialize_size += label.computeStringSize(3)
+        serialize_size += label.computeStringSize(2)
       }
       if hasValue {
-        serialize_size += value.computeStringSize(4)
+        serialize_size += value.computeStringSize(3)
       }
       if (hasContactMethodType) {
-        serialize_size += contactMethodType.rawValue.computeEnumSize(5)
+        serialize_size += contactMethodType.rawValue.computeEnumSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -433,21 +421,21 @@ public extension Services.Profile.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             label = try input.readString()
 
-          case 34 :
+          case 26 :
             value = try input.readString()
 
-          case 40 :
+          case 32 :
             let valueIntcontactMethodType = try input.readEnum()
             if let enumscontactMethodType = Services.Profile.Containers.ContactMethodV1.ContactMethodTypeV1(rawValue:valueIntcontactMethodType){
                  contactMethodType = enumscontactMethodType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueIntcontactMethodType))
+                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntcontactMethodType))
             }
 
           default:
@@ -528,67 +516,67 @@ public extension Services.Profile.Containers {
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasOrganizationId {
-        try output.writeString(3, value:organizationId)
+        try output.writeString(2, value:organizationId)
       }
       if hasUserId {
-        try output.writeString(4, value:userId)
+        try output.writeString(3, value:userId)
       }
       if hasTitle {
-        try output.writeString(5, value:title)
+        try output.writeString(4, value:title)
       }
       if hasFirstName {
-        try output.writeString(6, value:firstName)
+        try output.writeString(5, value:firstName)
       }
       if hasLastName {
-        try output.writeString(7, value:lastName)
+        try output.writeString(6, value:lastName)
       }
       if hasImageUrl {
-        try output.writeString(8, value:imageUrl)
+        try output.writeString(7, value:imageUrl)
       }
       if hasFullName {
-        try output.writeString(9, value:fullName)
+        try output.writeString(8, value:fullName)
       }
       if hasBirthDate {
-        try output.writeString(10, value:birthDate)
+        try output.writeString(9, value:birthDate)
       }
       if hasHireDate {
-        try output.writeString(11, value:hireDate)
+        try output.writeString(10, value:hireDate)
       }
       if hasVerified {
-        try output.writeBool(12, value:verified)
+        try output.writeBool(11, value:verified)
       }
       for oneElementitems in items {
-          try output.writeMessage(13, value:oneElementitems)
+          try output.writeMessage(12, value:oneElementitems)
       }
       if hasNickname {
-        try output.writeString(14, value:nickname)
+        try output.writeString(13, value:nickname)
       }
       for oneElementcontactMethods in contactMethods {
-          try output.writeMessage(15, value:oneElementcontactMethods)
+          try output.writeMessage(14, value:oneElementcontactMethods)
       }
       if hasEmail {
-        try output.writeString(16, value:email)
+        try output.writeString(15, value:email)
       }
       if hasIsAdmin {
-        try output.writeBool(17, value:isAdmin)
+        try output.writeBool(16, value:isAdmin)
       }
       if hasSmallImageUrl {
-        try output.writeString(18, value:smallImageUrl)
+        try output.writeString(17, value:smallImageUrl)
       }
       if hasDisplayTitle {
-        try output.writeString(20, value:displayTitle)
+        try output.writeString(18, value:displayTitle)
       }
       if hasAuthenticationIdentifier {
-        try output.writeString(21, value:authenticationIdentifier)
+        try output.writeString(19, value:authenticationIdentifier)
       }
       if hasInflations {
-        try output.writeMessage(22, value:inflations)
+        try output.writeMessage(20, value:inflations)
       }
       if hasFields {
-        try output.writeMessage(23, value:fields)
+        try output.writeMessage(21, value:fields)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -600,69 +588,69 @@ public extension Services.Profile.Containers {
 
       serialize_size = 0
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(3)
+        serialize_size += organizationId.computeStringSize(2)
       }
       if hasUserId {
-        serialize_size += userId.computeStringSize(4)
+        serialize_size += userId.computeStringSize(3)
       }
       if hasTitle {
-        serialize_size += title.computeStringSize(5)
+        serialize_size += title.computeStringSize(4)
       }
       if hasFirstName {
-        serialize_size += firstName.computeStringSize(6)
+        serialize_size += firstName.computeStringSize(5)
       }
       if hasLastName {
-        serialize_size += lastName.computeStringSize(7)
+        serialize_size += lastName.computeStringSize(6)
       }
       if hasImageUrl {
-        serialize_size += imageUrl.computeStringSize(8)
+        serialize_size += imageUrl.computeStringSize(7)
       }
       if hasFullName {
-        serialize_size += fullName.computeStringSize(9)
+        serialize_size += fullName.computeStringSize(8)
       }
       if hasBirthDate {
-        serialize_size += birthDate.computeStringSize(10)
+        serialize_size += birthDate.computeStringSize(9)
       }
       if hasHireDate {
-        serialize_size += hireDate.computeStringSize(11)
+        serialize_size += hireDate.computeStringSize(10)
       }
       if hasVerified {
-        serialize_size += verified.computeBoolSize(12)
+        serialize_size += verified.computeBoolSize(11)
       }
       for oneElementitems in items {
-          serialize_size += oneElementitems.computeMessageSize(13)
+          serialize_size += oneElementitems.computeMessageSize(12)
       }
       if hasNickname {
-        serialize_size += nickname.computeStringSize(14)
+        serialize_size += nickname.computeStringSize(13)
       }
       for oneElementcontactMethods in contactMethods {
-          serialize_size += oneElementcontactMethods.computeMessageSize(15)
+          serialize_size += oneElementcontactMethods.computeMessageSize(14)
       }
       if hasEmail {
-        serialize_size += email.computeStringSize(16)
+        serialize_size += email.computeStringSize(15)
       }
       if hasIsAdmin {
-        serialize_size += isAdmin.computeBoolSize(17)
+        serialize_size += isAdmin.computeBoolSize(16)
       }
       if hasSmallImageUrl {
-        serialize_size += smallImageUrl.computeStringSize(18)
+        serialize_size += smallImageUrl.computeStringSize(17)
       }
       if hasDisplayTitle {
-        serialize_size += displayTitle.computeStringSize(20)
+        serialize_size += displayTitle.computeStringSize(18)
       }
       if hasAuthenticationIdentifier {
-        serialize_size += authenticationIdentifier.computeStringSize(21)
+        serialize_size += authenticationIdentifier.computeStringSize(19)
       }
       if hasInflations {
-          if let varSizeinflations = inflations?.computeMessageSize(22) {
+          if let varSizeinflations = inflations?.computeMessageSize(20) {
               serialize_size += varSizeinflations
           }
       }
       if hasFields {
-          if let varSizefields = fields?.computeMessageSize(23) {
+          if let varSizefields = fields?.computeMessageSize(21) {
               serialize_size += varSizefields
           }
       }
@@ -1519,68 +1507,68 @@ public extension Services.Profile.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             organizationId = try input.readString()
 
-          case 34 :
+          case 26 :
             userId = try input.readString()
 
-          case 42 :
+          case 34 :
             title = try input.readString()
 
-          case 50 :
+          case 42 :
             firstName = try input.readString()
 
-          case 58 :
+          case 50 :
             lastName = try input.readString()
 
-          case 66 :
+          case 58 :
             imageUrl = try input.readString()
 
-          case 74 :
+          case 66 :
             fullName = try input.readString()
 
-          case 82 :
+          case 74 :
             birthDate = try input.readString()
 
-          case 90 :
+          case 82 :
             hireDate = try input.readString()
 
-          case 96 :
+          case 88 :
             verified = try input.readBool()
 
-          case 106 :
+          case 98 :
             let subBuilder = Services.Profile.Containers.ProfileItemV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             items += [subBuilder.buildPartial()]
 
-          case 114 :
+          case 106 :
             nickname = try input.readString()
 
-          case 122 :
+          case 114 :
             let subBuilder = Services.Profile.Containers.ContactMethodV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             contactMethods += [subBuilder.buildPartial()]
 
-          case 130 :
+          case 122 :
             email = try input.readString()
 
-          case 136 :
+          case 128 :
             isAdmin = try input.readBool()
 
-          case 146 :
+          case 138 :
             smallImageUrl = try input.readString()
 
-          case 162 :
+          case 146 :
             displayTitle = try input.readString()
 
-          case 170 :
+          case 154 :
             authenticationIdentifier = try input.readString()
 
-          case 178 :
+          case 162 :
             let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
             if hasInflations {
               try subBuilder.mergeFrom(inflations)
@@ -1588,7 +1576,7 @@ public extension Services.Profile.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             inflations = subBuilder.buildPartial()
 
-          case 186 :
+          case 170 :
             let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
             if hasFields {
               try subBuilder.mergeFrom(fields)
@@ -1623,10 +1611,10 @@ public extension Services.Profile.Containers {
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasKey {
-        try output.writeString(2, value:key)
+        try output.writeString(1, value:key)
       }
       if hasValue {
-        try output.writeString(3, value:value)
+        try output.writeString(2, value:value)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1638,10 +1626,10 @@ public extension Services.Profile.Containers {
 
       serialize_size = 0
       if hasKey {
-        serialize_size += key.computeStringSize(2)
+        serialize_size += key.computeStringSize(1)
       }
       if hasValue {
-        serialize_size += value.computeStringSize(3)
+        serialize_size += value.computeStringSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1830,10 +1818,10 @@ public extension Services.Profile.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 18 :
+          case 10 :
             key = try input.readString()
 
-          case 26 :
+          case 18 :
             value = try input.readString()
 
           default:
@@ -1863,10 +1851,10 @@ public extension Services.Profile.Containers {
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasName {
-        try output.writeString(2, value:name)
+        try output.writeString(1, value:name)
       }
       if hasValue {
-        try output.writeString(3, value:value)
+        try output.writeString(2, value:value)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1878,10 +1866,10 @@ public extension Services.Profile.Containers {
 
       serialize_size = 0
       if hasName {
-        serialize_size += name.computeStringSize(2)
+        serialize_size += name.computeStringSize(1)
       }
       if hasValue {
-        serialize_size += value.computeStringSize(3)
+        serialize_size += value.computeStringSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2070,10 +2058,10 @@ public extension Services.Profile.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 18 :
+          case 10 :
             name = try input.readString()
 
-          case 26 :
+          case 18 :
             value = try input.readString()
 
           default:
@@ -2103,10 +2091,10 @@ public extension Services.Profile.Containers {
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasCount {
-        try output.writeUInt32(3, value:count)
+        try output.writeUInt32(2, value:count)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -2118,10 +2106,10 @@ public extension Services.Profile.Containers {
 
       serialize_size = 0
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasCount {
-        serialize_size += count.computeUInt32Size(3)
+        serialize_size += count.computeUInt32Size(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2310,313 +2298,11 @@ public extension Services.Profile.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 24 :
+          case 16 :
             count = try input.readUInt32()
-
-          default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
-               unknownFields = try unknownFieldsBuilder.build()
-               return self
-            }
-          }
-        }
-      }
-    }
-
-  }
-
-  final public class TagV1 : GeneratedMessage, GeneratedMessageProtocol {
-
-
-      //Enum type declaration start 
-
-      public enum TagTypeV1:Int32 {
-        case Skill = 0
-        case Interest = 1
-        case Language = 2
-        case Project = 3
-
-      }
-
-      //Enum type declaration end 
-
-    public private(set) var hasId:Bool = false
-    public private(set) var id:String = ""
-
-    public private(set) var hasName:Bool = false
-    public private(set) var name:String = ""
-
-    public private(set) var tagType:Services.Profile.Containers.TagV1.TagTypeV1 = Services.Profile.Containers.TagV1.TagTypeV1.Skill
-    public private(set) var hasTagType:Bool = false
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasId {
-        try output.writeString(2, value:id)
-      }
-      if hasName {
-        try output.writeString(3, value:name)
-      }
-      if hasTagType {
-        try output.writeEnum(4, value:tagType.rawValue)
-      }
-      try unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      if hasId {
-        serialize_size += id.computeStringSize(2)
-      }
-      if hasName {
-        serialize_size += name.computeStringSize(3)
-      }
-      if (hasTagType) {
-        serialize_size += tagType.rawValue.computeEnumSize(4)
-      }
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Profile.Containers.TagV1> {
-      var mergedArray = Array<Services.Profile.Containers.TagV1>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Profile.Containers.TagV1? {
-      return try Services.Profile.Containers.TagV1.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Services.Profile.Containers.TagV1 {
-      return try Services.Profile.Containers.TagV1.Builder().mergeFromData(data, extensionRegistry:Services.Profile.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Profile.Containers.TagV1 {
-      return try Services.Profile.Containers.TagV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Profile.Containers.TagV1 {
-      return try Services.Profile.Containers.TagV1.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Profile.Containers.TagV1 {
-      return try Services.Profile.Containers.TagV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Profile.Containers.TagV1 {
-      return try Services.Profile.Containers.TagV1.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Profile.Containers.TagV1 {
-      return try Services.Profile.Containers.TagV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func getBuilder() -> Services.Profile.Containers.TagV1.Builder {
-      return Services.Profile.Containers.TagV1.classBuilder() as! Services.Profile.Containers.TagV1.Builder
-    }
-    public func getBuilder() -> Services.Profile.Containers.TagV1.Builder {
-      return classBuilder() as! Services.Profile.Containers.TagV1.Builder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Profile.Containers.TagV1.Builder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Profile.Containers.TagV1.Builder()
-    }
-    public func toBuilder() throws -> Services.Profile.Containers.TagV1.Builder {
-      return try Services.Profile.Containers.TagV1.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Profile.Containers.TagV1) throws -> Services.Profile.Containers.TagV1.Builder {
-      return try Services.Profile.Containers.TagV1.Builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasId {
-        output += "\(indent) id: \(id) \n"
-      }
-      if hasName {
-        output += "\(indent) name: \(name) \n"
-      }
-      if (hasTagType) {
-        output += "\(indent) tagType: \(tagType.rawValue)\n"
-      }
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            if hasId {
-               hashCode = (hashCode &* 31) &+ id.hashValue
-            }
-            if hasName {
-               hashCode = (hashCode &* 31) &+ name.hashValue
-            }
-            if hasTagType {
-               hashCode = (hashCode &* 31) &+ Int(tagType.rawValue)
-            }
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Profile.Containers.TagV1"
-    }
-    override public func className() -> String {
-        return "Services.Profile.Containers.TagV1"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Profile.Containers.TagV1.self
-    }
-    //Meta information declaration end
-
-    final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Services.Profile.Containers.TagV1 = Services.Profile.Containers.TagV1()
-      public func getMessage() -> Services.Profile.Containers.TagV1 {
-          return builderResult
-      }
-
-      required override public init () {
-         super.init()
-      }
-      public var hasId:Bool {
-           get {
-                return builderResult.hasId
-           }
-      }
-      public var id:String {
-           get {
-                return builderResult.id
-           }
-           set (value) {
-               builderResult.hasId = true
-               builderResult.id = value
-           }
-      }
-      public func setId(value:String) -> Services.Profile.Containers.TagV1.Builder {
-        self.id = value
-        return self
-      }
-      public func clearId() -> Services.Profile.Containers.TagV1.Builder{
-           builderResult.hasId = false
-           builderResult.id = ""
-           return self
-      }
-      public var hasName:Bool {
-           get {
-                return builderResult.hasName
-           }
-      }
-      public var name:String {
-           get {
-                return builderResult.name
-           }
-           set (value) {
-               builderResult.hasName = true
-               builderResult.name = value
-           }
-      }
-      public func setName(value:String) -> Services.Profile.Containers.TagV1.Builder {
-        self.name = value
-        return self
-      }
-      public func clearName() -> Services.Profile.Containers.TagV1.Builder{
-           builderResult.hasName = false
-           builderResult.name = ""
-           return self
-      }
-        public var hasTagType:Bool{
-            get {
-                return builderResult.hasTagType
-            }
-        }
-        public var tagType:Services.Profile.Containers.TagV1.TagTypeV1 {
-            get {
-                return builderResult.tagType
-            }
-            set (value) {
-                builderResult.hasTagType = true
-                builderResult.tagType = value
-            }
-        }
-        public func setTagType(value:Services.Profile.Containers.TagV1.TagTypeV1) -> Services.Profile.Containers.TagV1.Builder {
-          self.tagType = value
-          return self
-        }
-        public func clearTagType() -> Services.Profile.Containers.TagV1.Builder {
-           builderResult.hasTagType = false
-           builderResult.tagType = .Skill
-           return self
-        }
-      override public var internalGetResult:GeneratedMessage {
-           get {
-              return builderResult
-           }
-      }
-      public override func clear() -> Services.Profile.Containers.TagV1.Builder {
-        builderResult = Services.Profile.Containers.TagV1()
-        return self
-      }
-      public override func clone() throws -> Services.Profile.Containers.TagV1.Builder {
-        return try Services.Profile.Containers.TagV1.builderWithPrototype(builderResult)
-      }
-      public override func build() throws -> Services.Profile.Containers.TagV1 {
-           try checkInitialized()
-           return buildPartial()
-      }
-      public func buildPartial() -> Services.Profile.Containers.TagV1 {
-        let returnMe:Services.Profile.Containers.TagV1 = builderResult
-        return returnMe
-      }
-      public func mergeFrom(other:Services.Profile.Containers.TagV1) throws -> Services.Profile.Containers.TagV1.Builder {
-        if other == Services.Profile.Containers.TagV1() {
-         return self
-        }
-        if other.hasId {
-             id = other.id
-        }
-        if other.hasName {
-             name = other.name
-        }
-        if other.hasTagType {
-             tagType = other.tagType
-        }
-        try mergeUnknownFields(other.unknownFields)
-        return self
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Profile.Containers.TagV1.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Profile.Containers.TagV1.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-        while (true) {
-          let tag = try input.readTag()
-          switch tag {
-          case 0: 
-            self.unknownFields = try unknownFieldsBuilder.build()
-            return self
-
-          case 18 :
-            id = try input.readString()
-
-          case 26 :
-            name = try input.readString()
-
-          case 32 :
-            let valueInttagType = try input.readEnum()
-            if let enumstagType = Services.Profile.Containers.TagV1.TagTypeV1(rawValue:valueInttagType){
-                 tagType = enumstagType
-            } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueInttagType))
-            }
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

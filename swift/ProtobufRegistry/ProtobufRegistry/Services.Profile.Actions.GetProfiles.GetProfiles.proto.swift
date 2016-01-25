@@ -10,8 +10,6 @@ public func == (lhs: Services.Profile.Actions.GetProfiles.RequestV1, rhs: Servic
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasTagId == rhs.hasTagId) && (!lhs.hasTagId || lhs.tagId == rhs.tagId)
   fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
   fieldCheck = fieldCheck && (lhs.hasLocationId == rhs.hasLocationId) && (!lhs.hasLocationId || lhs.locationId == rhs.locationId)
   fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
@@ -30,7 +28,6 @@ public func == (lhs: Services.Profile.Actions.GetProfiles.ResponseV1, rhs: Servi
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.profiles == rhs.profiles)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -57,12 +54,6 @@ public extension Services.Profile.Actions.GetProfiles {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
-    public private(set) var hasTagId:Bool = false
-    public private(set) var tagId:String = ""
-
     public private(set) var ids:Array<String> = Array<String>()
     public private(set) var hasLocationId:Bool = false
     public private(set) var locationId:String = ""
@@ -89,44 +80,38 @@ public extension Services.Profile.Actions.GetProfiles {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
-      if hasTagId {
-        try output.writeString(2, value:tagId)
-      }
       if !ids.isEmpty {
         for oneValueids in ids {
-          try output.writeString(3, value:oneValueids)
+          try output.writeString(1, value:oneValueids)
         }
       }
       if hasLocationId {
-        try output.writeString(4, value:locationId)
+        try output.writeString(2, value:locationId)
       }
       if hasTeamId {
-        try output.writeString(5, value:teamId)
+        try output.writeString(3, value:teamId)
       }
       if hasInflations {
-        try output.writeMessage(6, value:inflations)
+        try output.writeMessage(4, value:inflations)
       }
       if hasManagerId {
-        try output.writeString(7, value:managerId)
+        try output.writeString(5, value:managerId)
       }
       if !emails.isEmpty {
         for oneValueemails in emails {
-          try output.writeString(8, value:oneValueemails)
+          try output.writeString(6, value:oneValueemails)
         }
       }
       if hasIsAdmin {
-        try output.writeBool(9, value:isAdmin)
+        try output.writeBool(7, value:isAdmin)
       }
       if !authenticationIdentifiers.isEmpty {
         for oneValueauthenticationIdentifiers in authenticationIdentifiers {
-          try output.writeString(10, value:oneValueauthenticationIdentifiers)
+          try output.writeString(8, value:oneValueauthenticationIdentifiers)
         }
       }
       if hasFields {
-        try output.writeMessage(11, value:fields)
+        try output.writeMessage(9, value:fields)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -137,12 +122,6 @@ public extension Services.Profile.Actions.GetProfiles {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
-      if hasTagId {
-        serialize_size += tagId.computeStringSize(2)
-      }
       var dataSizeIds:Int32 = 0
       for oneValueids in ids {
           dataSizeIds += oneValueids.computeStringSizeNoTag()
@@ -150,18 +129,18 @@ public extension Services.Profile.Actions.GetProfiles {
       serialize_size += dataSizeIds
       serialize_size += 1 * Int32(ids.count)
       if hasLocationId {
-        serialize_size += locationId.computeStringSize(4)
+        serialize_size += locationId.computeStringSize(2)
       }
       if hasTeamId {
-        serialize_size += teamId.computeStringSize(5)
+        serialize_size += teamId.computeStringSize(3)
       }
       if hasInflations {
-          if let varSizeinflations = inflations?.computeMessageSize(6) {
+          if let varSizeinflations = inflations?.computeMessageSize(4) {
               serialize_size += varSizeinflations
           }
       }
       if hasManagerId {
-        serialize_size += managerId.computeStringSize(7)
+        serialize_size += managerId.computeStringSize(5)
       }
       var dataSizeEmails:Int32 = 0
       for oneValueemails in emails {
@@ -170,7 +149,7 @@ public extension Services.Profile.Actions.GetProfiles {
       serialize_size += dataSizeEmails
       serialize_size += 1 * Int32(emails.count)
       if hasIsAdmin {
-        serialize_size += isAdmin.computeBoolSize(9)
+        serialize_size += isAdmin.computeBoolSize(7)
       }
       var dataSizeAuthenticationIdentifiers:Int32 = 0
       for oneValueauthenticationIdentifiers in authenticationIdentifiers {
@@ -179,7 +158,7 @@ public extension Services.Profile.Actions.GetProfiles {
       serialize_size += dataSizeAuthenticationIdentifiers
       serialize_size += 1 * Int32(authenticationIdentifiers.count)
       if hasFields {
-          if let varSizefields = fields?.computeMessageSize(11) {
+          if let varSizefields = fields?.computeMessageSize(9) {
               serialize_size += varSizefields
           }
       }
@@ -234,12 +213,6 @@ public extension Services.Profile.Actions.GetProfiles {
       return try Services.Profile.Actions.GetProfiles.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
-      if hasTagId {
-        output += "\(indent) tagId: \(tagId) \n"
-      }
       var idsElementIndex:Int = 0
       for oneValueids in ids  {
           output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
@@ -282,12 +255,6 @@ public extension Services.Profile.Actions.GetProfiles {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            if hasTagId {
-               hashCode = (hashCode &* 31) &+ tagId.hashValue
-            }
             for oneValueids in ids {
                 hashCode = (hashCode &* 31) &+ oneValueids.hashValue
             }
@@ -346,52 +313,6 @@ public extension Services.Profile.Actions.GetProfiles {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.GetProfiles.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.GetProfiles.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
-      public var hasTagId:Bool {
-           get {
-                return builderResult.hasTagId
-           }
-      }
-      public var tagId:String {
-           get {
-                return builderResult.tagId
-           }
-           set (value) {
-               builderResult.hasTagId = true
-               builderResult.tagId = value
-           }
-      }
-      public func setTagId(value:String) -> Services.Profile.Actions.GetProfiles.RequestV1.Builder {
-        self.tagId = value
-        return self
-      }
-      public func clearTagId() -> Services.Profile.Actions.GetProfiles.RequestV1.Builder{
-           builderResult.hasTagId = false
-           builderResult.tagId = ""
-           return self
       }
       public var ids:Array<String> {
            get {
@@ -659,12 +580,6 @@ public extension Services.Profile.Actions.GetProfiles {
         if other == Services.Profile.Actions.GetProfiles.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
-        if other.hasTagId {
-             tagId = other.tagId
-        }
         if !other.ids.isEmpty {
             builderResult.ids += other.ids
         }
@@ -707,22 +622,16 @@ public extension Services.Profile.Actions.GetProfiles {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
-            tagId = try input.readString()
-
-          case 26 :
+          case 10 :
             ids += [try input.readString()]
 
-          case 34 :
+          case 18 :
             locationId = try input.readString()
 
-          case 42 :
+          case 26 :
             teamId = try input.readString()
 
-          case 50 :
+          case 34 :
             let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
             if hasInflations {
               try subBuilder.mergeFrom(inflations)
@@ -730,19 +639,19 @@ public extension Services.Profile.Actions.GetProfiles {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             inflations = subBuilder.buildPartial()
 
-          case 58 :
+          case 42 :
             managerId = try input.readString()
 
-          case 66 :
+          case 50 :
             emails += [try input.readString()]
 
-          case 72 :
+          case 56 :
             isAdmin = try input.readBool()
 
-          case 82 :
+          case 66 :
             authenticationIdentifiers += [try input.readString()]
 
-          case 90 :
+          case 74 :
             let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
             if hasFields {
               try subBuilder.mergeFrom(fields)
@@ -763,9 +672,6 @@ public extension Services.Profile.Actions.GetProfiles {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var profiles:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
     required public init() {
          super.init()
@@ -774,11 +680,8 @@ public extension Services.Profile.Actions.GetProfiles {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementprofiles in profiles {
-          try output.writeMessage(2, value:oneElementprofiles)
+          try output.writeMessage(1, value:oneElementprofiles)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -789,11 +692,8 @@ public extension Services.Profile.Actions.GetProfiles {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementprofiles in profiles {
-          serialize_size += oneElementprofiles.computeMessageSize(2)
+          serialize_size += oneElementprofiles.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -846,9 +746,6 @@ public extension Services.Profile.Actions.GetProfiles {
       return try Services.Profile.Actions.GetProfiles.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var profilesElementIndex:Int = 0
       for oneElementprofiles in profiles {
           output += "\(indent) profiles[\(profilesElementIndex)] {\n"
@@ -861,9 +758,6 @@ public extension Services.Profile.Actions.GetProfiles {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementprofiles in profiles {
                 hashCode = (hashCode &* 31) &+ oneElementprofiles.hashValue
             }
@@ -894,29 +788,6 @@ public extension Services.Profile.Actions.GetProfiles {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.GetProfiles.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.GetProfiles.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var profiles:Array<Services.Profile.Containers.ProfileV1> {
            get {
@@ -958,9 +829,6 @@ public extension Services.Profile.Actions.GetProfiles {
         if other == Services.Profile.Actions.GetProfiles.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.profiles.isEmpty  {
            builderResult.profiles += other.profiles
         }
@@ -979,10 +847,7 @@ public extension Services.Profile.Actions.GetProfiles {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.Profile.Containers.ProfileV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             profiles += [subBuilder.buildPartial()]

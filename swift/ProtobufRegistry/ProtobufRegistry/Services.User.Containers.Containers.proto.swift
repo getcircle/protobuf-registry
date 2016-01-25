@@ -10,7 +10,6 @@ public func == (lhs: Services.User.Containers.DeviceV1, rhs: Services.User.Conta
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasNotificationToken == rhs.hasNotificationToken) && (!lhs.hasNotificationToken || lhs.notificationToken == rhs.notificationToken)
   fieldCheck = fieldCheck && (lhs.hasPlatform == rhs.hasPlatform) && (!lhs.hasPlatform || lhs.platform == rhs.platform)
@@ -30,7 +29,6 @@ public func == (lhs: Services.User.Containers.IdentityV1, rhs: Services.User.Con
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   fieldCheck = fieldCheck && (lhs.hasFullName == rhs.hasFullName) && (!lhs.hasFullName || lhs.fullName == rhs.fullName)
@@ -50,21 +48,8 @@ public func == (lhs: Services.User.Containers.OAuth2DetailsV1, rhs: Services.Use
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasCode == rhs.hasCode) && (!lhs.hasCode || lhs.code == rhs.code)
   fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Services.User.Containers.OAuthSDKDetailsV1, rhs: Services.User.Containers.OAuthSDKDetailsV1) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasCode == rhs.hasCode) && (!lhs.hasCode || lhs.code == rhs.code)
-  fieldCheck = fieldCheck && (lhs.hasIdToken == rhs.hasIdToken) && (!lhs.hasIdToken || lhs.idToken == rhs.idToken)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -74,7 +59,6 @@ public func == (lhs: Services.User.Containers.UserV1, rhs: Services.User.Contain
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasPrimaryEmail == rhs.hasPrimaryEmail) && (!lhs.hasPrimaryEmail || lhs.primaryEmail == rhs.primaryEmail)
   fieldCheck = fieldCheck && (lhs.hasIsAdmin == rhs.hasIsAdmin) && (!lhs.hasIsAdmin || lhs.isAdmin == rhs.isAdmin)
@@ -90,11 +74,30 @@ public func == (lhs: Services.User.Containers.SAMLDetailsV1, rhs: Services.User.
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasSamlResponse == rhs.hasSamlResponse) && (!lhs.hasSamlResponse || lhs.samlResponse == rhs.samlResponse)
   fieldCheck = fieldCheck && (lhs.hasRelayState == rhs.hasRelayState) && (!lhs.hasRelayState || lhs.relayState == rhs.relayState)
   fieldCheck = fieldCheck && (lhs.hasDomain == rhs.hasDomain) && (!lhs.hasDomain || lhs.domain == rhs.domain)
-  fieldCheck = fieldCheck && (lhs.hasAuthState == rhs.hasAuthState) && (!lhs.hasAuthState || lhs.authState == rhs.authState)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
+public func == (lhs: Services.User.Containers.SAMLCredentialsV1, rhs: Services.User.Containers.SAMLCredentialsV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
+public func == (lhs: Services.User.Containers.GoogleCredentialsV1, rhs: Services.User.Containers.GoogleCredentialsV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasCode == rhs.hasCode) && (!lhs.hasCode || lhs.code == rhs.code)
+  fieldCheck = fieldCheck && (lhs.hasIdToken == rhs.hasIdToken) && (!lhs.hasIdToken || lhs.idToken == rhs.idToken)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -129,9 +132,6 @@ public extension Services.User.Containers {
       }
 
       //Enum type declaration end 
-
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
@@ -169,38 +169,35 @@ public extension Services.User.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasNotificationToken {
-        try output.writeString(3, value:notificationToken)
+        try output.writeString(2, value:notificationToken)
       }
       if hasPlatform {
-        try output.writeString(4, value:platform)
+        try output.writeString(3, value:platform)
       }
       if hasOsVersion {
-        try output.writeString(5, value:osVersion)
+        try output.writeString(4, value:osVersion)
       }
       if hasAppVersion {
-        try output.writeString(6, value:appVersion)
+        try output.writeString(5, value:appVersion)
       }
       if hasDeviceUuid {
-        try output.writeString(7, value:deviceUuid)
+        try output.writeString(6, value:deviceUuid)
       }
       if hasUserId {
-        try output.writeString(8, value:userId)
+        try output.writeString(7, value:userId)
       }
       if hasLanguagePreference {
-        try output.writeString(9, value:languagePreference)
+        try output.writeString(8, value:languagePreference)
       }
       if hasProvider {
-        try output.writeEnum(10, value:provider.rawValue)
+        try output.writeEnum(9, value:provider.rawValue)
       }
       if hasOrganizationId {
-        try output.writeString(11, value:organizationId)
+        try output.writeString(10, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -211,38 +208,35 @@ public extension Services.User.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasNotificationToken {
-        serialize_size += notificationToken.computeStringSize(3)
+        serialize_size += notificationToken.computeStringSize(2)
       }
       if hasPlatform {
-        serialize_size += platform.computeStringSize(4)
+        serialize_size += platform.computeStringSize(3)
       }
       if hasOsVersion {
-        serialize_size += osVersion.computeStringSize(5)
+        serialize_size += osVersion.computeStringSize(4)
       }
       if hasAppVersion {
-        serialize_size += appVersion.computeStringSize(6)
+        serialize_size += appVersion.computeStringSize(5)
       }
       if hasDeviceUuid {
-        serialize_size += deviceUuid.computeStringSize(7)
+        serialize_size += deviceUuid.computeStringSize(6)
       }
       if hasUserId {
-        serialize_size += userId.computeStringSize(8)
+        serialize_size += userId.computeStringSize(7)
       }
       if hasLanguagePreference {
-        serialize_size += languagePreference.computeStringSize(9)
+        serialize_size += languagePreference.computeStringSize(8)
       }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(10)
+        serialize_size += provider.rawValue.computeEnumSize(9)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(11)
+        serialize_size += organizationId.computeStringSize(10)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -295,9 +289,6 @@ public extension Services.User.Containers {
       return try Services.User.Containers.DeviceV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -333,9 +324,6 @@ public extension Services.User.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -393,29 +381,6 @@ public extension Services.User.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Containers.DeviceV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Containers.DeviceV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -671,9 +636,6 @@ public extension Services.User.Containers {
         if other == Services.User.Containers.DeviceV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -719,42 +681,39 @@ public extension Services.User.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             notificationToken = try input.readString()
 
-          case 34 :
+          case 26 :
             platform = try input.readString()
 
-          case 42 :
+          case 34 :
             osVersion = try input.readString()
 
-          case 50 :
+          case 42 :
             appVersion = try input.readString()
 
-          case 58 :
+          case 50 :
             deviceUuid = try input.readString()
 
-          case 66 :
+          case 58 :
             userId = try input.readString()
 
-          case 74 :
+          case 66 :
             languagePreference = try input.readString()
 
-          case 80 :
+          case 72 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.User.Containers.DeviceV1.ProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(10, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(9, value:Int64(valueIntprovider))
             }
 
-          case 90 :
+          case 82 :
             organizationId = try input.readString()
 
           default:
@@ -783,9 +742,6 @@ public extension Services.User.Containers {
       }
 
       //Enum type declaration end 
-
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
 
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
@@ -823,38 +779,35 @@ public extension Services.User.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasProvider {
-        try output.writeEnum(3, value:provider.rawValue)
+        try output.writeEnum(2, value:provider.rawValue)
       }
       if hasFullName {
-        try output.writeString(4, value:fullName)
+        try output.writeString(3, value:fullName)
       }
       if hasEmail {
-        try output.writeString(5, value:email)
+        try output.writeString(4, value:email)
       }
       if hasAccessToken {
-        try output.writeString(6, value:accessToken)
+        try output.writeString(5, value:accessToken)
       }
       if hasExpiresAt {
-        try output.writeString(7, value:expiresAt)
+        try output.writeString(6, value:expiresAt)
       }
       if hasProviderUid {
-        try output.writeString(8, value:providerUid)
+        try output.writeString(7, value:providerUid)
       }
       if hasUserId {
-        try output.writeString(9, value:userId)
+        try output.writeString(8, value:userId)
       }
       if hasRefreshToken {
-        try output.writeString(10, value:refreshToken)
+        try output.writeString(9, value:refreshToken)
       }
       if hasOrganizationId {
-        try output.writeString(11, value:organizationId)
+        try output.writeString(10, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -865,38 +818,35 @@ public extension Services.User.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(3)
+        serialize_size += provider.rawValue.computeEnumSize(2)
       }
       if hasFullName {
-        serialize_size += fullName.computeStringSize(4)
+        serialize_size += fullName.computeStringSize(3)
       }
       if hasEmail {
-        serialize_size += email.computeStringSize(5)
+        serialize_size += email.computeStringSize(4)
       }
       if hasAccessToken {
-        serialize_size += accessToken.computeStringSize(6)
+        serialize_size += accessToken.computeStringSize(5)
       }
       if hasExpiresAt {
-        serialize_size += expiresAt.computeStringSize(7)
+        serialize_size += expiresAt.computeStringSize(6)
       }
       if hasProviderUid {
-        serialize_size += providerUid.computeStringSize(8)
+        serialize_size += providerUid.computeStringSize(7)
       }
       if hasUserId {
-        serialize_size += userId.computeStringSize(9)
+        serialize_size += userId.computeStringSize(8)
       }
       if hasRefreshToken {
-        serialize_size += refreshToken.computeStringSize(10)
+        serialize_size += refreshToken.computeStringSize(9)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(11)
+        serialize_size += organizationId.computeStringSize(10)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -949,9 +899,6 @@ public extension Services.User.Containers {
       return try Services.User.Containers.IdentityV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -987,9 +934,6 @@ public extension Services.User.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -1047,29 +991,6 @@ public extension Services.User.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Containers.IdentityV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Containers.IdentityV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -1325,9 +1246,6 @@ public extension Services.User.Containers {
         if other == Services.User.Containers.IdentityV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -1373,42 +1291,39 @@ public extension Services.User.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 24 :
+          case 16 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.User.Containers.IdentityV1.ProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntprovider))
             }
 
-          case 34 :
+          case 26 :
             fullName = try input.readString()
 
-          case 42 :
+          case 34 :
             email = try input.readString()
 
-          case 50 :
+          case 42 :
             accessToken = try input.readString()
 
-          case 58 :
+          case 50 :
             expiresAt = try input.readString()
 
-          case 66 :
+          case 58 :
             providerUid = try input.readString()
 
-          case 74 :
+          case 66 :
             userId = try input.readString()
 
-          case 82 :
+          case 74 :
             refreshToken = try input.readString()
 
-          case 90 :
+          case 82 :
             organizationId = try input.readString()
 
           default:
@@ -1424,9 +1339,6 @@ public extension Services.User.Containers {
   }
 
   final public class OAuth2DetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasCode:Bool = false
     public private(set) var code:String = ""
 
@@ -1440,14 +1352,11 @@ public extension Services.User.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasCode {
-        try output.writeString(2, value:code)
+        try output.writeString(1, value:code)
       }
       if hasState {
-        try output.writeString(3, value:state)
+        try output.writeString(2, value:state)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1458,14 +1367,11 @@ public extension Services.User.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasCode {
-        serialize_size += code.computeStringSize(2)
+        serialize_size += code.computeStringSize(1)
       }
       if hasState {
-        serialize_size += state.computeStringSize(3)
+        serialize_size += state.computeStringSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1518,9 +1424,6 @@ public extension Services.User.Containers {
       return try Services.User.Containers.OAuth2DetailsV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasCode {
         output += "\(indent) code: \(code) \n"
       }
@@ -1532,9 +1435,6 @@ public extension Services.User.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasCode {
                hashCode = (hashCode &* 31) &+ code.hashValue
             }
@@ -1568,29 +1468,6 @@ public extension Services.User.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Containers.OAuth2DetailsV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Containers.OAuth2DetailsV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasCode:Bool {
            get {
@@ -1662,9 +1539,6 @@ public extension Services.User.Containers {
         if other == Services.User.Containers.OAuth2DetailsV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasCode {
              code = other.code
         }
@@ -1686,13 +1560,10 @@ public extension Services.User.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             code = try input.readString()
 
-          case 26 :
+          case 18 :
             state = try input.readString()
 
           default:
@@ -1707,294 +1578,7 @@ public extension Services.User.Containers {
 
   }
 
-  final public class OAuthSDKDetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
-    public private(set) var hasCode:Bool = false
-    public private(set) var code:String = ""
-
-    public private(set) var hasIdToken:Bool = false
-    public private(set) var idToken:String = ""
-
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
-      if hasCode {
-        try output.writeString(2, value:code)
-      }
-      if hasIdToken {
-        try output.writeString(3, value:idToken)
-      }
-      try unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
-      if hasCode {
-        serialize_size += code.computeStringSize(2)
-      }
-      if hasIdToken {
-        serialize_size += idToken.computeStringSize(3)
-      }
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.User.Containers.OAuthSDKDetailsV1> {
-      var mergedArray = Array<Services.User.Containers.OAuthSDKDetailsV1>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.User.Containers.OAuthSDKDetailsV1? {
-      return try Services.User.Containers.OAuthSDKDetailsV1.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Services.User.Containers.OAuthSDKDetailsV1 {
-      return try Services.User.Containers.OAuthSDKDetailsV1.Builder().mergeFromData(data, extensionRegistry:Services.User.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.OAuthSDKDetailsV1 {
-      return try Services.User.Containers.OAuthSDKDetailsV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Services.User.Containers.OAuthSDKDetailsV1 {
-      return try Services.User.Containers.OAuthSDKDetailsV1.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.OAuthSDKDetailsV1 {
-      return try Services.User.Containers.OAuthSDKDetailsV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.User.Containers.OAuthSDKDetailsV1 {
-      return try Services.User.Containers.OAuthSDKDetailsV1.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.OAuthSDKDetailsV1 {
-      return try Services.User.Containers.OAuthSDKDetailsV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func getBuilder() -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-      return Services.User.Containers.OAuthSDKDetailsV1.classBuilder() as! Services.User.Containers.OAuthSDKDetailsV1.Builder
-    }
-    public func getBuilder() -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-      return classBuilder() as! Services.User.Containers.OAuthSDKDetailsV1.Builder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.User.Containers.OAuthSDKDetailsV1.Builder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.User.Containers.OAuthSDKDetailsV1.Builder()
-    }
-    public func toBuilder() throws -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-      return try Services.User.Containers.OAuthSDKDetailsV1.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.User.Containers.OAuthSDKDetailsV1) throws -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-      return try Services.User.Containers.OAuthSDKDetailsV1.Builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
-      if hasCode {
-        output += "\(indent) code: \(code) \n"
-      }
-      if hasIdToken {
-        output += "\(indent) idToken: \(idToken) \n"
-      }
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            if hasCode {
-               hashCode = (hashCode &* 31) &+ code.hashValue
-            }
-            if hasIdToken {
-               hashCode = (hashCode &* 31) &+ idToken.hashValue
-            }
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.User.Containers.OAuthSDKDetailsV1"
-    }
-    override public func className() -> String {
-        return "Services.User.Containers.OAuthSDKDetailsV1"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.User.Containers.OAuthSDKDetailsV1.self
-    }
-    //Meta information declaration end
-
-    final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Services.User.Containers.OAuthSDKDetailsV1 = Services.User.Containers.OAuthSDKDetailsV1()
-      public func getMessage() -> Services.User.Containers.OAuthSDKDetailsV1 {
-          return builderResult
-      }
-
-      required override public init () {
-         super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Containers.OAuthSDKDetailsV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
-      public var hasCode:Bool {
-           get {
-                return builderResult.hasCode
-           }
-      }
-      public var code:String {
-           get {
-                return builderResult.code
-           }
-           set (value) {
-               builderResult.hasCode = true
-               builderResult.code = value
-           }
-      }
-      public func setCode(value:String) -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-        self.code = value
-        return self
-      }
-      public func clearCode() -> Services.User.Containers.OAuthSDKDetailsV1.Builder{
-           builderResult.hasCode = false
-           builderResult.code = ""
-           return self
-      }
-      public var hasIdToken:Bool {
-           get {
-                return builderResult.hasIdToken
-           }
-      }
-      public var idToken:String {
-           get {
-                return builderResult.idToken
-           }
-           set (value) {
-               builderResult.hasIdToken = true
-               builderResult.idToken = value
-           }
-      }
-      public func setIdToken(value:String) -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-        self.idToken = value
-        return self
-      }
-      public func clearIdToken() -> Services.User.Containers.OAuthSDKDetailsV1.Builder{
-           builderResult.hasIdToken = false
-           builderResult.idToken = ""
-           return self
-      }
-      override public var internalGetResult:GeneratedMessage {
-           get {
-              return builderResult
-           }
-      }
-      public override func clear() -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-        builderResult = Services.User.Containers.OAuthSDKDetailsV1()
-        return self
-      }
-      public override func clone() throws -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-        return try Services.User.Containers.OAuthSDKDetailsV1.builderWithPrototype(builderResult)
-      }
-      public override func build() throws -> Services.User.Containers.OAuthSDKDetailsV1 {
-           try checkInitialized()
-           return buildPartial()
-      }
-      public func buildPartial() -> Services.User.Containers.OAuthSDKDetailsV1 {
-        let returnMe:Services.User.Containers.OAuthSDKDetailsV1 = builderResult
-        return returnMe
-      }
-      public func mergeFrom(other:Services.User.Containers.OAuthSDKDetailsV1) throws -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-        if other == Services.User.Containers.OAuthSDKDetailsV1() {
-         return self
-        }
-        if other.hasVersion {
-             version = other.version
-        }
-        if other.hasCode {
-             code = other.code
-        }
-        if other.hasIdToken {
-             idToken = other.idToken
-        }
-        try mergeUnknownFields(other.unknownFields)
-        return self
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-        while (true) {
-          let tag = try input.readTag()
-          switch tag {
-          case 0: 
-            self.unknownFields = try unknownFieldsBuilder.build()
-            return self
-
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
-            code = try input.readString()
-
-          case 26 :
-            idToken = try input.readString()
-
-          default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
-               unknownFields = try unknownFieldsBuilder.build()
-               return self
-            }
-          }
-        }
-      }
-    }
-
-  }
-
   final public class UserV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -2020,26 +1604,23 @@ public extension Services.User.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasPrimaryEmail {
-        try output.writeString(3, value:primaryEmail)
+        try output.writeString(2, value:primaryEmail)
       }
       if hasIsAdmin {
-        try output.writeBool(4, value:isAdmin)
+        try output.writeBool(3, value:isAdmin)
       }
       if hasIsActive {
-        try output.writeBool(5, value:isActive)
+        try output.writeBool(4, value:isActive)
       }
       if hasPassword {
-        try output.writeString(8, value:password)
+        try output.writeString(5, value:password)
       }
       if hasOrganizationId {
-        try output.writeString(9, value:organizationId)
+        try output.writeString(6, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -2050,26 +1631,23 @@ public extension Services.User.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasPrimaryEmail {
-        serialize_size += primaryEmail.computeStringSize(3)
+        serialize_size += primaryEmail.computeStringSize(2)
       }
       if hasIsAdmin {
-        serialize_size += isAdmin.computeBoolSize(4)
+        serialize_size += isAdmin.computeBoolSize(3)
       }
       if hasIsActive {
-        serialize_size += isActive.computeBoolSize(5)
+        serialize_size += isActive.computeBoolSize(4)
       }
       if hasPassword {
-        serialize_size += password.computeStringSize(8)
+        serialize_size += password.computeStringSize(5)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(9)
+        serialize_size += organizationId.computeStringSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2122,9 +1700,6 @@ public extension Services.User.Containers {
       return try Services.User.Containers.UserV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -2148,9 +1723,6 @@ public extension Services.User.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -2196,29 +1768,6 @@ public extension Services.User.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Containers.UserV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Containers.UserV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -2382,9 +1931,6 @@ public extension Services.User.Containers {
         if other == Services.User.Containers.UserV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -2418,25 +1964,22 @@ public extension Services.User.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             primaryEmail = try input.readString()
 
-          case 32 :
+          case 24 :
             isAdmin = try input.readBool()
 
-          case 40 :
+          case 32 :
             isActive = try input.readBool()
 
-          case 66 :
+          case 42 :
             password = try input.readString()
 
-          case 74 :
+          case 50 :
             organizationId = try input.readString()
 
           default:
@@ -2452,9 +1995,6 @@ public extension Services.User.Containers {
   }
 
   final public class SAMLDetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasSamlResponse:Bool = false
     public private(set) var samlResponse:String = ""
 
@@ -2464,9 +2004,6 @@ public extension Services.User.Containers {
     public private(set) var hasDomain:Bool = false
     public private(set) var domain:String = ""
 
-    public private(set) var hasAuthState:Bool = false
-    public private(set) var authState:String = ""
-
     required public init() {
          super.init()
     }
@@ -2474,20 +2011,14 @@ public extension Services.User.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasSamlResponse {
-        try output.writeString(2, value:samlResponse)
+        try output.writeString(1, value:samlResponse)
       }
       if hasRelayState {
-        try output.writeString(3, value:relayState)
+        try output.writeString(2, value:relayState)
       }
       if hasDomain {
-        try output.writeString(4, value:domain)
-      }
-      if hasAuthState {
-        try output.writeString(5, value:authState)
+        try output.writeString(3, value:domain)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -2498,20 +2029,14 @@ public extension Services.User.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasSamlResponse {
-        serialize_size += samlResponse.computeStringSize(2)
+        serialize_size += samlResponse.computeStringSize(1)
       }
       if hasRelayState {
-        serialize_size += relayState.computeStringSize(3)
+        serialize_size += relayState.computeStringSize(2)
       }
       if hasDomain {
-        serialize_size += domain.computeStringSize(4)
-      }
-      if hasAuthState {
-        serialize_size += authState.computeStringSize(5)
+        serialize_size += domain.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2564,9 +2089,6 @@ public extension Services.User.Containers {
       return try Services.User.Containers.SAMLDetailsV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasSamlResponse {
         output += "\(indent) samlResponse: \(samlResponse) \n"
       }
@@ -2576,17 +2098,11 @@ public extension Services.User.Containers {
       if hasDomain {
         output += "\(indent) domain: \(domain) \n"
       }
-      if hasAuthState {
-        output += "\(indent) authState: \(authState) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasSamlResponse {
                hashCode = (hashCode &* 31) &+ samlResponse.hashValue
             }
@@ -2595,9 +2111,6 @@ public extension Services.User.Containers {
             }
             if hasDomain {
                hashCode = (hashCode &* 31) &+ domain.hashValue
-            }
-            if hasAuthState {
-               hashCode = (hashCode &* 31) &+ authState.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2626,29 +2139,6 @@ public extension Services.User.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Containers.SAMLDetailsV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Containers.SAMLDetailsV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasSamlResponse:Bool {
            get {
@@ -2719,29 +2209,6 @@ public extension Services.User.Containers {
            builderResult.domain = ""
            return self
       }
-      public var hasAuthState:Bool {
-           get {
-                return builderResult.hasAuthState
-           }
-      }
-      public var authState:String {
-           get {
-                return builderResult.authState
-           }
-           set (value) {
-               builderResult.hasAuthState = true
-               builderResult.authState = value
-           }
-      }
-      public func setAuthState(value:String) -> Services.User.Containers.SAMLDetailsV1.Builder {
-        self.authState = value
-        return self
-      }
-      public func clearAuthState() -> Services.User.Containers.SAMLDetailsV1.Builder{
-           builderResult.hasAuthState = false
-           builderResult.authState = ""
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -2766,9 +2233,6 @@ public extension Services.User.Containers {
         if other == Services.User.Containers.SAMLDetailsV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasSamlResponse {
              samlResponse = other.samlResponse
         }
@@ -2777,9 +2241,6 @@ public extension Services.User.Containers {
         }
         if other.hasDomain {
              domain = other.domain
-        }
-        if other.hasAuthState {
-             authState = other.authState
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -2796,20 +2257,450 @@ public extension Services.User.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             samlResponse = try input.readString()
 
-          case 26 :
+          case 18 :
             relayState = try input.readString()
 
-          case 34 :
+          case 26 :
             domain = try input.readString()
 
-          case 42 :
-            authState = try input.readString()
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class SAMLCredentialsV1 : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hasState:Bool = false
+    public private(set) var state:String = ""
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasState {
+        try output.writeString(1, value:state)
+      }
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasState {
+        serialize_size += state.computeStringSize(1)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.User.Containers.SAMLCredentialsV1> {
+      var mergedArray = Array<Services.User.Containers.SAMLCredentialsV1>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.User.Containers.SAMLCredentialsV1? {
+      return try Services.User.Containers.SAMLCredentialsV1.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.User.Containers.SAMLCredentialsV1 {
+      return try Services.User.Containers.SAMLCredentialsV1.Builder().mergeFromData(data, extensionRegistry:Services.User.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.SAMLCredentialsV1 {
+      return try Services.User.Containers.SAMLCredentialsV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.User.Containers.SAMLCredentialsV1 {
+      return try Services.User.Containers.SAMLCredentialsV1.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.SAMLCredentialsV1 {
+      return try Services.User.Containers.SAMLCredentialsV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.User.Containers.SAMLCredentialsV1 {
+      return try Services.User.Containers.SAMLCredentialsV1.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.SAMLCredentialsV1 {
+      return try Services.User.Containers.SAMLCredentialsV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.User.Containers.SAMLCredentialsV1.Builder {
+      return Services.User.Containers.SAMLCredentialsV1.classBuilder() as! Services.User.Containers.SAMLCredentialsV1.Builder
+    }
+    public func getBuilder() -> Services.User.Containers.SAMLCredentialsV1.Builder {
+      return classBuilder() as! Services.User.Containers.SAMLCredentialsV1.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.User.Containers.SAMLCredentialsV1.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.User.Containers.SAMLCredentialsV1.Builder()
+    }
+    public func toBuilder() throws -> Services.User.Containers.SAMLCredentialsV1.Builder {
+      return try Services.User.Containers.SAMLCredentialsV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.User.Containers.SAMLCredentialsV1) throws -> Services.User.Containers.SAMLCredentialsV1.Builder {
+      return try Services.User.Containers.SAMLCredentialsV1.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasState {
+        output += "\(indent) state: \(state) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasState {
+               hashCode = (hashCode &* 31) &+ state.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.User.Containers.SAMLCredentialsV1"
+    }
+    override public func className() -> String {
+        return "Services.User.Containers.SAMLCredentialsV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.User.Containers.SAMLCredentialsV1.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.User.Containers.SAMLCredentialsV1 = Services.User.Containers.SAMLCredentialsV1()
+      public func getMessage() -> Services.User.Containers.SAMLCredentialsV1 {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      public var hasState:Bool {
+           get {
+                return builderResult.hasState
+           }
+      }
+      public var state:String {
+           get {
+                return builderResult.state
+           }
+           set (value) {
+               builderResult.hasState = true
+               builderResult.state = value
+           }
+      }
+      public func setState(value:String) -> Services.User.Containers.SAMLCredentialsV1.Builder {
+        self.state = value
+        return self
+      }
+      public func clearState() -> Services.User.Containers.SAMLCredentialsV1.Builder{
+           builderResult.hasState = false
+           builderResult.state = ""
+           return self
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.User.Containers.SAMLCredentialsV1.Builder {
+        builderResult = Services.User.Containers.SAMLCredentialsV1()
+        return self
+      }
+      public override func clone() throws -> Services.User.Containers.SAMLCredentialsV1.Builder {
+        return try Services.User.Containers.SAMLCredentialsV1.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.User.Containers.SAMLCredentialsV1 {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.User.Containers.SAMLCredentialsV1 {
+        let returnMe:Services.User.Containers.SAMLCredentialsV1 = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.User.Containers.SAMLCredentialsV1) throws -> Services.User.Containers.SAMLCredentialsV1.Builder {
+        if other == Services.User.Containers.SAMLCredentialsV1() {
+         return self
+        }
+        if other.hasState {
+             state = other.state
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.User.Containers.SAMLCredentialsV1.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.SAMLCredentialsV1.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 10 :
+            state = try input.readString()
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class GoogleCredentialsV1 : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hasCode:Bool = false
+    public private(set) var code:String = ""
+
+    public private(set) var hasIdToken:Bool = false
+    public private(set) var idToken:String = ""
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasCode {
+        try output.writeString(1, value:code)
+      }
+      if hasIdToken {
+        try output.writeString(2, value:idToken)
+      }
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasCode {
+        serialize_size += code.computeStringSize(1)
+      }
+      if hasIdToken {
+        serialize_size += idToken.computeStringSize(2)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.User.Containers.GoogleCredentialsV1> {
+      var mergedArray = Array<Services.User.Containers.GoogleCredentialsV1>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.User.Containers.GoogleCredentialsV1? {
+      return try Services.User.Containers.GoogleCredentialsV1.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.User.Containers.GoogleCredentialsV1 {
+      return try Services.User.Containers.GoogleCredentialsV1.Builder().mergeFromData(data, extensionRegistry:Services.User.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.GoogleCredentialsV1 {
+      return try Services.User.Containers.GoogleCredentialsV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.User.Containers.GoogleCredentialsV1 {
+      return try Services.User.Containers.GoogleCredentialsV1.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.GoogleCredentialsV1 {
+      return try Services.User.Containers.GoogleCredentialsV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.User.Containers.GoogleCredentialsV1 {
+      return try Services.User.Containers.GoogleCredentialsV1.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.GoogleCredentialsV1 {
+      return try Services.User.Containers.GoogleCredentialsV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.User.Containers.GoogleCredentialsV1.Builder {
+      return Services.User.Containers.GoogleCredentialsV1.classBuilder() as! Services.User.Containers.GoogleCredentialsV1.Builder
+    }
+    public func getBuilder() -> Services.User.Containers.GoogleCredentialsV1.Builder {
+      return classBuilder() as! Services.User.Containers.GoogleCredentialsV1.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.User.Containers.GoogleCredentialsV1.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.User.Containers.GoogleCredentialsV1.Builder()
+    }
+    public func toBuilder() throws -> Services.User.Containers.GoogleCredentialsV1.Builder {
+      return try Services.User.Containers.GoogleCredentialsV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.User.Containers.GoogleCredentialsV1) throws -> Services.User.Containers.GoogleCredentialsV1.Builder {
+      return try Services.User.Containers.GoogleCredentialsV1.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasCode {
+        output += "\(indent) code: \(code) \n"
+      }
+      if hasIdToken {
+        output += "\(indent) idToken: \(idToken) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasCode {
+               hashCode = (hashCode &* 31) &+ code.hashValue
+            }
+            if hasIdToken {
+               hashCode = (hashCode &* 31) &+ idToken.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.User.Containers.GoogleCredentialsV1"
+    }
+    override public func className() -> String {
+        return "Services.User.Containers.GoogleCredentialsV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.User.Containers.GoogleCredentialsV1.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.User.Containers.GoogleCredentialsV1 = Services.User.Containers.GoogleCredentialsV1()
+      public func getMessage() -> Services.User.Containers.GoogleCredentialsV1 {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      public var hasCode:Bool {
+           get {
+                return builderResult.hasCode
+           }
+      }
+      public var code:String {
+           get {
+                return builderResult.code
+           }
+           set (value) {
+               builderResult.hasCode = true
+               builderResult.code = value
+           }
+      }
+      public func setCode(value:String) -> Services.User.Containers.GoogleCredentialsV1.Builder {
+        self.code = value
+        return self
+      }
+      public func clearCode() -> Services.User.Containers.GoogleCredentialsV1.Builder{
+           builderResult.hasCode = false
+           builderResult.code = ""
+           return self
+      }
+      public var hasIdToken:Bool {
+           get {
+                return builderResult.hasIdToken
+           }
+      }
+      public var idToken:String {
+           get {
+                return builderResult.idToken
+           }
+           set (value) {
+               builderResult.hasIdToken = true
+               builderResult.idToken = value
+           }
+      }
+      public func setIdToken(value:String) -> Services.User.Containers.GoogleCredentialsV1.Builder {
+        self.idToken = value
+        return self
+      }
+      public func clearIdToken() -> Services.User.Containers.GoogleCredentialsV1.Builder{
+           builderResult.hasIdToken = false
+           builderResult.idToken = ""
+           return self
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.User.Containers.GoogleCredentialsV1.Builder {
+        builderResult = Services.User.Containers.GoogleCredentialsV1()
+        return self
+      }
+      public override func clone() throws -> Services.User.Containers.GoogleCredentialsV1.Builder {
+        return try Services.User.Containers.GoogleCredentialsV1.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.User.Containers.GoogleCredentialsV1 {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.User.Containers.GoogleCredentialsV1 {
+        let returnMe:Services.User.Containers.GoogleCredentialsV1 = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.User.Containers.GoogleCredentialsV1) throws -> Services.User.Containers.GoogleCredentialsV1.Builder {
+        if other == Services.User.Containers.GoogleCredentialsV1() {
+         return self
+        }
+        if other.hasCode {
+             code = other.code
+        }
+        if other.hasIdToken {
+             idToken = other.idToken
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.User.Containers.GoogleCredentialsV1.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.User.Containers.GoogleCredentialsV1.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 10 :
+            code = try input.readString()
+
+          case 18 :
+            idToken = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

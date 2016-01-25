@@ -10,7 +10,6 @@ public func == (lhs: Services.User.Actions.GetActiveDevices.RequestV1, rhs: Serv
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -21,7 +20,6 @@ public func == (lhs: Services.User.Actions.GetActiveDevices.ResponseV1, rhs: Ser
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.devices == rhs.devices)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -47,9 +45,6 @@ public extension Services.User.Actions.GetActiveDevices {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasUserId:Bool = false
     public private(set) var userId:String = ""
 
@@ -60,11 +55,8 @@ public extension Services.User.Actions.GetActiveDevices {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasUserId {
-        try output.writeString(2, value:userId)
+        try output.writeString(1, value:userId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -75,11 +67,8 @@ public extension Services.User.Actions.GetActiveDevices {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasUserId {
-        serialize_size += userId.computeStringSize(2)
+        serialize_size += userId.computeStringSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -132,9 +121,6 @@ public extension Services.User.Actions.GetActiveDevices {
       return try Services.User.Actions.GetActiveDevices.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasUserId {
         output += "\(indent) userId: \(userId) \n"
       }
@@ -143,9 +129,6 @@ public extension Services.User.Actions.GetActiveDevices {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasUserId {
                hashCode = (hashCode &* 31) &+ userId.hashValue
             }
@@ -176,29 +159,6 @@ public extension Services.User.Actions.GetActiveDevices {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.GetActiveDevices.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.GetActiveDevices.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasUserId:Bool {
            get {
@@ -247,9 +207,6 @@ public extension Services.User.Actions.GetActiveDevices {
         if other == Services.User.Actions.GetActiveDevices.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasUserId {
              userId = other.userId
         }
@@ -268,10 +225,7 @@ public extension Services.User.Actions.GetActiveDevices {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             userId = try input.readString()
 
           default:
@@ -287,9 +241,6 @@ public extension Services.User.Actions.GetActiveDevices {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var devices:Array<Services.User.Containers.DeviceV1>  = Array<Services.User.Containers.DeviceV1>()
     required public init() {
          super.init()
@@ -298,11 +249,8 @@ public extension Services.User.Actions.GetActiveDevices {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementdevices in devices {
-          try output.writeMessage(2, value:oneElementdevices)
+          try output.writeMessage(1, value:oneElementdevices)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -313,11 +261,8 @@ public extension Services.User.Actions.GetActiveDevices {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementdevices in devices {
-          serialize_size += oneElementdevices.computeMessageSize(2)
+          serialize_size += oneElementdevices.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -370,9 +315,6 @@ public extension Services.User.Actions.GetActiveDevices {
       return try Services.User.Actions.GetActiveDevices.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var devicesElementIndex:Int = 0
       for oneElementdevices in devices {
           output += "\(indent) devices[\(devicesElementIndex)] {\n"
@@ -385,9 +327,6 @@ public extension Services.User.Actions.GetActiveDevices {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementdevices in devices {
                 hashCode = (hashCode &* 31) &+ oneElementdevices.hashValue
             }
@@ -418,29 +357,6 @@ public extension Services.User.Actions.GetActiveDevices {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.GetActiveDevices.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.GetActiveDevices.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var devices:Array<Services.User.Containers.DeviceV1> {
            get {
@@ -482,9 +398,6 @@ public extension Services.User.Actions.GetActiveDevices {
         if other == Services.User.Actions.GetActiveDevices.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.devices.isEmpty  {
            builderResult.devices += other.devices
         }
@@ -503,10 +416,7 @@ public extension Services.User.Actions.GetActiveDevices {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.User.Containers.DeviceV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             devices += [subBuilder.buildPartial()]

@@ -10,13 +10,11 @@ public func == (lhs: Services.User.Actions.CompleteAuthorization.RequestV1, rhs:
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   fieldCheck = fieldCheck && (lhs.hasOauth2Details == rhs.hasOauth2Details) && (!lhs.hasOauth2Details || lhs.oauth2Details == rhs.oauth2Details)
-  fieldCheck = fieldCheck && (lhs.hasOauthSdkDetails == rhs.hasOauthSdkDetails) && (!lhs.hasOauthSdkDetails || lhs.oauthSdkDetails == rhs.oauthSdkDetails)
   fieldCheck = fieldCheck && (lhs.hasClientType == rhs.hasClientType) && (!lhs.hasClientType || lhs.clientType == rhs.clientType)
-  fieldCheck = fieldCheck && (lhs.hasAuthenticate == rhs.hasAuthenticate) && (!lhs.hasAuthenticate || lhs.authenticate == rhs.authenticate)
   fieldCheck = fieldCheck && (lhs.hasSamlDetails == rhs.hasSamlDetails) && (!lhs.hasSamlDetails || lhs.samlDetails == rhs.samlDetails)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -26,13 +24,12 @@ public func == (lhs: Services.User.Actions.CompleteAuthorization.ResponseV1, rhs
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasUser == rhs.hasUser) && (!lhs.hasUser || lhs.user == rhs.user)
   fieldCheck = fieldCheck && (lhs.hasIdentity == rhs.hasIdentity) && (!lhs.hasIdentity || lhs.identity == rhs.identity)
   fieldCheck = fieldCheck && (lhs.hasNewUser == rhs.hasNewUser) && (!lhs.hasNewUser || lhs.newUser == rhs.newUser)
-  fieldCheck = fieldCheck && (lhs.hasOauthSdkDetails == rhs.hasOauthSdkDetails) && (!lhs.hasOauthSdkDetails || lhs.oauthSdkDetails == rhs.oauthSdkDetails)
   fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
-  fieldCheck = fieldCheck && (lhs.hasSamlDetails == rhs.hasSamlDetails) && (!lhs.hasSamlDetails || lhs.samlDetails == rhs.samlDetails)
+  fieldCheck = fieldCheck && (lhs.hasGoogleCredentials == rhs.hasGoogleCredentials) && (!lhs.hasGoogleCredentials || lhs.googleCredentials == rhs.googleCredentials)
+  fieldCheck = fieldCheck && (lhs.hasSamlCredentials == rhs.hasSamlCredentials) && (!lhs.hasSamlCredentials || lhs.samlCredentials == rhs.samlCredentials)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -58,22 +55,17 @@ public extension Services.User.Actions.CompleteAuthorization {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var provider:Services.User.Containers.IdentityV1.ProviderV1 = Services.User.Containers.IdentityV1.ProviderV1.Internal
     public private(set) var hasProvider:Bool = false
     public private(set) var hasOauth2Details:Bool = false
     public private(set) var oauth2Details:Services.User.Containers.OAuth2DetailsV1!
-    public private(set) var hasOauthSdkDetails:Bool = false
-    public private(set) var oauthSdkDetails:Services.User.Containers.OAuthSDKDetailsV1!
     public private(set) var clientType:Services.User.Containers.Token.ClientTypeV1 = Services.User.Containers.Token.ClientTypeV1.Ios
     public private(set) var hasClientType:Bool = false
-    public private(set) var hasAuthenticate:Bool = false
-    public private(set) var authenticate:Bool = false
-
     public private(set) var hasSamlDetails:Bool = false
     public private(set) var samlDetails:Services.User.Containers.SAMLDetailsV1!
+    public private(set) var hasOrganizationId:Bool = false
+    public private(set) var organizationId:String = ""
+
     required public init() {
          super.init()
     }
@@ -81,26 +73,20 @@ public extension Services.User.Actions.CompleteAuthorization {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasProvider {
-        try output.writeEnum(2, value:provider.rawValue)
+        try output.writeEnum(1, value:provider.rawValue)
       }
       if hasOauth2Details {
-        try output.writeMessage(3, value:oauth2Details)
-      }
-      if hasOauthSdkDetails {
-        try output.writeMessage(4, value:oauthSdkDetails)
+        try output.writeMessage(2, value:oauth2Details)
       }
       if hasClientType {
-        try output.writeEnum(5, value:clientType.rawValue)
-      }
-      if hasAuthenticate {
-        try output.writeBool(6, value:authenticate)
+        try output.writeEnum(3, value:clientType.rawValue)
       }
       if hasSamlDetails {
-        try output.writeMessage(7, value:samlDetails)
+        try output.writeMessage(4, value:samlDetails)
+      }
+      if hasOrganizationId {
+        try output.writeString(5, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -111,32 +97,24 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(2)
+        serialize_size += provider.rawValue.computeEnumSize(1)
       }
       if hasOauth2Details {
-          if let varSizeoauth2Details = oauth2Details?.computeMessageSize(3) {
+          if let varSizeoauth2Details = oauth2Details?.computeMessageSize(2) {
               serialize_size += varSizeoauth2Details
           }
       }
-      if hasOauthSdkDetails {
-          if let varSizeoauthSdkDetails = oauthSdkDetails?.computeMessageSize(4) {
-              serialize_size += varSizeoauthSdkDetails
-          }
-      }
       if (hasClientType) {
-        serialize_size += clientType.rawValue.computeEnumSize(5)
-      }
-      if hasAuthenticate {
-        serialize_size += authenticate.computeBoolSize(6)
+        serialize_size += clientType.rawValue.computeEnumSize(3)
       }
       if hasSamlDetails {
-          if let varSizesamlDetails = samlDetails?.computeMessageSize(7) {
+          if let varSizesamlDetails = samlDetails?.computeMessageSize(4) {
               serialize_size += varSizesamlDetails
           }
+      }
+      if hasOrganizationId {
+        serialize_size += organizationId.computeStringSize(5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -189,9 +167,6 @@ public extension Services.User.Actions.CompleteAuthorization {
       return try Services.User.Actions.CompleteAuthorization.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if (hasProvider) {
         output += "\(indent) provider: \(provider.rawValue)\n"
       }
@@ -200,30 +175,22 @@ public extension Services.User.Actions.CompleteAuthorization {
         try oauth2Details?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
-      if hasOauthSdkDetails {
-        output += "\(indent) oauthSdkDetails {\n"
-        try oauthSdkDetails?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
-      }
       if (hasClientType) {
         output += "\(indent) clientType: \(clientType.rawValue)\n"
-      }
-      if hasAuthenticate {
-        output += "\(indent) authenticate: \(authenticate) \n"
       }
       if hasSamlDetails {
         output += "\(indent) samlDetails {\n"
         try samlDetails?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasOrganizationId {
+        output += "\(indent) organizationId: \(organizationId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasProvider {
                hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
             }
@@ -232,21 +199,16 @@ public extension Services.User.Actions.CompleteAuthorization {
                     hashCode = (hashCode &* 31) &+ hashValueoauth2Details
                 }
             }
-            if hasOauthSdkDetails {
-                if let hashValueoauthSdkDetails = oauthSdkDetails?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValueoauthSdkDetails
-                }
-            }
             if hasClientType {
                hashCode = (hashCode &* 31) &+ Int(clientType.rawValue)
-            }
-            if hasAuthenticate {
-               hashCode = (hashCode &* 31) &+ authenticate.hashValue
             }
             if hasSamlDetails {
                 if let hashValuesamlDetails = samlDetails?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuesamlDetails
                 }
+            }
+            if hasOrganizationId {
+               hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -275,29 +237,6 @@ public extension Services.User.Actions.CompleteAuthorization {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.CompleteAuthorization.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.CompleteAuthorization.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
         public var hasProvider:Bool{
             get {
@@ -373,57 +312,6 @@ public extension Services.User.Actions.CompleteAuthorization {
         builderResult.oauth2Details = nil
         return self
       }
-      public var hasOauthSdkDetails:Bool {
-           get {
-               return builderResult.hasOauthSdkDetails
-           }
-      }
-      public var oauthSdkDetails:Services.User.Containers.OAuthSDKDetailsV1! {
-           get {
-               if oauthSdkDetailsBuilder_ != nil {
-                  builderResult.oauthSdkDetails = oauthSdkDetailsBuilder_.getMessage()
-               }
-               return builderResult.oauthSdkDetails
-           }
-           set (value) {
-               builderResult.hasOauthSdkDetails = true
-               builderResult.oauthSdkDetails = value
-           }
-      }
-      private var oauthSdkDetailsBuilder_:Services.User.Containers.OAuthSDKDetailsV1.Builder! {
-           didSet {
-              builderResult.hasOauthSdkDetails = true
-           }
-      }
-      public func getOauthSdkDetailsBuilder() -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-        if oauthSdkDetailsBuilder_ == nil {
-           oauthSdkDetailsBuilder_ = Services.User.Containers.OAuthSDKDetailsV1.Builder()
-           builderResult.oauthSdkDetails = oauthSdkDetailsBuilder_.getMessage()
-           if oauthSdkDetails != nil {
-              try! oauthSdkDetailsBuilder_.mergeFrom(oauthSdkDetails)
-           }
-        }
-        return oauthSdkDetailsBuilder_
-      }
-      public func setOauthSdkDetails(value:Services.User.Containers.OAuthSDKDetailsV1!) -> Services.User.Actions.CompleteAuthorization.RequestV1.Builder {
-        self.oauthSdkDetails = value
-        return self
-      }
-      public func mergeOauthSdkDetails(value:Services.User.Containers.OAuthSDKDetailsV1) throws -> Services.User.Actions.CompleteAuthorization.RequestV1.Builder {
-        if builderResult.hasOauthSdkDetails {
-          builderResult.oauthSdkDetails = try Services.User.Containers.OAuthSDKDetailsV1.builderWithPrototype(builderResult.oauthSdkDetails).mergeFrom(value).buildPartial()
-        } else {
-          builderResult.oauthSdkDetails = value
-        }
-        builderResult.hasOauthSdkDetails = true
-        return self
-      }
-      public func clearOauthSdkDetails() -> Services.User.Actions.CompleteAuthorization.RequestV1.Builder {
-        oauthSdkDetailsBuilder_ = nil
-        builderResult.hasOauthSdkDetails = false
-        builderResult.oauthSdkDetails = nil
-        return self
-      }
         public var hasClientType:Bool{
             get {
                 return builderResult.hasClientType
@@ -447,29 +335,6 @@ public extension Services.User.Actions.CompleteAuthorization {
            builderResult.clientType = .Ios
            return self
         }
-      public var hasAuthenticate:Bool {
-           get {
-                return builderResult.hasAuthenticate
-           }
-      }
-      public var authenticate:Bool {
-           get {
-                return builderResult.authenticate
-           }
-           set (value) {
-               builderResult.hasAuthenticate = true
-               builderResult.authenticate = value
-           }
-      }
-      public func setAuthenticate(value:Bool) -> Services.User.Actions.CompleteAuthorization.RequestV1.Builder {
-        self.authenticate = value
-        return self
-      }
-      public func clearAuthenticate() -> Services.User.Actions.CompleteAuthorization.RequestV1.Builder{
-           builderResult.hasAuthenticate = false
-           builderResult.authenticate = false
-           return self
-      }
       public var hasSamlDetails:Bool {
            get {
                return builderResult.hasSamlDetails
@@ -521,6 +386,29 @@ public extension Services.User.Actions.CompleteAuthorization {
         builderResult.samlDetails = nil
         return self
       }
+      public var hasOrganizationId:Bool {
+           get {
+                return builderResult.hasOrganizationId
+           }
+      }
+      public var organizationId:String {
+           get {
+                return builderResult.organizationId
+           }
+           set (value) {
+               builderResult.hasOrganizationId = true
+               builderResult.organizationId = value
+           }
+      }
+      public func setOrganizationId(value:String) -> Services.User.Actions.CompleteAuthorization.RequestV1.Builder {
+        self.organizationId = value
+        return self
+      }
+      public func clearOrganizationId() -> Services.User.Actions.CompleteAuthorization.RequestV1.Builder{
+           builderResult.hasOrganizationId = false
+           builderResult.organizationId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -545,26 +433,20 @@ public extension Services.User.Actions.CompleteAuthorization {
         if other == Services.User.Actions.CompleteAuthorization.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasProvider {
              provider = other.provider
         }
         if (other.hasOauth2Details) {
             try mergeOauth2Details(other.oauth2Details)
         }
-        if (other.hasOauthSdkDetails) {
-            try mergeOauthSdkDetails(other.oauthSdkDetails)
-        }
         if other.hasClientType {
              clientType = other.clientType
         }
-        if other.hasAuthenticate {
-             authenticate = other.authenticate
-        }
         if (other.hasSamlDetails) {
             try mergeSamlDetails(other.samlDetails)
+        }
+        if other.hasOrganizationId {
+             organizationId = other.organizationId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -582,17 +464,14 @@ public extension Services.User.Actions.CompleteAuthorization {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.User.Containers.IdentityV1.ProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntprovider))
             }
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.User.Containers.OAuth2DetailsV1.Builder = Services.User.Containers.OAuth2DetailsV1.Builder()
             if hasOauth2Details {
               try subBuilder.mergeFrom(oauth2Details)
@@ -600,32 +479,24 @@ public extension Services.User.Actions.CompleteAuthorization {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             oauth2Details = subBuilder.buildPartial()
 
-          case 34 :
-            let subBuilder:Services.User.Containers.OAuthSDKDetailsV1.Builder = Services.User.Containers.OAuthSDKDetailsV1.Builder()
-            if hasOauthSdkDetails {
-              try subBuilder.mergeFrom(oauthSdkDetails)
-            }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-            oauthSdkDetails = subBuilder.buildPartial()
-
-          case 40 :
+          case 24 :
             let valueIntclientType = try input.readEnum()
             if let enumsclientType = Services.User.Containers.Token.ClientTypeV1(rawValue:valueIntclientType){
                  clientType = enumsclientType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueIntclientType))
+                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntclientType))
             }
 
-          case 48 :
-            authenticate = try input.readBool()
-
-          case 58 :
+          case 34 :
             let subBuilder:Services.User.Containers.SAMLDetailsV1.Builder = Services.User.Containers.SAMLDetailsV1.Builder()
             if hasSamlDetails {
               try subBuilder.mergeFrom(samlDetails)
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             samlDetails = subBuilder.buildPartial()
+
+          case 42 :
+            organizationId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
@@ -640,9 +511,45 @@ public extension Services.User.Actions.CompleteAuthorization {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
 
+
+    //OneOf declaration start
+
+    public enum Credentials {
+      case CredentialsOneOfNotSet
+
+      public func checkOneOfIsSet() -> Bool {
+           switch self {
+           case .CredentialsOneOfNotSet:
+                return false
+           default:
+                return true
+           }
+      }
+      case GoogleCredentials(Services.User.Containers.GoogleCredentialsV1)
+
+      public static func getGoogleCredentials(value:Credentials) -> Services.User.Containers.GoogleCredentialsV1? {
+           switch value {
+           case .GoogleCredentials(let enumValue):
+                return enumValue
+           default:
+                return nil
+           }
+      }
+      case SamlCredentials(Services.User.Containers.SAMLCredentialsV1)
+
+      public static func getSamlCredentials(value:Credentials) -> Services.User.Containers.SAMLCredentialsV1? {
+           switch value {
+           case .SamlCredentials(let enumValue):
+                return enumValue
+           default:
+                return nil
+           }
+      }
+    }
+    //OneOf declaration end
+
+    private var storageCredentials:ResponseV1.Credentials =  ResponseV1.Credentials.CredentialsOneOfNotSet
     public private(set) var hasUser:Bool = false
     public private(set) var user:Services.User.Containers.UserV1!
     public private(set) var hasIdentity:Bool = false
@@ -650,13 +557,45 @@ public extension Services.User.Actions.CompleteAuthorization {
     public private(set) var hasNewUser:Bool = false
     public private(set) var newUser:Bool = false
 
-    public private(set) var hasOauthSdkDetails:Bool = false
-    public private(set) var oauthSdkDetails:Services.User.Containers.OAuthSDKDetailsV1!
     public private(set) var hasRedirectUri:Bool = false
     public private(set) var redirectUri:String = ""
 
-    public private(set) var hasSamlDetails:Bool = false
-    public private(set) var samlDetails:Services.User.Containers.SAMLDetailsV1!
+    public private(set) var hasGoogleCredentials:Bool {
+          get {
+               if ResponseV1.Credentials.getGoogleCredentials(storageCredentials) == nil {
+                   return false
+               }
+               return true
+          }
+          set(newValue) {
+          }
+    }
+    public private(set) var googleCredentials:Services.User.Containers.GoogleCredentialsV1!{
+         get {
+              return ResponseV1.Credentials.getGoogleCredentials(storageCredentials)
+         }
+         set (newvalue) {
+              storageCredentials = ResponseV1.Credentials.GoogleCredentials(newvalue)
+         }
+    }
+    public private(set) var hasSamlCredentials:Bool {
+          get {
+               if ResponseV1.Credentials.getSamlCredentials(storageCredentials) == nil {
+                   return false
+               }
+               return true
+          }
+          set(newValue) {
+          }
+    }
+    public private(set) var samlCredentials:Services.User.Containers.SAMLCredentialsV1!{
+         get {
+              return ResponseV1.Credentials.getSamlCredentials(storageCredentials)
+         }
+         set (newvalue) {
+              storageCredentials = ResponseV1.Credentials.SamlCredentials(newvalue)
+         }
+    }
     required public init() {
          super.init()
     }
@@ -664,26 +603,23 @@ public extension Services.User.Actions.CompleteAuthorization {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasUser {
-        try output.writeMessage(2, value:user)
+        try output.writeMessage(1, value:user)
       }
       if hasIdentity {
-        try output.writeMessage(3, value:identity)
+        try output.writeMessage(2, value:identity)
       }
       if hasNewUser {
-        try output.writeBool(4, value:newUser)
-      }
-      if hasOauthSdkDetails {
-        try output.writeMessage(5, value:oauthSdkDetails)
+        try output.writeBool(3, value:newUser)
       }
       if hasRedirectUri {
-        try output.writeString(6, value:redirectUri)
+        try output.writeString(4, value:redirectUri)
       }
-      if hasSamlDetails {
-        try output.writeMessage(7, value:samlDetails)
+      if hasGoogleCredentials {
+        try output.writeMessage(5, value:googleCredentials)
+      }
+      if hasSamlCredentials {
+        try output.writeMessage(6, value:samlCredentials)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -694,33 +630,30 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasUser {
-          if let varSizeuser = user?.computeMessageSize(2) {
+          if let varSizeuser = user?.computeMessageSize(1) {
               serialize_size += varSizeuser
           }
       }
       if hasIdentity {
-          if let varSizeidentity = identity?.computeMessageSize(3) {
+          if let varSizeidentity = identity?.computeMessageSize(2) {
               serialize_size += varSizeidentity
           }
       }
       if hasNewUser {
-        serialize_size += newUser.computeBoolSize(4)
-      }
-      if hasOauthSdkDetails {
-          if let varSizeoauthSdkDetails = oauthSdkDetails?.computeMessageSize(5) {
-              serialize_size += varSizeoauthSdkDetails
-          }
+        serialize_size += newUser.computeBoolSize(3)
       }
       if hasRedirectUri {
-        serialize_size += redirectUri.computeStringSize(6)
+        serialize_size += redirectUri.computeStringSize(4)
       }
-      if hasSamlDetails {
-          if let varSizesamlDetails = samlDetails?.computeMessageSize(7) {
-              serialize_size += varSizesamlDetails
+      if hasGoogleCredentials {
+          if let varSizegoogleCredentials = googleCredentials?.computeMessageSize(5) {
+              serialize_size += varSizegoogleCredentials
+          }
+      }
+      if hasSamlCredentials {
+          if let varSizesamlCredentials = samlCredentials?.computeMessageSize(6) {
+              serialize_size += varSizesamlCredentials
           }
       }
       serialize_size += unknownFields.serializedSize()
@@ -774,9 +707,6 @@ public extension Services.User.Actions.CompleteAuthorization {
       return try Services.User.Actions.CompleteAuthorization.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasUser {
         output += "\(indent) user {\n"
         try user?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -790,17 +720,17 @@ public extension Services.User.Actions.CompleteAuthorization {
       if hasNewUser {
         output += "\(indent) newUser: \(newUser) \n"
       }
-      if hasOauthSdkDetails {
-        output += "\(indent) oauthSdkDetails {\n"
-        try oauthSdkDetails?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
-      }
       if hasRedirectUri {
         output += "\(indent) redirectUri: \(redirectUri) \n"
       }
-      if hasSamlDetails {
-        output += "\(indent) samlDetails {\n"
-        try samlDetails?.writeDescriptionTo(&output, indent:"\(indent)  ")
+      if hasGoogleCredentials {
+        output += "\(indent) googleCredentials {\n"
+        try googleCredentials?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      if hasSamlCredentials {
+        output += "\(indent) samlCredentials {\n"
+        try samlCredentials?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
@@ -808,9 +738,6 @@ public extension Services.User.Actions.CompleteAuthorization {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasUser {
                 if let hashValueuser = user?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueuser
@@ -824,17 +751,17 @@ public extension Services.User.Actions.CompleteAuthorization {
             if hasNewUser {
                hashCode = (hashCode &* 31) &+ newUser.hashValue
             }
-            if hasOauthSdkDetails {
-                if let hashValueoauthSdkDetails = oauthSdkDetails?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValueoauthSdkDetails
-                }
-            }
             if hasRedirectUri {
                hashCode = (hashCode &* 31) &+ redirectUri.hashValue
             }
-            if hasSamlDetails {
-                if let hashValuesamlDetails = samlDetails?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuesamlDetails
+            if hasGoogleCredentials {
+                if let hashValuegoogleCredentials = googleCredentials?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuegoogleCredentials
+                }
+            }
+            if hasSamlCredentials {
+                if let hashValuesamlCredentials = samlCredentials?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuesamlCredentials
                 }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -864,29 +791,6 @@ public extension Services.User.Actions.CompleteAuthorization {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasUser:Bool {
            get {
@@ -1013,57 +917,6 @@ public extension Services.User.Actions.CompleteAuthorization {
            builderResult.newUser = false
            return self
       }
-      public var hasOauthSdkDetails:Bool {
-           get {
-               return builderResult.hasOauthSdkDetails
-           }
-      }
-      public var oauthSdkDetails:Services.User.Containers.OAuthSDKDetailsV1! {
-           get {
-               if oauthSdkDetailsBuilder_ != nil {
-                  builderResult.oauthSdkDetails = oauthSdkDetailsBuilder_.getMessage()
-               }
-               return builderResult.oauthSdkDetails
-           }
-           set (value) {
-               builderResult.hasOauthSdkDetails = true
-               builderResult.oauthSdkDetails = value
-           }
-      }
-      private var oauthSdkDetailsBuilder_:Services.User.Containers.OAuthSDKDetailsV1.Builder! {
-           didSet {
-              builderResult.hasOauthSdkDetails = true
-           }
-      }
-      public func getOauthSdkDetailsBuilder() -> Services.User.Containers.OAuthSDKDetailsV1.Builder {
-        if oauthSdkDetailsBuilder_ == nil {
-           oauthSdkDetailsBuilder_ = Services.User.Containers.OAuthSDKDetailsV1.Builder()
-           builderResult.oauthSdkDetails = oauthSdkDetailsBuilder_.getMessage()
-           if oauthSdkDetails != nil {
-              try! oauthSdkDetailsBuilder_.mergeFrom(oauthSdkDetails)
-           }
-        }
-        return oauthSdkDetailsBuilder_
-      }
-      public func setOauthSdkDetails(value:Services.User.Containers.OAuthSDKDetailsV1!) -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
-        self.oauthSdkDetails = value
-        return self
-      }
-      public func mergeOauthSdkDetails(value:Services.User.Containers.OAuthSDKDetailsV1) throws -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
-        if builderResult.hasOauthSdkDetails {
-          builderResult.oauthSdkDetails = try Services.User.Containers.OAuthSDKDetailsV1.builderWithPrototype(builderResult.oauthSdkDetails).mergeFrom(value).buildPartial()
-        } else {
-          builderResult.oauthSdkDetails = value
-        }
-        builderResult.hasOauthSdkDetails = true
-        return self
-      }
-      public func clearOauthSdkDetails() -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
-        oauthSdkDetailsBuilder_ = nil
-        builderResult.hasOauthSdkDetails = false
-        builderResult.oauthSdkDetails = nil
-        return self
-      }
       public var hasRedirectUri:Bool {
            get {
                 return builderResult.hasRedirectUri
@@ -1087,55 +940,106 @@ public extension Services.User.Actions.CompleteAuthorization {
            builderResult.redirectUri = ""
            return self
       }
-      public var hasSamlDetails:Bool {
+      public var hasGoogleCredentials:Bool {
            get {
-               return builderResult.hasSamlDetails
+               return builderResult.hasGoogleCredentials
            }
       }
-      public var samlDetails:Services.User.Containers.SAMLDetailsV1! {
+      public var googleCredentials:Services.User.Containers.GoogleCredentialsV1! {
            get {
-               if samlDetailsBuilder_ != nil {
-                  builderResult.samlDetails = samlDetailsBuilder_.getMessage()
+               if googleCredentialsBuilder_ != nil {
+                  builderResult.googleCredentials = googleCredentialsBuilder_.getMessage()
                }
-               return builderResult.samlDetails
+               return builderResult.googleCredentials
            }
            set (value) {
-               builderResult.hasSamlDetails = true
-               builderResult.samlDetails = value
+               builderResult.hasGoogleCredentials = true
+               builderResult.googleCredentials = value
            }
       }
-      private var samlDetailsBuilder_:Services.User.Containers.SAMLDetailsV1.Builder! {
+      private var googleCredentialsBuilder_:Services.User.Containers.GoogleCredentialsV1.Builder! {
            didSet {
-              builderResult.hasSamlDetails = true
+              builderResult.hasGoogleCredentials = true
            }
       }
-      public func getSamlDetailsBuilder() -> Services.User.Containers.SAMLDetailsV1.Builder {
-        if samlDetailsBuilder_ == nil {
-           samlDetailsBuilder_ = Services.User.Containers.SAMLDetailsV1.Builder()
-           builderResult.samlDetails = samlDetailsBuilder_.getMessage()
-           if samlDetails != nil {
-              try! samlDetailsBuilder_.mergeFrom(samlDetails)
+      public func getGoogleCredentialsBuilder() -> Services.User.Containers.GoogleCredentialsV1.Builder {
+        if googleCredentialsBuilder_ == nil {
+           googleCredentialsBuilder_ = Services.User.Containers.GoogleCredentialsV1.Builder()
+           builderResult.googleCredentials = googleCredentialsBuilder_.getMessage()
+           if googleCredentials != nil {
+              try! googleCredentialsBuilder_.mergeFrom(googleCredentials)
            }
         }
-        return samlDetailsBuilder_
+        return googleCredentialsBuilder_
       }
-      public func setSamlDetails(value:Services.User.Containers.SAMLDetailsV1!) -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
-        self.samlDetails = value
+      public func setGoogleCredentials(value:Services.User.Containers.GoogleCredentialsV1!) -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
+        self.googleCredentials = value
         return self
       }
-      public func mergeSamlDetails(value:Services.User.Containers.SAMLDetailsV1) throws -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
-        if builderResult.hasSamlDetails {
-          builderResult.samlDetails = try Services.User.Containers.SAMLDetailsV1.builderWithPrototype(builderResult.samlDetails).mergeFrom(value).buildPartial()
+      public func mergeGoogleCredentials(value:Services.User.Containers.GoogleCredentialsV1) throws -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
+        if builderResult.hasGoogleCredentials {
+          builderResult.googleCredentials = try Services.User.Containers.GoogleCredentialsV1.builderWithPrototype(builderResult.googleCredentials).mergeFrom(value).buildPartial()
         } else {
-          builderResult.samlDetails = value
+          builderResult.googleCredentials = value
         }
-        builderResult.hasSamlDetails = true
+        builderResult.hasGoogleCredentials = true
         return self
       }
-      public func clearSamlDetails() -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
-        samlDetailsBuilder_ = nil
-        builderResult.hasSamlDetails = false
-        builderResult.samlDetails = nil
+      public func clearGoogleCredentials() -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
+        googleCredentialsBuilder_ = nil
+        builderResult.hasGoogleCredentials = false
+        builderResult.googleCredentials = nil
+        return self
+      }
+      public var hasSamlCredentials:Bool {
+           get {
+               return builderResult.hasSamlCredentials
+           }
+      }
+      public var samlCredentials:Services.User.Containers.SAMLCredentialsV1! {
+           get {
+               if samlCredentialsBuilder_ != nil {
+                  builderResult.samlCredentials = samlCredentialsBuilder_.getMessage()
+               }
+               return builderResult.samlCredentials
+           }
+           set (value) {
+               builderResult.hasSamlCredentials = true
+               builderResult.samlCredentials = value
+           }
+      }
+      private var samlCredentialsBuilder_:Services.User.Containers.SAMLCredentialsV1.Builder! {
+           didSet {
+              builderResult.hasSamlCredentials = true
+           }
+      }
+      public func getSamlCredentialsBuilder() -> Services.User.Containers.SAMLCredentialsV1.Builder {
+        if samlCredentialsBuilder_ == nil {
+           samlCredentialsBuilder_ = Services.User.Containers.SAMLCredentialsV1.Builder()
+           builderResult.samlCredentials = samlCredentialsBuilder_.getMessage()
+           if samlCredentials != nil {
+              try! samlCredentialsBuilder_.mergeFrom(samlCredentials)
+           }
+        }
+        return samlCredentialsBuilder_
+      }
+      public func setSamlCredentials(value:Services.User.Containers.SAMLCredentialsV1!) -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
+        self.samlCredentials = value
+        return self
+      }
+      public func mergeSamlCredentials(value:Services.User.Containers.SAMLCredentialsV1) throws -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
+        if builderResult.hasSamlCredentials {
+          builderResult.samlCredentials = try Services.User.Containers.SAMLCredentialsV1.builderWithPrototype(builderResult.samlCredentials).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.samlCredentials = value
+        }
+        builderResult.hasSamlCredentials = true
+        return self
+      }
+      public func clearSamlCredentials() -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
+        samlCredentialsBuilder_ = nil
+        builderResult.hasSamlCredentials = false
+        builderResult.samlCredentials = nil
         return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -1162,9 +1066,6 @@ public extension Services.User.Actions.CompleteAuthorization {
         if other == Services.User.Actions.CompleteAuthorization.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasUser) {
             try mergeUser(other.user)
         }
@@ -1174,14 +1075,14 @@ public extension Services.User.Actions.CompleteAuthorization {
         if other.hasNewUser {
              newUser = other.newUser
         }
-        if (other.hasOauthSdkDetails) {
-            try mergeOauthSdkDetails(other.oauthSdkDetails)
-        }
         if other.hasRedirectUri {
              redirectUri = other.redirectUri
         }
-        if (other.hasSamlDetails) {
-            try mergeSamlDetails(other.samlDetails)
+        if (other.hasGoogleCredentials) {
+            try mergeGoogleCredentials(other.googleCredentials)
+        }
+        if (other.hasSamlCredentials) {
+            try mergeSamlCredentials(other.samlCredentials)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1198,10 +1099,7 @@ public extension Services.User.Actions.CompleteAuthorization {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.User.Containers.UserV1.Builder = Services.User.Containers.UserV1.Builder()
             if hasUser {
               try subBuilder.mergeFrom(user)
@@ -1209,7 +1107,7 @@ public extension Services.User.Actions.CompleteAuthorization {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             user = subBuilder.buildPartial()
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.User.Containers.IdentityV1.Builder = Services.User.Containers.IdentityV1.Builder()
             if hasIdentity {
               try subBuilder.mergeFrom(identity)
@@ -1217,27 +1115,27 @@ public extension Services.User.Actions.CompleteAuthorization {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             identity = subBuilder.buildPartial()
 
-          case 32 :
+          case 24 :
             newUser = try input.readBool()
 
-          case 42 :
-            let subBuilder:Services.User.Containers.OAuthSDKDetailsV1.Builder = Services.User.Containers.OAuthSDKDetailsV1.Builder()
-            if hasOauthSdkDetails {
-              try subBuilder.mergeFrom(oauthSdkDetails)
-            }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-            oauthSdkDetails = subBuilder.buildPartial()
-
-          case 50 :
+          case 34 :
             redirectUri = try input.readString()
 
-          case 58 :
-            let subBuilder:Services.User.Containers.SAMLDetailsV1.Builder = Services.User.Containers.SAMLDetailsV1.Builder()
-            if hasSamlDetails {
-              try subBuilder.mergeFrom(samlDetails)
+          case 42 :
+            let subBuilder:Services.User.Containers.GoogleCredentialsV1.Builder = Services.User.Containers.GoogleCredentialsV1.Builder()
+            if hasGoogleCredentials {
+              try subBuilder.mergeFrom(googleCredentials)
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-            samlDetails = subBuilder.buildPartial()
+            googleCredentials = subBuilder.buildPartial()
+
+          case 50 :
+            let subBuilder:Services.User.Containers.SAMLCredentialsV1.Builder = Services.User.Containers.SAMLCredentialsV1.Builder()
+            if hasSamlCredentials {
+              try subBuilder.mergeFrom(samlCredentials)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            samlCredentials = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

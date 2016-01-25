@@ -28,9 +28,9 @@ public extension Services.Media.Containers.Media {
   //Enum type declaration start 
 
   public enum MediaTypeV1:Int32 {
-    case Profile = 1
-    case Team = 2
-    case Location = 3
+    case Profile = 0
+    case Team = 1
+    case Location = 2
 
   }
 

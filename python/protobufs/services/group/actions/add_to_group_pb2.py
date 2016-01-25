@@ -17,8 +17,8 @@ from protobufs.services.group import containers_pb2 as protobufs_dot_services_do
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/group/actions/add_to_group.proto',
   package='services.group.actions.add_to_group',
-  syntax='proto2',
-  serialized_pb=b'\n3protobufs/services/group/actions/add_to_group.proto\x12#services.group.actions.add_to_group\x1a)protobufs/services/group/containers.proto\"\x84\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x10\n\x08group_id\x18\x02 \x01(\t\x12\x13\n\x0bprofile_ids\x18\x03 \x03(\t\x12<\n\x08provider\x18\x04 \x01(\x0e\x32*.services.group.containers.GroupProviderV1\"Z\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x38\n\x0bnew_members\x18\x02 \x03(\x0b\x32#.services.group.containers.MemberV1B:\n8com.rhlabs.protobufs.services.group.actions.add_to_group'
+  syntax='proto3',
+  serialized_pb=b'\n3protobufs/services/group/actions/add_to_group.proto\x12#services.group.actions.add_to_group\x1a)protobufs/services/group/containers.proto\"p\n\tRequestV1\x12\x10\n\x08group_id\x18\x01 \x01(\t\x12\x13\n\x0bprofile_ids\x18\x02 \x03(\t\x12<\n\x08provider\x18\x03 \x01(\x0e\x32*.services.group.containers.GroupProviderV1\"F\n\nResponseV1\x12\x38\n\x0bnew_members\x18\x01 \x03(\x0b\x32#.services.group.containers.MemberV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_group_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -34,29 +34,22 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.group.actions.add_to_group.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='group_id', full_name='services.group.actions.add_to_group.RequestV1.group_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='group_id', full_name='services.group.actions.add_to_group.RequestV1.group_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='profile_ids', full_name='services.group.actions.add_to_group.RequestV1.profile_ids', index=2,
-      number=3, type=9, cpp_type=9, label=3,
+      name='profile_ids', full_name='services.group.actions.add_to_group.RequestV1.profile_ids', index=1,
+      number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='provider', full_name='services.group.actions.add_to_group.RequestV1.provider', index=3,
-      number=4, type=14, cpp_type=8, label=1,
+      name='provider', full_name='services.group.actions.add_to_group.RequestV1.provider', index=2,
+      number=3, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -69,12 +62,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=136,
-  serialized_end=268,
+  serialized_start=135,
+  serialized_end=247,
 )
 
 
@@ -86,15 +79,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.group.actions.add_to_group.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='new_members', full_name='services.group.actions.add_to_group.ResponseV1.new_members', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='new_members', full_name='services.group.actions.add_to_group.ResponseV1.new_members', index=0,
+      number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -107,12 +93,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=270,
-  serialized_end=360,
+  serialized_start=249,
+  serialized_end=319,
 )
 
 _REQUESTV1.fields_by_name['provider'].enum_type = protobufs_dot_services_dot_group_dot_containers__pb2._GROUPPROVIDERV1
@@ -135,6 +121,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n8com.rhlabs.protobufs.services.group.actions.add_to_group')
 # @@protoc_insertion_point(module_scope)

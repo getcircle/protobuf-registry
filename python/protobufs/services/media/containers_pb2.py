@@ -16,8 +16,8 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/media/containers.proto',
   package='services.media.containers',
-  syntax='proto2',
-  serialized_pb=b'\n)protobufs/services/media/containers.proto\x12\x19services.media.containers\"e\n\x14UploadInstructionsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x11\n\tupload_id\x18\x02 \x01(\t\x12\x12\n\nupload_url\x18\x03 \x01(\t\x12\x12\n\nupload_key\x18\x04 \x01(\tB0\n.com.rhlabs.protobufs.services.media.containers'
+  syntax='proto3',
+  serialized_pb=b'\n)protobufs/services/media/containers.proto\x12\x19services.media.containers\"Q\n\x14UploadInstructionsV1\x12\x11\n\tupload_id\x18\x01 \x01(\t\x12\x12\n\nupload_url\x18\x02 \x01(\t\x12\x12\n\nupload_key\x18\x03 \x01(\tb\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -32,29 +32,22 @@ _UPLOADINSTRUCTIONSV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.media.containers.UploadInstructionsV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='upload_id', full_name='services.media.containers.UploadInstructionsV1.upload_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='upload_id', full_name='services.media.containers.UploadInstructionsV1.upload_id', index=1,
+      name='upload_url', full_name='services.media.containers.UploadInstructionsV1.upload_url', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='upload_url', full_name='services.media.containers.UploadInstructionsV1.upload_url', index=2,
+      name='upload_key', full_name='services.media.containers.UploadInstructionsV1.upload_key', index=2,
       number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='upload_key', full_name='services.media.containers.UploadInstructionsV1.upload_key', index=3,
-      number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -67,12 +60,12 @@ _UPLOADINSTRUCTIONSV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=72,
-  serialized_end=173,
+  serialized_end=153,
 )
 
 DESCRIPTOR.message_types_by_name['UploadInstructionsV1'] = _UPLOADINSTRUCTIONSV1
@@ -85,6 +78,4 @@ UploadInstructionsV1 = _reflection.GeneratedProtocolMessageType('UploadInstructi
 _sym_db.RegisterMessage(UploadInstructionsV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n.com.rhlabs.protobufs.services.media.containers')
 # @@protoc_insertion_point(module_scope)

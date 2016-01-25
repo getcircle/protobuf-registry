@@ -17,8 +17,8 @@ from protobufs.services.history import containers_pb2 as protobufs_dot_services_
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/history/actions/record_action.proto',
   package='services.history.actions.record_action',
-  syntax='proto2',
-  serialized_pb=b'\n6protobufs/services/history/actions/record_action.proto\x12&services.history.actions.record_action\x1a+protobufs/services/history/containers.proto\"V\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x35\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32%.services.history.containers.ActionV1\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x42=\n;com.rhlabs.protobufs.services.history.actions.record_action'
+  syntax='proto3',
+  serialized_pb=b'\n6protobufs/services/history/actions/record_action.proto\x12&services.history.actions.record_action\x1a+protobufs/services/history/containers.proto\"B\n\tRequestV1\x12\x35\n\x06\x61\x63tion\x18\x01 \x01(\x0b\x32%.services.history.containers.ActionV1\"\x0c\n\nResponseV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_history_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -34,15 +34,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.history.actions.record_action.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='action', full_name='services.history.actions.record_action.RequestV1.action', index=1,
-      number=2, type=11, cpp_type=10, label=1,
+      name='action', full_name='services.history.actions.record_action.RequestV1.action', index=0,
+      number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -55,12 +48,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=143,
-  serialized_end=229,
+  serialized_end=209,
 )
 
 
@@ -71,13 +64,6 @@ _RESPONSEV1 = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
-    _descriptor.FieldDescriptor(
-      name='version', full_name='services.history.actions.record_action.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -86,12 +72,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=231,
-  serialized_end=263,
+  serialized_start=211,
+  serialized_end=223,
 )
 
 _REQUESTV1.fields_by_name['action'].message_type = protobufs_dot_services_dot_history_dot_containers__pb2._ACTIONV1
@@ -113,6 +99,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n;com.rhlabs.protobufs.services.history.actions.record_action')
 # @@protoc_insertion_point(module_scope)

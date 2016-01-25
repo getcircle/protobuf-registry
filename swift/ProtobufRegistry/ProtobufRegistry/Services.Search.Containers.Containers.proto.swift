@@ -25,8 +25,8 @@ public func == (lhs: Services.Search.Containers.SearchResultV1, rhs: Services.Se
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
   fieldCheck = fieldCheck && (lhs.hasLocation == rhs.hasLocation) && (!lhs.hasLocation || lhs.location == rhs.location)
   fieldCheck = fieldCheck && (lhs.hasGroup == rhs.hasGroup) && (!lhs.hasGroup || lhs.group == rhs.group)
-  fieldCheck = fieldCheck && (lhs.hasScore == rhs.hasScore) && (!lhs.hasScore || lhs.score == rhs.score)
   fieldCheck = fieldCheck && (lhs.hasPost == rhs.hasPost) && (!lhs.hasPost || lhs.post == rhs.post)
+  fieldCheck = fieldCheck && (lhs.hasScore == rhs.hasScore) && (!lhs.hasScore || lhs.score == rhs.score)
   fieldCheck = fieldCheck && (lhs.highlight == rhs.highlight)
   fieldCheck = fieldCheck && (lhs.hasTrackingDetails == rhs.hasTrackingDetails) && (!lhs.hasTrackingDetails || lhs.trackingDetails == rhs.trackingDetails)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -741,28 +741,28 @@ public extension Services.Search.Containers {
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasProfile {
-        try output.writeMessage(2, value:profile)
+        try output.writeMessage(1, value:profile)
       }
       if hasTeam {
-        try output.writeMessage(3, value:team)
+        try output.writeMessage(2, value:team)
       }
       if hasLocation {
-        try output.writeMessage(4, value:location)
+        try output.writeMessage(3, value:location)
       }
       if hasGroup {
-        try output.writeMessage(5, value:group)
-      }
-      if hasScore {
-        try output.writeFloat(8, value:score)
+        try output.writeMessage(4, value:group)
       }
       if hasPost {
-        try output.writeMessage(9, value:post)
+        try output.writeMessage(5, value:post)
+      }
+      if hasScore {
+        try output.writeFloat(6, value:score)
       }
       for oneElementhighlight in highlight {
-          try output.writeMessage(10, value:oneElementhighlight)
+          try output.writeMessage(7, value:oneElementhighlight)
       }
       if hasTrackingDetails {
-        try output.writeMessage(11, value:trackingDetails)
+        try output.writeMessage(8, value:trackingDetails)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -774,38 +774,38 @@ public extension Services.Search.Containers {
 
       serialize_size = 0
       if hasProfile {
-          if let varSizeprofile = profile?.computeMessageSize(2) {
+          if let varSizeprofile = profile?.computeMessageSize(1) {
               serialize_size += varSizeprofile
           }
       }
       if hasTeam {
-          if let varSizeteam = team?.computeMessageSize(3) {
+          if let varSizeteam = team?.computeMessageSize(2) {
               serialize_size += varSizeteam
           }
       }
       if hasLocation {
-          if let varSizelocation = location?.computeMessageSize(4) {
+          if let varSizelocation = location?.computeMessageSize(3) {
               serialize_size += varSizelocation
           }
       }
       if hasGroup {
-          if let varSizegroup = group?.computeMessageSize(5) {
+          if let varSizegroup = group?.computeMessageSize(4) {
               serialize_size += varSizegroup
           }
       }
-      if hasScore {
-        serialize_size += score.computeFloatSize(8)
-      }
       if hasPost {
-          if let varSizepost = post?.computeMessageSize(9) {
+          if let varSizepost = post?.computeMessageSize(5) {
               serialize_size += varSizepost
           }
       }
+      if hasScore {
+        serialize_size += score.computeFloatSize(6)
+      }
       for oneElementhighlight in highlight {
-          serialize_size += oneElementhighlight.computeMessageSize(10)
+          serialize_size += oneElementhighlight.computeMessageSize(7)
       }
       if hasTrackingDetails {
-          if let varSizetrackingDetails = trackingDetails?.computeMessageSize(11) {
+          if let varSizetrackingDetails = trackingDetails?.computeMessageSize(8) {
               serialize_size += varSizetrackingDetails
           }
       }
@@ -880,13 +880,13 @@ public extension Services.Search.Containers {
         try group?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
-      if hasScore {
-        output += "\(indent) score: \(score) \n"
-      }
       if hasPost {
         output += "\(indent) post {\n"
         try post?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
+      }
+      if hasScore {
+        output += "\(indent) score: \(score) \n"
       }
       var highlightElementIndex:Int = 0
       for oneElementhighlight in highlight {
@@ -925,13 +925,13 @@ public extension Services.Search.Containers {
                     hashCode = (hashCode &* 31) &+ hashValuegroup
                 }
             }
-            if hasScore {
-               hashCode = (hashCode &* 31) &+ score.hashValue
-            }
             if hasPost {
                 if let hashValuepost = post?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuepost
                 }
+            }
+            if hasScore {
+               hashCode = (hashCode &* 31) &+ score.hashValue
             }
             for oneElementhighlight in highlight {
                 hashCode = (hashCode &* 31) &+ oneElementhighlight.hashValue
@@ -1377,7 +1377,7 @@ public extension Services.Search.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 18 :
+          case 10 :
             let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
             if hasProfile {
               try subBuilder.mergeFrom(profile)
@@ -1385,7 +1385,7 @@ public extension Services.Search.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             profile = subBuilder.buildPartial()
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.Organization.Containers.TeamV1.Builder = Services.Organization.Containers.TeamV1.Builder()
             if hasTeam {
               try subBuilder.mergeFrom(team)
@@ -1393,7 +1393,7 @@ public extension Services.Search.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             team = subBuilder.buildPartial()
 
-          case 34 :
+          case 26 :
             let subBuilder:Services.Organization.Containers.LocationV1.Builder = Services.Organization.Containers.LocationV1.Builder()
             if hasLocation {
               try subBuilder.mergeFrom(location)
@@ -1401,7 +1401,7 @@ public extension Services.Search.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             location = subBuilder.buildPartial()
 
-          case 42 :
+          case 34 :
             let subBuilder:Services.Group.Containers.GroupV1.Builder = Services.Group.Containers.GroupV1.Builder()
             if hasGroup {
               try subBuilder.mergeFrom(group)
@@ -1409,10 +1409,7 @@ public extension Services.Search.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             group = subBuilder.buildPartial()
 
-          case 69 :
-            score = try input.readFloat()
-
-          case 74 :
+          case 42 :
             let subBuilder:Services.Post.Containers.PostV1.Builder = Services.Post.Containers.PostV1.Builder()
             if hasPost {
               try subBuilder.mergeFrom(post)
@@ -1420,12 +1417,15 @@ public extension Services.Search.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             post = subBuilder.buildPartial()
 
-          case 82 :
+          case 53 :
+            score = try input.readFloat()
+
+          case 58 :
             let subBuilder = Services.Search.Containers.SearchResultV1.HighlightEntry.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             highlight += [subBuilder.buildPartial()]
 
-          case 90 :
+          case 66 :
             let subBuilder:Services.Search.Containers.TrackingDetailsV1.Builder = Services.Search.Containers.TrackingDetailsV1.Builder()
             if hasTrackingDetails {
               try subBuilder.mergeFrom(trackingDetails)

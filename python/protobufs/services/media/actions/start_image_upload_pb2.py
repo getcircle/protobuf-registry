@@ -18,8 +18,8 @@ from protobufs.services.media.containers import media_pb2 as protobufs_dot_servi
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/media/actions/start_image_upload.proto',
   package='services.media.actions.start_image_upload',
-  syntax='proto2',
-  serialized_pb=b'\n9protobufs/services/media/actions/start_image_upload.proto\x12)services.media.actions.start_image_upload\x1a)protobufs/services/media/containers.proto\x1a/protobufs/services/media/containers/media.proto\"t\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12@\n\nmedia_type\x18\x02 \x01(\x0e\x32,.services.media.containers.media.MediaTypeV1\x12\x11\n\tmedia_key\x18\x03 \x01(\t\"n\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12L\n\x13upload_instructions\x18\x02 \x01(\x0b\x32/.services.media.containers.UploadInstructionsV1B@\n>com.rhlabs.protobufs.services.media.actions.start_image_upload'
+  syntax='proto3',
+  serialized_pb=b'\n9protobufs/services/media/actions/start_image_upload.proto\x12)services.media.actions.start_image_upload\x1a)protobufs/services/media/containers.proto\x1a/protobufs/services/media/containers/media.proto\"`\n\tRequestV1\x12@\n\nmedia_type\x18\x01 \x01(\x0e\x32,.services.media.containers.media.MediaTypeV1\x12\x11\n\tmedia_key\x18\x02 \x01(\t\"Z\n\nResponseV1\x12L\n\x13upload_instructions\x18\x01 \x01(\x0b\x32/.services.media.containers.UploadInstructionsV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_media_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_media_dot_containers_dot_media__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -35,22 +35,15 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.media.actions.start_image_upload.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='media_type', full_name='services.media.actions.start_image_upload.RequestV1.media_type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='media_type', full_name='services.media.actions.start_image_upload.RequestV1.media_type', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='media_key', full_name='services.media.actions.start_image_upload.RequestV1.media_key', index=2,
-      number=3, type=9, cpp_type=9, label=1,
+      name='media_key', full_name='services.media.actions.start_image_upload.RequestV1.media_key', index=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -63,12 +56,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=196,
-  serialized_end=312,
+  serialized_end=292,
 )
 
 
@@ -80,15 +73,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.media.actions.start_image_upload.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='upload_instructions', full_name='services.media.actions.start_image_upload.ResponseV1.upload_instructions', index=1,
-      number=2, type=11, cpp_type=10, label=1,
+      name='upload_instructions', full_name='services.media.actions.start_image_upload.ResponseV1.upload_instructions', index=0,
+      number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -101,12 +87,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=314,
-  serialized_end=424,
+  serialized_start=294,
+  serialized_end=384,
 )
 
 _REQUESTV1.fields_by_name['media_type'].enum_type = protobufs_dot_services_dot_media_dot_containers_dot_media__pb2._MEDIATYPEV1
@@ -129,6 +115,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n>com.rhlabs.protobufs.services.media.actions.start_image_upload')
 # @@protoc_insertion_point(module_scope)

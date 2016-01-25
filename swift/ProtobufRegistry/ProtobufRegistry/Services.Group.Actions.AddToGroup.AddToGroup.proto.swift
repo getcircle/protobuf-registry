@@ -10,7 +10,6 @@ public func == (lhs: Services.Group.Actions.AddToGroup.RequestV1, rhs: Services.
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
   fieldCheck = fieldCheck && (lhs.profileIds == rhs.profileIds)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
@@ -23,7 +22,6 @@ public func == (lhs: Services.Group.Actions.AddToGroup.ResponseV1, rhs: Services
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.newMembers == rhs.newMembers)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -49,9 +47,6 @@ public extension Services.Group.Actions.AddToGroup {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasGroupId:Bool = false
     public private(set) var groupId:String = ""
 
@@ -65,19 +60,16 @@ public extension Services.Group.Actions.AddToGroup {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasGroupId {
-        try output.writeString(2, value:groupId)
+        try output.writeString(1, value:groupId)
       }
       if !profileIds.isEmpty {
         for oneValueprofileIds in profileIds {
-          try output.writeString(3, value:oneValueprofileIds)
+          try output.writeString(2, value:oneValueprofileIds)
         }
       }
       if hasProvider {
-        try output.writeEnum(4, value:provider.rawValue)
+        try output.writeEnum(3, value:provider.rawValue)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -88,11 +80,8 @@ public extension Services.Group.Actions.AddToGroup {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasGroupId {
-        serialize_size += groupId.computeStringSize(2)
+        serialize_size += groupId.computeStringSize(1)
       }
       var dataSizeProfileIds:Int32 = 0
       for oneValueprofileIds in profileIds {
@@ -101,7 +90,7 @@ public extension Services.Group.Actions.AddToGroup {
       serialize_size += dataSizeProfileIds
       serialize_size += 1 * Int32(profileIds.count)
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(4)
+        serialize_size += provider.rawValue.computeEnumSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -154,9 +143,6 @@ public extension Services.Group.Actions.AddToGroup {
       return try Services.Group.Actions.AddToGroup.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasGroupId {
         output += "\(indent) groupId: \(groupId) \n"
       }
@@ -173,9 +159,6 @@ public extension Services.Group.Actions.AddToGroup {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasGroupId {
                hashCode = (hashCode &* 31) &+ groupId.hashValue
             }
@@ -212,29 +195,6 @@ public extension Services.Group.Actions.AddToGroup {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Actions.AddToGroup.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Actions.AddToGroup.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasGroupId:Bool {
            get {
@@ -322,9 +282,6 @@ public extension Services.Group.Actions.AddToGroup {
         if other == Services.Group.Actions.AddToGroup.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasGroupId {
              groupId = other.groupId
         }
@@ -349,21 +306,18 @@ public extension Services.Group.Actions.AddToGroup {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             groupId = try input.readString()
 
-          case 26 :
+          case 18 :
             profileIds += [try input.readString()]
 
-          case 32 :
+          case 24 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntprovider))
             }
 
           default:
@@ -379,9 +333,6 @@ public extension Services.Group.Actions.AddToGroup {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var newMembers:Array<Services.Group.Containers.MemberV1>  = Array<Services.Group.Containers.MemberV1>()
     required public init() {
          super.init()
@@ -390,11 +341,8 @@ public extension Services.Group.Actions.AddToGroup {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementnewMembers in newMembers {
-          try output.writeMessage(2, value:oneElementnewMembers)
+          try output.writeMessage(1, value:oneElementnewMembers)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -405,11 +353,8 @@ public extension Services.Group.Actions.AddToGroup {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementnewMembers in newMembers {
-          serialize_size += oneElementnewMembers.computeMessageSize(2)
+          serialize_size += oneElementnewMembers.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -462,9 +407,6 @@ public extension Services.Group.Actions.AddToGroup {
       return try Services.Group.Actions.AddToGroup.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var newMembersElementIndex:Int = 0
       for oneElementnewMembers in newMembers {
           output += "\(indent) newMembers[\(newMembersElementIndex)] {\n"
@@ -477,9 +419,6 @@ public extension Services.Group.Actions.AddToGroup {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementnewMembers in newMembers {
                 hashCode = (hashCode &* 31) &+ oneElementnewMembers.hashValue
             }
@@ -510,29 +449,6 @@ public extension Services.Group.Actions.AddToGroup {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Actions.AddToGroup.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Actions.AddToGroup.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var newMembers:Array<Services.Group.Containers.MemberV1> {
            get {
@@ -574,9 +490,6 @@ public extension Services.Group.Actions.AddToGroup {
         if other == Services.Group.Actions.AddToGroup.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.newMembers.isEmpty  {
            builderResult.newMembers += other.newMembers
         }
@@ -595,10 +508,7 @@ public extension Services.Group.Actions.AddToGroup {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.Group.Containers.MemberV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             newMembers += [subBuilder.buildPartial()]

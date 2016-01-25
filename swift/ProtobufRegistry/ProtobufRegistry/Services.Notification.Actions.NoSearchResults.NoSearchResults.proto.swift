@@ -10,7 +10,6 @@ public func == (lhs: Services.Notification.Actions.NoSearchResults.RequestV1, rh
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasClientType == rhs.hasClientType) && (!lhs.hasClientType || lhs.clientType == rhs.clientType)
   fieldCheck = fieldCheck && (lhs.hasQuery == rhs.hasQuery) && (!lhs.hasQuery || lhs.query == rhs.query)
   fieldCheck = fieldCheck && (lhs.hasComment == rhs.hasComment) && (!lhs.hasComment || lhs.comment == rhs.comment)
@@ -23,7 +22,6 @@ public func == (lhs: Services.Notification.Actions.NoSearchResults.ResponseV1, r
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -48,9 +46,6 @@ public extension Services.Notification.Actions.NoSearchResults {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var clientType:Services.User.Containers.Token.ClientTypeV1 = Services.User.Containers.Token.ClientTypeV1.Ios
     public private(set) var hasClientType:Bool = false
     public private(set) var hasQuery:Bool = false
@@ -66,17 +61,14 @@ public extension Services.Notification.Actions.NoSearchResults {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasClientType {
-        try output.writeEnum(2, value:clientType.rawValue)
+        try output.writeEnum(1, value:clientType.rawValue)
       }
       if hasQuery {
-        try output.writeString(3, value:query)
+        try output.writeString(2, value:query)
       }
       if hasComment {
-        try output.writeString(4, value:comment)
+        try output.writeString(3, value:comment)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -87,17 +79,14 @@ public extension Services.Notification.Actions.NoSearchResults {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if (hasClientType) {
-        serialize_size += clientType.rawValue.computeEnumSize(2)
+        serialize_size += clientType.rawValue.computeEnumSize(1)
       }
       if hasQuery {
-        serialize_size += query.computeStringSize(3)
+        serialize_size += query.computeStringSize(2)
       }
       if hasComment {
-        serialize_size += comment.computeStringSize(4)
+        serialize_size += comment.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -150,9 +139,6 @@ public extension Services.Notification.Actions.NoSearchResults {
       return try Services.Notification.Actions.NoSearchResults.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if (hasClientType) {
         output += "\(indent) clientType: \(clientType.rawValue)\n"
       }
@@ -167,9 +153,6 @@ public extension Services.Notification.Actions.NoSearchResults {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasClientType {
                hashCode = (hashCode &* 31) &+ Int(clientType.rawValue)
             }
@@ -206,29 +189,6 @@ public extension Services.Notification.Actions.NoSearchResults {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Actions.NoSearchResults.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Actions.NoSearchResults.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
         public var hasClientType:Bool{
             get {
@@ -323,9 +283,6 @@ public extension Services.Notification.Actions.NoSearchResults {
         if other == Services.Notification.Actions.NoSearchResults.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasClientType {
              clientType = other.clientType
         }
@@ -351,20 +308,17 @@ public extension Services.Notification.Actions.NoSearchResults {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             let valueIntclientType = try input.readEnum()
             if let enumsclientType = Services.User.Containers.Token.ClientTypeV1(rawValue:valueIntclientType){
                  clientType = enumsclientType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntclientType))
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntclientType))
             }
 
-          case 26 :
+          case 18 :
             query = try input.readString()
 
-          case 34 :
+          case 26 :
             comment = try input.readString()
 
           default:
@@ -380,9 +334,6 @@ public extension Services.Notification.Actions.NoSearchResults {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     required public init() {
          super.init()
     }
@@ -390,9 +341,6 @@ public extension Services.Notification.Actions.NoSearchResults {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -402,9 +350,6 @@ public extension Services.Notification.Actions.NoSearchResults {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -456,17 +401,11 @@ public extension Services.Notification.Actions.NoSearchResults {
       return try Services.Notification.Actions.NoSearchResults.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -495,29 +434,6 @@ public extension Services.Notification.Actions.NoSearchResults {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Actions.NoSearchResults.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Actions.NoSearchResults.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -542,9 +458,6 @@ public extension Services.Notification.Actions.NoSearchResults {
         if other == Services.Notification.Actions.NoSearchResults.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -559,9 +472,6 @@ public extension Services.Notification.Actions.NoSearchResults {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

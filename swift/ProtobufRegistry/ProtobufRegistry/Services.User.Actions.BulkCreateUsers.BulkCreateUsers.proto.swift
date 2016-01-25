@@ -10,7 +10,6 @@ public func == (lhs: Services.User.Actions.BulkCreateUsers.RequestV1, rhs: Servi
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.users == rhs.users)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -22,7 +21,6 @@ public func == (lhs: Services.User.Actions.BulkCreateUsers.ResponseV1, rhs: Serv
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.users == rhs.users)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -48,9 +46,6 @@ public extension Services.User.Actions.BulkCreateUsers {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var users:Array<Services.User.Containers.UserV1>  = Array<Services.User.Containers.UserV1>()
     public private(set) var hasOrganizationId:Bool = false
     public private(set) var organizationId:String = ""
@@ -62,14 +57,11 @@ public extension Services.User.Actions.BulkCreateUsers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementusers in users {
-          try output.writeMessage(2, value:oneElementusers)
+          try output.writeMessage(1, value:oneElementusers)
       }
       if hasOrganizationId {
-        try output.writeString(3, value:organizationId)
+        try output.writeString(2, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -80,14 +72,11 @@ public extension Services.User.Actions.BulkCreateUsers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementusers in users {
-          serialize_size += oneElementusers.computeMessageSize(2)
+          serialize_size += oneElementusers.computeMessageSize(1)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(3)
+        serialize_size += organizationId.computeStringSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -140,9 +129,6 @@ public extension Services.User.Actions.BulkCreateUsers {
       return try Services.User.Actions.BulkCreateUsers.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var usersElementIndex:Int = 0
       for oneElementusers in users {
           output += "\(indent) users[\(usersElementIndex)] {\n"
@@ -158,9 +144,6 @@ public extension Services.User.Actions.BulkCreateUsers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementusers in users {
                 hashCode = (hashCode &* 31) &+ oneElementusers.hashValue
             }
@@ -194,29 +177,6 @@ public extension Services.User.Actions.BulkCreateUsers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.BulkCreateUsers.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.BulkCreateUsers.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var users:Array<Services.User.Containers.UserV1> {
            get {
@@ -281,9 +241,6 @@ public extension Services.User.Actions.BulkCreateUsers {
         if other == Services.User.Actions.BulkCreateUsers.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.users.isEmpty  {
            builderResult.users += other.users
         }
@@ -305,15 +262,12 @@ public extension Services.User.Actions.BulkCreateUsers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.User.Containers.UserV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             users += [subBuilder.buildPartial()]
 
-          case 26 :
+          case 18 :
             organizationId = try input.readString()
 
           default:
@@ -329,9 +283,6 @@ public extension Services.User.Actions.BulkCreateUsers {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var users:Array<Services.User.Containers.UserV1>  = Array<Services.User.Containers.UserV1>()
     required public init() {
          super.init()
@@ -340,11 +291,8 @@ public extension Services.User.Actions.BulkCreateUsers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementusers in users {
-          try output.writeMessage(2, value:oneElementusers)
+          try output.writeMessage(1, value:oneElementusers)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -355,11 +303,8 @@ public extension Services.User.Actions.BulkCreateUsers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementusers in users {
-          serialize_size += oneElementusers.computeMessageSize(2)
+          serialize_size += oneElementusers.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -412,9 +357,6 @@ public extension Services.User.Actions.BulkCreateUsers {
       return try Services.User.Actions.BulkCreateUsers.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var usersElementIndex:Int = 0
       for oneElementusers in users {
           output += "\(indent) users[\(usersElementIndex)] {\n"
@@ -427,9 +369,6 @@ public extension Services.User.Actions.BulkCreateUsers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementusers in users {
                 hashCode = (hashCode &* 31) &+ oneElementusers.hashValue
             }
@@ -460,29 +399,6 @@ public extension Services.User.Actions.BulkCreateUsers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.BulkCreateUsers.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.BulkCreateUsers.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var users:Array<Services.User.Containers.UserV1> {
            get {
@@ -524,9 +440,6 @@ public extension Services.User.Actions.BulkCreateUsers {
         if other == Services.User.Actions.BulkCreateUsers.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.users.isEmpty  {
            builderResult.users += other.users
         }
@@ -545,10 +458,7 @@ public extension Services.User.Actions.BulkCreateUsers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.User.Containers.UserV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             users += [subBuilder.buildPartial()]

@@ -3,14 +3,13 @@
 
 import Foundation
 
-public extension Services.Profile.Actions{ public struct BulkCreateProfiles { }}
+public extension Services{ public struct Profile { public struct Actions { public struct BulkCreateProfiles { }}}}
 
 public func == (lhs: Services.Profile.Actions.BulkCreateProfiles.RequestV1, rhs: Services.Profile.Actions.BulkCreateProfiles.RequestV1) -> Bool {
   if (lhs === rhs) {
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.profiles == rhs.profiles)
   fieldCheck = fieldCheck && (lhs.hasShouldUpdate == rhs.hasShouldUpdate) && (!lhs.hasShouldUpdate || lhs.shouldUpdate == rhs.shouldUpdate)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -22,7 +21,6 @@ public func == (lhs: Services.Profile.Actions.BulkCreateProfiles.ResponseV1, rhs
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.profiles == rhs.profiles)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -48,9 +46,6 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var profiles:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
     public private(set) var hasShouldUpdate:Bool = false
     public private(set) var shouldUpdate:Bool = false
@@ -62,14 +57,11 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementprofiles in profiles {
-          try output.writeMessage(2, value:oneElementprofiles)
+          try output.writeMessage(1, value:oneElementprofiles)
       }
       if hasShouldUpdate {
-        try output.writeBool(3, value:shouldUpdate)
+        try output.writeBool(2, value:shouldUpdate)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -80,14 +72,11 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementprofiles in profiles {
-          serialize_size += oneElementprofiles.computeMessageSize(2)
+          serialize_size += oneElementprofiles.computeMessageSize(1)
       }
       if hasShouldUpdate {
-        serialize_size += shouldUpdate.computeBoolSize(3)
+        serialize_size += shouldUpdate.computeBoolSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -140,9 +129,6 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
       return try Services.Profile.Actions.BulkCreateProfiles.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var profilesElementIndex:Int = 0
       for oneElementprofiles in profiles {
           output += "\(indent) profiles[\(profilesElementIndex)] {\n"
@@ -158,9 +144,6 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementprofiles in profiles {
                 hashCode = (hashCode &* 31) &+ oneElementprofiles.hashValue
             }
@@ -194,29 +177,6 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.BulkCreateProfiles.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.BulkCreateProfiles.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var profiles:Array<Services.Profile.Containers.ProfileV1> {
            get {
@@ -281,9 +241,6 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
         if other == Services.Profile.Actions.BulkCreateProfiles.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.profiles.isEmpty  {
            builderResult.profiles += other.profiles
         }
@@ -305,15 +262,12 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.Profile.Containers.ProfileV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             profiles += [subBuilder.buildPartial()]
 
-          case 24 :
+          case 16 :
             shouldUpdate = try input.readBool()
 
           default:
@@ -329,9 +283,6 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var profiles:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
     required public init() {
          super.init()
@@ -340,11 +291,8 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementprofiles in profiles {
-          try output.writeMessage(2, value:oneElementprofiles)
+          try output.writeMessage(1, value:oneElementprofiles)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -355,11 +303,8 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementprofiles in profiles {
-          serialize_size += oneElementprofiles.computeMessageSize(2)
+          serialize_size += oneElementprofiles.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -412,9 +357,6 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
       return try Services.Profile.Actions.BulkCreateProfiles.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var profilesElementIndex:Int = 0
       for oneElementprofiles in profiles {
           output += "\(indent) profiles[\(profilesElementIndex)] {\n"
@@ -427,9 +369,6 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementprofiles in profiles {
                 hashCode = (hashCode &* 31) &+ oneElementprofiles.hashValue
             }
@@ -460,29 +399,6 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.BulkCreateProfiles.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.BulkCreateProfiles.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var profiles:Array<Services.Profile.Containers.ProfileV1> {
            get {
@@ -524,9 +440,6 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
         if other == Services.Profile.Actions.BulkCreateProfiles.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.profiles.isEmpty  {
            builderResult.profiles += other.profiles
         }
@@ -545,10 +458,7 @@ public extension Services.Profile.Actions.BulkCreateProfiles {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.Profile.Containers.ProfileV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             profiles += [subBuilder.buildPartial()]

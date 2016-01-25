@@ -10,7 +10,6 @@ public func == (lhs: Services.Notification.Actions.SendNotification.RequestV1, r
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasToProfileId == rhs.hasToProfileId) && (!lhs.hasToProfileId || lhs.toProfileId == rhs.toProfileId)
   fieldCheck = fieldCheck && (lhs.hasNotification == rhs.hasNotification) && (!lhs.hasNotification || lhs.notification == rhs.notification)
   fieldCheck = fieldCheck && (lhs.toProfileIds == rhs.toProfileIds)
@@ -23,7 +22,6 @@ public func == (lhs: Services.Notification.Actions.SendNotification.ResponseV1, 
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -48,9 +46,6 @@ public extension Services.Notification.Actions.SendNotification {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasToProfileId:Bool = false
     public private(set) var toProfileId:String = ""
 
@@ -64,18 +59,15 @@ public extension Services.Notification.Actions.SendNotification {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasToProfileId {
-        try output.writeString(2, value:toProfileId)
+        try output.writeString(1, value:toProfileId)
       }
       if hasNotification {
-        try output.writeMessage(3, value:notification)
+        try output.writeMessage(2, value:notification)
       }
       if !toProfileIds.isEmpty {
         for oneValuetoProfileIds in toProfileIds {
-          try output.writeString(4, value:oneValuetoProfileIds)
+          try output.writeString(3, value:oneValuetoProfileIds)
         }
       }
       try unknownFields.writeToCodedOutputStream(output)
@@ -87,14 +79,11 @@ public extension Services.Notification.Actions.SendNotification {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasToProfileId {
-        serialize_size += toProfileId.computeStringSize(2)
+        serialize_size += toProfileId.computeStringSize(1)
       }
       if hasNotification {
-          if let varSizenotification = notification?.computeMessageSize(3) {
+          if let varSizenotification = notification?.computeMessageSize(2) {
               serialize_size += varSizenotification
           }
       }
@@ -155,9 +144,6 @@ public extension Services.Notification.Actions.SendNotification {
       return try Services.Notification.Actions.SendNotification.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasToProfileId {
         output += "\(indent) toProfileId: \(toProfileId) \n"
       }
@@ -176,9 +162,6 @@ public extension Services.Notification.Actions.SendNotification {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasToProfileId {
                hashCode = (hashCode &* 31) &+ toProfileId.hashValue
             }
@@ -217,29 +200,6 @@ public extension Services.Notification.Actions.SendNotification {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Actions.SendNotification.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Actions.SendNotification.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasToProfileId:Bool {
            get {
@@ -355,9 +315,6 @@ public extension Services.Notification.Actions.SendNotification {
         if other == Services.Notification.Actions.SendNotification.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasToProfileId {
              toProfileId = other.toProfileId
         }
@@ -382,13 +339,10 @@ public extension Services.Notification.Actions.SendNotification {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             toProfileId = try input.readString()
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.Notification.Containers.NotificationV1.Builder = Services.Notification.Containers.NotificationV1.Builder()
             if hasNotification {
               try subBuilder.mergeFrom(notification)
@@ -396,7 +350,7 @@ public extension Services.Notification.Actions.SendNotification {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             notification = subBuilder.buildPartial()
 
-          case 34 :
+          case 26 :
             toProfileIds += [try input.readString()]
 
           default:
@@ -412,9 +366,6 @@ public extension Services.Notification.Actions.SendNotification {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     required public init() {
          super.init()
     }
@@ -422,9 +373,6 @@ public extension Services.Notification.Actions.SendNotification {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -434,9 +382,6 @@ public extension Services.Notification.Actions.SendNotification {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -488,17 +433,11 @@ public extension Services.Notification.Actions.SendNotification {
       return try Services.Notification.Actions.SendNotification.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -527,29 +466,6 @@ public extension Services.Notification.Actions.SendNotification {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Actions.SendNotification.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Actions.SendNotification.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -574,9 +490,6 @@ public extension Services.Notification.Actions.SendNotification {
         if other == Services.Notification.Actions.SendNotification.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -591,9 +504,6 @@ public extension Services.Notification.Actions.SendNotification {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

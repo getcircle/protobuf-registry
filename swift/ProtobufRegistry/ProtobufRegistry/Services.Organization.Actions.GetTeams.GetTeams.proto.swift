@@ -10,7 +10,6 @@ public func == (lhs: Services.Organization.Actions.GetTeams.RequestV1, rhs: Serv
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -21,7 +20,6 @@ public func == (lhs: Services.Organization.Actions.GetTeams.ResponseV1, rhs: Ser
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.teams == rhs.teams)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -47,9 +45,6 @@ public extension Services.Organization.Actions.GetTeams {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var ids:Array<String> = Array<String>()
     required public init() {
          super.init()
@@ -58,12 +53,9 @@ public extension Services.Organization.Actions.GetTeams {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if !ids.isEmpty {
         for oneValueids in ids {
-          try output.writeString(2, value:oneValueids)
+          try output.writeString(1, value:oneValueids)
         }
       }
       try unknownFields.writeToCodedOutputStream(output)
@@ -75,9 +67,6 @@ public extension Services.Organization.Actions.GetTeams {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       var dataSizeIds:Int32 = 0
       for oneValueids in ids {
           dataSizeIds += oneValueids.computeStringSizeNoTag()
@@ -135,9 +124,6 @@ public extension Services.Organization.Actions.GetTeams {
       return try Services.Organization.Actions.GetTeams.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var idsElementIndex:Int = 0
       for oneValueids in ids  {
           output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
@@ -148,9 +134,6 @@ public extension Services.Organization.Actions.GetTeams {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneValueids in ids {
                 hashCode = (hashCode &* 31) &+ oneValueids.hashValue
             }
@@ -181,29 +164,6 @@ public extension Services.Organization.Actions.GetTeams {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetTeams.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetTeams.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var ids:Array<String> {
            get {
@@ -245,9 +205,6 @@ public extension Services.Organization.Actions.GetTeams {
         if other == Services.Organization.Actions.GetTeams.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.ids.isEmpty {
             builderResult.ids += other.ids
         }
@@ -266,10 +223,7 @@ public extension Services.Organization.Actions.GetTeams {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             ids += [try input.readString()]
 
           default:
@@ -285,9 +239,6 @@ public extension Services.Organization.Actions.GetTeams {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var teams:Array<Services.Organization.Containers.TeamV1>  = Array<Services.Organization.Containers.TeamV1>()
     required public init() {
          super.init()
@@ -296,11 +247,8 @@ public extension Services.Organization.Actions.GetTeams {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       for oneElementteams in teams {
-          try output.writeMessage(2, value:oneElementteams)
+          try output.writeMessage(1, value:oneElementteams)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -311,11 +259,8 @@ public extension Services.Organization.Actions.GetTeams {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       for oneElementteams in teams {
-          serialize_size += oneElementteams.computeMessageSize(2)
+          serialize_size += oneElementteams.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -368,9 +313,6 @@ public extension Services.Organization.Actions.GetTeams {
       return try Services.Organization.Actions.GetTeams.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var teamsElementIndex:Int = 0
       for oneElementteams in teams {
           output += "\(indent) teams[\(teamsElementIndex)] {\n"
@@ -383,9 +325,6 @@ public extension Services.Organization.Actions.GetTeams {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneElementteams in teams {
                 hashCode = (hashCode &* 31) &+ oneElementteams.hashValue
             }
@@ -416,29 +355,6 @@ public extension Services.Organization.Actions.GetTeams {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetTeams.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetTeams.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var teams:Array<Services.Organization.Containers.TeamV1> {
            get {
@@ -480,9 +396,6 @@ public extension Services.Organization.Actions.GetTeams {
         if other == Services.Organization.Actions.GetTeams.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.teams.isEmpty  {
            builderResult.teams += other.teams
         }
@@ -501,10 +414,7 @@ public extension Services.Organization.Actions.GetTeams {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder = Services.Organization.Containers.TeamV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             teams += [subBuilder.buildPartial()]

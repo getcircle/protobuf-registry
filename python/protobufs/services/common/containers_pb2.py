@@ -16,95 +16,12 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/common/containers.proto',
   package='services.common.containers',
-  syntax='proto2',
-  serialized_pb=b'\n*protobufs/services/common/containers.proto\x12\x1aservices.common.containers\"<\n\nKeyValueV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\"T\n\x05MapV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x37\n\x07\x63ontent\x18\x02 \x03(\x0b\x32&.services.common.containers.KeyValueV1\"Z\n\rPermissionsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x10\n\x08\x63\x61n_edit\x18\x02 \x01(\x08\x12\x12\n\ncan_delete\x18\x03 \x01(\x08\x12\x0f\n\x07\x63\x61n_add\x18\x04 \x01(\x08\"j\n\x0cInflationsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x15\n\x07\x65nabled\x18\x02 \x01(\x08:\x04true\x12\x0c\n\x04only\x18\x03 \x03(\t\x12\x0f\n\x07\x65xclude\x18\x04 \x03(\t\x12\x10\n\x08\x64isabled\x18\x05 \x01(\x08\"=\n\x08\x46ieldsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0c\n\x04only\x18\x02 \x03(\t\x12\x0f\n\x07\x65xclude\x18\x03 \x03(\tB1\n/com.rhlabs.protobufs.services.common.containers'
+  syntax='proto3',
+  serialized_pb=b'\n*protobufs/services/common/containers.proto\x12\x1aservices.common.containers\"F\n\rPermissionsV1\x12\x10\n\x08\x63\x61n_edit\x18\x01 \x01(\x08\x12\x12\n\ncan_delete\x18\x02 \x01(\x08\x12\x0f\n\x07\x63\x61n_add\x18\x03 \x01(\x08\"?\n\x0cInflationsV1\x12\x10\n\x08\x64isabled\x18\x01 \x01(\x08\x12\x0c\n\x04only\x18\x02 \x03(\t\x12\x0f\n\x07\x65xclude\x18\x03 \x03(\t\")\n\x08\x46ieldsV1\x12\x0c\n\x04only\x18\x01 \x03(\t\x12\x0f\n\x07\x65xclude\x18\x02 \x03(\tb\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
-
-
-_KEYVALUEV1 = _descriptor.Descriptor(
-  name='KeyValueV1',
-  full_name='services.common.containers.KeyValueV1',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='version', full_name='services.common.containers.KeyValueV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='key', full_name='services.common.containers.KeyValueV1.key', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='services.common.containers.KeyValueV1.value', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=74,
-  serialized_end=134,
-)
-
-
-_MAPV1 = _descriptor.Descriptor(
-  name='MapV1',
-  full_name='services.common.containers.MapV1',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='version', full_name='services.common.containers.MapV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='content', full_name='services.common.containers.MapV1.content', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=136,
-  serialized_end=220,
-)
 
 
 _PERMISSIONSV1 = _descriptor.Descriptor(
@@ -115,29 +32,22 @@ _PERMISSIONSV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.common.containers.PermissionsV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='can_edit', full_name='services.common.containers.PermissionsV1.can_edit', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='can_edit', full_name='services.common.containers.PermissionsV1.can_edit', index=1,
+      name='can_delete', full_name='services.common.containers.PermissionsV1.can_delete', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='can_delete', full_name='services.common.containers.PermissionsV1.can_delete', index=2,
+      name='can_add', full_name='services.common.containers.PermissionsV1.can_add', index=2,
       number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='can_add', full_name='services.common.containers.PermissionsV1.can_add', index=3,
-      number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -150,12 +60,12 @@ _PERMISSIONSV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=222,
-  serialized_end=312,
+  serialized_start=74,
+  serialized_end=144,
 )
 
 
@@ -167,37 +77,23 @@ _INFLATIONSV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.common.containers.InflationsV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='disabled', full_name='services.common.containers.InflationsV1.disabled', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='enabled', full_name='services.common.containers.InflationsV1.enabled', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=True, default_value=True,
+      name='only', full_name='services.common.containers.InflationsV1.only', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='only', full_name='services.common.containers.InflationsV1.only', index=2,
+      name='exclude', full_name='services.common.containers.InflationsV1.exclude', index=2,
       number=3, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='exclude', full_name='services.common.containers.InflationsV1.exclude', index=3,
-      number=4, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='disabled', full_name='services.common.containers.InflationsV1.disabled', index=4,
-      number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -209,12 +105,12 @@ _INFLATIONSV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=314,
-  serialized_end=420,
+  serialized_start=146,
+  serialized_end=209,
 )
 
 
@@ -226,22 +122,15 @@ _FIELDSV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.common.containers.FieldsV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='only', full_name='services.common.containers.FieldsV1.only', index=1,
-      number=2, type=9, cpp_type=9, label=3,
+      name='only', full_name='services.common.containers.FieldsV1.only', index=0,
+      number=1, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='exclude', full_name='services.common.containers.FieldsV1.exclude', index=2,
-      number=3, type=9, cpp_type=9, label=3,
+      name='exclude', full_name='services.common.containers.FieldsV1.exclude', index=1,
+      number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -254,34 +143,17 @@ _FIELDSV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=422,
-  serialized_end=483,
+  serialized_start=211,
+  serialized_end=252,
 )
 
-_MAPV1.fields_by_name['content'].message_type = _KEYVALUEV1
-DESCRIPTOR.message_types_by_name['KeyValueV1'] = _KEYVALUEV1
-DESCRIPTOR.message_types_by_name['MapV1'] = _MAPV1
 DESCRIPTOR.message_types_by_name['PermissionsV1'] = _PERMISSIONSV1
 DESCRIPTOR.message_types_by_name['InflationsV1'] = _INFLATIONSV1
 DESCRIPTOR.message_types_by_name['FieldsV1'] = _FIELDSV1
-
-KeyValueV1 = _reflection.GeneratedProtocolMessageType('KeyValueV1', (_message.Message,), dict(
-  DESCRIPTOR = _KEYVALUEV1,
-  __module__ = 'protobufs.services.common.containers_pb2'
-  # @@protoc_insertion_point(class_scope:services.common.containers.KeyValueV1)
-  ))
-_sym_db.RegisterMessage(KeyValueV1)
-
-MapV1 = _reflection.GeneratedProtocolMessageType('MapV1', (_message.Message,), dict(
-  DESCRIPTOR = _MAPV1,
-  __module__ = 'protobufs.services.common.containers_pb2'
-  # @@protoc_insertion_point(class_scope:services.common.containers.MapV1)
-  ))
-_sym_db.RegisterMessage(MapV1)
 
 PermissionsV1 = _reflection.GeneratedProtocolMessageType('PermissionsV1', (_message.Message,), dict(
   DESCRIPTOR = _PERMISSIONSV1,
@@ -305,6 +177,4 @@ FieldsV1 = _reflection.GeneratedProtocolMessageType('FieldsV1', (_message.Messag
 _sym_db.RegisterMessage(FieldsV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n/com.rhlabs.protobufs.services.common.containers')
 # @@protoc_insertion_point(module_scope)

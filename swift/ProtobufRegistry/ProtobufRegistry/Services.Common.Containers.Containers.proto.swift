@@ -5,35 +5,11 @@ import Foundation
 
 public extension Services.Common.Containers{}
 
-public func == (lhs: Services.Common.Containers.KeyValueV1, rhs: Services.Common.Containers.KeyValueV1) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasKey == rhs.hasKey) && (!lhs.hasKey || lhs.key == rhs.key)
-  fieldCheck = fieldCheck && (lhs.hasValue == rhs.hasValue) && (!lhs.hasValue || lhs.value == rhs.value)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Services.Common.Containers.MapV1, rhs: Services.Common.Containers.MapV1) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.content == rhs.content)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
 public func == (lhs: Services.Common.Containers.PermissionsV1, rhs: Services.Common.Containers.PermissionsV1) -> Bool {
   if (lhs === rhs) {
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasCanEdit == rhs.hasCanEdit) && (!lhs.hasCanEdit || lhs.canEdit == rhs.canEdit)
   fieldCheck = fieldCheck && (lhs.hasCanDelete == rhs.hasCanDelete) && (!lhs.hasCanDelete || lhs.canDelete == rhs.canDelete)
   fieldCheck = fieldCheck && (lhs.hasCanAdd == rhs.hasCanAdd) && (!lhs.hasCanAdd || lhs.canAdd == rhs.canAdd)
@@ -46,11 +22,9 @@ public func == (lhs: Services.Common.Containers.InflationsV1, rhs: Services.Comm
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasEnabled == rhs.hasEnabled) && (!lhs.hasEnabled || lhs.enabled == rhs.enabled)
+  fieldCheck = fieldCheck && (lhs.hasDisabled == rhs.hasDisabled) && (!lhs.hasDisabled || lhs.disabled == rhs.disabled)
   fieldCheck = fieldCheck && (lhs.only == rhs.only)
   fieldCheck = fieldCheck && (lhs.exclude == rhs.exclude)
-  fieldCheck = fieldCheck && (lhs.hasDisabled == rhs.hasDisabled) && (!lhs.hasDisabled || lhs.disabled == rhs.disabled)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -60,7 +34,6 @@ public func == (lhs: Services.Common.Containers.FieldsV1, rhs: Services.Common.C
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.only == rhs.only)
   fieldCheck = fieldCheck && (lhs.exclude == rhs.exclude)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -85,531 +58,7 @@ public extension Services.Common.Containers {
     }
   }
 
-  final public class KeyValueV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
-    public private(set) var hasKey:Bool = false
-    public private(set) var key:String = ""
-
-    public private(set) var hasValue:Bool = false
-    public private(set) var value:String = ""
-
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
-      if hasKey {
-        try output.writeString(2, value:key)
-      }
-      if hasValue {
-        try output.writeString(3, value:value)
-      }
-      try unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
-      if hasKey {
-        serialize_size += key.computeStringSize(2)
-      }
-      if hasValue {
-        serialize_size += value.computeStringSize(3)
-      }
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Common.Containers.KeyValueV1> {
-      var mergedArray = Array<Services.Common.Containers.KeyValueV1>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Common.Containers.KeyValueV1? {
-      return try Services.Common.Containers.KeyValueV1.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Services.Common.Containers.KeyValueV1 {
-      return try Services.Common.Containers.KeyValueV1.Builder().mergeFromData(data, extensionRegistry:Services.Common.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Common.Containers.KeyValueV1 {
-      return try Services.Common.Containers.KeyValueV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Common.Containers.KeyValueV1 {
-      return try Services.Common.Containers.KeyValueV1.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Common.Containers.KeyValueV1 {
-      return try Services.Common.Containers.KeyValueV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Common.Containers.KeyValueV1 {
-      return try Services.Common.Containers.KeyValueV1.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Common.Containers.KeyValueV1 {
-      return try Services.Common.Containers.KeyValueV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func getBuilder() -> Services.Common.Containers.KeyValueV1.Builder {
-      return Services.Common.Containers.KeyValueV1.classBuilder() as! Services.Common.Containers.KeyValueV1.Builder
-    }
-    public func getBuilder() -> Services.Common.Containers.KeyValueV1.Builder {
-      return classBuilder() as! Services.Common.Containers.KeyValueV1.Builder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Common.Containers.KeyValueV1.Builder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Common.Containers.KeyValueV1.Builder()
-    }
-    public func toBuilder() throws -> Services.Common.Containers.KeyValueV1.Builder {
-      return try Services.Common.Containers.KeyValueV1.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Common.Containers.KeyValueV1) throws -> Services.Common.Containers.KeyValueV1.Builder {
-      return try Services.Common.Containers.KeyValueV1.Builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
-      if hasKey {
-        output += "\(indent) key: \(key) \n"
-      }
-      if hasValue {
-        output += "\(indent) value: \(value) \n"
-      }
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            if hasKey {
-               hashCode = (hashCode &* 31) &+ key.hashValue
-            }
-            if hasValue {
-               hashCode = (hashCode &* 31) &+ value.hashValue
-            }
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Common.Containers.KeyValueV1"
-    }
-    override public func className() -> String {
-        return "Services.Common.Containers.KeyValueV1"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Common.Containers.KeyValueV1.self
-    }
-    //Meta information declaration end
-
-    final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Services.Common.Containers.KeyValueV1 = Services.Common.Containers.KeyValueV1()
-      public func getMessage() -> Services.Common.Containers.KeyValueV1 {
-          return builderResult
-      }
-
-      required override public init () {
-         super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Common.Containers.KeyValueV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Common.Containers.KeyValueV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
-      public var hasKey:Bool {
-           get {
-                return builderResult.hasKey
-           }
-      }
-      public var key:String {
-           get {
-                return builderResult.key
-           }
-           set (value) {
-               builderResult.hasKey = true
-               builderResult.key = value
-           }
-      }
-      public func setKey(value:String) -> Services.Common.Containers.KeyValueV1.Builder {
-        self.key = value
-        return self
-      }
-      public func clearKey() -> Services.Common.Containers.KeyValueV1.Builder{
-           builderResult.hasKey = false
-           builderResult.key = ""
-           return self
-      }
-      public var hasValue:Bool {
-           get {
-                return builderResult.hasValue
-           }
-      }
-      public var value:String {
-           get {
-                return builderResult.value
-           }
-           set (value) {
-               builderResult.hasValue = true
-               builderResult.value = value
-           }
-      }
-      public func setValue(value:String) -> Services.Common.Containers.KeyValueV1.Builder {
-        self.value = value
-        return self
-      }
-      public func clearValue() -> Services.Common.Containers.KeyValueV1.Builder{
-           builderResult.hasValue = false
-           builderResult.value = ""
-           return self
-      }
-      override public var internalGetResult:GeneratedMessage {
-           get {
-              return builderResult
-           }
-      }
-      public override func clear() -> Services.Common.Containers.KeyValueV1.Builder {
-        builderResult = Services.Common.Containers.KeyValueV1()
-        return self
-      }
-      public override func clone() throws -> Services.Common.Containers.KeyValueV1.Builder {
-        return try Services.Common.Containers.KeyValueV1.builderWithPrototype(builderResult)
-      }
-      public override func build() throws -> Services.Common.Containers.KeyValueV1 {
-           try checkInitialized()
-           return buildPartial()
-      }
-      public func buildPartial() -> Services.Common.Containers.KeyValueV1 {
-        let returnMe:Services.Common.Containers.KeyValueV1 = builderResult
-        return returnMe
-      }
-      public func mergeFrom(other:Services.Common.Containers.KeyValueV1) throws -> Services.Common.Containers.KeyValueV1.Builder {
-        if other == Services.Common.Containers.KeyValueV1() {
-         return self
-        }
-        if other.hasVersion {
-             version = other.version
-        }
-        if other.hasKey {
-             key = other.key
-        }
-        if other.hasValue {
-             value = other.value
-        }
-        try mergeUnknownFields(other.unknownFields)
-        return self
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Common.Containers.KeyValueV1.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Common.Containers.KeyValueV1.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-        while (true) {
-          let tag = try input.readTag()
-          switch tag {
-          case 0: 
-            self.unknownFields = try unknownFieldsBuilder.build()
-            return self
-
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
-            key = try input.readString()
-
-          case 26 :
-            value = try input.readString()
-
-          default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
-               unknownFields = try unknownFieldsBuilder.build()
-               return self
-            }
-          }
-        }
-      }
-    }
-
-  }
-
-  final public class MapV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
-    public private(set) var content:Array<Services.Common.Containers.KeyValueV1>  = Array<Services.Common.Containers.KeyValueV1>()
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
-      for oneElementcontent in content {
-          try output.writeMessage(2, value:oneElementcontent)
-      }
-      try unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
-      for oneElementcontent in content {
-          serialize_size += oneElementcontent.computeMessageSize(2)
-      }
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Common.Containers.MapV1> {
-      var mergedArray = Array<Services.Common.Containers.MapV1>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Common.Containers.MapV1? {
-      return try Services.Common.Containers.MapV1.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Services.Common.Containers.MapV1 {
-      return try Services.Common.Containers.MapV1.Builder().mergeFromData(data, extensionRegistry:Services.Common.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Common.Containers.MapV1 {
-      return try Services.Common.Containers.MapV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Common.Containers.MapV1 {
-      return try Services.Common.Containers.MapV1.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Common.Containers.MapV1 {
-      return try Services.Common.Containers.MapV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Common.Containers.MapV1 {
-      return try Services.Common.Containers.MapV1.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Common.Containers.MapV1 {
-      return try Services.Common.Containers.MapV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func getBuilder() -> Services.Common.Containers.MapV1.Builder {
-      return Services.Common.Containers.MapV1.classBuilder() as! Services.Common.Containers.MapV1.Builder
-    }
-    public func getBuilder() -> Services.Common.Containers.MapV1.Builder {
-      return classBuilder() as! Services.Common.Containers.MapV1.Builder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Common.Containers.MapV1.Builder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Common.Containers.MapV1.Builder()
-    }
-    public func toBuilder() throws -> Services.Common.Containers.MapV1.Builder {
-      return try Services.Common.Containers.MapV1.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Common.Containers.MapV1) throws -> Services.Common.Containers.MapV1.Builder {
-      return try Services.Common.Containers.MapV1.Builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
-      var contentElementIndex:Int = 0
-      for oneElementcontent in content {
-          output += "\(indent) content[\(contentElementIndex)] {\n"
-          try oneElementcontent.writeDescriptionTo(&output, indent:"\(indent)  ")
-          output += "\(indent)}\n"
-          contentElementIndex++
-      }
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            for oneElementcontent in content {
-                hashCode = (hashCode &* 31) &+ oneElementcontent.hashValue
-            }
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Common.Containers.MapV1"
-    }
-    override public func className() -> String {
-        return "Services.Common.Containers.MapV1"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Common.Containers.MapV1.self
-    }
-    //Meta information declaration end
-
-    final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Services.Common.Containers.MapV1 = Services.Common.Containers.MapV1()
-      public func getMessage() -> Services.Common.Containers.MapV1 {
-          return builderResult
-      }
-
-      required override public init () {
-         super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Common.Containers.MapV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Common.Containers.MapV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
-      public var content:Array<Services.Common.Containers.KeyValueV1> {
-           get {
-               return builderResult.content
-           }
-           set (value) {
-               builderResult.content = value
-           }
-      }
-      public func setContent(value:Array<Services.Common.Containers.KeyValueV1>) -> Services.Common.Containers.MapV1.Builder {
-        self.content = value
-        return self
-      }
-      public func clearContent() -> Services.Common.Containers.MapV1.Builder {
-        builderResult.content.removeAll(keepCapacity: false)
-        return self
-      }
-      override public var internalGetResult:GeneratedMessage {
-           get {
-              return builderResult
-           }
-      }
-      public override func clear() -> Services.Common.Containers.MapV1.Builder {
-        builderResult = Services.Common.Containers.MapV1()
-        return self
-      }
-      public override func clone() throws -> Services.Common.Containers.MapV1.Builder {
-        return try Services.Common.Containers.MapV1.builderWithPrototype(builderResult)
-      }
-      public override func build() throws -> Services.Common.Containers.MapV1 {
-           try checkInitialized()
-           return buildPartial()
-      }
-      public func buildPartial() -> Services.Common.Containers.MapV1 {
-        let returnMe:Services.Common.Containers.MapV1 = builderResult
-        return returnMe
-      }
-      public func mergeFrom(other:Services.Common.Containers.MapV1) throws -> Services.Common.Containers.MapV1.Builder {
-        if other == Services.Common.Containers.MapV1() {
-         return self
-        }
-        if other.hasVersion {
-             version = other.version
-        }
-        if !other.content.isEmpty  {
-           builderResult.content += other.content
-        }
-        try mergeUnknownFields(other.unknownFields)
-        return self
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Common.Containers.MapV1.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Common.Containers.MapV1.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-        while (true) {
-          let tag = try input.readTag()
-          switch tag {
-          case 0: 
-            self.unknownFields = try unknownFieldsBuilder.build()
-            return self
-
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
-            let subBuilder = Services.Common.Containers.KeyValueV1.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            content += [subBuilder.buildPartial()]
-
-          default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
-               unknownFields = try unknownFieldsBuilder.build()
-               return self
-            }
-          }
-        }
-      }
-    }
-
-  }
-
   final public class PermissionsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasCanEdit:Bool = false
     public private(set) var canEdit:Bool = false
 
@@ -626,17 +75,14 @@ public extension Services.Common.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasCanEdit {
-        try output.writeBool(2, value:canEdit)
+        try output.writeBool(1, value:canEdit)
       }
       if hasCanDelete {
-        try output.writeBool(3, value:canDelete)
+        try output.writeBool(2, value:canDelete)
       }
       if hasCanAdd {
-        try output.writeBool(4, value:canAdd)
+        try output.writeBool(3, value:canAdd)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -647,17 +93,14 @@ public extension Services.Common.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasCanEdit {
-        serialize_size += canEdit.computeBoolSize(2)
+        serialize_size += canEdit.computeBoolSize(1)
       }
       if hasCanDelete {
-        serialize_size += canDelete.computeBoolSize(3)
+        serialize_size += canDelete.computeBoolSize(2)
       }
       if hasCanAdd {
-        serialize_size += canAdd.computeBoolSize(4)
+        serialize_size += canAdd.computeBoolSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -710,9 +153,6 @@ public extension Services.Common.Containers {
       return try Services.Common.Containers.PermissionsV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasCanEdit {
         output += "\(indent) canEdit: \(canEdit) \n"
       }
@@ -727,9 +167,6 @@ public extension Services.Common.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasCanEdit {
                hashCode = (hashCode &* 31) &+ canEdit.hashValue
             }
@@ -766,29 +203,6 @@ public extension Services.Common.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Common.Containers.PermissionsV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Common.Containers.PermissionsV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasCanEdit:Bool {
            get {
@@ -883,9 +297,6 @@ public extension Services.Common.Containers {
         if other == Services.Common.Containers.PermissionsV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasCanEdit {
              canEdit = other.canEdit
         }
@@ -911,15 +322,12 @@ public extension Services.Common.Containers {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             canEdit = try input.readBool()
 
-          case 24 :
+          case 16 :
             canDelete = try input.readBool()
 
-          case 32 :
+          case 24 :
             canAdd = try input.readBool()
 
           default:
@@ -935,17 +343,11 @@ public extension Services.Common.Containers {
   }
 
   final public class InflationsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
-    public private(set) var hasEnabled:Bool = false
-    public private(set) var enabled:Bool = true
-
-    public private(set) var only:Array<String> = Array<String>()
-    public private(set) var exclude:Array<String> = Array<String>()
     public private(set) var hasDisabled:Bool = false
     public private(set) var disabled:Bool = false
 
+    public private(set) var only:Array<String> = Array<String>()
+    public private(set) var exclude:Array<String> = Array<String>()
     required public init() {
          super.init()
     }
@@ -953,24 +355,18 @@ public extension Services.Common.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
-      if hasEnabled {
-        try output.writeBool(2, value:enabled)
+      if hasDisabled {
+        try output.writeBool(1, value:disabled)
       }
       if !only.isEmpty {
         for oneValueonly in only {
-          try output.writeString(3, value:oneValueonly)
+          try output.writeString(2, value:oneValueonly)
         }
       }
       if !exclude.isEmpty {
         for oneValueexclude in exclude {
-          try output.writeString(4, value:oneValueexclude)
+          try output.writeString(3, value:oneValueexclude)
         }
-      }
-      if hasDisabled {
-        try output.writeBool(5, value:disabled)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -981,11 +377,8 @@ public extension Services.Common.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
-      if hasEnabled {
-        serialize_size += enabled.computeBoolSize(2)
+      if hasDisabled {
+        serialize_size += disabled.computeBoolSize(1)
       }
       var dataSizeOnly:Int32 = 0
       for oneValueonly in only {
@@ -999,9 +392,6 @@ public extension Services.Common.Containers {
       }
       serialize_size += dataSizeExclude
       serialize_size += 1 * Int32(exclude.count)
-      if hasDisabled {
-        serialize_size += disabled.computeBoolSize(5)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -1053,11 +443,8 @@ public extension Services.Common.Containers {
       return try Services.Common.Containers.InflationsV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
-      if hasEnabled {
-        output += "\(indent) enabled: \(enabled) \n"
+      if hasDisabled {
+        output += "\(indent) disabled: \(disabled) \n"
       }
       var onlyElementIndex:Int = 0
       for oneValueonly in only  {
@@ -1069,28 +456,19 @@ public extension Services.Common.Containers {
           output += "\(indent) exclude[\(excludeElementIndex)]: \(oneValueexclude)\n"
           excludeElementIndex++
       }
-      if hasDisabled {
-        output += "\(indent) disabled: \(disabled) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            if hasEnabled {
-               hashCode = (hashCode &* 31) &+ enabled.hashValue
+            if hasDisabled {
+               hashCode = (hashCode &* 31) &+ disabled.hashValue
             }
             for oneValueonly in only {
                 hashCode = (hashCode &* 31) &+ oneValueonly.hashValue
             }
             for oneValueexclude in exclude {
                 hashCode = (hashCode &* 31) &+ oneValueexclude.hashValue
-            }
-            if hasDisabled {
-               hashCode = (hashCode &* 31) &+ disabled.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1120,50 +498,27 @@ public extension Services.Common.Containers {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
+      public var hasDisabled:Bool {
            get {
-                return builderResult.hasVersion
+                return builderResult.hasDisabled
            }
       }
-      public var version:UInt32 {
+      public var disabled:Bool {
            get {
-                return builderResult.version
+                return builderResult.disabled
            }
            set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
+               builderResult.hasDisabled = true
+               builderResult.disabled = value
            }
       }
-      public func setVersion(value:UInt32) -> Services.Common.Containers.InflationsV1.Builder {
-        self.version = value
+      public func setDisabled(value:Bool) -> Services.Common.Containers.InflationsV1.Builder {
+        self.disabled = value
         return self
       }
-      public func clearVersion() -> Services.Common.Containers.InflationsV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
-      public var hasEnabled:Bool {
-           get {
-                return builderResult.hasEnabled
-           }
-      }
-      public var enabled:Bool {
-           get {
-                return builderResult.enabled
-           }
-           set (value) {
-               builderResult.hasEnabled = true
-               builderResult.enabled = value
-           }
-      }
-      public func setEnabled(value:Bool) -> Services.Common.Containers.InflationsV1.Builder {
-        self.enabled = value
-        return self
-      }
-      public func clearEnabled() -> Services.Common.Containers.InflationsV1.Builder{
-           builderResult.hasEnabled = false
-           builderResult.enabled = true
+      public func clearDisabled() -> Services.Common.Containers.InflationsV1.Builder{
+           builderResult.hasDisabled = false
+           builderResult.disabled = false
            return self
       }
       public var only:Array<String> {
@@ -1198,29 +553,6 @@ public extension Services.Common.Containers {
          builderResult.exclude.removeAll(keepCapacity: false)
          return self
       }
-      public var hasDisabled:Bool {
-           get {
-                return builderResult.hasDisabled
-           }
-      }
-      public var disabled:Bool {
-           get {
-                return builderResult.disabled
-           }
-           set (value) {
-               builderResult.hasDisabled = true
-               builderResult.disabled = value
-           }
-      }
-      public func setDisabled(value:Bool) -> Services.Common.Containers.InflationsV1.Builder {
-        self.disabled = value
-        return self
-      }
-      public func clearDisabled() -> Services.Common.Containers.InflationsV1.Builder{
-           builderResult.hasDisabled = false
-           builderResult.disabled = false
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1245,20 +577,14 @@ public extension Services.Common.Containers {
         if other == Services.Common.Containers.InflationsV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
-        if other.hasEnabled {
-             enabled = other.enabled
+        if other.hasDisabled {
+             disabled = other.disabled
         }
         if !other.only.isEmpty {
             builderResult.only += other.only
         }
         if !other.exclude.isEmpty {
             builderResult.exclude += other.exclude
-        }
-        if other.hasDisabled {
-             disabled = other.disabled
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1276,19 +602,13 @@ public extension Services.Common.Containers {
             return self
 
           case 8 :
-            version = try input.readUInt32()
+            disabled = try input.readBool()
 
-          case 16 :
-            enabled = try input.readBool()
-
-          case 26 :
+          case 18 :
             only += [try input.readString()]
 
-          case 34 :
+          case 26 :
             exclude += [try input.readString()]
-
-          case 40 :
-            disabled = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
@@ -1303,9 +623,6 @@ public extension Services.Common.Containers {
   }
 
   final public class FieldsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var only:Array<String> = Array<String>()
     public private(set) var exclude:Array<String> = Array<String>()
     required public init() {
@@ -1315,17 +632,14 @@ public extension Services.Common.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if !only.isEmpty {
         for oneValueonly in only {
-          try output.writeString(2, value:oneValueonly)
+          try output.writeString(1, value:oneValueonly)
         }
       }
       if !exclude.isEmpty {
         for oneValueexclude in exclude {
-          try output.writeString(3, value:oneValueexclude)
+          try output.writeString(2, value:oneValueexclude)
         }
       }
       try unknownFields.writeToCodedOutputStream(output)
@@ -1337,9 +651,6 @@ public extension Services.Common.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       var dataSizeOnly:Int32 = 0
       for oneValueonly in only {
           dataSizeOnly += oneValueonly.computeStringSizeNoTag()
@@ -1403,9 +714,6 @@ public extension Services.Common.Containers {
       return try Services.Common.Containers.FieldsV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var onlyElementIndex:Int = 0
       for oneValueonly in only  {
           output += "\(indent) only[\(onlyElementIndex)]: \(oneValueonly)\n"
@@ -1421,9 +729,6 @@ public extension Services.Common.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneValueonly in only {
                 hashCode = (hashCode &* 31) &+ oneValueonly.hashValue
             }
@@ -1457,29 +762,6 @@ public extension Services.Common.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Common.Containers.FieldsV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Common.Containers.FieldsV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var only:Array<String> {
            get {
@@ -1537,9 +819,6 @@ public extension Services.Common.Containers {
         if other == Services.Common.Containers.FieldsV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.only.isEmpty {
             builderResult.only += other.only
         }
@@ -1561,13 +840,10 @@ public extension Services.Common.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             only += [try input.readString()]
 
-          case 26 :
+          case 18 :
             exclude += [try input.readString()]
 
           default:

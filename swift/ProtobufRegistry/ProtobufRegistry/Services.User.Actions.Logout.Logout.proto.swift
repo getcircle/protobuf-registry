@@ -10,7 +10,6 @@ public func == (lhs: Services.User.Actions.Logout.RequestV1, rhs: Services.User.
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasClientType == rhs.hasClientType) && (!lhs.hasClientType || lhs.clientType == rhs.clientType)
   fieldCheck = fieldCheck && (lhs.hasRevokeAll == rhs.hasRevokeAll) && (!lhs.hasRevokeAll || lhs.revokeAll == rhs.revokeAll)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -22,7 +21,6 @@ public func == (lhs: Services.User.Actions.Logout.ResponseV1, rhs: Services.User
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -47,9 +45,6 @@ public extension Services.User.Actions.Logout {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var clientType:Services.User.Containers.Token.ClientTypeV1 = Services.User.Containers.Token.ClientTypeV1.Ios
     public private(set) var hasClientType:Bool = false
     public private(set) var hasRevokeAll:Bool = false
@@ -62,14 +57,11 @@ public extension Services.User.Actions.Logout {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasClientType {
-        try output.writeEnum(2, value:clientType.rawValue)
+        try output.writeEnum(1, value:clientType.rawValue)
       }
       if hasRevokeAll {
-        try output.writeBool(3, value:revokeAll)
+        try output.writeBool(2, value:revokeAll)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -80,14 +72,11 @@ public extension Services.User.Actions.Logout {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if (hasClientType) {
-        serialize_size += clientType.rawValue.computeEnumSize(2)
+        serialize_size += clientType.rawValue.computeEnumSize(1)
       }
       if hasRevokeAll {
-        serialize_size += revokeAll.computeBoolSize(3)
+        serialize_size += revokeAll.computeBoolSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -140,9 +129,6 @@ public extension Services.User.Actions.Logout {
       return try Services.User.Actions.Logout.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if (hasClientType) {
         output += "\(indent) clientType: \(clientType.rawValue)\n"
       }
@@ -154,9 +140,6 @@ public extension Services.User.Actions.Logout {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasClientType {
                hashCode = (hashCode &* 31) &+ Int(clientType.rawValue)
             }
@@ -190,29 +173,6 @@ public extension Services.User.Actions.Logout {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.Logout.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.Logout.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
         public var hasClientType:Bool{
             get {
@@ -284,9 +244,6 @@ public extension Services.User.Actions.Logout {
         if other == Services.User.Actions.Logout.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasClientType {
              clientType = other.clientType
         }
@@ -309,17 +266,14 @@ public extension Services.User.Actions.Logout {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             let valueIntclientType = try input.readEnum()
             if let enumsclientType = Services.User.Containers.Token.ClientTypeV1(rawValue:valueIntclientType){
                  clientType = enumsclientType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntclientType))
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntclientType))
             }
 
-          case 24 :
+          case 16 :
             revokeAll = try input.readBool()
 
           default:
@@ -335,9 +289,6 @@ public extension Services.User.Actions.Logout {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     required public init() {
          super.init()
     }
@@ -345,9 +296,6 @@ public extension Services.User.Actions.Logout {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -357,9 +305,6 @@ public extension Services.User.Actions.Logout {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -411,17 +356,11 @@ public extension Services.User.Actions.Logout {
       return try Services.User.Actions.Logout.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -450,29 +389,6 @@ public extension Services.User.Actions.Logout {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.Logout.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.Logout.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -497,9 +413,6 @@ public extension Services.User.Actions.Logout {
         if other == Services.User.Actions.Logout.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -514,9 +427,6 @@ public extension Services.User.Actions.Logout {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

@@ -17,8 +17,8 @@ from protobufs.services.notification import containers_pb2 as protobufs_dot_serv
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/notification/actions/send_notification.proto',
   package='services.notification.actions.send_notification',
-  syntax='proto2',
-  serialized_pb=b'\n?protobufs/services/notification/actions/send_notification.proto\x12/services.notification.actions.send_notification\x1a\x30protobufs/services/notification/containers.proto\"\x96\x01\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x15\n\rto_profile_id\x18\x02 \x01(\t\x12\x46\n\x0cnotification\x18\x03 \x01(\x0b\x32\x30.services.notification.containers.NotificationV1\x12\x16\n\x0eto_profile_ids\x18\x04 \x03(\t\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x42\x46\nDcom.rhlabs.protobufs.services.notification.actions.send_notification'
+  syntax='proto3',
+  serialized_pb=b'\n?protobufs/services/notification/actions/send_notification.proto\x12/services.notification.actions.send_notification\x1a\x30protobufs/services/notification/containers.proto\"\x82\x01\n\tRequestV1\x12\x15\n\rto_profile_id\x18\x01 \x01(\t\x12\x46\n\x0cnotification\x18\x02 \x01(\x0b\x32\x30.services.notification.containers.NotificationV1\x12\x16\n\x0eto_profile_ids\x18\x03 \x03(\t\"\x0c\n\nResponseV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_notification_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -34,29 +34,22 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.notification.actions.send_notification.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='to_profile_id', full_name='services.notification.actions.send_notification.RequestV1.to_profile_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='to_profile_id', full_name='services.notification.actions.send_notification.RequestV1.to_profile_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='notification', full_name='services.notification.actions.send_notification.RequestV1.notification', index=2,
-      number=3, type=11, cpp_type=10, label=1,
+      name='notification', full_name='services.notification.actions.send_notification.RequestV1.notification', index=1,
+      number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='to_profile_ids', full_name='services.notification.actions.send_notification.RequestV1.to_profile_ids', index=3,
-      number=4, type=9, cpp_type=9, label=3,
+      name='to_profile_ids', full_name='services.notification.actions.send_notification.RequestV1.to_profile_ids', index=2,
+      number=3, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -69,12 +62,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=167,
-  serialized_end=317,
+  serialized_end=297,
 )
 
 
@@ -85,13 +78,6 @@ _RESPONSEV1 = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
-    _descriptor.FieldDescriptor(
-      name='version', full_name='services.notification.actions.send_notification.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -100,12 +86,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=319,
-  serialized_end=351,
+  serialized_start=299,
+  serialized_end=311,
 )
 
 _REQUESTV1.fields_by_name['notification'].message_type = protobufs_dot_services_dot_notification_dot_containers__pb2._NOTIFICATIONV1
@@ -127,6 +113,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\nDcom.rhlabs.protobufs.services.notification.actions.send_notification')
 # @@protoc_insertion_point(module_scope)

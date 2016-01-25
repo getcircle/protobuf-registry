@@ -10,7 +10,6 @@ public func == (lhs: Services.Organization.Actions.DisableIntegration.RequestV1,
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasIntegrationType == rhs.hasIntegrationType) && (!lhs.hasIntegrationType || lhs.integrationType == rhs.integrationType)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -21,7 +20,6 @@ public func == (lhs: Services.Organization.Actions.DisableIntegration.ResponseV1
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -46,9 +44,6 @@ public extension Services.Organization.Actions.DisableIntegration {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.GoogleGroups
     public private(set) var hasIntegrationType:Bool = false
     required public init() {
@@ -58,11 +53,8 @@ public extension Services.Organization.Actions.DisableIntegration {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasIntegrationType {
-        try output.writeEnum(2, value:integrationType.rawValue)
+        try output.writeEnum(1, value:integrationType.rawValue)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -73,11 +65,8 @@ public extension Services.Organization.Actions.DisableIntegration {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if (hasIntegrationType) {
-        serialize_size += integrationType.rawValue.computeEnumSize(2)
+        serialize_size += integrationType.rawValue.computeEnumSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -130,9 +119,6 @@ public extension Services.Organization.Actions.DisableIntegration {
       return try Services.Organization.Actions.DisableIntegration.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if (hasIntegrationType) {
         output += "\(indent) integrationType: \(integrationType.rawValue)\n"
       }
@@ -141,9 +127,6 @@ public extension Services.Organization.Actions.DisableIntegration {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasIntegrationType {
                hashCode = (hashCode &* 31) &+ Int(integrationType.rawValue)
             }
@@ -174,29 +157,6 @@ public extension Services.Organization.Actions.DisableIntegration {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.DisableIntegration.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.DisableIntegration.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
         public var hasIntegrationType:Bool{
             get {
@@ -245,9 +205,6 @@ public extension Services.Organization.Actions.DisableIntegration {
         if other == Services.Organization.Actions.DisableIntegration.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasIntegrationType {
              integrationType = other.integrationType
         }
@@ -267,14 +224,11 @@ public extension Services.Organization.Actions.DisableIntegration {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             let valueIntintegrationType = try input.readEnum()
             if let enumsintegrationType = Services.Organization.Containers.Integration.IntegrationTypeV1(rawValue:valueIntintegrationType){
                  integrationType = enumsintegrationType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntintegrationType))
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntintegrationType))
             }
 
           default:
@@ -290,9 +244,6 @@ public extension Services.Organization.Actions.DisableIntegration {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     required public init() {
          super.init()
     }
@@ -300,9 +251,6 @@ public extension Services.Organization.Actions.DisableIntegration {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -312,9 +260,6 @@ public extension Services.Organization.Actions.DisableIntegration {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -366,17 +311,11 @@ public extension Services.Organization.Actions.DisableIntegration {
       return try Services.Organization.Actions.DisableIntegration.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -405,29 +344,6 @@ public extension Services.Organization.Actions.DisableIntegration {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.DisableIntegration.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.DisableIntegration.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -452,9 +368,6 @@ public extension Services.Organization.Actions.DisableIntegration {
         if other == Services.Organization.Actions.DisableIntegration.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -469,9 +382,6 @@ public extension Services.Organization.Actions.DisableIntegration {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

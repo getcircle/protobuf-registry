@@ -10,7 +10,6 @@ public func == (lhs: Services.Group.Actions.LeaveGroup.RequestV1, rhs: Services.
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -22,7 +21,6 @@ public func == (lhs: Services.Group.Actions.LeaveGroup.ResponseV1, rhs: Services
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -47,9 +45,6 @@ public extension Services.Group.Actions.LeaveGroup {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasGroupId:Bool = false
     public private(set) var groupId:String = ""
 
@@ -62,14 +57,11 @@ public extension Services.Group.Actions.LeaveGroup {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasGroupId {
-        try output.writeString(2, value:groupId)
+        try output.writeString(1, value:groupId)
       }
       if hasProvider {
-        try output.writeEnum(3, value:provider.rawValue)
+        try output.writeEnum(2, value:provider.rawValue)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -80,14 +72,11 @@ public extension Services.Group.Actions.LeaveGroup {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasGroupId {
-        serialize_size += groupId.computeStringSize(2)
+        serialize_size += groupId.computeStringSize(1)
       }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(3)
+        serialize_size += provider.rawValue.computeEnumSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -140,9 +129,6 @@ public extension Services.Group.Actions.LeaveGroup {
       return try Services.Group.Actions.LeaveGroup.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasGroupId {
         output += "\(indent) groupId: \(groupId) \n"
       }
@@ -154,9 +140,6 @@ public extension Services.Group.Actions.LeaveGroup {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasGroupId {
                hashCode = (hashCode &* 31) &+ groupId.hashValue
             }
@@ -190,29 +173,6 @@ public extension Services.Group.Actions.LeaveGroup {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Actions.LeaveGroup.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Actions.LeaveGroup.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasGroupId:Bool {
            get {
@@ -284,9 +244,6 @@ public extension Services.Group.Actions.LeaveGroup {
         if other == Services.Group.Actions.LeaveGroup.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasGroupId {
              groupId = other.groupId
         }
@@ -308,18 +265,15 @@ public extension Services.Group.Actions.LeaveGroup {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             groupId = try input.readString()
 
-          case 24 :
+          case 16 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntprovider))
             }
 
           default:
@@ -335,9 +289,6 @@ public extension Services.Group.Actions.LeaveGroup {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     required public init() {
          super.init()
     }
@@ -345,9 +296,6 @@ public extension Services.Group.Actions.LeaveGroup {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -357,9 +305,6 @@ public extension Services.Group.Actions.LeaveGroup {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -411,17 +356,11 @@ public extension Services.Group.Actions.LeaveGroup {
       return try Services.Group.Actions.LeaveGroup.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -450,29 +389,6 @@ public extension Services.Group.Actions.LeaveGroup {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Actions.LeaveGroup.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Actions.LeaveGroup.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -497,9 +413,6 @@ public extension Services.Group.Actions.LeaveGroup {
         if other == Services.Group.Actions.LeaveGroup.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -514,9 +427,6 @@ public extension Services.Group.Actions.LeaveGroup {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

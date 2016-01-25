@@ -10,7 +10,6 @@ public func == (lhs: Services.Organization.Actions.GetOrganization.RequestV1, rh
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasDomain == rhs.hasDomain) && (!lhs.hasDomain || lhs.domain == rhs.domain)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
@@ -23,7 +22,6 @@ public func == (lhs: Services.Organization.Actions.GetOrganization.ResponseV1, r
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasOrganization == rhs.hasOrganization) && (!lhs.hasOrganization || lhs.organization == rhs.organization)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -50,9 +48,6 @@ public extension Services.Organization.Actions.GetOrganization {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasDomain:Bool = false
     public private(set) var domain:String = ""
 
@@ -67,17 +62,14 @@ public extension Services.Organization.Actions.GetOrganization {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasDomain {
-        try output.writeString(2, value:domain)
+        try output.writeString(1, value:domain)
       }
       if hasInflations {
-        try output.writeMessage(3, value:inflations)
+        try output.writeMessage(2, value:inflations)
       }
       if hasFields {
-        try output.writeMessage(4, value:fields)
+        try output.writeMessage(3, value:fields)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -88,19 +80,16 @@ public extension Services.Organization.Actions.GetOrganization {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasDomain {
-        serialize_size += domain.computeStringSize(2)
+        serialize_size += domain.computeStringSize(1)
       }
       if hasInflations {
-          if let varSizeinflations = inflations?.computeMessageSize(3) {
+          if let varSizeinflations = inflations?.computeMessageSize(2) {
               serialize_size += varSizeinflations
           }
       }
       if hasFields {
-          if let varSizefields = fields?.computeMessageSize(4) {
+          if let varSizefields = fields?.computeMessageSize(3) {
               serialize_size += varSizefields
           }
       }
@@ -155,9 +144,6 @@ public extension Services.Organization.Actions.GetOrganization {
       return try Services.Organization.Actions.GetOrganization.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasDomain {
         output += "\(indent) domain: \(domain) \n"
       }
@@ -176,9 +162,6 @@ public extension Services.Organization.Actions.GetOrganization {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasDomain {
                hashCode = (hashCode &* 31) &+ domain.hashValue
             }
@@ -219,29 +202,6 @@ public extension Services.Organization.Actions.GetOrganization {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetOrganization.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetOrganization.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasDomain:Bool {
            get {
@@ -392,9 +352,6 @@ public extension Services.Organization.Actions.GetOrganization {
         if other == Services.Organization.Actions.GetOrganization.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasDomain {
              domain = other.domain
         }
@@ -419,13 +376,10 @@ public extension Services.Organization.Actions.GetOrganization {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             domain = try input.readString()
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
             if hasInflations {
               try subBuilder.mergeFrom(inflations)
@@ -433,7 +387,7 @@ public extension Services.Organization.Actions.GetOrganization {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             inflations = subBuilder.buildPartial()
 
-          case 34 :
+          case 26 :
             let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
             if hasFields {
               try subBuilder.mergeFrom(fields)
@@ -454,9 +408,6 @@ public extension Services.Organization.Actions.GetOrganization {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasOrganization:Bool = false
     public private(set) var organization:Services.Organization.Containers.OrganizationV1!
     required public init() {
@@ -466,11 +417,8 @@ public extension Services.Organization.Actions.GetOrganization {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasOrganization {
-        try output.writeMessage(2, value:organization)
+        try output.writeMessage(1, value:organization)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -481,11 +429,8 @@ public extension Services.Organization.Actions.GetOrganization {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasOrganization {
-          if let varSizeorganization = organization?.computeMessageSize(2) {
+          if let varSizeorganization = organization?.computeMessageSize(1) {
               serialize_size += varSizeorganization
           }
       }
@@ -540,9 +485,6 @@ public extension Services.Organization.Actions.GetOrganization {
       return try Services.Organization.Actions.GetOrganization.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasOrganization {
         output += "\(indent) organization {\n"
         try organization?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -553,9 +495,6 @@ public extension Services.Organization.Actions.GetOrganization {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasOrganization {
                 if let hashValueorganization = organization?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueorganization
@@ -588,29 +527,6 @@ public extension Services.Organization.Actions.GetOrganization {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetOrganization.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetOrganization.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasOrganization:Bool {
            get {
@@ -687,9 +603,6 @@ public extension Services.Organization.Actions.GetOrganization {
         if other == Services.Organization.Actions.GetOrganization.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasOrganization) {
             try mergeOrganization(other.organization)
         }
@@ -708,10 +621,7 @@ public extension Services.Organization.Actions.GetOrganization {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.Organization.Containers.OrganizationV1.Builder = Services.Organization.Containers.OrganizationV1.Builder()
             if hasOrganization {
               try subBuilder.mergeFrom(organization)

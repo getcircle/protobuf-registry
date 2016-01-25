@@ -18,8 +18,8 @@ from protobufs.services.organization import containers_pb2 as protobufs_dot_serv
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/get_teams_for_profile_ids.proto',
   package='services.organization.actions.get_teams_for_profile_ids',
-  syntax='proto2',
-  serialized_pb=b'\nGprotobufs/services/organization/actions/get_teams_for_profile_ids.proto\x12\x37services.organization.actions.get_teams_for_profile_ids\x1a*protobufs/services/common/containers.proto\x1a\x30protobufs/services/organization/containers.proto\"j\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x13\n\x0bprofile_ids\x18\x02 \x03(\t\x12\x34\n\x06\x66ields\x18\x03 \x01(\x0b\x32$.services.common.containers.FieldsV1\"\xfc\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12i\n\x0eprofiles_teams\x18\x02 \x03(\x0b\x32Q.services.organization.actions.get_teams_for_profile_ids.ResponseV1.ProfileTeamV1\x1ao\n\rProfileTeamV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12\x36\n\x04team\x18\x03 \x01(\x0b\x32(.services.organization.containers.TeamV1'
+  syntax='proto3',
+  serialized_pb=b'\nGprotobufs/services/organization/actions/get_teams_for_profile_ids.proto\x12\x37services.organization.actions.get_teams_for_profile_ids\x1a*protobufs/services/common/containers.proto\x1a\x30protobufs/services/organization/containers.proto\"V\n\tRequestV1\x12\x13\n\x0bprofile_ids\x18\x01 \x03(\t\x12\x34\n\x06\x66ields\x18\x02 \x01(\x0b\x32$.services.common.containers.FieldsV1\"\xd4\x01\n\nResponseV1\x12i\n\x0eprofiles_teams\x18\x01 \x03(\x0b\x32Q.services.organization.actions.get_teams_for_profile_ids.ResponseV1.ProfileTeamV1\x1a[\n\rProfileTeamV1\x12\x12\n\nprofile_id\x18\x01 \x01(\t\x12\x36\n\x04team\x18\x02 \x01(\x0b\x32(.services.organization.containers.TeamV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -35,22 +35,15 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.actions.get_teams_for_profile_ids.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='profile_ids', full_name='services.organization.actions.get_teams_for_profile_ids.RequestV1.profile_ids', index=1,
-      number=2, type=9, cpp_type=9, label=3,
+      name='profile_ids', full_name='services.organization.actions.get_teams_for_profile_ids.RequestV1.profile_ids', index=0,
+      number=1, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='fields', full_name='services.organization.actions.get_teams_for_profile_ids.RequestV1.fields', index=2,
-      number=3, type=11, cpp_type=10, label=1,
+      name='fields', full_name='services.organization.actions.get_teams_for_profile_ids.RequestV1.fields', index=1,
+      number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -63,12 +56,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=226,
-  serialized_end=332,
+  serialized_end=312,
 )
 
 
@@ -80,22 +73,15 @@ _RESPONSEV1_PROFILETEAMV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.actions.get_teams_for_profile_ids.ResponseV1.ProfileTeamV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='profile_id', full_name='services.organization.actions.get_teams_for_profile_ids.ResponseV1.ProfileTeamV1.profile_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='profile_id', full_name='services.organization.actions.get_teams_for_profile_ids.ResponseV1.ProfileTeamV1.profile_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='team', full_name='services.organization.actions.get_teams_for_profile_ids.ResponseV1.ProfileTeamV1.team', index=2,
-      number=3, type=11, cpp_type=10, label=1,
+      name='team', full_name='services.organization.actions.get_teams_for_profile_ids.ResponseV1.ProfileTeamV1.team', index=1,
+      number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -108,12 +94,12 @@ _RESPONSEV1_PROFILETEAMV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=476,
-  serialized_end=587,
+  serialized_start=436,
+  serialized_end=527,
 )
 
 _RESPONSEV1 = _descriptor.Descriptor(
@@ -124,15 +110,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.actions.get_teams_for_profile_ids.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='profiles_teams', full_name='services.organization.actions.get_teams_for_profile_ids.ResponseV1.profiles_teams', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='profiles_teams', full_name='services.organization.actions.get_teams_for_profile_ids.ResponseV1.profiles_teams', index=0,
+      number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -145,12 +124,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=335,
-  serialized_end=587,
+  serialized_start=315,
+  serialized_end=527,
 )
 
 _REQUESTV1.fields_by_name['fields'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._FIELDSV1

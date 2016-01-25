@@ -10,7 +10,6 @@ public func == (lhs: Services.History.Actions.RecordAction.RequestV1, rhs: Servi
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasAction == rhs.hasAction) && (!lhs.hasAction || lhs.action == rhs.action)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -21,7 +20,6 @@ public func == (lhs: Services.History.Actions.RecordAction.ResponseV1, rhs: Serv
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -46,9 +44,6 @@ public extension Services.History.Actions.RecordAction {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasAction:Bool = false
     public private(set) var action:Services.History.Containers.ActionV1!
     required public init() {
@@ -58,11 +53,8 @@ public extension Services.History.Actions.RecordAction {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasAction {
-        try output.writeMessage(2, value:action)
+        try output.writeMessage(1, value:action)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -73,11 +65,8 @@ public extension Services.History.Actions.RecordAction {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasAction {
-          if let varSizeaction = action?.computeMessageSize(2) {
+          if let varSizeaction = action?.computeMessageSize(1) {
               serialize_size += varSizeaction
           }
       }
@@ -132,9 +121,6 @@ public extension Services.History.Actions.RecordAction {
       return try Services.History.Actions.RecordAction.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasAction {
         output += "\(indent) action {\n"
         try action?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -145,9 +131,6 @@ public extension Services.History.Actions.RecordAction {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasAction {
                 if let hashValueaction = action?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueaction
@@ -180,29 +163,6 @@ public extension Services.History.Actions.RecordAction {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.History.Actions.RecordAction.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.History.Actions.RecordAction.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasAction:Bool {
            get {
@@ -279,9 +239,6 @@ public extension Services.History.Actions.RecordAction {
         if other == Services.History.Actions.RecordAction.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasAction) {
             try mergeAction(other.action)
         }
@@ -300,10 +257,7 @@ public extension Services.History.Actions.RecordAction {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.History.Containers.ActionV1.Builder = Services.History.Containers.ActionV1.Builder()
             if hasAction {
               try subBuilder.mergeFrom(action)
@@ -324,9 +278,6 @@ public extension Services.History.Actions.RecordAction {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     required public init() {
          super.init()
     }
@@ -334,9 +285,6 @@ public extension Services.History.Actions.RecordAction {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -346,9 +294,6 @@ public extension Services.History.Actions.RecordAction {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -400,17 +345,11 @@ public extension Services.History.Actions.RecordAction {
       return try Services.History.Actions.RecordAction.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -439,29 +378,6 @@ public extension Services.History.Actions.RecordAction {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.History.Actions.RecordAction.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.History.Actions.RecordAction.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -486,9 +402,6 @@ public extension Services.History.Actions.RecordAction {
         if other == Services.History.Actions.RecordAction.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -503,9 +416,6 @@ public extension Services.History.Actions.RecordAction {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

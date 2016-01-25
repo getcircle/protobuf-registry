@@ -78,13 +78,13 @@ public extension Services.User.Actions.RequestAccess {
         }
         override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
           if hasUserInfo {
-            try output.writeString(3, value:userInfo)
+            try output.writeString(1, value:userInfo)
           }
           if hasDomain {
-            try output.writeString(4, value:domain)
+            try output.writeString(2, value:domain)
           }
           if hasLocation {
-            try output.writeString(5, value:location)
+            try output.writeString(3, value:location)
           }
           try unknownFields.writeToCodedOutputStream(output)
         }
@@ -96,13 +96,13 @@ public extension Services.User.Actions.RequestAccess {
 
           serialize_size = 0
           if hasUserInfo {
-            serialize_size += userInfo.computeStringSize(3)
+            serialize_size += userInfo.computeStringSize(1)
           }
           if hasDomain {
-            serialize_size += domain.computeStringSize(4)
+            serialize_size += domain.computeStringSize(2)
           }
           if hasLocation {
-            serialize_size += location.computeStringSize(5)
+            serialize_size += location.computeStringSize(3)
           }
           serialize_size += unknownFields.serializedSize()
           memoizedSerializedSize = serialize_size
@@ -323,13 +323,13 @@ public extension Services.User.Actions.RequestAccess {
                 self.unknownFields = try unknownFieldsBuilder.build()
                 return self
 
-              case 26 :
+              case 10 :
                 userInfo = try input.readString()
 
-              case 34 :
+              case 18 :
                 domain = try input.readString()
 
-              case 42 :
+              case 26 :
                 location = try input.readString()
 
               default:
@@ -356,7 +356,7 @@ public extension Services.User.Actions.RequestAccess {
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasAnonymousUser {
-        try output.writeMessage(3, value:anonymousUser)
+        try output.writeMessage(1, value:anonymousUser)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -368,7 +368,7 @@ public extension Services.User.Actions.RequestAccess {
 
       serialize_size = 0
       if hasAnonymousUser {
-          if let varSizeanonymousUser = anonymousUser?.computeMessageSize(3) {
+          if let varSizeanonymousUser = anonymousUser?.computeMessageSize(1) {
               serialize_size += varSizeanonymousUser
           }
       }
@@ -559,7 +559,7 @@ public extension Services.User.Actions.RequestAccess {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 26 :
+          case 10 :
             let subBuilder:Services.User.Actions.RequestAccess.RequestV1.AnonymousUserV1.Builder = Services.User.Actions.RequestAccess.RequestV1.AnonymousUserV1.Builder()
             if hasAnonymousUser {
               try subBuilder.mergeFrom(anonymousUser)

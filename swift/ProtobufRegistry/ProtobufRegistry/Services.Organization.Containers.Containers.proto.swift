@@ -10,7 +10,6 @@ public func == (lhs: Services.Organization.Containers.LocationV1, rhs: Services.
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
   fieldCheck = fieldCheck && (lhs.hasAddress1 == rhs.hasAddress1) && (!lhs.hasAddress1 || lhs.address1 == rhs.address1)
@@ -38,7 +37,6 @@ public func == (lhs: Services.Organization.Containers.OrganizationV1, rhs: Servi
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
   fieldCheck = fieldCheck && (lhs.hasDomain == rhs.hasDomain) && (!lhs.hasDomain || lhs.domain == rhs.domain)
@@ -58,7 +56,6 @@ public func == (lhs: Services.Organization.Containers.TeamV1, rhs: Services.Orga
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
@@ -70,32 +67,6 @@ public func == (lhs: Services.Organization.Containers.TeamV1, rhs: Services.Orga
   fieldCheck = fieldCheck && (lhs.hasChildTeamCount == rhs.hasChildTeamCount) && (!lhs.hasChildTeamCount || lhs.childTeamCount == rhs.childTeamCount)
   fieldCheck = fieldCheck && (lhs.hasProfileCount == rhs.hasProfileCount) && (!lhs.hasProfileCount || lhs.profileCount == rhs.profileCount)
   fieldCheck = fieldCheck && (lhs.hasDisplayName == rhs.hasDisplayName) && (!lhs.hasDisplayName || lhs.displayName == rhs.displayName)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Services.Organization.Containers.TokenV1, rhs: Services.Organization.Containers.TokenV1) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasKey == rhs.hasKey) && (!lhs.hasKey || lhs.key == rhs.key)
-  fieldCheck = fieldCheck && (lhs.hasRequestedByUserId == rhs.hasRequestedByUserId) && (!lhs.hasRequestedByUserId || lhs.requestedByUserId == rhs.requestedByUserId)
-  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Services.Organization.Containers.SSOV1, rhs: Services.Organization.Containers.SSOV1) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
-  fieldCheck = fieldCheck && (lhs.hasMetadataUrl == rhs.hasMetadataUrl) && (!lhs.hasMetadataUrl || lhs.metadataUrl == rhs.metadataUrl)
-  fieldCheck = fieldCheck && (lhs.hasMetadata == rhs.hasMetadata) && (!lhs.hasMetadata || lhs.metadata == rhs.metadata)
-  fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -122,9 +93,6 @@ public extension Services.Organization.Containers {
   }
 
   final public class LocationV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -182,62 +150,59 @@ public extension Services.Organization.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasName {
-        try output.writeString(3, value:name)
+        try output.writeString(2, value:name)
       }
       if hasAddress1 {
-        try output.writeString(4, value:address1)
+        try output.writeString(3, value:address1)
       }
       if hasAddress2 {
-        try output.writeString(5, value:address2)
+        try output.writeString(4, value:address2)
       }
       if hasCity {
-        try output.writeString(6, value:city)
+        try output.writeString(5, value:city)
       }
       if hasRegion {
-        try output.writeString(7, value:region)
+        try output.writeString(6, value:region)
       }
       if hasPostalCode {
-        try output.writeString(8, value:postalCode)
+        try output.writeString(7, value:postalCode)
       }
       if hasCountryCode {
-        try output.writeString(9, value:countryCode)
+        try output.writeString(8, value:countryCode)
       }
       if hasLatitude {
-        try output.writeString(10, value:latitude)
+        try output.writeString(9, value:latitude)
       }
       if hasLongitude {
-        try output.writeString(11, value:longitude)
+        try output.writeString(10, value:longitude)
       }
       if hasTimezone {
-        try output.writeString(12, value:timezone)
+        try output.writeString(11, value:timezone)
       }
       if hasOrganizationId {
-        try output.writeString(13, value:organizationId)
+        try output.writeString(12, value:organizationId)
       }
       if hasProfileCount {
-        try output.writeUInt32(14, value:profileCount)
+        try output.writeUInt32(13, value:profileCount)
       }
       if hasImageUrl {
-        try output.writeString(15, value:imageUrl)
+        try output.writeString(14, value:imageUrl)
       }
       if hasDescription {
-        try output.writeMessage(16, value:description_)
+        try output.writeMessage(15, value:description_)
       }
       if hasEstablishedDate {
-        try output.writeString(17, value:establishedDate)
+        try output.writeString(16, value:establishedDate)
       }
       for oneElementpointsOfContact in pointsOfContact {
-          try output.writeMessage(18, value:oneElementpointsOfContact)
+          try output.writeMessage(17, value:oneElementpointsOfContact)
       }
       if hasPermissions {
-        try output.writeMessage(19, value:permissions)
+        try output.writeMessage(18, value:permissions)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -248,64 +213,61 @@ public extension Services.Organization.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasName {
-        serialize_size += name.computeStringSize(3)
+        serialize_size += name.computeStringSize(2)
       }
       if hasAddress1 {
-        serialize_size += address1.computeStringSize(4)
+        serialize_size += address1.computeStringSize(3)
       }
       if hasAddress2 {
-        serialize_size += address2.computeStringSize(5)
+        serialize_size += address2.computeStringSize(4)
       }
       if hasCity {
-        serialize_size += city.computeStringSize(6)
+        serialize_size += city.computeStringSize(5)
       }
       if hasRegion {
-        serialize_size += region.computeStringSize(7)
+        serialize_size += region.computeStringSize(6)
       }
       if hasPostalCode {
-        serialize_size += postalCode.computeStringSize(8)
+        serialize_size += postalCode.computeStringSize(7)
       }
       if hasCountryCode {
-        serialize_size += countryCode.computeStringSize(9)
+        serialize_size += countryCode.computeStringSize(8)
       }
       if hasLatitude {
-        serialize_size += latitude.computeStringSize(10)
+        serialize_size += latitude.computeStringSize(9)
       }
       if hasLongitude {
-        serialize_size += longitude.computeStringSize(11)
+        serialize_size += longitude.computeStringSize(10)
       }
       if hasTimezone {
-        serialize_size += timezone.computeStringSize(12)
+        serialize_size += timezone.computeStringSize(11)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(13)
+        serialize_size += organizationId.computeStringSize(12)
       }
       if hasProfileCount {
-        serialize_size += profileCount.computeUInt32Size(14)
+        serialize_size += profileCount.computeUInt32Size(13)
       }
       if hasImageUrl {
-        serialize_size += imageUrl.computeStringSize(15)
+        serialize_size += imageUrl.computeStringSize(14)
       }
       if hasDescription {
-          if let varSizedescription_ = description_?.computeMessageSize(16) {
+          if let varSizedescription_ = description_?.computeMessageSize(15) {
               serialize_size += varSizedescription_
           }
       }
       if hasEstablishedDate {
-        serialize_size += establishedDate.computeStringSize(17)
+        serialize_size += establishedDate.computeStringSize(16)
       }
       for oneElementpointsOfContact in pointsOfContact {
-          serialize_size += oneElementpointsOfContact.computeMessageSize(18)
+          serialize_size += oneElementpointsOfContact.computeMessageSize(17)
       }
       if hasPermissions {
-          if let varSizepermissions = permissions?.computeMessageSize(19) {
+          if let varSizepermissions = permissions?.computeMessageSize(18) {
               serialize_size += varSizepermissions
           }
       }
@@ -360,9 +322,6 @@ public extension Services.Organization.Containers {
       return try Services.Organization.Containers.LocationV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -430,9 +389,6 @@ public extension Services.Organization.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -518,29 +474,6 @@ public extension Services.Organization.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Containers.LocationV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Containers.LocationV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -1029,9 +962,6 @@ public extension Services.Organization.Containers {
         if other == Services.Organization.Containers.LocationV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -1101,52 +1031,49 @@ public extension Services.Organization.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             name = try input.readString()
 
-          case 34 :
+          case 26 :
             address1 = try input.readString()
 
-          case 42 :
+          case 34 :
             address2 = try input.readString()
 
-          case 50 :
+          case 42 :
             city = try input.readString()
 
-          case 58 :
+          case 50 :
             region = try input.readString()
 
-          case 66 :
+          case 58 :
             postalCode = try input.readString()
 
-          case 74 :
+          case 66 :
             countryCode = try input.readString()
 
-          case 82 :
+          case 74 :
             latitude = try input.readString()
 
-          case 90 :
+          case 82 :
             longitude = try input.readString()
 
-          case 98 :
+          case 90 :
             timezone = try input.readString()
 
-          case 106 :
+          case 98 :
             organizationId = try input.readString()
 
-          case 112 :
+          case 104 :
             profileCount = try input.readUInt32()
 
-          case 122 :
+          case 114 :
             imageUrl = try input.readString()
 
-          case 130 :
+          case 122 :
             let subBuilder:Services.Common.Containers.Description.DescriptionV1.Builder = Services.Common.Containers.Description.DescriptionV1.Builder()
             if hasDescription {
               try subBuilder.mergeFrom(description_)
@@ -1154,15 +1081,15 @@ public extension Services.Organization.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             description_ = subBuilder.buildPartial()
 
-          case 138 :
+          case 130 :
             establishedDate = try input.readString()
 
-          case 146 :
+          case 138 :
             let subBuilder = Services.Profile.Containers.ProfileV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             pointsOfContact += [subBuilder.buildPartial()]
 
-          case 154 :
+          case 146 :
             let subBuilder:Services.Common.Containers.PermissionsV1.Builder = Services.Common.Containers.PermissionsV1.Builder()
             if hasPermissions {
               try subBuilder.mergeFrom(permissions)
@@ -1183,9 +1110,6 @@ public extension Services.Organization.Containers {
   }
 
   final public class OrganizationV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -1221,38 +1145,35 @@ public extension Services.Organization.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasName {
-        try output.writeString(3, value:name)
+        try output.writeString(2, value:name)
       }
       if hasDomain {
-        try output.writeString(4, value:domain)
+        try output.writeString(3, value:domain)
       }
       if hasImageUrl {
-        try output.writeString(5, value:imageUrl)
+        try output.writeString(4, value:imageUrl)
       }
       if hasProfileCount {
-        try output.writeUInt32(6, value:profileCount)
+        try output.writeUInt32(5, value:profileCount)
       }
       if hasTeamCount {
-        try output.writeUInt32(7, value:teamCount)
+        try output.writeUInt32(6, value:teamCount)
       }
       if hasLocationCount {
-        try output.writeUInt32(8, value:locationCount)
+        try output.writeUInt32(7, value:locationCount)
       }
       if hasPostCount {
-        try output.writeUInt32(9, value:postCount)
+        try output.writeUInt32(8, value:postCount)
       }
       if hasInflations {
-        try output.writeMessage(10, value:inflations)
+        try output.writeMessage(9, value:inflations)
       }
       if hasFields {
-        try output.writeMessage(11, value:fields)
+        try output.writeMessage(10, value:fields)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1263,40 +1184,37 @@ public extension Services.Organization.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasName {
-        serialize_size += name.computeStringSize(3)
+        serialize_size += name.computeStringSize(2)
       }
       if hasDomain {
-        serialize_size += domain.computeStringSize(4)
+        serialize_size += domain.computeStringSize(3)
       }
       if hasImageUrl {
-        serialize_size += imageUrl.computeStringSize(5)
+        serialize_size += imageUrl.computeStringSize(4)
       }
       if hasProfileCount {
-        serialize_size += profileCount.computeUInt32Size(6)
+        serialize_size += profileCount.computeUInt32Size(5)
       }
       if hasTeamCount {
-        serialize_size += teamCount.computeUInt32Size(7)
+        serialize_size += teamCount.computeUInt32Size(6)
       }
       if hasLocationCount {
-        serialize_size += locationCount.computeUInt32Size(8)
+        serialize_size += locationCount.computeUInt32Size(7)
       }
       if hasPostCount {
-        serialize_size += postCount.computeUInt32Size(9)
+        serialize_size += postCount.computeUInt32Size(8)
       }
       if hasInflations {
-          if let varSizeinflations = inflations?.computeMessageSize(10) {
+          if let varSizeinflations = inflations?.computeMessageSize(9) {
               serialize_size += varSizeinflations
           }
       }
       if hasFields {
-          if let varSizefields = fields?.computeMessageSize(11) {
+          if let varSizefields = fields?.computeMessageSize(10) {
               serialize_size += varSizefields
           }
       }
@@ -1351,9 +1269,6 @@ public extension Services.Organization.Containers {
       return try Services.Organization.Containers.OrganizationV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -1393,9 +1308,6 @@ public extension Services.Organization.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -1457,29 +1369,6 @@ public extension Services.Organization.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Containers.OrganizationV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Containers.OrganizationV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -1791,9 +1680,6 @@ public extension Services.Organization.Containers {
         if other == Services.Organization.Containers.OrganizationV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -1839,34 +1725,31 @@ public extension Services.Organization.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             name = try input.readString()
 
-          case 34 :
+          case 26 :
             domain = try input.readString()
 
-          case 42 :
+          case 34 :
             imageUrl = try input.readString()
 
-          case 48 :
+          case 40 :
             profileCount = try input.readUInt32()
 
-          case 56 :
+          case 48 :
             teamCount = try input.readUInt32()
 
-          case 64 :
+          case 56 :
             locationCount = try input.readUInt32()
 
-          case 72 :
+          case 64 :
             postCount = try input.readUInt32()
 
-          case 82 :
+          case 74 :
             let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
             if hasInflations {
               try subBuilder.mergeFrom(inflations)
@@ -1874,7 +1757,7 @@ public extension Services.Organization.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             inflations = subBuilder.buildPartial()
 
-          case 90 :
+          case 82 :
             let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
             if hasFields {
               try subBuilder.mergeFrom(fields)
@@ -1895,9 +1778,6 @@ public extension Services.Organization.Containers {
   }
 
   final public class TeamV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -1935,41 +1815,38 @@ public extension Services.Organization.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasName {
-        try output.writeString(3, value:name)
+        try output.writeString(2, value:name)
       }
       if hasOrganizationId {
-        try output.writeString(4, value:organizationId)
+        try output.writeString(3, value:organizationId)
       }
       if hasManagerProfileId {
-        try output.writeString(5, value:managerProfileId)
+        try output.writeString(4, value:managerProfileId)
       }
       if hasManager {
-        try output.writeMessage(6, value:manager)
+        try output.writeMessage(5, value:manager)
       }
       if hasPermissions {
-        try output.writeMessage(7, value:permissions)
+        try output.writeMessage(6, value:permissions)
       }
       if hasDescription {
-        try output.writeMessage(8, value:description_)
+        try output.writeMessage(7, value:description_)
       }
       if hasImageUrl {
-        try output.writeString(10, value:imageUrl)
+        try output.writeString(8, value:imageUrl)
       }
       if hasChildTeamCount {
-        try output.writeUInt32(11, value:childTeamCount)
+        try output.writeUInt32(9, value:childTeamCount)
       }
       if hasProfileCount {
-        try output.writeUInt32(12, value:profileCount)
+        try output.writeUInt32(10, value:profileCount)
       }
       if hasDisplayName {
-        try output.writeString(13, value:displayName)
+        try output.writeString(11, value:displayName)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1980,47 +1857,44 @@ public extension Services.Organization.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasName {
-        serialize_size += name.computeStringSize(3)
+        serialize_size += name.computeStringSize(2)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(4)
+        serialize_size += organizationId.computeStringSize(3)
       }
       if hasManagerProfileId {
-        serialize_size += managerProfileId.computeStringSize(5)
+        serialize_size += managerProfileId.computeStringSize(4)
       }
       if hasManager {
-          if let varSizemanager = manager?.computeMessageSize(6) {
+          if let varSizemanager = manager?.computeMessageSize(5) {
               serialize_size += varSizemanager
           }
       }
       if hasPermissions {
-          if let varSizepermissions = permissions?.computeMessageSize(7) {
+          if let varSizepermissions = permissions?.computeMessageSize(6) {
               serialize_size += varSizepermissions
           }
       }
       if hasDescription {
-          if let varSizedescription_ = description_?.computeMessageSize(8) {
+          if let varSizedescription_ = description_?.computeMessageSize(7) {
               serialize_size += varSizedescription_
           }
       }
       if hasImageUrl {
-        serialize_size += imageUrl.computeStringSize(10)
+        serialize_size += imageUrl.computeStringSize(8)
       }
       if hasChildTeamCount {
-        serialize_size += childTeamCount.computeUInt32Size(11)
+        serialize_size += childTeamCount.computeUInt32Size(9)
       }
       if hasProfileCount {
-        serialize_size += profileCount.computeUInt32Size(12)
+        serialize_size += profileCount.computeUInt32Size(10)
       }
       if hasDisplayName {
-        serialize_size += displayName.computeStringSize(13)
+        serialize_size += displayName.computeStringSize(11)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2073,9 +1947,6 @@ public extension Services.Organization.Containers {
       return try Services.Organization.Containers.TeamV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -2120,9 +1991,6 @@ public extension Services.Organization.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -2189,29 +2057,6 @@ public extension Services.Organization.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Containers.TeamV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Containers.TeamV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -2574,9 +2419,6 @@ public extension Services.Organization.Containers {
         if other == Services.Organization.Containers.TeamV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -2625,22 +2467,19 @@ public extension Services.Organization.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             name = try input.readString()
 
-          case 34 :
+          case 26 :
             organizationId = try input.readString()
 
-          case 42 :
+          case 34 :
             managerProfileId = try input.readString()
 
-          case 50 :
+          case 42 :
             let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
             if hasManager {
               try subBuilder.mergeFrom(manager)
@@ -2648,7 +2487,7 @@ public extension Services.Organization.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             manager = subBuilder.buildPartial()
 
-          case 58 :
+          case 50 :
             let subBuilder:Services.Common.Containers.PermissionsV1.Builder = Services.Common.Containers.PermissionsV1.Builder()
             if hasPermissions {
               try subBuilder.mergeFrom(permissions)
@@ -2656,7 +2495,7 @@ public extension Services.Organization.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             permissions = subBuilder.buildPartial()
 
-          case 66 :
+          case 58 :
             let subBuilder:Services.Common.Containers.Description.DescriptionV1.Builder = Services.Common.Containers.Description.DescriptionV1.Builder()
             if hasDescription {
               try subBuilder.mergeFrom(description_)
@@ -2664,688 +2503,17 @@ public extension Services.Organization.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             description_ = subBuilder.buildPartial()
 
-          case 82 :
+          case 66 :
             imageUrl = try input.readString()
 
-          case 88 :
+          case 72 :
             childTeamCount = try input.readUInt32()
 
-          case 96 :
+          case 80 :
             profileCount = try input.readUInt32()
 
-          case 106 :
+          case 90 :
             displayName = try input.readString()
-
-          default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
-               unknownFields = try unknownFieldsBuilder.build()
-               return self
-            }
-          }
-        }
-      }
-    }
-
-  }
-
-  final public class TokenV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
-    public private(set) var hasKey:Bool = false
-    public private(set) var key:String = ""
-
-    public private(set) var hasRequestedByUserId:Bool = false
-    public private(set) var requestedByUserId:String = ""
-
-    public private(set) var hasId:Bool = false
-    public private(set) var id:String = ""
-
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
-      if hasKey {
-        try output.writeString(2, value:key)
-      }
-      if hasRequestedByUserId {
-        try output.writeString(3, value:requestedByUserId)
-      }
-      if hasId {
-        try output.writeString(4, value:id)
-      }
-      try unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
-      if hasKey {
-        serialize_size += key.computeStringSize(2)
-      }
-      if hasRequestedByUserId {
-        serialize_size += requestedByUserId.computeStringSize(3)
-      }
-      if hasId {
-        serialize_size += id.computeStringSize(4)
-      }
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Organization.Containers.TokenV1> {
-      var mergedArray = Array<Services.Organization.Containers.TokenV1>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Organization.Containers.TokenV1? {
-      return try Services.Organization.Containers.TokenV1.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Services.Organization.Containers.TokenV1 {
-      return try Services.Organization.Containers.TokenV1.Builder().mergeFromData(data, extensionRegistry:Services.Organization.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.TokenV1 {
-      return try Services.Organization.Containers.TokenV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Organization.Containers.TokenV1 {
-      return try Services.Organization.Containers.TokenV1.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.TokenV1 {
-      return try Services.Organization.Containers.TokenV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Organization.Containers.TokenV1 {
-      return try Services.Organization.Containers.TokenV1.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.TokenV1 {
-      return try Services.Organization.Containers.TokenV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func getBuilder() -> Services.Organization.Containers.TokenV1.Builder {
-      return Services.Organization.Containers.TokenV1.classBuilder() as! Services.Organization.Containers.TokenV1.Builder
-    }
-    public func getBuilder() -> Services.Organization.Containers.TokenV1.Builder {
-      return classBuilder() as! Services.Organization.Containers.TokenV1.Builder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Organization.Containers.TokenV1.Builder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Organization.Containers.TokenV1.Builder()
-    }
-    public func toBuilder() throws -> Services.Organization.Containers.TokenV1.Builder {
-      return try Services.Organization.Containers.TokenV1.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Organization.Containers.TokenV1) throws -> Services.Organization.Containers.TokenV1.Builder {
-      return try Services.Organization.Containers.TokenV1.Builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
-      if hasKey {
-        output += "\(indent) key: \(key) \n"
-      }
-      if hasRequestedByUserId {
-        output += "\(indent) requestedByUserId: \(requestedByUserId) \n"
-      }
-      if hasId {
-        output += "\(indent) id: \(id) \n"
-      }
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            if hasKey {
-               hashCode = (hashCode &* 31) &+ key.hashValue
-            }
-            if hasRequestedByUserId {
-               hashCode = (hashCode &* 31) &+ requestedByUserId.hashValue
-            }
-            if hasId {
-               hashCode = (hashCode &* 31) &+ id.hashValue
-            }
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Organization.Containers.TokenV1"
-    }
-    override public func className() -> String {
-        return "Services.Organization.Containers.TokenV1"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Organization.Containers.TokenV1.self
-    }
-    //Meta information declaration end
-
-    final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Services.Organization.Containers.TokenV1 = Services.Organization.Containers.TokenV1()
-      public func getMessage() -> Services.Organization.Containers.TokenV1 {
-          return builderResult
-      }
-
-      required override public init () {
-         super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Containers.TokenV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Containers.TokenV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
-      public var hasKey:Bool {
-           get {
-                return builderResult.hasKey
-           }
-      }
-      public var key:String {
-           get {
-                return builderResult.key
-           }
-           set (value) {
-               builderResult.hasKey = true
-               builderResult.key = value
-           }
-      }
-      public func setKey(value:String) -> Services.Organization.Containers.TokenV1.Builder {
-        self.key = value
-        return self
-      }
-      public func clearKey() -> Services.Organization.Containers.TokenV1.Builder{
-           builderResult.hasKey = false
-           builderResult.key = ""
-           return self
-      }
-      public var hasRequestedByUserId:Bool {
-           get {
-                return builderResult.hasRequestedByUserId
-           }
-      }
-      public var requestedByUserId:String {
-           get {
-                return builderResult.requestedByUserId
-           }
-           set (value) {
-               builderResult.hasRequestedByUserId = true
-               builderResult.requestedByUserId = value
-           }
-      }
-      public func setRequestedByUserId(value:String) -> Services.Organization.Containers.TokenV1.Builder {
-        self.requestedByUserId = value
-        return self
-      }
-      public func clearRequestedByUserId() -> Services.Organization.Containers.TokenV1.Builder{
-           builderResult.hasRequestedByUserId = false
-           builderResult.requestedByUserId = ""
-           return self
-      }
-      public var hasId:Bool {
-           get {
-                return builderResult.hasId
-           }
-      }
-      public var id:String {
-           get {
-                return builderResult.id
-           }
-           set (value) {
-               builderResult.hasId = true
-               builderResult.id = value
-           }
-      }
-      public func setId(value:String) -> Services.Organization.Containers.TokenV1.Builder {
-        self.id = value
-        return self
-      }
-      public func clearId() -> Services.Organization.Containers.TokenV1.Builder{
-           builderResult.hasId = false
-           builderResult.id = ""
-           return self
-      }
-      override public var internalGetResult:GeneratedMessage {
-           get {
-              return builderResult
-           }
-      }
-      public override func clear() -> Services.Organization.Containers.TokenV1.Builder {
-        builderResult = Services.Organization.Containers.TokenV1()
-        return self
-      }
-      public override func clone() throws -> Services.Organization.Containers.TokenV1.Builder {
-        return try Services.Organization.Containers.TokenV1.builderWithPrototype(builderResult)
-      }
-      public override func build() throws -> Services.Organization.Containers.TokenV1 {
-           try checkInitialized()
-           return buildPartial()
-      }
-      public func buildPartial() -> Services.Organization.Containers.TokenV1 {
-        let returnMe:Services.Organization.Containers.TokenV1 = builderResult
-        return returnMe
-      }
-      public func mergeFrom(other:Services.Organization.Containers.TokenV1) throws -> Services.Organization.Containers.TokenV1.Builder {
-        if other == Services.Organization.Containers.TokenV1() {
-         return self
-        }
-        if other.hasVersion {
-             version = other.version
-        }
-        if other.hasKey {
-             key = other.key
-        }
-        if other.hasRequestedByUserId {
-             requestedByUserId = other.requestedByUserId
-        }
-        if other.hasId {
-             id = other.id
-        }
-        try mergeUnknownFields(other.unknownFields)
-        return self
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Organization.Containers.TokenV1.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.TokenV1.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-        while (true) {
-          let tag = try input.readTag()
-          switch tag {
-          case 0: 
-            self.unknownFields = try unknownFieldsBuilder.build()
-            return self
-
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
-            key = try input.readString()
-
-          case 26 :
-            requestedByUserId = try input.readString()
-
-          case 34 :
-            id = try input.readString()
-
-          default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
-               unknownFields = try unknownFieldsBuilder.build()
-               return self
-            }
-          }
-        }
-      }
-    }
-
-  }
-
-  final public class SSOV1 : GeneratedMessage, GeneratedMessageProtocol {
-
-
-      //Enum type declaration start 
-
-      public enum ProviderV1:Int32 {
-        case Okta = 0
-
-      }
-
-      //Enum type declaration end 
-
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
-    public private(set) var hasMetadataUrl:Bool = false
-    public private(set) var metadataUrl:String = ""
-
-    public private(set) var hasMetadata:Bool = false
-    public private(set) var metadata:String = ""
-
-    public private(set) var provider:Services.Organization.Containers.SSOV1.ProviderV1 = Services.Organization.Containers.SSOV1.ProviderV1.Okta
-    public private(set) var hasProvider:Bool = false
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
-      if hasMetadataUrl {
-        try output.writeString(2, value:metadataUrl)
-      }
-      if hasMetadata {
-        try output.writeString(3, value:metadata)
-      }
-      if hasProvider {
-        try output.writeEnum(4, value:provider.rawValue)
-      }
-      try unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
-      if hasMetadataUrl {
-        serialize_size += metadataUrl.computeStringSize(2)
-      }
-      if hasMetadata {
-        serialize_size += metadata.computeStringSize(3)
-      }
-      if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(4)
-      }
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Organization.Containers.SSOV1> {
-      var mergedArray = Array<Services.Organization.Containers.SSOV1>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Organization.Containers.SSOV1? {
-      return try Services.Organization.Containers.SSOV1.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Services.Organization.Containers.SSOV1 {
-      return try Services.Organization.Containers.SSOV1.Builder().mergeFromData(data, extensionRegistry:Services.Organization.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.SSOV1 {
-      return try Services.Organization.Containers.SSOV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Organization.Containers.SSOV1 {
-      return try Services.Organization.Containers.SSOV1.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.SSOV1 {
-      return try Services.Organization.Containers.SSOV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Organization.Containers.SSOV1 {
-      return try Services.Organization.Containers.SSOV1.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.SSOV1 {
-      return try Services.Organization.Containers.SSOV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func getBuilder() -> Services.Organization.Containers.SSOV1.Builder {
-      return Services.Organization.Containers.SSOV1.classBuilder() as! Services.Organization.Containers.SSOV1.Builder
-    }
-    public func getBuilder() -> Services.Organization.Containers.SSOV1.Builder {
-      return classBuilder() as! Services.Organization.Containers.SSOV1.Builder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Organization.Containers.SSOV1.Builder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Organization.Containers.SSOV1.Builder()
-    }
-    public func toBuilder() throws -> Services.Organization.Containers.SSOV1.Builder {
-      return try Services.Organization.Containers.SSOV1.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Organization.Containers.SSOV1) throws -> Services.Organization.Containers.SSOV1.Builder {
-      return try Services.Organization.Containers.SSOV1.Builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
-      if hasMetadataUrl {
-        output += "\(indent) metadataUrl: \(metadataUrl) \n"
-      }
-      if hasMetadata {
-        output += "\(indent) metadata: \(metadata) \n"
-      }
-      if (hasProvider) {
-        output += "\(indent) provider: \(provider.rawValue)\n"
-      }
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
-            if hasMetadataUrl {
-               hashCode = (hashCode &* 31) &+ metadataUrl.hashValue
-            }
-            if hasMetadata {
-               hashCode = (hashCode &* 31) &+ metadata.hashValue
-            }
-            if hasProvider {
-               hashCode = (hashCode &* 31) &+ Int(provider.rawValue)
-            }
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Organization.Containers.SSOV1"
-    }
-    override public func className() -> String {
-        return "Services.Organization.Containers.SSOV1"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Organization.Containers.SSOV1.self
-    }
-    //Meta information declaration end
-
-    final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Services.Organization.Containers.SSOV1 = Services.Organization.Containers.SSOV1()
-      public func getMessage() -> Services.Organization.Containers.SSOV1 {
-          return builderResult
-      }
-
-      required override public init () {
-         super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Containers.SSOV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Containers.SSOV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
-      public var hasMetadataUrl:Bool {
-           get {
-                return builderResult.hasMetadataUrl
-           }
-      }
-      public var metadataUrl:String {
-           get {
-                return builderResult.metadataUrl
-           }
-           set (value) {
-               builderResult.hasMetadataUrl = true
-               builderResult.metadataUrl = value
-           }
-      }
-      public func setMetadataUrl(value:String) -> Services.Organization.Containers.SSOV1.Builder {
-        self.metadataUrl = value
-        return self
-      }
-      public func clearMetadataUrl() -> Services.Organization.Containers.SSOV1.Builder{
-           builderResult.hasMetadataUrl = false
-           builderResult.metadataUrl = ""
-           return self
-      }
-      public var hasMetadata:Bool {
-           get {
-                return builderResult.hasMetadata
-           }
-      }
-      public var metadata:String {
-           get {
-                return builderResult.metadata
-           }
-           set (value) {
-               builderResult.hasMetadata = true
-               builderResult.metadata = value
-           }
-      }
-      public func setMetadata(value:String) -> Services.Organization.Containers.SSOV1.Builder {
-        self.metadata = value
-        return self
-      }
-      public func clearMetadata() -> Services.Organization.Containers.SSOV1.Builder{
-           builderResult.hasMetadata = false
-           builderResult.metadata = ""
-           return self
-      }
-        public var hasProvider:Bool{
-            get {
-                return builderResult.hasProvider
-            }
-        }
-        public var provider:Services.Organization.Containers.SSOV1.ProviderV1 {
-            get {
-                return builderResult.provider
-            }
-            set (value) {
-                builderResult.hasProvider = true
-                builderResult.provider = value
-            }
-        }
-        public func setProvider(value:Services.Organization.Containers.SSOV1.ProviderV1) -> Services.Organization.Containers.SSOV1.Builder {
-          self.provider = value
-          return self
-        }
-        public func clearProvider() -> Services.Organization.Containers.SSOV1.Builder {
-           builderResult.hasProvider = false
-           builderResult.provider = .Okta
-           return self
-        }
-      override public var internalGetResult:GeneratedMessage {
-           get {
-              return builderResult
-           }
-      }
-      public override func clear() -> Services.Organization.Containers.SSOV1.Builder {
-        builderResult = Services.Organization.Containers.SSOV1()
-        return self
-      }
-      public override func clone() throws -> Services.Organization.Containers.SSOV1.Builder {
-        return try Services.Organization.Containers.SSOV1.builderWithPrototype(builderResult)
-      }
-      public override func build() throws -> Services.Organization.Containers.SSOV1 {
-           try checkInitialized()
-           return buildPartial()
-      }
-      public func buildPartial() -> Services.Organization.Containers.SSOV1 {
-        let returnMe:Services.Organization.Containers.SSOV1 = builderResult
-        return returnMe
-      }
-      public func mergeFrom(other:Services.Organization.Containers.SSOV1) throws -> Services.Organization.Containers.SSOV1.Builder {
-        if other == Services.Organization.Containers.SSOV1() {
-         return self
-        }
-        if other.hasVersion {
-             version = other.version
-        }
-        if other.hasMetadataUrl {
-             metadataUrl = other.metadataUrl
-        }
-        if other.hasMetadata {
-             metadata = other.metadata
-        }
-        if other.hasProvider {
-             provider = other.provider
-        }
-        try mergeUnknownFields(other.unknownFields)
-        return self
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Organization.Containers.SSOV1.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.SSOV1.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-        while (true) {
-          let tag = try input.readTag()
-          switch tag {
-          case 0: 
-            self.unknownFields = try unknownFieldsBuilder.build()
-            return self
-
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
-            metadataUrl = try input.readString()
-
-          case 26 :
-            metadata = try input.readString()
-
-          case 32 :
-            let valueIntprovider = try input.readEnum()
-            if let enumsprovider = Services.Organization.Containers.SSOV1.ProviderV1(rawValue:valueIntprovider){
-                 provider = enumsprovider
-            } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntprovider))
-            }
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

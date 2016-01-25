@@ -10,7 +10,6 @@ public func == (lhs: Services.Organization.Actions.AddLocationMembers.RequestV1,
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasLocationId == rhs.hasLocationId) && (!lhs.hasLocationId || lhs.locationId == rhs.locationId)
   fieldCheck = fieldCheck && (lhs.profileIds == rhs.profileIds)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -22,7 +21,6 @@ public func == (lhs: Services.Organization.Actions.AddLocationMembers.ResponseV1
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -46,9 +44,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasLocationId:Bool = false
     public private(set) var locationId:String = ""
 
@@ -60,15 +55,12 @@ public extension Services.Organization.Actions.AddLocationMembers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasLocationId {
-        try output.writeString(2, value:locationId)
+        try output.writeString(1, value:locationId)
       }
       if !profileIds.isEmpty {
         for oneValueprofileIds in profileIds {
-          try output.writeString(3, value:oneValueprofileIds)
+          try output.writeString(2, value:oneValueprofileIds)
         }
       }
       try unknownFields.writeToCodedOutputStream(output)
@@ -80,11 +72,8 @@ public extension Services.Organization.Actions.AddLocationMembers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasLocationId {
-        serialize_size += locationId.computeStringSize(2)
+        serialize_size += locationId.computeStringSize(1)
       }
       var dataSizeProfileIds:Int32 = 0
       for oneValueprofileIds in profileIds {
@@ -143,9 +132,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
       return try Services.Organization.Actions.AddLocationMembers.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasLocationId {
         output += "\(indent) locationId: \(locationId) \n"
       }
@@ -159,9 +145,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasLocationId {
                hashCode = (hashCode &* 31) &+ locationId.hashValue
             }
@@ -195,29 +178,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.AddLocationMembers.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.AddLocationMembers.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasLocationId:Bool {
            get {
@@ -282,9 +242,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
         if other == Services.Organization.Actions.AddLocationMembers.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasLocationId {
              locationId = other.locationId
         }
@@ -306,13 +263,10 @@ public extension Services.Organization.Actions.AddLocationMembers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             locationId = try input.readString()
 
-          case 26 :
+          case 18 :
             profileIds += [try input.readString()]
 
           default:
@@ -328,9 +282,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     required public init() {
          super.init()
     }
@@ -338,9 +289,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -350,9 +298,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -404,17 +349,11 @@ public extension Services.Organization.Actions.AddLocationMembers {
       return try Services.Organization.Actions.AddLocationMembers.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -443,29 +382,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.AddLocationMembers.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.AddLocationMembers.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -490,9 +406,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
         if other == Services.Organization.Actions.AddLocationMembers.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -507,9 +420,6 @@ public extension Services.Organization.Actions.AddLocationMembers {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

@@ -10,7 +10,6 @@ public func == (lhs: Services.Media.Containers.UploadInstructionsV1, rhs: Servic
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasUploadId == rhs.hasUploadId) && (!lhs.hasUploadId || lhs.uploadId == rhs.uploadId)
   fieldCheck = fieldCheck && (lhs.hasUploadUrl == rhs.hasUploadUrl) && (!lhs.hasUploadUrl || lhs.uploadUrl == rhs.uploadUrl)
   fieldCheck = fieldCheck && (lhs.hasUploadKey == rhs.hasUploadKey) && (!lhs.hasUploadKey || lhs.uploadKey == rhs.uploadKey)
@@ -37,9 +36,6 @@ public extension Services.Media.Containers {
   }
 
   final public class UploadInstructionsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasUploadId:Bool = false
     public private(set) var uploadId:String = ""
 
@@ -56,17 +52,14 @@ public extension Services.Media.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasUploadId {
-        try output.writeString(2, value:uploadId)
+        try output.writeString(1, value:uploadId)
       }
       if hasUploadUrl {
-        try output.writeString(3, value:uploadUrl)
+        try output.writeString(2, value:uploadUrl)
       }
       if hasUploadKey {
-        try output.writeString(4, value:uploadKey)
+        try output.writeString(3, value:uploadKey)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -77,17 +70,14 @@ public extension Services.Media.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasUploadId {
-        serialize_size += uploadId.computeStringSize(2)
+        serialize_size += uploadId.computeStringSize(1)
       }
       if hasUploadUrl {
-        serialize_size += uploadUrl.computeStringSize(3)
+        serialize_size += uploadUrl.computeStringSize(2)
       }
       if hasUploadKey {
-        serialize_size += uploadKey.computeStringSize(4)
+        serialize_size += uploadKey.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -140,9 +130,6 @@ public extension Services.Media.Containers {
       return try Services.Media.Containers.UploadInstructionsV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasUploadId {
         output += "\(indent) uploadId: \(uploadId) \n"
       }
@@ -157,9 +144,6 @@ public extension Services.Media.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasUploadId {
                hashCode = (hashCode &* 31) &+ uploadId.hashValue
             }
@@ -196,29 +180,6 @@ public extension Services.Media.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Media.Containers.UploadInstructionsV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Media.Containers.UploadInstructionsV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasUploadId:Bool {
            get {
@@ -313,9 +274,6 @@ public extension Services.Media.Containers {
         if other == Services.Media.Containers.UploadInstructionsV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasUploadId {
              uploadId = other.uploadId
         }
@@ -340,16 +298,13 @@ public extension Services.Media.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             uploadId = try input.readString()
 
-          case 26 :
+          case 18 :
             uploadUrl = try input.readString()
 
-          case 34 :
+          case 26 :
             uploadKey = try input.readString()
 
           default:

@@ -10,7 +10,6 @@ public func == (lhs: Services.Payment.Actions.StoreToken.RequestV1, rhs: Service
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasToken == rhs.hasToken) && (!lhs.hasToken || lhs.token == rhs.token)
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -22,7 +21,6 @@ public func == (lhs: Services.Payment.Actions.StoreToken.ResponseV1, rhs: Servic
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -46,9 +44,6 @@ public extension Services.Payment.Actions.StoreToken {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasToken:Bool = false
     public private(set) var token:String = ""
 
@@ -62,14 +57,11 @@ public extension Services.Payment.Actions.StoreToken {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasToken {
-        try output.writeString(2, value:token)
+        try output.writeString(1, value:token)
       }
       if hasEmail {
-        try output.writeString(3, value:email)
+        try output.writeString(2, value:email)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -80,14 +72,11 @@ public extension Services.Payment.Actions.StoreToken {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasToken {
-        serialize_size += token.computeStringSize(2)
+        serialize_size += token.computeStringSize(1)
       }
       if hasEmail {
-        serialize_size += email.computeStringSize(3)
+        serialize_size += email.computeStringSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -140,9 +129,6 @@ public extension Services.Payment.Actions.StoreToken {
       return try Services.Payment.Actions.StoreToken.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasToken {
         output += "\(indent) token: \(token) \n"
       }
@@ -154,9 +140,6 @@ public extension Services.Payment.Actions.StoreToken {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasToken {
                hashCode = (hashCode &* 31) &+ token.hashValue
             }
@@ -190,29 +173,6 @@ public extension Services.Payment.Actions.StoreToken {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Payment.Actions.StoreToken.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Payment.Actions.StoreToken.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasToken:Bool {
            get {
@@ -284,9 +244,6 @@ public extension Services.Payment.Actions.StoreToken {
         if other == Services.Payment.Actions.StoreToken.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasToken {
              token = other.token
         }
@@ -308,13 +265,10 @@ public extension Services.Payment.Actions.StoreToken {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             token = try input.readString()
 
-          case 26 :
+          case 18 :
             email = try input.readString()
 
           default:
@@ -330,9 +284,6 @@ public extension Services.Payment.Actions.StoreToken {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     required public init() {
          super.init()
     }
@@ -340,9 +291,6 @@ public extension Services.Payment.Actions.StoreToken {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -352,9 +300,6 @@ public extension Services.Payment.Actions.StoreToken {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -406,17 +351,11 @@ public extension Services.Payment.Actions.StoreToken {
       return try Services.Payment.Actions.StoreToken.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -445,29 +384,6 @@ public extension Services.Payment.Actions.StoreToken {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Payment.Actions.StoreToken.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Payment.Actions.StoreToken.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -492,9 +408,6 @@ public extension Services.Payment.Actions.StoreToken {
         if other == Services.Payment.Actions.StoreToken.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -509,9 +422,6 @@ public extension Services.Payment.Actions.StoreToken {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
-
-          case 8 :
-            version = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

@@ -18,8 +18,8 @@ from protobufs.services.user.actions import authenticate_user_pb2 as protobufs_d
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/get_authentication_instructions.proto',
   package='services.user.actions.get_authentication_instructions',
-  syntax='proto2',
-  serialized_pb=b'\nEprotobufs/services/user/actions/get_authentication_instructions.proto\x12\x35services.user.actions.get_authentication_instructions\x1a.protobufs/services/user/containers/token.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\"a\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x14\n\x0credirect_uri\x18\x03 \x01(\t\x12\x1b\n\x13organization_domain\x18\x04 \x01(\t\"\xda\x01\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12Q\n\x07\x62\x61\x63kend\x18\x02 \x01(\x0e\x32@.services.user.actions.authenticate_user.RequestV1.AuthBackendV1\x12\x13\n\x0buser_exists\x18\x03 \x01(\x08\x12\x19\n\x11\x61uthorization_url\x18\x04 \x01(\t\x12\x15\n\rprovider_name\x18\x05 \x01(\t\x12\x1e\n\x16organization_image_url\x18\x06 \x01(\tBL\nJcom.rhlabs.protobufs.services.user.actions.get_authentication_instructions'
+  syntax='proto3',
+  serialized_pb=b'\nEprotobufs/services/user/actions/get_authentication_instructions.proto\x12\x35services.user.actions.get_authentication_instructions\x1a.protobufs/services/user/containers/token.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\"M\n\tRequestV1\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x14\n\x0credirect_uri\x18\x02 \x01(\t\x12\x1b\n\x13organization_domain\x18\x03 \x01(\t\"\xb1\x01\n\nResponseV1\x12Q\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32@.services.user.actions.authenticate_user.RequestV1.AuthBackendV1\x12\x19\n\x11\x61uthorization_url\x18\x02 \x01(\t\x12\x15\n\rprovider_name\x18\x03 \x01(\t\x12\x1e\n\x16organization_image_url\x18\x04 \x01(\tb\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_user_dot_containers_dot_token__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_authenticate__user__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -35,29 +35,22 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.user.actions.get_authentication_instructions.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='email', full_name='services.user.actions.get_authentication_instructions.RequestV1.email', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='email', full_name='services.user.actions.get_authentication_instructions.RequestV1.email', index=1,
+      name='redirect_uri', full_name='services.user.actions.get_authentication_instructions.RequestV1.redirect_uri', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='redirect_uri', full_name='services.user.actions.get_authentication_instructions.RequestV1.redirect_uri', index=2,
+      name='organization_domain', full_name='services.user.actions.get_authentication_instructions.RequestV1.organization_domain', index=2,
       number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='organization_domain', full_name='services.user.actions.get_authentication_instructions.RequestV1.organization_domain', index=3,
-      number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -70,12 +63,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=233,
-  serialized_end=330,
+  serialized_end=310,
 )
 
 
@@ -87,43 +80,29 @@ _RESPONSEV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.user.actions.get_authentication_instructions.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='backend', full_name='services.user.actions.get_authentication_instructions.ResponseV1.backend', index=1,
-      number=2, type=14, cpp_type=8, label=1,
+      name='backend', full_name='services.user.actions.get_authentication_instructions.ResponseV1.backend', index=0,
+      number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='user_exists', full_name='services.user.actions.get_authentication_instructions.ResponseV1.user_exists', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      name='authorization_url', full_name='services.user.actions.get_authentication_instructions.ResponseV1.authorization_url', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='authorization_url', full_name='services.user.actions.get_authentication_instructions.ResponseV1.authorization_url', index=3,
+      name='provider_name', full_name='services.user.actions.get_authentication_instructions.ResponseV1.provider_name', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='organization_image_url', full_name='services.user.actions.get_authentication_instructions.ResponseV1.organization_image_url', index=3,
       number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='provider_name', full_name='services.user.actions.get_authentication_instructions.ResponseV1.provider_name', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='organization_image_url', full_name='services.user.actions.get_authentication_instructions.ResponseV1.organization_image_url', index=5,
-      number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -136,12 +115,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=333,
-  serialized_end=551,
+  serialized_start=313,
+  serialized_end=490,
 )
 
 _RESPONSEV1.fields_by_name['backend'].enum_type = protobufs_dot_services_dot_user_dot_actions_dot_authenticate__user__pb2._REQUESTV1_AUTHBACKENDV1
@@ -163,6 +142,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\nJcom.rhlabs.protobufs.services.user.actions.get_authentication_instructions')
 # @@protoc_insertion_point(module_scope)

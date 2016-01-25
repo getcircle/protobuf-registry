@@ -17,8 +17,8 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/containers/token.proto',
   package='services.user.containers.token',
-  syntax='proto2',
-  serialized_pb=b'\n.protobufs/services/user/containers/token.proto\x12\x1eservices.user.containers.token*6\n\x0c\x43lientTypeV1\x12\x07\n\x03IOS\x10\x00\x12\x0b\n\x07\x41NDROID\x10\x01\x12\x07\n\x03WEB\x10\x02\x12\x07\n\x03\x41PI\x10\x03\x42\x35\n3com.rhlabs.protobufs.services.user.containers.token'
+  syntax='proto3',
+  serialized_pb=b'\n.protobufs/services/user/containers/token.proto\x12\x1eservices.user.containers.token*6\n\x0c\x43lientTypeV1\x12\x07\n\x03IOS\x10\x00\x12\x0b\n\x07\x41NDROID\x10\x01\x12\x07\n\x03WEB\x10\x02\x12\x07\n\x03\x41PI\x10\x03\x62\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -62,6 +62,4 @@ API = 3
 DESCRIPTOR.enum_types_by_name['ClientTypeV1'] = _CLIENTTYPEV1
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n3com.rhlabs.protobufs.services.user.containers.token')
 # @@protoc_insertion_point(module_scope)

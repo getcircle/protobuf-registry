@@ -17,8 +17,8 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/history/containers.proto',
   package='services.history.containers',
-  syntax='proto2',
-  serialized_pb=b'\n+protobufs/services/history/containers.proto\x12\x1bservices.history.containers\"\x89\x03\n\x08\x41\x63tionV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x13\n\x0b\x63olumn_name\x18\x03 \x01(\t\x12\x11\n\tdata_type\x18\x04 \x01(\t\x12\x11\n\told_value\x18\x05 \x01(\t\x12\x11\n\tnew_value\x18\x06 \x01(\t\x12>\n\x0b\x61\x63tion_type\x18\x07 \x01(\x0e\x32).services.history.containers.ActionTypeV1\x12>\n\x0bmethod_type\x18\x08 \x01(\x0e\x32).services.history.containers.MethodTypeV1\x12\x17\n\x0forganization_id\x18\t \x01(\t\x12\x16\n\x0e\x63orrelation_id\x18\n \x01(\t\x12\x15\n\rby_profile_id\x18\x0b \x01(\t\x12\x12\n\ntable_name\x18\x0c \x01(\t\x12\x18\n\x10primary_key_name\x18\r \x01(\t\x12\x19\n\x11primary_key_value\x18\x0e \x01(\t*&\n\x0c\x41\x63tionTypeV1\x12\x16\n\x12UPDATE_DESCRIPTION\x10\x00*&\n\x0cMethodTypeV1\x12\n\n\x06UPDATE\x10\x00\x12\n\n\x06\x44\x45LETE\x10\x01\x42\x32\n0com.rhlabs.protobufs.services.history.containers'
+  syntax='proto3',
+  serialized_pb=b'\n+protobufs/services/history/containers.proto\x12\x1bservices.history.containers\"\xf5\x02\n\x08\x41\x63tionV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x13\n\x0b\x63olumn_name\x18\x02 \x01(\t\x12\x11\n\tdata_type\x18\x03 \x01(\t\x12\x11\n\told_value\x18\x04 \x01(\t\x12\x11\n\tnew_value\x18\x05 \x01(\t\x12>\n\x0b\x61\x63tion_type\x18\x06 \x01(\x0e\x32).services.history.containers.ActionTypeV1\x12>\n\x0bmethod_type\x18\x07 \x01(\x0e\x32).services.history.containers.MethodTypeV1\x12\x17\n\x0forganization_id\x18\x08 \x01(\t\x12\x16\n\x0e\x63orrelation_id\x18\t \x01(\t\x12\x15\n\rby_profile_id\x18\n \x01(\t\x12\x12\n\ntable_name\x18\x0b \x01(\t\x12\x18\n\x10primary_key_name\x18\x0c \x01(\t\x12\x19\n\x11primary_key_value\x18\r \x01(\t*&\n\x0c\x41\x63tionTypeV1\x12\x16\n\x12UPDATE_DESCRIPTION\x10\x00*&\n\x0cMethodTypeV1\x12\n\n\x06UPDATE\x10\x00\x12\n\n\x06\x44\x45LETE\x10\x01\x62\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -35,8 +35,8 @@ _ACTIONTYPEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=472,
-  serialized_end=510,
+  serialized_start=452,
+  serialized_end=490,
 )
 _sym_db.RegisterEnumDescriptor(_ACTIONTYPEV1)
 
@@ -58,8 +58,8 @@ _METHODTYPEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=512,
-  serialized_end=550,
+  serialized_start=492,
+  serialized_end=530,
 )
 _sym_db.RegisterEnumDescriptor(_METHODTYPEV1)
 
@@ -78,99 +78,92 @@ _ACTIONV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.history.containers.ActionV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='id', full_name='services.history.containers.ActionV1.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='id', full_name='services.history.containers.ActionV1.id', index=1,
+      name='column_name', full_name='services.history.containers.ActionV1.column_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='column_name', full_name='services.history.containers.ActionV1.column_name', index=2,
+      name='data_type', full_name='services.history.containers.ActionV1.data_type', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='data_type', full_name='services.history.containers.ActionV1.data_type', index=3,
+      name='old_value', full_name='services.history.containers.ActionV1.old_value', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='old_value', full_name='services.history.containers.ActionV1.old_value', index=4,
+      name='new_value', full_name='services.history.containers.ActionV1.new_value', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='new_value', full_name='services.history.containers.ActionV1.new_value', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='action_type', full_name='services.history.containers.ActionV1.action_type', index=5,
+      number=6, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='action_type', full_name='services.history.containers.ActionV1.action_type', index=6,
+      name='method_type', full_name='services.history.containers.ActionV1.method_type', index=6,
       number=7, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='method_type', full_name='services.history.containers.ActionV1.method_type', index=7,
-      number=8, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
+      name='organization_id', full_name='services.history.containers.ActionV1.organization_id', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='organization_id', full_name='services.history.containers.ActionV1.organization_id', index=8,
+      name='correlation_id', full_name='services.history.containers.ActionV1.correlation_id', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='correlation_id', full_name='services.history.containers.ActionV1.correlation_id', index=9,
+      name='by_profile_id', full_name='services.history.containers.ActionV1.by_profile_id', index=9,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='by_profile_id', full_name='services.history.containers.ActionV1.by_profile_id', index=10,
+      name='table_name', full_name='services.history.containers.ActionV1.table_name', index=10,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='table_name', full_name='services.history.containers.ActionV1.table_name', index=11,
+      name='primary_key_name', full_name='services.history.containers.ActionV1.primary_key_name', index=11,
       number=12, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='primary_key_name', full_name='services.history.containers.ActionV1.primary_key_name', index=12,
+      name='primary_key_value', full_name='services.history.containers.ActionV1.primary_key_value', index=12,
       number=13, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='primary_key_value', full_name='services.history.containers.ActionV1.primary_key_value', index=13,
-      number=14, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -183,12 +176,12 @@ _ACTIONV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=77,
-  serialized_end=470,
+  serialized_end=450,
 )
 
 _ACTIONV1.fields_by_name['action_type'].enum_type = _ACTIONTYPEV1
@@ -205,6 +198,4 @@ ActionV1 = _reflection.GeneratedProtocolMessageType('ActionV1', (_message.Messag
 _sym_db.RegisterMessage(ActionV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n0com.rhlabs.protobufs.services.history.containers')
 # @@protoc_insertion_point(module_scope)

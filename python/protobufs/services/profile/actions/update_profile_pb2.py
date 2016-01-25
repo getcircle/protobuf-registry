@@ -17,8 +17,8 @@ from protobufs.services.profile import containers_pb2 as protobufs_dot_services_
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/profile/actions/update_profile.proto',
   package='services.profile.actions.update_profile',
-  syntax='proto2',
-  serialized_pb=b'\n7protobufs/services/profile/actions/update_profile.proto\x12\'services.profile.actions.update_profile\x1a+protobufs/services/profile/containers.proto\"X\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x37\n\x07profile\x18\x02 \x01(\x0b\x32&.services.profile.containers.ProfileV1\"Y\n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x37\n\x07profile\x18\x02 \x01(\x0b\x32&.services.profile.containers.ProfileV1B>\n<com.rhlabs.protobufs.services.profile.actions.update_profile'
+  syntax='proto3',
+  serialized_pb=b'\n7protobufs/services/profile/actions/update_profile.proto\x12\'services.profile.actions.update_profile\x1a+protobufs/services/profile/containers.proto\"D\n\tRequestV1\x12\x37\n\x07profile\x18\x01 \x01(\x0b\x32&.services.profile.containers.ProfileV1\"E\n\nResponseV1\x12\x37\n\x07profile\x18\x01 \x01(\x0b\x32&.services.profile.containers.ProfileV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_profile_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -34,15 +34,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.profile.actions.update_profile.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='profile', full_name='services.profile.actions.update_profile.RequestV1.profile', index=1,
-      number=2, type=11, cpp_type=10, label=1,
+      name='profile', full_name='services.profile.actions.update_profile.RequestV1.profile', index=0,
+      number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -55,12 +48,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=145,
-  serialized_end=233,
+  serialized_end=213,
 )
 
 
@@ -72,15 +65,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.profile.actions.update_profile.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='profile', full_name='services.profile.actions.update_profile.ResponseV1.profile', index=1,
-      number=2, type=11, cpp_type=10, label=1,
+      name='profile', full_name='services.profile.actions.update_profile.ResponseV1.profile', index=0,
+      number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -93,12 +79,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=235,
-  serialized_end=324,
+  serialized_start=215,
+  serialized_end=284,
 )
 
 _REQUESTV1.fields_by_name['profile'].message_type = protobufs_dot_services_dot_profile_dot_containers__pb2._PROFILEV1
@@ -121,6 +107,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n<com.rhlabs.protobufs.services.profile.actions.update_profile')
 # @@protoc_insertion_point(module_scope)

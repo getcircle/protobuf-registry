@@ -10,9 +10,7 @@ public func == (lhs: Services.Profile.Actions.GetExtendedProfile.RequestV1, rhs:
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
-  fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -22,7 +20,6 @@ public func == (lhs: Services.Profile.Actions.GetExtendedProfile.ResponseV1, rhs
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
   fieldCheck = fieldCheck && (lhs.hasManager == rhs.hasManager) && (!lhs.hasManager || lhs.manager == rhs.manager)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
@@ -57,14 +54,8 @@ public extension Services.Profile.Actions.GetExtendedProfile {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
-
-    public private(set) var hasUserId:Bool = false
-    public private(set) var userId:String = ""
 
     required public init() {
          super.init()
@@ -73,14 +64,8 @@ public extension Services.Profile.Actions.GetExtendedProfile {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasProfileId {
-        try output.writeString(2, value:profileId)
-      }
-      if hasUserId {
-        try output.writeString(3, value:userId)
+        try output.writeString(1, value:profileId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -91,14 +76,8 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasProfileId {
-        serialize_size += profileId.computeStringSize(2)
-      }
-      if hasUserId {
-        serialize_size += userId.computeStringSize(3)
+        serialize_size += profileId.computeStringSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -151,28 +130,16 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       return try Services.Profile.Actions.GetExtendedProfile.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
-      }
-      if hasUserId {
-        output += "\(indent) userId: \(userId) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
-            }
-            if hasUserId {
-               hashCode = (hashCode &* 31) &+ userId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -202,29 +169,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.GetExtendedProfile.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.GetExtendedProfile.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
       public var hasProfileId:Bool {
            get {
                 return builderResult.hasProfileId
@@ -246,29 +190,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       public func clearProfileId() -> Services.Profile.Actions.GetExtendedProfile.RequestV1.Builder{
            builderResult.hasProfileId = false
            builderResult.profileId = ""
-           return self
-      }
-      public var hasUserId:Bool {
-           get {
-                return builderResult.hasUserId
-           }
-      }
-      public var userId:String {
-           get {
-                return builderResult.userId
-           }
-           set (value) {
-               builderResult.hasUserId = true
-               builderResult.userId = value
-           }
-      }
-      public func setUserId(value:String) -> Services.Profile.Actions.GetExtendedProfile.RequestV1.Builder {
-        self.userId = value
-        return self
-      }
-      public func clearUserId() -> Services.Profile.Actions.GetExtendedProfile.RequestV1.Builder{
-           builderResult.hasUserId = false
-           builderResult.userId = ""
            return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -295,14 +216,8 @@ public extension Services.Profile.Actions.GetExtendedProfile {
         if other == Services.Profile.Actions.GetExtendedProfile.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasProfileId {
              profileId = other.profileId
-        }
-        if other.hasUserId {
-             userId = other.userId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -319,14 +234,8 @@ public extension Services.Profile.Actions.GetExtendedProfile {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             profileId = try input.readString()
-
-          case 26 :
-            userId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
@@ -341,9 +250,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasProfile:Bool = false
     public private(set) var profile:Services.Profile.Containers.ProfileV1!
     public private(set) var hasManager:Bool = false
@@ -363,32 +269,29 @@ public extension Services.Profile.Actions.GetExtendedProfile {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasProfile {
-        try output.writeMessage(2, value:profile)
+        try output.writeMessage(1, value:profile)
       }
       if hasManager {
-        try output.writeMessage(3, value:manager)
+        try output.writeMessage(2, value:manager)
       }
       if hasTeam {
-        try output.writeMessage(4, value:team)
+        try output.writeMessage(3, value:team)
       }
       for oneElementidentities in identities {
-          try output.writeMessage(5, value:oneElementidentities)
+          try output.writeMessage(4, value:oneElementidentities)
       }
       for oneElementdirectReports in directReports {
-          try output.writeMessage(7, value:oneElementdirectReports)
+          try output.writeMessage(5, value:oneElementdirectReports)
       }
       for oneElementlocations in locations {
-          try output.writeMessage(8, value:oneElementlocations)
+          try output.writeMessage(6, value:oneElementlocations)
       }
       if hasManagesTeam {
-        try output.writeMessage(9, value:managesTeam)
+        try output.writeMessage(7, value:managesTeam)
       }
       for oneElementpeers in peers {
-          try output.writeMessage(10, value:oneElementpeers)
+          try output.writeMessage(8, value:oneElementpeers)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -399,40 +302,37 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasProfile {
-          if let varSizeprofile = profile?.computeMessageSize(2) {
+          if let varSizeprofile = profile?.computeMessageSize(1) {
               serialize_size += varSizeprofile
           }
       }
       if hasManager {
-          if let varSizemanager = manager?.computeMessageSize(3) {
+          if let varSizemanager = manager?.computeMessageSize(2) {
               serialize_size += varSizemanager
           }
       }
       if hasTeam {
-          if let varSizeteam = team?.computeMessageSize(4) {
+          if let varSizeteam = team?.computeMessageSize(3) {
               serialize_size += varSizeteam
           }
       }
       for oneElementidentities in identities {
-          serialize_size += oneElementidentities.computeMessageSize(5)
+          serialize_size += oneElementidentities.computeMessageSize(4)
       }
       for oneElementdirectReports in directReports {
-          serialize_size += oneElementdirectReports.computeMessageSize(7)
+          serialize_size += oneElementdirectReports.computeMessageSize(5)
       }
       for oneElementlocations in locations {
-          serialize_size += oneElementlocations.computeMessageSize(8)
+          serialize_size += oneElementlocations.computeMessageSize(6)
       }
       if hasManagesTeam {
-          if let varSizemanagesTeam = managesTeam?.computeMessageSize(9) {
+          if let varSizemanagesTeam = managesTeam?.computeMessageSize(7) {
               serialize_size += varSizemanagesTeam
           }
       }
       for oneElementpeers in peers {
-          serialize_size += oneElementpeers.computeMessageSize(10)
+          serialize_size += oneElementpeers.computeMessageSize(8)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -485,9 +385,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
       return try Services.Profile.Actions.GetExtendedProfile.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasProfile {
         output += "\(indent) profile {\n"
         try profile?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -541,9 +438,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasProfile {
                 if let hashValueprofile = profile?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueprofile
@@ -603,29 +497,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.GetExtendedProfile.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.GetExtendedProfile.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasProfile:Bool {
            get {
@@ -919,9 +790,6 @@ public extension Services.Profile.Actions.GetExtendedProfile {
         if other == Services.Profile.Actions.GetExtendedProfile.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasProfile) {
             try mergeProfile(other.profile)
         }
@@ -961,10 +829,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
             if hasProfile {
               try subBuilder.mergeFrom(profile)
@@ -972,7 +837,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             profile = subBuilder.buildPartial()
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
             if hasManager {
               try subBuilder.mergeFrom(manager)
@@ -980,7 +845,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             manager = subBuilder.buildPartial()
 
-          case 34 :
+          case 26 :
             let subBuilder:Services.Organization.Containers.TeamV1.Builder = Services.Organization.Containers.TeamV1.Builder()
             if hasTeam {
               try subBuilder.mergeFrom(team)
@@ -988,22 +853,22 @@ public extension Services.Profile.Actions.GetExtendedProfile {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             team = subBuilder.buildPartial()
 
-          case 42 :
+          case 34 :
             let subBuilder = Services.User.Containers.IdentityV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             identities += [subBuilder.buildPartial()]
 
-          case 58 :
+          case 42 :
             let subBuilder = Services.Profile.Containers.ProfileV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             directReports += [subBuilder.buildPartial()]
 
-          case 66 :
+          case 50 :
             let subBuilder = Services.Organization.Containers.LocationV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             locations += [subBuilder.buildPartial()]
 
-          case 74 :
+          case 58 :
             let subBuilder:Services.Organization.Containers.TeamV1.Builder = Services.Organization.Containers.TeamV1.Builder()
             if hasManagesTeam {
               try subBuilder.mergeFrom(managesTeam)
@@ -1011,7 +876,7 @@ public extension Services.Profile.Actions.GetExtendedProfile {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             managesTeam = subBuilder.buildPartial()
 
-          case 82 :
+          case 66 :
             let subBuilder = Services.Profile.Containers.ProfileV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             peers += [subBuilder.buildPartial()]

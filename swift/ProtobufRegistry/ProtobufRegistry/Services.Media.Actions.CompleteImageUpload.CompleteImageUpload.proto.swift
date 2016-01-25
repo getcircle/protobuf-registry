@@ -10,7 +10,6 @@ public func == (lhs: Services.Media.Actions.CompleteImageUpload.RequestV1, rhs: 
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasMediaType == rhs.hasMediaType) && (!lhs.hasMediaType || lhs.mediaType == rhs.mediaType)
   fieldCheck = fieldCheck && (lhs.hasMediaKey == rhs.hasMediaKey) && (!lhs.hasMediaKey || lhs.mediaKey == rhs.mediaKey)
   fieldCheck = fieldCheck && (lhs.hasUploadKey == rhs.hasUploadKey) && (!lhs.hasUploadKey || lhs.uploadKey == rhs.uploadKey)
@@ -24,7 +23,6 @@ public func == (lhs: Services.Media.Actions.CompleteImageUpload.ResponseV1, rhs:
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasMediaUrl == rhs.hasMediaUrl) && (!lhs.hasMediaUrl || lhs.mediaUrl == rhs.mediaUrl)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -50,9 +48,6 @@ public extension Services.Media.Actions.CompleteImageUpload {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var mediaType:Services.Media.Containers.Media.MediaTypeV1 = Services.Media.Containers.Media.MediaTypeV1.Profile
     public private(set) var hasMediaType:Bool = false
     public private(set) var hasMediaKey:Bool = false
@@ -71,20 +66,17 @@ public extension Services.Media.Actions.CompleteImageUpload {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasMediaType {
-        try output.writeEnum(2, value:mediaType.rawValue)
+        try output.writeEnum(1, value:mediaType.rawValue)
       }
       if hasMediaKey {
-        try output.writeString(3, value:mediaKey)
+        try output.writeString(2, value:mediaKey)
       }
       if hasUploadKey {
-        try output.writeString(4, value:uploadKey)
+        try output.writeString(3, value:uploadKey)
       }
       if hasUploadId {
-        try output.writeString(5, value:uploadId)
+        try output.writeString(4, value:uploadId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -95,20 +87,17 @@ public extension Services.Media.Actions.CompleteImageUpload {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if (hasMediaType) {
-        serialize_size += mediaType.rawValue.computeEnumSize(2)
+        serialize_size += mediaType.rawValue.computeEnumSize(1)
       }
       if hasMediaKey {
-        serialize_size += mediaKey.computeStringSize(3)
+        serialize_size += mediaKey.computeStringSize(2)
       }
       if hasUploadKey {
-        serialize_size += uploadKey.computeStringSize(4)
+        serialize_size += uploadKey.computeStringSize(3)
       }
       if hasUploadId {
-        serialize_size += uploadId.computeStringSize(5)
+        serialize_size += uploadId.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -161,9 +150,6 @@ public extension Services.Media.Actions.CompleteImageUpload {
       return try Services.Media.Actions.CompleteImageUpload.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if (hasMediaType) {
         output += "\(indent) mediaType: \(mediaType.rawValue)\n"
       }
@@ -181,9 +167,6 @@ public extension Services.Media.Actions.CompleteImageUpload {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasMediaType {
                hashCode = (hashCode &* 31) &+ Int(mediaType.rawValue)
             }
@@ -223,29 +206,6 @@ public extension Services.Media.Actions.CompleteImageUpload {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Media.Actions.CompleteImageUpload.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Media.Actions.CompleteImageUpload.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
         public var hasMediaType:Bool{
             get {
@@ -363,9 +323,6 @@ public extension Services.Media.Actions.CompleteImageUpload {
         if other == Services.Media.Actions.CompleteImageUpload.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasMediaType {
              mediaType = other.mediaType
         }
@@ -394,23 +351,20 @@ public extension Services.Media.Actions.CompleteImageUpload {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             let valueIntmediaType = try input.readEnum()
             if let enumsmediaType = Services.Media.Containers.Media.MediaTypeV1(rawValue:valueIntmediaType){
                  mediaType = enumsmediaType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntmediaType))
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntmediaType))
             }
 
-          case 26 :
+          case 18 :
             mediaKey = try input.readString()
 
-          case 34 :
+          case 26 :
             uploadKey = try input.readString()
 
-          case 42 :
+          case 34 :
             uploadId = try input.readString()
 
           default:
@@ -426,9 +380,6 @@ public extension Services.Media.Actions.CompleteImageUpload {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasMediaUrl:Bool = false
     public private(set) var mediaUrl:String = ""
 
@@ -439,11 +390,8 @@ public extension Services.Media.Actions.CompleteImageUpload {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasMediaUrl {
-        try output.writeString(2, value:mediaUrl)
+        try output.writeString(1, value:mediaUrl)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -454,11 +402,8 @@ public extension Services.Media.Actions.CompleteImageUpload {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasMediaUrl {
-        serialize_size += mediaUrl.computeStringSize(2)
+        serialize_size += mediaUrl.computeStringSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -511,9 +456,6 @@ public extension Services.Media.Actions.CompleteImageUpload {
       return try Services.Media.Actions.CompleteImageUpload.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasMediaUrl {
         output += "\(indent) mediaUrl: \(mediaUrl) \n"
       }
@@ -522,9 +464,6 @@ public extension Services.Media.Actions.CompleteImageUpload {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasMediaUrl {
                hashCode = (hashCode &* 31) &+ mediaUrl.hashValue
             }
@@ -555,29 +494,6 @@ public extension Services.Media.Actions.CompleteImageUpload {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Media.Actions.CompleteImageUpload.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Media.Actions.CompleteImageUpload.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasMediaUrl:Bool {
            get {
@@ -626,9 +542,6 @@ public extension Services.Media.Actions.CompleteImageUpload {
         if other == Services.Media.Actions.CompleteImageUpload.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasMediaUrl {
              mediaUrl = other.mediaUrl
         }
@@ -647,10 +560,7 @@ public extension Services.Media.Actions.CompleteImageUpload {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             mediaUrl = try input.readString()
 
           default:

@@ -10,7 +10,6 @@ public func == (lhs: Services.User.Actions.AuthenticateUser.RequestV1, rhs: Serv
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasBackend == rhs.hasBackend) && (!lhs.hasBackend || lhs.backend == rhs.backend)
   fieldCheck = fieldCheck && (lhs.hasCredentials == rhs.hasCredentials) && (!lhs.hasCredentials || lhs.credentials == rhs.credentials)
   fieldCheck = fieldCheck && (lhs.hasClientType == rhs.hasClientType) && (!lhs.hasClientType || lhs.clientType == rhs.clientType)
@@ -24,7 +23,6 @@ public func == (lhs: Services.User.Actions.AuthenticateUser.RequestV1.Credential
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasKey == rhs.hasKey) && (!lhs.hasKey || lhs.key == rhs.key)
   fieldCheck = fieldCheck && (lhs.hasSecret == rhs.hasSecret) && (!lhs.hasSecret || lhs.secret == rhs.secret)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -36,7 +34,6 @@ public func == (lhs: Services.User.Actions.AuthenticateUser.ResponseV1, rhs: Ser
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasUser == rhs.hasUser) && (!lhs.hasUser || lhs.user == rhs.user)
   fieldCheck = fieldCheck && (lhs.hasToken == rhs.hasToken) && (!lhs.hasToken || lhs.token == rhs.token)
   fieldCheck = fieldCheck && (lhs.hasNewUser == rhs.hasNewUser) && (!lhs.hasNewUser || lhs.newUser == rhs.newUser)
@@ -70,9 +67,6 @@ public extension Services.User.Actions.AuthenticateUser {
     //Nested type declaration start
 
       final public class CredentialsV1 : GeneratedMessage, GeneratedMessageProtocol {
-        public private(set) var hasVersion:Bool = false
-        public private(set) var version:UInt32 = UInt32(1)
-
         public private(set) var hasKey:Bool = false
         public private(set) var key:String = ""
 
@@ -86,14 +80,11 @@ public extension Services.User.Actions.AuthenticateUser {
          return true
         }
         override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-          if hasVersion {
-            try output.writeUInt32(1, value:version)
-          }
           if hasKey {
-            try output.writeString(2, value:key)
+            try output.writeString(1, value:key)
           }
           if hasSecret {
-            try output.writeString(3, value:secret)
+            try output.writeString(2, value:secret)
           }
           try unknownFields.writeToCodedOutputStream(output)
         }
@@ -104,14 +95,11 @@ public extension Services.User.Actions.AuthenticateUser {
           }
 
           serialize_size = 0
-          if hasVersion {
-            serialize_size += version.computeUInt32Size(1)
-          }
           if hasKey {
-            serialize_size += key.computeStringSize(2)
+            serialize_size += key.computeStringSize(1)
           }
           if hasSecret {
-            serialize_size += secret.computeStringSize(3)
+            serialize_size += secret.computeStringSize(2)
           }
           serialize_size += unknownFields.serializedSize()
           memoizedSerializedSize = serialize_size
@@ -164,9 +152,6 @@ public extension Services.User.Actions.AuthenticateUser {
           return try Services.User.Actions.AuthenticateUser.RequestV1.CredentialsV1.Builder().mergeFrom(prototype)
         }
         override public func writeDescriptionTo(inout output:String, indent:String) throws {
-          if hasVersion {
-            output += "\(indent) version: \(version) \n"
-          }
           if hasKey {
             output += "\(indent) key: \(key) \n"
           }
@@ -178,9 +163,6 @@ public extension Services.User.Actions.AuthenticateUser {
         override public var hashValue:Int {
             get {
                 var hashCode:Int = 7
-                if hasVersion {
-                   hashCode = (hashCode &* 31) &+ version.hashValue
-                }
                 if hasKey {
                    hashCode = (hashCode &* 31) &+ key.hashValue
                 }
@@ -214,29 +196,6 @@ public extension Services.User.Actions.AuthenticateUser {
 
           required override public init () {
              super.init()
-          }
-          public var hasVersion:Bool {
-               get {
-                    return builderResult.hasVersion
-               }
-          }
-          public var version:UInt32 {
-               get {
-                    return builderResult.version
-               }
-               set (value) {
-                   builderResult.hasVersion = true
-                   builderResult.version = value
-               }
-          }
-          public func setVersion(value:UInt32) -> Services.User.Actions.AuthenticateUser.RequestV1.CredentialsV1.Builder {
-            self.version = value
-            return self
-          }
-          public func clearVersion() -> Services.User.Actions.AuthenticateUser.RequestV1.CredentialsV1.Builder{
-               builderResult.hasVersion = false
-               builderResult.version = UInt32(1)
-               return self
           }
           public var hasKey:Bool {
                get {
@@ -308,9 +267,6 @@ public extension Services.User.Actions.AuthenticateUser {
             if other == Services.User.Actions.AuthenticateUser.RequestV1.CredentialsV1() {
              return self
             }
-            if other.hasVersion {
-                 version = other.version
-            }
             if other.hasKey {
                  key = other.key
             }
@@ -332,13 +288,10 @@ public extension Services.User.Actions.AuthenticateUser {
                 self.unknownFields = try unknownFieldsBuilder.build()
                 return self
 
-              case 8 :
-                version = try input.readUInt32()
-
-              case 18 :
+              case 10 :
                 key = try input.readString()
 
-              case 26 :
+              case 18 :
                 secret = try input.readString()
 
               default:
@@ -368,9 +321,6 @@ public extension Services.User.Actions.AuthenticateUser {
 
       //Enum type declaration end 
 
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var backend:Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1 = Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1.Internal
     public private(set) var hasBackend:Bool = false
     public private(set) var hasCredentials:Bool = false
@@ -387,20 +337,17 @@ public extension Services.User.Actions.AuthenticateUser {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasBackend {
-        try output.writeEnum(2, value:backend.rawValue)
+        try output.writeEnum(1, value:backend.rawValue)
       }
       if hasCredentials {
-        try output.writeMessage(3, value:credentials)
+        try output.writeMessage(2, value:credentials)
       }
       if hasClientType {
-        try output.writeEnum(4, value:clientType.rawValue)
+        try output.writeEnum(3, value:clientType.rawValue)
       }
       if hasOrganizationDomain {
-        try output.writeString(5, value:organizationDomain)
+        try output.writeString(4, value:organizationDomain)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -411,22 +358,19 @@ public extension Services.User.Actions.AuthenticateUser {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if (hasBackend) {
-        serialize_size += backend.rawValue.computeEnumSize(2)
+        serialize_size += backend.rawValue.computeEnumSize(1)
       }
       if hasCredentials {
-          if let varSizecredentials = credentials?.computeMessageSize(3) {
+          if let varSizecredentials = credentials?.computeMessageSize(2) {
               serialize_size += varSizecredentials
           }
       }
       if (hasClientType) {
-        serialize_size += clientType.rawValue.computeEnumSize(4)
+        serialize_size += clientType.rawValue.computeEnumSize(3)
       }
       if hasOrganizationDomain {
-        serialize_size += organizationDomain.computeStringSize(5)
+        serialize_size += organizationDomain.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -479,9 +423,6 @@ public extension Services.User.Actions.AuthenticateUser {
       return try Services.User.Actions.AuthenticateUser.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if (hasBackend) {
         output += "\(indent) backend: \(backend.rawValue)\n"
       }
@@ -501,9 +442,6 @@ public extension Services.User.Actions.AuthenticateUser {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasBackend {
                hashCode = (hashCode &* 31) &+ Int(backend.rawValue)
             }
@@ -545,29 +483,6 @@ public extension Services.User.Actions.AuthenticateUser {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.AuthenticateUser.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.AuthenticateUser.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
         public var hasBackend:Bool{
             get {
@@ -713,9 +628,6 @@ public extension Services.User.Actions.AuthenticateUser {
         if other == Services.User.Actions.AuthenticateUser.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasBackend {
              backend = other.backend
         }
@@ -744,17 +656,14 @@ public extension Services.User.Actions.AuthenticateUser {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             let valueIntbackend = try input.readEnum()
             if let enumsbackend = Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1(rawValue:valueIntbackend){
                  backend = enumsbackend
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntbackend))
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntbackend))
             }
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.User.Actions.AuthenticateUser.RequestV1.CredentialsV1.Builder = Services.User.Actions.AuthenticateUser.RequestV1.CredentialsV1.Builder()
             if hasCredentials {
               try subBuilder.mergeFrom(credentials)
@@ -762,15 +671,15 @@ public extension Services.User.Actions.AuthenticateUser {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             credentials = subBuilder.buildPartial()
 
-          case 32 :
+          case 24 :
             let valueIntclientType = try input.readEnum()
             if let enumsclientType = Services.User.Containers.Token.ClientTypeV1(rawValue:valueIntclientType){
                  clientType = enumsclientType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntclientType))
+                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntclientType))
             }
 
-          case 42 :
+          case 34 :
             organizationDomain = try input.readString()
 
           default:
@@ -786,9 +695,6 @@ public extension Services.User.Actions.AuthenticateUser {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasUser:Bool = false
     public private(set) var user:Services.User.Containers.UserV1!
     public private(set) var hasToken:Bool = false
@@ -804,17 +710,14 @@ public extension Services.User.Actions.AuthenticateUser {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasUser {
-        try output.writeMessage(2, value:user)
+        try output.writeMessage(1, value:user)
       }
       if hasToken {
-        try output.writeString(3, value:token)
+        try output.writeString(2, value:token)
       }
       if hasNewUser {
-        try output.writeBool(4, value:newUser)
+        try output.writeBool(3, value:newUser)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -825,19 +728,16 @@ public extension Services.User.Actions.AuthenticateUser {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasUser {
-          if let varSizeuser = user?.computeMessageSize(2) {
+          if let varSizeuser = user?.computeMessageSize(1) {
               serialize_size += varSizeuser
           }
       }
       if hasToken {
-        serialize_size += token.computeStringSize(3)
+        serialize_size += token.computeStringSize(2)
       }
       if hasNewUser {
-        serialize_size += newUser.computeBoolSize(4)
+        serialize_size += newUser.computeBoolSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -890,9 +790,6 @@ public extension Services.User.Actions.AuthenticateUser {
       return try Services.User.Actions.AuthenticateUser.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasUser {
         output += "\(indent) user {\n"
         try user?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -909,9 +806,6 @@ public extension Services.User.Actions.AuthenticateUser {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasUser {
                 if let hashValueuser = user?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueuser
@@ -950,29 +844,6 @@ public extension Services.User.Actions.AuthenticateUser {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.AuthenticateUser.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.AuthenticateUser.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasUser:Bool {
            get {
@@ -1095,9 +966,6 @@ public extension Services.User.Actions.AuthenticateUser {
         if other == Services.User.Actions.AuthenticateUser.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasUser) {
             try mergeUser(other.user)
         }
@@ -1122,10 +990,7 @@ public extension Services.User.Actions.AuthenticateUser {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.User.Containers.UserV1.Builder = Services.User.Containers.UserV1.Builder()
             if hasUser {
               try subBuilder.mergeFrom(user)
@@ -1133,10 +998,10 @@ public extension Services.User.Actions.AuthenticateUser {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             user = subBuilder.buildPartial()
 
-          case 26 :
+          case 18 :
             token = try input.readString()
 
-          case 32 :
+          case 24 :
             newUser = try input.readBool()
 
           default:

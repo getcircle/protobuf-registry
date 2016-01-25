@@ -10,7 +10,6 @@ public func == (lhs: Services.Group.Containers.GroupV1, rhs: Services.Group.Cont
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
@@ -34,7 +33,6 @@ public func == (lhs: Services.Group.Containers.GroupSettingsV1, rhs: Services.Gr
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
   fieldCheck = fieldCheck && (lhs.hasWhoCanJoin == rhs.hasWhoCanJoin) && (!lhs.hasWhoCanJoin || lhs.whoCanJoin == rhs.whoCanJoin)
@@ -50,7 +48,6 @@ public func == (lhs: Services.Group.Containers.MemberV1, rhs: Services.Group.Con
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
   fieldCheck = fieldCheck && (lhs.hasRole == rhs.hasRole) && (!lhs.hasRole || lhs.role == rhs.role)
@@ -66,7 +63,6 @@ public func == (lhs: Services.Group.Containers.MembershipRequestMetaV1, rhs: Ser
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasKey == rhs.hasKey) && (!lhs.hasKey || lhs.key == rhs.key)
   fieldCheck = fieldCheck && (lhs.hasValue == rhs.hasValue) && (!lhs.hasValue || lhs.value == rhs.value)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -78,7 +74,6 @@ public func == (lhs: Services.Group.Containers.MembershipRequestV1, rhs: Service
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
   fieldCheck = fieldCheck && (lhs.hasRequesterProfileId == rhs.hasRequesterProfileId) && (!lhs.hasRequesterProfileId || lhs.requesterProfileId == rhs.requesterProfileId)
@@ -153,9 +148,6 @@ public extension Services.Group.Containers {
   //Enum type declaration end 
 
   final public class GroupV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -201,52 +193,49 @@ public extension Services.Group.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasEmail {
-        try output.writeString(3, value:email)
+        try output.writeString(2, value:email)
       }
       if hasName {
-        try output.writeString(4, value:name)
+        try output.writeString(3, value:name)
       }
       if hasDisplayName {
-        try output.writeString(5, value:displayName)
+        try output.writeString(4, value:displayName)
       }
       if hasGroupDescription {
-        try output.writeString(6, value:groupDescription)
+        try output.writeString(5, value:groupDescription)
       }
       if !aliases.isEmpty {
         for oneValuealiases in aliases {
-          try output.writeString(7, value:oneValuealiases)
+          try output.writeString(6, value:oneValuealiases)
         }
       }
       if hasMembersCount {
-        try output.writeUInt32(8, value:membersCount)
+        try output.writeUInt32(7, value:membersCount)
       }
       if hasProvider {
-        try output.writeEnum(9, value:provider.rawValue)
+        try output.writeEnum(8, value:provider.rawValue)
       }
       if hasCanJoin {
-        try output.writeBool(10, value:canJoin)
+        try output.writeBool(9, value:canJoin)
       }
       if hasIsMember {
-        try output.writeBool(11, value:isMember)
+        try output.writeBool(10, value:isMember)
       }
       if hasCanRequest {
-        try output.writeBool(12, value:canRequest)
+        try output.writeBool(11, value:canRequest)
       }
       if hasIsManager {
-        try output.writeBool(13, value:isManager)
+        try output.writeBool(12, value:isManager)
       }
       if hasHasPendingRequest {
-        try output.writeBool(14, value:hasPendingRequest)
+        try output.writeBool(13, value:hasPendingRequest)
       }
       if hasPermissions {
-        try output.writeMessage(15, value:permissions)
+        try output.writeMessage(14, value:permissions)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -257,23 +246,20 @@ public extension Services.Group.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasEmail {
-        serialize_size += email.computeStringSize(3)
+        serialize_size += email.computeStringSize(2)
       }
       if hasName {
-        serialize_size += name.computeStringSize(4)
+        serialize_size += name.computeStringSize(3)
       }
       if hasDisplayName {
-        serialize_size += displayName.computeStringSize(5)
+        serialize_size += displayName.computeStringSize(4)
       }
       if hasGroupDescription {
-        serialize_size += groupDescription.computeStringSize(6)
+        serialize_size += groupDescription.computeStringSize(5)
       }
       var dataSizeAliases:Int32 = 0
       for oneValuealiases in aliases {
@@ -282,28 +268,28 @@ public extension Services.Group.Containers {
       serialize_size += dataSizeAliases
       serialize_size += 1 * Int32(aliases.count)
       if hasMembersCount {
-        serialize_size += membersCount.computeUInt32Size(8)
+        serialize_size += membersCount.computeUInt32Size(7)
       }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(9)
+        serialize_size += provider.rawValue.computeEnumSize(8)
       }
       if hasCanJoin {
-        serialize_size += canJoin.computeBoolSize(10)
+        serialize_size += canJoin.computeBoolSize(9)
       }
       if hasIsMember {
-        serialize_size += isMember.computeBoolSize(11)
+        serialize_size += isMember.computeBoolSize(10)
       }
       if hasCanRequest {
-        serialize_size += canRequest.computeBoolSize(12)
+        serialize_size += canRequest.computeBoolSize(11)
       }
       if hasIsManager {
-        serialize_size += isManager.computeBoolSize(13)
+        serialize_size += isManager.computeBoolSize(12)
       }
       if hasHasPendingRequest {
-        serialize_size += hasPendingRequest.computeBoolSize(14)
+        serialize_size += hasPendingRequest.computeBoolSize(13)
       }
       if hasPermissions {
-          if let varSizepermissions = permissions?.computeMessageSize(15) {
+          if let varSizepermissions = permissions?.computeMessageSize(14) {
               serialize_size += varSizepermissions
           }
       }
@@ -358,9 +344,6 @@ public extension Services.Group.Containers {
       return try Services.Group.Containers.GroupV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -412,9 +395,6 @@ public extension Services.Group.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -486,29 +466,6 @@ public extension Services.Group.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Containers.GroupV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Containers.GroupV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -877,9 +834,6 @@ public extension Services.Group.Containers {
         if other == Services.Group.Containers.GroupV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -937,54 +891,51 @@ public extension Services.Group.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             email = try input.readString()
 
-          case 34 :
+          case 26 :
             name = try input.readString()
 
-          case 42 :
+          case 34 :
             displayName = try input.readString()
 
-          case 50 :
+          case 42 :
             groupDescription = try input.readString()
 
-          case 58 :
+          case 50 :
             aliases += [try input.readString()]
 
-          case 64 :
+          case 56 :
             membersCount = try input.readUInt32()
 
-          case 72 :
+          case 64 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(9, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(8, value:Int64(valueIntprovider))
             }
 
-          case 80 :
+          case 72 :
             canJoin = try input.readBool()
 
-          case 88 :
+          case 80 :
             isMember = try input.readBool()
 
-          case 96 :
+          case 88 :
             canRequest = try input.readBool()
 
-          case 104 :
+          case 96 :
             isManager = try input.readBool()
 
-          case 112 :
+          case 104 :
             hasPendingRequest = try input.readBool()
 
-          case 122 :
+          case 114 :
             let subBuilder:Services.Common.Containers.PermissionsV1.Builder = Services.Common.Containers.PermissionsV1.Builder()
             if hasPermissions {
               try subBuilder.mergeFrom(permissions)
@@ -1005,9 +956,6 @@ public extension Services.Group.Containers {
   }
 
   final public class GroupSettingsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -1029,26 +977,23 @@ public extension Services.Group.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasGroupId {
-        try output.writeString(3, value:groupId)
+        try output.writeString(2, value:groupId)
       }
       if hasWhoCanJoin {
-        try output.writeEnum(4, value:whoCanJoin.rawValue)
+        try output.writeEnum(3, value:whoCanJoin.rawValue)
       }
       if hasWhoCanViewMembership {
-        try output.writeEnum(5, value:whoCanViewMembership.rawValue)
+        try output.writeEnum(4, value:whoCanViewMembership.rawValue)
       }
       if hasWhoCanViewGroup {
-        try output.writeEnum(6, value:whoCanViewGroup.rawValue)
+        try output.writeEnum(5, value:whoCanViewGroup.rawValue)
       }
       if hasWhoCanInvite {
-        try output.writeEnum(7, value:whoCanInvite.rawValue)
+        try output.writeEnum(6, value:whoCanInvite.rawValue)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1059,26 +1004,23 @@ public extension Services.Group.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasGroupId {
-        serialize_size += groupId.computeStringSize(3)
+        serialize_size += groupId.computeStringSize(2)
       }
       if (hasWhoCanJoin) {
-        serialize_size += whoCanJoin.rawValue.computeEnumSize(4)
+        serialize_size += whoCanJoin.rawValue.computeEnumSize(3)
       }
       if (hasWhoCanViewMembership) {
-        serialize_size += whoCanViewMembership.rawValue.computeEnumSize(5)
+        serialize_size += whoCanViewMembership.rawValue.computeEnumSize(4)
       }
       if (hasWhoCanViewGroup) {
-        serialize_size += whoCanViewGroup.rawValue.computeEnumSize(6)
+        serialize_size += whoCanViewGroup.rawValue.computeEnumSize(5)
       }
       if (hasWhoCanInvite) {
-        serialize_size += whoCanInvite.rawValue.computeEnumSize(7)
+        serialize_size += whoCanInvite.rawValue.computeEnumSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1131,9 +1073,6 @@ public extension Services.Group.Containers {
       return try Services.Group.Containers.GroupSettingsV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -1157,9 +1096,6 @@ public extension Services.Group.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -1205,29 +1141,6 @@ public extension Services.Group.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Containers.GroupSettingsV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Containers.GroupSettingsV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -1391,9 +1304,6 @@ public extension Services.Group.Containers {
         if other == Services.Group.Containers.GroupSettingsV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -1427,45 +1337,42 @@ public extension Services.Group.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             groupId = try input.readString()
 
-          case 32 :
+          case 24 :
             let valueIntwhoCanJoin = try input.readEnum()
             if let enumswhoCanJoin = Services.Group.Containers.Permissions.WhoCanJoin.WhoCanJoinPermissionsV1(rawValue:valueIntwhoCanJoin){
                  whoCanJoin = enumswhoCanJoin
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntwhoCanJoin))
+                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntwhoCanJoin))
             }
 
-          case 40 :
+          case 32 :
             let valueIntwhoCanViewMembership = try input.readEnum()
             if let enumswhoCanViewMembership = Services.Group.Containers.Permissions.WhoCanViewMembership.WhoCanViewMembershipPermissionsV1(rawValue:valueIntwhoCanViewMembership){
                  whoCanViewMembership = enumswhoCanViewMembership
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueIntwhoCanViewMembership))
+                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntwhoCanViewMembership))
             }
 
-          case 48 :
+          case 40 :
             let valueIntwhoCanViewGroup = try input.readEnum()
             if let enumswhoCanViewGroup = Services.Group.Containers.Permissions.WhoCanViewGroup.WhoCanViewGroupPermissionsV1(rawValue:valueIntwhoCanViewGroup){
                  whoCanViewGroup = enumswhoCanViewGroup
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntwhoCanViewGroup))
+                 try unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueIntwhoCanViewGroup))
             }
 
-          case 56 :
+          case 48 :
             let valueIntwhoCanInvite = try input.readEnum()
             if let enumswhoCanInvite = Services.Group.Containers.Permissions.WhoCanInvite.WhoCanInvitePermissionsV1(rawValue:valueIntwhoCanInvite){
                  whoCanInvite = enumswhoCanInvite
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(7, value:Int64(valueIntwhoCanInvite))
+                 try unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntwhoCanInvite))
             }
 
           default:
@@ -1481,9 +1388,6 @@ public extension Services.Group.Containers {
   }
 
   final public class MemberV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -1506,26 +1410,23 @@ public extension Services.Group.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasProfile {
-        try output.writeMessage(3, value:profile)
+        try output.writeMessage(2, value:profile)
       }
       if hasRole {
-        try output.writeEnum(4, value:role.rawValue)
+        try output.writeEnum(3, value:role.rawValue)
       }
       if hasGroupId {
-        try output.writeString(5, value:groupId)
+        try output.writeString(4, value:groupId)
       }
       if hasProvider {
-        try output.writeEnum(6, value:provider.rawValue)
+        try output.writeEnum(5, value:provider.rawValue)
       }
       if hasProviderUid {
-        try output.writeString(7, value:providerUid)
+        try output.writeString(6, value:providerUid)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1536,28 +1437,25 @@ public extension Services.Group.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasProfile {
-          if let varSizeprofile = profile?.computeMessageSize(3) {
+          if let varSizeprofile = profile?.computeMessageSize(2) {
               serialize_size += varSizeprofile
           }
       }
       if (hasRole) {
-        serialize_size += role.rawValue.computeEnumSize(4)
+        serialize_size += role.rawValue.computeEnumSize(3)
       }
       if hasGroupId {
-        serialize_size += groupId.computeStringSize(5)
+        serialize_size += groupId.computeStringSize(4)
       }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(6)
+        serialize_size += provider.rawValue.computeEnumSize(5)
       }
       if hasProviderUid {
-        serialize_size += providerUid.computeStringSize(7)
+        serialize_size += providerUid.computeStringSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1610,9 +1508,6 @@ public extension Services.Group.Containers {
       return try Services.Group.Containers.MemberV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -1638,9 +1533,6 @@ public extension Services.Group.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -1688,29 +1580,6 @@ public extension Services.Group.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Containers.MemberV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Containers.MemberV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -1902,9 +1771,6 @@ public extension Services.Group.Containers {
         if other == Services.Group.Containers.MemberV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -1938,13 +1804,10 @@ public extension Services.Group.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
             if hasProfile {
               try subBuilder.mergeFrom(profile)
@@ -1952,26 +1815,26 @@ public extension Services.Group.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             profile = subBuilder.buildPartial()
 
-          case 32 :
+          case 24 :
             let valueIntrole = try input.readEnum()
             if let enumsrole = Services.Group.Containers.RoleV1(rawValue:valueIntrole){
                  role = enumsrole
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntrole))
+                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntrole))
             }
 
-          case 42 :
+          case 34 :
             groupId = try input.readString()
 
-          case 48 :
+          case 40 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueIntprovider))
             }
 
-          case 58 :
+          case 50 :
             providerUid = try input.readString()
 
           default:
@@ -1987,9 +1850,6 @@ public extension Services.Group.Containers {
   }
 
   final public class MembershipRequestMetaV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasKey:Bool = false
     public private(set) var key:String = ""
 
@@ -2003,14 +1863,11 @@ public extension Services.Group.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasKey {
-        try output.writeString(2, value:key)
+        try output.writeString(1, value:key)
       }
       if hasValue {
-        try output.writeString(3, value:value)
+        try output.writeString(2, value:value)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -2021,14 +1878,11 @@ public extension Services.Group.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasKey {
-        serialize_size += key.computeStringSize(2)
+        serialize_size += key.computeStringSize(1)
       }
       if hasValue {
-        serialize_size += value.computeStringSize(3)
+        serialize_size += value.computeStringSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2081,9 +1935,6 @@ public extension Services.Group.Containers {
       return try Services.Group.Containers.MembershipRequestMetaV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasKey {
         output += "\(indent) key: \(key) \n"
       }
@@ -2095,9 +1946,6 @@ public extension Services.Group.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasKey {
                hashCode = (hashCode &* 31) &+ key.hashValue
             }
@@ -2131,29 +1979,6 @@ public extension Services.Group.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Containers.MembershipRequestMetaV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Containers.MembershipRequestMetaV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasKey:Bool {
            get {
@@ -2225,9 +2050,6 @@ public extension Services.Group.Containers {
         if other == Services.Group.Containers.MembershipRequestMetaV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasKey {
              key = other.key
         }
@@ -2249,13 +2071,10 @@ public extension Services.Group.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             key = try input.readString()
 
-          case 26 :
+          case 18 :
             value = try input.readString()
 
           default:
@@ -2271,9 +2090,6 @@ public extension Services.Group.Containers {
   }
 
   final public class MembershipRequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -2299,34 +2115,31 @@ public extension Services.Group.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasStatus {
-        try output.writeEnum(3, value:status.rawValue)
+        try output.writeEnum(2, value:status.rawValue)
       }
       if hasRequesterProfileId {
-        try output.writeString(4, value:requesterProfileId)
+        try output.writeString(3, value:requesterProfileId)
       }
       if !approverProfileIds.isEmpty {
         for oneValueapproverProfileIds in approverProfileIds {
-          try output.writeString(5, value:oneValueapproverProfileIds)
+          try output.writeString(4, value:oneValueapproverProfileIds)
         }
       }
       if hasGroupId {
-        try output.writeString(6, value:groupId)
+        try output.writeString(5, value:groupId)
       }
       if hasProvider {
-        try output.writeEnum(7, value:provider.rawValue)
+        try output.writeEnum(6, value:provider.rawValue)
       }
       for oneElementmeta in meta {
-          try output.writeMessage(8, value:oneElementmeta)
+          try output.writeMessage(7, value:oneElementmeta)
       }
       if hasCreated {
-        try output.writeString(9, value:created)
+        try output.writeString(8, value:created)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -2337,17 +2150,14 @@ public extension Services.Group.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if (hasStatus) {
-        serialize_size += status.rawValue.computeEnumSize(3)
+        serialize_size += status.rawValue.computeEnumSize(2)
       }
       if hasRequesterProfileId {
-        serialize_size += requesterProfileId.computeStringSize(4)
+        serialize_size += requesterProfileId.computeStringSize(3)
       }
       var dataSizeApproverProfileIds:Int32 = 0
       for oneValueapproverProfileIds in approverProfileIds {
@@ -2356,16 +2166,16 @@ public extension Services.Group.Containers {
       serialize_size += dataSizeApproverProfileIds
       serialize_size += 1 * Int32(approverProfileIds.count)
       if hasGroupId {
-        serialize_size += groupId.computeStringSize(6)
+        serialize_size += groupId.computeStringSize(5)
       }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(7)
+        serialize_size += provider.rawValue.computeEnumSize(6)
       }
       for oneElementmeta in meta {
-          serialize_size += oneElementmeta.computeMessageSize(8)
+          serialize_size += oneElementmeta.computeMessageSize(7)
       }
       if hasCreated {
-        serialize_size += created.computeStringSize(9)
+        serialize_size += created.computeStringSize(8)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2418,9 +2228,6 @@ public extension Services.Group.Containers {
       return try Services.Group.Containers.MembershipRequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -2456,9 +2263,6 @@ public extension Services.Group.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -2510,29 +2314,6 @@ public extension Services.Group.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Group.Containers.MembershipRequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Group.Containers.MembershipRequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -2728,9 +2509,6 @@ public extension Services.Group.Containers {
         if other == Services.Group.Containers.MembershipRequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -2770,43 +2548,40 @@ public extension Services.Group.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 24 :
+          case 16 :
             let valueIntstatus = try input.readEnum()
             if let enumsstatus = Services.Group.Containers.MembershipRequestStatusV1(rawValue:valueIntstatus){
                  status = enumsstatus
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntstatus))
+                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntstatus))
             }
 
-          case 34 :
+          case 26 :
             requesterProfileId = try input.readString()
 
-          case 42 :
+          case 34 :
             approverProfileIds += [try input.readString()]
 
-          case 50 :
+          case 42 :
             groupId = try input.readString()
 
-          case 56 :
+          case 48 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(7, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntprovider))
             }
 
-          case 66 :
+          case 58 :
             let subBuilder = Services.Group.Containers.MembershipRequestMetaV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             meta += [subBuilder.buildPartial()]
 
-          case 74 :
+          case 66 :
             created = try input.readString()
 
           default:

@@ -10,7 +10,6 @@ public func == (lhs: Services.User.Actions.GetUser.RequestV1, rhs: Services.User
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -21,7 +20,6 @@ public func == (lhs: Services.User.Actions.GetUser.ResponseV1, rhs: Services.Use
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasUser == rhs.hasUser) && (!lhs.hasUser || lhs.user == rhs.user)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -47,9 +45,6 @@ public extension Services.User.Actions.GetUser {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasEmail:Bool = false
     public private(set) var email:String = ""
 
@@ -60,11 +55,8 @@ public extension Services.User.Actions.GetUser {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasEmail {
-        try output.writeString(2, value:email)
+        try output.writeString(1, value:email)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -75,11 +67,8 @@ public extension Services.User.Actions.GetUser {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasEmail {
-        serialize_size += email.computeStringSize(2)
+        serialize_size += email.computeStringSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -132,9 +121,6 @@ public extension Services.User.Actions.GetUser {
       return try Services.User.Actions.GetUser.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasEmail {
         output += "\(indent) email: \(email) \n"
       }
@@ -143,9 +129,6 @@ public extension Services.User.Actions.GetUser {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasEmail {
                hashCode = (hashCode &* 31) &+ email.hashValue
             }
@@ -176,29 +159,6 @@ public extension Services.User.Actions.GetUser {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.GetUser.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.GetUser.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasEmail:Bool {
            get {
@@ -247,9 +207,6 @@ public extension Services.User.Actions.GetUser {
         if other == Services.User.Actions.GetUser.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasEmail {
              email = other.email
         }
@@ -268,10 +225,7 @@ public extension Services.User.Actions.GetUser {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             email = try input.readString()
 
           default:
@@ -287,9 +241,6 @@ public extension Services.User.Actions.GetUser {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasUser:Bool = false
     public private(set) var user:Services.User.Containers.UserV1!
     required public init() {
@@ -299,11 +250,8 @@ public extension Services.User.Actions.GetUser {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasUser {
-        try output.writeMessage(2, value:user)
+        try output.writeMessage(1, value:user)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -314,11 +262,8 @@ public extension Services.User.Actions.GetUser {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasUser {
-          if let varSizeuser = user?.computeMessageSize(2) {
+          if let varSizeuser = user?.computeMessageSize(1) {
               serialize_size += varSizeuser
           }
       }
@@ -373,9 +318,6 @@ public extension Services.User.Actions.GetUser {
       return try Services.User.Actions.GetUser.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasUser {
         output += "\(indent) user {\n"
         try user?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -386,9 +328,6 @@ public extension Services.User.Actions.GetUser {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasUser {
                 if let hashValueuser = user?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueuser
@@ -421,29 +360,6 @@ public extension Services.User.Actions.GetUser {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.GetUser.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.GetUser.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasUser:Bool {
            get {
@@ -520,9 +436,6 @@ public extension Services.User.Actions.GetUser {
         if other == Services.User.Actions.GetUser.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if (other.hasUser) {
             try mergeUser(other.user)
         }
@@ -541,10 +454,7 @@ public extension Services.User.Actions.GetUser {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             let subBuilder:Services.User.Containers.UserV1.Builder = Services.User.Containers.UserV1.Builder()
             if hasUser {
               try subBuilder.mergeFrom(user)

@@ -10,7 +10,6 @@ public func == (lhs: Services.Organization.Actions.GetLocationMembers.RequestV1,
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasLocationId == rhs.hasLocationId) && (!lhs.hasLocationId || lhs.locationId == rhs.locationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -21,7 +20,6 @@ public func == (lhs: Services.Organization.Actions.GetLocationMembers.ResponseV1
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.memberProfileIds == rhs.memberProfileIds)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -46,9 +44,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasLocationId:Bool = false
     public private(set) var locationId:String = ""
 
@@ -59,11 +54,8 @@ public extension Services.Organization.Actions.GetLocationMembers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasLocationId {
-        try output.writeString(2, value:locationId)
+        try output.writeString(1, value:locationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -74,11 +66,8 @@ public extension Services.Organization.Actions.GetLocationMembers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasLocationId {
-        serialize_size += locationId.computeStringSize(2)
+        serialize_size += locationId.computeStringSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -131,9 +120,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
       return try Services.Organization.Actions.GetLocationMembers.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasLocationId {
         output += "\(indent) locationId: \(locationId) \n"
       }
@@ -142,9 +128,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasLocationId {
                hashCode = (hashCode &* 31) &+ locationId.hashValue
             }
@@ -175,29 +158,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetLocationMembers.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetLocationMembers.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasLocationId:Bool {
            get {
@@ -246,9 +206,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
         if other == Services.Organization.Actions.GetLocationMembers.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasLocationId {
              locationId = other.locationId
         }
@@ -267,10 +224,7 @@ public extension Services.Organization.Actions.GetLocationMembers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             locationId = try input.readString()
 
           default:
@@ -286,9 +240,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var memberProfileIds:Array<String> = Array<String>()
     required public init() {
          super.init()
@@ -297,12 +248,9 @@ public extension Services.Organization.Actions.GetLocationMembers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if !memberProfileIds.isEmpty {
         for oneValuememberProfileIds in memberProfileIds {
-          try output.writeString(2, value:oneValuememberProfileIds)
+          try output.writeString(1, value:oneValuememberProfileIds)
         }
       }
       try unknownFields.writeToCodedOutputStream(output)
@@ -314,9 +262,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       var dataSizeMemberProfileIds:Int32 = 0
       for oneValuememberProfileIds in memberProfileIds {
           dataSizeMemberProfileIds += oneValuememberProfileIds.computeStringSizeNoTag()
@@ -374,9 +319,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
       return try Services.Organization.Actions.GetLocationMembers.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var memberProfileIdsElementIndex:Int = 0
       for oneValuememberProfileIds in memberProfileIds  {
           output += "\(indent) memberProfileIds[\(memberProfileIdsElementIndex)]: \(oneValuememberProfileIds)\n"
@@ -387,9 +329,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneValuememberProfileIds in memberProfileIds {
                 hashCode = (hashCode &* 31) &+ oneValuememberProfileIds.hashValue
             }
@@ -420,29 +359,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetLocationMembers.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetLocationMembers.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var memberProfileIds:Array<String> {
            get {
@@ -484,9 +400,6 @@ public extension Services.Organization.Actions.GetLocationMembers {
         if other == Services.Organization.Actions.GetLocationMembers.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.memberProfileIds.isEmpty {
             builderResult.memberProfileIds += other.memberProfileIds
         }
@@ -505,10 +418,7 @@ public extension Services.Organization.Actions.GetLocationMembers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             memberProfileIds += [try input.readString()]
 
           default:

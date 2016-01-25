@@ -10,7 +10,6 @@ public func == (lhs: Services.Organization.Actions.GetProfileReportingDetails.Re
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -21,7 +20,6 @@ public func == (lhs: Services.Organization.Actions.GetProfileReportingDetails.Re
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.peersProfileIds == rhs.peersProfileIds)
   fieldCheck = fieldCheck && (lhs.hasManagerProfileId == rhs.hasManagerProfileId) && (!lhs.hasManagerProfileId || lhs.managerProfileId == rhs.managerProfileId)
   fieldCheck = fieldCheck && (lhs.directReportsProfileIds == rhs.directReportsProfileIds)
@@ -51,9 +49,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
@@ -64,11 +59,8 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasProfileId {
-        try output.writeString(2, value:profileId)
+        try output.writeString(1, value:profileId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -79,11 +71,8 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasProfileId {
-        serialize_size += profileId.computeStringSize(2)
+        serialize_size += profileId.computeStringSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -136,9 +125,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
       return try Services.Organization.Actions.GetProfileReportingDetails.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
@@ -147,9 +133,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
@@ -180,29 +163,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetProfileReportingDetails.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetProfileReportingDetails.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasProfileId:Bool {
            get {
@@ -251,9 +211,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
         if other == Services.Organization.Actions.GetProfileReportingDetails.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasProfileId {
              profileId = other.profileId
         }
@@ -272,10 +229,7 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             profileId = try input.readString()
 
           default:
@@ -291,9 +245,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var peersProfileIds:Array<String> = Array<String>()
     public private(set) var hasManagerProfileId:Bool = false
     public private(set) var managerProfileId:String = ""
@@ -310,27 +261,24 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if !peersProfileIds.isEmpty {
         for oneValuepeersProfileIds in peersProfileIds {
-          try output.writeString(2, value:oneValuepeersProfileIds)
+          try output.writeString(1, value:oneValuepeersProfileIds)
         }
       }
       if hasManagerProfileId {
-        try output.writeString(3, value:managerProfileId)
+        try output.writeString(2, value:managerProfileId)
       }
       if !directReportsProfileIds.isEmpty {
         for oneValuedirectReportsProfileIds in directReportsProfileIds {
-          try output.writeString(4, value:oneValuedirectReportsProfileIds)
+          try output.writeString(3, value:oneValuedirectReportsProfileIds)
         }
       }
       if hasManagesTeam {
-        try output.writeMessage(5, value:managesTeam)
+        try output.writeMessage(4, value:managesTeam)
       }
       if hasTeam {
-        try output.writeMessage(6, value:team)
+        try output.writeMessage(5, value:team)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -341,9 +289,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       var dataSizePeersProfileIds:Int32 = 0
       for oneValuepeersProfileIds in peersProfileIds {
           dataSizePeersProfileIds += oneValuepeersProfileIds.computeStringSizeNoTag()
@@ -351,7 +296,7 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
       serialize_size += dataSizePeersProfileIds
       serialize_size += 1 * Int32(peersProfileIds.count)
       if hasManagerProfileId {
-        serialize_size += managerProfileId.computeStringSize(3)
+        serialize_size += managerProfileId.computeStringSize(2)
       }
       var dataSizeDirectReportsProfileIds:Int32 = 0
       for oneValuedirectReportsProfileIds in directReportsProfileIds {
@@ -360,12 +305,12 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
       serialize_size += dataSizeDirectReportsProfileIds
       serialize_size += 1 * Int32(directReportsProfileIds.count)
       if hasManagesTeam {
-          if let varSizemanagesTeam = managesTeam?.computeMessageSize(5) {
+          if let varSizemanagesTeam = managesTeam?.computeMessageSize(4) {
               serialize_size += varSizemanagesTeam
           }
       }
       if hasTeam {
-          if let varSizeteam = team?.computeMessageSize(6) {
+          if let varSizeteam = team?.computeMessageSize(5) {
               serialize_size += varSizeteam
           }
       }
@@ -420,9 +365,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
       return try Services.Organization.Actions.GetProfileReportingDetails.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var peersProfileIdsElementIndex:Int = 0
       for oneValuepeersProfileIds in peersProfileIds  {
           output += "\(indent) peersProfileIds[\(peersProfileIdsElementIndex)]: \(oneValuepeersProfileIds)\n"
@@ -451,9 +393,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneValuepeersProfileIds in peersProfileIds {
                 hashCode = (hashCode &* 31) &+ oneValuepeersProfileIds.hashValue
             }
@@ -500,29 +439,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetProfileReportingDetails.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetProfileReportingDetails.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var peersProfileIds:Array<String> {
            get {
@@ -705,9 +621,6 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
         if other == Services.Organization.Actions.GetProfileReportingDetails.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.peersProfileIds.isEmpty {
             builderResult.peersProfileIds += other.peersProfileIds
         }
@@ -738,19 +651,16 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             peersProfileIds += [try input.readString()]
 
-          case 26 :
+          case 18 :
             managerProfileId = try input.readString()
 
-          case 34 :
+          case 26 :
             directReportsProfileIds += [try input.readString()]
 
-          case 42 :
+          case 34 :
             let subBuilder:Services.Organization.Containers.TeamV1.Builder = Services.Organization.Containers.TeamV1.Builder()
             if hasManagesTeam {
               try subBuilder.mergeFrom(managesTeam)
@@ -758,7 +668,7 @@ public extension Services.Organization.Actions.GetProfileReportingDetails {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             managesTeam = subBuilder.buildPartial()
 
-          case 50 :
+          case 42 :
             let subBuilder:Services.Organization.Containers.TeamV1.Builder = Services.Organization.Containers.TeamV1.Builder()
             if hasTeam {
               try subBuilder.mergeFrom(team)

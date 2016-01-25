@@ -23,8 +23,8 @@ from protobufs.services.profile import containers_pb2 as protobufs_dot_services_
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/group/containers.proto',
   package='services.group.containers',
-  syntax='proto2',
-  serialized_pb=b'\n)protobufs/services/group/containers.proto\x12\x19services.group.containers\x1a*protobufs/services/common/containers.proto\x1a\x42protobufs/services/group/containers/permissions/who_can_join.proto\x1aMprotobufs/services/group/containers/permissions/who_can_view_membership.proto\x1aHprotobufs/services/group/containers/permissions/who_can_view_group.proto\x1a\x44protobufs/services/group/containers/permissions/who_can_invite.proto\x1a+protobufs/services/profile/containers.proto\"\x88\x03\n\x07GroupV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x05 \x01(\t\x12\x19\n\x11group_description\x18\x06 \x01(\t\x12\x0f\n\x07\x61liases\x18\x07 \x03(\t\x12\x15\n\rmembers_count\x18\x08 \x01(\r\x12<\n\x08provider\x18\t \x01(\x0e\x32*.services.group.containers.GroupProviderV1\x12\x10\n\x08\x63\x61n_join\x18\n \x01(\x08\x12\x11\n\tis_member\x18\x0b \x01(\x08\x12\x13\n\x0b\x63\x61n_request\x18\x0c \x01(\x08\x12\x12\n\nis_manager\x18\r \x01(\x08\x12\x1b\n\x13has_pending_request\x18\x0e \x01(\x08\x12>\n\x0bpermissions\x18\x0f \x01(\x0b\x32).services.common.containers.PermissionsV1\"\x87\x04\n\x0fGroupSettingsV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x10\n\x08group_id\x18\x03 \x01(\t\x12\x61\n\x0cwho_can_join\x18\x04 \x01(\x0e\x32K.services.group.containers.permissions.who_can_join.WhoCanJoinPermissionsV1\x12\x81\x01\n\x17who_can_view_membership\x18\x05 \x01(\x0e\x32`.services.group.containers.permissions.who_can_view_membership.WhoCanViewMembershipPermissionsV1\x12r\n\x12who_can_view_group\x18\x06 \x01(\x0e\x32V.services.group.containers.permissions.who_can_view_group.WhoCanViewGroupPermissionsV1\x12g\n\x0ewho_can_invite\x18\x07 \x01(\x0e\x32O.services.group.containers.permissions.who_can_invite.WhoCanInvitePermissionsV1\"\xfa\x01\n\x08MemberV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x37\n\x07profile\x18\x03 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12/\n\x04role\x18\x04 \x01(\x0e\x32!.services.group.containers.RoleV1\x12\x10\n\x08group_id\x18\x05 \x01(\t\x12<\n\x08provider\x18\x06 \x01(\x0e\x32*.services.group.containers.GroupProviderV1\x12\x14\n\x0cprovider_uid\x18\x07 \x01(\t\"I\n\x17MembershipRequestMetaV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\"\xda\x02\n\x13MembershipRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\n\n\x02id\x18\x02 \x01(\t\x12\x44\n\x06status\x18\x03 \x01(\x0e\x32\x34.services.group.containers.MembershipRequestStatusV1\x12\x1c\n\x14requester_profile_id\x18\x04 \x01(\t\x12\x1c\n\x14\x61pprover_profile_ids\x18\x05 \x03(\t\x12\x10\n\x08group_id\x18\x06 \x01(\t\x12<\n\x08provider\x18\x07 \x01(\x0e\x32*.services.group.containers.GroupProviderV1\x12@\n\x04meta\x18\x08 \x03(\x0b\x32\x32.services.group.containers.MembershipRequestMetaV1\x12\x0f\n\x07\x63reated\x18\t \x01(\t*\x1d\n\x0fGroupProviderV1\x12\n\n\x06GOOGLE\x10\x00*,\n\x06RoleV1\x12\t\n\x05OWNER\x10\x00\x12\x0b\n\x07MANAGER\x10\x01\x12\n\n\x06MEMBER\x10\x02*B\n\x19MembershipRequestStatusV1\x12\x0b\n\x07PENDING\x10\x00\x12\x0c\n\x08\x41PPROVED\x10\x01\x12\n\n\x06\x44\x45NIED\x10\x02\x42\x30\n.com.rhlabs.protobufs.services.group.containers'
+  syntax='proto3',
+  serialized_pb=b'\n)protobufs/services/group/containers.proto\x12\x19services.group.containers\x1a*protobufs/services/common/containers.proto\x1a\x42protobufs/services/group/containers/permissions/who_can_join.proto\x1aMprotobufs/services/group/containers/permissions/who_can_view_membership.proto\x1aHprotobufs/services/group/containers/permissions/who_can_view_group.proto\x1a\x44protobufs/services/group/containers/permissions/who_can_invite.proto\x1a+protobufs/services/profile/containers.proto\"\xf4\x02\n\x07GroupV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x04 \x01(\t\x12\x19\n\x11group_description\x18\x05 \x01(\t\x12\x0f\n\x07\x61liases\x18\x06 \x03(\t\x12\x15\n\rmembers_count\x18\x07 \x01(\r\x12<\n\x08provider\x18\x08 \x01(\x0e\x32*.services.group.containers.GroupProviderV1\x12\x10\n\x08\x63\x61n_join\x18\t \x01(\x08\x12\x11\n\tis_member\x18\n \x01(\x08\x12\x13\n\x0b\x63\x61n_request\x18\x0b \x01(\x08\x12\x12\n\nis_manager\x18\x0c \x01(\x08\x12\x1b\n\x13has_pending_request\x18\r \x01(\x08\x12>\n\x0bpermissions\x18\x0e \x01(\x0b\x32).services.common.containers.PermissionsV1\"\xf3\x03\n\x0fGroupSettingsV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08group_id\x18\x02 \x01(\t\x12\x61\n\x0cwho_can_join\x18\x03 \x01(\x0e\x32K.services.group.containers.permissions.who_can_join.WhoCanJoinPermissionsV1\x12\x81\x01\n\x17who_can_view_membership\x18\x04 \x01(\x0e\x32`.services.group.containers.permissions.who_can_view_membership.WhoCanViewMembershipPermissionsV1\x12r\n\x12who_can_view_group\x18\x05 \x01(\x0e\x32V.services.group.containers.permissions.who_can_view_group.WhoCanViewGroupPermissionsV1\x12g\n\x0ewho_can_invite\x18\x06 \x01(\x0e\x32O.services.group.containers.permissions.who_can_invite.WhoCanInvitePermissionsV1\"\xe6\x01\n\x08MemberV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x37\n\x07profile\x18\x02 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12/\n\x04role\x18\x03 \x01(\x0e\x32!.services.group.containers.RoleV1\x12\x10\n\x08group_id\x18\x04 \x01(\t\x12<\n\x08provider\x18\x05 \x01(\x0e\x32*.services.group.containers.GroupProviderV1\x12\x14\n\x0cprovider_uid\x18\x06 \x01(\t\"5\n\x17MembershipRequestMetaV1\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\xc6\x02\n\x13MembershipRequestV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x44\n\x06status\x18\x02 \x01(\x0e\x32\x34.services.group.containers.MembershipRequestStatusV1\x12\x1c\n\x14requester_profile_id\x18\x03 \x01(\t\x12\x1c\n\x14\x61pprover_profile_ids\x18\x04 \x03(\t\x12\x10\n\x08group_id\x18\x05 \x01(\t\x12<\n\x08provider\x18\x06 \x01(\x0e\x32*.services.group.containers.GroupProviderV1\x12@\n\x04meta\x18\x07 \x03(\x0b\x32\x32.services.group.containers.MembershipRequestMetaV1\x12\x0f\n\x07\x63reated\x18\x08 \x01(\t*\x1d\n\x0fGroupProviderV1\x12\n\n\x06GOOGLE\x10\x00*,\n\x06RoleV1\x12\t\n\x05OWNER\x10\x00\x12\x0b\n\x07MANAGER\x10\x01\x12\n\n\x06MEMBER\x10\x02*B\n\x19MembershipRequestStatusV1\x12\x0b\n\x07PENDING\x10\x00\x12\x0c\n\x08\x41PPROVED\x10\x01\x12\n\n\x06\x44\x45NIED\x10\x02\x62\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_containers_dot_permissions_dot_who__can__join__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_containers_dot_permissions_dot_who__can__view__membership__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_containers_dot_permissions_dot_who__can__view__group__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_containers_dot_permissions_dot_who__can__invite__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -42,8 +42,8 @@ _GROUPPROVIDERV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2046,
-  serialized_end=2075,
+  serialized_start=1946,
+  serialized_end=1975,
 )
 _sym_db.RegisterEnumDescriptor(_GROUPPROVIDERV1)
 
@@ -69,8 +69,8 @@ _ROLEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2077,
-  serialized_end=2121,
+  serialized_start=1977,
+  serialized_end=2021,
 )
 _sym_db.RegisterEnumDescriptor(_ROLEV1)
 
@@ -96,8 +96,8 @@ _MEMBERSHIPREQUESTSTATUSV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2123,
-  serialized_end=2189,
+  serialized_start=2023,
+  serialized_end=2089,
 )
 _sym_db.RegisterEnumDescriptor(_MEMBERSHIPREQUESTSTATUSV1)
 
@@ -120,106 +120,99 @@ _GROUPV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.group.containers.GroupV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='id', full_name='services.group.containers.GroupV1.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='id', full_name='services.group.containers.GroupV1.id', index=1,
+      name='email', full_name='services.group.containers.GroupV1.email', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='email', full_name='services.group.containers.GroupV1.email', index=2,
+      name='name', full_name='services.group.containers.GroupV1.name', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='name', full_name='services.group.containers.GroupV1.name', index=3,
+      name='display_name', full_name='services.group.containers.GroupV1.display_name', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='display_name', full_name='services.group.containers.GroupV1.display_name', index=4,
+      name='group_description', full_name='services.group.containers.GroupV1.group_description', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='group_description', full_name='services.group.containers.GroupV1.group_description', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='aliases', full_name='services.group.containers.GroupV1.aliases', index=6,
-      number=7, type=9, cpp_type=9, label=3,
+      name='aliases', full_name='services.group.containers.GroupV1.aliases', index=5,
+      number=6, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='members_count', full_name='services.group.containers.GroupV1.members_count', index=7,
-      number=8, type=13, cpp_type=3, label=1,
+      name='members_count', full_name='services.group.containers.GroupV1.members_count', index=6,
+      number=7, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='provider', full_name='services.group.containers.GroupV1.provider', index=8,
-      number=9, type=14, cpp_type=8, label=1,
+      name='provider', full_name='services.group.containers.GroupV1.provider', index=7,
+      number=8, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='can_join', full_name='services.group.containers.GroupV1.can_join', index=9,
+      name='can_join', full_name='services.group.containers.GroupV1.can_join', index=8,
+      number=9, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='is_member', full_name='services.group.containers.GroupV1.is_member', index=9,
       number=10, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='is_member', full_name='services.group.containers.GroupV1.is_member', index=10,
+      name='can_request', full_name='services.group.containers.GroupV1.can_request', index=10,
       number=11, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='can_request', full_name='services.group.containers.GroupV1.can_request', index=11,
+      name='is_manager', full_name='services.group.containers.GroupV1.is_manager', index=11,
       number=12, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='is_manager', full_name='services.group.containers.GroupV1.is_manager', index=12,
+      name='has_pending_request', full_name='services.group.containers.GroupV1.has_pending_request', index=12,
       number=13, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='has_pending_request', full_name='services.group.containers.GroupV1.has_pending_request', index=13,
-      number=14, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='permissions', full_name='services.group.containers.GroupV1.permissions', index=14,
-      number=15, type=11, cpp_type=10, label=1,
+      name='permissions', full_name='services.group.containers.GroupV1.permissions', index=13,
+      number=14, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -232,12 +225,12 @@ _GROUPV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=453,
-  serialized_end=845,
+  serialized_end=825,
 )
 
 
@@ -249,50 +242,43 @@ _GROUPSETTINGSV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.group.containers.GroupSettingsV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
+      name='id', full_name='services.group.containers.GroupSettingsV1.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='id', full_name='services.group.containers.GroupSettingsV1.id', index=1,
+      name='group_id', full_name='services.group.containers.GroupSettingsV1.group_id', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='group_id', full_name='services.group.containers.GroupSettingsV1.group_id', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='who_can_join', full_name='services.group.containers.GroupSettingsV1.who_can_join', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='who_can_join', full_name='services.group.containers.GroupSettingsV1.who_can_join', index=3,
+      name='who_can_view_membership', full_name='services.group.containers.GroupSettingsV1.who_can_view_membership', index=3,
       number=4, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='who_can_view_membership', full_name='services.group.containers.GroupSettingsV1.who_can_view_membership', index=4,
+      name='who_can_view_group', full_name='services.group.containers.GroupSettingsV1.who_can_view_group', index=4,
       number=5, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='who_can_view_group', full_name='services.group.containers.GroupSettingsV1.who_can_view_group', index=5,
+      name='who_can_invite', full_name='services.group.containers.GroupSettingsV1.who_can_invite', index=5,
       number=6, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='who_can_invite', full_name='services.group.containers.GroupSettingsV1.who_can_invite', index=6,
-      number=7, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -305,12 +291,12 @@ _GROUPSETTINGSV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=848,
-  serialized_end=1367,
+  serialized_start=828,
+  serialized_end=1327,
 )
 
 
@@ -322,50 +308,43 @@ _MEMBERV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.group.containers.MemberV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='id', full_name='services.group.containers.MemberV1.id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='id', full_name='services.group.containers.MemberV1.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='profile', full_name='services.group.containers.MemberV1.profile', index=2,
-      number=3, type=11, cpp_type=10, label=1,
+      name='profile', full_name='services.group.containers.MemberV1.profile', index=1,
+      number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='role', full_name='services.group.containers.MemberV1.role', index=3,
-      number=4, type=14, cpp_type=8, label=1,
+      name='role', full_name='services.group.containers.MemberV1.role', index=2,
+      number=3, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='group_id', full_name='services.group.containers.MemberV1.group_id', index=4,
-      number=5, type=9, cpp_type=9, label=1,
+      name='group_id', full_name='services.group.containers.MemberV1.group_id', index=3,
+      number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='provider', full_name='services.group.containers.MemberV1.provider', index=5,
-      number=6, type=14, cpp_type=8, label=1,
+      name='provider', full_name='services.group.containers.MemberV1.provider', index=4,
+      number=5, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='provider_uid', full_name='services.group.containers.MemberV1.provider_uid', index=6,
-      number=7, type=9, cpp_type=9, label=1,
+      name='provider_uid', full_name='services.group.containers.MemberV1.provider_uid', index=5,
+      number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -378,12 +357,12 @@ _MEMBERV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1370,
-  serialized_end=1620,
+  serialized_start=1330,
+  serialized_end=1560,
 )
 
 
@@ -395,22 +374,15 @@ _MEMBERSHIPREQUESTMETAV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.group.containers.MembershipRequestMetaV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='key', full_name='services.group.containers.MembershipRequestMetaV1.key', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='key', full_name='services.group.containers.MembershipRequestMetaV1.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='value', full_name='services.group.containers.MembershipRequestMetaV1.value', index=2,
-      number=3, type=9, cpp_type=9, label=1,
+      name='value', full_name='services.group.containers.MembershipRequestMetaV1.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -423,12 +395,12 @@ _MEMBERSHIPREQUESTMETAV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1622,
-  serialized_end=1695,
+  serialized_start=1562,
+  serialized_end=1615,
 )
 
 
@@ -440,64 +412,57 @@ _MEMBERSHIPREQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.group.containers.MembershipRequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='id', full_name='services.group.containers.MembershipRequestV1.id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='id', full_name='services.group.containers.MembershipRequestV1.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='status', full_name='services.group.containers.MembershipRequestV1.status', index=2,
-      number=3, type=14, cpp_type=8, label=1,
+      name='status', full_name='services.group.containers.MembershipRequestV1.status', index=1,
+      number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='requester_profile_id', full_name='services.group.containers.MembershipRequestV1.requester_profile_id', index=3,
-      number=4, type=9, cpp_type=9, label=1,
+      name='requester_profile_id', full_name='services.group.containers.MembershipRequestV1.requester_profile_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='approver_profile_ids', full_name='services.group.containers.MembershipRequestV1.approver_profile_ids', index=4,
-      number=5, type=9, cpp_type=9, label=3,
+      name='approver_profile_ids', full_name='services.group.containers.MembershipRequestV1.approver_profile_ids', index=3,
+      number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='group_id', full_name='services.group.containers.MembershipRequestV1.group_id', index=5,
-      number=6, type=9, cpp_type=9, label=1,
+      name='group_id', full_name='services.group.containers.MembershipRequestV1.group_id', index=4,
+      number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='provider', full_name='services.group.containers.MembershipRequestV1.provider', index=6,
-      number=7, type=14, cpp_type=8, label=1,
+      name='provider', full_name='services.group.containers.MembershipRequestV1.provider', index=5,
+      number=6, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='meta', full_name='services.group.containers.MembershipRequestV1.meta', index=7,
-      number=8, type=11, cpp_type=10, label=3,
+      name='meta', full_name='services.group.containers.MembershipRequestV1.meta', index=6,
+      number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='created', full_name='services.group.containers.MembershipRequestV1.created', index=8,
-      number=9, type=9, cpp_type=9, label=1,
+      name='created', full_name='services.group.containers.MembershipRequestV1.created', index=7,
+      number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -510,12 +475,12 @@ _MEMBERSHIPREQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1698,
-  serialized_end=2044,
+  serialized_start=1618,
+  serialized_end=1944,
 )
 
 _GROUPV1.fields_by_name['provider'].enum_type = _GROUPPROVIDERV1
@@ -575,6 +540,4 @@ MembershipRequestV1 = _reflection.GeneratedProtocolMessageType('MembershipReques
 _sym_db.RegisterMessage(MembershipRequestV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n.com.rhlabs.protobufs.services.group.containers')
 # @@protoc_insertion_point(module_scope)

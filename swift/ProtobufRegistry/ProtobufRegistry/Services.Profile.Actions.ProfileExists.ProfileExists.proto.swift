@@ -10,7 +10,6 @@ public func == (lhs: Services.Profile.Actions.ProfileExists.RequestV1, rhs: Serv
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasDomain == rhs.hasDomain) && (!lhs.hasDomain || lhs.domain == rhs.domain)
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   fieldCheck = fieldCheck && (lhs.hasAuthenticationIdentifier == rhs.hasAuthenticationIdentifier) && (!lhs.hasAuthenticationIdentifier || lhs.authenticationIdentifier == rhs.authenticationIdentifier)
@@ -23,7 +22,6 @@ public func == (lhs: Services.Profile.Actions.ProfileExists.ResponseV1, rhs: Ser
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasExists == rhs.hasExists) && (!lhs.hasExists || lhs.exists == rhs.exists)
   fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
@@ -51,9 +49,6 @@ public extension Services.Profile.Actions.ProfileExists {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasDomain:Bool = false
     public private(set) var domain:String = ""
 
@@ -70,17 +65,14 @@ public extension Services.Profile.Actions.ProfileExists {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasDomain {
-        try output.writeString(2, value:domain)
+        try output.writeString(1, value:domain)
       }
       if hasEmail {
-        try output.writeString(3, value:email)
+        try output.writeString(2, value:email)
       }
       if hasAuthenticationIdentifier {
-        try output.writeString(4, value:authenticationIdentifier)
+        try output.writeString(3, value:authenticationIdentifier)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -91,17 +83,14 @@ public extension Services.Profile.Actions.ProfileExists {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasDomain {
-        serialize_size += domain.computeStringSize(2)
+        serialize_size += domain.computeStringSize(1)
       }
       if hasEmail {
-        serialize_size += email.computeStringSize(3)
+        serialize_size += email.computeStringSize(2)
       }
       if hasAuthenticationIdentifier {
-        serialize_size += authenticationIdentifier.computeStringSize(4)
+        serialize_size += authenticationIdentifier.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -154,9 +143,6 @@ public extension Services.Profile.Actions.ProfileExists {
       return try Services.Profile.Actions.ProfileExists.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasDomain {
         output += "\(indent) domain: \(domain) \n"
       }
@@ -171,9 +157,6 @@ public extension Services.Profile.Actions.ProfileExists {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasDomain {
                hashCode = (hashCode &* 31) &+ domain.hashValue
             }
@@ -210,29 +193,6 @@ public extension Services.Profile.Actions.ProfileExists {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.ProfileExists.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.ProfileExists.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasDomain:Bool {
            get {
@@ -327,9 +287,6 @@ public extension Services.Profile.Actions.ProfileExists {
         if other == Services.Profile.Actions.ProfileExists.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasDomain {
              domain = other.domain
         }
@@ -354,16 +311,13 @@ public extension Services.Profile.Actions.ProfileExists {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             domain = try input.readString()
 
-          case 26 :
+          case 18 :
             email = try input.readString()
 
-          case 34 :
+          case 26 :
             authenticationIdentifier = try input.readString()
 
           default:
@@ -379,9 +333,6 @@ public extension Services.Profile.Actions.ProfileExists {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasExists:Bool = false
     public private(set) var exists:Bool = false
 
@@ -401,20 +352,17 @@ public extension Services.Profile.Actions.ProfileExists {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasExists {
-        try output.writeBool(2, value:exists)
+        try output.writeBool(1, value:exists)
       }
       if hasUserId {
-        try output.writeString(3, value:userId)
+        try output.writeString(2, value:userId)
       }
       if hasProfileId {
-        try output.writeString(4, value:profileId)
+        try output.writeString(3, value:profileId)
       }
       if hasOrganizationId {
-        try output.writeString(5, value:organizationId)
+        try output.writeString(4, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -425,20 +373,17 @@ public extension Services.Profile.Actions.ProfileExists {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasExists {
-        serialize_size += exists.computeBoolSize(2)
+        serialize_size += exists.computeBoolSize(1)
       }
       if hasUserId {
-        serialize_size += userId.computeStringSize(3)
+        serialize_size += userId.computeStringSize(2)
       }
       if hasProfileId {
-        serialize_size += profileId.computeStringSize(4)
+        serialize_size += profileId.computeStringSize(3)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(5)
+        serialize_size += organizationId.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -491,9 +436,6 @@ public extension Services.Profile.Actions.ProfileExists {
       return try Services.Profile.Actions.ProfileExists.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasExists {
         output += "\(indent) exists: \(exists) \n"
       }
@@ -511,9 +453,6 @@ public extension Services.Profile.Actions.ProfileExists {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasExists {
                hashCode = (hashCode &* 31) &+ exists.hashValue
             }
@@ -553,29 +492,6 @@ public extension Services.Profile.Actions.ProfileExists {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Profile.Actions.ProfileExists.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Profile.Actions.ProfileExists.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasExists:Bool {
            get {
@@ -693,9 +609,6 @@ public extension Services.Profile.Actions.ProfileExists {
         if other == Services.Profile.Actions.ProfileExists.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasExists {
              exists = other.exists
         }
@@ -724,18 +637,15 @@ public extension Services.Profile.Actions.ProfileExists {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             exists = try input.readBool()
 
-          case 26 :
+          case 18 :
             userId = try input.readString()
 
-          case 34 :
+          case 26 :
             profileId = try input.readString()
 
-          case 42 :
+          case 34 :
             organizationId = try input.readString()
 
           default:

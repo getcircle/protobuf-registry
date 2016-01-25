@@ -10,14 +10,13 @@ public func == (lhs: Services.Organization.Containers.Integration.IntegrationV1,
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = fieldCheck && (lhs.hasIntegrationType == rhs.hasIntegrationType) && (!lhs.hasIntegrationType || lhs.integrationType == rhs.integrationType)
   fieldCheck = fieldCheck && (lhs.hasGoogleGroups == rhs.hasGoogleGroups) && (!lhs.hasGoogleGroups || lhs.googleGroups == rhs.googleGroups)
   fieldCheck = fieldCheck && (lhs.hasSlackSlashCommand == rhs.hasSlackSlashCommand) && (!lhs.hasSlackSlashCommand || lhs.slackSlashCommand == rhs.slackSlashCommand)
-  fieldCheck = fieldCheck && (lhs.hasProviderUid == rhs.hasProviderUid) && (!lhs.hasProviderUid || lhs.providerUid == rhs.providerUid)
   fieldCheck = fieldCheck && (lhs.hasSlackWebApi == rhs.hasSlackWebApi) && (!lhs.hasSlackWebApi || lhs.slackWebApi == rhs.slackWebApi)
+  fieldCheck = fieldCheck && (lhs.hasProviderUid == rhs.hasProviderUid) && (!lhs.hasProviderUid || lhs.providerUid == rhs.providerUid)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -27,7 +26,6 @@ public func == (lhs: Services.Organization.Containers.Integration.GoogleGroupDet
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasAdminEmail == rhs.hasAdminEmail) && (!lhs.hasAdminEmail || lhs.adminEmail == rhs.adminEmail)
   fieldCheck = fieldCheck && (lhs.scopes == rhs.scopes)
   fieldCheck = fieldCheck && (lhs.hasReadOnly == rhs.hasReadOnly) && (!lhs.hasReadOnly || lhs.readOnly == rhs.readOnly)
@@ -140,9 +138,6 @@ public extension Services.Organization.Containers.Integration {
     //OneOf declaration end
 
     private var storageDetails:IntegrationV1.Details =  IntegrationV1.Details.DetailsOneOfNotSet
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -215,29 +210,26 @@ public extension Services.Organization.Containers.Integration {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasOrganizationId {
-        try output.writeString(3, value:organizationId)
+        try output.writeString(2, value:organizationId)
       }
       if hasIntegrationType {
-        try output.writeEnum(4, value:integrationType.rawValue)
+        try output.writeEnum(3, value:integrationType.rawValue)
       }
       if hasGoogleGroups {
-        try output.writeMessage(5, value:googleGroups)
+        try output.writeMessage(4, value:googleGroups)
       }
       if hasSlackSlashCommand {
-        try output.writeMessage(6, value:slackSlashCommand)
+        try output.writeMessage(5, value:slackSlashCommand)
+      }
+      if hasSlackWebApi {
+        try output.writeMessage(6, value:slackWebApi)
       }
       if hasProviderUid {
         try output.writeString(7, value:providerUid)
-      }
-      if hasSlackWebApi {
-        try output.writeMessage(8, value:slackWebApi)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -248,35 +240,32 @@ public extension Services.Organization.Containers.Integration {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(3)
+        serialize_size += organizationId.computeStringSize(2)
       }
       if (hasIntegrationType) {
-        serialize_size += integrationType.rawValue.computeEnumSize(4)
+        serialize_size += integrationType.rawValue.computeEnumSize(3)
       }
       if hasGoogleGroups {
-          if let varSizegoogleGroups = googleGroups?.computeMessageSize(5) {
+          if let varSizegoogleGroups = googleGroups?.computeMessageSize(4) {
               serialize_size += varSizegoogleGroups
           }
       }
       if hasSlackSlashCommand {
-          if let varSizeslackSlashCommand = slackSlashCommand?.computeMessageSize(6) {
+          if let varSizeslackSlashCommand = slackSlashCommand?.computeMessageSize(5) {
               serialize_size += varSizeslackSlashCommand
+          }
+      }
+      if hasSlackWebApi {
+          if let varSizeslackWebApi = slackWebApi?.computeMessageSize(6) {
+              serialize_size += varSizeslackWebApi
           }
       }
       if hasProviderUid {
         serialize_size += providerUid.computeStringSize(7)
-      }
-      if hasSlackWebApi {
-          if let varSizeslackWebApi = slackWebApi?.computeMessageSize(8) {
-              serialize_size += varSizeslackWebApi
-          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -329,9 +318,6 @@ public extension Services.Organization.Containers.Integration {
       return try Services.Organization.Containers.Integration.IntegrationV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -351,22 +337,19 @@ public extension Services.Organization.Containers.Integration {
         try slackSlashCommand?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
-      if hasProviderUid {
-        output += "\(indent) providerUid: \(providerUid) \n"
-      }
       if hasSlackWebApi {
         output += "\(indent) slackWebApi {\n"
         try slackWebApi?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
+      }
+      if hasProviderUid {
+        output += "\(indent) providerUid: \(providerUid) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -386,13 +369,13 @@ public extension Services.Organization.Containers.Integration {
                     hashCode = (hashCode &* 31) &+ hashValueslackSlashCommand
                 }
             }
-            if hasProviderUid {
-               hashCode = (hashCode &* 31) &+ providerUid.hashValue
-            }
             if hasSlackWebApi {
                 if let hashValueslackWebApi = slackWebApi?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueslackWebApi
                 }
+            }
+            if hasProviderUid {
+               hashCode = (hashCode &* 31) &+ providerUid.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -421,29 +404,6 @@ public extension Services.Organization.Containers.Integration {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Containers.Integration.IntegrationV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -714,9 +674,6 @@ public extension Services.Organization.Containers.Integration {
         if other == Services.Organization.Containers.Integration.IntegrationV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -753,24 +710,21 @@ public extension Services.Organization.Containers.Integration {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             organizationId = try input.readString()
 
-          case 32 :
+          case 24 :
             let valueIntintegrationType = try input.readEnum()
             if let enumsintegrationType = Services.Organization.Containers.Integration.IntegrationTypeV1(rawValue:valueIntintegrationType){
                  integrationType = enumsintegrationType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntintegrationType))
+                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntintegrationType))
             }
 
-          case 42 :
+          case 34 :
             let subBuilder:Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder = Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder()
             if hasGoogleGroups {
               try subBuilder.mergeFrom(googleGroups)
@@ -778,7 +732,7 @@ public extension Services.Organization.Containers.Integration {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             googleGroups = subBuilder.buildPartial()
 
-          case 50 :
+          case 42 :
             let subBuilder:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder = Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder()
             if hasSlackSlashCommand {
               try subBuilder.mergeFrom(slackSlashCommand)
@@ -786,16 +740,16 @@ public extension Services.Organization.Containers.Integration {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             slackSlashCommand = subBuilder.buildPartial()
 
-          case 58 :
-            providerUid = try input.readString()
-
-          case 66 :
+          case 50 :
             let subBuilder:Services.Organization.Containers.Integration.SlackWebApiDetailsV1.Builder = Services.Organization.Containers.Integration.SlackWebApiDetailsV1.Builder()
             if hasSlackWebApi {
               try subBuilder.mergeFrom(slackWebApi)
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             slackWebApi = subBuilder.buildPartial()
+
+          case 58 :
+            providerUid = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
@@ -810,9 +764,6 @@ public extension Services.Organization.Containers.Integration {
   }
 
   final public class GoogleGroupDetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasAdminEmail:Bool = false
     public private(set) var adminEmail:String = ""
 
@@ -827,19 +778,16 @@ public extension Services.Organization.Containers.Integration {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasAdminEmail {
-        try output.writeString(2, value:adminEmail)
+        try output.writeString(1, value:adminEmail)
       }
       if !scopes.isEmpty {
         for oneValuescopes in scopes {
-          try output.writeString(3, value:oneValuescopes)
+          try output.writeString(2, value:oneValuescopes)
         }
       }
       if hasReadOnly {
-        try output.writeBool(4, value:readOnly)
+        try output.writeBool(3, value:readOnly)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -850,11 +798,8 @@ public extension Services.Organization.Containers.Integration {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasAdminEmail {
-        serialize_size += adminEmail.computeStringSize(2)
+        serialize_size += adminEmail.computeStringSize(1)
       }
       var dataSizeScopes:Int32 = 0
       for oneValuescopes in scopes {
@@ -863,7 +808,7 @@ public extension Services.Organization.Containers.Integration {
       serialize_size += dataSizeScopes
       serialize_size += 1 * Int32(scopes.count)
       if hasReadOnly {
-        serialize_size += readOnly.computeBoolSize(4)
+        serialize_size += readOnly.computeBoolSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -916,9 +861,6 @@ public extension Services.Organization.Containers.Integration {
       return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasAdminEmail {
         output += "\(indent) adminEmail: \(adminEmail) \n"
       }
@@ -935,9 +877,6 @@ public extension Services.Organization.Containers.Integration {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasAdminEmail {
                hashCode = (hashCode &* 31) &+ adminEmail.hashValue
             }
@@ -974,29 +913,6 @@ public extension Services.Organization.Containers.Integration {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasAdminEmail:Bool {
            get {
@@ -1084,9 +1000,6 @@ public extension Services.Organization.Containers.Integration {
         if other == Services.Organization.Containers.Integration.GoogleGroupDetailsV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasAdminEmail {
              adminEmail = other.adminEmail
         }
@@ -1111,16 +1024,13 @@ public extension Services.Organization.Containers.Integration {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             adminEmail = try input.readString()
 
-          case 26 :
+          case 18 :
             scopes += [try input.readString()]
 
-          case 32 :
+          case 24 :
             readOnly = try input.readBool()
 
           default:

@@ -10,7 +10,6 @@ public func == (lhs: Services.User.Actions.GetAuthenticationInstructions.Request
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
   fieldCheck = fieldCheck && (lhs.hasOrganizationDomain == rhs.hasOrganizationDomain) && (!lhs.hasOrganizationDomain || lhs.organizationDomain == rhs.organizationDomain)
@@ -23,9 +22,7 @@ public func == (lhs: Services.User.Actions.GetAuthenticationInstructions.Respons
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasBackend == rhs.hasBackend) && (!lhs.hasBackend || lhs.backend == rhs.backend)
-  fieldCheck = fieldCheck && (lhs.hasUserExists == rhs.hasUserExists) && (!lhs.hasUserExists || lhs.userExists == rhs.userExists)
   fieldCheck = fieldCheck && (lhs.hasAuthorizationUrl == rhs.hasAuthorizationUrl) && (!lhs.hasAuthorizationUrl || lhs.authorizationUrl == rhs.authorizationUrl)
   fieldCheck = fieldCheck && (lhs.hasProviderName == rhs.hasProviderName) && (!lhs.hasProviderName || lhs.providerName == rhs.providerName)
   fieldCheck = fieldCheck && (lhs.hasOrganizationImageUrl == rhs.hasOrganizationImageUrl) && (!lhs.hasOrganizationImageUrl || lhs.organizationImageUrl == rhs.organizationImageUrl)
@@ -54,9 +51,6 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasEmail:Bool = false
     public private(set) var email:String = ""
 
@@ -73,17 +67,14 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasEmail {
-        try output.writeString(2, value:email)
+        try output.writeString(1, value:email)
       }
       if hasRedirectUri {
-        try output.writeString(3, value:redirectUri)
+        try output.writeString(2, value:redirectUri)
       }
       if hasOrganizationDomain {
-        try output.writeString(4, value:organizationDomain)
+        try output.writeString(3, value:organizationDomain)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -94,17 +85,14 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasEmail {
-        serialize_size += email.computeStringSize(2)
+        serialize_size += email.computeStringSize(1)
       }
       if hasRedirectUri {
-        serialize_size += redirectUri.computeStringSize(3)
+        serialize_size += redirectUri.computeStringSize(2)
       }
       if hasOrganizationDomain {
-        serialize_size += organizationDomain.computeStringSize(4)
+        serialize_size += organizationDomain.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -157,9 +145,6 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       return try Services.User.Actions.GetAuthenticationInstructions.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasEmail {
         output += "\(indent) email: \(email) \n"
       }
@@ -174,9 +159,6 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasEmail {
                hashCode = (hashCode &* 31) &+ email.hashValue
             }
@@ -213,29 +195,6 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.GetAuthenticationInstructions.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.GetAuthenticationInstructions.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasEmail:Bool {
            get {
@@ -330,9 +289,6 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
         if other == Services.User.Actions.GetAuthenticationInstructions.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasEmail {
              email = other.email
         }
@@ -357,16 +313,13 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             email = try input.readString()
 
-          case 26 :
+          case 18 :
             redirectUri = try input.readString()
 
-          case 34 :
+          case 26 :
             organizationDomain = try input.readString()
 
           default:
@@ -382,14 +335,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var backend:Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1 = Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1.Internal
     public private(set) var hasBackend:Bool = false
-    public private(set) var hasUserExists:Bool = false
-    public private(set) var userExists:Bool = false
-
     public private(set) var hasAuthorizationUrl:Bool = false
     public private(set) var authorizationUrl:String = ""
 
@@ -406,23 +353,17 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasBackend {
-        try output.writeEnum(2, value:backend.rawValue)
-      }
-      if hasUserExists {
-        try output.writeBool(3, value:userExists)
+        try output.writeEnum(1, value:backend.rawValue)
       }
       if hasAuthorizationUrl {
-        try output.writeString(4, value:authorizationUrl)
+        try output.writeString(2, value:authorizationUrl)
       }
       if hasProviderName {
-        try output.writeString(5, value:providerName)
+        try output.writeString(3, value:providerName)
       }
       if hasOrganizationImageUrl {
-        try output.writeString(6, value:organizationImageUrl)
+        try output.writeString(4, value:organizationImageUrl)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -433,23 +374,17 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if (hasBackend) {
-        serialize_size += backend.rawValue.computeEnumSize(2)
-      }
-      if hasUserExists {
-        serialize_size += userExists.computeBoolSize(3)
+        serialize_size += backend.rawValue.computeEnumSize(1)
       }
       if hasAuthorizationUrl {
-        serialize_size += authorizationUrl.computeStringSize(4)
+        serialize_size += authorizationUrl.computeStringSize(2)
       }
       if hasProviderName {
-        serialize_size += providerName.computeStringSize(5)
+        serialize_size += providerName.computeStringSize(3)
       }
       if hasOrganizationImageUrl {
-        serialize_size += organizationImageUrl.computeStringSize(6)
+        serialize_size += organizationImageUrl.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -502,14 +437,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       return try Services.User.Actions.GetAuthenticationInstructions.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if (hasBackend) {
         output += "\(indent) backend: \(backend.rawValue)\n"
-      }
-      if hasUserExists {
-        output += "\(indent) userExists: \(userExists) \n"
       }
       if hasAuthorizationUrl {
         output += "\(indent) authorizationUrl: \(authorizationUrl) \n"
@@ -525,14 +454,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasBackend {
                hashCode = (hashCode &* 31) &+ Int(backend.rawValue)
-            }
-            if hasUserExists {
-               hashCode = (hashCode &* 31) &+ userExists.hashValue
             }
             if hasAuthorizationUrl {
                hashCode = (hashCode &* 31) &+ authorizationUrl.hashValue
@@ -571,29 +494,6 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       required override public init () {
          super.init()
       }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.User.Actions.GetAuthenticationInstructions.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.User.Actions.GetAuthenticationInstructions.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
-      }
         public var hasBackend:Bool{
             get {
                 return builderResult.hasBackend
@@ -617,29 +517,6 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
            builderResult.backend = .Internal
            return self
         }
-      public var hasUserExists:Bool {
-           get {
-                return builderResult.hasUserExists
-           }
-      }
-      public var userExists:Bool {
-           get {
-                return builderResult.userExists
-           }
-           set (value) {
-               builderResult.hasUserExists = true
-               builderResult.userExists = value
-           }
-      }
-      public func setUserExists(value:Bool) -> Services.User.Actions.GetAuthenticationInstructions.ResponseV1.Builder {
-        self.userExists = value
-        return self
-      }
-      public func clearUserExists() -> Services.User.Actions.GetAuthenticationInstructions.ResponseV1.Builder{
-           builderResult.hasUserExists = false
-           builderResult.userExists = false
-           return self
-      }
       public var hasAuthorizationUrl:Bool {
            get {
                 return builderResult.hasAuthorizationUrl
@@ -733,14 +610,8 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
         if other == Services.User.Actions.GetAuthenticationInstructions.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasBackend {
              backend = other.backend
-        }
-        if other.hasUserExists {
-             userExists = other.userExists
         }
         if other.hasAuthorizationUrl {
              authorizationUrl = other.authorizationUrl
@@ -767,26 +638,20 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             let valueIntbackend = try input.readEnum()
             if let enumsbackend = Services.User.Actions.AuthenticateUser.RequestV1.AuthBackendV1(rawValue:valueIntbackend){
                  backend = enumsbackend
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntbackend))
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntbackend))
             }
 
-          case 24 :
-            userExists = try input.readBool()
-
-          case 34 :
+          case 18 :
             authorizationUrl = try input.readString()
 
-          case 42 :
+          case 26 :
             providerName = try input.readString()
 
-          case 50 :
+          case 34 :
             organizationImageUrl = try input.readString()
 
           default:

@@ -10,7 +10,6 @@ public func == (lhs: Services.Notification.Containers.NotificationTokenV1, rhs: 
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = fieldCheck && (lhs.hasDeviceId == rhs.hasDeviceId) && (!lhs.hasDeviceId || lhs.deviceId == rhs.deviceId)
   fieldCheck = fieldCheck && (lhs.hasProviderToken == rhs.hasProviderToken) && (!lhs.hasProviderToken || lhs.providerToken == rhs.providerToken)
@@ -26,7 +25,6 @@ public func == (lhs: Services.Notification.Containers.NotificationPreferenceV1, 
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = fieldCheck && (lhs.hasNotificationTypeId == rhs.hasNotificationTypeId) && (!lhs.hasNotificationTypeId || lhs.notificationTypeId == rhs.notificationTypeId)
@@ -42,7 +40,6 @@ public func == (lhs: Services.Notification.Containers.NotificationTypeV1, rhs: S
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasDescription == rhs.hasDescription) && (!lhs.hasDescription || lhs.description_ == rhs.description_)
   fieldCheck = fieldCheck && (lhs.hasOptIn == rhs.hasOptIn) && (!lhs.hasOptIn || lhs.optIn == rhs.optIn)
@@ -56,7 +53,6 @@ public func == (lhs: Services.Notification.Containers.NotificationV1, rhs: Servi
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasNotificationTypeId == rhs.hasNotificationTypeId) && (!lhs.hasNotificationTypeId || lhs.notificationTypeId == rhs.notificationTypeId)
   fieldCheck = fieldCheck && (lhs.hasGroupMembershipRequest == rhs.hasGroupMembershipRequest) && (!lhs.hasGroupMembershipRequest || lhs.groupMembershipRequest == rhs.groupMembershipRequest)
   fieldCheck = fieldCheck && (lhs.hasGroupMembershipRequestResponse == rhs.hasGroupMembershipRequestResponse) && (!lhs.hasGroupMembershipRequestResponse || lhs.groupMembershipRequestResponse == rhs.groupMembershipRequestResponse)
@@ -69,7 +65,6 @@ public func == (lhs: Services.Notification.Containers.GroupMembershipRequestNoti
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasRequesterProfileId == rhs.hasRequesterProfileId) && (!lhs.hasRequesterProfileId || lhs.requesterProfileId == rhs.requesterProfileId)
   fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
   fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
@@ -83,7 +78,6 @@ public func == (lhs: Services.Notification.Containers.GroupMembershipRequestResp
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasGroupManagerProfileId == rhs.hasGroupManagerProfileId) && (!lhs.hasGroupManagerProfileId || lhs.groupManagerProfileId == rhs.groupManagerProfileId)
   fieldCheck = fieldCheck && (lhs.hasApproved == rhs.hasApproved) && (!lhs.hasApproved || lhs.approved == rhs.approved)
   fieldCheck = fieldCheck && (lhs.hasGroupId == rhs.hasGroupId) && (!lhs.hasGroupId || lhs.groupId == rhs.groupId)
@@ -146,9 +140,6 @@ public extension Services.Notification.Containers {
 
       //Enum type declaration end 
 
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasUserId:Bool = false
     public private(set) var userId:String = ""
 
@@ -172,26 +163,23 @@ public extension Services.Notification.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasUserId {
-        try output.writeString(2, value:userId)
+        try output.writeString(1, value:userId)
       }
       if hasDeviceId {
-        try output.writeString(3, value:deviceId)
+        try output.writeString(2, value:deviceId)
       }
       if hasProviderToken {
-        try output.writeString(4, value:providerToken)
+        try output.writeString(3, value:providerToken)
       }
       if hasProvider {
-        try output.writeEnum(5, value:provider.rawValue)
+        try output.writeEnum(4, value:provider.rawValue)
       }
       if hasProviderPlatform {
-        try output.writeEnum(6, value:providerPlatform.rawValue)
+        try output.writeEnum(5, value:providerPlatform.rawValue)
       }
       if hasOrganizationId {
-        try output.writeString(7, value:organizationId)
+        try output.writeString(6, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -202,26 +190,23 @@ public extension Services.Notification.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasUserId {
-        serialize_size += userId.computeStringSize(2)
+        serialize_size += userId.computeStringSize(1)
       }
       if hasDeviceId {
-        serialize_size += deviceId.computeStringSize(3)
+        serialize_size += deviceId.computeStringSize(2)
       }
       if hasProviderToken {
-        serialize_size += providerToken.computeStringSize(4)
+        serialize_size += providerToken.computeStringSize(3)
       }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(5)
+        serialize_size += provider.rawValue.computeEnumSize(4)
       }
       if (hasProviderPlatform) {
-        serialize_size += providerPlatform.rawValue.computeEnumSize(6)
+        serialize_size += providerPlatform.rawValue.computeEnumSize(5)
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(7)
+        serialize_size += organizationId.computeStringSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -274,9 +259,6 @@ public extension Services.Notification.Containers {
       return try Services.Notification.Containers.NotificationTokenV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasUserId {
         output += "\(indent) userId: \(userId) \n"
       }
@@ -300,9 +282,6 @@ public extension Services.Notification.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasUserId {
                hashCode = (hashCode &* 31) &+ userId.hashValue
             }
@@ -348,29 +327,6 @@ public extension Services.Notification.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Containers.NotificationTokenV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Containers.NotificationTokenV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasUserId:Bool {
            get {
@@ -534,9 +490,6 @@ public extension Services.Notification.Containers {
         if other == Services.Notification.Containers.NotificationTokenV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasUserId {
              userId = other.userId
         }
@@ -570,35 +523,32 @@ public extension Services.Notification.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             userId = try input.readString()
 
-          case 26 :
+          case 18 :
             deviceId = try input.readString()
 
-          case 34 :
+          case 26 :
             providerToken = try input.readString()
 
-          case 40 :
+          case 32 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.Notification.Containers.NotificationTokenV1.ProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntprovider))
             }
 
-          case 48 :
+          case 40 :
             let valueIntproviderPlatform = try input.readEnum()
             if let enumsproviderPlatform = Services.Notification.Containers.NotificationTokenV1.ProviderPlatformV1(rawValue:valueIntproviderPlatform){
                  providerPlatform = enumsproviderPlatform
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntproviderPlatform))
+                 try unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueIntproviderPlatform))
             }
 
-          case 58 :
+          case 50 :
             organizationId = try input.readString()
 
           default:
@@ -614,9 +564,6 @@ public extension Services.Notification.Containers {
   }
 
   final public class NotificationPreferenceV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -640,26 +587,23 @@ public extension Services.Notification.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeString(2, value:id)
+        try output.writeString(1, value:id)
       }
       if hasProfileId {
-        try output.writeString(3, value:profileId)
+        try output.writeString(2, value:profileId)
       }
       if hasNotificationTypeId {
-        try output.writeEnum(4, value:notificationTypeId.rawValue)
+        try output.writeEnum(3, value:notificationTypeId.rawValue)
       }
       if hasSubscribed {
-        try output.writeBool(5, value:subscribed)
+        try output.writeBool(4, value:subscribed)
       }
       if hasNotificationType {
-        try output.writeMessage(6, value:notificationType)
+        try output.writeMessage(5, value:notificationType)
       }
       if hasOrganizationId {
-        try output.writeString(7, value:organizationId)
+        try output.writeString(6, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -670,28 +614,25 @@ public extension Services.Notification.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasId {
-        serialize_size += id.computeStringSize(2)
+        serialize_size += id.computeStringSize(1)
       }
       if hasProfileId {
-        serialize_size += profileId.computeStringSize(3)
+        serialize_size += profileId.computeStringSize(2)
       }
       if (hasNotificationTypeId) {
-        serialize_size += notificationTypeId.rawValue.computeEnumSize(4)
+        serialize_size += notificationTypeId.rawValue.computeEnumSize(3)
       }
       if hasSubscribed {
-        serialize_size += subscribed.computeBoolSize(5)
+        serialize_size += subscribed.computeBoolSize(4)
       }
       if hasNotificationType {
-          if let varSizenotificationType = notificationType?.computeMessageSize(6) {
+          if let varSizenotificationType = notificationType?.computeMessageSize(5) {
               serialize_size += varSizenotificationType
           }
       }
       if hasOrganizationId {
-        serialize_size += organizationId.computeStringSize(7)
+        serialize_size += organizationId.computeStringSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -744,9 +685,6 @@ public extension Services.Notification.Containers {
       return try Services.Notification.Containers.NotificationPreferenceV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasId {
         output += "\(indent) id: \(id) \n"
       }
@@ -772,9 +710,6 @@ public extension Services.Notification.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ id.hashValue
             }
@@ -822,29 +757,6 @@ public extension Services.Notification.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Containers.NotificationPreferenceV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Containers.NotificationPreferenceV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasId:Bool {
            get {
@@ -1036,9 +948,6 @@ public extension Services.Notification.Containers {
         if other == Services.Notification.Containers.NotificationPreferenceV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -1072,27 +981,24 @@ public extension Services.Notification.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             id = try input.readString()
 
-          case 26 :
+          case 18 :
             profileId = try input.readString()
 
-          case 32 :
+          case 24 :
             let valueIntnotificationTypeId = try input.readEnum()
             if let enumsnotificationTypeId = Services.Notification.Containers.NotificationTypeV1.TypeIdV1(rawValue:valueIntnotificationTypeId){
                  notificationTypeId = enumsnotificationTypeId
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntnotificationTypeId))
+                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntnotificationTypeId))
             }
 
-          case 40 :
+          case 32 :
             subscribed = try input.readBool()
 
-          case 50 :
+          case 42 :
             let subBuilder:Services.Notification.Containers.NotificationTypeV1.Builder = Services.Notification.Containers.NotificationTypeV1.Builder()
             if hasNotificationType {
               try subBuilder.mergeFrom(notificationType)
@@ -1100,7 +1006,7 @@ public extension Services.Notification.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             notificationType = subBuilder.buildPartial()
 
-          case 58 :
+          case 50 :
             organizationId = try input.readString()
 
           default:
@@ -1127,9 +1033,6 @@ public extension Services.Notification.Containers {
 
       //Enum type declaration end 
 
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var id:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GoogleGroups
     public private(set) var hasId:Bool = false
     public private(set) var hasDescription:Bool = false
@@ -1148,20 +1051,17 @@ public extension Services.Notification.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasId {
-        try output.writeEnum(2, value:id.rawValue)
+        try output.writeEnum(1, value:id.rawValue)
       }
       if hasDescription {
-        try output.writeString(3, value:description_)
+        try output.writeString(2, value:description_)
       }
       if hasOptIn {
-        try output.writeBool(4, value:optIn)
+        try output.writeBool(3, value:optIn)
       }
       if hasMobilePush {
-        try output.writeBool(5, value:mobilePush)
+        try output.writeBool(4, value:mobilePush)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1172,20 +1072,17 @@ public extension Services.Notification.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if (hasId) {
-        serialize_size += id.rawValue.computeEnumSize(2)
+        serialize_size += id.rawValue.computeEnumSize(1)
       }
       if hasDescription {
-        serialize_size += description_.computeStringSize(3)
+        serialize_size += description_.computeStringSize(2)
       }
       if hasOptIn {
-        serialize_size += optIn.computeBoolSize(4)
+        serialize_size += optIn.computeBoolSize(3)
       }
       if hasMobilePush {
-        serialize_size += mobilePush.computeBoolSize(5)
+        serialize_size += mobilePush.computeBoolSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1238,9 +1135,6 @@ public extension Services.Notification.Containers {
       return try Services.Notification.Containers.NotificationTypeV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if (hasId) {
         output += "\(indent) id: \(id.rawValue)\n"
       }
@@ -1258,9 +1152,6 @@ public extension Services.Notification.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasId {
                hashCode = (hashCode &* 31) &+ Int(id.rawValue)
             }
@@ -1300,29 +1191,6 @@ public extension Services.Notification.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Containers.NotificationTypeV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Containers.NotificationTypeV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
         public var hasId:Bool{
             get {
@@ -1440,9 +1308,6 @@ public extension Services.Notification.Containers {
         if other == Services.Notification.Containers.NotificationTypeV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasId {
              id = other.id
         }
@@ -1471,23 +1336,20 @@ public extension Services.Notification.Containers {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             let valueIntid = try input.readEnum()
             if let enumsid = Services.Notification.Containers.NotificationTypeV1.TypeIdV1(rawValue:valueIntid){
                  id = enumsid
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntid))
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntid))
             }
 
-          case 26 :
+          case 18 :
             description_ = try input.readString()
 
-          case 32 :
+          case 24 :
             optIn = try input.readBool()
 
-          case 40 :
+          case 32 :
             mobilePush = try input.readBool()
 
           default:
@@ -1503,9 +1365,6 @@ public extension Services.Notification.Containers {
   }
 
   final public class NotificationV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var notificationTypeId:Services.Notification.Containers.NotificationTypeV1.TypeIdV1 = Services.Notification.Containers.NotificationTypeV1.TypeIdV1.GoogleGroups
     public private(set) var hasNotificationTypeId:Bool = false
     public private(set) var hasGroupMembershipRequest:Bool = false
@@ -1519,17 +1378,14 @@ public extension Services.Notification.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasNotificationTypeId {
-        try output.writeEnum(2, value:notificationTypeId.rawValue)
+        try output.writeEnum(1, value:notificationTypeId.rawValue)
       }
       if hasGroupMembershipRequest {
-        try output.writeMessage(3, value:groupMembershipRequest)
+        try output.writeMessage(2, value:groupMembershipRequest)
       }
       if hasGroupMembershipRequestResponse {
-        try output.writeMessage(4, value:groupMembershipRequestResponse)
+        try output.writeMessage(3, value:groupMembershipRequestResponse)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1540,19 +1396,16 @@ public extension Services.Notification.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if (hasNotificationTypeId) {
-        serialize_size += notificationTypeId.rawValue.computeEnumSize(2)
+        serialize_size += notificationTypeId.rawValue.computeEnumSize(1)
       }
       if hasGroupMembershipRequest {
-          if let varSizegroupMembershipRequest = groupMembershipRequest?.computeMessageSize(3) {
+          if let varSizegroupMembershipRequest = groupMembershipRequest?.computeMessageSize(2) {
               serialize_size += varSizegroupMembershipRequest
           }
       }
       if hasGroupMembershipRequestResponse {
-          if let varSizegroupMembershipRequestResponse = groupMembershipRequestResponse?.computeMessageSize(4) {
+          if let varSizegroupMembershipRequestResponse = groupMembershipRequestResponse?.computeMessageSize(3) {
               serialize_size += varSizegroupMembershipRequestResponse
           }
       }
@@ -1607,9 +1460,6 @@ public extension Services.Notification.Containers {
       return try Services.Notification.Containers.NotificationV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if (hasNotificationTypeId) {
         output += "\(indent) notificationTypeId: \(notificationTypeId.rawValue)\n"
       }
@@ -1628,9 +1478,6 @@ public extension Services.Notification.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasNotificationTypeId {
                hashCode = (hashCode &* 31) &+ Int(notificationTypeId.rawValue)
             }
@@ -1671,29 +1518,6 @@ public extension Services.Notification.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Containers.NotificationV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Containers.NotificationV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
         public var hasNotificationTypeId:Bool{
             get {
@@ -1844,9 +1668,6 @@ public extension Services.Notification.Containers {
         if other == Services.Notification.Containers.NotificationV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasNotificationTypeId {
              notificationTypeId = other.notificationTypeId
         }
@@ -1872,17 +1693,14 @@ public extension Services.Notification.Containers {
             return self
 
           case 8 :
-            version = try input.readUInt32()
-
-          case 16 :
             let valueIntnotificationTypeId = try input.readEnum()
             if let enumsnotificationTypeId = Services.Notification.Containers.NotificationTypeV1.TypeIdV1(rawValue:valueIntnotificationTypeId){
                  notificationTypeId = enumsnotificationTypeId
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntnotificationTypeId))
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntnotificationTypeId))
             }
 
-          case 26 :
+          case 18 :
             let subBuilder:Services.Notification.Containers.GroupMembershipRequestNotificationV1.Builder = Services.Notification.Containers.GroupMembershipRequestNotificationV1.Builder()
             if hasGroupMembershipRequest {
               try subBuilder.mergeFrom(groupMembershipRequest)
@@ -1890,7 +1708,7 @@ public extension Services.Notification.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             groupMembershipRequest = subBuilder.buildPartial()
 
-          case 34 :
+          case 26 :
             let subBuilder:Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.Builder = Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.Builder()
             if hasGroupMembershipRequestResponse {
               try subBuilder.mergeFrom(groupMembershipRequestResponse)
@@ -1911,9 +1729,6 @@ public extension Services.Notification.Containers {
   }
 
   final public class GroupMembershipRequestNotificationV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasRequesterProfileId:Bool = false
     public private(set) var requesterProfileId:String = ""
 
@@ -1932,20 +1747,17 @@ public extension Services.Notification.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasRequesterProfileId {
-        try output.writeString(2, value:requesterProfileId)
+        try output.writeString(1, value:requesterProfileId)
       }
       if hasGroupId {
-        try output.writeString(3, value:groupId)
+        try output.writeString(2, value:groupId)
       }
       if hasProvider {
-        try output.writeEnum(4, value:provider.rawValue)
+        try output.writeEnum(3, value:provider.rawValue)
       }
       if hasRequestId {
-        try output.writeString(5, value:requestId)
+        try output.writeString(4, value:requestId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1956,20 +1768,17 @@ public extension Services.Notification.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasRequesterProfileId {
-        serialize_size += requesterProfileId.computeStringSize(2)
+        serialize_size += requesterProfileId.computeStringSize(1)
       }
       if hasGroupId {
-        serialize_size += groupId.computeStringSize(3)
+        serialize_size += groupId.computeStringSize(2)
       }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(4)
+        serialize_size += provider.rawValue.computeEnumSize(3)
       }
       if hasRequestId {
-        serialize_size += requestId.computeStringSize(5)
+        serialize_size += requestId.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2022,9 +1831,6 @@ public extension Services.Notification.Containers {
       return try Services.Notification.Containers.GroupMembershipRequestNotificationV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasRequesterProfileId {
         output += "\(indent) requesterProfileId: \(requesterProfileId) \n"
       }
@@ -2042,9 +1848,6 @@ public extension Services.Notification.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasRequesterProfileId {
                hashCode = (hashCode &* 31) &+ requesterProfileId.hashValue
             }
@@ -2084,29 +1887,6 @@ public extension Services.Notification.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Containers.GroupMembershipRequestNotificationV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Containers.GroupMembershipRequestNotificationV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasRequesterProfileId:Bool {
            get {
@@ -2224,9 +2004,6 @@ public extension Services.Notification.Containers {
         if other == Services.Notification.Containers.GroupMembershipRequestNotificationV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasRequesterProfileId {
              requesterProfileId = other.requesterProfileId
         }
@@ -2254,24 +2031,21 @@ public extension Services.Notification.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             requesterProfileId = try input.readString()
 
-          case 26 :
+          case 18 :
             groupId = try input.readString()
 
-          case 32 :
+          case 24 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntprovider))
             }
 
-          case 42 :
+          case 34 :
             requestId = try input.readString()
 
           default:
@@ -2287,9 +2061,6 @@ public extension Services.Notification.Containers {
   }
 
   final public class GroupMembershipRequestResponseNotificationV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasGroupManagerProfileId:Bool = false
     public private(set) var groupManagerProfileId:String = ""
 
@@ -2308,20 +2079,17 @@ public extension Services.Notification.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasGroupManagerProfileId {
-        try output.writeString(2, value:groupManagerProfileId)
+        try output.writeString(1, value:groupManagerProfileId)
       }
       if hasApproved {
-        try output.writeBool(3, value:approved)
+        try output.writeBool(2, value:approved)
       }
       if hasGroupId {
-        try output.writeString(4, value:groupId)
+        try output.writeString(3, value:groupId)
       }
       if hasProvider {
-        try output.writeEnum(5, value:provider.rawValue)
+        try output.writeEnum(4, value:provider.rawValue)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -2332,20 +2100,17 @@ public extension Services.Notification.Containers {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasGroupManagerProfileId {
-        serialize_size += groupManagerProfileId.computeStringSize(2)
+        serialize_size += groupManagerProfileId.computeStringSize(1)
       }
       if hasApproved {
-        serialize_size += approved.computeBoolSize(3)
+        serialize_size += approved.computeBoolSize(2)
       }
       if hasGroupId {
-        serialize_size += groupId.computeStringSize(4)
+        serialize_size += groupId.computeStringSize(3)
       }
       if (hasProvider) {
-        serialize_size += provider.rawValue.computeEnumSize(5)
+        serialize_size += provider.rawValue.computeEnumSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2398,9 +2163,6 @@ public extension Services.Notification.Containers {
       return try Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasGroupManagerProfileId {
         output += "\(indent) groupManagerProfileId: \(groupManagerProfileId) \n"
       }
@@ -2418,9 +2180,6 @@ public extension Services.Notification.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasGroupManagerProfileId {
                hashCode = (hashCode &* 31) &+ groupManagerProfileId.hashValue
             }
@@ -2460,29 +2219,6 @@ public extension Services.Notification.Containers {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasGroupManagerProfileId:Bool {
            get {
@@ -2600,9 +2336,6 @@ public extension Services.Notification.Containers {
         if other == Services.Notification.Containers.GroupMembershipRequestResponseNotificationV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasGroupManagerProfileId {
              groupManagerProfileId = other.groupManagerProfileId
         }
@@ -2630,24 +2363,21 @@ public extension Services.Notification.Containers {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             groupManagerProfileId = try input.readString()
 
-          case 24 :
+          case 16 :
             approved = try input.readBool()
 
-          case 34 :
+          case 26 :
             groupId = try input.readString()
 
-          case 40 :
+          case 32 :
             let valueIntprovider = try input.readEnum()
             if let enumsprovider = Services.Group.Containers.GroupProviderV1(rawValue:valueIntprovider){
                  provider = enumsprovider
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(5, value:Int64(valueIntprovider))
+                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntprovider))
             }
 
           default:

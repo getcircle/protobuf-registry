@@ -10,7 +10,6 @@ public func == (lhs: Services.Organization.Actions.GetDescendants.RequestV1, rhs
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
   fieldCheck = fieldCheck && (lhs.hasDirect == rhs.hasDirect) && (!lhs.hasDirect || lhs.direct == rhs.direct)
@@ -23,7 +22,6 @@ public func == (lhs: Services.Organization.Actions.GetDescendants.ResponseV1, rh
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasVersion == rhs.hasVersion) && (!lhs.hasVersion || lhs.version == rhs.version)
   fieldCheck = fieldCheck && (lhs.profileIds == rhs.profileIds)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -48,9 +46,6 @@ public extension Services.Organization.Actions.GetDescendants {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
@@ -67,17 +62,14 @@ public extension Services.Organization.Actions.GetDescendants {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if hasProfileId {
-        try output.writeString(2, value:profileId)
+        try output.writeString(1, value:profileId)
       }
       if hasTeamId {
-        try output.writeString(3, value:teamId)
+        try output.writeString(2, value:teamId)
       }
       if hasDirect {
-        try output.writeBool(4, value:direct)
+        try output.writeBool(3, value:direct)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -88,17 +80,14 @@ public extension Services.Organization.Actions.GetDescendants {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       if hasProfileId {
-        serialize_size += profileId.computeStringSize(2)
+        serialize_size += profileId.computeStringSize(1)
       }
       if hasTeamId {
-        serialize_size += teamId.computeStringSize(3)
+        serialize_size += teamId.computeStringSize(2)
       }
       if hasDirect {
-        serialize_size += direct.computeBoolSize(4)
+        serialize_size += direct.computeBoolSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -151,9 +140,6 @@ public extension Services.Organization.Actions.GetDescendants {
       return try Services.Organization.Actions.GetDescendants.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
@@ -168,9 +154,6 @@ public extension Services.Organization.Actions.GetDescendants {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
@@ -207,29 +190,6 @@ public extension Services.Organization.Actions.GetDescendants {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetDescendants.RequestV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetDescendants.RequestV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var hasProfileId:Bool {
            get {
@@ -324,9 +284,6 @@ public extension Services.Organization.Actions.GetDescendants {
         if other == Services.Organization.Actions.GetDescendants.RequestV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if other.hasProfileId {
              profileId = other.profileId
         }
@@ -351,16 +308,13 @@ public extension Services.Organization.Actions.GetDescendants {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 18 :
+          case 10 :
             profileId = try input.readString()
 
-          case 26 :
+          case 18 :
             teamId = try input.readString()
 
-          case 32 :
+          case 24 :
             direct = try input.readBool()
 
           default:
@@ -376,9 +330,6 @@ public extension Services.Organization.Actions.GetDescendants {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasVersion:Bool = false
-    public private(set) var version:UInt32 = UInt32(1)
-
     public private(set) var profileIds:Array<String> = Array<String>()
     required public init() {
          super.init()
@@ -387,12 +338,9 @@ public extension Services.Organization.Actions.GetDescendants {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasVersion {
-        try output.writeUInt32(1, value:version)
-      }
       if !profileIds.isEmpty {
         for oneValueprofileIds in profileIds {
-          try output.writeString(3, value:oneValueprofileIds)
+          try output.writeString(1, value:oneValueprofileIds)
         }
       }
       try unknownFields.writeToCodedOutputStream(output)
@@ -404,9 +352,6 @@ public extension Services.Organization.Actions.GetDescendants {
       }
 
       serialize_size = 0
-      if hasVersion {
-        serialize_size += version.computeUInt32Size(1)
-      }
       var dataSizeProfileIds:Int32 = 0
       for oneValueprofileIds in profileIds {
           dataSizeProfileIds += oneValueprofileIds.computeStringSizeNoTag()
@@ -464,9 +409,6 @@ public extension Services.Organization.Actions.GetDescendants {
       return try Services.Organization.Actions.GetDescendants.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasVersion {
-        output += "\(indent) version: \(version) \n"
-      }
       var profileIdsElementIndex:Int = 0
       for oneValueprofileIds in profileIds  {
           output += "\(indent) profileIds[\(profileIdsElementIndex)]: \(oneValueprofileIds)\n"
@@ -477,9 +419,6 @@ public extension Services.Organization.Actions.GetDescendants {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasVersion {
-               hashCode = (hashCode &* 31) &+ version.hashValue
-            }
             for oneValueprofileIds in profileIds {
                 hashCode = (hashCode &* 31) &+ oneValueprofileIds.hashValue
             }
@@ -510,29 +449,6 @@ public extension Services.Organization.Actions.GetDescendants {
 
       required override public init () {
          super.init()
-      }
-      public var hasVersion:Bool {
-           get {
-                return builderResult.hasVersion
-           }
-      }
-      public var version:UInt32 {
-           get {
-                return builderResult.version
-           }
-           set (value) {
-               builderResult.hasVersion = true
-               builderResult.version = value
-           }
-      }
-      public func setVersion(value:UInt32) -> Services.Organization.Actions.GetDescendants.ResponseV1.Builder {
-        self.version = value
-        return self
-      }
-      public func clearVersion() -> Services.Organization.Actions.GetDescendants.ResponseV1.Builder{
-           builderResult.hasVersion = false
-           builderResult.version = UInt32(1)
-           return self
       }
       public var profileIds:Array<String> {
            get {
@@ -574,9 +490,6 @@ public extension Services.Organization.Actions.GetDescendants {
         if other == Services.Organization.Actions.GetDescendants.ResponseV1() {
          return self
         }
-        if other.hasVersion {
-             version = other.version
-        }
         if !other.profileIds.isEmpty {
             builderResult.profileIds += other.profileIds
         }
@@ -595,10 +508,7 @@ public extension Services.Organization.Actions.GetDescendants {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8 :
-            version = try input.readUInt32()
-
-          case 26 :
+          case 10 :
             profileIds += [try input.readString()]
 
           default:

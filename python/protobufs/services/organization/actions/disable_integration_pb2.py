@@ -17,8 +17,8 @@ from protobufs.services.organization.containers import integration_pb2 as protob
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/disable_integration.proto',
   package='services.organization.actions.disable_integration',
-  syntax='proto2',
-  serialized_pb=b'\nAprotobufs/services/organization/actions/disable_integration.proto\x12\x31services.organization.actions.disable_integration\x1a<protobufs/services/organization/containers/integration.proto\"z\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12Y\n\x10integration_type\x18\x02 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x42H\nFcom.rhlabs.protobufs.services.organization.actions.disable_integration'
+  syntax='proto3',
+  serialized_pb=b'\nAprotobufs/services/organization/actions/disable_integration.proto\x12\x31services.organization.actions.disable_integration\x1a<protobufs/services/organization/containers/integration.proto\"f\n\tRequestV1\x12Y\n\x10integration_type\x18\x01 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\"\x0c\n\nResponseV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_organization_dot_containers_dot_integration__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -34,15 +34,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.actions.disable_integration.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='integration_type', full_name='services.organization.actions.disable_integration.RequestV1.integration_type', index=1,
-      number=2, type=14, cpp_type=8, label=1,
+      name='integration_type', full_name='services.organization.actions.disable_integration.RequestV1.integration_type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -55,12 +48,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=182,
-  serialized_end=304,
+  serialized_end=284,
 )
 
 
@@ -71,13 +64,6 @@ _RESPONSEV1 = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
-    _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.actions.disable_integration.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -86,12 +72,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=306,
-  serialized_end=338,
+  serialized_start=286,
+  serialized_end=298,
 )
 
 _REQUESTV1.fields_by_name['integration_type'].enum_type = protobufs_dot_services_dot_organization_dot_containers_dot_integration__pb2._INTEGRATIONTYPEV1
@@ -113,6 +99,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\nFcom.rhlabs.protobufs.services.organization.actions.disable_integration')
 # @@protoc_insertion_point(module_scope)

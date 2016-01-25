@@ -16,8 +16,8 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/actions/add_location_members.proto',
   package='services.organization.actions.add_location_members',
-  syntax='proto2',
-  serialized_pb=b'\nBprotobufs/services/organization/actions/add_location_members.proto\x12\x32services.organization.actions.add_location_members\"I\n\tRequestV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x12\x13\n\x0blocation_id\x18\x02 \x01(\t\x12\x13\n\x0bprofile_ids\x18\x03 \x03(\t\" \n\nResponseV1\x12\x12\n\x07version\x18\x01 \x01(\r:\x01\x31\x42I\nGcom.rhlabs.protobufs.services.organization.actions.add_location_members'
+  syntax='proto3',
+  serialized_pb=b'\nBprotobufs/services/organization/actions/add_location_members.proto\x12\x32services.organization.actions.add_location_members\"5\n\tRequestV1\x12\x13\n\x0blocation_id\x18\x01 \x01(\t\x12\x13\n\x0bprofile_ids\x18\x02 \x03(\t\"\x0c\n\nResponseV1b\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -32,22 +32,15 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.actions.add_location_members.RequestV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='location_id', full_name='services.organization.actions.add_location_members.RequestV1.location_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='location_id', full_name='services.organization.actions.add_location_members.RequestV1.location_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='profile_ids', full_name='services.organization.actions.add_location_members.RequestV1.profile_ids', index=2,
-      number=3, type=9, cpp_type=9, label=3,
+      name='profile_ids', full_name='services.organization.actions.add_location_members.RequestV1.profile_ids', index=1,
+      number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -60,12 +53,12 @@ _REQUESTV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=122,
-  serialized_end=195,
+  serialized_end=175,
 )
 
 
@@ -76,13 +69,6 @@ _RESPONSEV1 = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
-    _descriptor.FieldDescriptor(
-      name='version', full_name='services.organization.actions.add_location_members.ResponseV1.version', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -91,12 +77,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=197,
-  serialized_end=229,
+  serialized_start=177,
+  serialized_end=189,
 )
 
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
@@ -117,6 +103,4 @@ ResponseV1 = _reflection.GeneratedProtocolMessageType('ResponseV1', (_message.Me
 _sym_db.RegisterMessage(ResponseV1)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\nGcom.rhlabs.protobufs.services.organization.actions.add_location_members')
 # @@protoc_insertion_point(module_scope)
