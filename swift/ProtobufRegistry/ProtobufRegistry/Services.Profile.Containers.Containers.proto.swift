@@ -44,6 +44,7 @@ public func == (lhs: Services.Profile.Containers.ProfileV1, rhs: Services.Profil
   fieldCheck = fieldCheck && (lhs.hasAuthenticationIdentifier == rhs.hasAuthenticationIdentifier) && (!lhs.hasAuthenticationIdentifier || lhs.authenticationIdentifier == rhs.authenticationIdentifier)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -451,6 +452,18 @@ public extension Services.Profile.Containers {
   }
 
   final public class ProfileV1 : GeneratedMessage, GeneratedMessageProtocol {
+
+
+      //Enum type declaration start 
+
+      public enum StatusV1:Int32 {
+        case Active = 0
+        case Inactive = 1
+
+      }
+
+      //Enum type declaration end 
+
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
 
@@ -508,6 +521,8 @@ public extension Services.Profile.Containers {
     public private(set) var inflations:Services.Common.Containers.InflationsV1!
     public private(set) var hasFields:Bool = false
     public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var status:Services.Profile.Containers.ProfileV1.StatusV1 = Services.Profile.Containers.ProfileV1.StatusV1.Active
+    public private(set) var hasStatus:Bool = false
     required public init() {
          super.init()
     }
@@ -577,6 +592,9 @@ public extension Services.Profile.Containers {
       }
       if hasFields {
         try output.writeMessage(21, value:fields)
+      }
+      if hasStatus {
+        try output.writeEnum(22, value:status.rawValue)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -653,6 +671,9 @@ public extension Services.Profile.Containers {
           if let varSizefields = fields?.computeMessageSize(21) {
               serialize_size += varSizefields
           }
+      }
+      if (hasStatus) {
+        serialize_size += status.rawValue.computeEnumSize(22)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -780,6 +801,9 @@ public extension Services.Profile.Containers {
         try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if (hasStatus) {
+        output += "\(indent) status: \(status.rawValue)\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -851,6 +875,9 @@ public extension Services.Profile.Containers {
                 if let hashValuefields = fields?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuefields
                 }
+            }
+            if hasStatus {
+               hashCode = (hashCode &* 31) &+ Int(status.rawValue)
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1405,6 +1432,29 @@ public extension Services.Profile.Containers {
         builderResult.fields = nil
         return self
       }
+        public var hasStatus:Bool{
+            get {
+                return builderResult.hasStatus
+            }
+        }
+        public var status:Services.Profile.Containers.ProfileV1.StatusV1 {
+            get {
+                return builderResult.status
+            }
+            set (value) {
+                builderResult.hasStatus = true
+                builderResult.status = value
+            }
+        }
+        public func setStatus(value:Services.Profile.Containers.ProfileV1.StatusV1) -> Services.Profile.Containers.ProfileV1.Builder {
+          self.status = value
+          return self
+        }
+        public func clearStatus() -> Services.Profile.Containers.ProfileV1.Builder {
+           builderResult.hasStatus = false
+           builderResult.status = .Active
+           return self
+        }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1491,6 +1541,9 @@ public extension Services.Profile.Containers {
         }
         if (other.hasFields) {
             try mergeFields(other.fields)
+        }
+        if other.hasStatus {
+             status = other.status
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1583,6 +1636,14 @@ public extension Services.Profile.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             fields = subBuilder.buildPartial()
+
+          case 176 :
+            let valueIntstatus = try input.readEnum()
+            if let enumsstatus = Services.Profile.Containers.ProfileV1.StatusV1(rawValue:valueIntstatus){
+                 status = enumsstatus
+            } else {
+                 try unknownFieldsBuilder.mergeVarintField(22, value:Int64(valueIntstatus))
+            }
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
