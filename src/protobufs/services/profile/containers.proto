@@ -23,6 +23,12 @@ message ContactMethodV1 {
 }
 
 message ProfileV1 {
+
+    enum StatusV1 {
+        ACTIVE = 0;
+        INACTIVE = 1;
+    }
+
     string id = 1;
     string organization_id = 2;
     string user_id = 3;
@@ -44,6 +50,7 @@ message ProfileV1 {
     string authentication_identifier = 19;
     services.common.containers.InflationsV1 inflations = 20;
     services.common.containers.FieldsV1 fields = 21;
+    StatusV1 status = 22;
 }
 
 message ProfileItemV1 {
