@@ -1,8 +1,6 @@
 syntax = "proto3";
 package services.notification.containers;
 
-import "protobufs/services/group/containers.proto";
-
 enum NotificationChannelV1 {
     MOBILE_PUSH = 0;
 }
@@ -48,21 +46,4 @@ message NotificationTypeV1 {
 
 message NotificationV1 {
     NotificationTypeV1.TypeIdV1 notification_type_id = 1;
-
-    GroupMembershipRequestNotificationV1 group_membership_request = 2;
-    GroupMembershipRequestResponseNotificationV1 group_membership_request_response = 3;
-}
-
-message GroupMembershipRequestNotificationV1 {
-    string requester_profile_id = 1;
-    string group_id = 2;
-    services.group.containers.GroupProviderV1 provider = 3;
-    string request_id = 4;
-}
-
-message GroupMembershipRequestResponseNotificationV1 {
-    string group_manager_profile_id = 1;
-    bool approved = 2;
-    string group_id = 3;
-    services.group.containers.GroupProviderV1 provider = 4;
 }

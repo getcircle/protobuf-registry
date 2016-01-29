@@ -24,7 +24,6 @@ public func == (lhs: Services.Search.Containers.SearchResultV1, rhs: Services.Se
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
   fieldCheck = fieldCheck && (lhs.hasLocation == rhs.hasLocation) && (!lhs.hasLocation || lhs.location == rhs.location)
-  fieldCheck = fieldCheck && (lhs.hasGroup == rhs.hasGroup) && (!lhs.hasGroup || lhs.group == rhs.group)
   fieldCheck = fieldCheck && (lhs.hasPost == rhs.hasPost) && (!lhs.hasPost || lhs.post == rhs.post)
   fieldCheck = fieldCheck && (lhs.hasScore == rhs.hasScore) && (!lhs.hasScore || lhs.score == rhs.score)
   fieldCheck = fieldCheck && (lhs.highlight == rhs.highlight)
@@ -52,7 +51,6 @@ public func == (lhs: Services.Search.Containers.RecentResultV1, rhs: Services.Se
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
   fieldCheck = fieldCheck && (lhs.hasLocation == rhs.hasLocation) && (!lhs.hasLocation || lhs.location == rhs.location)
-  fieldCheck = fieldCheck && (lhs.hasGroup == rhs.hasGroup) && (!lhs.hasGroup || lhs.group == rhs.group)
   fieldCheck = fieldCheck && (lhs.hasPost == rhs.hasPost) && (!lhs.hasPost || lhs.post == rhs.post)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -71,7 +69,6 @@ public extension Services.Search.Containers {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Group.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -613,16 +610,6 @@ public extension Services.Search.Containers {
                 return nil
            }
       }
-      case Group(Services.Group.Containers.GroupV1)
-
-      public static func getGroup(value:ResultObject) -> Services.Group.Containers.GroupV1? {
-           switch value {
-           case .Group(let enumValue):
-                return enumValue
-           default:
-                return nil
-           }
-      }
       case Post(Services.Post.Containers.PostV1)
 
       public static func getPost(value:ResultObject) -> Services.Post.Containers.PostV1? {
@@ -691,24 +678,6 @@ public extension Services.Search.Containers {
               storageResultObject = SearchResultV1.ResultObject.Location(newvalue)
          }
     }
-    public private(set) var hasGroup:Bool {
-          get {
-               if SearchResultV1.ResultObject.getGroup(storageResultObject) == nil {
-                   return false
-               }
-               return true
-          }
-          set(newValue) {
-          }
-    }
-    public private(set) var group:Services.Group.Containers.GroupV1!{
-         get {
-              return SearchResultV1.ResultObject.getGroup(storageResultObject)
-         }
-         set (newvalue) {
-              storageResultObject = SearchResultV1.ResultObject.Group(newvalue)
-         }
-    }
     public private(set) var hasPost:Bool {
           get {
                if SearchResultV1.ResultObject.getPost(storageResultObject) == nil {
@@ -749,9 +718,6 @@ public extension Services.Search.Containers {
       if hasLocation {
         try output.writeMessage(3, value:location)
       }
-      if hasGroup {
-        try output.writeMessage(4, value:group)
-      }
       if hasPost {
         try output.writeMessage(5, value:post)
       }
@@ -786,11 +752,6 @@ public extension Services.Search.Containers {
       if hasLocation {
           if let varSizelocation = location?.computeMessageSize(3) {
               serialize_size += varSizelocation
-          }
-      }
-      if hasGroup {
-          if let varSizegroup = group?.computeMessageSize(4) {
-              serialize_size += varSizegroup
           }
       }
       if hasPost {
@@ -875,11 +836,6 @@ public extension Services.Search.Containers {
         try location?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
-      if hasGroup {
-        output += "\(indent) group {\n"
-        try group?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
-      }
       if hasPost {
         output += "\(indent) post {\n"
         try post?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -918,11 +874,6 @@ public extension Services.Search.Containers {
             if hasLocation {
                 if let hashValuelocation = location?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuelocation
-                }
-            }
-            if hasGroup {
-                if let hashValuegroup = group?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuegroup
                 }
             }
             if hasPost {
@@ -1122,57 +1073,6 @@ public extension Services.Search.Containers {
         builderResult.location = nil
         return self
       }
-      public var hasGroup:Bool {
-           get {
-               return builderResult.hasGroup
-           }
-      }
-      public var group:Services.Group.Containers.GroupV1! {
-           get {
-               if groupBuilder_ != nil {
-                  builderResult.group = groupBuilder_.getMessage()
-               }
-               return builderResult.group
-           }
-           set (value) {
-               builderResult.hasGroup = true
-               builderResult.group = value
-           }
-      }
-      private var groupBuilder_:Services.Group.Containers.GroupV1.Builder! {
-           didSet {
-              builderResult.hasGroup = true
-           }
-      }
-      public func getGroupBuilder() -> Services.Group.Containers.GroupV1.Builder {
-        if groupBuilder_ == nil {
-           groupBuilder_ = Services.Group.Containers.GroupV1.Builder()
-           builderResult.group = groupBuilder_.getMessage()
-           if group != nil {
-              try! groupBuilder_.mergeFrom(group)
-           }
-        }
-        return groupBuilder_
-      }
-      public func setGroup(value:Services.Group.Containers.GroupV1!) -> Services.Search.Containers.SearchResultV1.Builder {
-        self.group = value
-        return self
-      }
-      public func mergeGroup(value:Services.Group.Containers.GroupV1) throws -> Services.Search.Containers.SearchResultV1.Builder {
-        if builderResult.hasGroup {
-          builderResult.group = try Services.Group.Containers.GroupV1.builderWithPrototype(builderResult.group).mergeFrom(value).buildPartial()
-        } else {
-          builderResult.group = value
-        }
-        builderResult.hasGroup = true
-        return self
-      }
-      public func clearGroup() -> Services.Search.Containers.SearchResultV1.Builder {
-        groupBuilder_ = nil
-        builderResult.hasGroup = false
-        builderResult.group = nil
-        return self
-      }
       public var hasPost:Bool {
            get {
                return builderResult.hasPost
@@ -1347,9 +1247,6 @@ public extension Services.Search.Containers {
         if (other.hasLocation) {
             try mergeLocation(other.location)
         }
-        if (other.hasGroup) {
-            try mergeGroup(other.group)
-        }
         if (other.hasPost) {
             try mergePost(other.post)
         }
@@ -1400,14 +1297,6 @@ public extension Services.Search.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             location = subBuilder.buildPartial()
-
-          case 34 :
-            let subBuilder:Services.Group.Containers.GroupV1.Builder = Services.Group.Containers.GroupV1.Builder()
-            if hasGroup {
-              try subBuilder.mergeFrom(group)
-            }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-            group = subBuilder.buildPartial()
 
           case 42 :
             let subBuilder:Services.Post.Containers.PostV1.Builder = Services.Post.Containers.PostV1.Builder()
@@ -1491,16 +1380,6 @@ public extension Services.Search.Containers {
                 return nil
            }
       }
-      case Group(Services.Group.Containers.GroupV1)
-
-      public static func getGroup(value:ResultObject) -> Services.Group.Containers.GroupV1? {
-           switch value {
-           case .Group(let enumValue):
-                return enumValue
-           default:
-                return nil
-           }
-      }
       case Post(Services.Post.Containers.PostV1)
 
       public static func getPost(value:ResultObject) -> Services.Post.Containers.PostV1? {
@@ -1569,24 +1448,6 @@ public extension Services.Search.Containers {
               storageResultObject = RecentResultV1.ResultObject.Location(newvalue)
          }
     }
-    public private(set) var hasGroup:Bool {
-          get {
-               if RecentResultV1.ResultObject.getGroup(storageResultObject) == nil {
-                   return false
-               }
-               return true
-          }
-          set(newValue) {
-          }
-    }
-    public private(set) var group:Services.Group.Containers.GroupV1!{
-         get {
-              return RecentResultV1.ResultObject.getGroup(storageResultObject)
-         }
-         set (newvalue) {
-              storageResultObject = RecentResultV1.ResultObject.Group(newvalue)
-         }
-    }
     public private(set) var hasPost:Bool {
           get {
                if RecentResultV1.ResultObject.getPost(storageResultObject) == nil {
@@ -1621,9 +1482,6 @@ public extension Services.Search.Containers {
       if hasLocation {
         try output.writeMessage(3, value:location)
       }
-      if hasGroup {
-        try output.writeMessage(4, value:group)
-      }
       if hasPost {
         try output.writeMessage(5, value:post)
       }
@@ -1649,11 +1507,6 @@ public extension Services.Search.Containers {
       if hasLocation {
           if let varSizelocation = location?.computeMessageSize(3) {
               serialize_size += varSizelocation
-          }
-      }
-      if hasGroup {
-          if let varSizegroup = group?.computeMessageSize(4) {
-              serialize_size += varSizegroup
           }
       }
       if hasPost {
@@ -1727,11 +1580,6 @@ public extension Services.Search.Containers {
         try location?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
-      if hasGroup {
-        output += "\(indent) group {\n"
-        try group?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
-      }
       if hasPost {
         output += "\(indent) post {\n"
         try post?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -1755,11 +1603,6 @@ public extension Services.Search.Containers {
             if hasLocation {
                 if let hashValuelocation = location?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuelocation
-                }
-            }
-            if hasGroup {
-                if let hashValuegroup = group?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuegroup
                 }
             }
             if hasPost {
@@ -1948,57 +1791,6 @@ public extension Services.Search.Containers {
         builderResult.location = nil
         return self
       }
-      public var hasGroup:Bool {
-           get {
-               return builderResult.hasGroup
-           }
-      }
-      public var group:Services.Group.Containers.GroupV1! {
-           get {
-               if groupBuilder_ != nil {
-                  builderResult.group = groupBuilder_.getMessage()
-               }
-               return builderResult.group
-           }
-           set (value) {
-               builderResult.hasGroup = true
-               builderResult.group = value
-           }
-      }
-      private var groupBuilder_:Services.Group.Containers.GroupV1.Builder! {
-           didSet {
-              builderResult.hasGroup = true
-           }
-      }
-      public func getGroupBuilder() -> Services.Group.Containers.GroupV1.Builder {
-        if groupBuilder_ == nil {
-           groupBuilder_ = Services.Group.Containers.GroupV1.Builder()
-           builderResult.group = groupBuilder_.getMessage()
-           if group != nil {
-              try! groupBuilder_.mergeFrom(group)
-           }
-        }
-        return groupBuilder_
-      }
-      public func setGroup(value:Services.Group.Containers.GroupV1!) -> Services.Search.Containers.RecentResultV1.Builder {
-        self.group = value
-        return self
-      }
-      public func mergeGroup(value:Services.Group.Containers.GroupV1) throws -> Services.Search.Containers.RecentResultV1.Builder {
-        if builderResult.hasGroup {
-          builderResult.group = try Services.Group.Containers.GroupV1.builderWithPrototype(builderResult.group).mergeFrom(value).buildPartial()
-        } else {
-          builderResult.group = value
-        }
-        builderResult.hasGroup = true
-        return self
-      }
-      public func clearGroup() -> Services.Search.Containers.RecentResultV1.Builder {
-        groupBuilder_ = nil
-        builderResult.hasGroup = false
-        builderResult.group = nil
-        return self
-      }
       public var hasPost:Bool {
            get {
                return builderResult.hasPost
@@ -2083,9 +1875,6 @@ public extension Services.Search.Containers {
         if (other.hasLocation) {
             try mergeLocation(other.location)
         }
-        if (other.hasGroup) {
-            try mergeGroup(other.group)
-        }
         if (other.hasPost) {
             try mergePost(other.post)
         }
@@ -2127,14 +1916,6 @@ public extension Services.Search.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             location = subBuilder.buildPartial()
-
-          case 34 :
-            let subBuilder:Services.Group.Containers.GroupV1.Builder = Services.Group.Containers.GroupV1.Builder()
-            if hasGroup {
-              try subBuilder.mergeFrom(group)
-            }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-            group = subBuilder.buildPartial()
 
           case 42 :
             let subBuilder:Services.Post.Containers.PostV1.Builder = Services.Post.Containers.PostV1.Builder()
