@@ -1,0 +1,22 @@
+syntax = "proto3";
+package services.team.containers;
+
+import "protobufs/services/common/containers.proto";
+
+message TeamV1 {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    services.common.containers.PermissionsV1 permissions = 4;
+}
+
+message TeamMemberV1 {
+
+    enum RoleV1 {
+        MEMBER = 0;
+        COORDINATOR = 1;
+    }
+
+    string profile_id = 1;
+    RoleV1 role = 2;
+}
