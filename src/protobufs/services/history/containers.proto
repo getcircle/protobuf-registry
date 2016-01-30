@@ -8,6 +8,7 @@ enum ActionTypeV1 {
 enum MethodTypeV1 {
     UPDATE = 0;
     DELETE = 1;
+    CREATE = 2;
 }
 
 message ActionV1 {
