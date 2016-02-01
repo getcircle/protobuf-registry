@@ -3,6 +3,7 @@ package services.history.containers;
 
 enum ActionTypeV1 {
     UPDATE_DESCRIPTION = 0;
+    CREATE_INSTANCE = 1;
 }
 
 enum MethodTypeV1 {
