@@ -46,7 +46,7 @@ public extension Services.Organization.Actions.GetIntegration {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.GoogleGroups
+    public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.SlackSlashCommand
     public private(set) var hasIntegrationType:Bool = false
     public private(set) var hasProviderUid:Bool = false
     public private(set) var providerUid:String = ""
@@ -195,7 +195,7 @@ public extension Services.Organization.Actions.GetIntegration {
         }
         public func clearIntegrationType() -> Services.Organization.Actions.GetIntegration.RequestV1.Builder {
            builderResult.hasIntegrationType = false
-           builderResult.integrationType = .GoogleGroups
+           builderResult.integrationType = .SlackSlashCommand
            return self
         }
       public var hasProviderUid:Bool {

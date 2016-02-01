@@ -64,14 +64,6 @@ from protobufs.services.search.actions import get_recents_pb2 as protobufs_dot_s
 from protobufs.services.search.actions import delete_recent_pb2 as protobufs_dot_services_dot_search_dot_actions_dot_delete__recent__pb2
 from protobufs.services.media.actions import start_image_upload_pb2 as protobufs_dot_services_dot_media_dot_actions_dot_start__image__upload__pb2
 from protobufs.services.media.actions import complete_image_upload_pb2 as protobufs_dot_services_dot_media_dot_actions_dot_complete__image__upload__pb2
-from protobufs.services.group.actions import get_groups_pb2 as protobufs_dot_services_dot_group_dot_actions_dot_get__groups__pb2
-from protobufs.services.group.actions import join_group_pb2 as protobufs_dot_services_dot_group_dot_actions_dot_join__group__pb2
-from protobufs.services.group.actions import respond_to_membership_request_pb2 as protobufs_dot_services_dot_group_dot_actions_dot_respond__to__membership__request__pb2
-from protobufs.services.group.actions import leave_group_pb2 as protobufs_dot_services_dot_group_dot_actions_dot_leave__group__pb2
-from protobufs.services.group.actions import get_members_pb2 as protobufs_dot_services_dot_group_dot_actions_dot_get__members__pb2
-from protobufs.services.group.actions import get_group_pb2 as protobufs_dot_services_dot_group_dot_actions_dot_get__group__pb2
-from protobufs.services.group.actions import add_to_group_pb2 as protobufs_dot_services_dot_group_dot_actions_dot_add__to__group__pb2
-from protobufs.services.group.actions import get_membership_requests_pb2 as protobufs_dot_services_dot_group_dot_actions_dot_get__membership__requests__pb2
 from protobufs.services.notification.actions import register_device_pb2 as protobufs_dot_services_dot_notification_dot_actions_dot_register__device__pb2
 from protobufs.services.notification.actions import get_preferences_pb2 as protobufs_dot_services_dot_notification_dot_actions_dot_get__preferences__pb2
 from protobufs.services.notification.actions import update_preference_pb2 as protobufs_dot_services_dot_notification_dot_actions_dot_update__preference__pb2
@@ -90,15 +82,23 @@ from protobufs.services.file.actions import complete_upload_pb2 as protobufs_dot
 from protobufs.services.file.actions import delete_pb2 as protobufs_dot_services_dot_file_dot_actions_dot_delete__pb2
 from protobufs.services.file.actions import get_files_pb2 as protobufs_dot_services_dot_file_dot_actions_dot_get__files__pb2
 from protobufs.services.file.actions import upload_pb2 as protobufs_dot_services_dot_file_dot_actions_dot_upload__pb2
+from protobufs.services.team.actions import add_members_pb2 as protobufs_dot_services_dot_team_dot_actions_dot_add__members__pb2
+from protobufs.services.team.actions import create_team_pb2 as protobufs_dot_services_dot_team_dot_actions_dot_create__team__pb2
+from protobufs.services.team.actions import get_team_pb2 as protobufs_dot_services_dot_team_dot_actions_dot_get__team__pb2
+from protobufs.services.team.actions import get_members_pb2 as protobufs_dot_services_dot_team_dot_actions_dot_get__members__pb2
+from protobufs.services.team.actions import join_team_pb2 as protobufs_dot_services_dot_team_dot_actions_dot_join__team__pb2
+from protobufs.services.team.actions import leave_team_pb2 as protobufs_dot_services_dot_team_dot_actions_dot_leave__team__pb2
+from protobufs.services.team.actions import remove_members_pb2 as protobufs_dot_services_dot_team_dot_actions_dot_remove__members__pb2
+from protobufs.services.team.actions import update_members_pb2 as protobufs_dot_services_dot_team_dot_actions_dot_update__members__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/registry/responses.proto',
   package='services.registry.responses',
   syntax='proto2',
-  serialized_pb=b'\n+protobufs/services/registry/responses.proto\x12\x1bservices.registry.responses\x1a\x1bservice_protobufs/soa.proto\x1a\x31protobufs/services/user/actions/create_user.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\x1a.protobufs/services/user/actions/get_user.proto\x1a<protobufs/services/user/actions/complete_authorization.proto\x1a\x34protobufs/services/user/actions/get_identities.proto\x1a\x37protobufs/services/user/actions/bulk_create_users.proto\x1a\x33protobufs/services/user/actions/record_device.proto\x1a\x34protobufs/services/user/actions/request_access.proto\x1a\x35protobufs/services/user/actions/delete_identity.proto\x1a,protobufs/services/user/actions/logout.proto\x1a\x45protobufs/services/user/actions/get_authentication_instructions.proto\x1a\x38protobufs/services/user/actions/get_active_devices.proto\x1a\x37protobufs/services/user/actions/bulk_update_users.proto\x1a\x41protobufs/services/organization/actions/create_organization.proto\x1a\x36protobufs/services/organization/actions/get_team.proto\x1a>protobufs/services/organization/actions/get_organization.proto\x1a=protobufs/services/organization/actions/create_location.proto\x1a=protobufs/services/organization/actions/update_location.proto\x1a;protobufs/services/organization/actions/get_locations.proto\x1a:protobufs/services/organization/actions/get_location.proto\x1a@protobufs/services/organization/actions/enable_integration.proto\x1a=protobufs/services/organization/actions/get_integration.proto\x1a\x41protobufs/services/organization/actions/disable_integration.proto\x1a\x39protobufs/services/organization/actions/update_team.proto\x1a@protobufs/services/organization/actions/add_direct_reports.proto\x1a\x42protobufs/services/organization/actions/get_location_members.proto\x1aKprotobufs/services/organization/actions/get_profile_reporting_details.proto\x1aHprotobufs/services/organization/actions/get_team_reporting_details.proto\x1a\x39protobufs/services/organization/actions/set_manager.proto\x1a\x42protobufs/services/organization/actions/add_location_members.proto\x1a\x37protobufs/services/organization/actions/get_teams.proto\x1a=protobufs/services/organization/actions/get_descendants.proto\x1a\x35protobufs/services/organization/actions/get_sso.proto\x1aGprotobufs/services/organization/actions/get_teams_for_profile_ids.proto\x1a\x37protobufs/services/profile/actions/create_profile.proto\x1a=protobufs/services/profile/actions/get_extended_profile.proto\x1a\x34protobufs/services/profile/actions/get_profile.proto\x1a\x37protobufs/services/profile/actions/update_profile.proto\x1a\x35protobufs/services/profile/actions/get_profiles.proto\x1a=protobufs/services/profile/actions/bulk_create_profiles.proto\x1a=protobufs/services/profile/actions/bulk_update_profiles.proto\x1a\x37protobufs/services/profile/actions/profile_exists.proto\x1a.protobufs/services/search/actions/search.proto\x1a\x31protobufs/services/search/actions/search_v2.proto\x1a\x37protobufs/services/search/actions/update_entities.proto\x1a\x37protobufs/services/search/actions/delete_entities.proto\x1a\x34protobufs/services/search/actions/create_index.proto\x1a\x34protobufs/services/search/actions/track_recent.proto\x1a\x33protobufs/services/search/actions/get_recents.proto\x1a\x35protobufs/services/search/actions/delete_recent.proto\x1a\x39protobufs/services/media/actions/start_image_upload.proto\x1a<protobufs/services/media/actions/complete_image_upload.proto\x1a\x31protobufs/services/group/actions/get_groups.proto\x1a\x31protobufs/services/group/actions/join_group.proto\x1a\x44protobufs/services/group/actions/respond_to_membership_request.proto\x1a\x32protobufs/services/group/actions/leave_group.proto\x1a\x32protobufs/services/group/actions/get_members.proto\x1a\x30protobufs/services/group/actions/get_group.proto\x1a\x33protobufs/services/group/actions/add_to_group.proto\x1a>protobufs/services/group/actions/get_membership_requests.proto\x1a=protobufs/services/notification/actions/register_device.proto\x1a=protobufs/services/notification/actions/get_preferences.proto\x1a?protobufs/services/notification/actions/update_preference.proto\x1a?protobufs/services/notification/actions/send_notification.proto\x1a?protobufs/services/notification/actions/no_search_results.proto\x1a\x36protobufs/services/history/actions/record_action.proto\x1a\x34protobufs/services/payment/actions/store_token.proto\x1a\x31protobufs/services/post/actions/create_post.proto\x1a.protobufs/services/post/actions/get_post.proto\x1a/protobufs/services/post/actions/get_posts.proto\x1a\x31protobufs/services/post/actions/update_post.proto\x1a\x31protobufs/services/post/actions/delete_post.proto\x1a\x32protobufs/services/feature/actions/get_flags.proto\x1a\x32protobufs/services/file/actions/start_upload.proto\x1a\x35protobufs/services/file/actions/complete_upload.proto\x1a,protobufs/services/file/actions/delete.proto\x1a/protobufs/services/file/actions/get_files.proto\x1a,protobufs/services/file/actions/upload.proto\"\xa6\n\n\x04User2W\n\x0b\x63reate_user\x12\x13.soa.ActionResultV1\x18\x64 \x01(\x0b\x32-.services.user.actions.create_user.ResponseV12c\n\x11\x61uthenticate_user\x12\x13.soa.ActionResultV1\x18\x66 \x01(\x0b\x32\x33.services.user.actions.authenticate_user.ResponseV12Q\n\x08get_user\x12\x13.soa.ActionResultV1\x18g \x01(\x0b\x32*.services.user.actions.get_user.ResponseV12m\n\x16\x63omplete_authorization\x12\x13.soa.ActionResultV1\x18l \x01(\x0b\x32\x38.services.user.actions.complete_authorization.ResponseV12]\n\x0eget_identities\x12\x13.soa.ActionResultV1\x18m \x01(\x0b\x32\x30.services.user.actions.get_identities.ResponseV12c\n\x11\x62ulk_create_users\x12\x13.soa.ActionResultV1\x18n \x01(\x0b\x32\x33.services.user.actions.bulk_create_users.ResponseV12[\n\rrecord_device\x12\x13.soa.ActionResultV1\x18o \x01(\x0b\x32/.services.user.actions.record_device.ResponseV12]\n\x0erequest_access\x12\x13.soa.ActionResultV1\x18p \x01(\x0b\x32\x30.services.user.actions.request_access.ResponseV12_\n\x0f\x64\x65lete_identity\x12\x13.soa.ActionResultV1\x18q \x01(\x0b\x32\x31.services.user.actions.delete_identity.ResponseV12M\n\x06logout\x12\x13.soa.ActionResultV1\x18r \x01(\x0b\x32(.services.user.actions.logout.ResponseV12\x7f\n\x1fget_authentication_instructions\x12\x13.soa.ActionResultV1\x18s \x01(\x0b\x32\x41.services.user.actions.get_authentication_instructions.ResponseV12e\n\x12get_active_devices\x12\x13.soa.ActionResultV1\x18t \x01(\x0b\x32\x34.services.user.actions.get_active_devices.ResponseV12b\n\x11\x62ulk_update_users\x12\x13.soa.ActionResultV1\x18v \x01(\x0b\x32\x32.services.user.actions.bulk_update_users.RequestV1J\x04\x08\x65\x10\x66J\x04\x08h\x10iJ\x04\x08i\x10jJ\x04\x08j\x10kJ\x04\x08k\x10lJ\x04\x08u\x10v\"\x85\x12\n\x0cOrganization2p\n\x13\x63reate_organization\x12\x13.soa.ActionResultV1\x18\xc8\x01 \x01(\x0b\x32=.services.organization.actions.create_organization.ResponseV12j\n\x10get_organization\x12\x13.soa.ActionResultV1\x18\xc9\x01 \x01(\x0b\x32:.services.organization.actions.get_organization.ResponseV12Z\n\x08get_team\x12\x13.soa.ActionResultV1\x18\xca\x01 \x01(\x0b\x32\x32.services.organization.actions.get_team.ResponseV12h\n\x0f\x63reate_location\x12\x13.soa.ActionResultV1\x18\xcb\x01 \x01(\x0b\x32\x39.services.organization.actions.create_location.ResponseV12h\n\x0fupdate_location\x12\x13.soa.ActionResultV1\x18\xcc\x01 \x01(\x0b\x32\x39.services.organization.actions.update_location.ResponseV12d\n\rget_locations\x12\x13.soa.ActionResultV1\x18\xcd\x01 \x01(\x0b\x32\x37.services.organization.actions.get_locations.ResponseV12b\n\x0cget_location\x12\x13.soa.ActionResultV1\x18\xce\x01 \x01(\x0b\x32\x36.services.organization.actions.get_location.ResponseV12n\n\x12\x65nable_integration\x12\x13.soa.ActionResultV1\x18\xd1\x01 \x01(\x0b\x32<.services.organization.actions.enable_integration.ResponseV12h\n\x0fget_integration\x12\x13.soa.ActionResultV1\x18\xd2\x01 \x01(\x0b\x32\x39.services.organization.actions.get_integration.ResponseV12p\n\x13\x64isable_integration\x12\x13.soa.ActionResultV1\x18\xd3\x01 \x01(\x0b\x32=.services.organization.actions.disable_integration.ResponseV12`\n\x0bupdate_team\x12\x13.soa.ActionResultV1\x18\xd4\x01 \x01(\x0b\x32\x35.services.organization.actions.update_team.ResponseV12n\n\x12\x61\x64\x64_direct_reports\x12\x13.soa.ActionResultV1\x18\xd5\x01 \x01(\x0b\x32<.services.organization.actions.add_direct_reports.ResponseV12r\n\x14get_location_members\x12\x13.soa.ActionResultV1\x18\xd6\x01 \x01(\x0b\x32>.services.organization.actions.get_location_members.ResponseV12\x84\x01\n\x1dget_profile_reporting_details\x12\x13.soa.ActionResultV1\x18\xd7\x01 \x01(\x0b\x32G.services.organization.actions.get_profile_reporting_details.ResponseV12~\n\x1aget_team_reporting_details\x12\x13.soa.ActionResultV1\x18\xd8\x01 \x01(\x0b\x32\x44.services.organization.actions.get_team_reporting_details.ResponseV12`\n\x0bset_manager\x12\x13.soa.ActionResultV1\x18\xd9\x01 \x01(\x0b\x32\x35.services.organization.actions.set_manager.ResponseV12r\n\x14\x61\x64\x64_location_members\x12\x13.soa.ActionResultV1\x18\xda\x01 \x01(\x0b\x32>.services.organization.actions.add_location_members.ResponseV12\\\n\tget_teams\x12\x13.soa.ActionResultV1\x18\xdb\x01 \x01(\x0b\x32\x33.services.organization.actions.get_teams.ResponseV12h\n\x0fget_descendants\x12\x13.soa.ActionResultV1\x18\xdc\x01 \x01(\x0b\x32\x39.services.organization.actions.get_descendants.ResponseV12X\n\x07get_sso\x12\x13.soa.ActionResultV1\x18\xdd\x01 \x01(\x0b\x32\x31.services.organization.actions.get_sso.ResponseV12|\n\x19get_teams_for_profile_ids\x12\x13.soa.ActionResultV1\x18\xde\x01 \x01(\x0b\x32\x43.services.organization.actions.get_teams_for_profile_ids.ResponseV1J\x06\x08\xcf\x01\x10\xd0\x01J\x06\x08\xd0\x01\x10\xd1\x01\"\x83\x07\n\x07Profile2a\n\x0e\x63reate_profile\x12\x13.soa.ActionResultV1\x18\xac\x02 \x01(\x0b\x32\x33.services.profile.actions.create_profile.ResponseV12m\n\x14get_extended_profile\x12\x13.soa.ActionResultV1\x18\xad\x02 \x01(\x0b\x32\x39.services.profile.actions.get_extended_profile.ResponseV12[\n\x0bget_profile\x12\x13.soa.ActionResultV1\x18\xae\x02 \x01(\x0b\x32\x30.services.profile.actions.get_profile.ResponseV12a\n\x0eupdate_profile\x12\x13.soa.ActionResultV1\x18\xb2\x02 \x01(\x0b\x32\x33.services.profile.actions.update_profile.ResponseV12]\n\x0cget_profiles\x12\x13.soa.ActionResultV1\x18\xb3\x02 \x01(\x0b\x32\x31.services.profile.actions.get_profiles.ResponseV12m\n\x14\x62ulk_create_profiles\x12\x13.soa.ActionResultV1\x18\xb8\x02 \x01(\x0b\x32\x39.services.profile.actions.bulk_create_profiles.ResponseV12m\n\x14\x62ulk_update_profiles\x12\x13.soa.ActionResultV1\x18\xb9\x02 \x01(\x0b\x32\x39.services.profile.actions.bulk_update_profiles.ResponseV12a\n\x0eprofile_exists\x12\x13.soa.ActionResultV1\x18\xbb\x02 \x01(\x0b\x32\x33.services.profile.actions.profile_exists.ResponseV1J\x06\x08\xaf\x02\x10\xb0\x02J\x06\x08\xb0\x02\x10\xb1\x02J\x06\x08\xb1\x02\x10\xb2\x02J\x06\x08\xb4\x02\x10\xb5\x02J\x06\x08\xb5\x02\x10\xb6\x02J\x06\x08\xb6\x02\x10\xb7\x02J\x06\x08\xb7\x02\x10\xb8\x02J\x06\x08\xba\x02\x10\xbb\x02J\x06\x08\xbc\x02\x10\xbd\x02\"\xf2\x05\n\x06Search2P\n\x06search\x12\x13.soa.ActionResultV1\x18\x90\x03 \x01(\x0b\x32*.services.search.actions.search.ResponseV12V\n\tsearch_v2\x12\x13.soa.ActionResultV1\x18\x91\x03 \x01(\x0b\x32-.services.search.actions.search_v2.ResponseV12b\n\x0fupdate_entities\x12\x13.soa.ActionResultV1\x18\x92\x03 \x01(\x0b\x32\x33.services.search.actions.update_entities.ResponseV12b\n\x0f\x64\x65lete_entities\x12\x13.soa.ActionResultV1\x18\x93\x03 \x01(\x0b\x32\x33.services.search.actions.delete_entities.ResponseV12\\\n\x0c\x63reate_index\x12\x13.soa.ActionResultV1\x18\x94\x03 \x01(\x0b\x32\x30.services.search.actions.create_index.ResponseV12\\\n\x0ctrack_recent\x12\x13.soa.ActionResultV1\x18\x95\x03 \x01(\x0b\x32\x30.services.search.actions.track_recent.ResponseV12Z\n\x0bget_recents\x12\x13.soa.ActionResultV1\x18\x96\x03 \x01(\x0b\x32/.services.search.actions.get_recents.ResponseV12^\n\rdelete_recent\x12\x13.soa.ActionResultV1\x18\x97\x03 \x01(\x0b\x32\x31.services.search.actions.delete_recent.ResponseV1\"\xdf\x01\n\x05Media2g\n\x12start_image_upload\x12\x13.soa.ActionResultV1\x18\xd8\x04 \x01(\x0b\x32\x35.services.media.actions.start_image_upload.ResponseV12m\n\x15\x63omplete_image_upload\x12\x13.soa.ActionResultV1\x18\xd9\x04 \x01(\x0b\x32\x38.services.media.actions.complete_image_upload.ResponseV1\"\x95\x06\n\x05Group2W\n\nget_groups\x12\x13.soa.ActionResultV1\x18\xcc\x08 \x01(\x0b\x32-.services.group.actions.get_groups.ResponseV12W\n\njoin_group\x12\x13.soa.ActionResultV1\x18\xcd\x08 \x01(\x0b\x32-.services.group.actions.join_group.ResponseV12}\n\x1drespond_to_membership_request\x12\x13.soa.ActionResultV1\x18\xce\x08 \x01(\x0b\x32@.services.group.actions.respond_to_membership_request.ResponseV12Y\n\x0bleave_group\x12\x13.soa.ActionResultV1\x18\xcf\x08 \x01(\x0b\x32..services.group.actions.leave_group.ResponseV12Y\n\x0bget_members\x12\x13.soa.ActionResultV1\x18\xd0\x08 \x01(\x0b\x32..services.group.actions.get_members.ResponseV12U\n\tget_group\x12\x13.soa.ActionResultV1\x18\xd1\x08 \x01(\x0b\x32,.services.group.actions.get_group.ResponseV12[\n\x0c\x61\x64\x64_to_group\x12\x13.soa.ActionResultV1\x18\xd2\x08 \x01(\x0b\x32/.services.group.actions.add_to_group.ResponseV12q\n\x17get_membership_requests\x12\x13.soa.ActionResultV1\x18\xd3\x08 \x01(\x0b\x32:.services.group.actions.get_membership_requests.ResponseV1\"\xac\x04\n\x0cNotification2h\n\x0fregister_device\x12\x13.soa.ActionResultV1\x18\x94\n \x01(\x0b\x32\x39.services.notification.actions.register_device.ResponseV12h\n\x0fget_preferences\x12\x13.soa.ActionResultV1\x18\x95\n \x01(\x0b\x32\x39.services.notification.actions.get_preferences.ResponseV12l\n\x11update_preference\x12\x13.soa.ActionResultV1\x18\x96\n \x01(\x0b\x32;.services.notification.actions.update_preference.ResponseV12l\n\x11send_notification\x12\x13.soa.ActionResultV1\x18\x97\n \x01(\x0b\x32;.services.notification.actions.send_notification.ResponseV12l\n\x11no_search_results\x12\x13.soa.ActionResultV1\x18\x98\n \x01(\x0b\x32;.services.notification.actions.no_search_results.ResponseV1\"j\n\x07History2_\n\rrecord_action\x12\x13.soa.ActionResultV1\x18\xf8\n \x01(\x0b\x32\x32.services.history.actions.record_action.ResponseV1\"f\n\x07Payment2[\n\x0bstore_token\x12\x13.soa.ActionResultV1\x18\xdc\x0b \x01(\x0b\x32\x30.services.payment.actions.store_token.ResponseV1\"\xbe\x03\n\x04Post2X\n\x0b\x63reate_post\x12\x13.soa.ActionResultV1\x18\xc0\x0c \x01(\x0b\x32-.services.post.actions.create_post.ResponseV12X\n\x0bupdate_post\x12\x13.soa.ActionResultV1\x18\xc1\x0c \x01(\x0b\x32-.services.post.actions.update_post.ResponseV12R\n\x08get_post\x12\x13.soa.ActionResultV1\x18\xc2\x0c \x01(\x0b\x32*.services.post.actions.get_post.ResponseV12T\n\tget_posts\x12\x13.soa.ActionResultV1\x18\xc3\x0c \x01(\x0b\x32+.services.post.actions.get_posts.ResponseV12X\n\x0b\x64\x65lete_post\x12\x13.soa.ActionResultV1\x18\xc4\x0c \x01(\x0b\x32-.services.post.actions.delete_post.ResponseV1\"b\n\x07\x46\x65\x61ture2W\n\tget_flags\x12\x13.soa.ActionResultV1\x18\xa4\r \x01(\x0b\x32..services.feature.actions.get_flags.ResponseV1\"\xba\x03\n\x04\x46ile2Z\n\x0cstart_upload\x12\x13.soa.ActionResultV1\x18\x88\x0e \x01(\x0b\x32..services.file.actions.start_upload.ResponseV12`\n\x0f\x63omplete_upload\x12\x13.soa.ActionResultV1\x18\x89\x0e \x01(\x0b\x32\x31.services.file.actions.complete_upload.ResponseV12N\n\x06\x64\x65lete\x12\x13.soa.ActionResultV1\x18\x8a\x0e \x01(\x0b\x32(.services.file.actions.delete.ResponseV12T\n\tget_files\x12\x13.soa.ActionResultV1\x18\x8b\x0e \x01(\x0b\x32+.services.file.actions.get_files.ResponseV12N\n\x06upload\x12\x13.soa.ActionResultV1\x18\x8c\x0e \x01(\x0b\x32(.services.file.actions.upload.ResponseV1B2\n0com.rhlabs.protobufs.services.registry.responses'
+  serialized_pb=b'\n+protobufs/services/registry/responses.proto\x12\x1bservices.registry.responses\x1a\x1bservice_protobufs/soa.proto\x1a\x31protobufs/services/user/actions/create_user.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\x1a.protobufs/services/user/actions/get_user.proto\x1a<protobufs/services/user/actions/complete_authorization.proto\x1a\x34protobufs/services/user/actions/get_identities.proto\x1a\x37protobufs/services/user/actions/bulk_create_users.proto\x1a\x33protobufs/services/user/actions/record_device.proto\x1a\x34protobufs/services/user/actions/request_access.proto\x1a\x35protobufs/services/user/actions/delete_identity.proto\x1a,protobufs/services/user/actions/logout.proto\x1a\x45protobufs/services/user/actions/get_authentication_instructions.proto\x1a\x38protobufs/services/user/actions/get_active_devices.proto\x1a\x37protobufs/services/user/actions/bulk_update_users.proto\x1a\x41protobufs/services/organization/actions/create_organization.proto\x1a\x36protobufs/services/organization/actions/get_team.proto\x1a>protobufs/services/organization/actions/get_organization.proto\x1a=protobufs/services/organization/actions/create_location.proto\x1a=protobufs/services/organization/actions/update_location.proto\x1a;protobufs/services/organization/actions/get_locations.proto\x1a:protobufs/services/organization/actions/get_location.proto\x1a@protobufs/services/organization/actions/enable_integration.proto\x1a=protobufs/services/organization/actions/get_integration.proto\x1a\x41protobufs/services/organization/actions/disable_integration.proto\x1a\x39protobufs/services/organization/actions/update_team.proto\x1a@protobufs/services/organization/actions/add_direct_reports.proto\x1a\x42protobufs/services/organization/actions/get_location_members.proto\x1aKprotobufs/services/organization/actions/get_profile_reporting_details.proto\x1aHprotobufs/services/organization/actions/get_team_reporting_details.proto\x1a\x39protobufs/services/organization/actions/set_manager.proto\x1a\x42protobufs/services/organization/actions/add_location_members.proto\x1a\x37protobufs/services/organization/actions/get_teams.proto\x1a=protobufs/services/organization/actions/get_descendants.proto\x1a\x35protobufs/services/organization/actions/get_sso.proto\x1aGprotobufs/services/organization/actions/get_teams_for_profile_ids.proto\x1a\x37protobufs/services/profile/actions/create_profile.proto\x1a=protobufs/services/profile/actions/get_extended_profile.proto\x1a\x34protobufs/services/profile/actions/get_profile.proto\x1a\x37protobufs/services/profile/actions/update_profile.proto\x1a\x35protobufs/services/profile/actions/get_profiles.proto\x1a=protobufs/services/profile/actions/bulk_create_profiles.proto\x1a=protobufs/services/profile/actions/bulk_update_profiles.proto\x1a\x37protobufs/services/profile/actions/profile_exists.proto\x1a.protobufs/services/search/actions/search.proto\x1a\x31protobufs/services/search/actions/search_v2.proto\x1a\x37protobufs/services/search/actions/update_entities.proto\x1a\x37protobufs/services/search/actions/delete_entities.proto\x1a\x34protobufs/services/search/actions/create_index.proto\x1a\x34protobufs/services/search/actions/track_recent.proto\x1a\x33protobufs/services/search/actions/get_recents.proto\x1a\x35protobufs/services/search/actions/delete_recent.proto\x1a\x39protobufs/services/media/actions/start_image_upload.proto\x1a<protobufs/services/media/actions/complete_image_upload.proto\x1a=protobufs/services/notification/actions/register_device.proto\x1a=protobufs/services/notification/actions/get_preferences.proto\x1a?protobufs/services/notification/actions/update_preference.proto\x1a?protobufs/services/notification/actions/send_notification.proto\x1a?protobufs/services/notification/actions/no_search_results.proto\x1a\x36protobufs/services/history/actions/record_action.proto\x1a\x34protobufs/services/payment/actions/store_token.proto\x1a\x31protobufs/services/post/actions/create_post.proto\x1a.protobufs/services/post/actions/get_post.proto\x1a/protobufs/services/post/actions/get_posts.proto\x1a\x31protobufs/services/post/actions/update_post.proto\x1a\x31protobufs/services/post/actions/delete_post.proto\x1a\x32protobufs/services/feature/actions/get_flags.proto\x1a\x32protobufs/services/file/actions/start_upload.proto\x1a\x35protobufs/services/file/actions/complete_upload.proto\x1a,protobufs/services/file/actions/delete.proto\x1a/protobufs/services/file/actions/get_files.proto\x1a,protobufs/services/file/actions/upload.proto\x1a\x31protobufs/services/team/actions/add_members.proto\x1a\x31protobufs/services/team/actions/create_team.proto\x1a.protobufs/services/team/actions/get_team.proto\x1a\x31protobufs/services/team/actions/get_members.proto\x1a/protobufs/services/team/actions/join_team.proto\x1a\x30protobufs/services/team/actions/leave_team.proto\x1a\x34protobufs/services/team/actions/remove_members.proto\x1a\x34protobufs/services/team/actions/update_members.proto\"\xa6\n\n\x04User2W\n\x0b\x63reate_user\x12\x13.soa.ActionResultV1\x18\x64 \x01(\x0b\x32-.services.user.actions.create_user.ResponseV12c\n\x11\x61uthenticate_user\x12\x13.soa.ActionResultV1\x18\x66 \x01(\x0b\x32\x33.services.user.actions.authenticate_user.ResponseV12Q\n\x08get_user\x12\x13.soa.ActionResultV1\x18g \x01(\x0b\x32*.services.user.actions.get_user.ResponseV12m\n\x16\x63omplete_authorization\x12\x13.soa.ActionResultV1\x18l \x01(\x0b\x32\x38.services.user.actions.complete_authorization.ResponseV12]\n\x0eget_identities\x12\x13.soa.ActionResultV1\x18m \x01(\x0b\x32\x30.services.user.actions.get_identities.ResponseV12c\n\x11\x62ulk_create_users\x12\x13.soa.ActionResultV1\x18n \x01(\x0b\x32\x33.services.user.actions.bulk_create_users.ResponseV12[\n\rrecord_device\x12\x13.soa.ActionResultV1\x18o \x01(\x0b\x32/.services.user.actions.record_device.ResponseV12]\n\x0erequest_access\x12\x13.soa.ActionResultV1\x18p \x01(\x0b\x32\x30.services.user.actions.request_access.ResponseV12_\n\x0f\x64\x65lete_identity\x12\x13.soa.ActionResultV1\x18q \x01(\x0b\x32\x31.services.user.actions.delete_identity.ResponseV12M\n\x06logout\x12\x13.soa.ActionResultV1\x18r \x01(\x0b\x32(.services.user.actions.logout.ResponseV12\x7f\n\x1fget_authentication_instructions\x12\x13.soa.ActionResultV1\x18s \x01(\x0b\x32\x41.services.user.actions.get_authentication_instructions.ResponseV12e\n\x12get_active_devices\x12\x13.soa.ActionResultV1\x18t \x01(\x0b\x32\x34.services.user.actions.get_active_devices.ResponseV12b\n\x11\x62ulk_update_users\x12\x13.soa.ActionResultV1\x18v \x01(\x0b\x32\x32.services.user.actions.bulk_update_users.RequestV1J\x04\x08\x65\x10\x66J\x04\x08h\x10iJ\x04\x08i\x10jJ\x04\x08j\x10kJ\x04\x08k\x10lJ\x04\x08u\x10v\"\x85\x12\n\x0cOrganization2p\n\x13\x63reate_organization\x12\x13.soa.ActionResultV1\x18\xc8\x01 \x01(\x0b\x32=.services.organization.actions.create_organization.ResponseV12j\n\x10get_organization\x12\x13.soa.ActionResultV1\x18\xc9\x01 \x01(\x0b\x32:.services.organization.actions.get_organization.ResponseV12Z\n\x08get_team\x12\x13.soa.ActionResultV1\x18\xca\x01 \x01(\x0b\x32\x32.services.organization.actions.get_team.ResponseV12h\n\x0f\x63reate_location\x12\x13.soa.ActionResultV1\x18\xcb\x01 \x01(\x0b\x32\x39.services.organization.actions.create_location.ResponseV12h\n\x0fupdate_location\x12\x13.soa.ActionResultV1\x18\xcc\x01 \x01(\x0b\x32\x39.services.organization.actions.update_location.ResponseV12d\n\rget_locations\x12\x13.soa.ActionResultV1\x18\xcd\x01 \x01(\x0b\x32\x37.services.organization.actions.get_locations.ResponseV12b\n\x0cget_location\x12\x13.soa.ActionResultV1\x18\xce\x01 \x01(\x0b\x32\x36.services.organization.actions.get_location.ResponseV12n\n\x12\x65nable_integration\x12\x13.soa.ActionResultV1\x18\xd1\x01 \x01(\x0b\x32<.services.organization.actions.enable_integration.ResponseV12h\n\x0fget_integration\x12\x13.soa.ActionResultV1\x18\xd2\x01 \x01(\x0b\x32\x39.services.organization.actions.get_integration.ResponseV12p\n\x13\x64isable_integration\x12\x13.soa.ActionResultV1\x18\xd3\x01 \x01(\x0b\x32=.services.organization.actions.disable_integration.ResponseV12`\n\x0bupdate_team\x12\x13.soa.ActionResultV1\x18\xd4\x01 \x01(\x0b\x32\x35.services.organization.actions.update_team.ResponseV12n\n\x12\x61\x64\x64_direct_reports\x12\x13.soa.ActionResultV1\x18\xd5\x01 \x01(\x0b\x32<.services.organization.actions.add_direct_reports.ResponseV12r\n\x14get_location_members\x12\x13.soa.ActionResultV1\x18\xd6\x01 \x01(\x0b\x32>.services.organization.actions.get_location_members.ResponseV12\x84\x01\n\x1dget_profile_reporting_details\x12\x13.soa.ActionResultV1\x18\xd7\x01 \x01(\x0b\x32G.services.organization.actions.get_profile_reporting_details.ResponseV12~\n\x1aget_team_reporting_details\x12\x13.soa.ActionResultV1\x18\xd8\x01 \x01(\x0b\x32\x44.services.organization.actions.get_team_reporting_details.ResponseV12`\n\x0bset_manager\x12\x13.soa.ActionResultV1\x18\xd9\x01 \x01(\x0b\x32\x35.services.organization.actions.set_manager.ResponseV12r\n\x14\x61\x64\x64_location_members\x12\x13.soa.ActionResultV1\x18\xda\x01 \x01(\x0b\x32>.services.organization.actions.add_location_members.ResponseV12\\\n\tget_teams\x12\x13.soa.ActionResultV1\x18\xdb\x01 \x01(\x0b\x32\x33.services.organization.actions.get_teams.ResponseV12h\n\x0fget_descendants\x12\x13.soa.ActionResultV1\x18\xdc\x01 \x01(\x0b\x32\x39.services.organization.actions.get_descendants.ResponseV12X\n\x07get_sso\x12\x13.soa.ActionResultV1\x18\xdd\x01 \x01(\x0b\x32\x31.services.organization.actions.get_sso.ResponseV12|\n\x19get_teams_for_profile_ids\x12\x13.soa.ActionResultV1\x18\xde\x01 \x01(\x0b\x32\x43.services.organization.actions.get_teams_for_profile_ids.ResponseV1J\x06\x08\xcf\x01\x10\xd0\x01J\x06\x08\xd0\x01\x10\xd1\x01\"\x83\x07\n\x07Profile2a\n\x0e\x63reate_profile\x12\x13.soa.ActionResultV1\x18\xac\x02 \x01(\x0b\x32\x33.services.profile.actions.create_profile.ResponseV12m\n\x14get_extended_profile\x12\x13.soa.ActionResultV1\x18\xad\x02 \x01(\x0b\x32\x39.services.profile.actions.get_extended_profile.ResponseV12[\n\x0bget_profile\x12\x13.soa.ActionResultV1\x18\xae\x02 \x01(\x0b\x32\x30.services.profile.actions.get_profile.ResponseV12a\n\x0eupdate_profile\x12\x13.soa.ActionResultV1\x18\xb2\x02 \x01(\x0b\x32\x33.services.profile.actions.update_profile.ResponseV12]\n\x0cget_profiles\x12\x13.soa.ActionResultV1\x18\xb3\x02 \x01(\x0b\x32\x31.services.profile.actions.get_profiles.ResponseV12m\n\x14\x62ulk_create_profiles\x12\x13.soa.ActionResultV1\x18\xb8\x02 \x01(\x0b\x32\x39.services.profile.actions.bulk_create_profiles.ResponseV12m\n\x14\x62ulk_update_profiles\x12\x13.soa.ActionResultV1\x18\xb9\x02 \x01(\x0b\x32\x39.services.profile.actions.bulk_update_profiles.ResponseV12a\n\x0eprofile_exists\x12\x13.soa.ActionResultV1\x18\xbb\x02 \x01(\x0b\x32\x33.services.profile.actions.profile_exists.ResponseV1J\x06\x08\xaf\x02\x10\xb0\x02J\x06\x08\xb0\x02\x10\xb1\x02J\x06\x08\xb1\x02\x10\xb2\x02J\x06\x08\xb4\x02\x10\xb5\x02J\x06\x08\xb5\x02\x10\xb6\x02J\x06\x08\xb6\x02\x10\xb7\x02J\x06\x08\xb7\x02\x10\xb8\x02J\x06\x08\xba\x02\x10\xbb\x02J\x06\x08\xbc\x02\x10\xbd\x02\"\xf2\x05\n\x06Search2P\n\x06search\x12\x13.soa.ActionResultV1\x18\x90\x03 \x01(\x0b\x32*.services.search.actions.search.ResponseV12V\n\tsearch_v2\x12\x13.soa.ActionResultV1\x18\x91\x03 \x01(\x0b\x32-.services.search.actions.search_v2.ResponseV12b\n\x0fupdate_entities\x12\x13.soa.ActionResultV1\x18\x92\x03 \x01(\x0b\x32\x33.services.search.actions.update_entities.ResponseV12b\n\x0f\x64\x65lete_entities\x12\x13.soa.ActionResultV1\x18\x93\x03 \x01(\x0b\x32\x33.services.search.actions.delete_entities.ResponseV12\\\n\x0c\x63reate_index\x12\x13.soa.ActionResultV1\x18\x94\x03 \x01(\x0b\x32\x30.services.search.actions.create_index.ResponseV12\\\n\x0ctrack_recent\x12\x13.soa.ActionResultV1\x18\x95\x03 \x01(\x0b\x32\x30.services.search.actions.track_recent.ResponseV12Z\n\x0bget_recents\x12\x13.soa.ActionResultV1\x18\x96\x03 \x01(\x0b\x32/.services.search.actions.get_recents.ResponseV12^\n\rdelete_recent\x12\x13.soa.ActionResultV1\x18\x97\x03 \x01(\x0b\x32\x31.services.search.actions.delete_recent.ResponseV1\"\xdf\x01\n\x05Media2g\n\x12start_image_upload\x12\x13.soa.ActionResultV1\x18\xd8\x04 \x01(\x0b\x32\x35.services.media.actions.start_image_upload.ResponseV12m\n\x15\x63omplete_image_upload\x12\x13.soa.ActionResultV1\x18\xd9\x04 \x01(\x0b\x32\x38.services.media.actions.complete_image_upload.ResponseV1\"\xac\x04\n\x0cNotification2h\n\x0fregister_device\x12\x13.soa.ActionResultV1\x18\x94\n \x01(\x0b\x32\x39.services.notification.actions.register_device.ResponseV12h\n\x0fget_preferences\x12\x13.soa.ActionResultV1\x18\x95\n \x01(\x0b\x32\x39.services.notification.actions.get_preferences.ResponseV12l\n\x11update_preference\x12\x13.soa.ActionResultV1\x18\x96\n \x01(\x0b\x32;.services.notification.actions.update_preference.ResponseV12l\n\x11send_notification\x12\x13.soa.ActionResultV1\x18\x97\n \x01(\x0b\x32;.services.notification.actions.send_notification.ResponseV12l\n\x11no_search_results\x12\x13.soa.ActionResultV1\x18\x98\n \x01(\x0b\x32;.services.notification.actions.no_search_results.ResponseV1\"j\n\x07History2_\n\rrecord_action\x12\x13.soa.ActionResultV1\x18\xf8\n \x01(\x0b\x32\x32.services.history.actions.record_action.ResponseV1\"f\n\x07Payment2[\n\x0bstore_token\x12\x13.soa.ActionResultV1\x18\xdc\x0b \x01(\x0b\x32\x30.services.payment.actions.store_token.ResponseV1\"\xbe\x03\n\x04Post2X\n\x0b\x63reate_post\x12\x13.soa.ActionResultV1\x18\xc0\x0c \x01(\x0b\x32-.services.post.actions.create_post.ResponseV12X\n\x0bupdate_post\x12\x13.soa.ActionResultV1\x18\xc1\x0c \x01(\x0b\x32-.services.post.actions.update_post.ResponseV12R\n\x08get_post\x12\x13.soa.ActionResultV1\x18\xc2\x0c \x01(\x0b\x32*.services.post.actions.get_post.ResponseV12T\n\tget_posts\x12\x13.soa.ActionResultV1\x18\xc3\x0c \x01(\x0b\x32+.services.post.actions.get_posts.ResponseV12X\n\x0b\x64\x65lete_post\x12\x13.soa.ActionResultV1\x18\xc4\x0c \x01(\x0b\x32-.services.post.actions.delete_post.ResponseV1\"b\n\x07\x46\x65\x61ture2W\n\tget_flags\x12\x13.soa.ActionResultV1\x18\xa4\r \x01(\x0b\x32..services.feature.actions.get_flags.ResponseV1\"\xba\x03\n\x04\x46ile2Z\n\x0cstart_upload\x12\x13.soa.ActionResultV1\x18\x88\x0e \x01(\x0b\x32..services.file.actions.start_upload.ResponseV12`\n\x0f\x63omplete_upload\x12\x13.soa.ActionResultV1\x18\x89\x0e \x01(\x0b\x32\x31.services.file.actions.complete_upload.ResponseV12N\n\x06\x64\x65lete\x12\x13.soa.ActionResultV1\x18\x8a\x0e \x01(\x0b\x32(.services.file.actions.delete.ResponseV12T\n\tget_files\x12\x13.soa.ActionResultV1\x18\x8b\x0e \x01(\x0b\x32+.services.file.actions.get_files.ResponseV12N\n\x06upload\x12\x13.soa.ActionResultV1\x18\x8c\x0e \x01(\x0b\x32(.services.file.actions.upload.ResponseV1\"\xd6\x05\n\x04Team2X\n\x0b\x61\x64\x64_members\x12\x13.soa.ActionResultV1\x18\xec\x0e \x01(\x0b\x32-.services.team.actions.add_members.ResponseV12X\n\x0b\x63reate_team\x12\x13.soa.ActionResultV1\x18\xed\x0e \x01(\x0b\x32-.services.team.actions.create_team.ResponseV12R\n\x08get_team\x12\x13.soa.ActionResultV1\x18\xee\x0e \x01(\x0b\x32*.services.team.actions.get_team.ResponseV12X\n\x0bget_members\x12\x13.soa.ActionResultV1\x18\xef\x0e \x01(\x0b\x32-.services.team.actions.get_members.ResponseV12T\n\tjoin_team\x12\x13.soa.ActionResultV1\x18\xf0\x0e \x01(\x0b\x32+.services.team.actions.join_team.ResponseV12V\n\nleave_team\x12\x13.soa.ActionResultV1\x18\xf1\x0e \x01(\x0b\x32,.services.team.actions.leave_team.ResponseV12^\n\x0eremove_members\x12\x13.soa.ActionResultV1\x18\xf2\x0e \x01(\x0b\x32\x30.services.team.actions.remove_members.ResponseV12^\n\x0eupdate_members\x12\x13.soa.ActionResultV1\x18\xf3\x0e \x01(\x0b\x32\x30.services.team.actions.update_members.ResponseV1B2\n0com.rhlabs.protobufs.services.registry.responses'
   ,
-  dependencies=[service__protobufs_dot_soa__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_create__user__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_authenticate__user__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_get__user__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_complete__authorization__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_get__identities__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_bulk__create__users__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_record__device__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_request__access__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_delete__identity__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_logout__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_get__authentication__instructions__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_get__active__devices__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_bulk__update__users__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_create__organization__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__team__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__organization__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_create__location__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_update__location__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__locations__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__location__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_enable__integration__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__integration__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_disable__integration__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_update__team__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_add__direct__reports__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__location__members__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__profile__reporting__details__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__team__reporting__details__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_set__manager__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_add__location__members__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__teams__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__descendants__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__sso__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__teams__for__profile__ids__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_create__profile__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_get__extended__profile__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_get__profile__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_update__profile__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_get__profiles__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_bulk__create__profiles__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_bulk__update__profiles__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_profile__exists__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_search__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_search__v2__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_update__entities__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_delete__entities__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_create__index__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_track__recent__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_get__recents__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_delete__recent__pb2.DESCRIPTOR,protobufs_dot_services_dot_media_dot_actions_dot_start__image__upload__pb2.DESCRIPTOR,protobufs_dot_services_dot_media_dot_actions_dot_complete__image__upload__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_actions_dot_get__groups__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_actions_dot_join__group__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_actions_dot_respond__to__membership__request__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_actions_dot_leave__group__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_actions_dot_get__members__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_actions_dot_get__group__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_actions_dot_add__to__group__pb2.DESCRIPTOR,protobufs_dot_services_dot_group_dot_actions_dot_get__membership__requests__pb2.DESCRIPTOR,protobufs_dot_services_dot_notification_dot_actions_dot_register__device__pb2.DESCRIPTOR,protobufs_dot_services_dot_notification_dot_actions_dot_get__preferences__pb2.DESCRIPTOR,protobufs_dot_services_dot_notification_dot_actions_dot_update__preference__pb2.DESCRIPTOR,protobufs_dot_services_dot_notification_dot_actions_dot_send__notification__pb2.DESCRIPTOR,protobufs_dot_services_dot_notification_dot_actions_dot_no__search__results__pb2.DESCRIPTOR,protobufs_dot_services_dot_history_dot_actions_dot_record__action__pb2.DESCRIPTOR,protobufs_dot_services_dot_payment_dot_actions_dot_store__token__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_actions_dot_create__post__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_actions_dot_get__post__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_actions_dot_get__posts__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_actions_dot_update__post__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_actions_dot_delete__post__pb2.DESCRIPTOR,protobufs_dot_services_dot_feature_dot_actions_dot_get__flags__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_actions_dot_start__upload__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_actions_dot_complete__upload__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_actions_dot_delete__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_actions_dot_get__files__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_actions_dot_upload__pb2.DESCRIPTOR,])
+  dependencies=[service__protobufs_dot_soa__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_create__user__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_authenticate__user__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_get__user__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_complete__authorization__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_get__identities__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_bulk__create__users__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_record__device__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_request__access__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_delete__identity__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_logout__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_get__authentication__instructions__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_get__active__devices__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_bulk__update__users__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_create__organization__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__team__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__organization__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_create__location__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_update__location__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__locations__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__location__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_enable__integration__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__integration__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_disable__integration__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_update__team__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_add__direct__reports__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__location__members__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__profile__reporting__details__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__team__reporting__details__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_set__manager__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_add__location__members__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__teams__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__descendants__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__sso__pb2.DESCRIPTOR,protobufs_dot_services_dot_organization_dot_actions_dot_get__teams__for__profile__ids__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_create__profile__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_get__extended__profile__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_get__profile__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_update__profile__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_get__profiles__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_bulk__create__profiles__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_bulk__update__profiles__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_actions_dot_profile__exists__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_search__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_search__v2__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_update__entities__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_delete__entities__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_create__index__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_track__recent__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_get__recents__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_actions_dot_delete__recent__pb2.DESCRIPTOR,protobufs_dot_services_dot_media_dot_actions_dot_start__image__upload__pb2.DESCRIPTOR,protobufs_dot_services_dot_media_dot_actions_dot_complete__image__upload__pb2.DESCRIPTOR,protobufs_dot_services_dot_notification_dot_actions_dot_register__device__pb2.DESCRIPTOR,protobufs_dot_services_dot_notification_dot_actions_dot_get__preferences__pb2.DESCRIPTOR,protobufs_dot_services_dot_notification_dot_actions_dot_update__preference__pb2.DESCRIPTOR,protobufs_dot_services_dot_notification_dot_actions_dot_send__notification__pb2.DESCRIPTOR,protobufs_dot_services_dot_notification_dot_actions_dot_no__search__results__pb2.DESCRIPTOR,protobufs_dot_services_dot_history_dot_actions_dot_record__action__pb2.DESCRIPTOR,protobufs_dot_services_dot_payment_dot_actions_dot_store__token__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_actions_dot_create__post__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_actions_dot_get__post__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_actions_dot_get__posts__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_actions_dot_update__post__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_actions_dot_delete__post__pb2.DESCRIPTOR,protobufs_dot_services_dot_feature_dot_actions_dot_get__flags__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_actions_dot_start__upload__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_actions_dot_complete__upload__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_actions_dot_delete__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_actions_dot_get__files__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_actions_dot_upload__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_actions_dot_add__members__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_actions_dot_create__team__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_actions_dot_get__team__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_actions_dot_get__members__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_actions_dot_join__team__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_actions_dot_leave__team__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_actions_dot_remove__members__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_actions_dot_update__members__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -214,8 +214,8 @@ _USER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4621,
-  serialized_end=5939,
+  serialized_start=4586,
+  serialized_end=5904,
 )
 
 
@@ -385,8 +385,8 @@ _ORGANIZATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5942,
-  serialized_end=8251,
+  serialized_start=5907,
+  serialized_end=8216,
 )
 
 
@@ -465,8 +465,8 @@ _PROFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8254,
-  serialized_end=9153,
+  serialized_start=8219,
+  serialized_end=9118,
 )
 
 
@@ -545,8 +545,8 @@ _SEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9156,
-  serialized_end=9910,
+  serialized_start=9121,
+  serialized_end=9875,
 )
 
 
@@ -583,88 +583,8 @@ _MEDIA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9913,
-  serialized_end=10136,
-)
-
-
-_GROUP = _descriptor.Descriptor(
-  name='Group',
-  full_name='services.registry.responses.Group',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-    _descriptor.FieldDescriptor(
-      name='get_groups', full_name='services.registry.responses.Group.get_groups', index=0,
-      number=1100, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='join_group', full_name='services.registry.responses.Group.join_group', index=1,
-      number=1101, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='respond_to_membership_request', full_name='services.registry.responses.Group.respond_to_membership_request', index=2,
-      number=1102, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='leave_group', full_name='services.registry.responses.Group.leave_group', index=3,
-      number=1103, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='get_members', full_name='services.registry.responses.Group.get_members', index=4,
-      number=1104, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='get_group', full_name='services.registry.responses.Group.get_group', index=5,
-      number=1105, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='add_to_group', full_name='services.registry.responses.Group.add_to_group', index=6,
-      number=1106, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='get_membership_requests', full_name='services.registry.responses.Group.get_membership_requests', index=7,
-      number=1107, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=True, extension_scope=None,
-      options=None),
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10139,
-  serialized_end=10928,
+  serialized_start=9878,
+  serialized_end=10101,
 )
 
 
@@ -722,8 +642,8 @@ _NOTIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10931,
-  serialized_end=11487,
+  serialized_start=10104,
+  serialized_end=10660,
 )
 
 
@@ -753,8 +673,8 @@ _HISTORY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11489,
-  serialized_end=11595,
+  serialized_start=10662,
+  serialized_end=10768,
 )
 
 
@@ -784,8 +704,8 @@ _PAYMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11597,
-  serialized_end=11699,
+  serialized_start=10770,
+  serialized_end=10872,
 )
 
 
@@ -843,8 +763,8 @@ _POST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11702,
-  serialized_end=12148,
+  serialized_start=10875,
+  serialized_end=11321,
 )
 
 
@@ -874,8 +794,8 @@ _FEATURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12150,
-  serialized_end=12248,
+  serialized_start=11323,
+  serialized_end=11421,
 )
 
 
@@ -933,8 +853,88 @@ _FILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12251,
-  serialized_end=12693,
+  serialized_start=11424,
+  serialized_end=11866,
+)
+
+
+_TEAM = _descriptor.Descriptor(
+  name='Team',
+  full_name='services.registry.responses.Team',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+    _descriptor.FieldDescriptor(
+      name='add_members', full_name='services.registry.responses.Team.add_members', index=0,
+      number=1900, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='create_team', full_name='services.registry.responses.Team.create_team', index=1,
+      number=1901, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_team', full_name='services.registry.responses.Team.get_team', index=2,
+      number=1902, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='get_members', full_name='services.registry.responses.Team.get_members', index=3,
+      number=1903, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='join_team', full_name='services.registry.responses.Team.join_team', index=4,
+      number=1904, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='leave_team', full_name='services.registry.responses.Team.leave_team', index=5,
+      number=1905, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='remove_members', full_name='services.registry.responses.Team.remove_members', index=6,
+      number=1906, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='update_members', full_name='services.registry.responses.Team.update_members', index=7,
+      number=1907, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=True, extension_scope=None,
+      options=None),
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=11869,
+  serialized_end=12595,
 )
 
 DESCRIPTOR.message_types_by_name['User'] = _USER
@@ -942,13 +942,13 @@ DESCRIPTOR.message_types_by_name['Organization'] = _ORGANIZATION
 DESCRIPTOR.message_types_by_name['Profile'] = _PROFILE
 DESCRIPTOR.message_types_by_name['Search'] = _SEARCH
 DESCRIPTOR.message_types_by_name['Media'] = _MEDIA
-DESCRIPTOR.message_types_by_name['Group'] = _GROUP
 DESCRIPTOR.message_types_by_name['Notification'] = _NOTIFICATION
 DESCRIPTOR.message_types_by_name['History'] = _HISTORY
 DESCRIPTOR.message_types_by_name['Payment'] = _PAYMENT
 DESCRIPTOR.message_types_by_name['Post'] = _POST
 DESCRIPTOR.message_types_by_name['Feature'] = _FEATURE
 DESCRIPTOR.message_types_by_name['File'] = _FILE
+DESCRIPTOR.message_types_by_name['Team'] = _TEAM
 
 User = _reflection.GeneratedProtocolMessageType('User', (_message.Message,), dict(
   DESCRIPTOR = _USER,
@@ -984,13 +984,6 @@ Media = _reflection.GeneratedProtocolMessageType('Media', (_message.Message,), d
   # @@protoc_insertion_point(class_scope:services.registry.responses.Media)
   ))
 _sym_db.RegisterMessage(Media)
-
-Group = _reflection.GeneratedProtocolMessageType('Group', (_message.Message,), dict(
-  DESCRIPTOR = _GROUP,
-  __module__ = 'protobufs.services.registry.responses_pb2'
-  # @@protoc_insertion_point(class_scope:services.registry.responses.Group)
-  ))
-_sym_db.RegisterMessage(Group)
 
 Notification = _reflection.GeneratedProtocolMessageType('Notification', (_message.Message,), dict(
   DESCRIPTOR = _NOTIFICATION,
@@ -1033,6 +1026,13 @@ File = _reflection.GeneratedProtocolMessageType('File', (_message.Message,), dic
   # @@protoc_insertion_point(class_scope:services.registry.responses.File)
   ))
 _sym_db.RegisterMessage(File)
+
+Team = _reflection.GeneratedProtocolMessageType('Team', (_message.Message,), dict(
+  DESCRIPTOR = _TEAM,
+  __module__ = 'protobufs.services.registry.responses_pb2'
+  # @@protoc_insertion_point(class_scope:services.registry.responses.Team)
+  ))
+_sym_db.RegisterMessage(Team)
 
 _USER.extensions_by_name['create_user'].message_type = protobufs_dot_services_dot_user_dot_actions_dot_create__user__pb2._RESPONSEV1
 service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_USER.extensions_by_name['create_user'])
@@ -1138,22 +1138,6 @@ _MEDIA.extensions_by_name['start_image_upload'].message_type = protobufs_dot_ser
 service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_MEDIA.extensions_by_name['start_image_upload'])
 _MEDIA.extensions_by_name['complete_image_upload'].message_type = protobufs_dot_services_dot_media_dot_actions_dot_complete__image__upload__pb2._RESPONSEV1
 service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_MEDIA.extensions_by_name['complete_image_upload'])
-_GROUP.extensions_by_name['get_groups'].message_type = protobufs_dot_services_dot_group_dot_actions_dot_get__groups__pb2._RESPONSEV1
-service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_GROUP.extensions_by_name['get_groups'])
-_GROUP.extensions_by_name['join_group'].message_type = protobufs_dot_services_dot_group_dot_actions_dot_join__group__pb2._RESPONSEV1
-service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_GROUP.extensions_by_name['join_group'])
-_GROUP.extensions_by_name['respond_to_membership_request'].message_type = protobufs_dot_services_dot_group_dot_actions_dot_respond__to__membership__request__pb2._RESPONSEV1
-service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_GROUP.extensions_by_name['respond_to_membership_request'])
-_GROUP.extensions_by_name['leave_group'].message_type = protobufs_dot_services_dot_group_dot_actions_dot_leave__group__pb2._RESPONSEV1
-service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_GROUP.extensions_by_name['leave_group'])
-_GROUP.extensions_by_name['get_members'].message_type = protobufs_dot_services_dot_group_dot_actions_dot_get__members__pb2._RESPONSEV1
-service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_GROUP.extensions_by_name['get_members'])
-_GROUP.extensions_by_name['get_group'].message_type = protobufs_dot_services_dot_group_dot_actions_dot_get__group__pb2._RESPONSEV1
-service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_GROUP.extensions_by_name['get_group'])
-_GROUP.extensions_by_name['add_to_group'].message_type = protobufs_dot_services_dot_group_dot_actions_dot_add__to__group__pb2._RESPONSEV1
-service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_GROUP.extensions_by_name['add_to_group'])
-_GROUP.extensions_by_name['get_membership_requests'].message_type = protobufs_dot_services_dot_group_dot_actions_dot_get__membership__requests__pb2._RESPONSEV1
-service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_GROUP.extensions_by_name['get_membership_requests'])
 _NOTIFICATION.extensions_by_name['register_device'].message_type = protobufs_dot_services_dot_notification_dot_actions_dot_register__device__pb2._RESPONSEV1
 service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_NOTIFICATION.extensions_by_name['register_device'])
 _NOTIFICATION.extensions_by_name['get_preferences'].message_type = protobufs_dot_services_dot_notification_dot_actions_dot_get__preferences__pb2._RESPONSEV1
@@ -1190,6 +1174,22 @@ _FILE.extensions_by_name['get_files'].message_type = protobufs_dot_services_dot_
 service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_FILE.extensions_by_name['get_files'])
 _FILE.extensions_by_name['upload'].message_type = protobufs_dot_services_dot_file_dot_actions_dot_upload__pb2._RESPONSEV1
 service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_FILE.extensions_by_name['upload'])
+_TEAM.extensions_by_name['add_members'].message_type = protobufs_dot_services_dot_team_dot_actions_dot_add__members__pb2._RESPONSEV1
+service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_TEAM.extensions_by_name['add_members'])
+_TEAM.extensions_by_name['create_team'].message_type = protobufs_dot_services_dot_team_dot_actions_dot_create__team__pb2._RESPONSEV1
+service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_TEAM.extensions_by_name['create_team'])
+_TEAM.extensions_by_name['get_team'].message_type = protobufs_dot_services_dot_team_dot_actions_dot_get__team__pb2._RESPONSEV1
+service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_TEAM.extensions_by_name['get_team'])
+_TEAM.extensions_by_name['get_members'].message_type = protobufs_dot_services_dot_team_dot_actions_dot_get__members__pb2._RESPONSEV1
+service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_TEAM.extensions_by_name['get_members'])
+_TEAM.extensions_by_name['join_team'].message_type = protobufs_dot_services_dot_team_dot_actions_dot_join__team__pb2._RESPONSEV1
+service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_TEAM.extensions_by_name['join_team'])
+_TEAM.extensions_by_name['leave_team'].message_type = protobufs_dot_services_dot_team_dot_actions_dot_leave__team__pb2._RESPONSEV1
+service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_TEAM.extensions_by_name['leave_team'])
+_TEAM.extensions_by_name['remove_members'].message_type = protobufs_dot_services_dot_team_dot_actions_dot_remove__members__pb2._RESPONSEV1
+service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_TEAM.extensions_by_name['remove_members'])
+_TEAM.extensions_by_name['update_members'].message_type = protobufs_dot_services_dot_team_dot_actions_dot_update__members__pb2._RESPONSEV1
+service__protobufs_dot_soa__pb2.ActionResultV1.RegisterExtension(_TEAM.extensions_by_name['update_members'])
 
 DESCRIPTOR.has_options = True
 DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b'\n0com.rhlabs.protobufs.services.registry.responses')

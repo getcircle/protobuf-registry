@@ -44,7 +44,7 @@ public extension Services.Organization.Actions.DisableIntegration {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.GoogleGroups
+    public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.SlackSlashCommand
     public private(set) var hasIntegrationType:Bool = false
     required public init() {
          super.init()
@@ -178,7 +178,7 @@ public extension Services.Organization.Actions.DisableIntegration {
         }
         public func clearIntegrationType() -> Services.Organization.Actions.DisableIntegration.RequestV1.Builder {
            builderResult.hasIntegrationType = false
-           builderResult.integrationType = .GoogleGroups
+           builderResult.integrationType = .SlackSlashCommand
            return self
         }
       override public var internalGetResult:GeneratedMessage {

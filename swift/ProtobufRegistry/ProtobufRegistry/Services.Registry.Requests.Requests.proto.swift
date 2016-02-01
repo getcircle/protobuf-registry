@@ -50,15 +50,6 @@ public func == (lhs: Services.Registry.Requests.Media, rhs: Services.Registry.Re
   return fieldCheck
 }
 
-public func == (lhs: Services.Registry.Requests.Group, rhs: Services.Registry.Requests.Group) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
 public func == (lhs: Services.Registry.Requests.Notification, rhs: Services.Registry.Requests.Notification) -> Bool {
   if (lhs === rhs) {
     return true
@@ -105,6 +96,15 @@ public func == (lhs: Services.Registry.Requests.Feature, rhs: Services.Registry.
 }
 
 public func == (lhs: Services.Registry.Requests.File, rhs: Services.Registry.Requests.File) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
+public func == (lhs: Services.Registry.Requests.Team, rhs: Services.Registry.Requests.Team) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -373,46 +373,6 @@ public var ServicesRegistryRequestsMediacompleteImageUpload:ConcreateExtensionFi
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsMediacompleteImageUploadStatic
    }
 }
-public var ServicesRegistryRequestsGroupgetGroups:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGroupgetGroupsStatic
-   }
-}
-public var ServicesRegistryRequestsGroupjoinGroup:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGroupjoinGroupStatic
-   }
-}
-public var ServicesRegistryRequestsGrouprespondToMembershipRequest:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGrouprespondToMembershipRequestStatic
-   }
-}
-public var ServicesRegistryRequestsGroupleaveGroup:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGroupleaveGroupStatic
-   }
-}
-public var ServicesRegistryRequestsGroupgetMembers:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGroupgetMembersStatic
-   }
-}
-public var ServicesRegistryRequestsGroupgetGroup:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGroupgetGroupStatic
-   }
-}
-public var ServicesRegistryRequestsGroupaddToGroup:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGroupaddToGroupStatic
-   }
-}
-public var ServicesRegistryRequestsGroupgetMembershipRequests:ConcreateExtensionField {
-   get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsGroupgetMembershipRequestsStatic
-   }
-}
 public var ServicesRegistryRequestsNotificationregisterDevice:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsNotificationregisterDeviceStatic
@@ -503,6 +463,46 @@ public var ServicesRegistryRequestsFileupload:ConcreateExtensionField {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsFileuploadStatic
    }
 }
+public var ServicesRegistryRequestsTeamaddMembers:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamaddMembersStatic
+   }
+}
+public var ServicesRegistryRequestsTeamcreateTeam:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamcreateTeamStatic
+   }
+}
+public var ServicesRegistryRequestsTeamgetTeam:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamgetTeamStatic
+   }
+}
+public var ServicesRegistryRequestsTeamgetMembers:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamgetMembersStatic
+   }
+}
+public var ServicesRegistryRequestsTeamjoinTeam:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamjoinTeamStatic
+   }
+}
+public var ServicesRegistryRequestsTeamleaveTeam:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamleaveTeamStatic
+   }
+}
+public var ServicesRegistryRequestsTeamremoveMembers:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamremoveMembersStatic
+   }
+}
+public var ServicesRegistryRequestsTeamupdateMembers:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamupdateMembersStatic
+   }
+}
 public extension Services.Registry.Requests {
   public struct RequestsRoot {
     public static var sharedInstance : RequestsRoot {
@@ -563,14 +563,6 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsSearchdeleteRecentStatic:ConcreateExtensionField
     var ServicesRegistryRequestsMediastartImageUploadStatic:ConcreateExtensionField
     var ServicesRegistryRequestsMediacompleteImageUploadStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsGroupgetGroupsStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsGroupjoinGroupStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsGrouprespondToMembershipRequestStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsGroupleaveGroupStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsGroupgetMembersStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsGroupgetGroupStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsGroupaddToGroupStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsGroupgetMembershipRequestsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsNotificationregisterDeviceStatic:ConcreateExtensionField
     var ServicesRegistryRequestsNotificationgetPreferencesStatic:ConcreateExtensionField
     var ServicesRegistryRequestsNotificationupdatePreferenceStatic:ConcreateExtensionField
@@ -589,6 +581,14 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsFiledeleteStatic:ConcreateExtensionField
     var ServicesRegistryRequestsFilegetFilesStatic:ConcreateExtensionField
     var ServicesRegistryRequestsFileuploadStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamaddMembersStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamcreateTeamStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamgetTeamStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamgetMembersStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamjoinTeamStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamleaveTeamStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamremoveMembersStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamupdateMembersStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -644,14 +644,6 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsSearchdeleteRecentStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 407, defaultValue:Services.Search.Actions.DeleteRecent.RequestV1(), messageOrGroupClass:Services.Search.Actions.DeleteRecent.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsMediastartImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 600, defaultValue:Services.Media.Actions.StartImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.StartImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsMediacompleteImageUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 601, defaultValue:Services.Media.Actions.CompleteImageUpload.RequestV1(), messageOrGroupClass:Services.Media.Actions.CompleteImageUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsGroupgetGroupsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1100, defaultValue:Services.Group.Actions.GetGroups.RequestV1(), messageOrGroupClass:Services.Group.Actions.GetGroups.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsGroupjoinGroupStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1101, defaultValue:Services.Group.Actions.JoinGroup.RequestV1(), messageOrGroupClass:Services.Group.Actions.JoinGroup.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsGrouprespondToMembershipRequestStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1102, defaultValue:Services.Group.Actions.RespondToMembershipRequest.RequestV1(), messageOrGroupClass:Services.Group.Actions.RespondToMembershipRequest.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsGroupleaveGroupStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1103, defaultValue:Services.Group.Actions.LeaveGroup.RequestV1(), messageOrGroupClass:Services.Group.Actions.LeaveGroup.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsGroupgetMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1104, defaultValue:Services.Group.Actions.GetMembers.RequestV1(), messageOrGroupClass:Services.Group.Actions.GetMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsGroupgetGroupStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1105, defaultValue:Services.Group.Actions.GetGroup.RequestV1(), messageOrGroupClass:Services.Group.Actions.GetGroup.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsGroupaddToGroupStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1106, defaultValue:Services.Group.Actions.AddToGroup.RequestV1(), messageOrGroupClass:Services.Group.Actions.AddToGroup.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsGroupgetMembershipRequestsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1107, defaultValue:Services.Group.Actions.GetMembershipRequests.RequestV1(), messageOrGroupClass:Services.Group.Actions.GetMembershipRequests.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsNotificationregisterDeviceStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1300, defaultValue:Services.Notification.Actions.RegisterDevice.RequestV1(), messageOrGroupClass:Services.Notification.Actions.RegisterDevice.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsNotificationgetPreferencesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1301, defaultValue:Services.Notification.Actions.GetPreferences.RequestV1(), messageOrGroupClass:Services.Notification.Actions.GetPreferences.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsNotificationupdatePreferenceStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1302, defaultValue:Services.Notification.Actions.UpdatePreference.RequestV1(), messageOrGroupClass:Services.Notification.Actions.UpdatePreference.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -670,6 +662,14 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsFiledeleteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1802, defaultValue:Services.File.Actions.Delete.RequestV1(), messageOrGroupClass:Services.File.Actions.Delete.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsFilegetFilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1803, defaultValue:Services.File.Actions.GetFiles.RequestV1(), messageOrGroupClass:Services.File.Actions.GetFiles.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsFileuploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1804, defaultValue:Services.File.Actions.Upload.RequestV1(), messageOrGroupClass:Services.File.Actions.Upload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamaddMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1900, defaultValue:Services.Team.Actions.AddMembers.RequestV1(), messageOrGroupClass:Services.Team.Actions.AddMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamcreateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1901, defaultValue:Services.Team.Actions.CreateTeam.RequestV1(), messageOrGroupClass:Services.Team.Actions.CreateTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamgetTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1902, defaultValue:Services.Team.Actions.GetTeam.RequestV1(), messageOrGroupClass:Services.Team.Actions.GetTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamgetMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1903, defaultValue:Services.Team.Actions.GetMembers.RequestV1(), messageOrGroupClass:Services.Team.Actions.GetMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamjoinTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1904, defaultValue:Services.Team.Actions.JoinTeam.RequestV1(), messageOrGroupClass:Services.Team.Actions.JoinTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamleaveTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1905, defaultValue:Services.Team.Actions.LeaveTeam.RequestV1(), messageOrGroupClass:Services.Team.Actions.LeaveTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamremoveMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1906, defaultValue:Services.Team.Actions.RemoveMembers.RequestV1(), messageOrGroupClass:Services.Team.Actions.RemoveMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamupdateMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1907, defaultValue:Services.Team.Actions.UpdateMembers.RequestV1(), messageOrGroupClass:Services.Team.Actions.UpdateMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -725,14 +725,6 @@ public extension Services.Registry.Requests {
       Services.Search.Actions.DeleteRecent.DeleteRecentRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Actions.StartImageUpload.StartImageUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Media.Actions.CompleteImageUpload.CompleteImageUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Group.Actions.GetGroups.GetGroupsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Group.Actions.JoinGroup.JoinGroupRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Group.Actions.RespondToMembershipRequest.RespondToMembershipRequestRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Group.Actions.LeaveGroup.LeaveGroupRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Group.Actions.GetMembers.GetMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Group.Actions.GetGroup.GetGroupRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Group.Actions.AddToGroup.AddToGroupRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Group.Actions.GetMembershipRequests.GetMembershipRequestsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Notification.Actions.RegisterDevice.RegisterDeviceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Notification.Actions.GetPreferences.GetPreferencesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Notification.Actions.UpdatePreference.UpdatePreferenceRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -751,6 +743,14 @@ public extension Services.Registry.Requests {
       Services.File.Actions.Delete.DeleteRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.GetFiles.GetFilesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.Upload.UploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.AddMembers.AddMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.CreateTeam.CreateTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.GetTeam.GetTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.GetMembers.GetMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.JoinTeam.JoinTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.LeaveTeam.LeaveTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.RemoveMembers.RemoveMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.UpdateMembers.UpdateMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryRequestsUsercreateUserStatic)
@@ -805,14 +805,6 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsSearchdeleteRecentStatic)
       registry.addExtension(ServicesRegistryRequestsMediastartImageUploadStatic)
       registry.addExtension(ServicesRegistryRequestsMediacompleteImageUploadStatic)
-      registry.addExtension(ServicesRegistryRequestsGroupgetGroupsStatic)
-      registry.addExtension(ServicesRegistryRequestsGroupjoinGroupStatic)
-      registry.addExtension(ServicesRegistryRequestsGrouprespondToMembershipRequestStatic)
-      registry.addExtension(ServicesRegistryRequestsGroupleaveGroupStatic)
-      registry.addExtension(ServicesRegistryRequestsGroupgetMembersStatic)
-      registry.addExtension(ServicesRegistryRequestsGroupgetGroupStatic)
-      registry.addExtension(ServicesRegistryRequestsGroupaddToGroupStatic)
-      registry.addExtension(ServicesRegistryRequestsGroupgetMembershipRequestsStatic)
       registry.addExtension(ServicesRegistryRequestsNotificationregisterDeviceStatic)
       registry.addExtension(ServicesRegistryRequestsNotificationgetPreferencesStatic)
       registry.addExtension(ServicesRegistryRequestsNotificationupdatePreferenceStatic)
@@ -831,6 +823,14 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsFiledeleteStatic)
       registry.addExtension(ServicesRegistryRequestsFilegetFilesStatic)
       registry.addExtension(ServicesRegistryRequestsFileuploadStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamaddMembersStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamcreateTeamStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamgetTeamStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamgetMembersStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamjoinTeamStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamleaveTeamStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamremoveMembersStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamupdateMembersStatic)
     }
   }
 
@@ -1730,182 +1730,6 @@ public extension Services.Registry.Requests {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
       public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Media.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-        while (true) {
-          let tag = try input.readTag()
-          switch tag {
-          case 0: 
-            self.unknownFields = try unknownFieldsBuilder.build()
-            return self
-
-          default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
-               unknownFields = try unknownFieldsBuilder.build()
-               return self
-            }
-          }
-        }
-      }
-    }
-
-  }
-
-  final public class Group : GeneratedMessage, GeneratedMessageProtocol {
-    public class func getGroups() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsGroupgetGroups
-    }
-    public class func joinGroup() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsGroupjoinGroup
-    }
-    public class func respondToMembershipRequest() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsGrouprespondToMembershipRequest
-    }
-    public class func leaveGroup() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsGroupleaveGroup
-    }
-    public class func getMembers() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsGroupgetMembers
-    }
-    public class func getGroup() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsGroupgetGroup
-    }
-    public class func addToGroup() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsGroupaddToGroup
-    }
-    public class func getMembershipRequests() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsGroupgetMembershipRequests
-    }
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      try unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Registry.Requests.Group> {
-      var mergedArray = Array<Services.Registry.Requests.Group>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Registry.Requests.Group? {
-      return try Services.Registry.Requests.Group.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Services.Registry.Requests.Group {
-      return try Services.Registry.Requests.Group.Builder().mergeFromData(data, extensionRegistry:Services.Registry.Requests.RequestsRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Group {
-      return try Services.Registry.Requests.Group.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Registry.Requests.Group {
-      return try Services.Registry.Requests.Group.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Group {
-      return try Services.Registry.Requests.Group.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Registry.Requests.Group {
-      return try Services.Registry.Requests.Group.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Group {
-      return try Services.Registry.Requests.Group.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func getBuilder() -> Services.Registry.Requests.Group.Builder {
-      return Services.Registry.Requests.Group.classBuilder() as! Services.Registry.Requests.Group.Builder
-    }
-    public func getBuilder() -> Services.Registry.Requests.Group.Builder {
-      return classBuilder() as! Services.Registry.Requests.Group.Builder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Registry.Requests.Group.Builder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Registry.Requests.Group.Builder()
-    }
-    public func toBuilder() throws -> Services.Registry.Requests.Group.Builder {
-      return try Services.Registry.Requests.Group.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Registry.Requests.Group) throws -> Services.Registry.Requests.Group.Builder {
-      return try Services.Registry.Requests.Group.Builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Registry.Requests.Group"
-    }
-    override public func className() -> String {
-        return "Services.Registry.Requests.Group"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Registry.Requests.Group.self
-    }
-    //Meta information declaration end
-
-    final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Services.Registry.Requests.Group = Services.Registry.Requests.Group()
-      public func getMessage() -> Services.Registry.Requests.Group {
-          return builderResult
-      }
-
-      required override public init () {
-         super.init()
-      }
-      override public var internalGetResult:GeneratedMessage {
-           get {
-              return builderResult
-           }
-      }
-      public override func clear() -> Services.Registry.Requests.Group.Builder {
-        builderResult = Services.Registry.Requests.Group()
-        return self
-      }
-      public override func clone() throws -> Services.Registry.Requests.Group.Builder {
-        return try Services.Registry.Requests.Group.builderWithPrototype(builderResult)
-      }
-      public override func build() throws -> Services.Registry.Requests.Group {
-           try checkInitialized()
-           return buildPartial()
-      }
-      public func buildPartial() -> Services.Registry.Requests.Group {
-        let returnMe:Services.Registry.Requests.Group = builderResult
-        return returnMe
-      }
-      public func mergeFrom(other:Services.Registry.Requests.Group) throws -> Services.Registry.Requests.Group.Builder {
-        if other == Services.Registry.Requests.Group() {
-         return self
-        }
-        try mergeUnknownFields(other.unknownFields)
-        return self
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Registry.Requests.Group.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Group.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let tag = try input.readTag()
@@ -2872,6 +2696,182 @@ public extension Services.Registry.Requests {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
       public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.File.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class Team : GeneratedMessage, GeneratedMessageProtocol {
+    public class func addMembers() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamaddMembers
+    }
+    public class func createTeam() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamcreateTeam
+    }
+    public class func getTeam() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamgetTeam
+    }
+    public class func getMembers() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamgetMembers
+    }
+    public class func joinTeam() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamjoinTeam
+    }
+    public class func leaveTeam() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamleaveTeam
+    }
+    public class func removeMembers() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamremoveMembers
+    }
+    public class func updateMembers() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamupdateMembers
+    }
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Registry.Requests.Team> {
+      var mergedArray = Array<Services.Registry.Requests.Team>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Registry.Requests.Team? {
+      return try Services.Registry.Requests.Team.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.Registry.Requests.Team {
+      return try Services.Registry.Requests.Team.Builder().mergeFromData(data, extensionRegistry:Services.Registry.Requests.RequestsRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Team {
+      return try Services.Registry.Requests.Team.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Registry.Requests.Team {
+      return try Services.Registry.Requests.Team.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Team {
+      return try Services.Registry.Requests.Team.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Registry.Requests.Team {
+      return try Services.Registry.Requests.Team.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Team {
+      return try Services.Registry.Requests.Team.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.Registry.Requests.Team.Builder {
+      return Services.Registry.Requests.Team.classBuilder() as! Services.Registry.Requests.Team.Builder
+    }
+    public func getBuilder() -> Services.Registry.Requests.Team.Builder {
+      return classBuilder() as! Services.Registry.Requests.Team.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Registry.Requests.Team.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Registry.Requests.Team.Builder()
+    }
+    public func toBuilder() throws -> Services.Registry.Requests.Team.Builder {
+      return try Services.Registry.Requests.Team.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Registry.Requests.Team) throws -> Services.Registry.Requests.Team.Builder {
+      return try Services.Registry.Requests.Team.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Registry.Requests.Team"
+    }
+    override public func className() -> String {
+        return "Services.Registry.Requests.Team"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Registry.Requests.Team.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.Registry.Requests.Team = Services.Registry.Requests.Team()
+      public func getMessage() -> Services.Registry.Requests.Team {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.Registry.Requests.Team.Builder {
+        builderResult = Services.Registry.Requests.Team()
+        return self
+      }
+      public override func clone() throws -> Services.Registry.Requests.Team.Builder {
+        return try Services.Registry.Requests.Team.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.Registry.Requests.Team {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.Registry.Requests.Team {
+        let returnMe:Services.Registry.Requests.Team = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.Registry.Requests.Team) throws -> Services.Registry.Requests.Team.Builder {
+        if other == Services.Registry.Requests.Team() {
+         return self
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Registry.Requests.Team.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Registry.Requests.Team.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let tag = try input.readTag()

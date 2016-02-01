@@ -87,6 +87,15 @@ import "protobufs/services/file/actions/delete.proto";
 import "protobufs/services/file/actions/get_files.proto";
 import "protobufs/services/file/actions/upload.proto";
 
+import "protobufs/services/team/actions/add_members.proto";
+import "protobufs/services/team/actions/create_team.proto";
+import "protobufs/services/team/actions/get_team.proto";
+import "protobufs/services/team/actions/get_members.proto";
+import "protobufs/services/team/actions/join_team.proto";
+import "protobufs/services/team/actions/leave_team.proto";
+import "protobufs/services/team/actions/remove_members.proto";
+import "protobufs/services/team/actions/update_members.proto";
+
 message User {
     reserved 101, 104, 105, 106, 107, 117;
     extend soa.ActionRequestParamsV1 {
@@ -218,5 +227,18 @@ message File {
         optional services.file.actions.delete.RequestV1 delete = 1802;
         optional services.file.actions.get_files.RequestV1 get_files = 1803;
         optional services.file.actions.upload.RequestV1 upload = 1804;
+    }
+}
+
+message Team {
+    extend soa.ActionRequestParamsV1 {
+        optional services.team.actions.add_members.RequestV1 add_members = 1900;
+        optional services.team.actions.create_team.RequestV1 create_team = 1901;
+        optional services.team.actions.get_team.RequestV1 get_team = 1902;
+        optional services.team.actions.get_members.RequestV1 get_members = 1903;
+        optional services.team.actions.join_team.RequestV1 join_team = 1904;
+        optional services.team.actions.leave_team.RequestV1 leave_team = 1905;
+        optional services.team.actions.remove_members.RequestV1 remove_members = 1906;
+        optional services.team.actions.update_members.RequestV1 update_members = 1907;
     }
 }

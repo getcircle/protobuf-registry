@@ -1,7 +1,6 @@
 syntax = "proto3";
 package services.search.containers;
 
-import "protobufs/services/group/containers.proto";
 import "protobufs/services/organization/containers.proto";
 import "protobufs/services/post/containers.proto";
 import "protobufs/services/profile/containers.proto";
@@ -13,11 +12,11 @@ message TrackingDetailsV1 {
 }
 
 message SearchResultV1 {
+    reserved 4;
     oneof result_object {
         services.profile.containers.ProfileV1 profile = 1;
         services.organization.containers.TeamV1 team = 2;
         services.organization.containers.LocationV1 location = 3;
-        services.group.containers.GroupV1 group = 4;
         services.post.containers.PostV1 post = 5;
     }
     float score = 6;
@@ -26,11 +25,11 @@ message SearchResultV1 {
 }
 
 message RecentResultV1 {
+    reserved 4;
     oneof result_object {
         services.profile.containers.ProfileV1 profile = 1;
         services.organization.containers.TeamV1 team = 2;
         services.organization.containers.LocationV1 location = 3;
-        services.group.containers.GroupV1 group = 4;
         services.post.containers.PostV1 post = 5;
     }
 }
