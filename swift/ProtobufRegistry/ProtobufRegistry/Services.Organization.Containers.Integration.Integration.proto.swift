@@ -13,22 +13,9 @@ public func == (lhs: Services.Organization.Containers.Integration.IntegrationV1,
   fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = fieldCheck && (lhs.hasIntegrationType == rhs.hasIntegrationType) && (!lhs.hasIntegrationType || lhs.integrationType == rhs.integrationType)
-  fieldCheck = fieldCheck && (lhs.hasGoogleGroups == rhs.hasGoogleGroups) && (!lhs.hasGoogleGroups || lhs.googleGroups == rhs.googleGroups)
   fieldCheck = fieldCheck && (lhs.hasSlackSlashCommand == rhs.hasSlackSlashCommand) && (!lhs.hasSlackSlashCommand || lhs.slackSlashCommand == rhs.slackSlashCommand)
   fieldCheck = fieldCheck && (lhs.hasSlackWebApi == rhs.hasSlackWebApi) && (!lhs.hasSlackWebApi || lhs.slackWebApi == rhs.slackWebApi)
   fieldCheck = fieldCheck && (lhs.hasProviderUid == rhs.hasProviderUid) && (!lhs.hasProviderUid || lhs.providerUid == rhs.providerUid)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Services.Organization.Containers.Integration.GoogleGroupDetailsV1, rhs: Services.Organization.Containers.Integration.GoogleGroupDetailsV1) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasAdminEmail == rhs.hasAdminEmail) && (!lhs.hasAdminEmail || lhs.adminEmail == rhs.adminEmail)
-  fieldCheck = fieldCheck && (lhs.scopes == rhs.scopes)
-  fieldCheck = fieldCheck && (lhs.hasReadOnly == rhs.hasReadOnly) && (!lhs.hasReadOnly || lhs.readOnly == rhs.readOnly)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -80,9 +67,8 @@ public extension Services.Organization.Containers.Integration {
   //Enum type declaration start 
 
   public enum IntegrationTypeV1:Int32 {
-    case GoogleGroups = 0
-    case SlackSlashCommand = 1
-    case SlackWebApi = 2
+    case SlackSlashCommand = 0
+    case SlackWebApi = 1
 
   }
 
@@ -102,16 +88,6 @@ public extension Services.Organization.Containers.Integration {
                 return false
            default:
                 return true
-           }
-      }
-      case GoogleGroups(Services.Organization.Containers.Integration.GoogleGroupDetailsV1)
-
-      public static func getGoogleGroups(value:Details) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1? {
-           switch value {
-           case .GoogleGroups(let enumValue):
-                return enumValue
-           default:
-                return nil
            }
       }
       case SlackSlashCommand(Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1)
@@ -144,26 +120,8 @@ public extension Services.Organization.Containers.Integration {
     public private(set) var hasOrganizationId:Bool = false
     public private(set) var organizationId:String = ""
 
-    public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.GoogleGroups
+    public private(set) var integrationType:Services.Organization.Containers.Integration.IntegrationTypeV1 = Services.Organization.Containers.Integration.IntegrationTypeV1.SlackSlashCommand
     public private(set) var hasIntegrationType:Bool = false
-    public private(set) var hasGoogleGroups:Bool {
-          get {
-               if IntegrationV1.Details.getGoogleGroups(storageDetails) == nil {
-                   return false
-               }
-               return true
-          }
-          set(newValue) {
-          }
-    }
-    public private(set) var googleGroups:Services.Organization.Containers.Integration.GoogleGroupDetailsV1!{
-         get {
-              return IntegrationV1.Details.getGoogleGroups(storageDetails)
-         }
-         set (newvalue) {
-              storageDetails = IntegrationV1.Details.GoogleGroups(newvalue)
-         }
-    }
     public private(set) var hasSlackSlashCommand:Bool {
           get {
                if IntegrationV1.Details.getSlackSlashCommand(storageDetails) == nil {
@@ -219,17 +177,14 @@ public extension Services.Organization.Containers.Integration {
       if hasIntegrationType {
         try output.writeEnum(3, value:integrationType.rawValue)
       }
-      if hasGoogleGroups {
-        try output.writeMessage(4, value:googleGroups)
-      }
       if hasSlackSlashCommand {
-        try output.writeMessage(5, value:slackSlashCommand)
+        try output.writeMessage(4, value:slackSlashCommand)
       }
       if hasSlackWebApi {
-        try output.writeMessage(6, value:slackWebApi)
+        try output.writeMessage(5, value:slackWebApi)
       }
       if hasProviderUid {
-        try output.writeString(7, value:providerUid)
+        try output.writeString(6, value:providerUid)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -249,23 +204,18 @@ public extension Services.Organization.Containers.Integration {
       if (hasIntegrationType) {
         serialize_size += integrationType.rawValue.computeEnumSize(3)
       }
-      if hasGoogleGroups {
-          if let varSizegoogleGroups = googleGroups?.computeMessageSize(4) {
-              serialize_size += varSizegoogleGroups
-          }
-      }
       if hasSlackSlashCommand {
-          if let varSizeslackSlashCommand = slackSlashCommand?.computeMessageSize(5) {
+          if let varSizeslackSlashCommand = slackSlashCommand?.computeMessageSize(4) {
               serialize_size += varSizeslackSlashCommand
           }
       }
       if hasSlackWebApi {
-          if let varSizeslackWebApi = slackWebApi?.computeMessageSize(6) {
+          if let varSizeslackWebApi = slackWebApi?.computeMessageSize(5) {
               serialize_size += varSizeslackWebApi
           }
       }
       if hasProviderUid {
-        serialize_size += providerUid.computeStringSize(7)
+        serialize_size += providerUid.computeStringSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -327,11 +277,6 @@ public extension Services.Organization.Containers.Integration {
       if (hasIntegrationType) {
         output += "\(indent) integrationType: \(integrationType.rawValue)\n"
       }
-      if hasGoogleGroups {
-        output += "\(indent) googleGroups {\n"
-        try googleGroups?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
-      }
       if hasSlackSlashCommand {
         output += "\(indent) slackSlashCommand {\n"
         try slackSlashCommand?.writeDescriptionTo(&output, indent:"\(indent)  ")
@@ -358,11 +303,6 @@ public extension Services.Organization.Containers.Integration {
             }
             if hasIntegrationType {
                hashCode = (hashCode &* 31) &+ Int(integrationType.rawValue)
-            }
-            if hasGoogleGroups {
-                if let hashValuegoogleGroups = googleGroups?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuegoogleGroups
-                }
             }
             if hasSlackSlashCommand {
                 if let hashValueslackSlashCommand = slackSlashCommand?.hashValue {
@@ -471,60 +411,9 @@ public extension Services.Organization.Containers.Integration {
         }
         public func clearIntegrationType() -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
            builderResult.hasIntegrationType = false
-           builderResult.integrationType = .GoogleGroups
+           builderResult.integrationType = .SlackSlashCommand
            return self
         }
-      public var hasGoogleGroups:Bool {
-           get {
-               return builderResult.hasGoogleGroups
-           }
-      }
-      public var googleGroups:Services.Organization.Containers.Integration.GoogleGroupDetailsV1! {
-           get {
-               if googleGroupsBuilder_ != nil {
-                  builderResult.googleGroups = googleGroupsBuilder_.getMessage()
-               }
-               return builderResult.googleGroups
-           }
-           set (value) {
-               builderResult.hasGoogleGroups = true
-               builderResult.googleGroups = value
-           }
-      }
-      private var googleGroupsBuilder_:Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder! {
-           didSet {
-              builderResult.hasGoogleGroups = true
-           }
-      }
-      public func getGoogleGroupsBuilder() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-        if googleGroupsBuilder_ == nil {
-           googleGroupsBuilder_ = Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder()
-           builderResult.googleGroups = googleGroupsBuilder_.getMessage()
-           if googleGroups != nil {
-              try! googleGroupsBuilder_.mergeFrom(googleGroups)
-           }
-        }
-        return googleGroupsBuilder_
-      }
-      public func setGoogleGroups(value:Services.Organization.Containers.Integration.GoogleGroupDetailsV1!) -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
-        self.googleGroups = value
-        return self
-      }
-      public func mergeGoogleGroups(value:Services.Organization.Containers.Integration.GoogleGroupDetailsV1) throws -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
-        if builderResult.hasGoogleGroups {
-          builderResult.googleGroups = try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builderWithPrototype(builderResult.googleGroups).mergeFrom(value).buildPartial()
-        } else {
-          builderResult.googleGroups = value
-        }
-        builderResult.hasGoogleGroups = true
-        return self
-      }
-      public func clearGoogleGroups() -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
-        googleGroupsBuilder_ = nil
-        builderResult.hasGoogleGroups = false
-        builderResult.googleGroups = nil
-        return self
-      }
       public var hasSlackSlashCommand:Bool {
            get {
                return builderResult.hasSlackSlashCommand
@@ -683,9 +572,6 @@ public extension Services.Organization.Containers.Integration {
         if other.hasIntegrationType {
              integrationType = other.integrationType
         }
-        if (other.hasGoogleGroups) {
-            try mergeGoogleGroups(other.googleGroups)
-        }
         if (other.hasSlackSlashCommand) {
             try mergeSlackSlashCommand(other.slackSlashCommand)
         }
@@ -725,14 +611,6 @@ public extension Services.Organization.Containers.Integration {
             }
 
           case 34 :
-            let subBuilder:Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder = Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder()
-            if hasGoogleGroups {
-              try subBuilder.mergeFrom(googleGroups)
-            }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-            googleGroups = subBuilder.buildPartial()
-
-          case 42 :
             let subBuilder:Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder = Services.Organization.Containers.Integration.SlackSlashCommandDetailsV1.Builder()
             if hasSlackSlashCommand {
               try subBuilder.mergeFrom(slackSlashCommand)
@@ -740,7 +618,7 @@ public extension Services.Organization.Containers.Integration {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             slackSlashCommand = subBuilder.buildPartial()
 
-          case 50 :
+          case 42 :
             let subBuilder:Services.Organization.Containers.Integration.SlackWebApiDetailsV1.Builder = Services.Organization.Containers.Integration.SlackWebApiDetailsV1.Builder()
             if hasSlackWebApi {
               try subBuilder.mergeFrom(slackWebApi)
@@ -748,290 +626,8 @@ public extension Services.Organization.Containers.Integration {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             slackWebApi = subBuilder.buildPartial()
 
-          case 58 :
+          case 50 :
             providerUid = try input.readString()
-
-          default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
-               unknownFields = try unknownFieldsBuilder.build()
-               return self
-            }
-          }
-        }
-      }
-    }
-
-  }
-
-  final public class GoogleGroupDetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasAdminEmail:Bool = false
-    public private(set) var adminEmail:String = ""
-
-    public private(set) var scopes:Array<String> = Array<String>()
-    public private(set) var hasReadOnly:Bool = false
-    public private(set) var readOnly:Bool = false
-
-    required public init() {
-         super.init()
-    }
-    override public func isInitialized() -> Bool {
-     return true
-    }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasAdminEmail {
-        try output.writeString(1, value:adminEmail)
-      }
-      if !scopes.isEmpty {
-        for oneValuescopes in scopes {
-          try output.writeString(2, value:oneValuescopes)
-        }
-      }
-      if hasReadOnly {
-        try output.writeBool(3, value:readOnly)
-      }
-      try unknownFields.writeToCodedOutputStream(output)
-    }
-    override public func serializedSize() -> Int32 {
-      var serialize_size:Int32 = memoizedSerializedSize
-      if serialize_size != -1 {
-       return serialize_size
-      }
-
-      serialize_size = 0
-      if hasAdminEmail {
-        serialize_size += adminEmail.computeStringSize(1)
-      }
-      var dataSizeScopes:Int32 = 0
-      for oneValuescopes in scopes {
-          dataSizeScopes += oneValuescopes.computeStringSizeNoTag()
-      }
-      serialize_size += dataSizeScopes
-      serialize_size += 1 * Int32(scopes.count)
-      if hasReadOnly {
-        serialize_size += readOnly.computeBoolSize(3)
-      }
-      serialize_size += unknownFields.serializedSize()
-      memoizedSerializedSize = serialize_size
-      return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Organization.Containers.Integration.GoogleGroupDetailsV1> {
-      var mergedArray = Array<Services.Organization.Containers.Integration.GoogleGroupDetailsV1>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1? {
-      return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
-      return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder().mergeFromData(data, extensionRegistry:Services.Organization.Containers.Integration.IntegrationRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
-      return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
-      return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
-      return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
-      return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
-      return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func getBuilder() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.classBuilder() as! Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder
-    }
-    public func getBuilder() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-      return classBuilder() as! Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder
-    }
-    public override class func classBuilder() -> MessageBuilder {
-      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder()
-    }
-    public override func classBuilder() -> MessageBuilder {
-      return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder()
-    }
-    public func toBuilder() throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-      return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builderWithPrototype(self)
-    }
-    public class func builderWithPrototype(prototype:Services.Organization.Containers.Integration.GoogleGroupDetailsV1) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-      return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder().mergeFrom(prototype)
-    }
-    override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasAdminEmail {
-        output += "\(indent) adminEmail: \(adminEmail) \n"
-      }
-      var scopesElementIndex:Int = 0
-      for oneValuescopes in scopes  {
-          output += "\(indent) scopes[\(scopesElementIndex)]: \(oneValuescopes)\n"
-          scopesElementIndex++
-      }
-      if hasReadOnly {
-        output += "\(indent) readOnly: \(readOnly) \n"
-      }
-      unknownFields.writeDescriptionTo(&output, indent:indent)
-    }
-    override public var hashValue:Int {
-        get {
-            var hashCode:Int = 7
-            if hasAdminEmail {
-               hashCode = (hashCode &* 31) &+ adminEmail.hashValue
-            }
-            for oneValuescopes in scopes {
-                hashCode = (hashCode &* 31) &+ oneValuescopes.hashValue
-            }
-            if hasReadOnly {
-               hashCode = (hashCode &* 31) &+ readOnly.hashValue
-            }
-            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-            return hashCode
-        }
-    }
-
-
-    //Meta information declaration start
-
-    override public class func className() -> String {
-        return "Services.Organization.Containers.Integration.GoogleGroupDetailsV1"
-    }
-    override public func className() -> String {
-        return "Services.Organization.Containers.Integration.GoogleGroupDetailsV1"
-    }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Services.Organization.Containers.Integration.GoogleGroupDetailsV1.self
-    }
-    //Meta information declaration end
-
-    final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Services.Organization.Containers.Integration.GoogleGroupDetailsV1 = Services.Organization.Containers.Integration.GoogleGroupDetailsV1()
-      public func getMessage() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
-          return builderResult
-      }
-
-      required override public init () {
-         super.init()
-      }
-      public var hasAdminEmail:Bool {
-           get {
-                return builderResult.hasAdminEmail
-           }
-      }
-      public var adminEmail:String {
-           get {
-                return builderResult.adminEmail
-           }
-           set (value) {
-               builderResult.hasAdminEmail = true
-               builderResult.adminEmail = value
-           }
-      }
-      public func setAdminEmail(value:String) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-        self.adminEmail = value
-        return self
-      }
-      public func clearAdminEmail() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder{
-           builderResult.hasAdminEmail = false
-           builderResult.adminEmail = ""
-           return self
-      }
-      public var scopes:Array<String> {
-           get {
-               return builderResult.scopes
-           }
-           set (array) {
-               builderResult.scopes = array
-           }
-      }
-      public func setScopes(value:Array<String>) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-        self.scopes = value
-        return self
-      }
-      public func clearScopes() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-         builderResult.scopes.removeAll(keepCapacity: false)
-         return self
-      }
-      public var hasReadOnly:Bool {
-           get {
-                return builderResult.hasReadOnly
-           }
-      }
-      public var readOnly:Bool {
-           get {
-                return builderResult.readOnly
-           }
-           set (value) {
-               builderResult.hasReadOnly = true
-               builderResult.readOnly = value
-           }
-      }
-      public func setReadOnly(value:Bool) -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-        self.readOnly = value
-        return self
-      }
-      public func clearReadOnly() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder{
-           builderResult.hasReadOnly = false
-           builderResult.readOnly = false
-           return self
-      }
-      override public var internalGetResult:GeneratedMessage {
-           get {
-              return builderResult
-           }
-      }
-      public override func clear() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-        builderResult = Services.Organization.Containers.Integration.GoogleGroupDetailsV1()
-        return self
-      }
-      public override func clone() throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-        return try Services.Organization.Containers.Integration.GoogleGroupDetailsV1.builderWithPrototype(builderResult)
-      }
-      public override func build() throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
-           try checkInitialized()
-           return buildPartial()
-      }
-      public func buildPartial() -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1 {
-        let returnMe:Services.Organization.Containers.Integration.GoogleGroupDetailsV1 = builderResult
-        return returnMe
-      }
-      public func mergeFrom(other:Services.Organization.Containers.Integration.GoogleGroupDetailsV1) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-        if other == Services.Organization.Containers.Integration.GoogleGroupDetailsV1() {
-         return self
-        }
-        if other.hasAdminEmail {
-             adminEmail = other.adminEmail
-        }
-        if !other.scopes.isEmpty {
-            builderResult.scopes += other.scopes
-        }
-        if other.hasReadOnly {
-             readOnly = other.readOnly
-        }
-        try mergeUnknownFields(other.unknownFields)
-        return self
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
-      }
-      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.GoogleGroupDetailsV1.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
-        while (true) {
-          let tag = try input.readTag()
-          switch tag {
-          case 0: 
-            self.unknownFields = try unknownFieldsBuilder.build()
-            return self
-
-          case 10 :
-            adminEmail = try input.readString()
-
-          case 18 :
-            scopes += [try input.readString()]
-
-          case 24 :
-            readOnly = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

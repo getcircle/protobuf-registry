@@ -11,6 +11,7 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+from protobufs.services.common import containers_pb2 as protobufs_dot_services_dot_common_dot_containers__pb2
 from protobufs.services.team import containers_pb2 as protobufs_dot_services_dot_team_dot_containers__pb2
 
 
@@ -18,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/team/actions/get_team.proto',
   package='services.team.actions.get_team',
   syntax='proto3',
-  serialized_pb=b'\n.protobufs/services/team/actions/get_team.proto\x12\x1eservices.team.actions.get_team\x1a(protobufs/services/team/containers.proto\"\x1c\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\"<\n\nResponseV1\x12.\n\x04team\x18\x01 \x01(\x0b\x32 .services.team.containers.TeamV1b\x06proto3'
+  serialized_pb=b'\n.protobufs/services/team/actions/get_team.proto\x12\x1eservices.team.actions.get_team\x1a*protobufs/services/common/containers.proto\x1a(protobufs/services/team/containers.proto\"\x90\x01\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12<\n\ninflations\x18\x02 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x03 \x01(\x0b\x32$.services.common.containers.FieldsV1\"<\n\nResponseV1\x12.\n\x04team\x18\x01 \x01(\x0b\x32 .services.team.containers.TeamV1b\x06proto3'
   ,
-  dependencies=[protobufs_dot_services_dot_team_dot_containers__pb2.DESCRIPTOR,])
+  dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -40,6 +41,20 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='inflations', full_name='services.team.actions.get_team.RequestV1.inflations', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='fields', full_name='services.team.actions.get_team.RequestV1.fields', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -52,8 +67,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=124,
-  serialized_end=152,
+  serialized_start=169,
+  serialized_end=313,
 )
 
 
@@ -83,10 +98,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=154,
-  serialized_end=214,
+  serialized_start=315,
+  serialized_end=375,
 )
 
+_REQUESTV1.fields_by_name['inflations'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._INFLATIONSV1
+_REQUESTV1.fields_by_name['fields'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._FIELDSV1
 _RESPONSEV1.fields_by_name['team'].message_type = protobufs_dot_services_dot_team_dot_containers__pb2._TEAMV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1

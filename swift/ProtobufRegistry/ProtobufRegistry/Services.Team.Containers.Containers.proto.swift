@@ -14,6 +14,7 @@ public func == (lhs: Services.Team.Containers.TeamV1, rhs: Services.Team.Contain
   fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
   fieldCheck = fieldCheck && (lhs.hasDescription == rhs.hasDescription) && (!lhs.hasDescription || lhs.description_ == rhs.description_)
   fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -43,6 +44,7 @@ public extension Services.Team.Containers {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Common.Containers.Description.DescriptionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -56,10 +58,12 @@ public extension Services.Team.Containers {
     public private(set) var name:String = ""
 
     public private(set) var hasDescription:Bool = false
-    public private(set) var description_:String = ""
-
+    public private(set) var description_:Services.Common.Containers.Description.DescriptionV1!
     public private(set) var hasPermissions:Bool = false
     public private(set) var permissions:Services.Common.Containers.PermissionsV1!
+    public private(set) var hasOrganizationId:Bool = false
+    public private(set) var organizationId:String = ""
+
     required public init() {
          super.init()
     }
@@ -74,10 +78,13 @@ public extension Services.Team.Containers {
         try output.writeString(2, value:name)
       }
       if hasDescription {
-        try output.writeString(3, value:description_)
+        try output.writeMessage(3, value:description_)
       }
       if hasPermissions {
         try output.writeMessage(4, value:permissions)
+      }
+      if hasOrganizationId {
+        try output.writeString(5, value:organizationId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -95,12 +102,17 @@ public extension Services.Team.Containers {
         serialize_size += name.computeStringSize(2)
       }
       if hasDescription {
-        serialize_size += description_.computeStringSize(3)
+          if let varSizedescription_ = description_?.computeMessageSize(3) {
+              serialize_size += varSizedescription_
+          }
       }
       if hasPermissions {
           if let varSizepermissions = permissions?.computeMessageSize(4) {
               serialize_size += varSizepermissions
           }
+      }
+      if hasOrganizationId {
+        serialize_size += organizationId.computeStringSize(5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -160,12 +172,17 @@ public extension Services.Team.Containers {
         output += "\(indent) name: \(name) \n"
       }
       if hasDescription {
-        output += "\(indent) description_: \(description_) \n"
+        output += "\(indent) description_ {\n"
+        try description_?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
       }
       if hasPermissions {
         output += "\(indent) permissions {\n"
         try permissions?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
+      }
+      if hasOrganizationId {
+        output += "\(indent) organizationId: \(organizationId) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -179,12 +196,17 @@ public extension Services.Team.Containers {
                hashCode = (hashCode &* 31) &+ name.hashValue
             }
             if hasDescription {
-               hashCode = (hashCode &* 31) &+ description_.hashValue
+                if let hashValuedescription_ = description_?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuedescription_
+                }
             }
             if hasPermissions {
                 if let hashValuepermissions = permissions?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuepermissions
                 }
+            }
+            if hasOrganizationId {
+               hashCode = (hashCode &* 31) &+ organizationId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -262,26 +284,54 @@ public extension Services.Team.Containers {
       }
       public var hasDescription:Bool {
            get {
-                return builderResult.hasDescription
+               return builderResult.hasDescription
            }
       }
-      public var description_:String {
+      public var description_:Services.Common.Containers.Description.DescriptionV1! {
            get {
-                return builderResult.description_
+               if description_Builder_ != nil {
+                  builderResult.description_ = description_Builder_.getMessage()
+               }
+               return builderResult.description_
            }
            set (value) {
                builderResult.hasDescription = true
                builderResult.description_ = value
            }
       }
-      public func setDescription(value:String) -> Services.Team.Containers.TeamV1.Builder {
+      private var description_Builder_:Services.Common.Containers.Description.DescriptionV1.Builder! {
+           didSet {
+              builderResult.hasDescription = true
+           }
+      }
+      public func getDescriptionBuilder() -> Services.Common.Containers.Description.DescriptionV1.Builder {
+        if description_Builder_ == nil {
+           description_Builder_ = Services.Common.Containers.Description.DescriptionV1.Builder()
+           builderResult.description_ = description_Builder_.getMessage()
+           if description_ != nil {
+              try! description_Builder_.mergeFrom(description_)
+           }
+        }
+        return description_Builder_
+      }
+      public func setDescription(value:Services.Common.Containers.Description.DescriptionV1!) -> Services.Team.Containers.TeamV1.Builder {
         self.description_ = value
         return self
       }
-      public func clearDescription() -> Services.Team.Containers.TeamV1.Builder{
-           builderResult.hasDescription = false
-           builderResult.description_ = ""
-           return self
+      public func mergeDescription(value:Services.Common.Containers.Description.DescriptionV1) throws -> Services.Team.Containers.TeamV1.Builder {
+        if builderResult.hasDescription {
+          builderResult.description_ = try Services.Common.Containers.Description.DescriptionV1.builderWithPrototype(builderResult.description_).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.description_ = value
+        }
+        builderResult.hasDescription = true
+        return self
+      }
+      public func clearDescription() -> Services.Team.Containers.TeamV1.Builder {
+        description_Builder_ = nil
+        builderResult.hasDescription = false
+        builderResult.description_ = nil
+        return self
       }
       public var hasPermissions:Bool {
            get {
@@ -334,6 +384,29 @@ public extension Services.Team.Containers {
         builderResult.permissions = nil
         return self
       }
+      public var hasOrganizationId:Bool {
+           get {
+                return builderResult.hasOrganizationId
+           }
+      }
+      public var organizationId:String {
+           get {
+                return builderResult.organizationId
+           }
+           set (value) {
+               builderResult.hasOrganizationId = true
+               builderResult.organizationId = value
+           }
+      }
+      public func setOrganizationId(value:String) -> Services.Team.Containers.TeamV1.Builder {
+        self.organizationId = value
+        return self
+      }
+      public func clearOrganizationId() -> Services.Team.Containers.TeamV1.Builder{
+           builderResult.hasOrganizationId = false
+           builderResult.organizationId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -364,11 +437,14 @@ public extension Services.Team.Containers {
         if other.hasName {
              name = other.name
         }
-        if other.hasDescription {
-             description_ = other.description_
+        if (other.hasDescription) {
+            try mergeDescription(other.description_)
         }
         if (other.hasPermissions) {
             try mergePermissions(other.permissions)
+        }
+        if other.hasOrganizationId {
+             organizationId = other.organizationId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -392,7 +468,12 @@ public extension Services.Team.Containers {
             name = try input.readString()
 
           case 26 :
-            description_ = try input.readString()
+            let subBuilder:Services.Common.Containers.Description.DescriptionV1.Builder = Services.Common.Containers.Description.DescriptionV1.Builder()
+            if hasDescription {
+              try subBuilder.mergeFrom(description_)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            description_ = subBuilder.buildPartial()
 
           case 34 :
             let subBuilder:Services.Common.Containers.PermissionsV1.Builder = Services.Common.Containers.PermissionsV1.Builder()
@@ -401,6 +482,9 @@ public extension Services.Team.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             permissions = subBuilder.buildPartial()
+
+          case 42 :
+            organizationId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

@@ -12,15 +12,16 @@ _sym_db = _symbol_database.Default()
 
 
 from protobufs.services.common import containers_pb2 as protobufs_dot_services_dot_common_dot_containers__pb2
+from protobufs.services.common.containers import description_pb2 as protobufs_dot_services_dot_common_dot_containers_dot_description__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/team/containers.proto',
   package='services.team.containers',
   syntax='proto3',
-  serialized_pb=b'\n(protobufs/services/team/containers.proto\x12\x18services.team.containers\x1a*protobufs/services/common/containers.proto\"w\n\x06TeamV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12>\n\x0bpermissions\x18\x04 \x01(\x0b\x32).services.common.containers.PermissionsV1\"\x86\x01\n\x0cTeamMemberV1\x12\x12\n\nprofile_id\x18\x01 \x01(\t\x12;\n\x04role\x18\x02 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\"%\n\x06RoleV1\x12\n\n\x06MEMBER\x10\x00\x12\x0f\n\x0b\x43OORDINATOR\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n(protobufs/services/team/containers.proto\x12\x18services.team.containers\x1a*protobufs/services/common/containers.proto\x1a\x36protobufs/services/common/containers/description.proto\"\xc7\x01\n\x06TeamV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12J\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12>\n\x0bpermissions\x18\x04 \x01(\x0b\x32).services.common.containers.PermissionsV1\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\"\x86\x01\n\x0cTeamMemberV1\x12\x12\n\nprofile_id\x18\x01 \x01(\t\x12;\n\x04role\x18\x02 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\"%\n\x06RoleV1\x12\n\n\x06MEMBER\x10\x00\x12\x0f\n\x0b\x43OORDINATOR\x10\x01\x62\x06proto3'
   ,
-  dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,])
+  dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_common_dot_containers_dot_description__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -42,8 +43,8 @@ _TEAMMEMBERV1_ROLEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=333,
-  serialized_end=370,
+  serialized_start=470,
+  serialized_end=507,
 )
 _sym_db.RegisterEnumDescriptor(_TEAMMEMBERV1_ROLEV1)
 
@@ -71,8 +72,8 @@ _TEAMV1 = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='description', full_name='services.team.containers.TeamV1.description', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -80,6 +81,13 @@ _TEAMV1 = _descriptor.Descriptor(
       name='permissions', full_name='services.team.containers.TeamV1.permissions', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='organization_id', full_name='services.team.containers.TeamV1.organization_id', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -95,8 +103,8 @@ _TEAMV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=114,
-  serialized_end=233,
+  serialized_start=171,
+  serialized_end=370,
 )
 
 
@@ -134,10 +142,11 @@ _TEAMMEMBERV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=236,
-  serialized_end=370,
+  serialized_start=373,
+  serialized_end=507,
 )
 
+_TEAMV1.fields_by_name['description'].message_type = protobufs_dot_services_dot_common_dot_containers_dot_description__pb2._DESCRIPTIONV1
 _TEAMV1.fields_by_name['permissions'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._PERMISSIONSV1
 _TEAMMEMBERV1.fields_by_name['role'].enum_type = _TEAMMEMBERV1_ROLEV1
 _TEAMMEMBERV1_ROLEV1.containing_type = _TEAMMEMBERV1

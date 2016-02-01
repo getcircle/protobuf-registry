@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/history/containers.proto',
   package='services.history.containers',
   syntax='proto3',
-  serialized_pb=b'\n+protobufs/services/history/containers.proto\x12\x1bservices.history.containers\"\xf5\x02\n\x08\x41\x63tionV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x13\n\x0b\x63olumn_name\x18\x02 \x01(\t\x12\x11\n\tdata_type\x18\x03 \x01(\t\x12\x11\n\told_value\x18\x04 \x01(\t\x12\x11\n\tnew_value\x18\x05 \x01(\t\x12>\n\x0b\x61\x63tion_type\x18\x06 \x01(\x0e\x32).services.history.containers.ActionTypeV1\x12>\n\x0bmethod_type\x18\x07 \x01(\x0e\x32).services.history.containers.MethodTypeV1\x12\x17\n\x0forganization_id\x18\x08 \x01(\t\x12\x16\n\x0e\x63orrelation_id\x18\t \x01(\t\x12\x15\n\rby_profile_id\x18\n \x01(\t\x12\x12\n\ntable_name\x18\x0b \x01(\t\x12\x18\n\x10primary_key_name\x18\x0c \x01(\t\x12\x19\n\x11primary_key_value\x18\r \x01(\t*&\n\x0c\x41\x63tionTypeV1\x12\x16\n\x12UPDATE_DESCRIPTION\x10\x00*&\n\x0cMethodTypeV1\x12\n\n\x06UPDATE\x10\x00\x12\n\n\x06\x44\x45LETE\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n+protobufs/services/history/containers.proto\x12\x1bservices.history.containers\"\xf5\x02\n\x08\x41\x63tionV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x13\n\x0b\x63olumn_name\x18\x02 \x01(\t\x12\x11\n\tdata_type\x18\x03 \x01(\t\x12\x11\n\told_value\x18\x04 \x01(\t\x12\x11\n\tnew_value\x18\x05 \x01(\t\x12>\n\x0b\x61\x63tion_type\x18\x06 \x01(\x0e\x32).services.history.containers.ActionTypeV1\x12>\n\x0bmethod_type\x18\x07 \x01(\x0e\x32).services.history.containers.MethodTypeV1\x12\x17\n\x0forganization_id\x18\x08 \x01(\t\x12\x16\n\x0e\x63orrelation_id\x18\t \x01(\t\x12\x15\n\rby_profile_id\x18\n \x01(\t\x12\x12\n\ntable_name\x18\x0b \x01(\t\x12\x18\n\x10primary_key_name\x18\x0c \x01(\t\x12\x19\n\x11primary_key_value\x18\r \x01(\t*;\n\x0c\x41\x63tionTypeV1\x12\x16\n\x12UPDATE_DESCRIPTION\x10\x00\x12\x13\n\x0f\x43REATE_INSTANCE\x10\x01*2\n\x0cMethodTypeV1\x12\n\n\x06UPDATE\x10\x00\x12\n\n\x06\x44\x45LETE\x10\x01\x12\n\n\x06\x43REATE\x10\x02\x62\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -32,11 +32,15 @@ _ACTIONTYPEV1 = _descriptor.EnumDescriptor(
       name='UPDATE_DESCRIPTION', index=0, number=0,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='CREATE_INSTANCE', index=1, number=1,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=452,
-  serialized_end=490,
+  serialized_end=511,
 )
 _sym_db.RegisterEnumDescriptor(_ACTIONTYPEV1)
 
@@ -55,18 +59,24 @@ _METHODTYPEV1 = _descriptor.EnumDescriptor(
       name='DELETE', index=1, number=1,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='CREATE', index=2, number=2,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=492,
-  serialized_end=530,
+  serialized_start=513,
+  serialized_end=563,
 )
 _sym_db.RegisterEnumDescriptor(_METHODTYPEV1)
 
 MethodTypeV1 = enum_type_wrapper.EnumTypeWrapper(_METHODTYPEV1)
 UPDATE_DESCRIPTION = 0
+CREATE_INSTANCE = 1
 UPDATE = 0
 DELETE = 1
+CREATE = 2
 
 
 
