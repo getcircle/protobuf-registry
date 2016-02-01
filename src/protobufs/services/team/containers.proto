@@ -3,6 +3,7 @@ package services.team.containers;
 
 import "protobufs/services/common/containers.proto";
 import "protobufs/services/common/containers/description.proto";
+import "protobufs/services/profile/containers.proto";
 
 message TeamV1 {
     string id = 1;
@@ -23,4 +24,7 @@ message TeamMemberV1 {
 
     string profile_id = 1;
     RoleV1 role = 2;
+    services.profile.containers.ProfileV1 profile = 3;
+    services.common.containers.InflationsV1 inflations = 4;
+    services.common.containers.FieldsV1 fields = 5;
 }

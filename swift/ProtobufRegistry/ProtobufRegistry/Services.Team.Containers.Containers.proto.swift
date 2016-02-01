@@ -28,6 +28,9 @@ public func == (lhs: Services.Team.Containers.TeamMemberV1, rhs: Services.Team.C
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = fieldCheck && (lhs.hasRole == rhs.hasRole) && (!lhs.hasRole || lhs.role == rhs.role)
+  fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
+  fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
+  fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -47,6 +50,7 @@ public extension Services.Team.Containers {
       registerAllExtensions(extensionRegistry)
       Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Common.Containers.Description.DescriptionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -682,6 +686,12 @@ public extension Services.Team.Containers {
 
     public private(set) var role:Services.Team.Containers.TeamMemberV1.RoleV1 = Services.Team.Containers.TeamMemberV1.RoleV1.Member
     public private(set) var hasRole:Bool = false
+    public private(set) var hasProfile:Bool = false
+    public private(set) var profile:Services.Profile.Containers.ProfileV1!
+    public private(set) var hasInflations:Bool = false
+    public private(set) var inflations:Services.Common.Containers.InflationsV1!
+    public private(set) var hasFields:Bool = false
+    public private(set) var fields:Services.Common.Containers.FieldsV1!
     required public init() {
          super.init()
     }
@@ -694,6 +704,15 @@ public extension Services.Team.Containers {
       }
       if hasRole {
         try output.writeEnum(2, value:role.rawValue)
+      }
+      if hasProfile {
+        try output.writeMessage(3, value:profile)
+      }
+      if hasInflations {
+        try output.writeMessage(4, value:inflations)
+      }
+      if hasFields {
+        try output.writeMessage(5, value:fields)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -709,6 +728,21 @@ public extension Services.Team.Containers {
       }
       if (hasRole) {
         serialize_size += role.rawValue.computeEnumSize(2)
+      }
+      if hasProfile {
+          if let varSizeprofile = profile?.computeMessageSize(3) {
+              serialize_size += varSizeprofile
+          }
+      }
+      if hasInflations {
+          if let varSizeinflations = inflations?.computeMessageSize(4) {
+              serialize_size += varSizeinflations
+          }
+      }
+      if hasFields {
+          if let varSizefields = fields?.computeMessageSize(5) {
+              serialize_size += varSizefields
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -767,6 +801,21 @@ public extension Services.Team.Containers {
       if (hasRole) {
         output += "\(indent) role: \(role.rawValue)\n"
       }
+      if hasProfile {
+        output += "\(indent) profile {\n"
+        try profile?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      if hasInflations {
+        output += "\(indent) inflations {\n"
+        try inflations?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      if hasFields {
+        output += "\(indent) fields {\n"
+        try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -777,6 +826,21 @@ public extension Services.Team.Containers {
             }
             if hasRole {
                hashCode = (hashCode &* 31) &+ Int(role.rawValue)
+            }
+            if hasProfile {
+                if let hashValueprofile = profile?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueprofile
+                }
+            }
+            if hasInflations {
+                if let hashValueinflations = inflations?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueinflations
+                }
+            }
+            if hasFields {
+                if let hashValuefields = fields?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuefields
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -852,6 +916,159 @@ public extension Services.Team.Containers {
            builderResult.role = .Member
            return self
         }
+      public var hasProfile:Bool {
+           get {
+               return builderResult.hasProfile
+           }
+      }
+      public var profile:Services.Profile.Containers.ProfileV1! {
+           get {
+               if profileBuilder_ != nil {
+                  builderResult.profile = profileBuilder_.getMessage()
+               }
+               return builderResult.profile
+           }
+           set (value) {
+               builderResult.hasProfile = true
+               builderResult.profile = value
+           }
+      }
+      private var profileBuilder_:Services.Profile.Containers.ProfileV1.Builder! {
+           didSet {
+              builderResult.hasProfile = true
+           }
+      }
+      public func getProfileBuilder() -> Services.Profile.Containers.ProfileV1.Builder {
+        if profileBuilder_ == nil {
+           profileBuilder_ = Services.Profile.Containers.ProfileV1.Builder()
+           builderResult.profile = profileBuilder_.getMessage()
+           if profile != nil {
+              try! profileBuilder_.mergeFrom(profile)
+           }
+        }
+        return profileBuilder_
+      }
+      public func setProfile(value:Services.Profile.Containers.ProfileV1!) -> Services.Team.Containers.TeamMemberV1.Builder {
+        self.profile = value
+        return self
+      }
+      public func mergeProfile(value:Services.Profile.Containers.ProfileV1) throws -> Services.Team.Containers.TeamMemberV1.Builder {
+        if builderResult.hasProfile {
+          builderResult.profile = try Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.profile).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.profile = value
+        }
+        builderResult.hasProfile = true
+        return self
+      }
+      public func clearProfile() -> Services.Team.Containers.TeamMemberV1.Builder {
+        profileBuilder_ = nil
+        builderResult.hasProfile = false
+        builderResult.profile = nil
+        return self
+      }
+      public var hasInflations:Bool {
+           get {
+               return builderResult.hasInflations
+           }
+      }
+      public var inflations:Services.Common.Containers.InflationsV1! {
+           get {
+               if inflationsBuilder_ != nil {
+                  builderResult.inflations = inflationsBuilder_.getMessage()
+               }
+               return builderResult.inflations
+           }
+           set (value) {
+               builderResult.hasInflations = true
+               builderResult.inflations = value
+           }
+      }
+      private var inflationsBuilder_:Services.Common.Containers.InflationsV1.Builder! {
+           didSet {
+              builderResult.hasInflations = true
+           }
+      }
+      public func getInflationsBuilder() -> Services.Common.Containers.InflationsV1.Builder {
+        if inflationsBuilder_ == nil {
+           inflationsBuilder_ = Services.Common.Containers.InflationsV1.Builder()
+           builderResult.inflations = inflationsBuilder_.getMessage()
+           if inflations != nil {
+              try! inflationsBuilder_.mergeFrom(inflations)
+           }
+        }
+        return inflationsBuilder_
+      }
+      public func setInflations(value:Services.Common.Containers.InflationsV1!) -> Services.Team.Containers.TeamMemberV1.Builder {
+        self.inflations = value
+        return self
+      }
+      public func mergeInflations(value:Services.Common.Containers.InflationsV1) throws -> Services.Team.Containers.TeamMemberV1.Builder {
+        if builderResult.hasInflations {
+          builderResult.inflations = try Services.Common.Containers.InflationsV1.builderWithPrototype(builderResult.inflations).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.inflations = value
+        }
+        builderResult.hasInflations = true
+        return self
+      }
+      public func clearInflations() -> Services.Team.Containers.TeamMemberV1.Builder {
+        inflationsBuilder_ = nil
+        builderResult.hasInflations = false
+        builderResult.inflations = nil
+        return self
+      }
+      public var hasFields:Bool {
+           get {
+               return builderResult.hasFields
+           }
+      }
+      public var fields:Services.Common.Containers.FieldsV1! {
+           get {
+               if fieldsBuilder_ != nil {
+                  builderResult.fields = fieldsBuilder_.getMessage()
+               }
+               return builderResult.fields
+           }
+           set (value) {
+               builderResult.hasFields = true
+               builderResult.fields = value
+           }
+      }
+      private var fieldsBuilder_:Services.Common.Containers.FieldsV1.Builder! {
+           didSet {
+              builderResult.hasFields = true
+           }
+      }
+      public func getFieldsBuilder() -> Services.Common.Containers.FieldsV1.Builder {
+        if fieldsBuilder_ == nil {
+           fieldsBuilder_ = Services.Common.Containers.FieldsV1.Builder()
+           builderResult.fields = fieldsBuilder_.getMessage()
+           if fields != nil {
+              try! fieldsBuilder_.mergeFrom(fields)
+           }
+        }
+        return fieldsBuilder_
+      }
+      public func setFields(value:Services.Common.Containers.FieldsV1!) -> Services.Team.Containers.TeamMemberV1.Builder {
+        self.fields = value
+        return self
+      }
+      public func mergeFields(value:Services.Common.Containers.FieldsV1) throws -> Services.Team.Containers.TeamMemberV1.Builder {
+        if builderResult.hasFields {
+          builderResult.fields = try Services.Common.Containers.FieldsV1.builderWithPrototype(builderResult.fields).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.fields = value
+        }
+        builderResult.hasFields = true
+        return self
+      }
+      public func clearFields() -> Services.Team.Containers.TeamMemberV1.Builder {
+        fieldsBuilder_ = nil
+        builderResult.hasFields = false
+        builderResult.fields = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -882,6 +1099,15 @@ public extension Services.Team.Containers {
         if other.hasRole {
              role = other.role
         }
+        if (other.hasProfile) {
+            try mergeProfile(other.profile)
+        }
+        if (other.hasInflations) {
+            try mergeInflations(other.inflations)
+        }
+        if (other.hasFields) {
+            try mergeFields(other.fields)
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -907,6 +1133,30 @@ public extension Services.Team.Containers {
             } else {
                  try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntrole))
             }
+
+          case 26 :
+            let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
+            if hasProfile {
+              try subBuilder.mergeFrom(profile)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            profile = subBuilder.buildPartial()
+
+          case 34 :
+            let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
+            if hasInflations {
+              try subBuilder.mergeFrom(inflations)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            inflations = subBuilder.buildPartial()
+
+          case 42 :
+            let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
+            if hasFields {
+              try subBuilder.mergeFrom(fields)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            fields = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
