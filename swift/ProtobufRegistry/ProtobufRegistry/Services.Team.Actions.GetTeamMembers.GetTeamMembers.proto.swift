@@ -11,6 +11,7 @@ public func == (lhs: Services.Team.Actions.GetTeamMembers.RequestV1, rhs: Servic
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
+  fieldCheck = fieldCheck && (lhs.hasRole == rhs.hasRole) && (!lhs.hasRole || lhs.role == rhs.role)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -48,6 +49,8 @@ public extension Services.Team.Actions.GetTeamMembers {
     public private(set) var hasTeamId:Bool = false
     public private(set) var teamId:String = ""
 
+    public private(set) var role:Services.Team.Containers.TeamMemberV1.RoleV1 = Services.Team.Containers.TeamMemberV1.RoleV1.Member
+    public private(set) var hasRole:Bool = false
     required public init() {
          super.init()
     }
@@ -57,6 +60,9 @@ public extension Services.Team.Actions.GetTeamMembers {
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasTeamId {
         try output.writeString(1, value:teamId)
+      }
+      if hasRole {
+        try output.writeEnum(2, value:role.rawValue)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -69,6 +75,9 @@ public extension Services.Team.Actions.GetTeamMembers {
       serialize_size = 0
       if hasTeamId {
         serialize_size += teamId.computeStringSize(1)
+      }
+      if (hasRole) {
+        serialize_size += role.rawValue.computeEnumSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -124,6 +133,9 @@ public extension Services.Team.Actions.GetTeamMembers {
       if hasTeamId {
         output += "\(indent) teamId: \(teamId) \n"
       }
+      if (hasRole) {
+        output += "\(indent) role: \(role.rawValue)\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -131,6 +143,9 @@ public extension Services.Team.Actions.GetTeamMembers {
             var hashCode:Int = 7
             if hasTeamId {
                hashCode = (hashCode &* 31) &+ teamId.hashValue
+            }
+            if hasRole {
+               hashCode = (hashCode &* 31) &+ Int(role.rawValue)
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -183,6 +198,29 @@ public extension Services.Team.Actions.GetTeamMembers {
            builderResult.teamId = ""
            return self
       }
+        public var hasRole:Bool{
+            get {
+                return builderResult.hasRole
+            }
+        }
+        public var role:Services.Team.Containers.TeamMemberV1.RoleV1 {
+            get {
+                return builderResult.role
+            }
+            set (value) {
+                builderResult.hasRole = true
+                builderResult.role = value
+            }
+        }
+        public func setRole(value:Services.Team.Containers.TeamMemberV1.RoleV1) -> Services.Team.Actions.GetTeamMembers.RequestV1.Builder {
+          self.role = value
+          return self
+        }
+        public func clearRole() -> Services.Team.Actions.GetTeamMembers.RequestV1.Builder {
+           builderResult.hasRole = false
+           builderResult.role = .Member
+           return self
+        }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -210,6 +248,9 @@ public extension Services.Team.Actions.GetTeamMembers {
         if other.hasTeamId {
              teamId = other.teamId
         }
+        if other.hasRole {
+             role = other.role
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -227,6 +268,14 @@ public extension Services.Team.Actions.GetTeamMembers {
 
           case 10 :
             teamId = try input.readString()
+
+          case 16 :
+            let valueIntrole = try input.readEnum()
+            if let enumsrole = Services.Team.Containers.TeamMemberV1.RoleV1(rawValue:valueIntrole){
+                 role = enumsrole
+            } else {
+                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntrole))
+            }
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

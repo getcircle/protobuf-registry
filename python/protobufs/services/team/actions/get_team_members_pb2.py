@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/team/actions/get_team_members.proto',
   package='services.team.actions.get_team_members',
   syntax='proto3',
-  serialized_pb=b'\n6protobufs/services/team/actions/get_team_members.proto\x12&services.team.actions.get_team_members\x1a(protobufs/services/team/containers.proto\"\x1c\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\"E\n\nResponseV1\x12\x37\n\x07members\x18\x01 \x03(\x0b\x32&.services.team.containers.TeamMemberV1b\x06proto3'
+  serialized_pb=b'\n6protobufs/services/team/actions/get_team_members.proto\x12&services.team.actions.get_team_members\x1a(protobufs/services/team/containers.proto\"Y\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12;\n\x04role\x18\x02 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\"E\n\nResponseV1\x12\x37\n\x07members\x18\x01 \x03(\x0b\x32&.services.team.containers.TeamMemberV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_team_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -40,6 +40,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='role', full_name='services.team.actions.get_team_members.RequestV1.role', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -53,7 +60,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=140,
-  serialized_end=168,
+  serialized_end=229,
 )
 
 
@@ -83,10 +90,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=170,
-  serialized_end=239,
+  serialized_start=231,
+  serialized_end=300,
 )
 
+_REQUESTV1.fields_by_name['role'].enum_type = protobufs_dot_services_dot_team_dot_containers__pb2._TEAMMEMBERV1_ROLEV1
 _RESPONSEV1.fields_by_name['members'].message_type = protobufs_dot_services_dot_team_dot_containers__pb2._TEAMMEMBERV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1

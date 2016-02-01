@@ -5,6 +5,7 @@ import "protobufs/services/team/containers.proto";
 
 message RequestV1 {
     string team_id = 1;
+    services.team.containers.TeamMemberV1.RoleV1 role = 2;
 }
 
 message ResponseV1 {
