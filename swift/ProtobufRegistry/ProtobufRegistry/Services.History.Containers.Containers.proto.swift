@@ -52,6 +52,7 @@ public extension Services.History.Containers {
   public enum ActionTypeV1:Int32 {
     case UpdateDescription = 0
     case CreateInstance = 1
+    case UpdateTeamMemberRole = 2
 
   }
 

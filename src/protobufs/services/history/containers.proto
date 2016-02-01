@@ -4,6 +4,7 @@ package services.history.containers;
 enum ActionTypeV1 {
     UPDATE_DESCRIPTION = 0;
     CREATE_INSTANCE = 1;
+    UPDATE_TEAM_MEMBER_ROLE = 2;
 }
 
 enum MethodTypeV1 {
