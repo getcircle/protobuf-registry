@@ -10,6 +10,8 @@ message TeamV1 {
     services.common.containers.description.DescriptionV1 description = 3;
     services.common.containers.PermissionsV1 permissions = 4;
     string organization_id = 5;
+    services.common.containers.InflationsV1 inflations = 6;
+    services.common.containers.FieldsV1 fields = 7;
 }
 
 message TeamMemberV1 {
