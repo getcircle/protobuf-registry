@@ -23,6 +23,7 @@ public func == (lhs: Services.Team.Actions.GetTeam.ResponseV1, rhs: Services.Tea
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
+  fieldCheck = fieldCheck && (lhs.hasIsMember == rhs.hasIsMember) && (!lhs.hasIsMember || lhs.isMember == rhs.isMember)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -410,6 +411,9 @@ public extension Services.Team.Actions.GetTeam {
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
     public private(set) var hasTeam:Bool = false
     public private(set) var team:Services.Team.Containers.TeamV1!
+    public private(set) var hasIsMember:Bool = false
+    public private(set) var isMember:Bool = false
+
     required public init() {
          super.init()
     }
@@ -419,6 +423,9 @@ public extension Services.Team.Actions.GetTeam {
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasTeam {
         try output.writeMessage(1, value:team)
+      }
+      if hasIsMember {
+        try output.writeBool(2, value:isMember)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -433,6 +440,9 @@ public extension Services.Team.Actions.GetTeam {
           if let varSizeteam = team?.computeMessageSize(1) {
               serialize_size += varSizeteam
           }
+      }
+      if hasIsMember {
+        serialize_size += isMember.computeBoolSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -490,6 +500,9 @@ public extension Services.Team.Actions.GetTeam {
         try team?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasIsMember {
+        output += "\(indent) isMember: \(isMember) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -499,6 +512,9 @@ public extension Services.Team.Actions.GetTeam {
                 if let hashValueteam = team?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueteam
                 }
+            }
+            if hasIsMember {
+               hashCode = (hashCode &* 31) &+ isMember.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -579,6 +595,29 @@ public extension Services.Team.Actions.GetTeam {
         builderResult.team = nil
         return self
       }
+      public var hasIsMember:Bool {
+           get {
+                return builderResult.hasIsMember
+           }
+      }
+      public var isMember:Bool {
+           get {
+                return builderResult.isMember
+           }
+           set (value) {
+               builderResult.hasIsMember = true
+               builderResult.isMember = value
+           }
+      }
+      public func setIsMember(value:Bool) -> Services.Team.Actions.GetTeam.ResponseV1.Builder {
+        self.isMember = value
+        return self
+      }
+      public func clearIsMember() -> Services.Team.Actions.GetTeam.ResponseV1.Builder{
+           builderResult.hasIsMember = false
+           builderResult.isMember = false
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -606,6 +645,9 @@ public extension Services.Team.Actions.GetTeam {
         if (other.hasTeam) {
             try mergeTeam(other.team)
         }
+        if other.hasIsMember {
+             isMember = other.isMember
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -628,6 +670,9 @@ public extension Services.Team.Actions.GetTeam {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             team = subBuilder.buildPartial()
+
+          case 16 :
+            isMember = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/team/actions/get_team.proto',
   package='services.team.actions.get_team',
   syntax='proto3',
-  serialized_pb=b'\n.protobufs/services/team/actions/get_team.proto\x12\x1eservices.team.actions.get_team\x1a*protobufs/services/common/containers.proto\x1a(protobufs/services/team/containers.proto\"\x90\x01\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12<\n\ninflations\x18\x02 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x03 \x01(\x0b\x32$.services.common.containers.FieldsV1\"<\n\nResponseV1\x12.\n\x04team\x18\x01 \x01(\x0b\x32 .services.team.containers.TeamV1b\x06proto3'
+  serialized_pb=b'\n.protobufs/services/team/actions/get_team.proto\x12\x1eservices.team.actions.get_team\x1a*protobufs/services/common/containers.proto\x1a(protobufs/services/team/containers.proto\"\x90\x01\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12<\n\ninflations\x18\x02 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x03 \x01(\x0b\x32$.services.common.containers.FieldsV1\"O\n\nResponseV1\x12.\n\x04team\x18\x01 \x01(\x0b\x32 .services.team.containers.TeamV1\x12\x11\n\tis_member\x18\x02 \x01(\x08\x62\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -86,6 +86,13 @@ _RESPONSEV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='is_member', full_name='services.team.actions.get_team.ResponseV1.is_member', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -99,7 +106,7 @@ _RESPONSEV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=315,
-  serialized_end=375,
+  serialized_end=394,
 )
 
 _REQUESTV1.fields_by_name['inflations'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._INFLATIONSV1
