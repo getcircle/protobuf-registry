@@ -478,9 +478,9 @@ public var ServicesRegistryResponsesTeamgetTeam:ConcreateExtensionField {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesTeamgetTeamStatic
    }
 }
-public var ServicesRegistryResponsesTeamgetTeamMembers:ConcreateExtensionField {
+public var ServicesRegistryResponsesTeamgetMembers:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesTeamgetTeamMembersStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesTeamgetMembersStatic
    }
 }
 public var ServicesRegistryResponsesTeamjoinTeam:ConcreateExtensionField {
@@ -584,7 +584,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesTeamaddMembersStatic:ConcreateExtensionField
     var ServicesRegistryResponsesTeamcreateTeamStatic:ConcreateExtensionField
     var ServicesRegistryResponsesTeamgetTeamStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesTeamgetTeamMembersStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesTeamgetMembersStatic:ConcreateExtensionField
     var ServicesRegistryResponsesTeamjoinTeamStatic:ConcreateExtensionField
     var ServicesRegistryResponsesTeamleaveTeamStatic:ConcreateExtensionField
     var ServicesRegistryResponsesTeamremoveMembersStatic:ConcreateExtensionField
@@ -665,7 +665,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesTeamaddMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1900, defaultValue:Services.Team.Actions.AddMembers.ResponseV1(), messageOrGroupClass:Services.Team.Actions.AddMembers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesTeamcreateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1901, defaultValue:Services.Team.Actions.CreateTeam.ResponseV1(), messageOrGroupClass:Services.Team.Actions.CreateTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesTeamgetTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1902, defaultValue:Services.Team.Actions.GetTeam.ResponseV1(), messageOrGroupClass:Services.Team.Actions.GetTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesTeamgetTeamMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1903, defaultValue:Services.Team.Actions.GetTeamMembers.ResponseV1(), messageOrGroupClass:Services.Team.Actions.GetTeamMembers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesTeamgetMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1903, defaultValue:Services.Team.Actions.GetMembers.ResponseV1(), messageOrGroupClass:Services.Team.Actions.GetMembers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesTeamjoinTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1904, defaultValue:Services.Team.Actions.JoinTeam.ResponseV1(), messageOrGroupClass:Services.Team.Actions.JoinTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesTeamleaveTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1905, defaultValue:Services.Team.Actions.LeaveTeam.ResponseV1(), messageOrGroupClass:Services.Team.Actions.LeaveTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesTeamremoveMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1906, defaultValue:Services.Team.Actions.RemoveMembers.ResponseV1(), messageOrGroupClass:Services.Team.Actions.RemoveMembers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -746,7 +746,7 @@ public extension Services.Registry.Responses {
       Services.Team.Actions.AddMembers.AddMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.CreateTeam.CreateTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.GetTeam.GetTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Team.Actions.GetTeamMembers.GetTeamMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.GetMembers.GetMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.JoinTeam.JoinTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.LeaveTeam.LeaveTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.RemoveMembers.RemoveMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -826,7 +826,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesTeamaddMembersStatic)
       registry.addExtension(ServicesRegistryResponsesTeamcreateTeamStatic)
       registry.addExtension(ServicesRegistryResponsesTeamgetTeamStatic)
-      registry.addExtension(ServicesRegistryResponsesTeamgetTeamMembersStatic)
+      registry.addExtension(ServicesRegistryResponsesTeamgetMembersStatic)
       registry.addExtension(ServicesRegistryResponsesTeamjoinTeamStatic)
       registry.addExtension(ServicesRegistryResponsesTeamleaveTeamStatic)
       registry.addExtension(ServicesRegistryResponsesTeamremoveMembersStatic)
@@ -2726,8 +2726,8 @@ public extension Services.Registry.Responses {
     public class func getTeam() -> ConcreateExtensionField {
          return ServicesRegistryResponsesTeamgetTeam
     }
-    public class func getTeamMembers() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesTeamgetTeamMembers
+    public class func getMembers() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesTeamgetMembers
     }
     public class func joinTeam() -> ConcreateExtensionField {
          return ServicesRegistryResponsesTeamjoinTeam

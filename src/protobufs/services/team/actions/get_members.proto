@@ -1,5 +1,5 @@
 syntax = "proto3";
-package services.team.actions.get_team_members;
+package services.team.actions.get_members;
 
 import "protobufs/services/team/containers.proto";
 
