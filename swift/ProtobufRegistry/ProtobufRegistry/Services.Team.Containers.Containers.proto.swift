@@ -26,6 +26,7 @@ public func == (lhs: Services.Team.Containers.TeamMemberV1, rhs: Services.Team.C
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = fieldCheck && (lhs.hasRole == rhs.hasRole) && (!lhs.hasRole || lhs.role == rhs.role)
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
@@ -681,6 +682,9 @@ public extension Services.Team.Containers {
 
       //Enum type declaration end 
 
+    public private(set) var hasId:Bool = false
+    public private(set) var id:String = ""
+
     public private(set) var hasProfileId:Bool = false
     public private(set) var profileId:String = ""
 
@@ -699,20 +703,23 @@ public extension Services.Team.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasId {
+        try output.writeString(1, value:id)
+      }
       if hasProfileId {
-        try output.writeString(1, value:profileId)
+        try output.writeString(2, value:profileId)
       }
       if hasRole {
-        try output.writeEnum(2, value:role.rawValue)
+        try output.writeEnum(3, value:role.rawValue)
       }
       if hasProfile {
-        try output.writeMessage(3, value:profile)
+        try output.writeMessage(4, value:profile)
       }
       if hasInflations {
-        try output.writeMessage(4, value:inflations)
+        try output.writeMessage(5, value:inflations)
       }
       if hasFields {
-        try output.writeMessage(5, value:fields)
+        try output.writeMessage(6, value:fields)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -723,24 +730,27 @@ public extension Services.Team.Containers {
       }
 
       serialize_size = 0
+      if hasId {
+        serialize_size += id.computeStringSize(1)
+      }
       if hasProfileId {
-        serialize_size += profileId.computeStringSize(1)
+        serialize_size += profileId.computeStringSize(2)
       }
       if (hasRole) {
-        serialize_size += role.rawValue.computeEnumSize(2)
+        serialize_size += role.rawValue.computeEnumSize(3)
       }
       if hasProfile {
-          if let varSizeprofile = profile?.computeMessageSize(3) {
+          if let varSizeprofile = profile?.computeMessageSize(4) {
               serialize_size += varSizeprofile
           }
       }
       if hasInflations {
-          if let varSizeinflations = inflations?.computeMessageSize(4) {
+          if let varSizeinflations = inflations?.computeMessageSize(5) {
               serialize_size += varSizeinflations
           }
       }
       if hasFields {
-          if let varSizefields = fields?.computeMessageSize(5) {
+          if let varSizefields = fields?.computeMessageSize(6) {
               serialize_size += varSizefields
           }
       }
@@ -795,6 +805,9 @@ public extension Services.Team.Containers {
       return try Services.Team.Containers.TeamMemberV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasId {
+        output += "\(indent) id: \(id) \n"
+      }
       if hasProfileId {
         output += "\(indent) profileId: \(profileId) \n"
       }
@@ -821,6 +834,9 @@ public extension Services.Team.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
+            if hasId {
+               hashCode = (hashCode &* 31) &+ id.hashValue
+            }
             if hasProfileId {
                hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
@@ -869,6 +885,29 @@ public extension Services.Team.Containers {
 
       required override public init () {
          super.init()
+      }
+      public var hasId:Bool {
+           get {
+                return builderResult.hasId
+           }
+      }
+      public var id:String {
+           get {
+                return builderResult.id
+           }
+           set (value) {
+               builderResult.hasId = true
+               builderResult.id = value
+           }
+      }
+      public func setId(value:String) -> Services.Team.Containers.TeamMemberV1.Builder {
+        self.id = value
+        return self
+      }
+      public func clearId() -> Services.Team.Containers.TeamMemberV1.Builder{
+           builderResult.hasId = false
+           builderResult.id = ""
+           return self
       }
       public var hasProfileId:Bool {
            get {
@@ -1093,6 +1132,9 @@ public extension Services.Team.Containers {
         if other == Services.Team.Containers.TeamMemberV1() {
          return self
         }
+        if other.hasId {
+             id = other.id
+        }
         if other.hasProfileId {
              profileId = other.profileId
         }
@@ -1124,17 +1166,20 @@ public extension Services.Team.Containers {
             return self
 
           case 10 :
+            id = try input.readString()
+
+          case 18 :
             profileId = try input.readString()
 
-          case 16 :
+          case 24 :
             let valueIntrole = try input.readEnum()
             if let enumsrole = Services.Team.Containers.TeamMemberV1.RoleV1(rawValue:valueIntrole){
                  role = enumsrole
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntrole))
+                 try unknownFieldsBuilder.mergeVarintField(3, value:Int64(valueIntrole))
             }
 
-          case 26 :
+          case 34 :
             let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
             if hasProfile {
               try subBuilder.mergeFrom(profile)
@@ -1142,7 +1187,7 @@ public extension Services.Team.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             profile = subBuilder.buildPartial()
 
-          case 34 :
+          case 42 :
             let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
             if hasInflations {
               try subBuilder.mergeFrom(inflations)
@@ -1150,7 +1195,7 @@ public extension Services.Team.Containers {
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             inflations = subBuilder.buildPartial()
 
-          case 42 :
+          case 50 :
             let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
             if hasFields {
               try subBuilder.mergeFrom(fields)

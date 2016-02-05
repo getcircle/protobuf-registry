@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/team/containers.proto',
   package='services.team.containers',
   syntax='proto3',
-  serialized_pb=b'\n(protobufs/services/team/containers.proto\x12\x18services.team.containers\x1a*protobufs/services/common/containers.proto\x1a\x36protobufs/services/common/containers/description.proto\x1a+protobufs/services/profile/containers.proto\"\xbb\x02\n\x06TeamV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12J\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12>\n\x0bpermissions\x18\x04 \x01(\x0b\x32).services.common.containers.PermissionsV1\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12<\n\ninflations\x18\x06 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x07 \x01(\x0b\x32$.services.common.containers.FieldsV1\"\xb3\x02\n\x0cTeamMemberV1\x12\x12\n\nprofile_id\x18\x01 \x01(\t\x12;\n\x04role\x18\x02 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\x12\x37\n\x07profile\x18\x03 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12<\n\ninflations\x18\x04 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x05 \x01(\x0b\x32$.services.common.containers.FieldsV1\"%\n\x06RoleV1\x12\n\n\x06MEMBER\x10\x00\x12\x0f\n\x0b\x43OORDINATOR\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n(protobufs/services/team/containers.proto\x12\x18services.team.containers\x1a*protobufs/services/common/containers.proto\x1a\x36protobufs/services/common/containers/description.proto\x1a+protobufs/services/profile/containers.proto\"\xbb\x02\n\x06TeamV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12J\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12>\n\x0bpermissions\x18\x04 \x01(\x0b\x32).services.common.containers.PermissionsV1\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12<\n\ninflations\x18\x06 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x07 \x01(\x0b\x32$.services.common.containers.FieldsV1\"\xbf\x02\n\x0cTeamMemberV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12;\n\x04role\x18\x03 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\x12\x37\n\x07profile\x18\x04 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12<\n\ninflations\x18\x05 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x06 \x01(\x0b\x32$.services.common.containers.FieldsV1\"%\n\x06RoleV1\x12\n\n\x06MEMBER\x10\x00\x12\x0f\n\x0b\x43OORDINATOR\x10\x01\x62\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_common_dot_containers_dot_description__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -44,8 +44,8 @@ _TEAMMEMBERV1_ROLEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=804,
-  serialized_end=841,
+  serialized_start=816,
+  serialized_end=853,
 )
 _sym_db.RegisterEnumDescriptor(_TEAMMEMBERV1_ROLEV1)
 
@@ -131,36 +131,43 @@ _TEAMMEMBERV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='profile_id', full_name='services.team.containers.TeamMemberV1.profile_id', index=0,
+      name='id', full_name='services.team.containers.TeamMemberV1.id', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='role', full_name='services.team.containers.TeamMemberV1.role', index=1,
-      number=2, type=14, cpp_type=8, label=1,
+      name='profile_id', full_name='services.team.containers.TeamMemberV1.profile_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='role', full_name='services.team.containers.TeamMemberV1.role', index=2,
+      number=3, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='profile', full_name='services.team.containers.TeamMemberV1.profile', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='inflations', full_name='services.team.containers.TeamMemberV1.inflations', index=3,
+      name='profile', full_name='services.team.containers.TeamMemberV1.profile', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='fields', full_name='services.team.containers.TeamMemberV1.fields', index=4,
+      name='inflations', full_name='services.team.containers.TeamMemberV1.inflations', index=4,
       number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='fields', full_name='services.team.containers.TeamMemberV1.fields', index=5,
+      number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -179,7 +186,7 @@ _TEAMMEMBERV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=534,
-  serialized_end=841,
+  serialized_end=853,
 )
 
 _TEAMV1.fields_by_name['description'].message_type = protobufs_dot_services_dot_common_dot_containers_dot_description__pb2._DESCRIPTIONV1

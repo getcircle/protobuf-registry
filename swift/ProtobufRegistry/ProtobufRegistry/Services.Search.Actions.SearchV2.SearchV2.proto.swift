@@ -14,7 +14,7 @@ public func == (lhs: Services.Search.Actions.SearchV2.RequestV1, rhs: Services.S
   fieldCheck = fieldCheck && (lhs.hasCategory == rhs.hasCategory) && (!lhs.hasCategory || lhs.category == rhs.category)
   fieldCheck = fieldCheck && (lhs.hasAttribute == rhs.hasAttribute) && (!lhs.hasAttribute || lhs.attribute == rhs.attribute)
   fieldCheck = fieldCheck && (lhs.hasAttributeValue == rhs.hasAttributeValue) && (!lhs.hasAttributeValue || lhs.attributeValue == rhs.attributeValue)
-  fieldCheck = fieldCheck && (lhs.hasContainsCategory == rhs.hasContainsCategory) && (!lhs.hasContainsCategory || lhs.containsCategory == rhs.containsCategory)
+  fieldCheck = fieldCheck && (lhs.hasHasCategory == rhs.hasHasCategory) && (!lhs.hasHasCategory || lhs.hasCategory == rhs.hasCategory)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -60,8 +60,8 @@ public extension Services.Search.Actions.SearchV2 {
     public private(set) var hasAttributeValue:Bool = false
     public private(set) var attributeValue:String = ""
 
-    public private(set) var hasContainsCategory:Bool = false
-    public private(set) var containsCategory:Bool = false
+    public private(set) var hasHasCategory:Bool = false
+    public private(set) var hasCategory:Bool = false
 
     required public init() {
          super.init()
@@ -82,8 +82,8 @@ public extension Services.Search.Actions.SearchV2 {
       if hasAttributeValue {
         try output.writeString(4, value:attributeValue)
       }
-      if hasContainsCategory {
-        try output.writeBool(5, value:containsCategory)
+      if hasHasCategory {
+        try output.writeBool(5, value:hasCategory)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -106,8 +106,8 @@ public extension Services.Search.Actions.SearchV2 {
       if hasAttributeValue {
         serialize_size += attributeValue.computeStringSize(4)
       }
-      if hasContainsCategory {
-        serialize_size += containsCategory.computeBoolSize(5)
+      if hasHasCategory {
+        serialize_size += hasCategory.computeBoolSize(5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -172,8 +172,8 @@ public extension Services.Search.Actions.SearchV2 {
       if hasAttributeValue {
         output += "\(indent) attributeValue: \(attributeValue) \n"
       }
-      if hasContainsCategory {
-        output += "\(indent) containsCategory: \(containsCategory) \n"
+      if hasHasCategory {
+        output += "\(indent) hasCategory: \(hasCategory) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -192,8 +192,8 @@ public extension Services.Search.Actions.SearchV2 {
             if hasAttributeValue {
                hashCode = (hashCode &* 31) &+ attributeValue.hashValue
             }
-            if hasContainsCategory {
-               hashCode = (hashCode &* 31) &+ containsCategory.hashValue
+            if hasHasCategory {
+               hashCode = (hashCode &* 31) &+ hasCategory.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -315,27 +315,27 @@ public extension Services.Search.Actions.SearchV2 {
            builderResult.attributeValue = ""
            return self
       }
-      public var hasContainsCategory:Bool {
+      public var hasHasCategory:Bool {
            get {
-                return builderResult.hasContainsCategory
+                return builderResult.hasHasCategory
            }
       }
-      public var containsCategory:Bool {
+      public var hasCategory:Bool {
            get {
-                return builderResult.containsCategory
+                return builderResult.hasCategory
            }
            set (value) {
-               builderResult.hasContainsCategory = true
-               builderResult.containsCategory = value
+               builderResult.hasHasCategory = true
+               builderResult.hasCategory = value
            }
       }
-      public func setContainsCategory(value:Bool) -> Services.Search.Actions.SearchV2.RequestV1.Builder {
-        self.containsCategory = value
+      public func setHasCategory(value:Bool) -> Services.Search.Actions.SearchV2.RequestV1.Builder {
+        self.hasCategory = value
         return self
       }
-      public func clearContainsCategory() -> Services.Search.Actions.SearchV2.RequestV1.Builder{
-           builderResult.hasContainsCategory = false
-           builderResult.containsCategory = false
+      public func clearHasCategory() -> Services.Search.Actions.SearchV2.RequestV1.Builder{
+           builderResult.hasHasCategory = false
+           builderResult.hasCategory = false
            return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -374,8 +374,8 @@ public extension Services.Search.Actions.SearchV2 {
         if other.hasAttributeValue {
              attributeValue = other.attributeValue
         }
-        if other.hasContainsCategory {
-             containsCategory = other.containsCategory
+        if other.hasHasCategory {
+             hasCategory = other.hasCategory
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -415,7 +415,7 @@ public extension Services.Search.Actions.SearchV2 {
             attributeValue = try input.readString()
 
           case 40 :
-            containsCategory = try input.readBool()
+            hasCategory = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

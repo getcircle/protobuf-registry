@@ -14,8 +14,8 @@ public func == (lhs: Services.Search.Actions.Search.RequestV1, rhs: Services.Sea
   fieldCheck = fieldCheck && (lhs.hasCategory == rhs.hasCategory) && (!lhs.hasCategory || lhs.category == rhs.category)
   fieldCheck = fieldCheck && (lhs.hasAttribute == rhs.hasAttribute) && (!lhs.hasAttribute || lhs.attribute == rhs.attribute)
   fieldCheck = fieldCheck && (lhs.hasAttributeValue == rhs.hasAttributeValue) && (!lhs.hasAttributeValue || lhs.attributeValue == rhs.attributeValue)
-  fieldCheck = fieldCheck && (lhs.hasContainsCategory == rhs.hasContainsCategory) && (!lhs.hasContainsCategory || lhs.containsCategory == rhs.containsCategory)
-  fieldCheck = fieldCheck && (lhs.hasContainsAttribute == rhs.hasContainsAttribute) && (!lhs.hasContainsAttribute || lhs.containsAttribute == rhs.containsAttribute)
+  fieldCheck = fieldCheck && (lhs.hasHasCategory == rhs.hasHasCategory) && (!lhs.hasHasCategory || lhs.hasCategory == rhs.hasCategory)
+  fieldCheck = fieldCheck && (lhs.hasHasAttribute == rhs.hasHasAttribute) && (!lhs.hasHasAttribute || lhs.hasAttribute == rhs.hasAttribute)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -61,11 +61,11 @@ public extension Services.Search.Actions.Search {
     public private(set) var hasAttributeValue:Bool = false
     public private(set) var attributeValue:String = ""
 
-    public private(set) var hasContainsCategory:Bool = false
-    public private(set) var containsCategory:Bool = false
+    public private(set) var hasHasCategory:Bool = false
+    public private(set) var hasCategory:Bool = false
 
-    public private(set) var hasContainsAttribute:Bool = false
-    public private(set) var containsAttribute:Bool = false
+    public private(set) var hasHasAttribute:Bool = false
+    public private(set) var hasAttribute:Bool = false
 
     required public init() {
          super.init()
@@ -86,11 +86,11 @@ public extension Services.Search.Actions.Search {
       if hasAttributeValue {
         try output.writeString(4, value:attributeValue)
       }
-      if hasContainsCategory {
-        try output.writeBool(5, value:containsCategory)
+      if hasHasCategory {
+        try output.writeBool(5, value:hasCategory)
       }
-      if hasContainsAttribute {
-        try output.writeBool(6, value:containsAttribute)
+      if hasHasAttribute {
+        try output.writeBool(6, value:hasAttribute)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -113,11 +113,11 @@ public extension Services.Search.Actions.Search {
       if hasAttributeValue {
         serialize_size += attributeValue.computeStringSize(4)
       }
-      if hasContainsCategory {
-        serialize_size += containsCategory.computeBoolSize(5)
+      if hasHasCategory {
+        serialize_size += hasCategory.computeBoolSize(5)
       }
-      if hasContainsAttribute {
-        serialize_size += containsAttribute.computeBoolSize(6)
+      if hasHasAttribute {
+        serialize_size += hasAttribute.computeBoolSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -182,11 +182,11 @@ public extension Services.Search.Actions.Search {
       if hasAttributeValue {
         output += "\(indent) attributeValue: \(attributeValue) \n"
       }
-      if hasContainsCategory {
-        output += "\(indent) containsCategory: \(containsCategory) \n"
+      if hasHasCategory {
+        output += "\(indent) hasCategory: \(hasCategory) \n"
       }
-      if hasContainsAttribute {
-        output += "\(indent) containsAttribute: \(containsAttribute) \n"
+      if hasHasAttribute {
+        output += "\(indent) hasAttribute: \(hasAttribute) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -205,11 +205,11 @@ public extension Services.Search.Actions.Search {
             if hasAttributeValue {
                hashCode = (hashCode &* 31) &+ attributeValue.hashValue
             }
-            if hasContainsCategory {
-               hashCode = (hashCode &* 31) &+ containsCategory.hashValue
+            if hasHasCategory {
+               hashCode = (hashCode &* 31) &+ hasCategory.hashValue
             }
-            if hasContainsAttribute {
-               hashCode = (hashCode &* 31) &+ containsAttribute.hashValue
+            if hasHasAttribute {
+               hashCode = (hashCode &* 31) &+ hasAttribute.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -331,50 +331,50 @@ public extension Services.Search.Actions.Search {
            builderResult.attributeValue = ""
            return self
       }
-      public var hasContainsCategory:Bool {
+      public var hasHasCategory:Bool {
            get {
-                return builderResult.hasContainsCategory
+                return builderResult.hasHasCategory
            }
       }
-      public var containsCategory:Bool {
+      public var hasCategory:Bool {
            get {
-                return builderResult.containsCategory
+                return builderResult.hasCategory
            }
            set (value) {
-               builderResult.hasContainsCategory = true
-               builderResult.containsCategory = value
+               builderResult.hasHasCategory = true
+               builderResult.hasCategory = value
            }
       }
-      public func setContainsCategory(value:Bool) -> Services.Search.Actions.Search.RequestV1.Builder {
-        self.containsCategory = value
+      public func setHasCategory(value:Bool) -> Services.Search.Actions.Search.RequestV1.Builder {
+        self.hasCategory = value
         return self
       }
-      public func clearContainsCategory() -> Services.Search.Actions.Search.RequestV1.Builder{
-           builderResult.hasContainsCategory = false
-           builderResult.containsCategory = false
+      public func clearHasCategory() -> Services.Search.Actions.Search.RequestV1.Builder{
+           builderResult.hasHasCategory = false
+           builderResult.hasCategory = false
            return self
       }
-      public var hasContainsAttribute:Bool {
+      public var hasHasAttribute:Bool {
            get {
-                return builderResult.hasContainsAttribute
+                return builderResult.hasHasAttribute
            }
       }
-      public var containsAttribute:Bool {
+      public var hasAttribute:Bool {
            get {
-                return builderResult.containsAttribute
+                return builderResult.hasAttribute
            }
            set (value) {
-               builderResult.hasContainsAttribute = true
-               builderResult.containsAttribute = value
+               builderResult.hasHasAttribute = true
+               builderResult.hasAttribute = value
            }
       }
-      public func setContainsAttribute(value:Bool) -> Services.Search.Actions.Search.RequestV1.Builder {
-        self.containsAttribute = value
+      public func setHasAttribute(value:Bool) -> Services.Search.Actions.Search.RequestV1.Builder {
+        self.hasAttribute = value
         return self
       }
-      public func clearContainsAttribute() -> Services.Search.Actions.Search.RequestV1.Builder{
-           builderResult.hasContainsAttribute = false
-           builderResult.containsAttribute = false
+      public func clearHasAttribute() -> Services.Search.Actions.Search.RequestV1.Builder{
+           builderResult.hasHasAttribute = false
+           builderResult.hasAttribute = false
            return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -413,11 +413,11 @@ public extension Services.Search.Actions.Search {
         if other.hasAttributeValue {
              attributeValue = other.attributeValue
         }
-        if other.hasContainsCategory {
-             containsCategory = other.containsCategory
+        if other.hasHasCategory {
+             hasCategory = other.hasCategory
         }
-        if other.hasContainsAttribute {
-             containsAttribute = other.containsAttribute
+        if other.hasHasAttribute {
+             hasAttribute = other.hasAttribute
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -457,10 +457,10 @@ public extension Services.Search.Actions.Search {
             attributeValue = try input.readString()
 
           case 40 :
-            containsCategory = try input.readBool()
+            hasCategory = try input.readBool()
 
           case 48 :
-            containsAttribute = try input.readBool()
+            hasAttribute = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
