@@ -22,9 +22,10 @@ message TeamMemberV1 {
         COORDINATOR = 1;
     }
 
-    string profile_id = 1;
-    RoleV1 role = 2;
-    services.profile.containers.ProfileV1 profile = 3;
-    services.common.containers.InflationsV1 inflations = 4;
-    services.common.containers.FieldsV1 fields = 5;
+    string id = 1;
+    string profile_id = 2;
+    RoleV1 role = 3;
+    services.profile.containers.ProfileV1 profile = 4;
+    services.common.containers.InflationsV1 inflations = 5;
+    services.common.containers.FieldsV1 fields = 6;
 }
