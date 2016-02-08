@@ -95,6 +95,7 @@ import "protobufs/services/team/actions/join_team.proto";
 import "protobufs/services/team/actions/leave_team.proto";
 import "protobufs/services/team/actions/remove_members.proto";
 import "protobufs/services/team/actions/update_members.proto";
+import "protobufs/services/team/actions/update_team.proto";
 
 message User {
     reserved 101, 104, 105, 106, 107, 117;
@@ -242,5 +243,6 @@ message Team {
         optional services.team.actions.leave_team.ResponseV1 leave_team = 1905;
         optional services.team.actions.remove_members.ResponseV1 remove_members = 1906;
         optional services.team.actions.update_members.ResponseV1 update_members = 1907;
+        optional services.team.actions.update_team.ResponseV1 update_team = 1908;
     }
 }

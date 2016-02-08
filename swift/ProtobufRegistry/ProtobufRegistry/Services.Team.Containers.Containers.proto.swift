@@ -5,6 +5,19 @@ import Foundation
 
 public extension Services.Team{ public struct Containers { }}
 
+public func == (lhs: Services.Team.Containers.ContactMethodV1, rhs: Services.Team.Containers.ContactMethodV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
+  fieldCheck = fieldCheck && (lhs.hasLabel == rhs.hasLabel) && (!lhs.hasLabel || lhs.label == rhs.label)
+  fieldCheck = fieldCheck && (lhs.hasValue == rhs.hasValue) && (!lhs.hasValue || lhs.value == rhs.value)
+  fieldCheck = fieldCheck && (lhs.hasTypes == rhs.hasTypes) && (!lhs.hasTypes || lhs.types == rhs.types)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
 public func == (lhs: Services.Team.Containers.TeamV1, rhs: Services.Team.Containers.TeamV1) -> Bool {
   if (lhs === rhs) {
     return true
@@ -17,6 +30,7 @@ public func == (lhs: Services.Team.Containers.TeamV1, rhs: Services.Team.Contain
   fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.contactMethods == rhs.contactMethods)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -57,6 +71,350 @@ public extension Services.Team.Containers {
     }
   }
 
+  final public class ContactMethodV1 : GeneratedMessage, GeneratedMessageProtocol {
+
+
+      //Enum type declaration start 
+
+      public enum TypeV1:Int32 {
+        case Email = 0
+        case Slack = 1
+
+      }
+
+      //Enum type declaration end 
+
+    public private(set) var hasId:Bool = false
+    public private(set) var id:String = ""
+
+    public private(set) var hasLabel:Bool = false
+    public private(set) var label:String = ""
+
+    public private(set) var hasValue:Bool = false
+    public private(set) var value:String = ""
+
+    public private(set) var types:Services.Team.Containers.ContactMethodV1.TypeV1 = Services.Team.Containers.ContactMethodV1.TypeV1.Email
+    public private(set) var hasTypes:Bool = false
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasId {
+        try output.writeString(1, value:id)
+      }
+      if hasLabel {
+        try output.writeString(2, value:label)
+      }
+      if hasValue {
+        try output.writeString(3, value:value)
+      }
+      if hasTypes {
+        try output.writeEnum(4, value:types.rawValue)
+      }
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasId {
+        serialize_size += id.computeStringSize(1)
+      }
+      if hasLabel {
+        serialize_size += label.computeStringSize(2)
+      }
+      if hasValue {
+        serialize_size += value.computeStringSize(3)
+      }
+      if (hasTypes) {
+        serialize_size += types.rawValue.computeEnumSize(4)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Team.Containers.ContactMethodV1> {
+      var mergedArray = Array<Services.Team.Containers.ContactMethodV1>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Team.Containers.ContactMethodV1? {
+      return try Services.Team.Containers.ContactMethodV1.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.Team.Containers.ContactMethodV1 {
+      return try Services.Team.Containers.ContactMethodV1.Builder().mergeFromData(data, extensionRegistry:Services.Team.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Team.Containers.ContactMethodV1 {
+      return try Services.Team.Containers.ContactMethodV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Team.Containers.ContactMethodV1 {
+      return try Services.Team.Containers.ContactMethodV1.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Team.Containers.ContactMethodV1 {
+      return try Services.Team.Containers.ContactMethodV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Team.Containers.ContactMethodV1 {
+      return try Services.Team.Containers.ContactMethodV1.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Team.Containers.ContactMethodV1 {
+      return try Services.Team.Containers.ContactMethodV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.Team.Containers.ContactMethodV1.Builder {
+      return Services.Team.Containers.ContactMethodV1.classBuilder() as! Services.Team.Containers.ContactMethodV1.Builder
+    }
+    public func getBuilder() -> Services.Team.Containers.ContactMethodV1.Builder {
+      return classBuilder() as! Services.Team.Containers.ContactMethodV1.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Team.Containers.ContactMethodV1.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Team.Containers.ContactMethodV1.Builder()
+    }
+    public func toBuilder() throws -> Services.Team.Containers.ContactMethodV1.Builder {
+      return try Services.Team.Containers.ContactMethodV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Team.Containers.ContactMethodV1) throws -> Services.Team.Containers.ContactMethodV1.Builder {
+      return try Services.Team.Containers.ContactMethodV1.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasId {
+        output += "\(indent) id: \(id) \n"
+      }
+      if hasLabel {
+        output += "\(indent) label: \(label) \n"
+      }
+      if hasValue {
+        output += "\(indent) value: \(value) \n"
+      }
+      if (hasTypes) {
+        output += "\(indent) types: \(types.rawValue)\n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasId {
+               hashCode = (hashCode &* 31) &+ id.hashValue
+            }
+            if hasLabel {
+               hashCode = (hashCode &* 31) &+ label.hashValue
+            }
+            if hasValue {
+               hashCode = (hashCode &* 31) &+ value.hashValue
+            }
+            if hasTypes {
+               hashCode = (hashCode &* 31) &+ Int(types.rawValue)
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Team.Containers.ContactMethodV1"
+    }
+    override public func className() -> String {
+        return "Services.Team.Containers.ContactMethodV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Team.Containers.ContactMethodV1.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.Team.Containers.ContactMethodV1 = Services.Team.Containers.ContactMethodV1()
+      public func getMessage() -> Services.Team.Containers.ContactMethodV1 {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      public var hasId:Bool {
+           get {
+                return builderResult.hasId
+           }
+      }
+      public var id:String {
+           get {
+                return builderResult.id
+           }
+           set (value) {
+               builderResult.hasId = true
+               builderResult.id = value
+           }
+      }
+      public func setId(value:String) -> Services.Team.Containers.ContactMethodV1.Builder {
+        self.id = value
+        return self
+      }
+      public func clearId() -> Services.Team.Containers.ContactMethodV1.Builder{
+           builderResult.hasId = false
+           builderResult.id = ""
+           return self
+      }
+      public var hasLabel:Bool {
+           get {
+                return builderResult.hasLabel
+           }
+      }
+      public var label:String {
+           get {
+                return builderResult.label
+           }
+           set (value) {
+               builderResult.hasLabel = true
+               builderResult.label = value
+           }
+      }
+      public func setLabel(value:String) -> Services.Team.Containers.ContactMethodV1.Builder {
+        self.label = value
+        return self
+      }
+      public func clearLabel() -> Services.Team.Containers.ContactMethodV1.Builder{
+           builderResult.hasLabel = false
+           builderResult.label = ""
+           return self
+      }
+      public var hasValue:Bool {
+           get {
+                return builderResult.hasValue
+           }
+      }
+      public var value:String {
+           get {
+                return builderResult.value
+           }
+           set (value) {
+               builderResult.hasValue = true
+               builderResult.value = value
+           }
+      }
+      public func setValue(value:String) -> Services.Team.Containers.ContactMethodV1.Builder {
+        self.value = value
+        return self
+      }
+      public func clearValue() -> Services.Team.Containers.ContactMethodV1.Builder{
+           builderResult.hasValue = false
+           builderResult.value = ""
+           return self
+      }
+        public var hasTypes:Bool{
+            get {
+                return builderResult.hasTypes
+            }
+        }
+        public var types:Services.Team.Containers.ContactMethodV1.TypeV1 {
+            get {
+                return builderResult.types
+            }
+            set (value) {
+                builderResult.hasTypes = true
+                builderResult.types = value
+            }
+        }
+        public func setTypes(value:Services.Team.Containers.ContactMethodV1.TypeV1) -> Services.Team.Containers.ContactMethodV1.Builder {
+          self.types = value
+          return self
+        }
+        public func clearTypes() -> Services.Team.Containers.ContactMethodV1.Builder {
+           builderResult.hasTypes = false
+           builderResult.types = .Email
+           return self
+        }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.Team.Containers.ContactMethodV1.Builder {
+        builderResult = Services.Team.Containers.ContactMethodV1()
+        return self
+      }
+      public override func clone() throws -> Services.Team.Containers.ContactMethodV1.Builder {
+        return try Services.Team.Containers.ContactMethodV1.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.Team.Containers.ContactMethodV1 {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.Team.Containers.ContactMethodV1 {
+        let returnMe:Services.Team.Containers.ContactMethodV1 = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.Team.Containers.ContactMethodV1) throws -> Services.Team.Containers.ContactMethodV1.Builder {
+        if other == Services.Team.Containers.ContactMethodV1() {
+         return self
+        }
+        if other.hasId {
+             id = other.id
+        }
+        if other.hasLabel {
+             label = other.label
+        }
+        if other.hasValue {
+             value = other.value
+        }
+        if other.hasTypes {
+             types = other.types
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Team.Containers.ContactMethodV1.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Team.Containers.ContactMethodV1.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 10 :
+            id = try input.readString()
+
+          case 18 :
+            label = try input.readString()
+
+          case 26 :
+            value = try input.readString()
+
+          case 32 :
+            let valueInttypes = try input.readEnum()
+            if let enumstypes = Services.Team.Containers.ContactMethodV1.TypeV1(rawValue:valueInttypes){
+                 types = enumstypes
+            } else {
+                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueInttypes))
+            }
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
   final public class TeamV1 : GeneratedMessage, GeneratedMessageProtocol {
     public private(set) var hasId:Bool = false
     public private(set) var id:String = ""
@@ -75,6 +433,7 @@ public extension Services.Team.Containers {
     public private(set) var inflations:Services.Common.Containers.InflationsV1!
     public private(set) var hasFields:Bool = false
     public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var contactMethods:Array<Services.Team.Containers.ContactMethodV1>  = Array<Services.Team.Containers.ContactMethodV1>()
     required public init() {
          super.init()
     }
@@ -102,6 +461,9 @@ public extension Services.Team.Containers {
       }
       if hasFields {
         try output.writeMessage(7, value:fields)
+      }
+      for oneElementcontactMethods in contactMethods {
+          try output.writeMessage(8, value:oneElementcontactMethods)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -140,6 +502,9 @@ public extension Services.Team.Containers {
           if let varSizefields = fields?.computeMessageSize(7) {
               serialize_size += varSizefields
           }
+      }
+      for oneElementcontactMethods in contactMethods {
+          serialize_size += oneElementcontactMethods.computeMessageSize(8)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -221,6 +586,13 @@ public extension Services.Team.Containers {
         try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      var contactMethodsElementIndex:Int = 0
+      for oneElementcontactMethods in contactMethods {
+          output += "\(indent) contactMethods[\(contactMethodsElementIndex)] {\n"
+          try oneElementcontactMethods.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          contactMethodsElementIndex++
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -254,6 +626,9 @@ public extension Services.Team.Containers {
                 if let hashValuefields = fields?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuefields
                 }
+            }
+            for oneElementcontactMethods in contactMethods {
+                hashCode = (hashCode &* 31) &+ oneElementcontactMethods.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -556,6 +931,22 @@ public extension Services.Team.Containers {
         builderResult.fields = nil
         return self
       }
+      public var contactMethods:Array<Services.Team.Containers.ContactMethodV1> {
+           get {
+               return builderResult.contactMethods
+           }
+           set (value) {
+               builderResult.contactMethods = value
+           }
+      }
+      public func setContactMethods(value:Array<Services.Team.Containers.ContactMethodV1>) -> Services.Team.Containers.TeamV1.Builder {
+        self.contactMethods = value
+        return self
+      }
+      public func clearContactMethods() -> Services.Team.Containers.TeamV1.Builder {
+        builderResult.contactMethods.removeAll(keepCapacity: false)
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -600,6 +991,9 @@ public extension Services.Team.Containers {
         }
         if (other.hasFields) {
             try mergeFields(other.fields)
+        }
+        if !other.contactMethods.isEmpty  {
+           builderResult.contactMethods += other.contactMethods
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -656,6 +1050,11 @@ public extension Services.Team.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             fields = subBuilder.buildPartial()
+
+          case 66 :
+            let subBuilder = Services.Team.Containers.ContactMethodV1.Builder()
+            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+            contactMethods += [subBuilder.buildPartial()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

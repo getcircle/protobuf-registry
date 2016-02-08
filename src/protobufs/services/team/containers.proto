@@ -5,6 +5,18 @@ import "protobufs/services/common/containers.proto";
 import "protobufs/services/common/containers/description.proto";
 import "protobufs/services/profile/containers.proto";
 
+message ContactMethodV1 {
+    enum TypeV1 {
+        EMAIL = 0;
+        SLACK = 1;
+    }
+
+    string id = 1;
+    string label = 2;
+    string value = 3;
+    TypeV1 type = 4;
+}
+
 message TeamV1 {
     string id = 1;
     string name = 2;
@@ -13,6 +25,7 @@ message TeamV1 {
     string organization_id = 5;
     services.common.containers.InflationsV1 inflations = 6;
     services.common.containers.FieldsV1 fields = 7;
+    repeated ContactMethodV1 contact_methods = 8;
 }
 
 message TeamMemberV1 {

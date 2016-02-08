@@ -503,6 +503,11 @@ public var ServicesRegistryResponsesTeamupdateMembers:ConcreateExtensionField {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesTeamupdateMembersStatic
    }
 }
+public var ServicesRegistryResponsesTeamupdateTeam:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesTeamupdateTeamStatic
+   }
+}
 public extension Services.Registry.Responses {
   public struct ResponsesRoot {
     public static var sharedInstance : ResponsesRoot {
@@ -589,6 +594,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesTeamleaveTeamStatic:ConcreateExtensionField
     var ServicesRegistryResponsesTeamremoveMembersStatic:ConcreateExtensionField
     var ServicesRegistryResponsesTeamupdateMembersStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesTeamupdateTeamStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -670,6 +676,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesTeamleaveTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1905, defaultValue:Services.Team.Actions.LeaveTeam.ResponseV1(), messageOrGroupClass:Services.Team.Actions.LeaveTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesTeamremoveMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1906, defaultValue:Services.Team.Actions.RemoveMembers.ResponseV1(), messageOrGroupClass:Services.Team.Actions.RemoveMembers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesTeamupdateMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1907, defaultValue:Services.Team.Actions.UpdateMembers.ResponseV1(), messageOrGroupClass:Services.Team.Actions.UpdateMembers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesTeamupdateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1908, defaultValue:Services.Team.Actions.UpdateTeam.ResponseV1(), messageOrGroupClass:Services.Team.Actions.UpdateTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -751,6 +758,7 @@ public extension Services.Registry.Responses {
       Services.Team.Actions.LeaveTeam.LeaveTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.RemoveMembers.RemoveMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.UpdateMembers.UpdateMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.UpdateTeam.UpdateTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryResponsesUsercreateUserStatic)
@@ -831,6 +839,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesTeamleaveTeamStatic)
       registry.addExtension(ServicesRegistryResponsesTeamremoveMembersStatic)
       registry.addExtension(ServicesRegistryResponsesTeamupdateMembersStatic)
+      registry.addExtension(ServicesRegistryResponsesTeamupdateTeamStatic)
     }
   }
 
@@ -2740,6 +2749,9 @@ public extension Services.Registry.Responses {
     }
     public class func updateMembers() -> ConcreateExtensionField {
          return ServicesRegistryResponsesTeamupdateMembers
+    }
+    public class func updateTeam() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesTeamupdateTeam
     }
     required public init() {
          super.init()
