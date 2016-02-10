@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/containers.proto',
   package='services.post.containers',
   syntax='proto3',
-  serialized_pb=b'\n(protobufs/services/post/containers.proto\x12\x18services.post.containers\x1a*protobufs/services/common/containers.proto\x1a(protobufs/services/file/containers.proto\x1a+protobufs/services/profile/containers.proto\"\xe2\x04\n\x06PostV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x15\n\rby_profile_id\x18\x03 \x01(\t\x12\r\n\x05title\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x01(\t\x12\x0f\n\x07\x63reated\x18\x06 \x01(\t\x12\x0f\n\x07\x63hanged\x18\x07 \x01(\t\x12:\n\nby_profile\x18\x08 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12\x34\n\x05state\x18\t \x01(\x0e\x32%.services.post.containers.PostStateV1\x12<\n\ninflations\x18\n \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x0b \x01(\x0b\x32$.services.common.containers.FieldsV1\x12>\n\x0bpermissions\x18\x0c \x01(\x0b\x32).services.common.containers.PermissionsV1\x12\x10\n\x08\x66ile_ids\x18\r \x03(\t\x12/\n\x05\x66iles\x18\x0e \x03(\x0b\x32 .services.file.containers.FileV1\x12\x0f\n\x07snippet\x18\x0f \x01(\t\x12\x15\n\rhtml_document\x18\x10 \x01(\t\x12\x36\n\x06source\x18\x11 \x01(\x0e\x32&.services.post.containers.PostSourceV1\x12\x11\n\tsource_id\x18\x12 \x01(\t\"{\n\x0f\x43ollectedPostV1\x12\x0f\n\x07post_id\x18\x01 \x01(\t\x12\x15\n\rby_profile_id\x18\x02 \x01(\t\x12\x10\n\x08position\x18\x03 \x01(\r\x12.\n\x04post\x18\x04 \x01(\x0b\x32 .services.post.containers.PostV1\"\xe5\x03\n\x0c\x43ollectionV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0f\n\x07\x63reated\x18\x04 \x01(\t\x12\x0f\n\x07\x63hanged\x18\x05 \x01(\t\x12>\n\x0bpermissions\x18\x06 \x01(\x0b\x32).services.common.containers.PermissionsV1\x12\x38\n\x05posts\x18\x07 \x03(\x0b\x32).services.post.containers.CollectedPostV1\x12\x46\n\nowner_type\x18\x08 \x01(\x0e\x32\x32.services.post.containers.CollectionV1.OwnerTypeV1\x12\x10\n\x08owner_id\x18\t \x01(\t\x12\x12\n\nis_default\x18\n \x01(\x08\x12<\n\ninflations\x18\x0b \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x0c \x01(\x0b\x32$.services.common.containers.FieldsV1\"$\n\x0bOwnerTypeV1\x12\x0b\n\x07PROFILE\x10\x00\x12\x08\n\x04TEAM\x10\x01*2\n\x0bPostStateV1\x12\t\n\x05\x44RAFT\x10\x00\x12\n\n\x06LISTED\x10\x01\x12\x0c\n\x08UNLISTED\x10\x02*-\n\x0cPostSourceV1\x12\x07\n\x03WEB\x10\x00\x12\t\n\x05\x45MAIL\x10\x01\x12\t\n\x05SLACK\x10\x02\x62\x06proto3'
+  serialized_pb=b'\n(protobufs/services/post/containers.proto\x12\x18services.post.containers\x1a*protobufs/services/common/containers.proto\x1a(protobufs/services/file/containers.proto\x1a+protobufs/services/profile/containers.proto\"\xe2\x04\n\x06PostV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x15\n\rby_profile_id\x18\x03 \x01(\t\x12\r\n\x05title\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x01(\t\x12\x0f\n\x07\x63reated\x18\x06 \x01(\t\x12\x0f\n\x07\x63hanged\x18\x07 \x01(\t\x12:\n\nby_profile\x18\x08 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12\x34\n\x05state\x18\t \x01(\x0e\x32%.services.post.containers.PostStateV1\x12<\n\ninflations\x18\n \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x0b \x01(\x0b\x32$.services.common.containers.FieldsV1\x12>\n\x0bpermissions\x18\x0c \x01(\x0b\x32).services.common.containers.PermissionsV1\x12\x10\n\x08\x66ile_ids\x18\r \x03(\t\x12/\n\x05\x66iles\x18\x0e \x03(\x0b\x32 .services.file.containers.FileV1\x12\x0f\n\x07snippet\x18\x0f \x01(\t\x12\x15\n\rhtml_document\x18\x10 \x01(\t\x12\x36\n\x06source\x18\x11 \x01(\x0e\x32&.services.post.containers.PostSourceV1\x12\x11\n\tsource_id\x18\x12 \x01(\t\"\xef\x01\n\x10\x43ollectionItemV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08position\x18\x02 \x01(\r\x12\x15\n\rby_profile_id\x18\x03 \x01(\t\x12\x43\n\x06source\x18\x04 \x01(\x0e\x32\x33.services.post.containers.CollectionItemV1.SourceV1\x12\x11\n\tsource_id\x18\x05 \x01(\t\x12\x30\n\x04post\x18\x06 \x01(\x0b\x32 .services.post.containers.PostV1H\x00\"\x14\n\x08SourceV1\x12\x08\n\x04LUNO\x10\x00\x42\x06\n\x04item\"\xe6\x03\n\x0c\x43ollectionV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0f\n\x07\x63reated\x18\x04 \x01(\t\x12\x0f\n\x07\x63hanged\x18\x05 \x01(\t\x12>\n\x0bpermissions\x18\x06 \x01(\x0b\x32).services.common.containers.PermissionsV1\x12\x39\n\x05items\x18\x07 \x03(\x0b\x32*.services.post.containers.CollectionItemV1\x12\x46\n\nowner_type\x18\x08 \x01(\x0e\x32\x32.services.post.containers.CollectionV1.OwnerTypeV1\x12\x10\n\x08owner_id\x18\t \x01(\t\x12\x12\n\nis_default\x18\n \x01(\x08\x12<\n\ninflations\x18\x0b \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x0c \x01(\x0b\x32$.services.common.containers.FieldsV1\"$\n\x0bOwnerTypeV1\x12\x0b\n\x07PROFILE\x10\x00\x12\x08\n\x04TEAM\x10\x01*2\n\x0bPostStateV1\x12\t\n\x05\x44RAFT\x10\x00\x12\n\n\x06LISTED\x10\x01\x12\x0c\n\x08UNLISTED\x10\x02*-\n\x0cPostSourceV1\x12\x07\n\x03WEB\x10\x00\x12\t\n\x05\x45MAIL\x10\x01\x12\t\n\x05SLACK\x10\x02\x62\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_file_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -47,8 +47,8 @@ _POSTSTATEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1427,
-  serialized_end=1477,
+  serialized_start=1545,
+  serialized_end=1595,
 )
 _sym_db.RegisterEnumDescriptor(_POSTSTATEV1)
 
@@ -74,8 +74,8 @@ _POSTSOURCEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1479,
-  serialized_end=1524,
+  serialized_start=1597,
+  serialized_end=1642,
 )
 _sym_db.RegisterEnumDescriptor(_POSTSOURCEV1)
 
@@ -87,6 +87,24 @@ WEB = 0
 EMAIL = 1
 SLACK = 2
 
+
+_COLLECTIONITEMV1_SOURCEV1 = _descriptor.EnumDescriptor(
+  name='SourceV1',
+  full_name='services.post.containers.CollectionItemV1.SourceV1',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='LUNO', index=0, number=0,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=1026,
+  serialized_end=1046,
+)
+_sym_db.RegisterEnumDescriptor(_COLLECTIONITEMV1_SOURCEV1)
 
 _COLLECTIONV1_OWNERTYPEV1 = _descriptor.EnumDescriptor(
   name='OwnerTypeV1',
@@ -105,8 +123,8 @@ _COLLECTIONV1_OWNERTYPEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1389,
-  serialized_end=1425,
+  serialized_start=1507,
+  serialized_end=1543,
 )
 _sym_db.RegisterEnumDescriptor(_COLLECTIONV1_OWNERTYPEV1)
 
@@ -261,37 +279,51 @@ _POSTV1 = _descriptor.Descriptor(
 )
 
 
-_COLLECTEDPOSTV1 = _descriptor.Descriptor(
-  name='CollectedPostV1',
-  full_name='services.post.containers.CollectedPostV1',
+_COLLECTIONITEMV1 = _descriptor.Descriptor(
+  name='CollectionItemV1',
+  full_name='services.post.containers.CollectionItemV1',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='post_id', full_name='services.post.containers.CollectedPostV1.post_id', index=0,
+      name='id', full_name='services.post.containers.CollectionItemV1.id', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='by_profile_id', full_name='services.post.containers.CollectedPostV1.by_profile_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='position', full_name='services.post.containers.CollectedPostV1.position', index=2,
-      number=3, type=13, cpp_type=3, label=1,
+      name='position', full_name='services.post.containers.CollectionItemV1.position', index=1,
+      number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='post', full_name='services.post.containers.CollectedPostV1.post', index=3,
-      number=4, type=11, cpp_type=10, label=1,
+      name='by_profile_id', full_name='services.post.containers.CollectionItemV1.by_profile_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='source', full_name='services.post.containers.CollectionItemV1.source', index=3,
+      number=4, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='source_id', full_name='services.post.containers.CollectionItemV1.source_id', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='post', full_name='services.post.containers.CollectionItemV1.post', index=5,
+      number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -301,15 +333,19 @@ _COLLECTEDPOSTV1 = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _COLLECTIONITEMV1_SOURCEV1,
   ],
   options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='item', full_name='services.post.containers.CollectionItemV1.item',
+      index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=814,
-  serialized_end=937,
+  serialized_start=815,
+  serialized_end=1054,
 )
 
 
@@ -363,7 +399,7 @@ _COLLECTIONV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='posts', full_name='services.post.containers.CollectionV1.posts', index=6,
+      name='items', full_name='services.post.containers.CollectionV1.items', index=6,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -417,8 +453,8 @@ _COLLECTIONV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=940,
-  serialized_end=1425,
+  serialized_start=1057,
+  serialized_end=1543,
 )
 
 _POSTV1.fields_by_name['by_profile'].message_type = protobufs_dot_services_dot_profile_dot_containers__pb2._PROFILEV1
@@ -428,15 +464,20 @@ _POSTV1.fields_by_name['fields'].message_type = protobufs_dot_services_dot_commo
 _POSTV1.fields_by_name['permissions'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._PERMISSIONSV1
 _POSTV1.fields_by_name['files'].message_type = protobufs_dot_services_dot_file_dot_containers__pb2._FILEV1
 _POSTV1.fields_by_name['source'].enum_type = _POSTSOURCEV1
-_COLLECTEDPOSTV1.fields_by_name['post'].message_type = _POSTV1
+_COLLECTIONITEMV1.fields_by_name['source'].enum_type = _COLLECTIONITEMV1_SOURCEV1
+_COLLECTIONITEMV1.fields_by_name['post'].message_type = _POSTV1
+_COLLECTIONITEMV1_SOURCEV1.containing_type = _COLLECTIONITEMV1
+_COLLECTIONITEMV1.oneofs_by_name['item'].fields.append(
+  _COLLECTIONITEMV1.fields_by_name['post'])
+_COLLECTIONITEMV1.fields_by_name['post'].containing_oneof = _COLLECTIONITEMV1.oneofs_by_name['item']
 _COLLECTIONV1.fields_by_name['permissions'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._PERMISSIONSV1
-_COLLECTIONV1.fields_by_name['posts'].message_type = _COLLECTEDPOSTV1
+_COLLECTIONV1.fields_by_name['items'].message_type = _COLLECTIONITEMV1
 _COLLECTIONV1.fields_by_name['owner_type'].enum_type = _COLLECTIONV1_OWNERTYPEV1
 _COLLECTIONV1.fields_by_name['inflations'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._INFLATIONSV1
 _COLLECTIONV1.fields_by_name['fields'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._FIELDSV1
 _COLLECTIONV1_OWNERTYPEV1.containing_type = _COLLECTIONV1
 DESCRIPTOR.message_types_by_name['PostV1'] = _POSTV1
-DESCRIPTOR.message_types_by_name['CollectedPostV1'] = _COLLECTEDPOSTV1
+DESCRIPTOR.message_types_by_name['CollectionItemV1'] = _COLLECTIONITEMV1
 DESCRIPTOR.message_types_by_name['CollectionV1'] = _COLLECTIONV1
 DESCRIPTOR.enum_types_by_name['PostStateV1'] = _POSTSTATEV1
 DESCRIPTOR.enum_types_by_name['PostSourceV1'] = _POSTSOURCEV1
@@ -448,12 +489,12 @@ PostV1 = _reflection.GeneratedProtocolMessageType('PostV1', (_message.Message,),
   ))
 _sym_db.RegisterMessage(PostV1)
 
-CollectedPostV1 = _reflection.GeneratedProtocolMessageType('CollectedPostV1', (_message.Message,), dict(
-  DESCRIPTOR = _COLLECTEDPOSTV1,
+CollectionItemV1 = _reflection.GeneratedProtocolMessageType('CollectionItemV1', (_message.Message,), dict(
+  DESCRIPTOR = _COLLECTIONITEMV1,
   __module__ = 'protobufs.services.post.containers_pb2'
-  # @@protoc_insertion_point(class_scope:services.post.containers.CollectedPostV1)
+  # @@protoc_insertion_point(class_scope:services.post.containers.CollectionItemV1)
   ))
-_sym_db.RegisterMessage(CollectedPostV1)
+_sym_db.RegisterMessage(CollectionItemV1)
 
 CollectionV1 = _reflection.GeneratedProtocolMessageType('CollectionV1', (_message.Message,), dict(
   DESCRIPTOR = _COLLECTIONV1,

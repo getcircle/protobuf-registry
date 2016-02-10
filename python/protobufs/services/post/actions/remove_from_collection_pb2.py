@@ -17,7 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/remove_from_collection.proto',
   package='services.post.actions.remove_from_collection',
   syntax='proto3',
-  serialized_pb=b'\n<protobufs/services/post/actions/remove_from_collection.proto\x12,services.post.actions.remove_from_collection\"3\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x0f\n\x07post_id\x18\x02 \x01(\t\"\x0c\n\nResponseV1b\x06proto3'
+  serialized_pb=b'\n<protobufs/services/post/actions/remove_from_collection.proto\x12,services.post.actions.remove_from_collection\">\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x1a\n\x12\x63ollection_item_id\x18\x02 \x01(\t\"\x0c\n\nResponseV1b\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -39,7 +39,7 @@ _REQUESTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='post_id', full_name='services.post.actions.remove_from_collection.RequestV1.post_id', index=1,
+      name='collection_item_id', full_name='services.post.actions.remove_from_collection.RequestV1.collection_item_id', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -58,7 +58,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=110,
-  serialized_end=161,
+  serialized_end=172,
 )
 
 
@@ -81,8 +81,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=163,
-  serialized_end=175,
+  serialized_start=174,
+  serialized_end=186,
 )
 
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1

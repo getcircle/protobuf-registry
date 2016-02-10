@@ -11,14 +11,16 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+from protobufs.services.post import containers_pb2 as protobufs_dot_services_dot_post_dot_containers__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/add_to_collection.proto',
   package='services.post.actions.add_to_collection',
   syntax='proto3',
-  serialized_pb=b'\n7protobufs/services/post/actions/add_to_collection.proto\x12\'services.post.actions.add_to_collection\"3\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x0f\n\x07post_id\x18\x02 \x01(\t\"\x0c\n\nResponseV1b\x06proto3'
-)
+  serialized_pb=b'\n7protobufs/services/post/actions/add_to_collection.proto\x12\'services.post.actions.add_to_collection\x1a(protobufs/services/post/containers.proto\"z\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x43\n\x06source\x18\x02 \x01(\x0e\x32\x33.services.post.containers.CollectionItemV1.SourceV1\x12\x11\n\tsource_id\x18\x03 \x01(\t\"\x0c\n\nResponseV1b\x06proto3'
+  ,
+  dependencies=[protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -39,8 +41,15 @@ _REQUESTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='post_id', full_name='services.post.actions.add_to_collection.RequestV1.post_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='source', full_name='services.post.actions.add_to_collection.RequestV1.source', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='source_id', full_name='services.post.actions.add_to_collection.RequestV1.source_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -57,8 +66,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=100,
-  serialized_end=151,
+  serialized_start=142,
+  serialized_end=264,
 )
 
 
@@ -81,10 +90,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=153,
-  serialized_end=165,
+  serialized_start=266,
+  serialized_end=278,
 )
 
+_REQUESTV1.fields_by_name['source'].enum_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONITEMV1_SOURCEV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

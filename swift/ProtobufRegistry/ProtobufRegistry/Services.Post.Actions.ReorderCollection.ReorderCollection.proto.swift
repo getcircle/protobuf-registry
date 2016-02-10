@@ -11,7 +11,7 @@ public func == (lhs: Services.Post.Actions.ReorderCollection.RequestV1, rhs: Ser
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasCollectionId == rhs.hasCollectionId) && (!lhs.hasCollectionId || lhs.collectionId == rhs.collectionId)
-  fieldCheck = fieldCheck && (lhs.posts == rhs.posts)
+  fieldCheck = fieldCheck && (lhs.items == rhs.items)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -48,7 +48,7 @@ public extension Services.Post.Actions.ReorderCollection {
     public private(set) var hasCollectionId:Bool = false
     public private(set) var collectionId:String = ""
 
-    public private(set) var posts:Array<Services.Post.Containers.CollectedPostV1>  = Array<Services.Post.Containers.CollectedPostV1>()
+    public private(set) var items:Array<Services.Post.Containers.CollectionItemV1>  = Array<Services.Post.Containers.CollectionItemV1>()
     required public init() {
          super.init()
     }
@@ -59,8 +59,8 @@ public extension Services.Post.Actions.ReorderCollection {
       if hasCollectionId {
         try output.writeString(1, value:collectionId)
       }
-      for oneElementposts in posts {
-          try output.writeMessage(2, value:oneElementposts)
+      for oneElementitems in items {
+          try output.writeMessage(2, value:oneElementitems)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -74,8 +74,8 @@ public extension Services.Post.Actions.ReorderCollection {
       if hasCollectionId {
         serialize_size += collectionId.computeStringSize(1)
       }
-      for oneElementposts in posts {
-          serialize_size += oneElementposts.computeMessageSize(2)
+      for oneElementitems in items {
+          serialize_size += oneElementitems.computeMessageSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -131,12 +131,12 @@ public extension Services.Post.Actions.ReorderCollection {
       if hasCollectionId {
         output += "\(indent) collectionId: \(collectionId) \n"
       }
-      var postsElementIndex:Int = 0
-      for oneElementposts in posts {
-          output += "\(indent) posts[\(postsElementIndex)] {\n"
-          try oneElementposts.writeDescriptionTo(&output, indent:"\(indent)  ")
+      var itemsElementIndex:Int = 0
+      for oneElementitems in items {
+          output += "\(indent) items[\(itemsElementIndex)] {\n"
+          try oneElementitems.writeDescriptionTo(&output, indent:"\(indent)  ")
           output += "\(indent)}\n"
-          postsElementIndex++
+          itemsElementIndex++
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -146,8 +146,8 @@ public extension Services.Post.Actions.ReorderCollection {
             if hasCollectionId {
                hashCode = (hashCode &* 31) &+ collectionId.hashValue
             }
-            for oneElementposts in posts {
-                hashCode = (hashCode &* 31) &+ oneElementposts.hashValue
+            for oneElementitems in items {
+                hashCode = (hashCode &* 31) &+ oneElementitems.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -200,20 +200,20 @@ public extension Services.Post.Actions.ReorderCollection {
            builderResult.collectionId = ""
            return self
       }
-      public var posts:Array<Services.Post.Containers.CollectedPostV1> {
+      public var items:Array<Services.Post.Containers.CollectionItemV1> {
            get {
-               return builderResult.posts
+               return builderResult.items
            }
            set (value) {
-               builderResult.posts = value
+               builderResult.items = value
            }
       }
-      public func setPosts(value:Array<Services.Post.Containers.CollectedPostV1>) -> Services.Post.Actions.ReorderCollection.RequestV1.Builder {
-        self.posts = value
+      public func setItems(value:Array<Services.Post.Containers.CollectionItemV1>) -> Services.Post.Actions.ReorderCollection.RequestV1.Builder {
+        self.items = value
         return self
       }
-      public func clearPosts() -> Services.Post.Actions.ReorderCollection.RequestV1.Builder {
-        builderResult.posts.removeAll(keepCapacity: false)
+      public func clearItems() -> Services.Post.Actions.ReorderCollection.RequestV1.Builder {
+        builderResult.items.removeAll(keepCapacity: false)
         return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -243,8 +243,8 @@ public extension Services.Post.Actions.ReorderCollection {
         if other.hasCollectionId {
              collectionId = other.collectionId
         }
-        if !other.posts.isEmpty  {
-           builderResult.posts += other.posts
+        if !other.items.isEmpty  {
+           builderResult.items += other.items
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -265,9 +265,9 @@ public extension Services.Post.Actions.ReorderCollection {
             collectionId = try input.readString()
 
           case 18 :
-            let subBuilder = Services.Post.Containers.CollectedPostV1.Builder()
+            let subBuilder = Services.Post.Containers.CollectionItemV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            posts += [subBuilder.buildPartial()]
+            items += [subBuilder.buildPartial()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

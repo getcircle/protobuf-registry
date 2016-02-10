@@ -11,7 +11,7 @@ public func == (lhs: Services.Post.Actions.RemoveFromCollection.RequestV1, rhs: 
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasCollectionId == rhs.hasCollectionId) && (!lhs.hasCollectionId || lhs.collectionId == rhs.collectionId)
-  fieldCheck = fieldCheck && (lhs.hasPostId == rhs.hasPostId) && (!lhs.hasPostId || lhs.postId == rhs.postId)
+  fieldCheck = fieldCheck && (lhs.hasCollectionItemId == rhs.hasCollectionItemId) && (!lhs.hasCollectionItemId || lhs.collectionItemId == rhs.collectionItemId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -47,8 +47,8 @@ public extension Services.Post.Actions.RemoveFromCollection {
     public private(set) var hasCollectionId:Bool = false
     public private(set) var collectionId:String = ""
 
-    public private(set) var hasPostId:Bool = false
-    public private(set) var postId:String = ""
+    public private(set) var hasCollectionItemId:Bool = false
+    public private(set) var collectionItemId:String = ""
 
     required public init() {
          super.init()
@@ -60,8 +60,8 @@ public extension Services.Post.Actions.RemoveFromCollection {
       if hasCollectionId {
         try output.writeString(1, value:collectionId)
       }
-      if hasPostId {
-        try output.writeString(2, value:postId)
+      if hasCollectionItemId {
+        try output.writeString(2, value:collectionItemId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -75,8 +75,8 @@ public extension Services.Post.Actions.RemoveFromCollection {
       if hasCollectionId {
         serialize_size += collectionId.computeStringSize(1)
       }
-      if hasPostId {
-        serialize_size += postId.computeStringSize(2)
+      if hasCollectionItemId {
+        serialize_size += collectionItemId.computeStringSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -132,8 +132,8 @@ public extension Services.Post.Actions.RemoveFromCollection {
       if hasCollectionId {
         output += "\(indent) collectionId: \(collectionId) \n"
       }
-      if hasPostId {
-        output += "\(indent) postId: \(postId) \n"
+      if hasCollectionItemId {
+        output += "\(indent) collectionItemId: \(collectionItemId) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -143,8 +143,8 @@ public extension Services.Post.Actions.RemoveFromCollection {
             if hasCollectionId {
                hashCode = (hashCode &* 31) &+ collectionId.hashValue
             }
-            if hasPostId {
-               hashCode = (hashCode &* 31) &+ postId.hashValue
+            if hasCollectionItemId {
+               hashCode = (hashCode &* 31) &+ collectionItemId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -197,27 +197,27 @@ public extension Services.Post.Actions.RemoveFromCollection {
            builderResult.collectionId = ""
            return self
       }
-      public var hasPostId:Bool {
+      public var hasCollectionItemId:Bool {
            get {
-                return builderResult.hasPostId
+                return builderResult.hasCollectionItemId
            }
       }
-      public var postId:String {
+      public var collectionItemId:String {
            get {
-                return builderResult.postId
+                return builderResult.collectionItemId
            }
            set (value) {
-               builderResult.hasPostId = true
-               builderResult.postId = value
+               builderResult.hasCollectionItemId = true
+               builderResult.collectionItemId = value
            }
       }
-      public func setPostId(value:String) -> Services.Post.Actions.RemoveFromCollection.RequestV1.Builder {
-        self.postId = value
+      public func setCollectionItemId(value:String) -> Services.Post.Actions.RemoveFromCollection.RequestV1.Builder {
+        self.collectionItemId = value
         return self
       }
-      public func clearPostId() -> Services.Post.Actions.RemoveFromCollection.RequestV1.Builder{
-           builderResult.hasPostId = false
-           builderResult.postId = ""
+      public func clearCollectionItemId() -> Services.Post.Actions.RemoveFromCollection.RequestV1.Builder{
+           builderResult.hasCollectionItemId = false
+           builderResult.collectionItemId = ""
            return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -247,8 +247,8 @@ public extension Services.Post.Actions.RemoveFromCollection {
         if other.hasCollectionId {
              collectionId = other.collectionId
         }
-        if other.hasPostId {
-             postId = other.postId
+        if other.hasCollectionItemId {
+             collectionItemId = other.collectionItemId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -269,7 +269,7 @@ public extension Services.Post.Actions.RemoveFromCollection {
             collectionId = try input.readString()
 
           case 18 :
-            postId = try input.readString()
+            collectionItemId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

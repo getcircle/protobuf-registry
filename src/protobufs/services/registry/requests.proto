@@ -86,6 +86,7 @@ import "protobufs/services/post/actions/remove_from_collection.proto";
 import "protobufs/services/post/actions/get_collection.proto";
 import "protobufs/services/post/actions/get_collections.proto";
 import "protobufs/services/post/actions/reorder_collection.proto";
+import "protobufs/services/post/actions/get_collection_items.proto";
 
 import "protobufs/services/feature/actions/get_flags.proto";
 
@@ -228,6 +229,7 @@ message Post {
         optional services.post.actions.get_collection.RequestV1 get_collection = 1610;
         optional services.post.actions.get_collections.RequestV1 get_collections = 1611;
         optional services.post.actions.reorder_collection.RequestV1 reorder_collection = 1612;
+        optional services.post.actions.get_collection_items.RequestV1 get_collection_items = 1613;
     }
 }
 

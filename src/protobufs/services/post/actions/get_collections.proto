@@ -10,6 +10,7 @@ message RequestV1 {
     bool is_default = 3;
     services.common.containers.InflationsV1 inflations = 4;
     services.common.containers.FieldsV1 fields = 5;
+    string collection_item_id = 6;
 }
 
 message ResponseV1 {

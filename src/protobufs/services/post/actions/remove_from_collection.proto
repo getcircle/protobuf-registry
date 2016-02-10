@@ -3,7 +3,7 @@ package services.post.actions.remove_from_collection;
 
 message RequestV1 {
     string collection_id = 1;
-    string post_id = 2;
+    string collection_item_id = 2;
 }
 
 message ResponseV1 {}

@@ -473,6 +473,11 @@ public var ServicesRegistryRequestsPostreorderCollection:ConcreateExtensionField
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostreorderCollectionStatic
    }
 }
+public var ServicesRegistryRequestsPostgetCollectionItems:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostgetCollectionItemsStatic
+   }
+}
 public var ServicesRegistryRequestsFeaturegetFlags:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsFeaturegetFlagsStatic
@@ -628,6 +633,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsPostgetCollectionStatic:ConcreateExtensionField
     var ServicesRegistryRequestsPostgetCollectionsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsPostreorderCollectionStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPostgetCollectionItemsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsFeaturegetFlagsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsFilestartUploadStatic:ConcreateExtensionField
     var ServicesRegistryRequestsFilecompleteUploadStatic:ConcreateExtensionField
@@ -718,6 +724,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsPostgetCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1610, defaultValue:Services.Post.Actions.GetCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.GetCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsPostgetCollectionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1611, defaultValue:Services.Post.Actions.GetCollections.RequestV1(), messageOrGroupClass:Services.Post.Actions.GetCollections.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsPostreorderCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1612, defaultValue:Services.Post.Actions.ReorderCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.ReorderCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPostgetCollectionItemsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1613, defaultValue:Services.Post.Actions.GetCollectionItems.RequestV1(), messageOrGroupClass:Services.Post.Actions.GetCollectionItems.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsFeaturegetFlagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1700, defaultValue:Services.Feature.Actions.GetFlags.RequestV1(), messageOrGroupClass:Services.Feature.Actions.GetFlags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsFilestartUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1800, defaultValue:Services.File.Actions.StartUpload.RequestV1(), messageOrGroupClass:Services.File.Actions.StartUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsFilecompleteUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1801, defaultValue:Services.File.Actions.CompleteUpload.RequestV1(), messageOrGroupClass:Services.File.Actions.CompleteUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -808,6 +815,7 @@ public extension Services.Registry.Requests {
       Services.Post.Actions.GetCollection.GetCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.GetCollections.GetCollectionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.ReorderCollection.ReorderCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.GetCollectionItems.GetCollectionItemsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Feature.Actions.GetFlags.GetFlagsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.StartUpload.StartUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.CompleteUpload.CompleteUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -897,6 +905,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsPostgetCollectionStatic)
       registry.addExtension(ServicesRegistryRequestsPostgetCollectionsStatic)
       registry.addExtension(ServicesRegistryRequestsPostreorderCollectionStatic)
+      registry.addExtension(ServicesRegistryRequestsPostgetCollectionItemsStatic)
       registry.addExtension(ServicesRegistryRequestsFeaturegetFlagsStatic)
       registry.addExtension(ServicesRegistryRequestsFilestartUploadStatic)
       registry.addExtension(ServicesRegistryRequestsFilecompleteUploadStatic)
@@ -2347,6 +2356,9 @@ public extension Services.Registry.Requests {
     }
     public class func reorderCollection() -> ConcreateExtensionField {
          return ServicesRegistryRequestsPostreorderCollection
+    }
+    public class func getCollectionItems() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPostgetCollectionItems
     }
     required public init() {
          super.init()

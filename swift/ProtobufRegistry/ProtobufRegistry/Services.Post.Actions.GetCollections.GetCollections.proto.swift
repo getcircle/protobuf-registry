@@ -15,6 +15,7 @@ public func == (lhs: Services.Post.Actions.GetCollections.RequestV1, rhs: Servic
   fieldCheck = fieldCheck && (lhs.hasIsDefault == rhs.hasIsDefault) && (!lhs.hasIsDefault || lhs.isDefault == rhs.isDefault)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.hasCollectionItemId == rhs.hasCollectionItemId) && (!lhs.hasCollectionItemId || lhs.collectionItemId == rhs.collectionItemId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -62,6 +63,9 @@ public extension Services.Post.Actions.GetCollections {
     public private(set) var inflations:Services.Common.Containers.InflationsV1!
     public private(set) var hasFields:Bool = false
     public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var hasCollectionItemId:Bool = false
+    public private(set) var collectionItemId:String = ""
+
     required public init() {
          super.init()
     }
@@ -83,6 +87,9 @@ public extension Services.Post.Actions.GetCollections {
       }
       if hasFields {
         try output.writeMessage(5, value:fields)
+      }
+      if hasCollectionItemId {
+        try output.writeString(6, value:collectionItemId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -111,6 +118,9 @@ public extension Services.Post.Actions.GetCollections {
           if let varSizefields = fields?.computeMessageSize(5) {
               serialize_size += varSizefields
           }
+      }
+      if hasCollectionItemId {
+        serialize_size += collectionItemId.computeStringSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -182,6 +192,9 @@ public extension Services.Post.Actions.GetCollections {
         try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasCollectionItemId {
+        output += "\(indent) collectionItemId: \(collectionItemId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -205,6 +218,9 @@ public extension Services.Post.Actions.GetCollections {
                 if let hashValuefields = fields?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuefields
                 }
+            }
+            if hasCollectionItemId {
+               hashCode = (hashCode &* 31) &+ collectionItemId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -405,6 +421,29 @@ public extension Services.Post.Actions.GetCollections {
         builderResult.fields = nil
         return self
       }
+      public var hasCollectionItemId:Bool {
+           get {
+                return builderResult.hasCollectionItemId
+           }
+      }
+      public var collectionItemId:String {
+           get {
+                return builderResult.collectionItemId
+           }
+           set (value) {
+               builderResult.hasCollectionItemId = true
+               builderResult.collectionItemId = value
+           }
+      }
+      public func setCollectionItemId(value:String) -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+        self.collectionItemId = value
+        return self
+      }
+      public func clearCollectionItemId() -> Services.Post.Actions.GetCollections.RequestV1.Builder{
+           builderResult.hasCollectionItemId = false
+           builderResult.collectionItemId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -443,6 +482,9 @@ public extension Services.Post.Actions.GetCollections {
         }
         if (other.hasFields) {
             try mergeFields(other.fields)
+        }
+        if other.hasCollectionItemId {
+             collectionItemId = other.collectionItemId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -488,6 +530,9 @@ public extension Services.Post.Actions.GetCollections {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             fields = subBuilder.buildPartial()
+
+          case 50 :
+            collectionItemId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

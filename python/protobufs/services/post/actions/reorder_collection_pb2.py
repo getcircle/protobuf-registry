@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/reorder_collection.proto',
   package='services.post.actions.reorder_collection',
   syntax='proto3',
-  serialized_pb=b'\n8protobufs/services/post/actions/reorder_collection.proto\x12(services.post.actions.reorder_collection\x1a(protobufs/services/post/containers.proto\"\\\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x38\n\x05posts\x18\x02 \x03(\x0b\x32).services.post.containers.CollectedPostV1\"\x0c\n\nResponseV1b\x06proto3'
+  serialized_pb=b'\n8protobufs/services/post/actions/reorder_collection.proto\x12(services.post.actions.reorder_collection\x1a(protobufs/services/post/containers.proto\"]\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x39\n\x05items\x18\x02 \x03(\x0b\x32*.services.post.containers.CollectionItemV1\"\x0c\n\nResponseV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -41,7 +41,7 @@ _REQUESTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='posts', full_name='services.post.actions.reorder_collection.RequestV1.posts', index=1,
+      name='items', full_name='services.post.actions.reorder_collection.RequestV1.items', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -60,7 +60,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=144,
-  serialized_end=236,
+  serialized_end=237,
 )
 
 
@@ -83,11 +83,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=238,
-  serialized_end=250,
+  serialized_start=239,
+  serialized_end=251,
 )
 
-_REQUESTV1.fields_by_name['posts'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTEDPOSTV1
+_REQUESTV1.fields_by_name['items'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONITEMV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

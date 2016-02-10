@@ -11,7 +11,8 @@ public func == (lhs: Services.Post.Actions.AddToCollection.RequestV1, rhs: Servi
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasCollectionId == rhs.hasCollectionId) && (!lhs.hasCollectionId || lhs.collectionId == rhs.collectionId)
-  fieldCheck = fieldCheck && (lhs.hasPostId == rhs.hasPostId) && (!lhs.hasPostId || lhs.postId == rhs.postId)
+  fieldCheck = fieldCheck && (lhs.hasSource == rhs.hasSource) && (!lhs.hasSource || lhs.source == rhs.source)
+  fieldCheck = fieldCheck && (lhs.hasSourceId == rhs.hasSourceId) && (!lhs.hasSourceId || lhs.sourceId == rhs.sourceId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -38,6 +39,7 @@ public extension Services.Post.Actions.AddToCollection {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Services.Post.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -47,8 +49,10 @@ public extension Services.Post.Actions.AddToCollection {
     public private(set) var hasCollectionId:Bool = false
     public private(set) var collectionId:String = ""
 
-    public private(set) var hasPostId:Bool = false
-    public private(set) var postId:String = ""
+    public private(set) var source:Services.Post.Containers.CollectionItemV1.SourceV1 = Services.Post.Containers.CollectionItemV1.SourceV1.Luno
+    public private(set) var hasSource:Bool = false
+    public private(set) var hasSourceId:Bool = false
+    public private(set) var sourceId:String = ""
 
     required public init() {
          super.init()
@@ -60,8 +64,11 @@ public extension Services.Post.Actions.AddToCollection {
       if hasCollectionId {
         try output.writeString(1, value:collectionId)
       }
-      if hasPostId {
-        try output.writeString(2, value:postId)
+      if hasSource {
+        try output.writeEnum(2, value:source.rawValue)
+      }
+      if hasSourceId {
+        try output.writeString(3, value:sourceId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -75,8 +82,11 @@ public extension Services.Post.Actions.AddToCollection {
       if hasCollectionId {
         serialize_size += collectionId.computeStringSize(1)
       }
-      if hasPostId {
-        serialize_size += postId.computeStringSize(2)
+      if (hasSource) {
+        serialize_size += source.rawValue.computeEnumSize(2)
+      }
+      if hasSourceId {
+        serialize_size += sourceId.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -132,8 +142,11 @@ public extension Services.Post.Actions.AddToCollection {
       if hasCollectionId {
         output += "\(indent) collectionId: \(collectionId) \n"
       }
-      if hasPostId {
-        output += "\(indent) postId: \(postId) \n"
+      if (hasSource) {
+        output += "\(indent) source: \(source.rawValue)\n"
+      }
+      if hasSourceId {
+        output += "\(indent) sourceId: \(sourceId) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -143,8 +156,11 @@ public extension Services.Post.Actions.AddToCollection {
             if hasCollectionId {
                hashCode = (hashCode &* 31) &+ collectionId.hashValue
             }
-            if hasPostId {
-               hashCode = (hashCode &* 31) &+ postId.hashValue
+            if hasSource {
+               hashCode = (hashCode &* 31) &+ Int(source.rawValue)
+            }
+            if hasSourceId {
+               hashCode = (hashCode &* 31) &+ sourceId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -197,27 +213,50 @@ public extension Services.Post.Actions.AddToCollection {
            builderResult.collectionId = ""
            return self
       }
-      public var hasPostId:Bool {
+        public var hasSource:Bool{
+            get {
+                return builderResult.hasSource
+            }
+        }
+        public var source:Services.Post.Containers.CollectionItemV1.SourceV1 {
+            get {
+                return builderResult.source
+            }
+            set (value) {
+                builderResult.hasSource = true
+                builderResult.source = value
+            }
+        }
+        public func setSource(value:Services.Post.Containers.CollectionItemV1.SourceV1) -> Services.Post.Actions.AddToCollection.RequestV1.Builder {
+          self.source = value
+          return self
+        }
+        public func clearSource() -> Services.Post.Actions.AddToCollection.RequestV1.Builder {
+           builderResult.hasSource = false
+           builderResult.source = .Luno
+           return self
+        }
+      public var hasSourceId:Bool {
            get {
-                return builderResult.hasPostId
+                return builderResult.hasSourceId
            }
       }
-      public var postId:String {
+      public var sourceId:String {
            get {
-                return builderResult.postId
+                return builderResult.sourceId
            }
            set (value) {
-               builderResult.hasPostId = true
-               builderResult.postId = value
+               builderResult.hasSourceId = true
+               builderResult.sourceId = value
            }
       }
-      public func setPostId(value:String) -> Services.Post.Actions.AddToCollection.RequestV1.Builder {
-        self.postId = value
+      public func setSourceId(value:String) -> Services.Post.Actions.AddToCollection.RequestV1.Builder {
+        self.sourceId = value
         return self
       }
-      public func clearPostId() -> Services.Post.Actions.AddToCollection.RequestV1.Builder{
-           builderResult.hasPostId = false
-           builderResult.postId = ""
+      public func clearSourceId() -> Services.Post.Actions.AddToCollection.RequestV1.Builder{
+           builderResult.hasSourceId = false
+           builderResult.sourceId = ""
            return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -247,8 +286,11 @@ public extension Services.Post.Actions.AddToCollection {
         if other.hasCollectionId {
              collectionId = other.collectionId
         }
-        if other.hasPostId {
-             postId = other.postId
+        if other.hasSource {
+             source = other.source
+        }
+        if other.hasSourceId {
+             sourceId = other.sourceId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -268,8 +310,16 @@ public extension Services.Post.Actions.AddToCollection {
           case 10 :
             collectionId = try input.readString()
 
-          case 18 :
-            postId = try input.readString()
+          case 16 :
+            let valueIntsource = try input.readEnum()
+            if let enumssource = Services.Post.Containers.CollectionItemV1.SourceV1(rawValue:valueIntsource){
+                 source = enumssource
+            } else {
+                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntsource))
+            }
+
+          case 26 :
+            sourceId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
