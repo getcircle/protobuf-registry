@@ -1585,7 +1585,7 @@ public extension Services.Post.Containers {
 
       public enum OwnerTypeV1:Int32 {
         case Profile = 0
-        case Group = 1
+        case Team = 1
 
       }
 

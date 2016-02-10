@@ -49,7 +49,7 @@ message CollectionV1 {
 
     enum OwnerTypeV1 {
         PROFILE = 0;
-        GROUP = 1;
+        TEAM = 1;
     }
 
     string id = 1;
