@@ -39,6 +39,8 @@ public func == (lhs: Services.Post.Containers.CollectedPostV1, rhs: Services.Pos
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasPostId == rhs.hasPostId) && (!lhs.hasPostId || lhs.postId == rhs.postId)
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
+  fieldCheck = fieldCheck && (lhs.hasPosition == rhs.hasPosition) && (!lhs.hasPosition || lhs.position == rhs.position)
+  fieldCheck = fieldCheck && (lhs.hasPost == rhs.hasPost) && (!lhs.hasPost || lhs.post == rhs.post)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1217,6 +1219,11 @@ public extension Services.Post.Containers {
     public private(set) var hasByProfileId:Bool = false
     public private(set) var byProfileId:String = ""
 
+    public private(set) var hasPosition:Bool = false
+    public private(set) var position:UInt32 = UInt32(0)
+
+    public private(set) var hasPost:Bool = false
+    public private(set) var post:Services.Post.Containers.PostV1!
     required public init() {
          super.init()
     }
@@ -1229,6 +1236,12 @@ public extension Services.Post.Containers {
       }
       if hasByProfileId {
         try output.writeString(2, value:byProfileId)
+      }
+      if hasPosition {
+        try output.writeUInt32(3, value:position)
+      }
+      if hasPost {
+        try output.writeMessage(4, value:post)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1244,6 +1257,14 @@ public extension Services.Post.Containers {
       }
       if hasByProfileId {
         serialize_size += byProfileId.computeStringSize(2)
+      }
+      if hasPosition {
+        serialize_size += position.computeUInt32Size(3)
+      }
+      if hasPost {
+          if let varSizepost = post?.computeMessageSize(4) {
+              serialize_size += varSizepost
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1302,6 +1323,14 @@ public extension Services.Post.Containers {
       if hasByProfileId {
         output += "\(indent) byProfileId: \(byProfileId) \n"
       }
+      if hasPosition {
+        output += "\(indent) position: \(position) \n"
+      }
+      if hasPost {
+        output += "\(indent) post {\n"
+        try post?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1312,6 +1341,14 @@ public extension Services.Post.Containers {
             }
             if hasByProfileId {
                hashCode = (hashCode &* 31) &+ byProfileId.hashValue
+            }
+            if hasPosition {
+               hashCode = (hashCode &* 31) &+ position.hashValue
+            }
+            if hasPost {
+                if let hashValuepost = post?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuepost
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1387,6 +1424,80 @@ public extension Services.Post.Containers {
            builderResult.byProfileId = ""
            return self
       }
+      public var hasPosition:Bool {
+           get {
+                return builderResult.hasPosition
+           }
+      }
+      public var position:UInt32 {
+           get {
+                return builderResult.position
+           }
+           set (value) {
+               builderResult.hasPosition = true
+               builderResult.position = value
+           }
+      }
+      public func setPosition(value:UInt32) -> Services.Post.Containers.CollectedPostV1.Builder {
+        self.position = value
+        return self
+      }
+      public func clearPosition() -> Services.Post.Containers.CollectedPostV1.Builder{
+           builderResult.hasPosition = false
+           builderResult.position = UInt32(0)
+           return self
+      }
+      public var hasPost:Bool {
+           get {
+               return builderResult.hasPost
+           }
+      }
+      public var post:Services.Post.Containers.PostV1! {
+           get {
+               if postBuilder_ != nil {
+                  builderResult.post = postBuilder_.getMessage()
+               }
+               return builderResult.post
+           }
+           set (value) {
+               builderResult.hasPost = true
+               builderResult.post = value
+           }
+      }
+      private var postBuilder_:Services.Post.Containers.PostV1.Builder! {
+           didSet {
+              builderResult.hasPost = true
+           }
+      }
+      public func getPostBuilder() -> Services.Post.Containers.PostV1.Builder {
+        if postBuilder_ == nil {
+           postBuilder_ = Services.Post.Containers.PostV1.Builder()
+           builderResult.post = postBuilder_.getMessage()
+           if post != nil {
+              try! postBuilder_.mergeFrom(post)
+           }
+        }
+        return postBuilder_
+      }
+      public func setPost(value:Services.Post.Containers.PostV1!) -> Services.Post.Containers.CollectedPostV1.Builder {
+        self.post = value
+        return self
+      }
+      public func mergePost(value:Services.Post.Containers.PostV1) throws -> Services.Post.Containers.CollectedPostV1.Builder {
+        if builderResult.hasPost {
+          builderResult.post = try Services.Post.Containers.PostV1.builderWithPrototype(builderResult.post).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.post = value
+        }
+        builderResult.hasPost = true
+        return self
+      }
+      public func clearPost() -> Services.Post.Containers.CollectedPostV1.Builder {
+        postBuilder_ = nil
+        builderResult.hasPost = false
+        builderResult.post = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1417,6 +1528,12 @@ public extension Services.Post.Containers {
         if other.hasByProfileId {
              byProfileId = other.byProfileId
         }
+        if other.hasPosition {
+             position = other.position
+        }
+        if (other.hasPost) {
+            try mergePost(other.post)
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -1437,6 +1554,17 @@ public extension Services.Post.Containers {
 
           case 18 :
             byProfileId = try input.readString()
+
+          case 24 :
+            position = try input.readUInt32()
+
+          case 34 :
+            let subBuilder:Services.Post.Containers.PostV1.Builder = Services.Post.Containers.PostV1.Builder()
+            if hasPost {
+              try subBuilder.mergeFrom(post)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            post = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

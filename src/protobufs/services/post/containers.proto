@@ -41,6 +41,8 @@ message PostV1 {
 message CollectedPostV1 {
     string post_id = 1;
     string by_profile_id = 2;
+    uint32 position = 3;
+    PostV1 post = 4;
 }
 
 message CollectionV1 {
