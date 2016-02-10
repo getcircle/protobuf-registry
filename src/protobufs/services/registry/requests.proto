@@ -78,6 +78,13 @@ import "protobufs/services/post/actions/get_post.proto";
 import "protobufs/services/post/actions/get_posts.proto";
 import "protobufs/services/post/actions/update_post.proto";
 import "protobufs/services/post/actions/delete_post.proto";
+import "protobufs/services/post/actions/create_collection.proto";
+import "protobufs/services/post/actions/update_collection.proto";
+import "protobufs/services/post/actions/delete_collection.proto";
+import "protobufs/services/post/actions/add_to_collection.proto";
+import "protobufs/services/post/actions/remove_from_collection.proto";
+import "protobufs/services/post/actions/get_collection.proto";
+import "protobufs/services/post/actions/get_collections.proto";
 
 import "protobufs/services/feature/actions/get_flags.proto";
 
@@ -212,6 +219,13 @@ message Post {
         optional services.post.actions.get_post.RequestV1 get_post = 1602;
         optional services.post.actions.get_posts.RequestV1 get_posts = 1603;
         optional services.post.actions.delete_post.RequestV1 delete_post = 1604;
+        optional services.post.actions.create_collection.RequestV1 create_collection = 1605;
+        optional services.post.actions.update_collection.RequestV1 update_collection = 1606;
+        optional services.post.actions.delete_collection.RequestV1 delete_collection = 1607;
+        optional services.post.actions.add_to_collection.RequestV1 add_to_collection = 1608;
+        optional services.post.actions.remove_from_collection.RequestV1 remove_from_collection = 1609;
+        optional services.post.actions.get_collection.RequestV1 get_collection = 1610;
+        optional services.post.actions.get_collections.RequestV1 get_collections = 1611;
     }
 }
 

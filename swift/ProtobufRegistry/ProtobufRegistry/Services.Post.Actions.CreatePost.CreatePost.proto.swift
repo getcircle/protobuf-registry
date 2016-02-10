@@ -3,7 +3,7 @@
 
 import Foundation
 
-public extension Services{ public struct Post { public struct Actions { public struct CreatePost { }}}}
+public extension Services.Post.Actions{ public struct CreatePost { }}
 
 public func == (lhs: Services.Post.Actions.CreatePost.RequestV1, rhs: Services.Post.Actions.CreatePost.RequestV1) -> Bool {
   if (lhs === rhs) {

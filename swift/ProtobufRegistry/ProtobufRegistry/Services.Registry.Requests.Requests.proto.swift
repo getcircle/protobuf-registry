@@ -433,6 +433,41 @@ public var ServicesRegistryRequestsPostdeletePost:ConcreateExtensionField {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostdeletePostStatic
    }
 }
+public var ServicesRegistryRequestsPostcreateCollection:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostcreateCollectionStatic
+   }
+}
+public var ServicesRegistryRequestsPostupdateCollection:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostupdateCollectionStatic
+   }
+}
+public var ServicesRegistryRequestsPostdeleteCollection:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostdeleteCollectionStatic
+   }
+}
+public var ServicesRegistryRequestsPostaddToCollection:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostaddToCollectionStatic
+   }
+}
+public var ServicesRegistryRequestsPostremoveFromCollection:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostremoveFromCollectionStatic
+   }
+}
+public var ServicesRegistryRequestsPostgetCollection:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostgetCollectionStatic
+   }
+}
+public var ServicesRegistryRequestsPostgetCollections:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostgetCollectionsStatic
+   }
+}
 public var ServicesRegistryRequestsFeaturegetFlags:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsFeaturegetFlagsStatic
@@ -580,6 +615,13 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsPostgetPostStatic:ConcreateExtensionField
     var ServicesRegistryRequestsPostgetPostsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsPostdeletePostStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPostcreateCollectionStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPostupdateCollectionStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPostdeleteCollectionStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPostaddToCollectionStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPostremoveFromCollectionStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPostgetCollectionStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPostgetCollectionsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsFeaturegetFlagsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsFilestartUploadStatic:ConcreateExtensionField
     var ServicesRegistryRequestsFilecompleteUploadStatic:ConcreateExtensionField
@@ -662,6 +704,13 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsPostgetPostStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1602, defaultValue:Services.Post.Actions.GetPost.RequestV1(), messageOrGroupClass:Services.Post.Actions.GetPost.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsPostgetPostsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1603, defaultValue:Services.Post.Actions.GetPosts.RequestV1(), messageOrGroupClass:Services.Post.Actions.GetPosts.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsPostdeletePostStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1604, defaultValue:Services.Post.Actions.DeletePost.RequestV1(), messageOrGroupClass:Services.Post.Actions.DeletePost.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPostcreateCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1605, defaultValue:Services.Post.Actions.CreateCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.CreateCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPostupdateCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1606, defaultValue:Services.Post.Actions.UpdateCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.UpdateCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPostdeleteCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1607, defaultValue:Services.Post.Actions.DeleteCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.DeleteCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPostaddToCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1608, defaultValue:Services.Post.Actions.AddToCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.AddToCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPostremoveFromCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1609, defaultValue:Services.Post.Actions.RemoveFromCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.RemoveFromCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPostgetCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1610, defaultValue:Services.Post.Actions.GetCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.GetCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPostgetCollectionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1611, defaultValue:Services.Post.Actions.GetCollections.RequestV1(), messageOrGroupClass:Services.Post.Actions.GetCollections.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsFeaturegetFlagsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1700, defaultValue:Services.Feature.Actions.GetFlags.RequestV1(), messageOrGroupClass:Services.Feature.Actions.GetFlags.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsFilestartUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1800, defaultValue:Services.File.Actions.StartUpload.RequestV1(), messageOrGroupClass:Services.File.Actions.StartUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsFilecompleteUploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1801, defaultValue:Services.File.Actions.CompleteUpload.RequestV1(), messageOrGroupClass:Services.File.Actions.CompleteUpload.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -744,6 +793,13 @@ public extension Services.Registry.Requests {
       Services.Post.Actions.GetPosts.GetPostsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.UpdatePost.UpdatePostRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.DeletePost.DeletePostRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.CreateCollection.CreateCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.UpdateCollection.UpdateCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.DeleteCollection.DeleteCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.AddToCollection.AddToCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.RemoveFromCollection.RemoveFromCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.GetCollection.GetCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.GetCollections.GetCollectionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Feature.Actions.GetFlags.GetFlagsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.StartUpload.StartUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.CompleteUpload.CompleteUploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -825,6 +881,13 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsPostgetPostStatic)
       registry.addExtension(ServicesRegistryRequestsPostgetPostsStatic)
       registry.addExtension(ServicesRegistryRequestsPostdeletePostStatic)
+      registry.addExtension(ServicesRegistryRequestsPostcreateCollectionStatic)
+      registry.addExtension(ServicesRegistryRequestsPostupdateCollectionStatic)
+      registry.addExtension(ServicesRegistryRequestsPostdeleteCollectionStatic)
+      registry.addExtension(ServicesRegistryRequestsPostaddToCollectionStatic)
+      registry.addExtension(ServicesRegistryRequestsPostremoveFromCollectionStatic)
+      registry.addExtension(ServicesRegistryRequestsPostgetCollectionStatic)
+      registry.addExtension(ServicesRegistryRequestsPostgetCollectionsStatic)
       registry.addExtension(ServicesRegistryRequestsFeaturegetFlagsStatic)
       registry.addExtension(ServicesRegistryRequestsFilestartUploadStatic)
       registry.addExtension(ServicesRegistryRequestsFilecompleteUploadStatic)
@@ -2251,6 +2314,27 @@ public extension Services.Registry.Requests {
     }
     public class func deletePost() -> ConcreateExtensionField {
          return ServicesRegistryRequestsPostdeletePost
+    }
+    public class func createCollection() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPostcreateCollection
+    }
+    public class func updateCollection() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPostupdateCollection
+    }
+    public class func deleteCollection() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPostdeleteCollection
+    }
+    public class func addToCollection() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPostaddToCollection
+    }
+    public class func removeFromCollection() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPostremoveFromCollection
+    }
+    public class func getCollection() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPostgetCollection
+    }
+    public class func getCollections() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPostgetCollections
     }
     required public init() {
          super.init()

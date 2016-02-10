@@ -37,3 +37,29 @@ message PostV1 {
     PostSourceV1 source = 17;
     string source_id = 18;
 }
+
+message CollectedPostV1 {
+    string post_id = 1;
+    string by_profile_id = 2;
+}
+
+message CollectionV1 {
+
+    enum OwnerTypeV1 {
+        PROFILE = 0;
+        GROUP = 1;
+    }
+
+    string id = 1;
+    string organization_id = 2;
+    string name = 3;
+    string created = 4;
+    string changed = 5;
+    services.common.containers.PermissionsV1 permissions = 6;
+    repeated CollectedPostV1 posts = 7;
+    OwnerTypeV1 owner_type = 8;
+    string owner_id = 9;
+    bool is_default = 10;
+    services.common.containers.InflationsV1 inflations = 11;
+    services.common.containers.FieldsV1 fields = 12;
+}
