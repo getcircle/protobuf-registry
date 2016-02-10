@@ -75,4 +75,5 @@ message CollectionV1 {
     bool is_default = 10;
     services.common.containers.InflationsV1 inflations = 11;
     services.common.containers.FieldsV1 fields = 12;
+    string by_profile_id = 13;
 }

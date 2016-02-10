@@ -64,6 +64,7 @@ public func == (lhs: Services.Post.Containers.CollectionV1, rhs: Services.Post.C
   fieldCheck = fieldCheck && (lhs.hasIsDefault == rhs.hasIsDefault) && (!lhs.hasIsDefault || lhs.isDefault == rhs.isDefault)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1771,6 +1772,9 @@ public extension Services.Post.Containers {
     public private(set) var inflations:Services.Common.Containers.InflationsV1!
     public private(set) var hasFields:Bool = false
     public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var hasByProfileId:Bool = false
+    public private(set) var byProfileId:String = ""
+
     required public init() {
          super.init()
     }
@@ -1813,6 +1817,9 @@ public extension Services.Post.Containers {
       }
       if hasFields {
         try output.writeMessage(12, value:fields)
+      }
+      if hasByProfileId {
+        try output.writeString(13, value:byProfileId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1864,6 +1871,9 @@ public extension Services.Post.Containers {
           if let varSizefields = fields?.computeMessageSize(12) {
               serialize_size += varSizefields
           }
+      }
+      if hasByProfileId {
+        serialize_size += byProfileId.computeStringSize(13)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1962,6 +1972,9 @@ public extension Services.Post.Containers {
         try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasByProfileId {
+        output += "\(indent) byProfileId: \(byProfileId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2008,6 +2021,9 @@ public extension Services.Post.Containers {
                 if let hashValuefields = fields?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuefields
                 }
+            }
+            if hasByProfileId {
+               hashCode = (hashCode &* 31) &+ byProfileId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2390,6 +2406,29 @@ public extension Services.Post.Containers {
         builderResult.fields = nil
         return self
       }
+      public var hasByProfileId:Bool {
+           get {
+                return builderResult.hasByProfileId
+           }
+      }
+      public var byProfileId:String {
+           get {
+                return builderResult.byProfileId
+           }
+           set (value) {
+               builderResult.hasByProfileId = true
+               builderResult.byProfileId = value
+           }
+      }
+      public func setByProfileId(value:String) -> Services.Post.Containers.CollectionV1.Builder {
+        self.byProfileId = value
+        return self
+      }
+      public func clearByProfileId() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasByProfileId = false
+           builderResult.byProfileId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -2449,6 +2488,9 @@ public extension Services.Post.Containers {
         }
         if (other.hasFields) {
             try mergeFields(other.fields)
+        }
+        if other.hasByProfileId {
+             byProfileId = other.byProfileId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -2522,6 +2564,9 @@ public extension Services.Post.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             fields = subBuilder.buildPartial()
+
+          case 106 :
+            byProfileId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

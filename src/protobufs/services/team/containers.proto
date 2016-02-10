@@ -17,6 +17,7 @@ message ContactMethodV1 {
     TypeV1 type = 4;
 }
 
+// TODO: track by_profile_id in the team object
 message TeamV1 {
     string id = 1;
     string name = 2;
