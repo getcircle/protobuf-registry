@@ -11,19 +11,62 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-from protobufs.services.post import containers_pb2 as protobufs_dot_services_dot_post_dot_containers__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/reorder_collection.proto',
   package='services.post.actions.reorder_collection',
   syntax='proto3',
-  serialized_pb=b'\n8protobufs/services/post/actions/reorder_collection.proto\x12(services.post.actions.reorder_collection\x1a(protobufs/services/post/containers.proto\"]\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x39\n\x05items\x18\x02 \x03(\x0b\x32*.services.post.containers.CollectionItemV1\"\x0c\n\nResponseV1b\x06proto3'
-  ,
-  dependencies=[protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
+  serialized_pb=b'\n8protobufs/services/post/actions/reorder_collection.proto\x12(services.post.actions.reorder_collection\"Q\n\x0ePositionDiffV1\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\x18\n\x10\x63urrent_position\x18\x02 \x01(\r\x12\x14\n\x0cnew_position\x18\x03 \x01(\r\"k\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12G\n\x05\x64iffs\x18\x02 \x03(\x0b\x32\x38.services.post.actions.reorder_collection.PositionDiffV1\"\x0c\n\nResponseV1b\x06proto3'
+)
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
+
+
+_POSITIONDIFFV1 = _descriptor.Descriptor(
+  name='PositionDiffV1',
+  full_name='services.post.actions.reorder_collection.PositionDiffV1',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='item_id', full_name='services.post.actions.reorder_collection.PositionDiffV1.item_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='current_position', full_name='services.post.actions.reorder_collection.PositionDiffV1.current_position', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='new_position', full_name='services.post.actions.reorder_collection.PositionDiffV1.new_position', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=102,
+  serialized_end=183,
+)
 
 
 _REQUESTV1 = _descriptor.Descriptor(
@@ -41,7 +84,7 @@ _REQUESTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='items', full_name='services.post.actions.reorder_collection.RequestV1.items', index=1,
+      name='diffs', full_name='services.post.actions.reorder_collection.RequestV1.diffs', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -59,8 +102,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=144,
-  serialized_end=237,
+  serialized_start=185,
+  serialized_end=292,
 )
 
 
@@ -83,13 +126,21 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=239,
-  serialized_end=251,
+  serialized_start=294,
+  serialized_end=306,
 )
 
-_REQUESTV1.fields_by_name['items'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONITEMV1
+_REQUESTV1.fields_by_name['diffs'].message_type = _POSITIONDIFFV1
+DESCRIPTOR.message_types_by_name['PositionDiffV1'] = _POSITIONDIFFV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
+
+PositionDiffV1 = _reflection.GeneratedProtocolMessageType('PositionDiffV1', (_message.Message,), dict(
+  DESCRIPTOR = _POSITIONDIFFV1,
+  __module__ = 'protobufs.services.post.actions.reorder_collection_pb2'
+  # @@protoc_insertion_point(class_scope:services.post.actions.reorder_collection.PositionDiffV1)
+  ))
+_sym_db.RegisterMessage(PositionDiffV1)
 
 RequestV1 = _reflection.GeneratedProtocolMessageType('RequestV1', (_message.Message,), dict(
   DESCRIPTOR = _REQUESTV1,
