@@ -17,7 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/containers.proto',
   package='services.user.containers',
   syntax='proto3',
-  serialized_pb=b'\n(protobufs/services/user/containers.proto\x12\x18services.user.containers\"\xaf\x02\n\x08\x44\x65viceV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1a\n\x12notification_token\x18\x02 \x01(\t\x12\x10\n\x08platform\x18\x03 \x01(\t\x12\x12\n\nos_version\x18\x04 \x01(\t\x12\x13\n\x0b\x61pp_version\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65vice_uuid\x18\x06 \x01(\t\x12\x0f\n\x07user_id\x18\x07 \x01(\t\x12\x1b\n\x13language_preference\x18\x08 \x01(\t\x12?\n\x08provider\x18\t \x01(\x0e\x32-.services.user.containers.DeviceV1.ProviderV1\x12\x17\n\x0forganization_id\x18\n \x01(\t\"#\n\nProviderV1\x12\t\n\x05\x41PPLE\x10\x00\x12\n\n\x06GOOGLE\x10\x01\"\xbe\x02\n\nIdentityV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x41\n\x08provider\x18\x02 \x01(\x0e\x32/.services.user.containers.IdentityV1.ProviderV1\x12\x11\n\tfull_name\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x05 \x01(\t\x12\x12\n\nexpires_at\x18\x06 \x01(\t\x12\x14\n\x0cprovider_uid\x18\x07 \x01(\t\x12\x0f\n\x07user_id\x18\x08 \x01(\t\x12\x15\n\rrefresh_token\x18\t \x01(\t\x12\x17\n\x0forganization_id\x18\n \x01(\t\">\n\nProviderV1\x12\x0c\n\x08INTERNAL\x10\x00\x12\x0c\n\x08LINKEDIN\x10\x01\x12\n\n\x06GOOGLE\x10\x02\x12\x08\n\x04OKTA\x10\x03\".\n\x0fOAuth2DetailsV1\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\r\n\x05state\x18\x02 \x01(\t\"{\n\x06UserV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rprimary_email\x18\x02 \x01(\t\x12\x10\n\x08is_admin\x18\x03 \x01(\x08\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x10\n\x08password\x18\x05 \x01(\t\x12\x17\n\x0forganization_id\x18\x06 \x01(\t\"K\n\rSAMLDetailsV1\x12\x15\n\rsaml_response\x18\x01 \x01(\t\x12\x13\n\x0brelay_state\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\"\"\n\x11SAMLCredentialsV1\x12\r\n\x05state\x18\x01 \x01(\t\"5\n\x13GoogleCredentialsV1\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\x10\n\x08id_token\x18\x02 \x01(\tb\x06proto3'
+  serialized_pb=b'\n(protobufs/services/user/containers.proto\x12\x18services.user.containers\"\xaf\x02\n\x08\x44\x65viceV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1a\n\x12notification_token\x18\x02 \x01(\t\x12\x10\n\x08platform\x18\x03 \x01(\t\x12\x12\n\nos_version\x18\x04 \x01(\t\x12\x13\n\x0b\x61pp_version\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65vice_uuid\x18\x06 \x01(\t\x12\x0f\n\x07user_id\x18\x07 \x01(\t\x12\x1b\n\x13language_preference\x18\x08 \x01(\t\x12?\n\x08provider\x18\t \x01(\x0e\x32-.services.user.containers.DeviceV1.ProviderV1\x12\x17\n\x0forganization_id\x18\n \x01(\t\"#\n\nProviderV1\x12\t\n\x05\x41PPLE\x10\x00\x12\n\n\x06GOOGLE\x10\x01\"\xc9\x02\n\nIdentityV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x41\n\x08provider\x18\x02 \x01(\x0e\x32/.services.user.containers.IdentityV1.ProviderV1\x12\x11\n\tfull_name\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x05 \x01(\t\x12\x12\n\nexpires_at\x18\x06 \x01(\t\x12\x14\n\x0cprovider_uid\x18\x07 \x01(\t\x12\x0f\n\x07user_id\x18\x08 \x01(\t\x12\x15\n\rrefresh_token\x18\t \x01(\t\x12\x17\n\x0forganization_id\x18\n \x01(\t\"I\n\nProviderV1\x12\x0c\n\x08INTERNAL\x10\x00\x12\x0c\n\x08LINKEDIN\x10\x01\x12\n\n\x06GOOGLE\x10\x02\x12\x08\n\x04OKTA\x10\x03\x12\t\n\x05SLACK\x10\x04\".\n\x0fOAuth2DetailsV1\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\r\n\x05state\x18\x02 \x01(\t\"{\n\x06UserV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\rprimary_email\x18\x02 \x01(\t\x12\x10\n\x08is_admin\x18\x03 \x01(\x08\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x10\n\x08password\x18\x05 \x01(\t\x12\x17\n\x0forganization_id\x18\x06 \x01(\t\"K\n\rSAMLDetailsV1\x12\x15\n\rsaml_response\x18\x01 \x01(\t\x12\x13\n\x0brelay_state\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\"\"\n\x11SAMLCredentialsV1\x12\r\n\x05state\x18\x01 \x01(\t\"5\n\x13GoogleCredentialsV1\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\x10\n\x08id_token\x18\x02 \x01(\tb\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -67,11 +67,15 @@ _IDENTITYV1_PROVIDERV1 = _descriptor.EnumDescriptor(
       name='OKTA', index=3, number=3,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SLACK', index=4, number=4,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=633,
-  serialized_end=695,
+  serialized_end=706,
 )
 _sym_db.RegisterEnumDescriptor(_IDENTITYV1_PROVIDERV1)
 
@@ -262,7 +266,7 @@ _IDENTITYV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=377,
-  serialized_end=695,
+  serialized_end=706,
 )
 
 
@@ -299,8 +303,8 @@ _OAUTH2DETAILSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=697,
-  serialized_end=743,
+  serialized_start=708,
+  serialized_end=754,
 )
 
 
@@ -365,8 +369,8 @@ _USERV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=745,
-  serialized_end=868,
+  serialized_start=756,
+  serialized_end=879,
 )
 
 
@@ -410,8 +414,8 @@ _SAMLDETAILSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=870,
-  serialized_end=945,
+  serialized_start=881,
+  serialized_end=956,
 )
 
 
@@ -441,8 +445,8 @@ _SAMLCREDENTIALSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=947,
-  serialized_end=981,
+  serialized_start=958,
+  serialized_end=992,
 )
 
 
@@ -479,8 +483,8 @@ _GOOGLECREDENTIALSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=983,
-  serialized_end=1036,
+  serialized_start=994,
+  serialized_end=1047,
 )
 
 _DEVICEV1.fields_by_name['provider'].enum_type = _DEVICEV1_PROVIDERV1

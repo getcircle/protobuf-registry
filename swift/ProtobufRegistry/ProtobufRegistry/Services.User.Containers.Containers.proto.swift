@@ -738,6 +738,7 @@ public extension Services.User.Containers {
         case Linkedin = 1
         case Google = 2
         case Okta = 3
+        case Slack = 4
 
       }
 

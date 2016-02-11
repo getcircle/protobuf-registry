@@ -27,6 +27,7 @@ message IdentityV1 {
         LINKEDIN = 1;
         GOOGLE = 2;
         OKTA = 3;
+        SLACK = 4;
     }
 
     string id = 1;
