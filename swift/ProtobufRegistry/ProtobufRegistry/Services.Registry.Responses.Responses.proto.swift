@@ -178,6 +178,11 @@ public var ServicesRegistryResponsesUserbulkUpdateUsers:ConcreateExtensionField 
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUserbulkUpdateUsersStatic
    }
 }
+public var ServicesRegistryResponsesUsergetSlackAuthenticationInstructions:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesUsergetSlackAuthenticationInstructionsStatic
+   }
+}
 public var ServicesRegistryResponsesOrganizationcreateOrganization:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesOrganizationcreateOrganizationStatic
@@ -529,6 +534,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesUsergetAuthenticationInstructionsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesUsergetActiveDevicesStatic:ConcreateExtensionField
     var ServicesRegistryResponsesUserbulkUpdateUsersStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesUsergetSlackAuthenticationInstructionsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationcreateOrganizationStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationgetOrganizationStatic:ConcreateExtensionField
     var ServicesRegistryResponsesOrganizationgetTeamStatic:ConcreateExtensionField
@@ -611,6 +617,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesUsergetAuthenticationInstructionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 115, defaultValue:Services.User.Actions.GetAuthenticationInstructions.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetAuthenticationInstructions.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesUsergetActiveDevicesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 116, defaultValue:Services.User.Actions.GetActiveDevices.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetActiveDevices.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesUserbulkUpdateUsersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 118, defaultValue:Services.User.Actions.BulkUpdateUsers.RequestV1(), messageOrGroupClass:Services.User.Actions.BulkUpdateUsers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesUsergetSlackAuthenticationInstructionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 119, defaultValue:Services.User.Actions.GetSlackAuthenticationInstructions.ResponseV1(), messageOrGroupClass:Services.User.Actions.GetSlackAuthenticationInstructions.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationcreateOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 200, defaultValue:Services.Organization.Actions.CreateOrganization.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.CreateOrganization.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationgetOrganizationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 201, defaultValue:Services.Organization.Actions.GetOrganization.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetOrganization.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesOrganizationgetTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 202, defaultValue:Services.Organization.Actions.GetTeam.ResponseV1(), messageOrGroupClass:Services.Organization.Actions.GetTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -691,6 +698,7 @@ public extension Services.Registry.Responses {
       Services.User.Actions.DeleteIdentity.DeleteIdentityRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.User.Actions.Logout.LogoutRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.User.Actions.GetAuthenticationInstructions.GetAuthenticationInstructionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.User.Actions.GetSlackAuthenticationInstructions.GetSlackAuthenticationInstructionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.User.Actions.GetActiveDevices.GetActiveDevicesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.User.Actions.BulkUpdateUsers.BulkUpdateUsersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Organization.Actions.CreateOrganization.CreateOrganizationRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -774,6 +782,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesUsergetAuthenticationInstructionsStatic)
       registry.addExtension(ServicesRegistryResponsesUsergetActiveDevicesStatic)
       registry.addExtension(ServicesRegistryResponsesUserbulkUpdateUsersStatic)
+      registry.addExtension(ServicesRegistryResponsesUsergetSlackAuthenticationInstructionsStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationcreateOrganizationStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationgetOrganizationStatic)
       registry.addExtension(ServicesRegistryResponsesOrganizationgetTeamStatic)
@@ -882,6 +891,9 @@ public extension Services.Registry.Responses {
     }
     public class func bulkUpdateUsers() -> ConcreateExtensionField {
          return ServicesRegistryResponsesUserbulkUpdateUsers
+    }
+    public class func getSlackAuthenticationInstructions() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesUsergetSlackAuthenticationInstructions
     }
     required public init() {
          super.init()

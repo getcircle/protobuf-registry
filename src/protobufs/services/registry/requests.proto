@@ -17,6 +17,7 @@ import "protobufs/services/user/actions/request_access.proto";
 import "protobufs/services/user/actions/delete_identity.proto";
 import "protobufs/services/user/actions/logout.proto";
 import "protobufs/services/user/actions/get_authentication_instructions.proto";
+import "protobufs/services/user/actions/get_slack_authentication_instructions.proto";
 import "protobufs/services/user/actions/get_active_devices.proto";
 import "protobufs/services/user/actions/bulk_update_users.proto";
 
@@ -113,6 +114,7 @@ message User {
         optional services.user.actions.get_authentication_instructions.RequestV1 get_authentication_instructions = 115;
         optional services.user.actions.get_active_devices.RequestV1 get_active_devices = 116;
         optional services.user.actions.bulk_update_users.RequestV1 bulk_update_users = 118;
+        optional services.user.actions.get_slack_authentication_instructions.RequestV1 get_slack_authentication_instructions = 119;
     }
 }
 
