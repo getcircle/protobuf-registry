@@ -76,4 +76,5 @@ message CollectionV1 {
     services.common.containers.InflationsV1 inflations = 11;
     services.common.containers.FieldsV1 fields = 12;
     string by_profile_id = 13;
+    uint32 total_items = 14;
 }

@@ -65,6 +65,7 @@ public func == (lhs: Services.Post.Containers.CollectionV1, rhs: Services.Post.C
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
+  fieldCheck = fieldCheck && (lhs.hasTotalItems == rhs.hasTotalItems) && (!lhs.hasTotalItems || lhs.totalItems == rhs.totalItems)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1775,6 +1776,9 @@ public extension Services.Post.Containers {
     public private(set) var hasByProfileId:Bool = false
     public private(set) var byProfileId:String = ""
 
+    public private(set) var hasTotalItems:Bool = false
+    public private(set) var totalItems:UInt32 = UInt32(0)
+
     required public init() {
          super.init()
     }
@@ -1820,6 +1824,9 @@ public extension Services.Post.Containers {
       }
       if hasByProfileId {
         try output.writeString(13, value:byProfileId)
+      }
+      if hasTotalItems {
+        try output.writeUInt32(14, value:totalItems)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1874,6 +1881,9 @@ public extension Services.Post.Containers {
       }
       if hasByProfileId {
         serialize_size += byProfileId.computeStringSize(13)
+      }
+      if hasTotalItems {
+        serialize_size += totalItems.computeUInt32Size(14)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1975,6 +1985,9 @@ public extension Services.Post.Containers {
       if hasByProfileId {
         output += "\(indent) byProfileId: \(byProfileId) \n"
       }
+      if hasTotalItems {
+        output += "\(indent) totalItems: \(totalItems) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2024,6 +2037,9 @@ public extension Services.Post.Containers {
             }
             if hasByProfileId {
                hashCode = (hashCode &* 31) &+ byProfileId.hashValue
+            }
+            if hasTotalItems {
+               hashCode = (hashCode &* 31) &+ totalItems.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2429,6 +2445,29 @@ public extension Services.Post.Containers {
            builderResult.byProfileId = ""
            return self
       }
+      public var hasTotalItems:Bool {
+           get {
+                return builderResult.hasTotalItems
+           }
+      }
+      public var totalItems:UInt32 {
+           get {
+                return builderResult.totalItems
+           }
+           set (value) {
+               builderResult.hasTotalItems = true
+               builderResult.totalItems = value
+           }
+      }
+      public func setTotalItems(value:UInt32) -> Services.Post.Containers.CollectionV1.Builder {
+        self.totalItems = value
+        return self
+      }
+      public func clearTotalItems() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasTotalItems = false
+           builderResult.totalItems = UInt32(0)
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -2491,6 +2530,9 @@ public extension Services.Post.Containers {
         }
         if other.hasByProfileId {
              byProfileId = other.byProfileId
+        }
+        if other.hasTotalItems {
+             totalItems = other.totalItems
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -2567,6 +2609,9 @@ public extension Services.Post.Containers {
 
           case 106 :
             byProfileId = try input.readString()
+
+          case 112 :
+            totalItems = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
