@@ -9,4 +9,6 @@ message RequestV1 {
     string source_id = 3;
 }
 
-message ResponseV1 {}
+message ResponseV1 {
+    services.post.containers.CollectionItemV1 item = 1;
+}
