@@ -16,6 +16,7 @@ public func == (lhs: Services.Post.Actions.GetCollections.RequestV1, rhs: Servic
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = fieldCheck && (lhs.hasCollectionItemId == rhs.hasCollectionItemId) && (!lhs.hasCollectionItemId || lhs.collectionItemId == rhs.collectionItemId)
+  fieldCheck = fieldCheck && (lhs.hasItemsPerCollection == rhs.hasItemsPerCollection) && (!lhs.hasItemsPerCollection || lhs.itemsPerCollection == rhs.itemsPerCollection)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -66,6 +67,9 @@ public extension Services.Post.Actions.GetCollections {
     public private(set) var hasCollectionItemId:Bool = false
     public private(set) var collectionItemId:String = ""
 
+    public private(set) var hasItemsPerCollection:Bool = false
+    public private(set) var itemsPerCollection:UInt32 = UInt32(0)
+
     required public init() {
          super.init()
     }
@@ -90,6 +94,9 @@ public extension Services.Post.Actions.GetCollections {
       }
       if hasCollectionItemId {
         try output.writeString(6, value:collectionItemId)
+      }
+      if hasItemsPerCollection {
+        try output.writeUInt32(7, value:itemsPerCollection)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -121,6 +128,9 @@ public extension Services.Post.Actions.GetCollections {
       }
       if hasCollectionItemId {
         serialize_size += collectionItemId.computeStringSize(6)
+      }
+      if hasItemsPerCollection {
+        serialize_size += itemsPerCollection.computeUInt32Size(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -195,6 +205,9 @@ public extension Services.Post.Actions.GetCollections {
       if hasCollectionItemId {
         output += "\(indent) collectionItemId: \(collectionItemId) \n"
       }
+      if hasItemsPerCollection {
+        output += "\(indent) itemsPerCollection: \(itemsPerCollection) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -221,6 +234,9 @@ public extension Services.Post.Actions.GetCollections {
             }
             if hasCollectionItemId {
                hashCode = (hashCode &* 31) &+ collectionItemId.hashValue
+            }
+            if hasItemsPerCollection {
+               hashCode = (hashCode &* 31) &+ itemsPerCollection.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -444,6 +460,29 @@ public extension Services.Post.Actions.GetCollections {
            builderResult.collectionItemId = ""
            return self
       }
+      public var hasItemsPerCollection:Bool {
+           get {
+                return builderResult.hasItemsPerCollection
+           }
+      }
+      public var itemsPerCollection:UInt32 {
+           get {
+                return builderResult.itemsPerCollection
+           }
+           set (value) {
+               builderResult.hasItemsPerCollection = true
+               builderResult.itemsPerCollection = value
+           }
+      }
+      public func setItemsPerCollection(value:UInt32) -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+        self.itemsPerCollection = value
+        return self
+      }
+      public func clearItemsPerCollection() -> Services.Post.Actions.GetCollections.RequestV1.Builder{
+           builderResult.hasItemsPerCollection = false
+           builderResult.itemsPerCollection = UInt32(0)
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -485,6 +524,9 @@ public extension Services.Post.Actions.GetCollections {
         }
         if other.hasCollectionItemId {
              collectionItemId = other.collectionItemId
+        }
+        if other.hasItemsPerCollection {
+             itemsPerCollection = other.itemsPerCollection
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -533,6 +575,9 @@ public extension Services.Post.Actions.GetCollections {
 
           case 50 :
             collectionItemId = try input.readString()
+
+          case 56 :
+            itemsPerCollection = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
