@@ -43,6 +43,7 @@ public func == (lhs: Services.Post.Containers.CollectionItemV1, rhs: Services.Po
   fieldCheck = fieldCheck && (lhs.hasSource == rhs.hasSource) && (!lhs.hasSource || lhs.source == rhs.source)
   fieldCheck = fieldCheck && (lhs.hasSourceId == rhs.hasSourceId) && (!lhs.hasSourceId || lhs.sourceId == rhs.sourceId)
   fieldCheck = fieldCheck && (lhs.hasPost == rhs.hasPost) && (!lhs.hasPost || lhs.post == rhs.post)
+  fieldCheck = fieldCheck && (lhs.hasCollectionId == rhs.hasCollectionId) && (!lhs.hasCollectionId || lhs.collectionId == rhs.collectionId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1289,6 +1290,9 @@ public extension Services.Post.Containers {
               storageItem = CollectionItemV1.Item.Post(newvalue)
          }
     }
+    public private(set) var hasCollectionId:Bool = false
+    public private(set) var collectionId:String = ""
+
     required public init() {
          super.init()
     }
@@ -1313,6 +1317,9 @@ public extension Services.Post.Containers {
       }
       if hasPost {
         try output.writeMessage(6, value:post)
+      }
+      if hasCollectionId {
+        try output.writeString(7, value:collectionId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1342,6 +1349,9 @@ public extension Services.Post.Containers {
           if let varSizepost = post?.computeMessageSize(6) {
               serialize_size += varSizepost
           }
+      }
+      if hasCollectionId {
+        serialize_size += collectionId.computeStringSize(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1414,6 +1424,9 @@ public extension Services.Post.Containers {
         try post?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasCollectionId {
+        output += "\(indent) collectionId: \(collectionId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1438,6 +1451,9 @@ public extension Services.Post.Containers {
                 if let hashValuepost = post?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuepost
                 }
+            }
+            if hasCollectionId {
+               hashCode = (hashCode &* 31) &+ collectionId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1633,6 +1649,29 @@ public extension Services.Post.Containers {
         builderResult.post = nil
         return self
       }
+      public var hasCollectionId:Bool {
+           get {
+                return builderResult.hasCollectionId
+           }
+      }
+      public var collectionId:String {
+           get {
+                return builderResult.collectionId
+           }
+           set (value) {
+               builderResult.hasCollectionId = true
+               builderResult.collectionId = value
+           }
+      }
+      public func setCollectionId(value:String) -> Services.Post.Containers.CollectionItemV1.Builder {
+        self.collectionId = value
+        return self
+      }
+      public func clearCollectionId() -> Services.Post.Containers.CollectionItemV1.Builder{
+           builderResult.hasCollectionId = false
+           builderResult.collectionId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1674,6 +1713,9 @@ public extension Services.Post.Containers {
         }
         if (other.hasPost) {
             try mergePost(other.post)
+        }
+        if other.hasCollectionId {
+             collectionId = other.collectionId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1717,6 +1759,9 @@ public extension Services.Post.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             post = subBuilder.buildPartial()
+
+          case 58 :
+            collectionId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

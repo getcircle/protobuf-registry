@@ -54,6 +54,8 @@ message CollectionItemV1 {
         PostV1 post = 6;
     }
 
+    string collection_id = 7;
+
 }
 
 message CollectionV1 {
