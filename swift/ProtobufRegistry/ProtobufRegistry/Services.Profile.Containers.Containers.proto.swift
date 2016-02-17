@@ -83,6 +83,19 @@ public func == (lhs: Services.Profile.Containers.StatV1, rhs: Services.Profile.C
   return fieldCheck
 }
 
+public func == (lhs: Services.Profile.Containers.ReportingDetailsV1, rhs: Services.Profile.Containers.ReportingDetailsV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
+  fieldCheck = fieldCheck && (lhs.hasManager == rhs.hasManager) && (!lhs.hasManager || lhs.manager == rhs.manager)
+  fieldCheck = fieldCheck && (lhs.peers == rhs.peers)
+  fieldCheck = fieldCheck && (lhs.directReports == rhs.directReports)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
 public extension Services.Profile.Containers {
   public struct ContainersRoot {
     public static var sharedInstance : ContainersRoot {
@@ -2409,6 +2422,366 @@ public extension Services.Profile.Containers {
 
           case 16 :
             count = try input.readUInt32()
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class ReportingDetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hasProfileId:Bool = false
+    public private(set) var profileId:String = ""
+
+    public private(set) var hasManager:Bool = false
+    public private(set) var manager:Services.Profile.Containers.ProfileV1!
+    public private(set) var peers:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
+    public private(set) var directReports:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasProfileId {
+        try output.writeString(1, value:profileId)
+      }
+      if hasManager {
+        try output.writeMessage(2, value:manager)
+      }
+      for oneElementpeers in peers {
+          try output.writeMessage(3, value:oneElementpeers)
+      }
+      for oneElementdirectReports in directReports {
+          try output.writeMessage(4, value:oneElementdirectReports)
+      }
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasProfileId {
+        serialize_size += profileId.computeStringSize(1)
+      }
+      if hasManager {
+          if let varSizemanager = manager?.computeMessageSize(2) {
+              serialize_size += varSizemanager
+          }
+      }
+      for oneElementpeers in peers {
+          serialize_size += oneElementpeers.computeMessageSize(3)
+      }
+      for oneElementdirectReports in directReports {
+          serialize_size += oneElementdirectReports.computeMessageSize(4)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Profile.Containers.ReportingDetailsV1> {
+      var mergedArray = Array<Services.Profile.Containers.ReportingDetailsV1>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Profile.Containers.ReportingDetailsV1? {
+      return try Services.Profile.Containers.ReportingDetailsV1.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.Profile.Containers.ReportingDetailsV1 {
+      return try Services.Profile.Containers.ReportingDetailsV1.Builder().mergeFromData(data, extensionRegistry:Services.Profile.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Profile.Containers.ReportingDetailsV1 {
+      return try Services.Profile.Containers.ReportingDetailsV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Profile.Containers.ReportingDetailsV1 {
+      return try Services.Profile.Containers.ReportingDetailsV1.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Profile.Containers.ReportingDetailsV1 {
+      return try Services.Profile.Containers.ReportingDetailsV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Profile.Containers.ReportingDetailsV1 {
+      return try Services.Profile.Containers.ReportingDetailsV1.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Profile.Containers.ReportingDetailsV1 {
+      return try Services.Profile.Containers.ReportingDetailsV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+      return Services.Profile.Containers.ReportingDetailsV1.classBuilder() as! Services.Profile.Containers.ReportingDetailsV1.Builder
+    }
+    public func getBuilder() -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+      return classBuilder() as! Services.Profile.Containers.ReportingDetailsV1.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Profile.Containers.ReportingDetailsV1.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Profile.Containers.ReportingDetailsV1.Builder()
+    }
+    public func toBuilder() throws -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+      return try Services.Profile.Containers.ReportingDetailsV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Profile.Containers.ReportingDetailsV1) throws -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+      return try Services.Profile.Containers.ReportingDetailsV1.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasProfileId {
+        output += "\(indent) profileId: \(profileId) \n"
+      }
+      if hasManager {
+        output += "\(indent) manager {\n"
+        try manager?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      var peersElementIndex:Int = 0
+      for oneElementpeers in peers {
+          output += "\(indent) peers[\(peersElementIndex)] {\n"
+          try oneElementpeers.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          peersElementIndex++
+      }
+      var directReportsElementIndex:Int = 0
+      for oneElementdirectReports in directReports {
+          output += "\(indent) directReports[\(directReportsElementIndex)] {\n"
+          try oneElementdirectReports.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          directReportsElementIndex++
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasProfileId {
+               hashCode = (hashCode &* 31) &+ profileId.hashValue
+            }
+            if hasManager {
+                if let hashValuemanager = manager?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuemanager
+                }
+            }
+            for oneElementpeers in peers {
+                hashCode = (hashCode &* 31) &+ oneElementpeers.hashValue
+            }
+            for oneElementdirectReports in directReports {
+                hashCode = (hashCode &* 31) &+ oneElementdirectReports.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Profile.Containers.ReportingDetailsV1"
+    }
+    override public func className() -> String {
+        return "Services.Profile.Containers.ReportingDetailsV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Profile.Containers.ReportingDetailsV1.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.Profile.Containers.ReportingDetailsV1 = Services.Profile.Containers.ReportingDetailsV1()
+      public func getMessage() -> Services.Profile.Containers.ReportingDetailsV1 {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      public var hasProfileId:Bool {
+           get {
+                return builderResult.hasProfileId
+           }
+      }
+      public var profileId:String {
+           get {
+                return builderResult.profileId
+           }
+           set (value) {
+               builderResult.hasProfileId = true
+               builderResult.profileId = value
+           }
+      }
+      public func setProfileId(value:String) -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        self.profileId = value
+        return self
+      }
+      public func clearProfileId() -> Services.Profile.Containers.ReportingDetailsV1.Builder{
+           builderResult.hasProfileId = false
+           builderResult.profileId = ""
+           return self
+      }
+      public var hasManager:Bool {
+           get {
+               return builderResult.hasManager
+           }
+      }
+      public var manager:Services.Profile.Containers.ProfileV1! {
+           get {
+               if managerBuilder_ != nil {
+                  builderResult.manager = managerBuilder_.getMessage()
+               }
+               return builderResult.manager
+           }
+           set (value) {
+               builderResult.hasManager = true
+               builderResult.manager = value
+           }
+      }
+      private var managerBuilder_:Services.Profile.Containers.ProfileV1.Builder! {
+           didSet {
+              builderResult.hasManager = true
+           }
+      }
+      public func getManagerBuilder() -> Services.Profile.Containers.ProfileV1.Builder {
+        if managerBuilder_ == nil {
+           managerBuilder_ = Services.Profile.Containers.ProfileV1.Builder()
+           builderResult.manager = managerBuilder_.getMessage()
+           if manager != nil {
+              try! managerBuilder_.mergeFrom(manager)
+           }
+        }
+        return managerBuilder_
+      }
+      public func setManager(value:Services.Profile.Containers.ProfileV1!) -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        self.manager = value
+        return self
+      }
+      public func mergeManager(value:Services.Profile.Containers.ProfileV1) throws -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        if builderResult.hasManager {
+          builderResult.manager = try Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.manager).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.manager = value
+        }
+        builderResult.hasManager = true
+        return self
+      }
+      public func clearManager() -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        managerBuilder_ = nil
+        builderResult.hasManager = false
+        builderResult.manager = nil
+        return self
+      }
+      public var peers:Array<Services.Profile.Containers.ProfileV1> {
+           get {
+               return builderResult.peers
+           }
+           set (value) {
+               builderResult.peers = value
+           }
+      }
+      public func setPeers(value:Array<Services.Profile.Containers.ProfileV1>) -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        self.peers = value
+        return self
+      }
+      public func clearPeers() -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        builderResult.peers.removeAll(keepCapacity: false)
+        return self
+      }
+      public var directReports:Array<Services.Profile.Containers.ProfileV1> {
+           get {
+               return builderResult.directReports
+           }
+           set (value) {
+               builderResult.directReports = value
+           }
+      }
+      public func setDirectReports(value:Array<Services.Profile.Containers.ProfileV1>) -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        self.directReports = value
+        return self
+      }
+      public func clearDirectReports() -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        builderResult.directReports.removeAll(keepCapacity: false)
+        return self
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        builderResult = Services.Profile.Containers.ReportingDetailsV1()
+        return self
+      }
+      public override func clone() throws -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        return try Services.Profile.Containers.ReportingDetailsV1.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.Profile.Containers.ReportingDetailsV1 {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.Profile.Containers.ReportingDetailsV1 {
+        let returnMe:Services.Profile.Containers.ReportingDetailsV1 = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.Profile.Containers.ReportingDetailsV1) throws -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        if other == Services.Profile.Containers.ReportingDetailsV1() {
+         return self
+        }
+        if other.hasProfileId {
+             profileId = other.profileId
+        }
+        if (other.hasManager) {
+            try mergeManager(other.manager)
+        }
+        if !other.peers.isEmpty  {
+           builderResult.peers += other.peers
+        }
+        if !other.directReports.isEmpty  {
+           builderResult.directReports += other.directReports
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 10 :
+            profileId = try input.readString()
+
+          case 18 :
+            let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
+            if hasManager {
+              try subBuilder.mergeFrom(manager)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            manager = subBuilder.buildPartial()
+
+          case 26 :
+            let subBuilder = Services.Profile.Containers.ProfileV1.Builder()
+            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+            peers += [subBuilder.buildPartial()]
+
+          case 34 :
+            let subBuilder = Services.Profile.Containers.ProfileV1.Builder()
+            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+            directReports += [subBuilder.buildPartial()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
