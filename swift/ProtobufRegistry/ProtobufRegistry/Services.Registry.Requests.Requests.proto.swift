@@ -323,6 +323,11 @@ public var ServicesRegistryRequestsProfileprofileExists:ConcreateExtensionField 
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfileprofileExistsStatic
    }
 }
+public var ServicesRegistryRequestsProfilegetReportingDetails:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsProfilegetReportingDetailsStatic
+   }
+}
 public var ServicesRegistryRequestsSearchsearch:ConcreateExtensionField {
    get {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsSearchsearchStatic
@@ -553,6 +558,11 @@ public var ServicesRegistryRequestsTeamupdateTeam:ConcreateExtensionField {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamupdateTeamStatic
    }
 }
+public var ServicesRegistryRequestsTeamgetTeams:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamgetTeamsStatic
+   }
+}
 public extension Services.Registry.Requests {
   public struct RequestsRoot {
     public static var sharedInstance : RequestsRoot {
@@ -603,6 +613,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsProfilebulkCreateProfilesStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfilebulkUpdateProfilesStatic:ConcreateExtensionField
     var ServicesRegistryRequestsProfileprofileExistsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsProfilegetReportingDetailsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsSearchsearchStatic:ConcreateExtensionField
     var ServicesRegistryRequestsSearchsearchV2Static:ConcreateExtensionField
     var ServicesRegistryRequestsSearchupdateEntitiesStatic:ConcreateExtensionField
@@ -649,6 +660,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsTeamremoveMembersStatic:ConcreateExtensionField
     var ServicesRegistryRequestsTeamupdateMembersStatic:ConcreateExtensionField
     var ServicesRegistryRequestsTeamupdateTeamStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamgetTeamsStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -694,6 +706,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsProfilebulkCreateProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 312, defaultValue:Services.Profile.Actions.BulkCreateProfiles.RequestV1(), messageOrGroupClass:Services.Profile.Actions.BulkCreateProfiles.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfilebulkUpdateProfilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 313, defaultValue:Services.Profile.Actions.BulkUpdateProfiles.RequestV1(), messageOrGroupClass:Services.Profile.Actions.BulkUpdateProfiles.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsProfileprofileExistsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 315, defaultValue:Services.Profile.Actions.ProfileExists.RequestV1(), messageOrGroupClass:Services.Profile.Actions.ProfileExists.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsProfilegetReportingDetailsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 317, defaultValue:Services.Profile.Actions.GetReportingDetails.RequestV1(), messageOrGroupClass:Services.Profile.Actions.GetReportingDetails.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsSearchsearchStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 400, defaultValue:Services.Search.Actions.Search.RequestV1(), messageOrGroupClass:Services.Search.Actions.Search.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsSearchsearchV2Static = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 401, defaultValue:Services.Search.Actions.SearchV2.RequestV1(), messageOrGroupClass:Services.Search.Actions.SearchV2.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsSearchupdateEntitiesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 402, defaultValue:Services.Search.Actions.UpdateEntities.RequestV1(), messageOrGroupClass:Services.Search.Actions.UpdateEntities.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -740,6 +753,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsTeamremoveMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1906, defaultValue:Services.Team.Actions.RemoveMembers.RequestV1(), messageOrGroupClass:Services.Team.Actions.RemoveMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsTeamupdateMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1907, defaultValue:Services.Team.Actions.UpdateMembers.RequestV1(), messageOrGroupClass:Services.Team.Actions.UpdateMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsTeamupdateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1908, defaultValue:Services.Team.Actions.UpdateTeam.RequestV1(), messageOrGroupClass:Services.Team.Actions.UpdateTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamgetTeamsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1909, defaultValue:Services.Team.Actions.GetTeams.RequestV1(), messageOrGroupClass:Services.Team.Actions.GetTeams.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -785,6 +799,7 @@ public extension Services.Registry.Requests {
       Services.Profile.Actions.BulkCreateProfiles.BulkCreateProfilesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.BulkUpdateProfiles.BulkUpdateProfilesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Actions.ProfileExists.ProfileExistsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Profile.Actions.GetReportingDetails.GetReportingDetailsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Search.Actions.Search.SearchRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Search.Actions.UpdateEntities.UpdateEntitiesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Search.Actions.SearchV2.SearchV2Root.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -831,6 +846,7 @@ public extension Services.Registry.Requests {
       Services.Team.Actions.RemoveMembers.RemoveMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.UpdateMembers.UpdateMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.UpdateTeam.UpdateTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.GetTeams.GetTeamsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryRequestsUsercreateUserStatic)
@@ -875,6 +891,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsProfilebulkCreateProfilesStatic)
       registry.addExtension(ServicesRegistryRequestsProfilebulkUpdateProfilesStatic)
       registry.addExtension(ServicesRegistryRequestsProfileprofileExistsStatic)
+      registry.addExtension(ServicesRegistryRequestsProfilegetReportingDetailsStatic)
       registry.addExtension(ServicesRegistryRequestsSearchsearchStatic)
       registry.addExtension(ServicesRegistryRequestsSearchsearchV2Static)
       registry.addExtension(ServicesRegistryRequestsSearchupdateEntitiesStatic)
@@ -921,6 +938,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsTeamremoveMembersStatic)
       registry.addExtension(ServicesRegistryRequestsTeamupdateMembersStatic)
       registry.addExtension(ServicesRegistryRequestsTeamupdateTeamStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamgetTeamsStatic)
     }
   }
 
@@ -1354,6 +1372,9 @@ public extension Services.Registry.Requests {
     }
     public class func profileExists() -> ConcreateExtensionField {
          return ServicesRegistryRequestsProfileprofileExists
+    }
+    public class func getReportingDetails() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsProfilegetReportingDetails
     }
     required public init() {
          super.init()
@@ -2860,6 +2881,9 @@ public extension Services.Registry.Requests {
     }
     public class func updateTeam() -> ConcreateExtensionField {
          return ServicesRegistryRequestsTeamupdateTeam
+    }
+    public class func getTeams() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamgetTeams
     }
     required public init() {
          super.init()

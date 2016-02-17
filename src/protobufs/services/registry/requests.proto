@@ -50,6 +50,7 @@ import "protobufs/services/profile/actions/get_profiles.proto";
 import "protobufs/services/profile/actions/bulk_create_profiles.proto";
 import "protobufs/services/profile/actions/bulk_update_profiles.proto";
 import "protobufs/services/profile/actions/profile_exists.proto";
+import "protobufs/services/profile/actions/get_reporting_details.proto";
 
 import "protobufs/services/search/actions/search.proto";
 import "protobufs/services/search/actions/update_entities.proto";
@@ -105,6 +106,7 @@ import "protobufs/services/team/actions/leave_team.proto";
 import "protobufs/services/team/actions/remove_members.proto";
 import "protobufs/services/team/actions/update_members.proto";
 import "protobufs/services/team/actions/update_team.proto";
+import "protobufs/services/team/actions/get_teams.proto";
 
 message User {
     reserved 101, 104, 105, 106, 107, 117;
@@ -163,6 +165,7 @@ message Profile {
         optional services.profile.actions.bulk_create_profiles.RequestV1 bulk_create_profiles = 312;
         optional services.profile.actions.bulk_update_profiles.RequestV1 bulk_update_profiles = 313;
         optional services.profile.actions.profile_exists.RequestV1 profile_exists = 315;
+        optional services.profile.actions.get_reporting_details.RequestV1 get_reporting_details = 317;
     }
 }
 
@@ -260,5 +263,6 @@ message Team {
         optional services.team.actions.remove_members.RequestV1 remove_members = 1906;
         optional services.team.actions.update_members.RequestV1 update_members = 1907;
         optional services.team.actions.update_team.RequestV1 update_team = 1908;
+        optional services.team.actions.get_teams.RequestV1 get_teams = 1909;
     }
 }
