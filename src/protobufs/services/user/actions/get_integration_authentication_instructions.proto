@@ -1,0 +1,14 @@
+syntax = "proto3";
+package services.user.actions.get_integration_authentication_instructions;
+
+import "protobufs/services/user/containers.proto";
+
+message RequestV1 {
+    string redirect_uri = 1;
+    string organization_domain = 2;
+    services.user.containers.IdentityV1.ProviderV1 provider = 3;
+}
+
+message ResponseV1 {
+    string authorization_url = 1;
+}
