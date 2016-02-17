@@ -51,6 +51,7 @@ message ProfileV1 {
     services.common.containers.InflationsV1 inflations = 20;
     services.common.containers.FieldsV1 fields = 21;
     StatusV1 status = 22;
+    string bio = 23;
 }
 
 message ProfileItemV1 {

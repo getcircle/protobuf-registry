@@ -45,6 +45,7 @@ public func == (lhs: Services.Profile.Containers.ProfileV1, rhs: Services.Profil
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
+  fieldCheck = fieldCheck && (lhs.hasBio == rhs.hasBio) && (!lhs.hasBio || lhs.bio == rhs.bio)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -523,6 +524,9 @@ public extension Services.Profile.Containers {
     public private(set) var fields:Services.Common.Containers.FieldsV1!
     public private(set) var status:Services.Profile.Containers.ProfileV1.StatusV1 = Services.Profile.Containers.ProfileV1.StatusV1.Active
     public private(set) var hasStatus:Bool = false
+    public private(set) var hasBio:Bool = false
+    public private(set) var bio:String = ""
+
     required public init() {
          super.init()
     }
@@ -595,6 +599,9 @@ public extension Services.Profile.Containers {
       }
       if hasStatus {
         try output.writeEnum(22, value:status.rawValue)
+      }
+      if hasBio {
+        try output.writeString(23, value:bio)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -674,6 +681,9 @@ public extension Services.Profile.Containers {
       }
       if (hasStatus) {
         serialize_size += status.rawValue.computeEnumSize(22)
+      }
+      if hasBio {
+        serialize_size += bio.computeStringSize(23)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -804,6 +814,9 @@ public extension Services.Profile.Containers {
       if (hasStatus) {
         output += "\(indent) status: \(status.rawValue)\n"
       }
+      if hasBio {
+        output += "\(indent) bio: \(bio) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -878,6 +891,9 @@ public extension Services.Profile.Containers {
             }
             if hasStatus {
                hashCode = (hashCode &* 31) &+ Int(status.rawValue)
+            }
+            if hasBio {
+               hashCode = (hashCode &* 31) &+ bio.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1455,6 +1471,29 @@ public extension Services.Profile.Containers {
            builderResult.status = .Active
            return self
         }
+      public var hasBio:Bool {
+           get {
+                return builderResult.hasBio
+           }
+      }
+      public var bio:String {
+           get {
+                return builderResult.bio
+           }
+           set (value) {
+               builderResult.hasBio = true
+               builderResult.bio = value
+           }
+      }
+      public func setBio(value:String) -> Services.Profile.Containers.ProfileV1.Builder {
+        self.bio = value
+        return self
+      }
+      public func clearBio() -> Services.Profile.Containers.ProfileV1.Builder{
+           builderResult.hasBio = false
+           builderResult.bio = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1544,6 +1583,9 @@ public extension Services.Profile.Containers {
         }
         if other.hasStatus {
              status = other.status
+        }
+        if other.hasBio {
+             bio = other.bio
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1644,6 +1686,9 @@ public extension Services.Profile.Containers {
             } else {
                  try unknownFieldsBuilder.mergeVarintField(22, value:Int64(valueIntstatus))
             }
+
+          case 186 :
+            bio = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
