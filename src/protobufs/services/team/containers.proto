@@ -43,4 +43,5 @@ message TeamMemberV1 {
     services.profile.containers.ProfileV1 profile = 4;
     services.common.containers.InflationsV1 inflations = 5;
     services.common.containers.FieldsV1 fields = 6;
+    TeamV1 team = 7;
 }
