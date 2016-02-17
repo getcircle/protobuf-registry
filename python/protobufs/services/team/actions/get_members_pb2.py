@@ -11,6 +11,7 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+from protobufs.services.common import containers_pb2 as protobufs_dot_services_dot_common_dot_containers__pb2
 from protobufs.services.team import containers_pb2 as protobufs_dot_services_dot_team_dot_containers__pb2
 
 
@@ -18,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/team/actions/get_members.proto',
   package='services.team.actions.get_members',
   syntax='proto3',
-  serialized_pb=b'\n1protobufs/services/team/actions/get_members.proto\x12!services.team.actions.get_members\x1a(protobufs/services/team/containers.proto\"Y\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12;\n\x04role\x18\x02 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\"E\n\nResponseV1\x12\x37\n\x07members\x18\x01 \x03(\x0b\x32&.services.team.containers.TeamMemberV1b\x06proto3'
+  serialized_pb=b'\n1protobufs/services/team/actions/get_members.proto\x12!services.team.actions.get_members\x1a*protobufs/services/common/containers.proto\x1a(protobufs/services/team/containers.proto\"\xe1\x01\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12;\n\x04role\x18\x02 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\x12\x12\n\nprofile_id\x18\x03 \x01(\t\x12<\n\ninflations\x18\x04 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x05 \x01(\x0b\x32$.services.common.containers.FieldsV1\"E\n\nResponseV1\x12\x37\n\x07members\x18\x01 \x03(\x0b\x32&.services.team.containers.TeamMemberV1b\x06proto3'
   ,
-  dependencies=[protobufs_dot_services_dot_team_dot_containers__pb2.DESCRIPTOR,])
+  dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -47,6 +48,27 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='profile_id', full_name='services.team.actions.get_members.RequestV1.profile_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='inflations', full_name='services.team.actions.get_members.RequestV1.inflations', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='fields', full_name='services.team.actions.get_members.RequestV1.fields', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -59,8 +81,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=130,
-  serialized_end=219,
+  serialized_start=175,
+  serialized_end=400,
 )
 
 
@@ -90,11 +112,13 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=221,
-  serialized_end=290,
+  serialized_start=402,
+  serialized_end=471,
 )
 
 _REQUESTV1.fields_by_name['role'].enum_type = protobufs_dot_services_dot_team_dot_containers__pb2._TEAMMEMBERV1_ROLEV1
+_REQUESTV1.fields_by_name['inflations'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._INFLATIONSV1
+_REQUESTV1.fields_by_name['fields'].message_type = protobufs_dot_services_dot_common_dot_containers__pb2._FIELDSV1
 _RESPONSEV1.fields_by_name['members'].message_type = protobufs_dot_services_dot_team_dot_containers__pb2._TEAMMEMBERV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1

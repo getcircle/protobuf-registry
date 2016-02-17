@@ -31,6 +31,7 @@ public func == (lhs: Services.Team.Containers.TeamV1, rhs: Services.Team.Contain
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = fieldCheck && (lhs.contactMethods == rhs.contactMethods)
+  fieldCheck = fieldCheck && (lhs.hasTotalMembers == rhs.hasTotalMembers) && (!lhs.hasTotalMembers || lhs.totalMembers == rhs.totalMembers)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -46,6 +47,7 @@ public func == (lhs: Services.Team.Containers.TeamMemberV1, rhs: Services.Team.C
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -434,6 +436,9 @@ public extension Services.Team.Containers {
     public private(set) var hasFields:Bool = false
     public private(set) var fields:Services.Common.Containers.FieldsV1!
     public private(set) var contactMethods:Array<Services.Team.Containers.ContactMethodV1>  = Array<Services.Team.Containers.ContactMethodV1>()
+    public private(set) var hasTotalMembers:Bool = false
+    public private(set) var totalMembers:UInt32 = UInt32(0)
+
     required public init() {
          super.init()
     }
@@ -464,6 +469,9 @@ public extension Services.Team.Containers {
       }
       for oneElementcontactMethods in contactMethods {
           try output.writeMessage(8, value:oneElementcontactMethods)
+      }
+      if hasTotalMembers {
+        try output.writeUInt32(9, value:totalMembers)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -505,6 +513,9 @@ public extension Services.Team.Containers {
       }
       for oneElementcontactMethods in contactMethods {
           serialize_size += oneElementcontactMethods.computeMessageSize(8)
+      }
+      if hasTotalMembers {
+        serialize_size += totalMembers.computeUInt32Size(9)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -593,6 +604,9 @@ public extension Services.Team.Containers {
           output += "\(indent)}\n"
           contactMethodsElementIndex++
       }
+      if hasTotalMembers {
+        output += "\(indent) totalMembers: \(totalMembers) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -629,6 +643,9 @@ public extension Services.Team.Containers {
             }
             for oneElementcontactMethods in contactMethods {
                 hashCode = (hashCode &* 31) &+ oneElementcontactMethods.hashValue
+            }
+            if hasTotalMembers {
+               hashCode = (hashCode &* 31) &+ totalMembers.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -947,6 +964,29 @@ public extension Services.Team.Containers {
         builderResult.contactMethods.removeAll(keepCapacity: false)
         return self
       }
+      public var hasTotalMembers:Bool {
+           get {
+                return builderResult.hasTotalMembers
+           }
+      }
+      public var totalMembers:UInt32 {
+           get {
+                return builderResult.totalMembers
+           }
+           set (value) {
+               builderResult.hasTotalMembers = true
+               builderResult.totalMembers = value
+           }
+      }
+      public func setTotalMembers(value:UInt32) -> Services.Team.Containers.TeamV1.Builder {
+        self.totalMembers = value
+        return self
+      }
+      public func clearTotalMembers() -> Services.Team.Containers.TeamV1.Builder{
+           builderResult.hasTotalMembers = false
+           builderResult.totalMembers = UInt32(0)
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -994,6 +1034,9 @@ public extension Services.Team.Containers {
         }
         if !other.contactMethods.isEmpty  {
            builderResult.contactMethods += other.contactMethods
+        }
+        if other.hasTotalMembers {
+             totalMembers = other.totalMembers
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1056,6 +1099,9 @@ public extension Services.Team.Containers {
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             contactMethods += [subBuilder.buildPartial()]
 
+          case 72 :
+            totalMembers = try input.readUInt32()
+
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
                unknownFields = try unknownFieldsBuilder.build()
@@ -1095,6 +1141,8 @@ public extension Services.Team.Containers {
     public private(set) var inflations:Services.Common.Containers.InflationsV1!
     public private(set) var hasFields:Bool = false
     public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var hasTeam:Bool = false
+    public private(set) var team:Services.Team.Containers.TeamV1!
     required public init() {
          super.init()
     }
@@ -1119,6 +1167,9 @@ public extension Services.Team.Containers {
       }
       if hasFields {
         try output.writeMessage(6, value:fields)
+      }
+      if hasTeam {
+        try output.writeMessage(7, value:team)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1151,6 +1202,11 @@ public extension Services.Team.Containers {
       if hasFields {
           if let varSizefields = fields?.computeMessageSize(6) {
               serialize_size += varSizefields
+          }
+      }
+      if hasTeam {
+          if let varSizeteam = team?.computeMessageSize(7) {
+              serialize_size += varSizeteam
           }
       }
       serialize_size += unknownFields.serializedSize()
@@ -1228,6 +1284,11 @@ public extension Services.Team.Containers {
         try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasTeam {
+        output += "\(indent) team {\n"
+        try team?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1255,6 +1316,11 @@ public extension Services.Team.Containers {
             if hasFields {
                 if let hashValuefields = fields?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuefields
+                }
+            }
+            if hasTeam {
+                if let hashValueteam = team?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueteam
                 }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -1507,6 +1573,57 @@ public extension Services.Team.Containers {
         builderResult.fields = nil
         return self
       }
+      public var hasTeam:Bool {
+           get {
+               return builderResult.hasTeam
+           }
+      }
+      public var team:Services.Team.Containers.TeamV1! {
+           get {
+               if teamBuilder_ != nil {
+                  builderResult.team = teamBuilder_.getMessage()
+               }
+               return builderResult.team
+           }
+           set (value) {
+               builderResult.hasTeam = true
+               builderResult.team = value
+           }
+      }
+      private var teamBuilder_:Services.Team.Containers.TeamV1.Builder! {
+           didSet {
+              builderResult.hasTeam = true
+           }
+      }
+      public func getTeamBuilder() -> Services.Team.Containers.TeamV1.Builder {
+        if teamBuilder_ == nil {
+           teamBuilder_ = Services.Team.Containers.TeamV1.Builder()
+           builderResult.team = teamBuilder_.getMessage()
+           if team != nil {
+              try! teamBuilder_.mergeFrom(team)
+           }
+        }
+        return teamBuilder_
+      }
+      public func setTeam(value:Services.Team.Containers.TeamV1!) -> Services.Team.Containers.TeamMemberV1.Builder {
+        self.team = value
+        return self
+      }
+      public func mergeTeam(value:Services.Team.Containers.TeamV1) throws -> Services.Team.Containers.TeamMemberV1.Builder {
+        if builderResult.hasTeam {
+          builderResult.team = try Services.Team.Containers.TeamV1.builderWithPrototype(builderResult.team).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.team = value
+        }
+        builderResult.hasTeam = true
+        return self
+      }
+      public func clearTeam() -> Services.Team.Containers.TeamMemberV1.Builder {
+        teamBuilder_ = nil
+        builderResult.hasTeam = false
+        builderResult.team = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1548,6 +1665,9 @@ public extension Services.Team.Containers {
         }
         if (other.hasFields) {
             try mergeFields(other.fields)
+        }
+        if (other.hasTeam) {
+            try mergeTeam(other.team)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1601,6 +1721,14 @@ public extension Services.Team.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             fields = subBuilder.buildPartial()
+
+          case 58 :
+            let subBuilder:Services.Team.Containers.TeamV1.Builder = Services.Team.Containers.TeamV1.Builder()
+            if hasTeam {
+              try subBuilder.mergeFrom(team)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            team = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

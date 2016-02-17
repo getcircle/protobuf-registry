@@ -32,6 +32,45 @@ public func == (lhs: Services.Post.Containers.PostV1, rhs: Services.Post.Contain
   return fieldCheck
 }
 
+public func == (lhs: Services.Post.Containers.CollectionItemV1, rhs: Services.Post.Containers.CollectionItemV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
+  fieldCheck = fieldCheck && (lhs.hasPosition == rhs.hasPosition) && (!lhs.hasPosition || lhs.position == rhs.position)
+  fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
+  fieldCheck = fieldCheck && (lhs.hasSource == rhs.hasSource) && (!lhs.hasSource || lhs.source == rhs.source)
+  fieldCheck = fieldCheck && (lhs.hasSourceId == rhs.hasSourceId) && (!lhs.hasSourceId || lhs.sourceId == rhs.sourceId)
+  fieldCheck = fieldCheck && (lhs.hasPost == rhs.hasPost) && (!lhs.hasPost || lhs.post == rhs.post)
+  fieldCheck = fieldCheck && (lhs.hasCollectionId == rhs.hasCollectionId) && (!lhs.hasCollectionId || lhs.collectionId == rhs.collectionId)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
+public func == (lhs: Services.Post.Containers.CollectionV1, rhs: Services.Post.Containers.CollectionV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
+  fieldCheck = fieldCheck && (lhs.hasOrganizationId == rhs.hasOrganizationId) && (!lhs.hasOrganizationId || lhs.organizationId == rhs.organizationId)
+  fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
+  fieldCheck = fieldCheck && (lhs.hasCreated == rhs.hasCreated) && (!lhs.hasCreated || lhs.created == rhs.created)
+  fieldCheck = fieldCheck && (lhs.hasChanged == rhs.hasChanged) && (!lhs.hasChanged || lhs.changed == rhs.changed)
+  fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
+  fieldCheck = fieldCheck && (lhs.items == rhs.items)
+  fieldCheck = fieldCheck && (lhs.hasOwnerType == rhs.hasOwnerType) && (!lhs.hasOwnerType || lhs.ownerType == rhs.ownerType)
+  fieldCheck = fieldCheck && (lhs.hasOwnerId == rhs.hasOwnerId) && (!lhs.hasOwnerId || lhs.ownerId == rhs.ownerId)
+  fieldCheck = fieldCheck && (lhs.hasIsDefault == rhs.hasIsDefault) && (!lhs.hasIsDefault || lhs.isDefault == rhs.isDefault)
+  fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
+  fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
+  fieldCheck = fieldCheck && (lhs.hasTotalItems == rhs.hasTotalItems) && (!lhs.hasTotalItems || lhs.totalItems == rhs.totalItems)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
 public extension Services.Post.Containers {
   public struct ContainersRoot {
     public static var sharedInstance : ContainersRoot {
@@ -1165,6 +1204,1459 @@ public extension Services.Post.Containers {
 
           case 146 :
             sourceId = try input.readString()
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class CollectionItemV1 : GeneratedMessage, GeneratedMessageProtocol {
+
+
+    //OneOf declaration start
+
+    public enum Item {
+      case ItemOneOfNotSet
+
+      public func checkOneOfIsSet() -> Bool {
+           switch self {
+           case .ItemOneOfNotSet:
+                return false
+           default:
+                return true
+           }
+      }
+      case Post(Services.Post.Containers.PostV1)
+
+      public static func getPost(value:Item) -> Services.Post.Containers.PostV1? {
+           switch value {
+           case .Post(let enumValue):
+                return enumValue
+           default:
+                return nil
+           }
+      }
+    }
+    //OneOf declaration end
+
+    private var storageItem:CollectionItemV1.Item =  CollectionItemV1.Item.ItemOneOfNotSet
+
+
+      //Enum type declaration start 
+
+      public enum SourceV1:Int32 {
+        case Luno = 0
+
+      }
+
+      //Enum type declaration end 
+
+    public private(set) var hasId:Bool = false
+    public private(set) var id:String = ""
+
+    public private(set) var hasPosition:Bool = false
+    public private(set) var position:UInt32 = UInt32(0)
+
+    public private(set) var hasByProfileId:Bool = false
+    public private(set) var byProfileId:String = ""
+
+    public private(set) var source:Services.Post.Containers.CollectionItemV1.SourceV1 = Services.Post.Containers.CollectionItemV1.SourceV1.Luno
+    public private(set) var hasSource:Bool = false
+    public private(set) var hasSourceId:Bool = false
+    public private(set) var sourceId:String = ""
+
+    public private(set) var hasPost:Bool {
+          get {
+               if CollectionItemV1.Item.getPost(storageItem) == nil {
+                   return false
+               }
+               return true
+          }
+          set(newValue) {
+          }
+    }
+    public private(set) var post:Services.Post.Containers.PostV1!{
+         get {
+              return CollectionItemV1.Item.getPost(storageItem)
+         }
+         set (newvalue) {
+              storageItem = CollectionItemV1.Item.Post(newvalue)
+         }
+    }
+    public private(set) var hasCollectionId:Bool = false
+    public private(set) var collectionId:String = ""
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasId {
+        try output.writeString(1, value:id)
+      }
+      if hasPosition {
+        try output.writeUInt32(2, value:position)
+      }
+      if hasByProfileId {
+        try output.writeString(3, value:byProfileId)
+      }
+      if hasSource {
+        try output.writeEnum(4, value:source.rawValue)
+      }
+      if hasSourceId {
+        try output.writeString(5, value:sourceId)
+      }
+      if hasPost {
+        try output.writeMessage(6, value:post)
+      }
+      if hasCollectionId {
+        try output.writeString(7, value:collectionId)
+      }
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasId {
+        serialize_size += id.computeStringSize(1)
+      }
+      if hasPosition {
+        serialize_size += position.computeUInt32Size(2)
+      }
+      if hasByProfileId {
+        serialize_size += byProfileId.computeStringSize(3)
+      }
+      if (hasSource) {
+        serialize_size += source.rawValue.computeEnumSize(4)
+      }
+      if hasSourceId {
+        serialize_size += sourceId.computeStringSize(5)
+      }
+      if hasPost {
+          if let varSizepost = post?.computeMessageSize(6) {
+              serialize_size += varSizepost
+          }
+      }
+      if hasCollectionId {
+        serialize_size += collectionId.computeStringSize(7)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Post.Containers.CollectionItemV1> {
+      var mergedArray = Array<Services.Post.Containers.CollectionItemV1>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Post.Containers.CollectionItemV1? {
+      return try Services.Post.Containers.CollectionItemV1.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.Post.Containers.CollectionItemV1 {
+      return try Services.Post.Containers.CollectionItemV1.Builder().mergeFromData(data, extensionRegistry:Services.Post.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.CollectionItemV1 {
+      return try Services.Post.Containers.CollectionItemV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Post.Containers.CollectionItemV1 {
+      return try Services.Post.Containers.CollectionItemV1.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.CollectionItemV1 {
+      return try Services.Post.Containers.CollectionItemV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Post.Containers.CollectionItemV1 {
+      return try Services.Post.Containers.CollectionItemV1.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.CollectionItemV1 {
+      return try Services.Post.Containers.CollectionItemV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.Post.Containers.CollectionItemV1.Builder {
+      return Services.Post.Containers.CollectionItemV1.classBuilder() as! Services.Post.Containers.CollectionItemV1.Builder
+    }
+    public func getBuilder() -> Services.Post.Containers.CollectionItemV1.Builder {
+      return classBuilder() as! Services.Post.Containers.CollectionItemV1.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Post.Containers.CollectionItemV1.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Post.Containers.CollectionItemV1.Builder()
+    }
+    public func toBuilder() throws -> Services.Post.Containers.CollectionItemV1.Builder {
+      return try Services.Post.Containers.CollectionItemV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Post.Containers.CollectionItemV1) throws -> Services.Post.Containers.CollectionItemV1.Builder {
+      return try Services.Post.Containers.CollectionItemV1.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasId {
+        output += "\(indent) id: \(id) \n"
+      }
+      if hasPosition {
+        output += "\(indent) position: \(position) \n"
+      }
+      if hasByProfileId {
+        output += "\(indent) byProfileId: \(byProfileId) \n"
+      }
+      if (hasSource) {
+        output += "\(indent) source: \(source.rawValue)\n"
+      }
+      if hasSourceId {
+        output += "\(indent) sourceId: \(sourceId) \n"
+      }
+      if hasPost {
+        output += "\(indent) post {\n"
+        try post?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      if hasCollectionId {
+        output += "\(indent) collectionId: \(collectionId) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasId {
+               hashCode = (hashCode &* 31) &+ id.hashValue
+            }
+            if hasPosition {
+               hashCode = (hashCode &* 31) &+ position.hashValue
+            }
+            if hasByProfileId {
+               hashCode = (hashCode &* 31) &+ byProfileId.hashValue
+            }
+            if hasSource {
+               hashCode = (hashCode &* 31) &+ Int(source.rawValue)
+            }
+            if hasSourceId {
+               hashCode = (hashCode &* 31) &+ sourceId.hashValue
+            }
+            if hasPost {
+                if let hashValuepost = post?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuepost
+                }
+            }
+            if hasCollectionId {
+               hashCode = (hashCode &* 31) &+ collectionId.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Post.Containers.CollectionItemV1"
+    }
+    override public func className() -> String {
+        return "Services.Post.Containers.CollectionItemV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Post.Containers.CollectionItemV1.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.Post.Containers.CollectionItemV1 = Services.Post.Containers.CollectionItemV1()
+      public func getMessage() -> Services.Post.Containers.CollectionItemV1 {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      public var hasId:Bool {
+           get {
+                return builderResult.hasId
+           }
+      }
+      public var id:String {
+           get {
+                return builderResult.id
+           }
+           set (value) {
+               builderResult.hasId = true
+               builderResult.id = value
+           }
+      }
+      public func setId(value:String) -> Services.Post.Containers.CollectionItemV1.Builder {
+        self.id = value
+        return self
+      }
+      public func clearId() -> Services.Post.Containers.CollectionItemV1.Builder{
+           builderResult.hasId = false
+           builderResult.id = ""
+           return self
+      }
+      public var hasPosition:Bool {
+           get {
+                return builderResult.hasPosition
+           }
+      }
+      public var position:UInt32 {
+           get {
+                return builderResult.position
+           }
+           set (value) {
+               builderResult.hasPosition = true
+               builderResult.position = value
+           }
+      }
+      public func setPosition(value:UInt32) -> Services.Post.Containers.CollectionItemV1.Builder {
+        self.position = value
+        return self
+      }
+      public func clearPosition() -> Services.Post.Containers.CollectionItemV1.Builder{
+           builderResult.hasPosition = false
+           builderResult.position = UInt32(0)
+           return self
+      }
+      public var hasByProfileId:Bool {
+           get {
+                return builderResult.hasByProfileId
+           }
+      }
+      public var byProfileId:String {
+           get {
+                return builderResult.byProfileId
+           }
+           set (value) {
+               builderResult.hasByProfileId = true
+               builderResult.byProfileId = value
+           }
+      }
+      public func setByProfileId(value:String) -> Services.Post.Containers.CollectionItemV1.Builder {
+        self.byProfileId = value
+        return self
+      }
+      public func clearByProfileId() -> Services.Post.Containers.CollectionItemV1.Builder{
+           builderResult.hasByProfileId = false
+           builderResult.byProfileId = ""
+           return self
+      }
+        public var hasSource:Bool{
+            get {
+                return builderResult.hasSource
+            }
+        }
+        public var source:Services.Post.Containers.CollectionItemV1.SourceV1 {
+            get {
+                return builderResult.source
+            }
+            set (value) {
+                builderResult.hasSource = true
+                builderResult.source = value
+            }
+        }
+        public func setSource(value:Services.Post.Containers.CollectionItemV1.SourceV1) -> Services.Post.Containers.CollectionItemV1.Builder {
+          self.source = value
+          return self
+        }
+        public func clearSource() -> Services.Post.Containers.CollectionItemV1.Builder {
+           builderResult.hasSource = false
+           builderResult.source = .Luno
+           return self
+        }
+      public var hasSourceId:Bool {
+           get {
+                return builderResult.hasSourceId
+           }
+      }
+      public var sourceId:String {
+           get {
+                return builderResult.sourceId
+           }
+           set (value) {
+               builderResult.hasSourceId = true
+               builderResult.sourceId = value
+           }
+      }
+      public func setSourceId(value:String) -> Services.Post.Containers.CollectionItemV1.Builder {
+        self.sourceId = value
+        return self
+      }
+      public func clearSourceId() -> Services.Post.Containers.CollectionItemV1.Builder{
+           builderResult.hasSourceId = false
+           builderResult.sourceId = ""
+           return self
+      }
+      public var hasPost:Bool {
+           get {
+               return builderResult.hasPost
+           }
+      }
+      public var post:Services.Post.Containers.PostV1! {
+           get {
+               if postBuilder_ != nil {
+                  builderResult.post = postBuilder_.getMessage()
+               }
+               return builderResult.post
+           }
+           set (value) {
+               builderResult.hasPost = true
+               builderResult.post = value
+           }
+      }
+      private var postBuilder_:Services.Post.Containers.PostV1.Builder! {
+           didSet {
+              builderResult.hasPost = true
+           }
+      }
+      public func getPostBuilder() -> Services.Post.Containers.PostV1.Builder {
+        if postBuilder_ == nil {
+           postBuilder_ = Services.Post.Containers.PostV1.Builder()
+           builderResult.post = postBuilder_.getMessage()
+           if post != nil {
+              try! postBuilder_.mergeFrom(post)
+           }
+        }
+        return postBuilder_
+      }
+      public func setPost(value:Services.Post.Containers.PostV1!) -> Services.Post.Containers.CollectionItemV1.Builder {
+        self.post = value
+        return self
+      }
+      public func mergePost(value:Services.Post.Containers.PostV1) throws -> Services.Post.Containers.CollectionItemV1.Builder {
+        if builderResult.hasPost {
+          builderResult.post = try Services.Post.Containers.PostV1.builderWithPrototype(builderResult.post).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.post = value
+        }
+        builderResult.hasPost = true
+        return self
+      }
+      public func clearPost() -> Services.Post.Containers.CollectionItemV1.Builder {
+        postBuilder_ = nil
+        builderResult.hasPost = false
+        builderResult.post = nil
+        return self
+      }
+      public var hasCollectionId:Bool {
+           get {
+                return builderResult.hasCollectionId
+           }
+      }
+      public var collectionId:String {
+           get {
+                return builderResult.collectionId
+           }
+           set (value) {
+               builderResult.hasCollectionId = true
+               builderResult.collectionId = value
+           }
+      }
+      public func setCollectionId(value:String) -> Services.Post.Containers.CollectionItemV1.Builder {
+        self.collectionId = value
+        return self
+      }
+      public func clearCollectionId() -> Services.Post.Containers.CollectionItemV1.Builder{
+           builderResult.hasCollectionId = false
+           builderResult.collectionId = ""
+           return self
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.Post.Containers.CollectionItemV1.Builder {
+        builderResult = Services.Post.Containers.CollectionItemV1()
+        return self
+      }
+      public override func clone() throws -> Services.Post.Containers.CollectionItemV1.Builder {
+        return try Services.Post.Containers.CollectionItemV1.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.Post.Containers.CollectionItemV1 {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.Post.Containers.CollectionItemV1 {
+        let returnMe:Services.Post.Containers.CollectionItemV1 = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.Post.Containers.CollectionItemV1) throws -> Services.Post.Containers.CollectionItemV1.Builder {
+        if other == Services.Post.Containers.CollectionItemV1() {
+         return self
+        }
+        if other.hasId {
+             id = other.id
+        }
+        if other.hasPosition {
+             position = other.position
+        }
+        if other.hasByProfileId {
+             byProfileId = other.byProfileId
+        }
+        if other.hasSource {
+             source = other.source
+        }
+        if other.hasSourceId {
+             sourceId = other.sourceId
+        }
+        if (other.hasPost) {
+            try mergePost(other.post)
+        }
+        if other.hasCollectionId {
+             collectionId = other.collectionId
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Post.Containers.CollectionItemV1.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.CollectionItemV1.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 10 :
+            id = try input.readString()
+
+          case 16 :
+            position = try input.readUInt32()
+
+          case 26 :
+            byProfileId = try input.readString()
+
+          case 32 :
+            let valueIntsource = try input.readEnum()
+            if let enumssource = Services.Post.Containers.CollectionItemV1.SourceV1(rawValue:valueIntsource){
+                 source = enumssource
+            } else {
+                 try unknownFieldsBuilder.mergeVarintField(4, value:Int64(valueIntsource))
+            }
+
+          case 42 :
+            sourceId = try input.readString()
+
+          case 50 :
+            let subBuilder:Services.Post.Containers.PostV1.Builder = Services.Post.Containers.PostV1.Builder()
+            if hasPost {
+              try subBuilder.mergeFrom(post)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            post = subBuilder.buildPartial()
+
+          case 58 :
+            collectionId = try input.readString()
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class CollectionV1 : GeneratedMessage, GeneratedMessageProtocol {
+
+
+      //Enum type declaration start 
+
+      public enum OwnerTypeV1:Int32 {
+        case Profile = 0
+        case Team = 1
+
+      }
+
+      //Enum type declaration end 
+
+    public private(set) var hasId:Bool = false
+    public private(set) var id:String = ""
+
+    public private(set) var hasOrganizationId:Bool = false
+    public private(set) var organizationId:String = ""
+
+    public private(set) var hasName:Bool = false
+    public private(set) var name:String = ""
+
+    public private(set) var hasCreated:Bool = false
+    public private(set) var created:String = ""
+
+    public private(set) var hasChanged:Bool = false
+    public private(set) var changed:String = ""
+
+    public private(set) var hasPermissions:Bool = false
+    public private(set) var permissions:Services.Common.Containers.PermissionsV1!
+    public private(set) var items:Array<Services.Post.Containers.CollectionItemV1>  = Array<Services.Post.Containers.CollectionItemV1>()
+    public private(set) var ownerType:Services.Post.Containers.CollectionV1.OwnerTypeV1 = Services.Post.Containers.CollectionV1.OwnerTypeV1.Profile
+    public private(set) var hasOwnerType:Bool = false
+    public private(set) var hasOwnerId:Bool = false
+    public private(set) var ownerId:String = ""
+
+    public private(set) var hasIsDefault:Bool = false
+    public private(set) var isDefault:Bool = false
+
+    public private(set) var hasInflations:Bool = false
+    public private(set) var inflations:Services.Common.Containers.InflationsV1!
+    public private(set) var hasFields:Bool = false
+    public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var hasByProfileId:Bool = false
+    public private(set) var byProfileId:String = ""
+
+    public private(set) var hasTotalItems:Bool = false
+    public private(set) var totalItems:UInt32 = UInt32(0)
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasId {
+        try output.writeString(1, value:id)
+      }
+      if hasOrganizationId {
+        try output.writeString(2, value:organizationId)
+      }
+      if hasName {
+        try output.writeString(3, value:name)
+      }
+      if hasCreated {
+        try output.writeString(4, value:created)
+      }
+      if hasChanged {
+        try output.writeString(5, value:changed)
+      }
+      if hasPermissions {
+        try output.writeMessage(6, value:permissions)
+      }
+      for oneElementitems in items {
+          try output.writeMessage(7, value:oneElementitems)
+      }
+      if hasOwnerType {
+        try output.writeEnum(8, value:ownerType.rawValue)
+      }
+      if hasOwnerId {
+        try output.writeString(9, value:ownerId)
+      }
+      if hasIsDefault {
+        try output.writeBool(10, value:isDefault)
+      }
+      if hasInflations {
+        try output.writeMessage(11, value:inflations)
+      }
+      if hasFields {
+        try output.writeMessage(12, value:fields)
+      }
+      if hasByProfileId {
+        try output.writeString(13, value:byProfileId)
+      }
+      if hasTotalItems {
+        try output.writeUInt32(14, value:totalItems)
+      }
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasId {
+        serialize_size += id.computeStringSize(1)
+      }
+      if hasOrganizationId {
+        serialize_size += organizationId.computeStringSize(2)
+      }
+      if hasName {
+        serialize_size += name.computeStringSize(3)
+      }
+      if hasCreated {
+        serialize_size += created.computeStringSize(4)
+      }
+      if hasChanged {
+        serialize_size += changed.computeStringSize(5)
+      }
+      if hasPermissions {
+          if let varSizepermissions = permissions?.computeMessageSize(6) {
+              serialize_size += varSizepermissions
+          }
+      }
+      for oneElementitems in items {
+          serialize_size += oneElementitems.computeMessageSize(7)
+      }
+      if (hasOwnerType) {
+        serialize_size += ownerType.rawValue.computeEnumSize(8)
+      }
+      if hasOwnerId {
+        serialize_size += ownerId.computeStringSize(9)
+      }
+      if hasIsDefault {
+        serialize_size += isDefault.computeBoolSize(10)
+      }
+      if hasInflations {
+          if let varSizeinflations = inflations?.computeMessageSize(11) {
+              serialize_size += varSizeinflations
+          }
+      }
+      if hasFields {
+          if let varSizefields = fields?.computeMessageSize(12) {
+              serialize_size += varSizefields
+          }
+      }
+      if hasByProfileId {
+        serialize_size += byProfileId.computeStringSize(13)
+      }
+      if hasTotalItems {
+        serialize_size += totalItems.computeUInt32Size(14)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Post.Containers.CollectionV1> {
+      var mergedArray = Array<Services.Post.Containers.CollectionV1>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Post.Containers.CollectionV1? {
+      return try Services.Post.Containers.CollectionV1.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.Post.Containers.CollectionV1 {
+      return try Services.Post.Containers.CollectionV1.Builder().mergeFromData(data, extensionRegistry:Services.Post.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.CollectionV1 {
+      return try Services.Post.Containers.CollectionV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Post.Containers.CollectionV1 {
+      return try Services.Post.Containers.CollectionV1.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.CollectionV1 {
+      return try Services.Post.Containers.CollectionV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Post.Containers.CollectionV1 {
+      return try Services.Post.Containers.CollectionV1.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.CollectionV1 {
+      return try Services.Post.Containers.CollectionV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.Post.Containers.CollectionV1.Builder {
+      return Services.Post.Containers.CollectionV1.classBuilder() as! Services.Post.Containers.CollectionV1.Builder
+    }
+    public func getBuilder() -> Services.Post.Containers.CollectionV1.Builder {
+      return classBuilder() as! Services.Post.Containers.CollectionV1.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Post.Containers.CollectionV1.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Post.Containers.CollectionV1.Builder()
+    }
+    public func toBuilder() throws -> Services.Post.Containers.CollectionV1.Builder {
+      return try Services.Post.Containers.CollectionV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Post.Containers.CollectionV1) throws -> Services.Post.Containers.CollectionV1.Builder {
+      return try Services.Post.Containers.CollectionV1.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasId {
+        output += "\(indent) id: \(id) \n"
+      }
+      if hasOrganizationId {
+        output += "\(indent) organizationId: \(organizationId) \n"
+      }
+      if hasName {
+        output += "\(indent) name: \(name) \n"
+      }
+      if hasCreated {
+        output += "\(indent) created: \(created) \n"
+      }
+      if hasChanged {
+        output += "\(indent) changed: \(changed) \n"
+      }
+      if hasPermissions {
+        output += "\(indent) permissions {\n"
+        try permissions?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      var itemsElementIndex:Int = 0
+      for oneElementitems in items {
+          output += "\(indent) items[\(itemsElementIndex)] {\n"
+          try oneElementitems.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          itemsElementIndex++
+      }
+      if (hasOwnerType) {
+        output += "\(indent) ownerType: \(ownerType.rawValue)\n"
+      }
+      if hasOwnerId {
+        output += "\(indent) ownerId: \(ownerId) \n"
+      }
+      if hasIsDefault {
+        output += "\(indent) isDefault: \(isDefault) \n"
+      }
+      if hasInflations {
+        output += "\(indent) inflations {\n"
+        try inflations?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      if hasFields {
+        output += "\(indent) fields {\n"
+        try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      if hasByProfileId {
+        output += "\(indent) byProfileId: \(byProfileId) \n"
+      }
+      if hasTotalItems {
+        output += "\(indent) totalItems: \(totalItems) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasId {
+               hashCode = (hashCode &* 31) &+ id.hashValue
+            }
+            if hasOrganizationId {
+               hashCode = (hashCode &* 31) &+ organizationId.hashValue
+            }
+            if hasName {
+               hashCode = (hashCode &* 31) &+ name.hashValue
+            }
+            if hasCreated {
+               hashCode = (hashCode &* 31) &+ created.hashValue
+            }
+            if hasChanged {
+               hashCode = (hashCode &* 31) &+ changed.hashValue
+            }
+            if hasPermissions {
+                if let hashValuepermissions = permissions?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuepermissions
+                }
+            }
+            for oneElementitems in items {
+                hashCode = (hashCode &* 31) &+ oneElementitems.hashValue
+            }
+            if hasOwnerType {
+               hashCode = (hashCode &* 31) &+ Int(ownerType.rawValue)
+            }
+            if hasOwnerId {
+               hashCode = (hashCode &* 31) &+ ownerId.hashValue
+            }
+            if hasIsDefault {
+               hashCode = (hashCode &* 31) &+ isDefault.hashValue
+            }
+            if hasInflations {
+                if let hashValueinflations = inflations?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueinflations
+                }
+            }
+            if hasFields {
+                if let hashValuefields = fields?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuefields
+                }
+            }
+            if hasByProfileId {
+               hashCode = (hashCode &* 31) &+ byProfileId.hashValue
+            }
+            if hasTotalItems {
+               hashCode = (hashCode &* 31) &+ totalItems.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Post.Containers.CollectionV1"
+    }
+    override public func className() -> String {
+        return "Services.Post.Containers.CollectionV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Post.Containers.CollectionV1.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.Post.Containers.CollectionV1 = Services.Post.Containers.CollectionV1()
+      public func getMessage() -> Services.Post.Containers.CollectionV1 {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      public var hasId:Bool {
+           get {
+                return builderResult.hasId
+           }
+      }
+      public var id:String {
+           get {
+                return builderResult.id
+           }
+           set (value) {
+               builderResult.hasId = true
+               builderResult.id = value
+           }
+      }
+      public func setId(value:String) -> Services.Post.Containers.CollectionV1.Builder {
+        self.id = value
+        return self
+      }
+      public func clearId() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasId = false
+           builderResult.id = ""
+           return self
+      }
+      public var hasOrganizationId:Bool {
+           get {
+                return builderResult.hasOrganizationId
+           }
+      }
+      public var organizationId:String {
+           get {
+                return builderResult.organizationId
+           }
+           set (value) {
+               builderResult.hasOrganizationId = true
+               builderResult.organizationId = value
+           }
+      }
+      public func setOrganizationId(value:String) -> Services.Post.Containers.CollectionV1.Builder {
+        self.organizationId = value
+        return self
+      }
+      public func clearOrganizationId() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasOrganizationId = false
+           builderResult.organizationId = ""
+           return self
+      }
+      public var hasName:Bool {
+           get {
+                return builderResult.hasName
+           }
+      }
+      public var name:String {
+           get {
+                return builderResult.name
+           }
+           set (value) {
+               builderResult.hasName = true
+               builderResult.name = value
+           }
+      }
+      public func setName(value:String) -> Services.Post.Containers.CollectionV1.Builder {
+        self.name = value
+        return self
+      }
+      public func clearName() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasName = false
+           builderResult.name = ""
+           return self
+      }
+      public var hasCreated:Bool {
+           get {
+                return builderResult.hasCreated
+           }
+      }
+      public var created:String {
+           get {
+                return builderResult.created
+           }
+           set (value) {
+               builderResult.hasCreated = true
+               builderResult.created = value
+           }
+      }
+      public func setCreated(value:String) -> Services.Post.Containers.CollectionV1.Builder {
+        self.created = value
+        return self
+      }
+      public func clearCreated() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasCreated = false
+           builderResult.created = ""
+           return self
+      }
+      public var hasChanged:Bool {
+           get {
+                return builderResult.hasChanged
+           }
+      }
+      public var changed:String {
+           get {
+                return builderResult.changed
+           }
+           set (value) {
+               builderResult.hasChanged = true
+               builderResult.changed = value
+           }
+      }
+      public func setChanged(value:String) -> Services.Post.Containers.CollectionV1.Builder {
+        self.changed = value
+        return self
+      }
+      public func clearChanged() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasChanged = false
+           builderResult.changed = ""
+           return self
+      }
+      public var hasPermissions:Bool {
+           get {
+               return builderResult.hasPermissions
+           }
+      }
+      public var permissions:Services.Common.Containers.PermissionsV1! {
+           get {
+               if permissionsBuilder_ != nil {
+                  builderResult.permissions = permissionsBuilder_.getMessage()
+               }
+               return builderResult.permissions
+           }
+           set (value) {
+               builderResult.hasPermissions = true
+               builderResult.permissions = value
+           }
+      }
+      private var permissionsBuilder_:Services.Common.Containers.PermissionsV1.Builder! {
+           didSet {
+              builderResult.hasPermissions = true
+           }
+      }
+      public func getPermissionsBuilder() -> Services.Common.Containers.PermissionsV1.Builder {
+        if permissionsBuilder_ == nil {
+           permissionsBuilder_ = Services.Common.Containers.PermissionsV1.Builder()
+           builderResult.permissions = permissionsBuilder_.getMessage()
+           if permissions != nil {
+              try! permissionsBuilder_.mergeFrom(permissions)
+           }
+        }
+        return permissionsBuilder_
+      }
+      public func setPermissions(value:Services.Common.Containers.PermissionsV1!) -> Services.Post.Containers.CollectionV1.Builder {
+        self.permissions = value
+        return self
+      }
+      public func mergePermissions(value:Services.Common.Containers.PermissionsV1) throws -> Services.Post.Containers.CollectionV1.Builder {
+        if builderResult.hasPermissions {
+          builderResult.permissions = try Services.Common.Containers.PermissionsV1.builderWithPrototype(builderResult.permissions).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.permissions = value
+        }
+        builderResult.hasPermissions = true
+        return self
+      }
+      public func clearPermissions() -> Services.Post.Containers.CollectionV1.Builder {
+        permissionsBuilder_ = nil
+        builderResult.hasPermissions = false
+        builderResult.permissions = nil
+        return self
+      }
+      public var items:Array<Services.Post.Containers.CollectionItemV1> {
+           get {
+               return builderResult.items
+           }
+           set (value) {
+               builderResult.items = value
+           }
+      }
+      public func setItems(value:Array<Services.Post.Containers.CollectionItemV1>) -> Services.Post.Containers.CollectionV1.Builder {
+        self.items = value
+        return self
+      }
+      public func clearItems() -> Services.Post.Containers.CollectionV1.Builder {
+        builderResult.items.removeAll(keepCapacity: false)
+        return self
+      }
+        public var hasOwnerType:Bool{
+            get {
+                return builderResult.hasOwnerType
+            }
+        }
+        public var ownerType:Services.Post.Containers.CollectionV1.OwnerTypeV1 {
+            get {
+                return builderResult.ownerType
+            }
+            set (value) {
+                builderResult.hasOwnerType = true
+                builderResult.ownerType = value
+            }
+        }
+        public func setOwnerType(value:Services.Post.Containers.CollectionV1.OwnerTypeV1) -> Services.Post.Containers.CollectionV1.Builder {
+          self.ownerType = value
+          return self
+        }
+        public func clearOwnerType() -> Services.Post.Containers.CollectionV1.Builder {
+           builderResult.hasOwnerType = false
+           builderResult.ownerType = .Profile
+           return self
+        }
+      public var hasOwnerId:Bool {
+           get {
+                return builderResult.hasOwnerId
+           }
+      }
+      public var ownerId:String {
+           get {
+                return builderResult.ownerId
+           }
+           set (value) {
+               builderResult.hasOwnerId = true
+               builderResult.ownerId = value
+           }
+      }
+      public func setOwnerId(value:String) -> Services.Post.Containers.CollectionV1.Builder {
+        self.ownerId = value
+        return self
+      }
+      public func clearOwnerId() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasOwnerId = false
+           builderResult.ownerId = ""
+           return self
+      }
+      public var hasIsDefault:Bool {
+           get {
+                return builderResult.hasIsDefault
+           }
+      }
+      public var isDefault:Bool {
+           get {
+                return builderResult.isDefault
+           }
+           set (value) {
+               builderResult.hasIsDefault = true
+               builderResult.isDefault = value
+           }
+      }
+      public func setIsDefault(value:Bool) -> Services.Post.Containers.CollectionV1.Builder {
+        self.isDefault = value
+        return self
+      }
+      public func clearIsDefault() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasIsDefault = false
+           builderResult.isDefault = false
+           return self
+      }
+      public var hasInflations:Bool {
+           get {
+               return builderResult.hasInflations
+           }
+      }
+      public var inflations:Services.Common.Containers.InflationsV1! {
+           get {
+               if inflationsBuilder_ != nil {
+                  builderResult.inflations = inflationsBuilder_.getMessage()
+               }
+               return builderResult.inflations
+           }
+           set (value) {
+               builderResult.hasInflations = true
+               builderResult.inflations = value
+           }
+      }
+      private var inflationsBuilder_:Services.Common.Containers.InflationsV1.Builder! {
+           didSet {
+              builderResult.hasInflations = true
+           }
+      }
+      public func getInflationsBuilder() -> Services.Common.Containers.InflationsV1.Builder {
+        if inflationsBuilder_ == nil {
+           inflationsBuilder_ = Services.Common.Containers.InflationsV1.Builder()
+           builderResult.inflations = inflationsBuilder_.getMessage()
+           if inflations != nil {
+              try! inflationsBuilder_.mergeFrom(inflations)
+           }
+        }
+        return inflationsBuilder_
+      }
+      public func setInflations(value:Services.Common.Containers.InflationsV1!) -> Services.Post.Containers.CollectionV1.Builder {
+        self.inflations = value
+        return self
+      }
+      public func mergeInflations(value:Services.Common.Containers.InflationsV1) throws -> Services.Post.Containers.CollectionV1.Builder {
+        if builderResult.hasInflations {
+          builderResult.inflations = try Services.Common.Containers.InflationsV1.builderWithPrototype(builderResult.inflations).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.inflations = value
+        }
+        builderResult.hasInflations = true
+        return self
+      }
+      public func clearInflations() -> Services.Post.Containers.CollectionV1.Builder {
+        inflationsBuilder_ = nil
+        builderResult.hasInflations = false
+        builderResult.inflations = nil
+        return self
+      }
+      public var hasFields:Bool {
+           get {
+               return builderResult.hasFields
+           }
+      }
+      public var fields:Services.Common.Containers.FieldsV1! {
+           get {
+               if fieldsBuilder_ != nil {
+                  builderResult.fields = fieldsBuilder_.getMessage()
+               }
+               return builderResult.fields
+           }
+           set (value) {
+               builderResult.hasFields = true
+               builderResult.fields = value
+           }
+      }
+      private var fieldsBuilder_:Services.Common.Containers.FieldsV1.Builder! {
+           didSet {
+              builderResult.hasFields = true
+           }
+      }
+      public func getFieldsBuilder() -> Services.Common.Containers.FieldsV1.Builder {
+        if fieldsBuilder_ == nil {
+           fieldsBuilder_ = Services.Common.Containers.FieldsV1.Builder()
+           builderResult.fields = fieldsBuilder_.getMessage()
+           if fields != nil {
+              try! fieldsBuilder_.mergeFrom(fields)
+           }
+        }
+        return fieldsBuilder_
+      }
+      public func setFields(value:Services.Common.Containers.FieldsV1!) -> Services.Post.Containers.CollectionV1.Builder {
+        self.fields = value
+        return self
+      }
+      public func mergeFields(value:Services.Common.Containers.FieldsV1) throws -> Services.Post.Containers.CollectionV1.Builder {
+        if builderResult.hasFields {
+          builderResult.fields = try Services.Common.Containers.FieldsV1.builderWithPrototype(builderResult.fields).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.fields = value
+        }
+        builderResult.hasFields = true
+        return self
+      }
+      public func clearFields() -> Services.Post.Containers.CollectionV1.Builder {
+        fieldsBuilder_ = nil
+        builderResult.hasFields = false
+        builderResult.fields = nil
+        return self
+      }
+      public var hasByProfileId:Bool {
+           get {
+                return builderResult.hasByProfileId
+           }
+      }
+      public var byProfileId:String {
+           get {
+                return builderResult.byProfileId
+           }
+           set (value) {
+               builderResult.hasByProfileId = true
+               builderResult.byProfileId = value
+           }
+      }
+      public func setByProfileId(value:String) -> Services.Post.Containers.CollectionV1.Builder {
+        self.byProfileId = value
+        return self
+      }
+      public func clearByProfileId() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasByProfileId = false
+           builderResult.byProfileId = ""
+           return self
+      }
+      public var hasTotalItems:Bool {
+           get {
+                return builderResult.hasTotalItems
+           }
+      }
+      public var totalItems:UInt32 {
+           get {
+                return builderResult.totalItems
+           }
+           set (value) {
+               builderResult.hasTotalItems = true
+               builderResult.totalItems = value
+           }
+      }
+      public func setTotalItems(value:UInt32) -> Services.Post.Containers.CollectionV1.Builder {
+        self.totalItems = value
+        return self
+      }
+      public func clearTotalItems() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasTotalItems = false
+           builderResult.totalItems = UInt32(0)
+           return self
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.Post.Containers.CollectionV1.Builder {
+        builderResult = Services.Post.Containers.CollectionV1()
+        return self
+      }
+      public override func clone() throws -> Services.Post.Containers.CollectionV1.Builder {
+        return try Services.Post.Containers.CollectionV1.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.Post.Containers.CollectionV1 {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.Post.Containers.CollectionV1 {
+        let returnMe:Services.Post.Containers.CollectionV1 = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.Post.Containers.CollectionV1) throws -> Services.Post.Containers.CollectionV1.Builder {
+        if other == Services.Post.Containers.CollectionV1() {
+         return self
+        }
+        if other.hasId {
+             id = other.id
+        }
+        if other.hasOrganizationId {
+             organizationId = other.organizationId
+        }
+        if other.hasName {
+             name = other.name
+        }
+        if other.hasCreated {
+             created = other.created
+        }
+        if other.hasChanged {
+             changed = other.changed
+        }
+        if (other.hasPermissions) {
+            try mergePermissions(other.permissions)
+        }
+        if !other.items.isEmpty  {
+           builderResult.items += other.items
+        }
+        if other.hasOwnerType {
+             ownerType = other.ownerType
+        }
+        if other.hasOwnerId {
+             ownerId = other.ownerId
+        }
+        if other.hasIsDefault {
+             isDefault = other.isDefault
+        }
+        if (other.hasInflations) {
+            try mergeInflations(other.inflations)
+        }
+        if (other.hasFields) {
+            try mergeFields(other.fields)
+        }
+        if other.hasByProfileId {
+             byProfileId = other.byProfileId
+        }
+        if other.hasTotalItems {
+             totalItems = other.totalItems
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Post.Containers.CollectionV1.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.CollectionV1.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 10 :
+            id = try input.readString()
+
+          case 18 :
+            organizationId = try input.readString()
+
+          case 26 :
+            name = try input.readString()
+
+          case 34 :
+            created = try input.readString()
+
+          case 42 :
+            changed = try input.readString()
+
+          case 50 :
+            let subBuilder:Services.Common.Containers.PermissionsV1.Builder = Services.Common.Containers.PermissionsV1.Builder()
+            if hasPermissions {
+              try subBuilder.mergeFrom(permissions)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            permissions = subBuilder.buildPartial()
+
+          case 58 :
+            let subBuilder = Services.Post.Containers.CollectionItemV1.Builder()
+            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+            items += [subBuilder.buildPartial()]
+
+          case 64 :
+            let valueIntownerType = try input.readEnum()
+            if let enumsownerType = Services.Post.Containers.CollectionV1.OwnerTypeV1(rawValue:valueIntownerType){
+                 ownerType = enumsownerType
+            } else {
+                 try unknownFieldsBuilder.mergeVarintField(8, value:Int64(valueIntownerType))
+            }
+
+          case 74 :
+            ownerId = try input.readString()
+
+          case 80 :
+            isDefault = try input.readBool()
+
+          case 90 :
+            let subBuilder:Services.Common.Containers.InflationsV1.Builder = Services.Common.Containers.InflationsV1.Builder()
+            if hasInflations {
+              try subBuilder.mergeFrom(inflations)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            inflations = subBuilder.buildPartial()
+
+          case 98 :
+            let subBuilder:Services.Common.Containers.FieldsV1.Builder = Services.Common.Containers.FieldsV1.Builder()
+            if hasFields {
+              try subBuilder.mergeFrom(fields)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            fields = subBuilder.buildPartial()
+
+          case 106 :
+            byProfileId = try input.readString()
+
+          case 112 :
+            totalItems = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

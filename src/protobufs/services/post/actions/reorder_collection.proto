@@ -1,0 +1,15 @@
+syntax = "proto3";
+package services.post.actions.reorder_collection;
+
+message PositionDiffV1 {
+    string item_id = 1;
+    uint32 current_position = 2;
+    uint32 new_position = 3;
+}
+
+message RequestV1 {
+    string collection_id = 1;
+    repeated PositionDiffV1 diffs = 2;
+}
+
+message ResponseV1 {}

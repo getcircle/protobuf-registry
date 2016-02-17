@@ -5,6 +5,7 @@ import "protobufs/services/team/containers.proto";
 
 message RequestV1 {
     services.team.containers.TeamV1 team = 1;
+    repeated services.team.containers.TeamMemberV1 members = 2;
 }
 
 message ResponseV1 {
