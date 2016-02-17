@@ -558,9 +558,9 @@ public var ServicesRegistryRequestsTeamupdateTeam:ConcreateExtensionField {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamupdateTeamStatic
    }
 }
-public var ServicesRegistryRequestsTeamgetTeams:ConcreateExtensionField {
+public var ServicesRegistryRequestsTeamgetMemberships:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamgetTeamsStatic
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamgetMembershipsStatic
    }
 }
 public extension Services.Registry.Requests {
@@ -660,7 +660,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsTeamremoveMembersStatic:ConcreateExtensionField
     var ServicesRegistryRequestsTeamupdateMembersStatic:ConcreateExtensionField
     var ServicesRegistryRequestsTeamupdateTeamStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsTeamgetTeamsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamgetMembershipsStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -753,7 +753,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsTeamremoveMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1906, defaultValue:Services.Team.Actions.RemoveMembers.RequestV1(), messageOrGroupClass:Services.Team.Actions.RemoveMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsTeamupdateMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1907, defaultValue:Services.Team.Actions.UpdateMembers.RequestV1(), messageOrGroupClass:Services.Team.Actions.UpdateMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsTeamupdateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1908, defaultValue:Services.Team.Actions.UpdateTeam.RequestV1(), messageOrGroupClass:Services.Team.Actions.UpdateTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsTeamgetTeamsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1909, defaultValue:Services.Team.Actions.GetTeams.RequestV1(), messageOrGroupClass:Services.Team.Actions.GetTeams.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamgetMembershipsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1909, defaultValue:Services.Team.Actions.GetMemberships.RequestV1(), messageOrGroupClass:Services.Team.Actions.GetMemberships.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -846,7 +846,7 @@ public extension Services.Registry.Requests {
       Services.Team.Actions.RemoveMembers.RemoveMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.UpdateMembers.UpdateMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.UpdateTeam.UpdateTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Team.Actions.GetTeams.GetTeamsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.GetMemberships.GetMembershipsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryRequestsUsercreateUserStatic)
@@ -938,7 +938,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsTeamremoveMembersStatic)
       registry.addExtension(ServicesRegistryRequestsTeamupdateMembersStatic)
       registry.addExtension(ServicesRegistryRequestsTeamupdateTeamStatic)
-      registry.addExtension(ServicesRegistryRequestsTeamgetTeamsStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamgetMembershipsStatic)
     }
   }
 
@@ -2882,8 +2882,8 @@ public extension Services.Registry.Requests {
     public class func updateTeam() -> ConcreateExtensionField {
          return ServicesRegistryRequestsTeamupdateTeam
     }
-    public class func getTeams() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsTeamgetTeams
+    public class func getMemberships() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamgetMemberships
     }
     required public init() {
          super.init()
