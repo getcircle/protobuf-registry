@@ -70,7 +70,7 @@ message StatV1 {
 }
 
 message ReportingDetailsV1 {
-    string profile_id = 1;
+    string id = 1;
     ProfileV1 manager = 2;
     repeated ProfileV1 peers = 3;
     repeated ProfileV1 direct_reports = 4;

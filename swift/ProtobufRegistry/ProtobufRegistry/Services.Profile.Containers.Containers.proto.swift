@@ -88,7 +88,7 @@ public func == (lhs: Services.Profile.Containers.ReportingDetailsV1, rhs: Servic
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
+  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
   fieldCheck = fieldCheck && (lhs.hasManager == rhs.hasManager) && (!lhs.hasManager || lhs.manager == rhs.manager)
   fieldCheck = fieldCheck && (lhs.peers == rhs.peers)
   fieldCheck = fieldCheck && (lhs.directReports == rhs.directReports)
@@ -2436,8 +2436,8 @@ public extension Services.Profile.Containers {
   }
 
   final public class ReportingDetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasProfileId:Bool = false
-    public private(set) var profileId:String = ""
+    public private(set) var hasId:Bool = false
+    public private(set) var id:String = ""
 
     public private(set) var hasManager:Bool = false
     public private(set) var manager:Services.Profile.Containers.ProfileV1!
@@ -2450,8 +2450,8 @@ public extension Services.Profile.Containers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasProfileId {
-        try output.writeString(1, value:profileId)
+      if hasId {
+        try output.writeString(1, value:id)
       }
       if hasManager {
         try output.writeMessage(2, value:manager)
@@ -2471,8 +2471,8 @@ public extension Services.Profile.Containers {
       }
 
       serialize_size = 0
-      if hasProfileId {
-        serialize_size += profileId.computeStringSize(1)
+      if hasId {
+        serialize_size += id.computeStringSize(1)
       }
       if hasManager {
           if let varSizemanager = manager?.computeMessageSize(2) {
@@ -2536,8 +2536,8 @@ public extension Services.Profile.Containers {
       return try Services.Profile.Containers.ReportingDetailsV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasProfileId {
-        output += "\(indent) profileId: \(profileId) \n"
+      if hasId {
+        output += "\(indent) id: \(id) \n"
       }
       if hasManager {
         output += "\(indent) manager {\n"
@@ -2563,8 +2563,8 @@ public extension Services.Profile.Containers {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasProfileId {
-               hashCode = (hashCode &* 31) &+ profileId.hashValue
+            if hasId {
+               hashCode = (hashCode &* 31) &+ id.hashValue
             }
             if hasManager {
                 if let hashValuemanager = manager?.hashValue {
@@ -2605,27 +2605,27 @@ public extension Services.Profile.Containers {
       required override public init () {
          super.init()
       }
-      public var hasProfileId:Bool {
+      public var hasId:Bool {
            get {
-                return builderResult.hasProfileId
+                return builderResult.hasId
            }
       }
-      public var profileId:String {
+      public var id:String {
            get {
-                return builderResult.profileId
+                return builderResult.id
            }
            set (value) {
-               builderResult.hasProfileId = true
-               builderResult.profileId = value
+               builderResult.hasId = true
+               builderResult.id = value
            }
       }
-      public func setProfileId(value:String) -> Services.Profile.Containers.ReportingDetailsV1.Builder {
-        self.profileId = value
+      public func setId(value:String) -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        self.id = value
         return self
       }
-      public func clearProfileId() -> Services.Profile.Containers.ReportingDetailsV1.Builder{
-           builderResult.hasProfileId = false
-           builderResult.profileId = ""
+      public func clearId() -> Services.Profile.Containers.ReportingDetailsV1.Builder{
+           builderResult.hasId = false
+           builderResult.id = ""
            return self
       }
       public var hasManager:Bool {
@@ -2735,8 +2735,8 @@ public extension Services.Profile.Containers {
         if other == Services.Profile.Containers.ReportingDetailsV1() {
          return self
         }
-        if other.hasProfileId {
-             profileId = other.profileId
+        if other.hasId {
+             id = other.id
         }
         if (other.hasManager) {
             try mergeManager(other.manager)
@@ -2763,7 +2763,7 @@ public extension Services.Profile.Containers {
             return self
 
           case 10 :
-            profileId = try input.readString()
+            id = try input.readString()
 
           case 18 :
             let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
