@@ -2,13 +2,11 @@ syntax = "proto3";
 package services.search.containers.search;
 
 enum CategoryV1 {
-    PROFILES = 0;
-    TEAMS = 1;
-    LOCATIONS = 2;
-    SKILLS = 3;
-    INTERESTS = 4;
-    GROUPS = 5;
-    POSTS = 6;
+    ALL = 0;
+    PROFILES = 1;
+    TEAMS = 2;
+    POSTS = 3;
+    COLLECTIONS = 4;
 }
 
 enum AttributeV1 {
