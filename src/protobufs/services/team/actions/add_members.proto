@@ -8,4 +8,7 @@ message RequestV1 {
     repeated services.team.containers.TeamMemberV1 members = 2;
 }
 
-message ResponseV1 {}
+message ResponseV1 {
+    string team_id = 1;
+    repeated services.team.containers.TeamMemberV1 members = 2;
+}
