@@ -5,11 +5,6 @@ import Foundation
 
 public extension Services.Common{ public struct Options { }}
 
-public var OptionsRootinflation:ConcreateExtensionField {
-   get {
-       return Services.Common.Options.OptionsRoot.sharedInstance.OptionsRootinflationStatic
-   }
-}
 public extension Services.Common.Options {
   public struct OptionsRoot {
     public static var sharedInstance : OptionsRoot {
@@ -18,20 +13,13 @@ public extension Services.Common.Options {
      }
      return Static.instance
     }
-    var OptionsRootinflationStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
-      OptionsRootinflationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeBool, extendedClass:Google.Protobuf.FieldOptions.self, fieldNumber: 50000, defaultValue:false, messageOrGroupClass:Bool.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Google.Protobuf.DescriptorRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
-      registry.addExtension(OptionsRootinflationStatic)
-    }
-    public static func inflation() -> ConcreateExtensionField {
-         return OptionsRoot.sharedInstance.OptionsRootinflationStatic
     }
   }
 

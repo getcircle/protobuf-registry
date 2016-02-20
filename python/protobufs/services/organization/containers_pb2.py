@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers.proto',
   package='services.organization.containers',
   syntax='proto3',
-  serialized_pb=b'\n0protobufs/services/organization/containers.proto\x12 services.organization.containers\x1a*protobufs/services/common/containers.proto\x1a\x36protobufs/services/common/containers/description.proto\x1a+protobufs/services/profile/containers.proto\"\xf8\x03\n\nLocationV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x11\n\taddress_1\x18\x03 \x01(\t\x12\x11\n\taddress_2\x18\x04 \x01(\t\x12\x0c\n\x04\x63ity\x18\x05 \x01(\t\x12\x0e\n\x06region\x18\x06 \x01(\t\x12\x13\n\x0bpostal_code\x18\x07 \x01(\t\x12\x14\n\x0c\x63ountry_code\x18\x08 \x01(\t\x12\x10\n\x08latitude\x18\t \x01(\t\x12\x11\n\tlongitude\x18\n \x01(\t\x12\x10\n\x08timezone\x18\x0b \x01(\t\x12\x17\n\x0forganization_id\x18\x0c \x01(\t\x12\x15\n\rprofile_count\x18\r \x01(\r\x12\x11\n\timage_url\x18\x0e \x01(\t\x12J\n\x0b\x64\x65scription\x18\x0f \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12\x18\n\x10\x65stablished_date\x18\x10 \x01(\t\x12\x41\n\x11points_of_contact\x18\x11 \x03(\x0b\x32&.services.profile.containers.ProfileV1\x12>\n\x0bpermissions\x18\x12 \x01(\x0b\x32).services.common.containers.PermissionsV1\"\x98\x02\n\x0eOrganizationV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\x12\x11\n\timage_url\x18\x04 \x01(\t\x12\x15\n\rprofile_count\x18\x05 \x01(\r\x12\x12\n\nteam_count\x18\x06 \x01(\r\x12\x16\n\x0elocation_count\x18\x07 \x01(\r\x12\x12\n\npost_count\x18\x08 \x01(\r\x12<\n\ninflations\x18\t \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\n \x01(\x0b\x32$.services.common.containers.FieldsV1\"\xf6\x02\n\x06TeamV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x1a\n\x12manager_profile_id\x18\x04 \x01(\t\x12\x37\n\x07manager\x18\x05 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12>\n\x0bpermissions\x18\x06 \x01(\x0b\x32).services.common.containers.PermissionsV1\x12J\n\x0b\x64\x65scription\x18\x07 \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12\x11\n\timage_url\x18\x08 \x01(\t\x12\x18\n\x10\x63hild_team_count\x18\t \x01(\r\x12\x15\n\rprofile_count\x18\n \x01(\r\x12\x14\n\x0c\x64isplay_name\x18\x0b \x01(\tb\x06proto3'
+  serialized_pb=b'\n0protobufs/services/organization/containers.proto\x12 services.organization.containers\x1a*protobufs/services/common/containers.proto\x1a\x36protobufs/services/common/containers/description.proto\x1a+protobufs/services/profile/containers.proto\"\xf8\x03\n\nLocationV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x11\n\taddress_1\x18\x03 \x01(\t\x12\x11\n\taddress_2\x18\x04 \x01(\t\x12\x0c\n\x04\x63ity\x18\x05 \x01(\t\x12\x0e\n\x06region\x18\x06 \x01(\t\x12\x13\n\x0bpostal_code\x18\x07 \x01(\t\x12\x14\n\x0c\x63ountry_code\x18\x08 \x01(\t\x12\x10\n\x08latitude\x18\t \x01(\t\x12\x11\n\tlongitude\x18\n \x01(\t\x12\x10\n\x08timezone\x18\x0b \x01(\t\x12\x17\n\x0forganization_id\x18\x0c \x01(\t\x12\x15\n\rprofile_count\x18\r \x01(\r\x12\x11\n\timage_url\x18\x0e \x01(\t\x12J\n\x0b\x64\x65scription\x18\x0f \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12\x18\n\x10\x65stablished_date\x18\x10 \x01(\t\x12\x41\n\x11points_of_contact\x18\x11 \x03(\x0b\x32&.services.profile.containers.ProfileV1\x12>\n\x0bpermissions\x18\x12 \x01(\x0b\x32).services.common.containers.PermissionsV1\"\xb0\x02\n\x0eOrganizationV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\x12\x11\n\timage_url\x18\x04 \x01(\t\x12\x1b\n\rprofile_count\x18\x05 \x01(\rB\x04\x80\xb5\x18\x01\x12\x18\n\nteam_count\x18\x06 \x01(\rB\x04\x80\xb5\x18\x01\x12\x1c\n\x0elocation_count\x18\x07 \x01(\rB\x04\x80\xb5\x18\x01\x12\x18\n\npost_count\x18\x08 \x01(\rB\x04\x80\xb5\x18\x01\x12<\n\ninflations\x18\t \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\n \x01(\x0b\x32$.services.common.containers.FieldsV1\"\xf6\x02\n\x06TeamV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0forganization_id\x18\x03 \x01(\t\x12\x1a\n\x12manager_profile_id\x18\x04 \x01(\t\x12\x37\n\x07manager\x18\x05 \x01(\x0b\x32&.services.profile.containers.ProfileV1\x12>\n\x0bpermissions\x18\x06 \x01(\x0b\x32).services.common.containers.PermissionsV1\x12J\n\x0b\x64\x65scription\x18\x07 \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12\x11\n\timage_url\x18\x08 \x01(\t\x12\x18\n\x10\x63hild_team_count\x18\t \x01(\r\x12\x15\n\rprofile_count\x18\n \x01(\r\x12\x14\n\x0c\x64isplay_name\x18\x0b \x01(\tb\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_common_dot_containers_dot_description__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -219,28 +219,28 @@ _ORGANIZATIONV1 = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')),
     _descriptor.FieldDescriptor(
       name='team_count', full_name='services.organization.containers.OrganizationV1.team_count', index=5,
       number=6, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')),
     _descriptor.FieldDescriptor(
       name='location_count', full_name='services.organization.containers.OrganizationV1.location_count', index=6,
       number=7, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')),
     _descriptor.FieldDescriptor(
       name='post_count', full_name='services.organization.containers.OrganizationV1.post_count', index=7,
       number=8, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')),
     _descriptor.FieldDescriptor(
       name='inflations', full_name='services.organization.containers.OrganizationV1.inflations', index=8,
       number=9, type=11, cpp_type=10, label=1,
@@ -268,7 +268,7 @@ _ORGANIZATIONV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=739,
-  serialized_end=1019,
+  serialized_end=1043,
 )
 
 
@@ -368,8 +368,8 @@ _TEAMV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1022,
-  serialized_end=1396,
+  serialized_start=1046,
+  serialized_end=1420,
 )
 
 _LOCATIONV1.fields_by_name['description'].message_type = protobufs_dot_services_dot_common_dot_containers_dot_description__pb2._DESCRIPTIONV1
@@ -406,4 +406,12 @@ TeamV1 = _reflection.GeneratedProtocolMessageType('TeamV1', (_message.Message,),
 _sym_db.RegisterMessage(TeamV1)
 
 
+_ORGANIZATIONV1.fields_by_name['profile_count'].has_options = True
+_ORGANIZATIONV1.fields_by_name['profile_count']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')
+_ORGANIZATIONV1.fields_by_name['team_count'].has_options = True
+_ORGANIZATIONV1.fields_by_name['team_count']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')
+_ORGANIZATIONV1.fields_by_name['location_count'].has_options = True
+_ORGANIZATIONV1.fields_by_name['location_count']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')
+_ORGANIZATIONV1.fields_by_name['post_count'].has_options = True
+_ORGANIZATIONV1.fields_by_name['post_count']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')
 # @@protoc_insertion_point(module_scope)

@@ -11,30 +11,18 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/common/options.proto',
   package='services.common.options',
   syntax='proto3',
-  serialized_pb=b'\n\'protobufs/services/common/options.proto\x12\x17services.common.options\x1a google/protobuf/descriptor.proto:2\n\tinflation\x12\x1d.google.protobuf.FieldOptions\x18\xd0\x86\x03 \x01(\x08\x62\x06proto3'
-  ,
-  dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
+  serialized_pb=b'\n\'protobufs/services/common/options.proto\x12\x17services.common.optionsb\x06proto3'
+)
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
-INFLATION_FIELD_NUMBER = 50000
-inflation = _descriptor.FieldDescriptor(
-  name='inflation', full_name='services.common.options.inflation', index=0,
-  number=50000, type=8, cpp_type=7, label=1,
-  has_default_value=False, default_value=False,
-  message_type=None, enum_type=None, containing_type=None,
-  is_extension=True, extension_scope=None,
-  options=None)
 
-DESCRIPTOR.extensions_by_name['inflation'] = inflation
 
-google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(inflation)
 
 # @@protoc_insertion_point(module_scope)

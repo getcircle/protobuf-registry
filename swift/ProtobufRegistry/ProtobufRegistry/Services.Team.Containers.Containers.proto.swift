@@ -65,7 +65,6 @@ public extension Services.Team.Containers {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
-      Services.Common.Options.OptionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Common.Containers.Description.DescriptionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)

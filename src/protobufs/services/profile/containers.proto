@@ -42,11 +42,11 @@ message ProfileV1 {
     bool verified = 11;
     repeated ProfileItemV1 items = 12;
     string nickname = 13;
-    repeated ContactMethodV1 contact_methods = 14;
+    repeated ContactMethodV1 contact_methods = 14 [(services.common.containers.inflation) = true];
     string email = 15;
     bool is_admin = 16;
     string small_image_url = 17;
-    string display_title = 18;
+    string display_title = 18 [(services.common.containers.inflation) = true];
     string authentication_identifier = 19;
     services.common.containers.InflationsV1 inflations = 20;
     services.common.containers.FieldsV1 fields = 21;

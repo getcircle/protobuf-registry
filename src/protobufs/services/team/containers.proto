@@ -1,7 +1,6 @@
 syntax = "proto3";
 package services.team.containers;
 
-import "protobufs/services/common/options.proto";
 import "protobufs/services/common/containers.proto";
 import "protobufs/services/common/containers/description.proto";
 import "protobufs/services/profile/containers.proto";
@@ -28,7 +27,7 @@ message TeamV1 {
     services.common.containers.InflationsV1 inflations = 6;
     services.common.containers.FieldsV1 fields = 7;
     repeated ContactMethodV1 contact_methods = 8;
-    uint32 total_members = 9 [(services.common.options.inflation) = true];
+    uint32 total_members = 9 [(services.common.containers.inflation) = true];
 }
 
 message TeamMemberV1 {
@@ -41,8 +40,8 @@ message TeamMemberV1 {
     string id = 1;
     string profile_id = 2;
     RoleV1 role = 3;
-    services.profile.containers.ProfileV1 profile = 4 [(services.common.options.inflation) = true];
+    services.profile.containers.ProfileV1 profile = 4 [(services.common.containers.inflation) = true];
     services.common.containers.InflationsV1 inflations = 5;
     services.common.containers.FieldsV1 fields = 6;
-    TeamV1 team = 7 [(services.common.options.inflation) = true];
+    TeamV1 team = 7 [(services.common.containers.inflation) = true];
 }

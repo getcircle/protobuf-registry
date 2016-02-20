@@ -31,10 +31,10 @@ message OrganizationV1 {
     string name = 2;
     string domain = 3;
     string image_url = 4;
-    uint32 profile_count = 5;
-    uint32 team_count = 6;
-    uint32 location_count = 7;
-    uint32 post_count = 8;
+    uint32 profile_count = 5 [(services.common.containers.inflation) = true];
+    uint32 team_count = 6 [(services.common.containers.inflation) = true];
+    uint32 location_count = 7 [(services.common.containers.inflation) = true];
+    uint32 post_count = 8 [(services.common.containers.inflation) = true];
     services.common.containers.InflationsV1 inflations = 9;
     services.common.containers.FieldsV1 fields = 10;
 }

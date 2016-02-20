@@ -25,15 +25,15 @@ message PostV1 {
     string content = 5;
     string created = 6;
     string changed = 7;
-    services.profile.containers.ProfileV1 by_profile = 8;
+    services.profile.containers.ProfileV1 by_profile = 8 [(services.common.containers.inflation) = true];
     PostStateV1 state = 9;
     services.common.containers.InflationsV1 inflations = 10;
     services.common.containers.FieldsV1 fields = 11;
     services.common.containers.PermissionsV1 permissions = 12;
     repeated string file_ids = 13;
-    repeated services.file.containers.FileV1 files = 14;
+    repeated services.file.containers.FileV1 files = 14 [(services.common.containers.inflation) = true];
     string snippet = 15;
-    string html_document = 16;
+    string html_document = 16 [(services.common.containers.inflation) = true];
     PostSourceV1 source = 17;
     string source_id = 18;
 }
@@ -47,7 +47,7 @@ message CollectionItemV1 {
     string id = 1;
     uint32 position = 2;
     string by_profile_id = 3;
-    SourceV1 source = 4;
+    SourceV1 source = 4 [(services.common.containers.inflation) = true];
     string source_id = 5;
 
     oneof item {
@@ -78,5 +78,5 @@ message CollectionV1 {
     services.common.containers.InflationsV1 inflations = 11;
     services.common.containers.FieldsV1 fields = 12;
     string by_profile_id = 13;
-    uint32 total_items = 14;
+    uint32 total_items = 14 [(services.common.containers.inflation) = true];
 }
