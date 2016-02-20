@@ -122,13 +122,8 @@ public extension Services.Profile.Containers {
 
       public enum ContactMethodTypeV1:Int32 {
         case CellPhone = 0
-        case Phone = 1
-        case Email = 2
-        case Slack = 3
-        case Twitter = 4
-        case Hipchat = 5
-        case Facebook = 6
-        case Skype = 7
+        case Email = 1
+        case Slack = 2
 
       }
 
