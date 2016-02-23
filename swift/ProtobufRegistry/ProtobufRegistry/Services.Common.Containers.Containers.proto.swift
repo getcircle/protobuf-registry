@@ -40,6 +40,11 @@ public func == (lhs: Services.Common.Containers.FieldsV1, rhs: Services.Common.C
   return fieldCheck
 }
 
+public var ContainersRootinflation:ConcreateExtensionField {
+   get {
+       return Services.Common.Containers.ContainersRoot.sharedInstance.ContainersRootinflationStatic
+   }
+}
 public extension Services.Common.Containers {
   public struct ContainersRoot {
     public static var sharedInstance : ContainersRoot {
@@ -48,13 +53,20 @@ public extension Services.Common.Containers {
      }
      return Static.instance
     }
+    var ContainersRootinflationStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
+      ContainersRootinflationStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeBool, extendedClass:Google.Protobuf.FieldOptions.self, fieldNumber: 50000, defaultValue:false, messageOrGroupClass:Bool.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Google.Protobuf.DescriptorRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
+      registry.addExtension(ContainersRootinflationStatic)
+    }
+    public static func inflation() -> ConcreateExtensionField {
+         return ContainersRoot.sharedInstance.ContainersRootinflationStatic
     }
   }
 

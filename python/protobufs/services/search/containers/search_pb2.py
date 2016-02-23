@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/search/containers/search.proto',
   package='services.search.containers.search',
   syntax='proto3',
-  serialized_pb=b'\n1protobufs/services/search/containers/search.proto\x12!services.search.containers.search*f\n\nCategoryV1\x12\x0c\n\x08PROFILES\x10\x00\x12\t\n\x05TEAMS\x10\x01\x12\r\n\tLOCATIONS\x10\x02\x12\n\n\x06SKILLS\x10\x03\x12\r\n\tINTERESTS\x10\x04\x12\n\n\x06GROUPS\x10\x05\x12\t\n\x05POSTS\x10\x06*+\n\x0b\x41ttributeV1\x12\x0f\n\x0bLOCATION_ID\x10\x00\x12\x0b\n\x07TEAM_ID\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n1protobufs/services/search/containers/search.proto\x12!services.search.containers.search*J\n\nCategoryV1\x12\x07\n\x03\x41LL\x10\x00\x12\x0c\n\x08PROFILES\x10\x01\x12\t\n\x05TEAMS\x10\x02\x12\t\n\x05POSTS\x10\x03\x12\x0f\n\x0b\x43OLLECTIONS\x10\x04*+\n\x0b\x41ttributeV1\x12\x0f\n\x0bLOCATION_ID\x10\x00\x12\x0b\n\x07TEAM_ID\x10\x01\x62\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -29,38 +29,30 @@ _CATEGORYV1 = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='PROFILES', index=0, number=0,
+      name='ALL', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='TEAMS', index=1, number=1,
+      name='PROFILES', index=1, number=1,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='LOCATIONS', index=2, number=2,
+      name='TEAMS', index=2, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='SKILLS', index=3, number=3,
+      name='POSTS', index=3, number=3,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='INTERESTS', index=4, number=4,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='GROUPS', index=5, number=5,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='POSTS', index=6, number=6,
+      name='COLLECTIONS', index=4, number=4,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=88,
-  serialized_end=190,
+  serialized_end=162,
 )
 _sym_db.RegisterEnumDescriptor(_CATEGORYV1)
 
@@ -82,19 +74,17 @@ _ATTRIBUTEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=192,
-  serialized_end=235,
+  serialized_start=164,
+  serialized_end=207,
 )
 _sym_db.RegisterEnumDescriptor(_ATTRIBUTEV1)
 
 AttributeV1 = enum_type_wrapper.EnumTypeWrapper(_ATTRIBUTEV1)
-PROFILES = 0
-TEAMS = 1
-LOCATIONS = 2
-SKILLS = 3
-INTERESTS = 4
-GROUPS = 5
-POSTS = 6
+ALL = 0
+PROFILES = 1
+TEAMS = 2
+POSTS = 3
+COLLECTIONS = 4
 LOCATION_ID = 0
 TEAM_ID = 1
 

@@ -11,17 +11,27 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/common/containers.proto',
   package='services.common.containers',
   syntax='proto3',
-  serialized_pb=b'\n*protobufs/services/common/containers.proto\x12\x1aservices.common.containers\"F\n\rPermissionsV1\x12\x10\n\x08\x63\x61n_edit\x18\x01 \x01(\x08\x12\x12\n\ncan_delete\x18\x02 \x01(\x08\x12\x0f\n\x07\x63\x61n_add\x18\x03 \x01(\x08\"?\n\x0cInflationsV1\x12\x10\n\x08\x64isabled\x18\x01 \x01(\x08\x12\x0c\n\x04only\x18\x02 \x03(\t\x12\x0f\n\x07\x65xclude\x18\x03 \x03(\t\")\n\x08\x46ieldsV1\x12\x0c\n\x04only\x18\x01 \x03(\t\x12\x0f\n\x07\x65xclude\x18\x02 \x03(\tb\x06proto3'
-)
+  serialized_pb=b'\n*protobufs/services/common/containers.proto\x12\x1aservices.common.containers\x1a google/protobuf/descriptor.proto\"F\n\rPermissionsV1\x12\x10\n\x08\x63\x61n_edit\x18\x01 \x01(\x08\x12\x12\n\ncan_delete\x18\x02 \x01(\x08\x12\x0f\n\x07\x63\x61n_add\x18\x03 \x01(\x08\"?\n\x0cInflationsV1\x12\x10\n\x08\x64isabled\x18\x01 \x01(\x08\x12\x0c\n\x04only\x18\x02 \x03(\t\x12\x0f\n\x07\x65xclude\x18\x03 \x03(\t\")\n\x08\x46ieldsV1\x12\x0c\n\x04only\x18\x01 \x03(\t\x12\x0f\n\x07\x65xclude\x18\x02 \x03(\t:2\n\tinflation\x12\x1d.google.protobuf.FieldOptions\x18\xd0\x86\x03 \x01(\x08\x62\x06proto3'
+  ,
+  dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
+INFLATION_FIELD_NUMBER = 50000
+inflation = _descriptor.FieldDescriptor(
+  name='inflation', full_name='services.common.containers.inflation', index=0,
+  number=50000, type=8, cpp_type=7, label=1,
+  has_default_value=False, default_value=False,
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  options=None)
 
 
 _PERMISSIONSV1 = _descriptor.Descriptor(
@@ -64,8 +74,8 @@ _PERMISSIONSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=74,
-  serialized_end=144,
+  serialized_start=108,
+  serialized_end=178,
 )
 
 
@@ -109,8 +119,8 @@ _INFLATIONSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=146,
-  serialized_end=209,
+  serialized_start=180,
+  serialized_end=243,
 )
 
 
@@ -147,13 +157,14 @@ _FIELDSV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=211,
-  serialized_end=252,
+  serialized_start=245,
+  serialized_end=286,
 )
 
 DESCRIPTOR.message_types_by_name['PermissionsV1'] = _PERMISSIONSV1
 DESCRIPTOR.message_types_by_name['InflationsV1'] = _INFLATIONSV1
 DESCRIPTOR.message_types_by_name['FieldsV1'] = _FIELDSV1
+DESCRIPTOR.extensions_by_name['inflation'] = inflation
 
 PermissionsV1 = _reflection.GeneratedProtocolMessageType('PermissionsV1', (_message.Message,), dict(
   DESCRIPTOR = _PERMISSIONSV1,
@@ -176,5 +187,6 @@ FieldsV1 = _reflection.GeneratedProtocolMessageType('FieldsV1', (_message.Messag
   ))
 _sym_db.RegisterMessage(FieldsV1)
 
+google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(inflation)
 
 # @@protoc_insertion_point(module_scope)

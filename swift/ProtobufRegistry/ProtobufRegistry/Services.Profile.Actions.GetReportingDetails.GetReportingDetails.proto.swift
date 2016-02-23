@@ -22,9 +22,7 @@ public func == (lhs: Services.Profile.Actions.GetReportingDetails.ResponseV1, rh
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasManager == rhs.hasManager) && (!lhs.hasManager || lhs.manager == rhs.manager)
-  fieldCheck = fieldCheck && (lhs.peers == rhs.peers)
-  fieldCheck = fieldCheck && (lhs.directReports == rhs.directReports)
+  fieldCheck = fieldCheck && (lhs.hasDetails == rhs.hasDetails) && (!lhs.hasDetails || lhs.details == rhs.details)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -410,10 +408,8 @@ public extension Services.Profile.Actions.GetReportingDetails {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasManager:Bool = false
-    public private(set) var manager:Services.Profile.Containers.ProfileV1!
-    public private(set) var peers:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
-    public private(set) var directReports:Array<Services.Profile.Containers.ProfileV1>  = Array<Services.Profile.Containers.ProfileV1>()
+    public private(set) var hasDetails:Bool = false
+    public private(set) var details:Services.Profile.Containers.ReportingDetailsV1!
     required public init() {
          super.init()
     }
@@ -421,14 +417,8 @@ public extension Services.Profile.Actions.GetReportingDetails {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasManager {
-        try output.writeMessage(1, value:manager)
-      }
-      for oneElementpeers in peers {
-          try output.writeMessage(2, value:oneElementpeers)
-      }
-      for oneElementdirectReports in directReports {
-          try output.writeMessage(3, value:oneElementdirectReports)
+      if hasDetails {
+        try output.writeMessage(1, value:details)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -439,16 +429,10 @@ public extension Services.Profile.Actions.GetReportingDetails {
       }
 
       serialize_size = 0
-      if hasManager {
-          if let varSizemanager = manager?.computeMessageSize(1) {
-              serialize_size += varSizemanager
+      if hasDetails {
+          if let varSizedetails = details?.computeMessageSize(1) {
+              serialize_size += varSizedetails
           }
-      }
-      for oneElementpeers in peers {
-          serialize_size += oneElementpeers.computeMessageSize(2)
-      }
-      for oneElementdirectReports in directReports {
-          serialize_size += oneElementdirectReports.computeMessageSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -501,40 +485,20 @@ public extension Services.Profile.Actions.GetReportingDetails {
       return try Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasManager {
-        output += "\(indent) manager {\n"
-        try manager?.writeDescriptionTo(&output, indent:"\(indent)  ")
+      if hasDetails {
+        output += "\(indent) details {\n"
+        try details?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
-      }
-      var peersElementIndex:Int = 0
-      for oneElementpeers in peers {
-          output += "\(indent) peers[\(peersElementIndex)] {\n"
-          try oneElementpeers.writeDescriptionTo(&output, indent:"\(indent)  ")
-          output += "\(indent)}\n"
-          peersElementIndex++
-      }
-      var directReportsElementIndex:Int = 0
-      for oneElementdirectReports in directReports {
-          output += "\(indent) directReports[\(directReportsElementIndex)] {\n"
-          try oneElementdirectReports.writeDescriptionTo(&output, indent:"\(indent)  ")
-          output += "\(indent)}\n"
-          directReportsElementIndex++
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasManager {
-                if let hashValuemanager = manager?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuemanager
+            if hasDetails {
+                if let hashValuedetails = details?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuedetails
                 }
-            }
-            for oneElementpeers in peers {
-                hashCode = (hashCode &* 31) &+ oneElementpeers.hashValue
-            }
-            for oneElementdirectReports in directReports {
-                hashCode = (hashCode &* 31) &+ oneElementdirectReports.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -564,87 +528,55 @@ public extension Services.Profile.Actions.GetReportingDetails {
       required override public init () {
          super.init()
       }
-      public var hasManager:Bool {
+      public var hasDetails:Bool {
            get {
-               return builderResult.hasManager
+               return builderResult.hasDetails
            }
       }
-      public var manager:Services.Profile.Containers.ProfileV1! {
+      public var details:Services.Profile.Containers.ReportingDetailsV1! {
            get {
-               if managerBuilder_ != nil {
-                  builderResult.manager = managerBuilder_.getMessage()
+               if detailsBuilder_ != nil {
+                  builderResult.details = detailsBuilder_.getMessage()
                }
-               return builderResult.manager
+               return builderResult.details
            }
            set (value) {
-               builderResult.hasManager = true
-               builderResult.manager = value
+               builderResult.hasDetails = true
+               builderResult.details = value
            }
       }
-      private var managerBuilder_:Services.Profile.Containers.ProfileV1.Builder! {
+      private var detailsBuilder_:Services.Profile.Containers.ReportingDetailsV1.Builder! {
            didSet {
-              builderResult.hasManager = true
+              builderResult.hasDetails = true
            }
       }
-      public func getManagerBuilder() -> Services.Profile.Containers.ProfileV1.Builder {
-        if managerBuilder_ == nil {
-           managerBuilder_ = Services.Profile.Containers.ProfileV1.Builder()
-           builderResult.manager = managerBuilder_.getMessage()
-           if manager != nil {
-              try! managerBuilder_.mergeFrom(manager)
+      public func getDetailsBuilder() -> Services.Profile.Containers.ReportingDetailsV1.Builder {
+        if detailsBuilder_ == nil {
+           detailsBuilder_ = Services.Profile.Containers.ReportingDetailsV1.Builder()
+           builderResult.details = detailsBuilder_.getMessage()
+           if details != nil {
+              try! detailsBuilder_.mergeFrom(details)
            }
         }
-        return managerBuilder_
+        return detailsBuilder_
       }
-      public func setManager(value:Services.Profile.Containers.ProfileV1!) -> Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder {
-        self.manager = value
+      public func setDetails(value:Services.Profile.Containers.ReportingDetailsV1!) -> Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder {
+        self.details = value
         return self
       }
-      public func mergeManager(value:Services.Profile.Containers.ProfileV1) throws -> Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder {
-        if builderResult.hasManager {
-          builderResult.manager = try Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.manager).mergeFrom(value).buildPartial()
+      public func mergeDetails(value:Services.Profile.Containers.ReportingDetailsV1) throws -> Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder {
+        if builderResult.hasDetails {
+          builderResult.details = try Services.Profile.Containers.ReportingDetailsV1.builderWithPrototype(builderResult.details).mergeFrom(value).buildPartial()
         } else {
-          builderResult.manager = value
+          builderResult.details = value
         }
-        builderResult.hasManager = true
+        builderResult.hasDetails = true
         return self
       }
-      public func clearManager() -> Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder {
-        managerBuilder_ = nil
-        builderResult.hasManager = false
-        builderResult.manager = nil
-        return self
-      }
-      public var peers:Array<Services.Profile.Containers.ProfileV1> {
-           get {
-               return builderResult.peers
-           }
-           set (value) {
-               builderResult.peers = value
-           }
-      }
-      public func setPeers(value:Array<Services.Profile.Containers.ProfileV1>) -> Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder {
-        self.peers = value
-        return self
-      }
-      public func clearPeers() -> Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder {
-        builderResult.peers.removeAll(keepCapacity: false)
-        return self
-      }
-      public var directReports:Array<Services.Profile.Containers.ProfileV1> {
-           get {
-               return builderResult.directReports
-           }
-           set (value) {
-               builderResult.directReports = value
-           }
-      }
-      public func setDirectReports(value:Array<Services.Profile.Containers.ProfileV1>) -> Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder {
-        self.directReports = value
-        return self
-      }
-      public func clearDirectReports() -> Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder {
-        builderResult.directReports.removeAll(keepCapacity: false)
+      public func clearDetails() -> Services.Profile.Actions.GetReportingDetails.ResponseV1.Builder {
+        detailsBuilder_ = nil
+        builderResult.hasDetails = false
+        builderResult.details = nil
         return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -671,14 +603,8 @@ public extension Services.Profile.Actions.GetReportingDetails {
         if other == Services.Profile.Actions.GetReportingDetails.ResponseV1() {
          return self
         }
-        if (other.hasManager) {
-            try mergeManager(other.manager)
-        }
-        if !other.peers.isEmpty  {
-           builderResult.peers += other.peers
-        }
-        if !other.directReports.isEmpty  {
-           builderResult.directReports += other.directReports
+        if (other.hasDetails) {
+            try mergeDetails(other.details)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -696,22 +622,12 @@ public extension Services.Profile.Actions.GetReportingDetails {
             return self
 
           case 10 :
-            let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
-            if hasManager {
-              try subBuilder.mergeFrom(manager)
+            let subBuilder:Services.Profile.Containers.ReportingDetailsV1.Builder = Services.Profile.Containers.ReportingDetailsV1.Builder()
+            if hasDetails {
+              try subBuilder.mergeFrom(details)
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-            manager = subBuilder.buildPartial()
-
-          case 18 :
-            let subBuilder = Services.Profile.Containers.ProfileV1.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            peers += [subBuilder.buildPartial()]
-
-          case 26 :
-            let subBuilder = Services.Profile.Containers.ProfileV1.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            directReports += [subBuilder.buildPartial()]
+            details = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

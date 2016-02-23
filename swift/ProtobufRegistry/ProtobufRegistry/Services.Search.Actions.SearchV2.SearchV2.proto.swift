@@ -53,7 +53,7 @@ public extension Services.Search.Actions.SearchV2 {
     public private(set) var hasQuery:Bool = false
     public private(set) var query:String = ""
 
-    public private(set) var category:Services.Search.Containers.Search.CategoryV1 = Services.Search.Containers.Search.CategoryV1.Profiles
+    public private(set) var category:Services.Search.Containers.Search.CategoryV1 = Services.Search.Containers.Search.CategoryV1.All
     public private(set) var hasCategory:Bool = false
     public private(set) var attribute:Services.Search.Containers.Search.AttributeV1 = Services.Search.Containers.Search.AttributeV1.LocationId
     public private(set) var hasAttribute:Bool = false
@@ -266,7 +266,7 @@ public extension Services.Search.Actions.SearchV2 {
         }
         public func clearCategory() -> Services.Search.Actions.SearchV2.RequestV1.Builder {
            builderResult.hasCategory = false
-           builderResult.category = .Profiles
+           builderResult.category = .All
            return self
         }
         public var hasAttribute:Bool{

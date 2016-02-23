@@ -11,7 +11,5 @@ message RequestV1 {
 }
 
 message ResponseV1 {
-    services.profile.containers.ProfileV1 manager = 1;
-    repeated services.profile.containers.ProfileV1 peers = 2;
-    repeated services.profile.containers.ProfileV1 direct_reports = 3;
+    services.profile.containers.ReportingDetailsV1 details = 1;
 }

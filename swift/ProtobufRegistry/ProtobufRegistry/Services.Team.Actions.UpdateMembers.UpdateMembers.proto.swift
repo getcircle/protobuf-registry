@@ -21,6 +21,8 @@ public func == (lhs: Services.Team.Actions.UpdateMembers.ResponseV1, rhs: Servic
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
+  fieldCheck = fieldCheck && (lhs.members == rhs.members)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -282,6 +284,10 @@ public extension Services.Team.Actions.UpdateMembers {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hasTeamId:Bool = false
+    public private(set) var teamId:String = ""
+
+    public private(set) var members:Array<Services.Team.Containers.TeamMemberV1>  = Array<Services.Team.Containers.TeamMemberV1>()
     required public init() {
          super.init()
     }
@@ -289,6 +295,12 @@ public extension Services.Team.Actions.UpdateMembers {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasTeamId {
+        try output.writeString(1, value:teamId)
+      }
+      for oneElementmembers in members {
+          try output.writeMessage(2, value:oneElementmembers)
+      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -298,6 +310,12 @@ public extension Services.Team.Actions.UpdateMembers {
       }
 
       serialize_size = 0
+      if hasTeamId {
+        serialize_size += teamId.computeStringSize(1)
+      }
+      for oneElementmembers in members {
+          serialize_size += oneElementmembers.computeMessageSize(2)
+      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -349,11 +367,27 @@ public extension Services.Team.Actions.UpdateMembers {
       return try Services.Team.Actions.UpdateMembers.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasTeamId {
+        output += "\(indent) teamId: \(teamId) \n"
+      }
+      var membersElementIndex:Int = 0
+      for oneElementmembers in members {
+          output += "\(indent) members[\(membersElementIndex)] {\n"
+          try oneElementmembers.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          membersElementIndex++
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
+            if hasTeamId {
+               hashCode = (hashCode &* 31) &+ teamId.hashValue
+            }
+            for oneElementmembers in members {
+                hashCode = (hashCode &* 31) &+ oneElementmembers.hashValue
+            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -382,6 +416,45 @@ public extension Services.Team.Actions.UpdateMembers {
       required override public init () {
          super.init()
       }
+      public var hasTeamId:Bool {
+           get {
+                return builderResult.hasTeamId
+           }
+      }
+      public var teamId:String {
+           get {
+                return builderResult.teamId
+           }
+           set (value) {
+               builderResult.hasTeamId = true
+               builderResult.teamId = value
+           }
+      }
+      public func setTeamId(value:String) -> Services.Team.Actions.UpdateMembers.ResponseV1.Builder {
+        self.teamId = value
+        return self
+      }
+      public func clearTeamId() -> Services.Team.Actions.UpdateMembers.ResponseV1.Builder{
+           builderResult.hasTeamId = false
+           builderResult.teamId = ""
+           return self
+      }
+      public var members:Array<Services.Team.Containers.TeamMemberV1> {
+           get {
+               return builderResult.members
+           }
+           set (value) {
+               builderResult.members = value
+           }
+      }
+      public func setMembers(value:Array<Services.Team.Containers.TeamMemberV1>) -> Services.Team.Actions.UpdateMembers.ResponseV1.Builder {
+        self.members = value
+        return self
+      }
+      public func clearMembers() -> Services.Team.Actions.UpdateMembers.ResponseV1.Builder {
+        builderResult.members.removeAll(keepCapacity: false)
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -406,6 +479,12 @@ public extension Services.Team.Actions.UpdateMembers {
         if other == Services.Team.Actions.UpdateMembers.ResponseV1() {
          return self
         }
+        if other.hasTeamId {
+             teamId = other.teamId
+        }
+        if !other.members.isEmpty  {
+           builderResult.members += other.members
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -420,6 +499,14 @@ public extension Services.Team.Actions.UpdateMembers {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
+
+          case 10 :
+            teamId = try input.readString()
+
+          case 18 :
+            let subBuilder = Services.Team.Containers.TeamMemberV1.Builder()
+            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+            members += [subBuilder.buildPartial()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/search/actions/search.proto',
   package='services.search.actions.search',
   syntax='proto3',
-  serialized_pb=b'\n.protobufs/services/search/actions/search.proto\x12\x1eservices.search.actions.search\x1a*protobufs/services/search/containers.proto\x1a\x31protobufs/services/search/containers/search.proto\"\xe4\x01\n\tRequestV1\x12\r\n\x05query\x18\x01 \x01(\t\x12?\n\x08\x63\x61tegory\x18\x02 \x01(\x0e\x32-.services.search.containers.search.CategoryV1\x12\x41\n\tattribute\x18\x03 \x01(\x0e\x32..services.search.containers.search.AttributeV1\x12\x17\n\x0f\x61ttribute_value\x18\x04 \x01(\t\x12\x14\n\x0chas_category\x18\x05 \x01(\x08\x12\x15\n\rhas_attribute\x18\x06 \x01(\x08\"I\n\nResponseV1\x12;\n\x07results\x18\x01 \x03(\x0b\x32*.services.search.containers.SearchResultV1b\x06proto3'
+  serialized_pb=b'\n.protobufs/services/search/actions/search.proto\x12\x1eservices.search.actions.search\x1a*protobufs/services/search/containers.proto\x1a\x31protobufs/services/search/containers/search.proto\"\xce\x01\n\tRequestV1\x12\r\n\x05query\x18\x01 \x01(\t\x12?\n\x08\x63\x61tegory\x18\x02 \x01(\x0e\x32-.services.search.containers.search.CategoryV1\x12\x41\n\tattribute\x18\x03 \x01(\x0e\x32..services.search.containers.search.AttributeV1\x12\x17\n\x0f\x61ttribute_value\x18\x04 \x01(\t\x12\x15\n\rhas_attribute\x18\x05 \x01(\x08\"I\n\nResponseV1\x12;\n\x07results\x18\x01 \x03(\x0b\x32*.services.search.containers.SearchResultV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_search_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_containers_dot_search__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -63,15 +63,8 @@ _REQUESTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='has_category', full_name='services.search.actions.search.RequestV1.has_category', index=4,
+      name='has_attribute', full_name='services.search.actions.search.RequestV1.has_attribute', index=4,
       number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='has_attribute', full_name='services.search.actions.search.RequestV1.has_attribute', index=5,
-      number=6, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -89,7 +82,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=178,
-  serialized_end=406,
+  serialized_end=384,
 )
 
 
@@ -119,8 +112,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=408,
-  serialized_end=481,
+  serialized_start=386,
+  serialized_end=459,
 )
 
 _REQUESTV1.fields_by_name['category'].enum_type = protobufs_dot_services_dot_search_dot_containers_dot_search__pb2._CATEGORYV1
