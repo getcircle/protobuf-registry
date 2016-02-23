@@ -518,6 +518,11 @@ public var ServicesRegistryResponsesFileupload:ConcreateExtensionField {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesFileuploadStatic
    }
 }
+public var ServicesRegistryResponsesFilegetFile:ConcreateExtensionField {
+   get {
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesFilegetFileStatic
+   }
+}
 public var ServicesRegistryResponsesTeamaddMembers:ConcreateExtensionField {
    get {
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesTeamaddMembersStatic
@@ -652,6 +657,7 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesFiledeleteStatic:ConcreateExtensionField
     var ServicesRegistryResponsesFilegetFilesStatic:ConcreateExtensionField
     var ServicesRegistryResponsesFileuploadStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesFilegetFileStatic:ConcreateExtensionField
     var ServicesRegistryResponsesTeamaddMembersStatic:ConcreateExtensionField
     var ServicesRegistryResponsesTeamcreateTeamStatic:ConcreateExtensionField
     var ServicesRegistryResponsesTeamgetTeamStatic:ConcreateExtensionField
@@ -745,6 +751,7 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesFiledeleteStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1802, defaultValue:Services.File.Actions.Delete.ResponseV1(), messageOrGroupClass:Services.File.Actions.Delete.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesFilegetFilesStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1803, defaultValue:Services.File.Actions.GetFiles.ResponseV1(), messageOrGroupClass:Services.File.Actions.GetFiles.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesFileuploadStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1804, defaultValue:Services.File.Actions.Upload.ResponseV1(), messageOrGroupClass:Services.File.Actions.Upload.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesFilegetFileStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1805, defaultValue:Services.File.Actions.GetFile.ResponseV1(), messageOrGroupClass:Services.File.Actions.GetFile.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesTeamaddMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1900, defaultValue:Services.Team.Actions.AddMembers.ResponseV1(), messageOrGroupClass:Services.Team.Actions.AddMembers.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesTeamcreateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1901, defaultValue:Services.Team.Actions.CreateTeam.ResponseV1(), messageOrGroupClass:Services.Team.Actions.CreateTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesTeamgetTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1902, defaultValue:Services.Team.Actions.GetTeam.ResponseV1(), messageOrGroupClass:Services.Team.Actions.GetTeam.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -838,6 +845,7 @@ public extension Services.Registry.Responses {
       Services.File.Actions.Delete.DeleteRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.GetFiles.GetFilesRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Actions.Upload.UploadRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.File.Actions.GetFile.GetFileRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.AddMembers.AddMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.CreateTeam.CreateTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.GetTeam.GetTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -930,6 +938,7 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesFiledeleteStatic)
       registry.addExtension(ServicesRegistryResponsesFilegetFilesStatic)
       registry.addExtension(ServicesRegistryResponsesFileuploadStatic)
+      registry.addExtension(ServicesRegistryResponsesFilegetFileStatic)
       registry.addExtension(ServicesRegistryResponsesTeamaddMembersStatic)
       registry.addExtension(ServicesRegistryResponsesTeamcreateTeamStatic)
       registry.addExtension(ServicesRegistryResponsesTeamgetTeamStatic)
@@ -2705,6 +2714,9 @@ public extension Services.Registry.Responses {
     }
     public class func upload() -> ConcreateExtensionField {
          return ServicesRegistryResponsesFileupload
+    }
+    public class func getFile() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesFilegetFile
     }
     required public init() {
          super.init()

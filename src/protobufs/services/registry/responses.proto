@@ -97,6 +97,7 @@ import "protobufs/services/file/actions/complete_upload.proto";
 import "protobufs/services/file/actions/delete.proto";
 import "protobufs/services/file/actions/get_files.proto";
 import "protobufs/services/file/actions/upload.proto";
+import "protobufs/services/file/actions/get_file.proto";
 
 import "protobufs/services/team/actions/add_members.proto";
 import "protobufs/services/team/actions/create_team.proto";
@@ -252,6 +253,7 @@ message File {
         optional services.file.actions.delete.ResponseV1 delete = 1802;
         optional services.file.actions.get_files.ResponseV1 get_files = 1803;
         optional services.file.actions.upload.ResponseV1 upload = 1804;
+        optional services.file.actions.get_file.ResponseV1 get_file = 1805;
     }
 }
 
