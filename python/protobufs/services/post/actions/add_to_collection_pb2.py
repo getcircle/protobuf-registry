@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/add_to_collection.proto',
   package='services.post.actions.add_to_collection',
   syntax='proto3',
-  serialized_pb=b'\n7protobufs/services/post/actions/add_to_collection.proto\x12\'services.post.actions.add_to_collection\x1a(protobufs/services/post/containers.proto\"z\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x43\n\x06source\x18\x02 \x01(\x0e\x32\x33.services.post.containers.CollectionItemV1.SourceV1\x12\x11\n\tsource_id\x18\x03 \x01(\t\"F\n\nResponseV1\x12\x38\n\x04item\x18\x01 \x01(\x0b\x32*.services.post.containers.CollectionItemV1b\x06proto3'
+  serialized_pb=b'\n7protobufs/services/post/actions/add_to_collection.proto\x12\'services.post.actions.add_to_collection\x1a(protobufs/services/post/containers.proto\"\x8b\x01\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x43\n\x06source\x18\x02 \x01(\x0e\x32\x33.services.post.containers.CollectionItemV1.SourceV1\x12\x11\n\tsource_id\x18\x03 \x01(\t\x12\x0f\n\x07\x64\x65\x66\x61ult\x18\x04 \x01(\x08\"F\n\nResponseV1\x12\x38\n\x04item\x18\x01 \x01(\x0b\x32*.services.post.containers.CollectionItemV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -54,6 +54,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='default', full_name='services.post.actions.add_to_collection.RequestV1.default', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -66,8 +73,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=142,
-  serialized_end=264,
+  serialized_start=143,
+  serialized_end=282,
 )
 
 
@@ -97,8 +104,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=266,
-  serialized_end=336,
+  serialized_start=284,
+  serialized_end=354,
 )
 
 _REQUESTV1.fields_by_name['source'].enum_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONITEMV1_SOURCEV1

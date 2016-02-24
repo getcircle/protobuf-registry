@@ -13,6 +13,7 @@ public func == (lhs: Services.Post.Actions.AddToCollection.RequestV1, rhs: Servi
   fieldCheck = fieldCheck && (lhs.hasCollectionId == rhs.hasCollectionId) && (!lhs.hasCollectionId || lhs.collectionId == rhs.collectionId)
   fieldCheck = fieldCheck && (lhs.hasSource == rhs.hasSource) && (!lhs.hasSource || lhs.source == rhs.source)
   fieldCheck = fieldCheck && (lhs.hasSourceId == rhs.hasSourceId) && (!lhs.hasSourceId || lhs.sourceId == rhs.sourceId)
+  fieldCheck = fieldCheck && (lhs.hasDefault == rhs.hasDefault) && (!lhs.hasDefault || lhs.default == rhs.default)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -55,6 +56,9 @@ public extension Services.Post.Actions.AddToCollection {
     public private(set) var hasSourceId:Bool = false
     public private(set) var sourceId:String = ""
 
+    public private(set) var hasDefault:Bool = false
+    public private(set) var default:Bool = false
+
     required public init() {
          super.init()
     }
@@ -70,6 +74,9 @@ public extension Services.Post.Actions.AddToCollection {
       }
       if hasSourceId {
         try output.writeString(3, value:sourceId)
+      }
+      if hasDefault {
+        try output.writeBool(4, value:default)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -88,6 +95,9 @@ public extension Services.Post.Actions.AddToCollection {
       }
       if hasSourceId {
         serialize_size += sourceId.computeStringSize(3)
+      }
+      if hasDefault {
+        serialize_size += default.computeBoolSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -149,6 +159,9 @@ public extension Services.Post.Actions.AddToCollection {
       if hasSourceId {
         output += "\(indent) sourceId: \(sourceId) \n"
       }
+      if hasDefault {
+        output += "\(indent) default: \(default) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -162,6 +175,9 @@ public extension Services.Post.Actions.AddToCollection {
             }
             if hasSourceId {
                hashCode = (hashCode &* 31) &+ sourceId.hashValue
+            }
+            if hasDefault {
+               hashCode = (hashCode &* 31) &+ default.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -260,6 +276,29 @@ public extension Services.Post.Actions.AddToCollection {
            builderResult.sourceId = ""
            return self
       }
+      public var hasDefault:Bool {
+           get {
+                return builderResult.hasDefault
+           }
+      }
+      public var default:Bool {
+           get {
+                return builderResult.default
+           }
+           set (value) {
+               builderResult.hasDefault = true
+               builderResult.default = value
+           }
+      }
+      public func setDefault(value:Bool) -> Services.Post.Actions.AddToCollection.RequestV1.Builder {
+        self.default = value
+        return self
+      }
+      public func clearDefault() -> Services.Post.Actions.AddToCollection.RequestV1.Builder{
+           builderResult.hasDefault = false
+           builderResult.default = false
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -293,6 +332,9 @@ public extension Services.Post.Actions.AddToCollection {
         if other.hasSourceId {
              sourceId = other.sourceId
         }
+        if other.hasDefault {
+             default = other.default
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -321,6 +363,9 @@ public extension Services.Post.Actions.AddToCollection {
 
           case 26 :
             sourceId = try input.readString()
+
+          case 32 :
+            default = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
