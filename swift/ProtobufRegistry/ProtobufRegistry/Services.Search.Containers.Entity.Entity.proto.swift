@@ -32,6 +32,7 @@ public extension Services.Search.Containers.Entity {
     case Team = 1
     case Location = 2
     case Post = 3
+    case Collection = 4
 
   }
 

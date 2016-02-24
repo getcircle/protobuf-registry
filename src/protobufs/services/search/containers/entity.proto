@@ -6,4 +6,5 @@ enum EntityTypeV1 {
     TEAM = 1;
     LOCATION = 2;
     POST = 3;
+    COLLECTION = 4;
 }

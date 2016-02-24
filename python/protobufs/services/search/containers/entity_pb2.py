@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/search/containers/entity.proto',
   package='services.search.containers.entity',
   syntax='proto3',
-  serialized_pb=b'\n1protobufs/services/search/containers/entity.proto\x12!services.search.containers.entity*=\n\x0c\x45ntityTypeV1\x12\x0b\n\x07PROFILE\x10\x00\x12\x08\n\x04TEAM\x10\x01\x12\x0c\n\x08LOCATION\x10\x02\x12\x08\n\x04POST\x10\x03\x62\x06proto3'
+  serialized_pb=b'\n1protobufs/services/search/containers/entity.proto\x12!services.search.containers.entity*M\n\x0c\x45ntityTypeV1\x12\x0b\n\x07PROFILE\x10\x00\x12\x08\n\x04TEAM\x10\x01\x12\x0c\n\x08LOCATION\x10\x02\x12\x08\n\x04POST\x10\x03\x12\x0e\n\nCOLLECTION\x10\x04\x62\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -44,11 +44,15 @@ _ENTITYTYPEV1 = _descriptor.EnumDescriptor(
       name='POST', index=3, number=3,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='COLLECTION', index=4, number=4,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=88,
-  serialized_end=149,
+  serialized_end=165,
 )
 _sym_db.RegisterEnumDescriptor(_ENTITYTYPEV1)
 
@@ -57,6 +61,7 @@ PROFILE = 0
 TEAM = 1
 LOCATION = 2
 POST = 3
+COLLECTION = 4
 
 
 DESCRIPTOR.enum_types_by_name['EntityTypeV1'] = _ENTITYTYPEV1
