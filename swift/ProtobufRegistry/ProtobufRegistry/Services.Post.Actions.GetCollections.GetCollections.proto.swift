@@ -18,6 +18,7 @@ public func == (lhs: Services.Post.Actions.GetCollections.RequestV1, rhs: Servic
   fieldCheck = fieldCheck && (lhs.hasItemsPerCollection == rhs.hasItemsPerCollection) && (!lhs.hasItemsPerCollection || lhs.itemsPerCollection == rhs.itemsPerCollection)
   fieldCheck = fieldCheck && (lhs.hasSource == rhs.hasSource) && (!lhs.hasSource || lhs.source == rhs.source)
   fieldCheck = fieldCheck && (lhs.hasSourceId == rhs.hasSourceId) && (!lhs.hasSourceId || lhs.sourceId == rhs.sourceId)
+  fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -73,6 +74,7 @@ public extension Services.Post.Actions.GetCollections {
     public private(set) var hasSourceId:Bool = false
     public private(set) var sourceId:String = ""
 
+    public private(set) var ids:Array<String> = Array<String>()
     required public init() {
          super.init()
     }
@@ -103,6 +105,11 @@ public extension Services.Post.Actions.GetCollections {
       }
       if hasSourceId {
         try output.writeString(8, value:sourceId)
+      }
+      if !ids.isEmpty {
+        for oneValueids in ids {
+          try output.writeString(9, value:oneValueids)
+        }
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -141,6 +148,12 @@ public extension Services.Post.Actions.GetCollections {
       if hasSourceId {
         serialize_size += sourceId.computeStringSize(8)
       }
+      var dataSizeIds:Int32 = 0
+      for oneValueids in ids {
+          dataSizeIds += oneValueids.computeStringSizeNoTag()
+      }
+      serialize_size += dataSizeIds
+      serialize_size += 1 * Int32(ids.count)
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -220,6 +233,11 @@ public extension Services.Post.Actions.GetCollections {
       if hasSourceId {
         output += "\(indent) sourceId: \(sourceId) \n"
       }
+      var idsElementIndex:Int = 0
+      for oneValueids in ids  {
+          output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
+          idsElementIndex++
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -252,6 +270,9 @@ public extension Services.Post.Actions.GetCollections {
             }
             if hasSourceId {
                hashCode = (hashCode &* 31) &+ sourceId.hashValue
+            }
+            for oneValueids in ids {
+                hashCode = (hashCode &* 31) &+ oneValueids.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -521,6 +542,22 @@ public extension Services.Post.Actions.GetCollections {
            builderResult.sourceId = ""
            return self
       }
+      public var ids:Array<String> {
+           get {
+               return builderResult.ids
+           }
+           set (array) {
+               builderResult.ids = array
+           }
+      }
+      public func setIds(value:Array<String>) -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+        self.ids = value
+        return self
+      }
+      public func clearIds() -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+         builderResult.ids.removeAll(keepCapacity: false)
+         return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -568,6 +605,9 @@ public extension Services.Post.Actions.GetCollections {
         }
         if other.hasSourceId {
              sourceId = other.sourceId
+        }
+        if !other.ids.isEmpty {
+            builderResult.ids += other.ids
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -627,6 +667,9 @@ public extension Services.Post.Actions.GetCollections {
 
           case 66 :
             sourceId = try input.readString()
+
+          case 74 :
+            ids += [try input.readString()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

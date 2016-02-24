@@ -13,6 +13,7 @@ message RequestV1 {
     uint32 items_per_collection = 6;
     services.post.containers.CollectionItemV1.SourceV1 source = 7;
     string source_id = 8;
+    repeated string ids = 9;
 }
 
 message ResponseV1 {
