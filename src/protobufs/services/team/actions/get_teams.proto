@@ -1,0 +1,14 @@
+syntax = "proto3";
+package services.team.actions.get_teams;
+
+import "protobufs/services/common/containers.proto";
+import "protobufs/services/team/containers.proto";
+
+message RequestV1 {
+    services.common.containers.InflationsV1 inflations = 1;
+    services.common.containers.FieldsV1 fields = 2;
+}
+
+message ResponseV1 {
+    repeated services.team.containers.TeamV1 teams = 1;
+}
