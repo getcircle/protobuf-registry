@@ -25,7 +25,7 @@ message TeamV1 {
     string organization_id = 5;
     services.common.containers.InflationsV1 inflations = 6;
     services.common.containers.FieldsV1 fields = 7;
-    repeated ContactMethodV1 contact_methods = 8;
+    repeated ContactMethodV1 contact_methods = 8 [(services.common.containers.inflation) = true];
     uint32 total_members = 9 [(services.common.containers.inflation) = true];
     string by_profile_id = 10;
 }
