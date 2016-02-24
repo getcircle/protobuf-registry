@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/search/containers.proto',
   package='services.search.containers',
   syntax='proto3',
-  serialized_pb=b'\n*protobufs/services/search/containers.proto\x12\x1aservices.search.containers\x1a\x30protobufs/services/organization/containers.proto\x1a(protobufs/services/post/containers.proto\x1a+protobufs/services/profile/containers.proto\x1a\x31protobufs/services/search/containers/search.proto\"?\n\x11TrackingDetailsV1\x12\x13\n\x0b\x64ocument_id\x18\x01 \x01(\t\x12\x15\n\rdocument_type\x18\x02 \x01(\t\"\xe8\x03\n\x0eSearchResultV1\x12\x39\n\x07profile\x18\x01 \x01(\x0b\x32&.services.profile.containers.ProfileV1H\x00\x12\x38\n\x04team\x18\x02 \x01(\x0b\x32(.services.organization.containers.TeamV1H\x00\x12@\n\x08location\x18\x03 \x01(\x0b\x32,.services.organization.containers.LocationV1H\x00\x12\x30\n\x04post\x18\x05 \x01(\x0b\x32 .services.post.containers.PostV1H\x00\x12\r\n\x05score\x18\x06 \x01(\x02\x12L\n\thighlight\x18\x07 \x03(\x0b\x32\x39.services.search.containers.SearchResultV1.HighlightEntry\x12G\n\x10tracking_details\x18\x08 \x01(\x0b\x32-.services.search.containers.TrackingDetailsV1\x1a\x30\n\x0eHighlightEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x0f\n\rresult_objectJ\x04\x08\x04\x10\x05\"\x90\x02\n\x0eRecentResultV1\x12\x39\n\x07profile\x18\x01 \x01(\x0b\x32&.services.profile.containers.ProfileV1H\x00\x12\x38\n\x04team\x18\x02 \x01(\x0b\x32(.services.organization.containers.TeamV1H\x00\x12@\n\x08location\x18\x03 \x01(\x0b\x32,.services.organization.containers.LocationV1H\x00\x12\x30\n\x04post\x18\x05 \x01(\x0b\x32 .services.post.containers.PostV1H\x00\x42\x0f\n\rresult_objectJ\x04\x08\x04\x10\x05\x62\x06proto3'
+  serialized_pb=b'\n*protobufs/services/search/containers.proto\x12\x1aservices.search.containers\x1a\x30protobufs/services/organization/containers.proto\x1a(protobufs/services/post/containers.proto\x1a+protobufs/services/profile/containers.proto\x1a\x31protobufs/services/search/containers/search.proto\"?\n\x11TrackingDetailsV1\x12\x13\n\x0b\x64ocument_id\x18\x01 \x01(\t\x12\x15\n\rdocument_type\x18\x02 \x01(\t\"\xa6\x04\n\x0eSearchResultV1\x12\x39\n\x07profile\x18\x01 \x01(\x0b\x32&.services.profile.containers.ProfileV1H\x00\x12\x38\n\x04team\x18\x02 \x01(\x0b\x32(.services.organization.containers.TeamV1H\x00\x12@\n\x08location\x18\x03 \x01(\x0b\x32,.services.organization.containers.LocationV1H\x00\x12\x30\n\x04post\x18\x05 \x01(\x0b\x32 .services.post.containers.PostV1H\x00\x12<\n\ncollection\x18\t \x01(\x0b\x32&.services.post.containers.CollectionV1H\x00\x12\r\n\x05score\x18\x06 \x01(\x02\x12L\n\thighlight\x18\x07 \x03(\x0b\x32\x39.services.search.containers.SearchResultV1.HighlightEntry\x12G\n\x10tracking_details\x18\x08 \x01(\x0b\x32-.services.search.containers.TrackingDetailsV1\x1a\x30\n\x0eHighlightEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x0f\n\rresult_objectJ\x04\x08\x04\x10\x05\"\xce\x02\n\x0eRecentResultV1\x12\x39\n\x07profile\x18\x01 \x01(\x0b\x32&.services.profile.containers.ProfileV1H\x00\x12\x38\n\x04team\x18\x02 \x01(\x0b\x32(.services.organization.containers.TeamV1H\x00\x12@\n\x08location\x18\x03 \x01(\x0b\x32,.services.organization.containers.LocationV1H\x00\x12\x30\n\x04post\x18\x05 \x01(\x0b\x32 .services.post.containers.PostV1H\x00\x12<\n\ncollection\x18\x06 \x01(\x0b\x32&.services.post.containers.CollectionV1H\x00\x42\x0f\n\rresult_objectJ\x04\x08\x04\x10\x05\x62\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_organization_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_search_dot_containers_dot_search__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -100,8 +100,8 @@ _SEARCHRESULTV1_HIGHLIGHTENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=745,
-  serialized_end=793,
+  serialized_start=807,
+  serialized_end=855,
 )
 
 _SEARCHRESULTV1 = _descriptor.Descriptor(
@@ -140,21 +140,28 @@ _SEARCHRESULTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='score', full_name='services.search.containers.SearchResultV1.score', index=4,
+      name='collection', full_name='services.search.containers.SearchResultV1.collection', index=4,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='score', full_name='services.search.containers.SearchResultV1.score', index=5,
       number=6, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='highlight', full_name='services.search.containers.SearchResultV1.highlight', index=5,
+      name='highlight', full_name='services.search.containers.SearchResultV1.highlight', index=6,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='tracking_details', full_name='services.search.containers.SearchResultV1.tracking_details', index=6,
+      name='tracking_details', full_name='services.search.containers.SearchResultV1.tracking_details', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -176,7 +183,7 @@ _SEARCHRESULTV1 = _descriptor.Descriptor(
       index=0, containing_type=None, fields=[]),
   ],
   serialized_start=328,
-  serialized_end=816,
+  serialized_end=878,
 )
 
 
@@ -215,6 +222,13 @@ _RECENTRESULTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='collection', full_name='services.search.containers.RecentResultV1.collection', index=4,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -230,8 +244,8 @@ _RECENTRESULTV1 = _descriptor.Descriptor(
       name='result_object', full_name='services.search.containers.RecentResultV1.result_object',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=819,
-  serialized_end=1091,
+  serialized_start=881,
+  serialized_end=1215,
 )
 
 _SEARCHRESULTV1_HIGHLIGHTENTRY.containing_type = _SEARCHRESULTV1
@@ -239,6 +253,7 @@ _SEARCHRESULTV1.fields_by_name['profile'].message_type = protobufs_dot_services_
 _SEARCHRESULTV1.fields_by_name['team'].message_type = protobufs_dot_services_dot_organization_dot_containers__pb2._TEAMV1
 _SEARCHRESULTV1.fields_by_name['location'].message_type = protobufs_dot_services_dot_organization_dot_containers__pb2._LOCATIONV1
 _SEARCHRESULTV1.fields_by_name['post'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._POSTV1
+_SEARCHRESULTV1.fields_by_name['collection'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONV1
 _SEARCHRESULTV1.fields_by_name['highlight'].message_type = _SEARCHRESULTV1_HIGHLIGHTENTRY
 _SEARCHRESULTV1.fields_by_name['tracking_details'].message_type = _TRACKINGDETAILSV1
 _SEARCHRESULTV1.oneofs_by_name['result_object'].fields.append(
@@ -253,10 +268,14 @@ _SEARCHRESULTV1.fields_by_name['location'].containing_oneof = _SEARCHRESULTV1.on
 _SEARCHRESULTV1.oneofs_by_name['result_object'].fields.append(
   _SEARCHRESULTV1.fields_by_name['post'])
 _SEARCHRESULTV1.fields_by_name['post'].containing_oneof = _SEARCHRESULTV1.oneofs_by_name['result_object']
+_SEARCHRESULTV1.oneofs_by_name['result_object'].fields.append(
+  _SEARCHRESULTV1.fields_by_name['collection'])
+_SEARCHRESULTV1.fields_by_name['collection'].containing_oneof = _SEARCHRESULTV1.oneofs_by_name['result_object']
 _RECENTRESULTV1.fields_by_name['profile'].message_type = protobufs_dot_services_dot_profile_dot_containers__pb2._PROFILEV1
 _RECENTRESULTV1.fields_by_name['team'].message_type = protobufs_dot_services_dot_organization_dot_containers__pb2._TEAMV1
 _RECENTRESULTV1.fields_by_name['location'].message_type = protobufs_dot_services_dot_organization_dot_containers__pb2._LOCATIONV1
 _RECENTRESULTV1.fields_by_name['post'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._POSTV1
+_RECENTRESULTV1.fields_by_name['collection'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONV1
 _RECENTRESULTV1.oneofs_by_name['result_object'].fields.append(
   _RECENTRESULTV1.fields_by_name['profile'])
 _RECENTRESULTV1.fields_by_name['profile'].containing_oneof = _RECENTRESULTV1.oneofs_by_name['result_object']
@@ -269,6 +288,9 @@ _RECENTRESULTV1.fields_by_name['location'].containing_oneof = _RECENTRESULTV1.on
 _RECENTRESULTV1.oneofs_by_name['result_object'].fields.append(
   _RECENTRESULTV1.fields_by_name['post'])
 _RECENTRESULTV1.fields_by_name['post'].containing_oneof = _RECENTRESULTV1.oneofs_by_name['result_object']
+_RECENTRESULTV1.oneofs_by_name['result_object'].fields.append(
+  _RECENTRESULTV1.fields_by_name['collection'])
+_RECENTRESULTV1.fields_by_name['collection'].containing_oneof = _RECENTRESULTV1.oneofs_by_name['result_object']
 DESCRIPTOR.message_types_by_name['TrackingDetailsV1'] = _TRACKINGDETAILSV1
 DESCRIPTOR.message_types_by_name['SearchResultV1'] = _SEARCHRESULTV1
 DESCRIPTOR.message_types_by_name['RecentResultV1'] = _RECENTRESULTV1

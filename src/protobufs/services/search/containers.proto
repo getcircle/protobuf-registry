@@ -18,6 +18,7 @@ message SearchResultV1 {
         services.organization.containers.TeamV1 team = 2;
         services.organization.containers.LocationV1 location = 3;
         services.post.containers.PostV1 post = 5;
+        services.post.containers.CollectionV1 collection = 9;
     }
     float score = 6;
     map<string, string> highlight = 7;
@@ -31,5 +32,6 @@ message RecentResultV1 {
         services.organization.containers.TeamV1 team = 2;
         services.organization.containers.LocationV1 location = 3;
         services.post.containers.PostV1 post = 5;
+        services.post.containers.CollectionV1 collection = 6;
     }
 }
