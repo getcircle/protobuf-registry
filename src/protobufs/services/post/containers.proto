@@ -70,7 +70,7 @@ message CollectionV1 {
     string name = 3;
     string created = 4;
     string changed = 5;
-    services.common.containers.PermissionsV1 permissions = 6;
+    services.common.containers.PermissionsV1 permissions = 6 [(services.common.containers.inflation) = true];
     repeated CollectionItemV1 items = 7;
     OwnerTypeV1 owner_type = 8;
     string owner_id = 9;
