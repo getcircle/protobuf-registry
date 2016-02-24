@@ -12,6 +12,7 @@ public func == (lhs: Services.Team.Actions.GetTeams.RequestV1, rhs: Services.Tea
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -51,6 +52,7 @@ public extension Services.Team.Actions.GetTeams {
     public private(set) var inflations:Services.Common.Containers.InflationsV1!
     public private(set) var hasFields:Bool = false
     public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var ids:Array<String> = Array<String>()
     required public init() {
          super.init()
     }
@@ -63,6 +65,11 @@ public extension Services.Team.Actions.GetTeams {
       }
       if hasFields {
         try output.writeMessage(2, value:fields)
+      }
+      if !ids.isEmpty {
+        for oneValueids in ids {
+          try output.writeString(3, value:oneValueids)
+        }
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -83,6 +90,12 @@ public extension Services.Team.Actions.GetTeams {
               serialize_size += varSizefields
           }
       }
+      var dataSizeIds:Int32 = 0
+      for oneValueids in ids {
+          dataSizeIds += oneValueids.computeStringSizeNoTag()
+      }
+      serialize_size += dataSizeIds
+      serialize_size += 1 * Int32(ids.count)
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -144,6 +157,11 @@ public extension Services.Team.Actions.GetTeams {
         try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      var idsElementIndex:Int = 0
+      for oneValueids in ids  {
+          output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
+          idsElementIndex++
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -158,6 +176,9 @@ public extension Services.Team.Actions.GetTeams {
                 if let hashValuefields = fields?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuefields
                 }
+            }
+            for oneValueids in ids {
+                hashCode = (hashCode &* 31) &+ oneValueids.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -289,6 +310,22 @@ public extension Services.Team.Actions.GetTeams {
         builderResult.fields = nil
         return self
       }
+      public var ids:Array<String> {
+           get {
+               return builderResult.ids
+           }
+           set (array) {
+               builderResult.ids = array
+           }
+      }
+      public func setIds(value:Array<String>) -> Services.Team.Actions.GetTeams.RequestV1.Builder {
+        self.ids = value
+        return self
+      }
+      public func clearIds() -> Services.Team.Actions.GetTeams.RequestV1.Builder {
+         builderResult.ids.removeAll(keepCapacity: false)
+         return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -318,6 +355,9 @@ public extension Services.Team.Actions.GetTeams {
         }
         if (other.hasFields) {
             try mergeFields(other.fields)
+        }
+        if !other.ids.isEmpty {
+            builderResult.ids += other.ids
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -349,6 +389,9 @@ public extension Services.Team.Actions.GetTeams {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             fields = subBuilder.buildPartial()
+
+          case 26 :
+            ids += [try input.readString()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
