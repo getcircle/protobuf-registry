@@ -13,6 +13,9 @@ public func == (lhs: Services.Post.Actions.GetCollection.RequestV1, rhs: Service
   fieldCheck = fieldCheck && (lhs.hasCollectionId == rhs.hasCollectionId) && (!lhs.hasCollectionId || lhs.collectionId == rhs.collectionId)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.hasIsDefault == rhs.hasIsDefault) && (!lhs.hasIsDefault || lhs.isDefault == rhs.isDefault)
+  fieldCheck = fieldCheck && (lhs.hasOwnerId == rhs.hasOwnerId) && (!lhs.hasOwnerId || lhs.ownerId == rhs.ownerId)
+  fieldCheck = fieldCheck && (lhs.hasOwnerType == rhs.hasOwnerType) && (!lhs.hasOwnerType || lhs.ownerType == rhs.ownerType)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -55,6 +58,14 @@ public extension Services.Post.Actions.GetCollection {
     public private(set) var inflations:Services.Common.Containers.InflationsV1!
     public private(set) var hasFields:Bool = false
     public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var hasIsDefault:Bool = false
+    public private(set) var isDefault:Bool = false
+
+    public private(set) var hasOwnerId:Bool = false
+    public private(set) var ownerId:String = ""
+
+    public private(set) var ownerType:Services.Post.Containers.CollectionV1.OwnerTypeV1 = Services.Post.Containers.CollectionV1.OwnerTypeV1.Profile
+    public private(set) var hasOwnerType:Bool = false
     required public init() {
          super.init()
     }
@@ -70,6 +81,15 @@ public extension Services.Post.Actions.GetCollection {
       }
       if hasFields {
         try output.writeMessage(3, value:fields)
+      }
+      if hasIsDefault {
+        try output.writeBool(4, value:isDefault)
+      }
+      if hasOwnerId {
+        try output.writeString(5, value:ownerId)
+      }
+      if hasOwnerType {
+        try output.writeEnum(6, value:ownerType.rawValue)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -92,6 +112,15 @@ public extension Services.Post.Actions.GetCollection {
           if let varSizefields = fields?.computeMessageSize(3) {
               serialize_size += varSizefields
           }
+      }
+      if hasIsDefault {
+        serialize_size += isDefault.computeBoolSize(4)
+      }
+      if hasOwnerId {
+        serialize_size += ownerId.computeStringSize(5)
+      }
+      if (hasOwnerType) {
+        serialize_size += ownerType.rawValue.computeEnumSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -157,6 +186,15 @@ public extension Services.Post.Actions.GetCollection {
         try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasIsDefault {
+        output += "\(indent) isDefault: \(isDefault) \n"
+      }
+      if hasOwnerId {
+        output += "\(indent) ownerId: \(ownerId) \n"
+      }
+      if (hasOwnerType) {
+        output += "\(indent) ownerType: \(ownerType.rawValue)\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -174,6 +212,15 @@ public extension Services.Post.Actions.GetCollection {
                 if let hashValuefields = fields?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuefields
                 }
+            }
+            if hasIsDefault {
+               hashCode = (hashCode &* 31) &+ isDefault.hashValue
+            }
+            if hasOwnerId {
+               hashCode = (hashCode &* 31) &+ ownerId.hashValue
+            }
+            if hasOwnerType {
+               hashCode = (hashCode &* 31) &+ Int(ownerType.rawValue)
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -328,6 +375,75 @@ public extension Services.Post.Actions.GetCollection {
         builderResult.fields = nil
         return self
       }
+      public var hasIsDefault:Bool {
+           get {
+                return builderResult.hasIsDefault
+           }
+      }
+      public var isDefault:Bool {
+           get {
+                return builderResult.isDefault
+           }
+           set (value) {
+               builderResult.hasIsDefault = true
+               builderResult.isDefault = value
+           }
+      }
+      public func setIsDefault(value:Bool) -> Services.Post.Actions.GetCollection.RequestV1.Builder {
+        self.isDefault = value
+        return self
+      }
+      public func clearIsDefault() -> Services.Post.Actions.GetCollection.RequestV1.Builder{
+           builderResult.hasIsDefault = false
+           builderResult.isDefault = false
+           return self
+      }
+      public var hasOwnerId:Bool {
+           get {
+                return builderResult.hasOwnerId
+           }
+      }
+      public var ownerId:String {
+           get {
+                return builderResult.ownerId
+           }
+           set (value) {
+               builderResult.hasOwnerId = true
+               builderResult.ownerId = value
+           }
+      }
+      public func setOwnerId(value:String) -> Services.Post.Actions.GetCollection.RequestV1.Builder {
+        self.ownerId = value
+        return self
+      }
+      public func clearOwnerId() -> Services.Post.Actions.GetCollection.RequestV1.Builder{
+           builderResult.hasOwnerId = false
+           builderResult.ownerId = ""
+           return self
+      }
+        public var hasOwnerType:Bool{
+            get {
+                return builderResult.hasOwnerType
+            }
+        }
+        public var ownerType:Services.Post.Containers.CollectionV1.OwnerTypeV1 {
+            get {
+                return builderResult.ownerType
+            }
+            set (value) {
+                builderResult.hasOwnerType = true
+                builderResult.ownerType = value
+            }
+        }
+        public func setOwnerType(value:Services.Post.Containers.CollectionV1.OwnerTypeV1) -> Services.Post.Actions.GetCollection.RequestV1.Builder {
+          self.ownerType = value
+          return self
+        }
+        public func clearOwnerType() -> Services.Post.Actions.GetCollection.RequestV1.Builder {
+           builderResult.hasOwnerType = false
+           builderResult.ownerType = .Profile
+           return self
+        }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -360,6 +476,15 @@ public extension Services.Post.Actions.GetCollection {
         }
         if (other.hasFields) {
             try mergeFields(other.fields)
+        }
+        if other.hasIsDefault {
+             isDefault = other.isDefault
+        }
+        if other.hasOwnerId {
+             ownerId = other.ownerId
+        }
+        if other.hasOwnerType {
+             ownerType = other.ownerType
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -394,6 +519,20 @@ public extension Services.Post.Actions.GetCollection {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             fields = subBuilder.buildPartial()
+
+          case 32 :
+            isDefault = try input.readBool()
+
+          case 42 :
+            ownerId = try input.readString()
+
+          case 48 :
+            let valueIntownerType = try input.readEnum()
+            if let enumsownerType = Services.Post.Containers.CollectionV1.OwnerTypeV1(rawValue:valueIntownerType){
+                 ownerType = enumsownerType
+            } else {
+                 try unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntownerType))
+            }
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

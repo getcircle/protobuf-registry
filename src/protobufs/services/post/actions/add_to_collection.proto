@@ -7,7 +7,9 @@ message RequestV1 {
     string collection_id = 1;
     services.post.containers.CollectionItemV1.SourceV1 source = 2;
     string source_id = 3;
-    bool default = 4;
+    bool is_default = 4;
+    string owner_id = 5;
+    services.post.containers.CollectionV1.OwnerTypeV1 owner_type = 6;
 }
 
 message ResponseV1 {

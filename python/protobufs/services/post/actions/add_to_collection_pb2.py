@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/add_to_collection.proto',
   package='services.post.actions.add_to_collection',
   syntax='proto3',
-  serialized_pb=b'\n7protobufs/services/post/actions/add_to_collection.proto\x12\'services.post.actions.add_to_collection\x1a(protobufs/services/post/containers.proto\"\x8b\x01\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x43\n\x06source\x18\x02 \x01(\x0e\x32\x33.services.post.containers.CollectionItemV1.SourceV1\x12\x11\n\tsource_id\x18\x03 \x01(\t\x12\x0f\n\x07\x64\x65\x66\x61ult\x18\x04 \x01(\x08\"F\n\nResponseV1\x12\x38\n\x04item\x18\x01 \x01(\x0b\x32*.services.post.containers.CollectionItemV1b\x06proto3'
+  serialized_pb=b'\n7protobufs/services/post/actions/add_to_collection.proto\x12\'services.post.actions.add_to_collection\x1a(protobufs/services/post/containers.proto\"\xe8\x01\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x43\n\x06source\x18\x02 \x01(\x0e\x32\x33.services.post.containers.CollectionItemV1.SourceV1\x12\x11\n\tsource_id\x18\x03 \x01(\t\x12\x12\n\nis_default\x18\x04 \x01(\x08\x12\x10\n\x08owner_id\x18\x05 \x01(\t\x12\x46\n\nowner_type\x18\x06 \x01(\x0e\x32\x32.services.post.containers.CollectionV1.OwnerTypeV1\"F\n\nResponseV1\x12\x38\n\x04item\x18\x01 \x01(\x0b\x32*.services.post.containers.CollectionItemV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -55,9 +55,23 @@ _REQUESTV1 = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='default', full_name='services.post.actions.add_to_collection.RequestV1.default', index=3,
+      name='is_default', full_name='services.post.actions.add_to_collection.RequestV1.is_default', index=3,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='owner_id', full_name='services.post.actions.add_to_collection.RequestV1.owner_id', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='owner_type', full_name='services.post.actions.add_to_collection.RequestV1.owner_type', index=5,
+      number=6, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -74,7 +88,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=143,
-  serialized_end=282,
+  serialized_end=375,
 )
 
 
@@ -104,11 +118,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=284,
-  serialized_end=354,
+  serialized_start=377,
+  serialized_end=447,
 )
 
 _REQUESTV1.fields_by_name['source'].enum_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONITEMV1_SOURCEV1
+_REQUESTV1.fields_by_name['owner_type'].enum_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONV1_OWNERTYPEV1
 _RESPONSEV1.fields_by_name['item'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONITEMV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
