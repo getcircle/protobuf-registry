@@ -11,14 +11,16 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+from protobufs.services.team import containers_pb2 as protobufs_dot_services_dot_team_dot_containers__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/team/actions/join_team.proto',
   package='services.team.actions.join_team',
   syntax='proto3',
-  serialized_pb=b'\n/protobufs/services/team/actions/join_team.proto\x12\x1fservices.team.actions.join_team\"\x1c\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\"\x0c\n\nResponseV1b\x06proto3'
-)
+  serialized_pb=b'\n/protobufs/services/team/actions/join_team.proto\x12\x1fservices.team.actions.join_team\x1a(protobufs/services/team/containers.proto\"\x1c\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\"D\n\nResponseV1\x12\x36\n\x06member\x18\x01 \x01(\x0b\x32&.services.team.containers.TeamMemberV1b\x06proto3'
+  ,
+  dependencies=[protobufs_dot_services_dot_team_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -50,8 +52,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=84,
-  serialized_end=112,
+  serialized_start=126,
+  serialized_end=154,
 )
 
 
@@ -62,6 +64,13 @@ _RESPONSEV1 = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='member', full_name='services.team.actions.join_team.ResponseV1.member', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -74,10 +83,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=114,
-  serialized_end=126,
+  serialized_start=156,
+  serialized_end=224,
 )
 
+_RESPONSEV1.fields_by_name['member'].message_type = protobufs_dot_services_dot_team_dot_containers__pb2._TEAMMEMBERV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 
