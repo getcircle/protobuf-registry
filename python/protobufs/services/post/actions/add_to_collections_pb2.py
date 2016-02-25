@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/add_to_collections.proto',
   package='services.post.actions.add_to_collections',
   syntax='proto3',
-  serialized_pb=b'\n8protobufs/services/post/actions/add_to_collections.proto\x12(services.post.actions.add_to_collections\x1a(protobufs/services/post/containers.proto\"\x82\x01\n\tRequestV1\x12\x38\n\x04item\x18\x01 \x01(\x0b\x32*.services.post.containers.CollectionItemV1\x12;\n\x0b\x63ollections\x18\x02 \x03(\x0b\x32&.services.post.containers.CollectionV1\"F\n\nResponseV1\x12\x38\n\x04item\x18\x01 \x01(\x0b\x32*.services.post.containers.CollectionItemV1b\x06proto3'
+  serialized_pb=b'\n8protobufs/services/post/actions/add_to_collections.proto\x12(services.post.actions.add_to_collections\x1a(protobufs/services/post/containers.proto\"\x82\x01\n\tRequestV1\x12\x38\n\x04item\x18\x01 \x01(\x0b\x32*.services.post.containers.CollectionItemV1\x12;\n\x0b\x63ollections\x18\x02 \x03(\x0b\x32&.services.post.containers.CollectionV1\"G\n\nResponseV1\x12\x39\n\x05items\x18\x01 \x03(\x0b\x32*.services.post.containers.CollectionItemV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -72,9 +72,9 @@ _RESPONSEV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='item', full_name='services.post.actions.add_to_collections.ResponseV1.item', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='items', full_name='services.post.actions.add_to_collections.ResponseV1.items', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -91,12 +91,12 @@ _RESPONSEV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=277,
-  serialized_end=347,
+  serialized_end=348,
 )
 
 _REQUESTV1.fields_by_name['item'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONITEMV1
 _REQUESTV1.fields_by_name['collections'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONV1
-_RESPONSEV1.fields_by_name['item'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONITEMV1
+_RESPONSEV1.fields_by_name['items'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONITEMV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 

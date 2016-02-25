@@ -9,5 +9,5 @@ message RequestV1 {
 }
 
 message ResponseV1 {
-    services.post.containers.CollectionItemV1 item = 1;
+    repeated services.post.containers.CollectionItemV1 items = 1;
 }

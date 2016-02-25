@@ -21,7 +21,7 @@ public func == (lhs: Services.Post.Actions.AddToCollections.ResponseV1, rhs: Ser
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasItem == rhs.hasItem) && (!lhs.hasItem || lhs.item == rhs.item)
+  fieldCheck = fieldCheck && (lhs.items == rhs.items)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -321,8 +321,7 @@ public extension Services.Post.Actions.AddToCollections {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasItem:Bool = false
-    public private(set) var item:Services.Post.Containers.CollectionItemV1!
+    public private(set) var items:Array<Services.Post.Containers.CollectionItemV1>  = Array<Services.Post.Containers.CollectionItemV1>()
     required public init() {
          super.init()
     }
@@ -330,8 +329,8 @@ public extension Services.Post.Actions.AddToCollections {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasItem {
-        try output.writeMessage(1, value:item)
+      for oneElementitems in items {
+          try output.writeMessage(1, value:oneElementitems)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -342,10 +341,8 @@ public extension Services.Post.Actions.AddToCollections {
       }
 
       serialize_size = 0
-      if hasItem {
-          if let varSizeitem = item?.computeMessageSize(1) {
-              serialize_size += varSizeitem
-          }
+      for oneElementitems in items {
+          serialize_size += oneElementitems.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -398,20 +395,20 @@ public extension Services.Post.Actions.AddToCollections {
       return try Services.Post.Actions.AddToCollections.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasItem {
-        output += "\(indent) item {\n"
-        try item?.writeDescriptionTo(&output, indent:"\(indent)  ")
-        output += "\(indent) }\n"
+      var itemsElementIndex:Int = 0
+      for oneElementitems in items {
+          output += "\(indent) items[\(itemsElementIndex)] {\n"
+          try oneElementitems.writeDescriptionTo(&output, indent:"\(indent)  ")
+          output += "\(indent)}\n"
+          itemsElementIndex++
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasItem {
-                if let hashValueitem = item?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValueitem
-                }
+            for oneElementitems in items {
+                hashCode = (hashCode &* 31) &+ oneElementitems.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -441,55 +438,20 @@ public extension Services.Post.Actions.AddToCollections {
       required override public init () {
          super.init()
       }
-      public var hasItem:Bool {
+      public var items:Array<Services.Post.Containers.CollectionItemV1> {
            get {
-               return builderResult.hasItem
-           }
-      }
-      public var item:Services.Post.Containers.CollectionItemV1! {
-           get {
-               if itemBuilder_ != nil {
-                  builderResult.item = itemBuilder_.getMessage()
-               }
-               return builderResult.item
+               return builderResult.items
            }
            set (value) {
-               builderResult.hasItem = true
-               builderResult.item = value
+               builderResult.items = value
            }
       }
-      private var itemBuilder_:Services.Post.Containers.CollectionItemV1.Builder! {
-           didSet {
-              builderResult.hasItem = true
-           }
-      }
-      public func getItemBuilder() -> Services.Post.Containers.CollectionItemV1.Builder {
-        if itemBuilder_ == nil {
-           itemBuilder_ = Services.Post.Containers.CollectionItemV1.Builder()
-           builderResult.item = itemBuilder_.getMessage()
-           if item != nil {
-              try! itemBuilder_.mergeFrom(item)
-           }
-        }
-        return itemBuilder_
-      }
-      public func setItem(value:Services.Post.Containers.CollectionItemV1!) -> Services.Post.Actions.AddToCollections.ResponseV1.Builder {
-        self.item = value
+      public func setItems(value:Array<Services.Post.Containers.CollectionItemV1>) -> Services.Post.Actions.AddToCollections.ResponseV1.Builder {
+        self.items = value
         return self
       }
-      public func mergeItem(value:Services.Post.Containers.CollectionItemV1) throws -> Services.Post.Actions.AddToCollections.ResponseV1.Builder {
-        if builderResult.hasItem {
-          builderResult.item = try Services.Post.Containers.CollectionItemV1.builderWithPrototype(builderResult.item).mergeFrom(value).buildPartial()
-        } else {
-          builderResult.item = value
-        }
-        builderResult.hasItem = true
-        return self
-      }
-      public func clearItem() -> Services.Post.Actions.AddToCollections.ResponseV1.Builder {
-        itemBuilder_ = nil
-        builderResult.hasItem = false
-        builderResult.item = nil
+      public func clearItems() -> Services.Post.Actions.AddToCollections.ResponseV1.Builder {
+        builderResult.items.removeAll(keepCapacity: false)
         return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -516,8 +478,8 @@ public extension Services.Post.Actions.AddToCollections {
         if other == Services.Post.Actions.AddToCollections.ResponseV1() {
          return self
         }
-        if (other.hasItem) {
-            try mergeItem(other.item)
+        if !other.items.isEmpty  {
+           builderResult.items += other.items
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -535,12 +497,9 @@ public extension Services.Post.Actions.AddToCollections {
             return self
 
           case 10 :
-            let subBuilder:Services.Post.Containers.CollectionItemV1.Builder = Services.Post.Containers.CollectionItemV1.Builder()
-            if hasItem {
-              try subBuilder.mergeFrom(item)
-            }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
-            item = subBuilder.buildPartial()
+            let subBuilder = Services.Post.Containers.CollectionItemV1.Builder()
+            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+            items += [subBuilder.buildPartial()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
