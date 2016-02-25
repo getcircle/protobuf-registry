@@ -458,14 +458,14 @@ public var ServicesRegistryResponsesPostdeleteCollection:ConcreateExtensionField
        return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPostdeleteCollectionStatic
    }
 }
-public var ServicesRegistryResponsesPostaddToCollection:ConcreateExtensionField {
+public var ServicesRegistryResponsesPostaddToCollections:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPostaddToCollectionStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPostaddToCollectionsStatic
    }
 }
-public var ServicesRegistryResponsesPostremoveFromCollection:ConcreateExtensionField {
+public var ServicesRegistryResponsesPostremoveFromCollections:ConcreateExtensionField {
    get {
-       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPostremoveFromCollectionStatic
+       return Services.Registry.Responses.ResponsesRoot.sharedInstance.ServicesRegistryResponsesPostremoveFromCollectionsStatic
    }
 }
 public var ServicesRegistryResponsesPostgetCollection:ConcreateExtensionField {
@@ -645,8 +645,8 @@ public extension Services.Registry.Responses {
     var ServicesRegistryResponsesPostcreateCollectionStatic:ConcreateExtensionField
     var ServicesRegistryResponsesPostupdateCollectionStatic:ConcreateExtensionField
     var ServicesRegistryResponsesPostdeleteCollectionStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesPostaddToCollectionStatic:ConcreateExtensionField
-    var ServicesRegistryResponsesPostremoveFromCollectionStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesPostaddToCollectionsStatic:ConcreateExtensionField
+    var ServicesRegistryResponsesPostremoveFromCollectionsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesPostgetCollectionStatic:ConcreateExtensionField
     var ServicesRegistryResponsesPostgetCollectionsStatic:ConcreateExtensionField
     var ServicesRegistryResponsesPostreorderCollectionStatic:ConcreateExtensionField
@@ -739,8 +739,8 @@ public extension Services.Registry.Responses {
       ServicesRegistryResponsesPostcreateCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1605, defaultValue:Services.Post.Actions.CreateCollection.ResponseV1(), messageOrGroupClass:Services.Post.Actions.CreateCollection.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesPostupdateCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1606, defaultValue:Services.Post.Actions.UpdateCollection.ResponseV1(), messageOrGroupClass:Services.Post.Actions.UpdateCollection.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesPostdeleteCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1607, defaultValue:Services.Post.Actions.DeleteCollection.ResponseV1(), messageOrGroupClass:Services.Post.Actions.DeleteCollection.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesPostaddToCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1608, defaultValue:Services.Post.Actions.AddToCollection.ResponseV1(), messageOrGroupClass:Services.Post.Actions.AddToCollection.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryResponsesPostremoveFromCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1609, defaultValue:Services.Post.Actions.RemoveFromCollection.ResponseV1(), messageOrGroupClass:Services.Post.Actions.RemoveFromCollection.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesPostaddToCollectionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1608, defaultValue:Services.Post.Actions.AddToCollections.ResponseV1(), messageOrGroupClass:Services.Post.Actions.AddToCollections.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryResponsesPostremoveFromCollectionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1609, defaultValue:Services.Post.Actions.RemoveFromCollections.ResponseV1(), messageOrGroupClass:Services.Post.Actions.RemoveFromCollections.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesPostgetCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1610, defaultValue:Services.Post.Actions.GetCollection.ResponseV1(), messageOrGroupClass:Services.Post.Actions.GetCollection.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesPostgetCollectionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1611, defaultValue:Services.Post.Actions.GetCollections.ResponseV1(), messageOrGroupClass:Services.Post.Actions.GetCollections.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryResponsesPostreorderCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionResultV1.self, fieldNumber: 1612, defaultValue:Services.Post.Actions.ReorderCollection.ResponseV1(), messageOrGroupClass:Services.Post.Actions.ReorderCollection.ResponseV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -833,8 +833,8 @@ public extension Services.Registry.Responses {
       Services.Post.Actions.CreateCollection.CreateCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.UpdateCollection.UpdateCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.DeleteCollection.DeleteCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Post.Actions.AddToCollection.AddToCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Post.Actions.RemoveFromCollection.RemoveFromCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.AddToCollections.AddToCollectionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.RemoveFromCollections.RemoveFromCollectionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.GetCollection.GetCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.GetCollections.GetCollectionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.ReorderCollection.ReorderCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -926,8 +926,8 @@ public extension Services.Registry.Responses {
       registry.addExtension(ServicesRegistryResponsesPostcreateCollectionStatic)
       registry.addExtension(ServicesRegistryResponsesPostupdateCollectionStatic)
       registry.addExtension(ServicesRegistryResponsesPostdeleteCollectionStatic)
-      registry.addExtension(ServicesRegistryResponsesPostaddToCollectionStatic)
-      registry.addExtension(ServicesRegistryResponsesPostremoveFromCollectionStatic)
+      registry.addExtension(ServicesRegistryResponsesPostaddToCollectionsStatic)
+      registry.addExtension(ServicesRegistryResponsesPostremoveFromCollectionsStatic)
       registry.addExtension(ServicesRegistryResponsesPostgetCollectionStatic)
       registry.addExtension(ServicesRegistryResponsesPostgetCollectionsStatic)
       registry.addExtension(ServicesRegistryResponsesPostreorderCollectionStatic)
@@ -2375,11 +2375,11 @@ public extension Services.Registry.Responses {
     public class func deleteCollection() -> ConcreateExtensionField {
          return ServicesRegistryResponsesPostdeleteCollection
     }
-    public class func addToCollection() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesPostaddToCollection
+    public class func addToCollections() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesPostaddToCollections
     }
-    public class func removeFromCollection() -> ConcreateExtensionField {
-         return ServicesRegistryResponsesPostremoveFromCollection
+    public class func removeFromCollections() -> ConcreateExtensionField {
+         return ServicesRegistryResponsesPostremoveFromCollections
     }
     public class func getCollection() -> ConcreateExtensionField {
          return ServicesRegistryResponsesPostgetCollection

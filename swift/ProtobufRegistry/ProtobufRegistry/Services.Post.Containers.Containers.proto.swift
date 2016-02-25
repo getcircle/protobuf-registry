@@ -44,6 +44,7 @@ public func == (lhs: Services.Post.Containers.CollectionItemV1, rhs: Services.Po
   fieldCheck = fieldCheck && (lhs.hasSourceId == rhs.hasSourceId) && (!lhs.hasSourceId || lhs.sourceId == rhs.sourceId)
   fieldCheck = fieldCheck && (lhs.hasPost == rhs.hasPost) && (!lhs.hasPost || lhs.post == rhs.post)
   fieldCheck = fieldCheck && (lhs.hasCollectionId == rhs.hasCollectionId) && (!lhs.hasCollectionId || lhs.collectionId == rhs.collectionId)
+  fieldCheck = fieldCheck && (lhs.hasCollection == rhs.hasCollection) && (!lhs.hasCollection || lhs.collection == rhs.collection)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1293,6 +1294,8 @@ public extension Services.Post.Containers {
     public private(set) var hasCollectionId:Bool = false
     public private(set) var collectionId:String = ""
 
+    public private(set) var hasCollection:Bool = false
+    public private(set) var collection:Services.Post.Containers.CollectionV1!
     required public init() {
          super.init()
     }
@@ -1320,6 +1323,9 @@ public extension Services.Post.Containers {
       }
       if hasCollectionId {
         try output.writeString(7, value:collectionId)
+      }
+      if hasCollection {
+        try output.writeMessage(8, value:collection)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1352,6 +1358,11 @@ public extension Services.Post.Containers {
       }
       if hasCollectionId {
         serialize_size += collectionId.computeStringSize(7)
+      }
+      if hasCollection {
+          if let varSizecollection = collection?.computeMessageSize(8) {
+              serialize_size += varSizecollection
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1427,6 +1438,11 @@ public extension Services.Post.Containers {
       if hasCollectionId {
         output += "\(indent) collectionId: \(collectionId) \n"
       }
+      if hasCollection {
+        output += "\(indent) collection {\n"
+        try collection?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1454,6 +1470,11 @@ public extension Services.Post.Containers {
             }
             if hasCollectionId {
                hashCode = (hashCode &* 31) &+ collectionId.hashValue
+            }
+            if hasCollection {
+                if let hashValuecollection = collection?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuecollection
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1672,6 +1693,57 @@ public extension Services.Post.Containers {
            builderResult.collectionId = ""
            return self
       }
+      public var hasCollection:Bool {
+           get {
+               return builderResult.hasCollection
+           }
+      }
+      public var collection:Services.Post.Containers.CollectionV1! {
+           get {
+               if collectionBuilder_ != nil {
+                  builderResult.collection = collectionBuilder_.getMessage()
+               }
+               return builderResult.collection
+           }
+           set (value) {
+               builderResult.hasCollection = true
+               builderResult.collection = value
+           }
+      }
+      private var collectionBuilder_:Services.Post.Containers.CollectionV1.Builder! {
+           didSet {
+              builderResult.hasCollection = true
+           }
+      }
+      public func getCollectionBuilder() -> Services.Post.Containers.CollectionV1.Builder {
+        if collectionBuilder_ == nil {
+           collectionBuilder_ = Services.Post.Containers.CollectionV1.Builder()
+           builderResult.collection = collectionBuilder_.getMessage()
+           if collection != nil {
+              try! collectionBuilder_.mergeFrom(collection)
+           }
+        }
+        return collectionBuilder_
+      }
+      public func setCollection(value:Services.Post.Containers.CollectionV1!) -> Services.Post.Containers.CollectionItemV1.Builder {
+        self.collection = value
+        return self
+      }
+      public func mergeCollection(value:Services.Post.Containers.CollectionV1) throws -> Services.Post.Containers.CollectionItemV1.Builder {
+        if builderResult.hasCollection {
+          builderResult.collection = try Services.Post.Containers.CollectionV1.builderWithPrototype(builderResult.collection).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.collection = value
+        }
+        builderResult.hasCollection = true
+        return self
+      }
+      public func clearCollection() -> Services.Post.Containers.CollectionItemV1.Builder {
+        collectionBuilder_ = nil
+        builderResult.hasCollection = false
+        builderResult.collection = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1716,6 +1788,9 @@ public extension Services.Post.Containers {
         }
         if other.hasCollectionId {
              collectionId = other.collectionId
+        }
+        if (other.hasCollection) {
+            try mergeCollection(other.collection)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1762,6 +1837,14 @@ public extension Services.Post.Containers {
 
           case 58 :
             collectionId = try input.readString()
+
+          case 66 :
+            let subBuilder:Services.Post.Containers.CollectionV1.Builder = Services.Post.Containers.CollectionV1.Builder()
+            if hasCollection {
+              try subBuilder.mergeFrom(collection)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            collection = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

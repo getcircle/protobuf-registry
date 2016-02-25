@@ -14,6 +14,7 @@ message RequestV1 {
     services.post.containers.CollectionItemV1.SourceV1 source = 7;
     string source_id = 8;
     repeated string ids = 9;
+    string profile_id = 10;
 }
 
 message ResponseV1 {

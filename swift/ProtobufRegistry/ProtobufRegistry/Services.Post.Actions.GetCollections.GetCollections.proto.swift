@@ -19,6 +19,7 @@ public func == (lhs: Services.Post.Actions.GetCollections.RequestV1, rhs: Servic
   fieldCheck = fieldCheck && (lhs.hasSource == rhs.hasSource) && (!lhs.hasSource || lhs.source == rhs.source)
   fieldCheck = fieldCheck && (lhs.hasSourceId == rhs.hasSourceId) && (!lhs.hasSourceId || lhs.sourceId == rhs.sourceId)
   fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
+  fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -75,6 +76,9 @@ public extension Services.Post.Actions.GetCollections {
     public private(set) var sourceId:String = ""
 
     public private(set) var ids:Array<String> = Array<String>()
+    public private(set) var hasProfileId:Bool = false
+    public private(set) var profileId:String = ""
+
     required public init() {
          super.init()
     }
@@ -110,6 +114,9 @@ public extension Services.Post.Actions.GetCollections {
         for oneValueids in ids {
           try output.writeString(9, value:oneValueids)
         }
+      }
+      if hasProfileId {
+        try output.writeString(10, value:profileId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -154,6 +161,9 @@ public extension Services.Post.Actions.GetCollections {
       }
       serialize_size += dataSizeIds
       serialize_size += 1 * Int32(ids.count)
+      if hasProfileId {
+        serialize_size += profileId.computeStringSize(10)
+      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -238,6 +248,9 @@ public extension Services.Post.Actions.GetCollections {
           output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
           idsElementIndex++
       }
+      if hasProfileId {
+        output += "\(indent) profileId: \(profileId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -273,6 +286,9 @@ public extension Services.Post.Actions.GetCollections {
             }
             for oneValueids in ids {
                 hashCode = (hashCode &* 31) &+ oneValueids.hashValue
+            }
+            if hasProfileId {
+               hashCode = (hashCode &* 31) &+ profileId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -558,6 +574,29 @@ public extension Services.Post.Actions.GetCollections {
          builderResult.ids.removeAll(keepCapacity: false)
          return self
       }
+      public var hasProfileId:Bool {
+           get {
+                return builderResult.hasProfileId
+           }
+      }
+      public var profileId:String {
+           get {
+                return builderResult.profileId
+           }
+           set (value) {
+               builderResult.hasProfileId = true
+               builderResult.profileId = value
+           }
+      }
+      public func setProfileId(value:String) -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+        self.profileId = value
+        return self
+      }
+      public func clearProfileId() -> Services.Post.Actions.GetCollections.RequestV1.Builder{
+           builderResult.hasProfileId = false
+           builderResult.profileId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -608,6 +647,9 @@ public extension Services.Post.Actions.GetCollections {
         }
         if !other.ids.isEmpty {
             builderResult.ids += other.ids
+        }
+        if other.hasProfileId {
+             profileId = other.profileId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -670,6 +712,9 @@ public extension Services.Post.Actions.GetCollections {
 
           case 74 :
             ids += [try input.readString()]
+
+          case 82 :
+            profileId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

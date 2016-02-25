@@ -55,6 +55,7 @@ message CollectionItemV1 {
     }
 
     string collection_id = 7;
+    CollectionV1 collection = 8 [(services.common.containers.inflation) = true];
 
 }
 
