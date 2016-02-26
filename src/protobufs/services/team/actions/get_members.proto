@@ -10,6 +10,7 @@ message RequestV1 {
     string profile_id = 3;
     services.common.containers.InflationsV1 inflations = 4;
     services.common.containers.FieldsV1 fields = 5;
+    bool has_role = 6;
 }
 
 message ResponseV1 {
