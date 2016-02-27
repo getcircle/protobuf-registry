@@ -80,4 +80,5 @@ message CollectionV1 {
     services.common.containers.FieldsV1 fields = 12;
     string by_profile_id = 13;
     uint32 total_items = 14 [(services.common.containers.inflation) = true];
+    string display_name = 15 [(services.common.containers.inflation) = true];
 }
