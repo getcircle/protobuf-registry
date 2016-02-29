@@ -22,6 +22,7 @@ public func == (lhs: Services.Team.Actions.CreateTeam.ResponseV1, rhs: Services.
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
+  fieldCheck = fieldCheck && (lhs.hasCollection == rhs.hasCollection) && (!lhs.hasCollection || lhs.collection == rhs.collection)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -39,6 +40,7 @@ public extension Services.Team.Actions.CreateTeam {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Services.Post.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
@@ -323,6 +325,8 @@ public extension Services.Team.Actions.CreateTeam {
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
     public private(set) var hasTeam:Bool = false
     public private(set) var team:Services.Team.Containers.TeamV1!
+    public private(set) var hasCollection:Bool = false
+    public private(set) var collection:Services.Post.Containers.CollectionV1!
     required public init() {
          super.init()
     }
@@ -332,6 +336,9 @@ public extension Services.Team.Actions.CreateTeam {
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasTeam {
         try output.writeMessage(1, value:team)
+      }
+      if hasCollection {
+        try output.writeMessage(2, value:collection)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -345,6 +352,11 @@ public extension Services.Team.Actions.CreateTeam {
       if hasTeam {
           if let varSizeteam = team?.computeMessageSize(1) {
               serialize_size += varSizeteam
+          }
+      }
+      if hasCollection {
+          if let varSizecollection = collection?.computeMessageSize(2) {
+              serialize_size += varSizecollection
           }
       }
       serialize_size += unknownFields.serializedSize()
@@ -403,6 +415,11 @@ public extension Services.Team.Actions.CreateTeam {
         try team?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasCollection {
+        output += "\(indent) collection {\n"
+        try collection?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -411,6 +428,11 @@ public extension Services.Team.Actions.CreateTeam {
             if hasTeam {
                 if let hashValueteam = team?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueteam
+                }
+            }
+            if hasCollection {
+                if let hashValuecollection = collection?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuecollection
                 }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -492,6 +514,57 @@ public extension Services.Team.Actions.CreateTeam {
         builderResult.team = nil
         return self
       }
+      public var hasCollection:Bool {
+           get {
+               return builderResult.hasCollection
+           }
+      }
+      public var collection:Services.Post.Containers.CollectionV1! {
+           get {
+               if collectionBuilder_ != nil {
+                  builderResult.collection = collectionBuilder_.getMessage()
+               }
+               return builderResult.collection
+           }
+           set (value) {
+               builderResult.hasCollection = true
+               builderResult.collection = value
+           }
+      }
+      private var collectionBuilder_:Services.Post.Containers.CollectionV1.Builder! {
+           didSet {
+              builderResult.hasCollection = true
+           }
+      }
+      public func getCollectionBuilder() -> Services.Post.Containers.CollectionV1.Builder {
+        if collectionBuilder_ == nil {
+           collectionBuilder_ = Services.Post.Containers.CollectionV1.Builder()
+           builderResult.collection = collectionBuilder_.getMessage()
+           if collection != nil {
+              try! collectionBuilder_.mergeFrom(collection)
+           }
+        }
+        return collectionBuilder_
+      }
+      public func setCollection(value:Services.Post.Containers.CollectionV1!) -> Services.Team.Actions.CreateTeam.ResponseV1.Builder {
+        self.collection = value
+        return self
+      }
+      public func mergeCollection(value:Services.Post.Containers.CollectionV1) throws -> Services.Team.Actions.CreateTeam.ResponseV1.Builder {
+        if builderResult.hasCollection {
+          builderResult.collection = try Services.Post.Containers.CollectionV1.builderWithPrototype(builderResult.collection).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.collection = value
+        }
+        builderResult.hasCollection = true
+        return self
+      }
+      public func clearCollection() -> Services.Team.Actions.CreateTeam.ResponseV1.Builder {
+        collectionBuilder_ = nil
+        builderResult.hasCollection = false
+        builderResult.collection = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -519,6 +592,9 @@ public extension Services.Team.Actions.CreateTeam {
         if (other.hasTeam) {
             try mergeTeam(other.team)
         }
+        if (other.hasCollection) {
+            try mergeCollection(other.collection)
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -541,6 +617,14 @@ public extension Services.Team.Actions.CreateTeam {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             team = subBuilder.buildPartial()
+
+          case 18 :
+            let subBuilder:Services.Post.Containers.CollectionV1.Builder = Services.Post.Containers.CollectionV1.Builder()
+            if hasCollection {
+              try subBuilder.mergeFrom(collection)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            collection = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
