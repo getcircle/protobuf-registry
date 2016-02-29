@@ -72,7 +72,7 @@ message CollectionV1 {
     string created = 4;
     string changed = 5;
     services.common.containers.PermissionsV1 permissions = 6 [(services.common.containers.inflation) = true];
-    repeated CollectionItemV1 items = 7;
+    repeated CollectionItemV1 items = 7 [(services.common.containers.inflation) = true];
     OwnerTypeV1 owner_type = 8;
     string owner_id = 9;
     bool is_default = 10;
