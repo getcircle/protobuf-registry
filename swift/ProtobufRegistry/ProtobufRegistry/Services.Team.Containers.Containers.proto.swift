@@ -32,6 +32,7 @@ public func == (lhs: Services.Team.Containers.TeamV1, rhs: Services.Team.Contain
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = fieldCheck && (lhs.contactMethods == rhs.contactMethods)
   fieldCheck = fieldCheck && (lhs.hasTotalMembers == rhs.hasTotalMembers) && (!lhs.hasTotalMembers || lhs.totalMembers == rhs.totalMembers)
+  fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -48,6 +49,7 @@ public func == (lhs: Services.Team.Containers.TeamMemberV1, rhs: Services.Team.C
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
+  fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -439,6 +441,9 @@ public extension Services.Team.Containers {
     public private(set) var hasTotalMembers:Bool = false
     public private(set) var totalMembers:UInt32 = UInt32(0)
 
+    public private(set) var hasByProfileId:Bool = false
+    public private(set) var byProfileId:String = ""
+
     required public init() {
          super.init()
     }
@@ -472,6 +477,9 @@ public extension Services.Team.Containers {
       }
       if hasTotalMembers {
         try output.writeUInt32(9, value:totalMembers)
+      }
+      if hasByProfileId {
+        try output.writeString(10, value:byProfileId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -516,6 +524,9 @@ public extension Services.Team.Containers {
       }
       if hasTotalMembers {
         serialize_size += totalMembers.computeUInt32Size(9)
+      }
+      if hasByProfileId {
+        serialize_size += byProfileId.computeStringSize(10)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -607,6 +618,9 @@ public extension Services.Team.Containers {
       if hasTotalMembers {
         output += "\(indent) totalMembers: \(totalMembers) \n"
       }
+      if hasByProfileId {
+        output += "\(indent) byProfileId: \(byProfileId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -646,6 +660,9 @@ public extension Services.Team.Containers {
             }
             if hasTotalMembers {
                hashCode = (hashCode &* 31) &+ totalMembers.hashValue
+            }
+            if hasByProfileId {
+               hashCode = (hashCode &* 31) &+ byProfileId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -987,6 +1004,29 @@ public extension Services.Team.Containers {
            builderResult.totalMembers = UInt32(0)
            return self
       }
+      public var hasByProfileId:Bool {
+           get {
+                return builderResult.hasByProfileId
+           }
+      }
+      public var byProfileId:String {
+           get {
+                return builderResult.byProfileId
+           }
+           set (value) {
+               builderResult.hasByProfileId = true
+               builderResult.byProfileId = value
+           }
+      }
+      public func setByProfileId(value:String) -> Services.Team.Containers.TeamV1.Builder {
+        self.byProfileId = value
+        return self
+      }
+      public func clearByProfileId() -> Services.Team.Containers.TeamV1.Builder{
+           builderResult.hasByProfileId = false
+           builderResult.byProfileId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1037,6 +1077,9 @@ public extension Services.Team.Containers {
         }
         if other.hasTotalMembers {
              totalMembers = other.totalMembers
+        }
+        if other.hasByProfileId {
+             byProfileId = other.byProfileId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1102,6 +1145,9 @@ public extension Services.Team.Containers {
           case 72 :
             totalMembers = try input.readUInt32()
 
+          case 82 :
+            byProfileId = try input.readString()
+
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
                unknownFields = try unknownFieldsBuilder.build()
@@ -1143,6 +1189,9 @@ public extension Services.Team.Containers {
     public private(set) var fields:Services.Common.Containers.FieldsV1!
     public private(set) var hasTeam:Bool = false
     public private(set) var team:Services.Team.Containers.TeamV1!
+    public private(set) var hasTeamId:Bool = false
+    public private(set) var teamId:String = ""
+
     required public init() {
          super.init()
     }
@@ -1170,6 +1219,9 @@ public extension Services.Team.Containers {
       }
       if hasTeam {
         try output.writeMessage(7, value:team)
+      }
+      if hasTeamId {
+        try output.writeString(8, value:teamId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1208,6 +1260,9 @@ public extension Services.Team.Containers {
           if let varSizeteam = team?.computeMessageSize(7) {
               serialize_size += varSizeteam
           }
+      }
+      if hasTeamId {
+        serialize_size += teamId.computeStringSize(8)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1289,6 +1344,9 @@ public extension Services.Team.Containers {
         try team?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasTeamId {
+        output += "\(indent) teamId: \(teamId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1322,6 +1380,9 @@ public extension Services.Team.Containers {
                 if let hashValueteam = team?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueteam
                 }
+            }
+            if hasTeamId {
+               hashCode = (hashCode &* 31) &+ teamId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1624,6 +1685,29 @@ public extension Services.Team.Containers {
         builderResult.team = nil
         return self
       }
+      public var hasTeamId:Bool {
+           get {
+                return builderResult.hasTeamId
+           }
+      }
+      public var teamId:String {
+           get {
+                return builderResult.teamId
+           }
+           set (value) {
+               builderResult.hasTeamId = true
+               builderResult.teamId = value
+           }
+      }
+      public func setTeamId(value:String) -> Services.Team.Containers.TeamMemberV1.Builder {
+        self.teamId = value
+        return self
+      }
+      public func clearTeamId() -> Services.Team.Containers.TeamMemberV1.Builder{
+           builderResult.hasTeamId = false
+           builderResult.teamId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1668,6 +1752,9 @@ public extension Services.Team.Containers {
         }
         if (other.hasTeam) {
             try mergeTeam(other.team)
+        }
+        if other.hasTeamId {
+             teamId = other.teamId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1729,6 +1816,9 @@ public extension Services.Team.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             team = subBuilder.buildPartial()
+
+          case 66 :
+            teamId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

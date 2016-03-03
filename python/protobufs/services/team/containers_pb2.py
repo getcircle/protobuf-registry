@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/team/containers.proto',
   package='services.team.containers',
   syntax='proto3',
-  serialized_pb=b'\n(protobufs/services/team/containers.proto\x12\x18services.team.containers\x1a*protobufs/services/common/containers.proto\x1a\x36protobufs/services/common/containers/description.proto\x1a+protobufs/services/profile/containers.proto\"\x9b\x01\n\x0f\x43ontactMethodV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05label\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\x12>\n\x04type\x18\x04 \x01(\x0e\x32\x30.services.team.containers.ContactMethodV1.TypeV1\"\x1e\n\x06TypeV1\x12\t\n\x05\x45MAIL\x10\x00\x12\t\n\x05SLACK\x10\x01\"\x9c\x03\n\x06TeamV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12J\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12>\n\x0bpermissions\x18\x04 \x01(\x0b\x32).services.common.containers.PermissionsV1\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12<\n\ninflations\x18\x06 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x07 \x01(\x0b\x32$.services.common.containers.FieldsV1\x12\x42\n\x0f\x63ontact_methods\x18\x08 \x03(\x0b\x32).services.team.containers.ContactMethodV1\x12\x1b\n\rtotal_members\x18\t \x01(\rB\x04\x80\xb5\x18\x01\"\xfb\x02\n\x0cTeamMemberV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12;\n\x04role\x18\x03 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\x12=\n\x07profile\x18\x04 \x01(\x0b\x32&.services.profile.containers.ProfileV1B\x04\x80\xb5\x18\x01\x12<\n\ninflations\x18\x05 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x06 \x01(\x0b\x32$.services.common.containers.FieldsV1\x12\x34\n\x04team\x18\x07 \x01(\x0b\x32 .services.team.containers.TeamV1B\x04\x80\xb5\x18\x01\"%\n\x06RoleV1\x12\n\n\x06MEMBER\x10\x00\x12\x0f\n\x0b\x43OORDINATOR\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n(protobufs/services/team/containers.proto\x12\x18services.team.containers\x1a*protobufs/services/common/containers.proto\x1a\x36protobufs/services/common/containers/description.proto\x1a+protobufs/services/profile/containers.proto\"\x9b\x01\n\x0f\x43ontactMethodV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05label\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\x12>\n\x04type\x18\x04 \x01(\x0e\x32\x30.services.team.containers.ContactMethodV1.TypeV1\"\x1e\n\x06TypeV1\x12\t\n\x05\x45MAIL\x10\x00\x12\t\n\x05SLACK\x10\x01\"\xbf\x03\n\x06TeamV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12J\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32\x35.services.common.containers.description.DescriptionV1\x12\x44\n\x0bpermissions\x18\x04 \x01(\x0b\x32).services.common.containers.PermissionsV1B\x04\x80\xb5\x18\x01\x12\x17\n\x0forganization_id\x18\x05 \x01(\t\x12<\n\ninflations\x18\x06 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x07 \x01(\x0b\x32$.services.common.containers.FieldsV1\x12H\n\x0f\x63ontact_methods\x18\x08 \x03(\x0b\x32).services.team.containers.ContactMethodV1B\x04\x80\xb5\x18\x01\x12\x1b\n\rtotal_members\x18\t \x01(\rB\x04\x80\xb5\x18\x01\x12\x15\n\rby_profile_id\x18\n \x01(\t\"\x8c\x03\n\x0cTeamMemberV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x12\n\nprofile_id\x18\x02 \x01(\t\x12;\n\x04role\x18\x03 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\x12=\n\x07profile\x18\x04 \x01(\x0b\x32&.services.profile.containers.ProfileV1B\x04\x80\xb5\x18\x01\x12<\n\ninflations\x18\x05 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x06 \x01(\x0b\x32$.services.common.containers.FieldsV1\x12\x34\n\x04team\x18\x07 \x01(\x0b\x32 .services.team.containers.TeamV1B\x04\x80\xb5\x18\x01\x12\x0f\n\x07team_id\x18\x08 \x01(\t\"%\n\x06RoleV1\x12\n\n\x06MEMBER\x10\x00\x12\x0f\n\x0b\x43OORDINATOR\x10\x01\x62\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_common_dot_containers_dot_description__pb2.DESCRIPTOR,protobufs_dot_services_dot_profile_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -66,8 +66,8 @@ _TEAMMEMBERV1_ROLEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1131,
-  serialized_end=1168,
+  serialized_start=1183,
+  serialized_end=1220,
 )
 _sym_db.RegisterEnumDescriptor(_TEAMMEMBERV1_ROLEV1)
 
@@ -159,7 +159,7 @@ _TEAMV1 = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')),
     _descriptor.FieldDescriptor(
       name='organization_id', full_name='services.team.containers.TeamV1.organization_id', index=4,
       number=5, type=9, cpp_type=9, label=1,
@@ -187,7 +187,7 @@ _TEAMV1 = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')),
     _descriptor.FieldDescriptor(
       name='total_members', full_name='services.team.containers.TeamV1.total_members', index=8,
       number=9, type=13, cpp_type=3, label=1,
@@ -195,6 +195,13 @@ _TEAMV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')),
+    _descriptor.FieldDescriptor(
+      name='by_profile_id', full_name='services.team.containers.TeamV1.by_profile_id', index=9,
+      number=10, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -208,7 +215,7 @@ _TEAMV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=374,
-  serialized_end=786,
+  serialized_end=821,
 )
 
 
@@ -268,6 +275,13 @@ _TEAMMEMBERV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')),
+    _descriptor.FieldDescriptor(
+      name='team_id', full_name='services.team.containers.TeamMemberV1.team_id', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -281,8 +295,8 @@ _TEAMMEMBERV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=789,
-  serialized_end=1168,
+  serialized_start=824,
+  serialized_end=1220,
 )
 
 _CONTACTMETHODV1.fields_by_name['type'].enum_type = _CONTACTMETHODV1_TYPEV1
@@ -324,6 +338,10 @@ TeamMemberV1 = _reflection.GeneratedProtocolMessageType('TeamMemberV1', (_messag
 _sym_db.RegisterMessage(TeamMemberV1)
 
 
+_TEAMV1.fields_by_name['permissions'].has_options = True
+_TEAMV1.fields_by_name['permissions']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')
+_TEAMV1.fields_by_name['contact_methods'].has_options = True
+_TEAMV1.fields_by_name['contact_methods']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')
 _TEAMV1.fields_by_name['total_members'].has_options = True
 _TEAMV1.fields_by_name['total_members']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), b'\200\265\030\001')
 _TEAMMEMBERV1.fields_by_name['profile'].has_options = True

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/team/actions/get_members.proto',
   package='services.team.actions.get_members',
   syntax='proto3',
-  serialized_pb=b'\n1protobufs/services/team/actions/get_members.proto\x12!services.team.actions.get_members\x1a*protobufs/services/common/containers.proto\x1a(protobufs/services/team/containers.proto\"\xe1\x01\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12;\n\x04role\x18\x02 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\x12\x12\n\nprofile_id\x18\x03 \x01(\t\x12<\n\ninflations\x18\x04 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x05 \x01(\x0b\x32$.services.common.containers.FieldsV1\"E\n\nResponseV1\x12\x37\n\x07members\x18\x01 \x03(\x0b\x32&.services.team.containers.TeamMemberV1b\x06proto3'
+  serialized_pb=b'\n1protobufs/services/team/actions/get_members.proto\x12!services.team.actions.get_members\x1a*protobufs/services/common/containers.proto\x1a(protobufs/services/team/containers.proto\"\xf3\x01\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\x12;\n\x04role\x18\x02 \x01(\x0e\x32-.services.team.containers.TeamMemberV1.RoleV1\x12\x12\n\nprofile_id\x18\x03 \x01(\t\x12<\n\ninflations\x18\x04 \x01(\x0b\x32(.services.common.containers.InflationsV1\x12\x34\n\x06\x66ields\x18\x05 \x01(\x0b\x32$.services.common.containers.FieldsV1\x12\x10\n\x08has_role\x18\x06 \x01(\x08\"E\n\nResponseV1\x12\x37\n\x07members\x18\x01 \x03(\x0b\x32&.services.team.containers.TeamMemberV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,protobufs_dot_services_dot_team_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -69,6 +69,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='has_role', full_name='services.team.actions.get_members.RequestV1.has_role', index=5,
+      number=6, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -82,7 +89,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=175,
-  serialized_end=400,
+  serialized_end=418,
 )
 
 
@@ -112,8 +119,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=402,
-  serialized_end=471,
+  serialized_start=420,
+  serialized_end=489,
 )
 
 _REQUESTV1.fields_by_name['role'].enum_type = protobufs_dot_services_dot_team_dot_containers__pb2._TEAMMEMBERV1_ROLEV1

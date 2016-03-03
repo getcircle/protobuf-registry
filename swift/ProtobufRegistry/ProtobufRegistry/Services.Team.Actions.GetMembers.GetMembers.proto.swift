@@ -15,6 +15,7 @@ public func == (lhs: Services.Team.Actions.GetMembers.RequestV1, rhs: Services.T
   fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
   fieldCheck = fieldCheck && (lhs.hasInflations == rhs.hasInflations) && (!lhs.hasInflations || lhs.inflations == rhs.inflations)
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
+  fieldCheck = fieldCheck && (lhs.hasHasRole == rhs.hasHasRole) && (!lhs.hasHasRole || lhs.hasRole == rhs.hasRole)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -62,6 +63,9 @@ public extension Services.Team.Actions.GetMembers {
     public private(set) var inflations:Services.Common.Containers.InflationsV1!
     public private(set) var hasFields:Bool = false
     public private(set) var fields:Services.Common.Containers.FieldsV1!
+    public private(set) var hasHasRole:Bool = false
+    public private(set) var hasRole:Bool = false
+
     required public init() {
          super.init()
     }
@@ -83,6 +87,9 @@ public extension Services.Team.Actions.GetMembers {
       }
       if hasFields {
         try output.writeMessage(5, value:fields)
+      }
+      if hasHasRole {
+        try output.writeBool(6, value:hasRole)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -111,6 +118,9 @@ public extension Services.Team.Actions.GetMembers {
           if let varSizefields = fields?.computeMessageSize(5) {
               serialize_size += varSizefields
           }
+      }
+      if hasHasRole {
+        serialize_size += hasRole.computeBoolSize(6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -182,6 +192,9 @@ public extension Services.Team.Actions.GetMembers {
         try fields?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasHasRole {
+        output += "\(indent) hasRole: \(hasRole) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -205,6 +218,9 @@ public extension Services.Team.Actions.GetMembers {
                 if let hashValuefields = fields?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuefields
                 }
+            }
+            if hasHasRole {
+               hashCode = (hashCode &* 31) &+ hasRole.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -405,6 +421,29 @@ public extension Services.Team.Actions.GetMembers {
         builderResult.fields = nil
         return self
       }
+      public var hasHasRole:Bool {
+           get {
+                return builderResult.hasHasRole
+           }
+      }
+      public var hasRole:Bool {
+           get {
+                return builderResult.hasRole
+           }
+           set (value) {
+               builderResult.hasHasRole = true
+               builderResult.hasRole = value
+           }
+      }
+      public func setHasRole(value:Bool) -> Services.Team.Actions.GetMembers.RequestV1.Builder {
+        self.hasRole = value
+        return self
+      }
+      public func clearHasRole() -> Services.Team.Actions.GetMembers.RequestV1.Builder{
+           builderResult.hasHasRole = false
+           builderResult.hasRole = false
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -443,6 +482,9 @@ public extension Services.Team.Actions.GetMembers {
         }
         if (other.hasFields) {
             try mergeFields(other.fields)
+        }
+        if other.hasHasRole {
+             hasRole = other.hasRole
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -488,6 +530,9 @@ public extension Services.Team.Actions.GetMembers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             fields = subBuilder.buildPartial()
+
+          case 48 :
+            hasRole = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

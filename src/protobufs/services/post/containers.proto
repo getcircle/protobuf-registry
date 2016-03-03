@@ -4,6 +4,7 @@ package services.post.containers;
 import "protobufs/services/common/containers.proto";
 import "protobufs/services/file/containers.proto";
 import "protobufs/services/profile/containers.proto";
+import "protobufs/services/team/containers.proto";
 
 enum PostStateV1 {
     DRAFT = 0;
@@ -55,6 +56,7 @@ message CollectionItemV1 {
     }
 
     string collection_id = 7;
+    CollectionV1 collection = 8 [(services.common.containers.inflation) = true];
 
 }
 
@@ -70,8 +72,8 @@ message CollectionV1 {
     string name = 3;
     string created = 4;
     string changed = 5;
-    services.common.containers.PermissionsV1 permissions = 6;
-    repeated CollectionItemV1 items = 7;
+    services.common.containers.PermissionsV1 permissions = 6 [(services.common.containers.inflation) = true];
+    repeated CollectionItemV1 items = 7 [(services.common.containers.inflation) = true];
     OwnerTypeV1 owner_type = 8;
     string owner_id = 9;
     bool is_default = 10;
@@ -79,4 +81,10 @@ message CollectionV1 {
     services.common.containers.FieldsV1 fields = 12;
     string by_profile_id = 13;
     uint32 total_items = 14 [(services.common.containers.inflation) = true];
+    string display_name = 15 [(services.common.containers.inflation) = true];
+
+    oneof owner {
+        services.profile.containers.ProfileV1 profile = 16 [(services.common.containers.inflation) = true];
+        services.team.containers.TeamV1 team = 17 [(services.common.containers.inflation) = true];
+    }
 }

@@ -83,8 +83,8 @@ import "protobufs/services/post/actions/delete_post.proto";
 import "protobufs/services/post/actions/create_collection.proto";
 import "protobufs/services/post/actions/update_collection.proto";
 import "protobufs/services/post/actions/delete_collection.proto";
-import "protobufs/services/post/actions/add_to_collection.proto";
-import "protobufs/services/post/actions/remove_from_collection.proto";
+import "protobufs/services/post/actions/add_to_collections.proto";
+import "protobufs/services/post/actions/remove_from_collections.proto";
 import "protobufs/services/post/actions/get_collection.proto";
 import "protobufs/services/post/actions/get_collections.proto";
 import "protobufs/services/post/actions/reorder_collection.proto";
@@ -108,6 +108,7 @@ import "protobufs/services/team/actions/leave_team.proto";
 import "protobufs/services/team/actions/remove_members.proto";
 import "protobufs/services/team/actions/update_members.proto";
 import "protobufs/services/team/actions/update_team.proto";
+import "protobufs/services/team/actions/get_teams.proto";
 
 message User {
     reserved 101, 104, 105, 106, 107, 117;
@@ -230,8 +231,8 @@ message Post {
         optional services.post.actions.create_collection.ResponseV1 create_collection = 1605;
         optional services.post.actions.update_collection.ResponseV1 update_collection = 1606;
         optional services.post.actions.delete_collection.ResponseV1 delete_collection = 1607;
-        optional services.post.actions.add_to_collection.ResponseV1 add_to_collection = 1608;
-        optional services.post.actions.remove_from_collection.ResponseV1 remove_from_collection = 1609;
+        optional services.post.actions.add_to_collections.ResponseV1 add_to_collections = 1608;
+        optional services.post.actions.remove_from_collections.ResponseV1 remove_from_collections = 1609;
         optional services.post.actions.get_collection.ResponseV1 get_collection = 1610;
         optional services.post.actions.get_collections.ResponseV1 get_collections = 1611;
         optional services.post.actions.reorder_collection.ResponseV1 reorder_collection = 1612;
@@ -268,5 +269,6 @@ message Team {
         optional services.team.actions.remove_members.ResponseV1 remove_members = 1906;
         optional services.team.actions.update_members.ResponseV1 update_members = 1907;
         optional services.team.actions.update_team.ResponseV1 update_team = 1908;
+        optional services.team.actions.get_teams.ResponseV1 get_teams = 1909;
     }
 }

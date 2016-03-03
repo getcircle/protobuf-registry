@@ -1,0 +1,11 @@
+syntax = "proto3";
+package services.post.actions.remove_from_collections;
+
+import "protobufs/services/post/containers.proto";
+
+message RequestV1 {
+    services.post.containers.CollectionItemV1 item = 1;
+    repeated services.post.containers.CollectionV1 collections = 2;
+}
+
+message ResponseV1 {}

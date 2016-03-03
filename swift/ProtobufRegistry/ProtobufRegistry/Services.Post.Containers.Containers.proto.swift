@@ -44,6 +44,7 @@ public func == (lhs: Services.Post.Containers.CollectionItemV1, rhs: Services.Po
   fieldCheck = fieldCheck && (lhs.hasSourceId == rhs.hasSourceId) && (!lhs.hasSourceId || lhs.sourceId == rhs.sourceId)
   fieldCheck = fieldCheck && (lhs.hasPost == rhs.hasPost) && (!lhs.hasPost || lhs.post == rhs.post)
   fieldCheck = fieldCheck && (lhs.hasCollectionId == rhs.hasCollectionId) && (!lhs.hasCollectionId || lhs.collectionId == rhs.collectionId)
+  fieldCheck = fieldCheck && (lhs.hasCollection == rhs.hasCollection) && (!lhs.hasCollection || lhs.collection == rhs.collection)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -67,6 +68,9 @@ public func == (lhs: Services.Post.Containers.CollectionV1, rhs: Services.Post.C
   fieldCheck = fieldCheck && (lhs.hasFields == rhs.hasFields) && (!lhs.hasFields || lhs.fields == rhs.fields)
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
   fieldCheck = fieldCheck && (lhs.hasTotalItems == rhs.hasTotalItems) && (!lhs.hasTotalItems || lhs.totalItems == rhs.totalItems)
+  fieldCheck = fieldCheck && (lhs.hasDisplayName == rhs.hasDisplayName) && (!lhs.hasDisplayName || lhs.displayName == rhs.displayName)
+  fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
+  fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -87,6 +91,7 @@ public extension Services.Post.Containers {
       Services.Common.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.File.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Profile.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -1293,6 +1298,8 @@ public extension Services.Post.Containers {
     public private(set) var hasCollectionId:Bool = false
     public private(set) var collectionId:String = ""
 
+    public private(set) var hasCollection:Bool = false
+    public private(set) var collection:Services.Post.Containers.CollectionV1!
     required public init() {
          super.init()
     }
@@ -1320,6 +1327,9 @@ public extension Services.Post.Containers {
       }
       if hasCollectionId {
         try output.writeString(7, value:collectionId)
+      }
+      if hasCollection {
+        try output.writeMessage(8, value:collection)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1352,6 +1362,11 @@ public extension Services.Post.Containers {
       }
       if hasCollectionId {
         serialize_size += collectionId.computeStringSize(7)
+      }
+      if hasCollection {
+          if let varSizecollection = collection?.computeMessageSize(8) {
+              serialize_size += varSizecollection
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1427,6 +1442,11 @@ public extension Services.Post.Containers {
       if hasCollectionId {
         output += "\(indent) collectionId: \(collectionId) \n"
       }
+      if hasCollection {
+        output += "\(indent) collection {\n"
+        try collection?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1454,6 +1474,11 @@ public extension Services.Post.Containers {
             }
             if hasCollectionId {
                hashCode = (hashCode &* 31) &+ collectionId.hashValue
+            }
+            if hasCollection {
+                if let hashValuecollection = collection?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuecollection
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1672,6 +1697,57 @@ public extension Services.Post.Containers {
            builderResult.collectionId = ""
            return self
       }
+      public var hasCollection:Bool {
+           get {
+               return builderResult.hasCollection
+           }
+      }
+      public var collection:Services.Post.Containers.CollectionV1! {
+           get {
+               if collectionBuilder_ != nil {
+                  builderResult.collection = collectionBuilder_.getMessage()
+               }
+               return builderResult.collection
+           }
+           set (value) {
+               builderResult.hasCollection = true
+               builderResult.collection = value
+           }
+      }
+      private var collectionBuilder_:Services.Post.Containers.CollectionV1.Builder! {
+           didSet {
+              builderResult.hasCollection = true
+           }
+      }
+      public func getCollectionBuilder() -> Services.Post.Containers.CollectionV1.Builder {
+        if collectionBuilder_ == nil {
+           collectionBuilder_ = Services.Post.Containers.CollectionV1.Builder()
+           builderResult.collection = collectionBuilder_.getMessage()
+           if collection != nil {
+              try! collectionBuilder_.mergeFrom(collection)
+           }
+        }
+        return collectionBuilder_
+      }
+      public func setCollection(value:Services.Post.Containers.CollectionV1!) -> Services.Post.Containers.CollectionItemV1.Builder {
+        self.collection = value
+        return self
+      }
+      public func mergeCollection(value:Services.Post.Containers.CollectionV1) throws -> Services.Post.Containers.CollectionItemV1.Builder {
+        if builderResult.hasCollection {
+          builderResult.collection = try Services.Post.Containers.CollectionV1.builderWithPrototype(builderResult.collection).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.collection = value
+        }
+        builderResult.hasCollection = true
+        return self
+      }
+      public func clearCollection() -> Services.Post.Containers.CollectionItemV1.Builder {
+        collectionBuilder_ = nil
+        builderResult.hasCollection = false
+        builderResult.collection = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1716,6 +1792,9 @@ public extension Services.Post.Containers {
         }
         if other.hasCollectionId {
              collectionId = other.collectionId
+        }
+        if (other.hasCollection) {
+            try mergeCollection(other.collection)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1763,6 +1842,14 @@ public extension Services.Post.Containers {
           case 58 :
             collectionId = try input.readString()
 
+          case 66 :
+            let subBuilder:Services.Post.Containers.CollectionV1.Builder = Services.Post.Containers.CollectionV1.Builder()
+            if hasCollection {
+              try subBuilder.mergeFrom(collection)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            collection = subBuilder.buildPartial()
+
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
                unknownFields = try unknownFieldsBuilder.build()
@@ -1776,6 +1863,45 @@ public extension Services.Post.Containers {
   }
 
   final public class CollectionV1 : GeneratedMessage, GeneratedMessageProtocol {
+
+
+    //OneOf declaration start
+
+    public enum Owner {
+      case OwnerOneOfNotSet
+
+      public func checkOneOfIsSet() -> Bool {
+           switch self {
+           case .OwnerOneOfNotSet:
+                return false
+           default:
+                return true
+           }
+      }
+      case Profile(Services.Profile.Containers.ProfileV1)
+
+      public static func getProfile(value:Owner) -> Services.Profile.Containers.ProfileV1? {
+           switch value {
+           case .Profile(let enumValue):
+                return enumValue
+           default:
+                return nil
+           }
+      }
+      case Team(Services.Team.Containers.TeamV1)
+
+      public static func getTeam(value:Owner) -> Services.Team.Containers.TeamV1? {
+           switch value {
+           case .Team(let enumValue):
+                return enumValue
+           default:
+                return nil
+           }
+      }
+    }
+    //OneOf declaration end
+
+    private var storageOwner:CollectionV1.Owner =  CollectionV1.Owner.OwnerOneOfNotSet
 
 
       //Enum type declaration start 
@@ -1824,6 +1950,45 @@ public extension Services.Post.Containers {
     public private(set) var hasTotalItems:Bool = false
     public private(set) var totalItems:UInt32 = UInt32(0)
 
+    public private(set) var hasDisplayName:Bool = false
+    public private(set) var displayName:String = ""
+
+    public private(set) var hasProfile:Bool {
+          get {
+               if CollectionV1.Owner.getProfile(storageOwner) == nil {
+                   return false
+               }
+               return true
+          }
+          set(newValue) {
+          }
+    }
+    public private(set) var profile:Services.Profile.Containers.ProfileV1!{
+         get {
+              return CollectionV1.Owner.getProfile(storageOwner)
+         }
+         set (newvalue) {
+              storageOwner = CollectionV1.Owner.Profile(newvalue)
+         }
+    }
+    public private(set) var hasTeam:Bool {
+          get {
+               if CollectionV1.Owner.getTeam(storageOwner) == nil {
+                   return false
+               }
+               return true
+          }
+          set(newValue) {
+          }
+    }
+    public private(set) var team:Services.Team.Containers.TeamV1!{
+         get {
+              return CollectionV1.Owner.getTeam(storageOwner)
+         }
+         set (newvalue) {
+              storageOwner = CollectionV1.Owner.Team(newvalue)
+         }
+    }
     required public init() {
          super.init()
     }
@@ -1872,6 +2037,15 @@ public extension Services.Post.Containers {
       }
       if hasTotalItems {
         try output.writeUInt32(14, value:totalItems)
+      }
+      if hasDisplayName {
+        try output.writeString(15, value:displayName)
+      }
+      if hasProfile {
+        try output.writeMessage(16, value:profile)
+      }
+      if hasTeam {
+        try output.writeMessage(17, value:team)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1929,6 +2103,19 @@ public extension Services.Post.Containers {
       }
       if hasTotalItems {
         serialize_size += totalItems.computeUInt32Size(14)
+      }
+      if hasDisplayName {
+        serialize_size += displayName.computeStringSize(15)
+      }
+      if hasProfile {
+          if let varSizeprofile = profile?.computeMessageSize(16) {
+              serialize_size += varSizeprofile
+          }
+      }
+      if hasTeam {
+          if let varSizeteam = team?.computeMessageSize(17) {
+              serialize_size += varSizeteam
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2033,6 +2220,19 @@ public extension Services.Post.Containers {
       if hasTotalItems {
         output += "\(indent) totalItems: \(totalItems) \n"
       }
+      if hasDisplayName {
+        output += "\(indent) displayName: \(displayName) \n"
+      }
+      if hasProfile {
+        output += "\(indent) profile {\n"
+        try profile?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
+      if hasTeam {
+        output += "\(indent) team {\n"
+        try team?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2085,6 +2285,19 @@ public extension Services.Post.Containers {
             }
             if hasTotalItems {
                hashCode = (hashCode &* 31) &+ totalItems.hashValue
+            }
+            if hasDisplayName {
+               hashCode = (hashCode &* 31) &+ displayName.hashValue
+            }
+            if hasProfile {
+                if let hashValueprofile = profile?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueprofile
+                }
+            }
+            if hasTeam {
+                if let hashValueteam = team?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueteam
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2513,6 +2726,131 @@ public extension Services.Post.Containers {
            builderResult.totalItems = UInt32(0)
            return self
       }
+      public var hasDisplayName:Bool {
+           get {
+                return builderResult.hasDisplayName
+           }
+      }
+      public var displayName:String {
+           get {
+                return builderResult.displayName
+           }
+           set (value) {
+               builderResult.hasDisplayName = true
+               builderResult.displayName = value
+           }
+      }
+      public func setDisplayName(value:String) -> Services.Post.Containers.CollectionV1.Builder {
+        self.displayName = value
+        return self
+      }
+      public func clearDisplayName() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasDisplayName = false
+           builderResult.displayName = ""
+           return self
+      }
+      public var hasProfile:Bool {
+           get {
+               return builderResult.hasProfile
+           }
+      }
+      public var profile:Services.Profile.Containers.ProfileV1! {
+           get {
+               if profileBuilder_ != nil {
+                  builderResult.profile = profileBuilder_.getMessage()
+               }
+               return builderResult.profile
+           }
+           set (value) {
+               builderResult.hasProfile = true
+               builderResult.profile = value
+           }
+      }
+      private var profileBuilder_:Services.Profile.Containers.ProfileV1.Builder! {
+           didSet {
+              builderResult.hasProfile = true
+           }
+      }
+      public func getProfileBuilder() -> Services.Profile.Containers.ProfileV1.Builder {
+        if profileBuilder_ == nil {
+           profileBuilder_ = Services.Profile.Containers.ProfileV1.Builder()
+           builderResult.profile = profileBuilder_.getMessage()
+           if profile != nil {
+              try! profileBuilder_.mergeFrom(profile)
+           }
+        }
+        return profileBuilder_
+      }
+      public func setProfile(value:Services.Profile.Containers.ProfileV1!) -> Services.Post.Containers.CollectionV1.Builder {
+        self.profile = value
+        return self
+      }
+      public func mergeProfile(value:Services.Profile.Containers.ProfileV1) throws -> Services.Post.Containers.CollectionV1.Builder {
+        if builderResult.hasProfile {
+          builderResult.profile = try Services.Profile.Containers.ProfileV1.builderWithPrototype(builderResult.profile).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.profile = value
+        }
+        builderResult.hasProfile = true
+        return self
+      }
+      public func clearProfile() -> Services.Post.Containers.CollectionV1.Builder {
+        profileBuilder_ = nil
+        builderResult.hasProfile = false
+        builderResult.profile = nil
+        return self
+      }
+      public var hasTeam:Bool {
+           get {
+               return builderResult.hasTeam
+           }
+      }
+      public var team:Services.Team.Containers.TeamV1! {
+           get {
+               if teamBuilder_ != nil {
+                  builderResult.team = teamBuilder_.getMessage()
+               }
+               return builderResult.team
+           }
+           set (value) {
+               builderResult.hasTeam = true
+               builderResult.team = value
+           }
+      }
+      private var teamBuilder_:Services.Team.Containers.TeamV1.Builder! {
+           didSet {
+              builderResult.hasTeam = true
+           }
+      }
+      public func getTeamBuilder() -> Services.Team.Containers.TeamV1.Builder {
+        if teamBuilder_ == nil {
+           teamBuilder_ = Services.Team.Containers.TeamV1.Builder()
+           builderResult.team = teamBuilder_.getMessage()
+           if team != nil {
+              try! teamBuilder_.mergeFrom(team)
+           }
+        }
+        return teamBuilder_
+      }
+      public func setTeam(value:Services.Team.Containers.TeamV1!) -> Services.Post.Containers.CollectionV1.Builder {
+        self.team = value
+        return self
+      }
+      public func mergeTeam(value:Services.Team.Containers.TeamV1) throws -> Services.Post.Containers.CollectionV1.Builder {
+        if builderResult.hasTeam {
+          builderResult.team = try Services.Team.Containers.TeamV1.builderWithPrototype(builderResult.team).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.team = value
+        }
+        builderResult.hasTeam = true
+        return self
+      }
+      public func clearTeam() -> Services.Post.Containers.CollectionV1.Builder {
+        teamBuilder_ = nil
+        builderResult.hasTeam = false
+        builderResult.team = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -2578,6 +2916,15 @@ public extension Services.Post.Containers {
         }
         if other.hasTotalItems {
              totalItems = other.totalItems
+        }
+        if other.hasDisplayName {
+             displayName = other.displayName
+        }
+        if (other.hasProfile) {
+            try mergeProfile(other.profile)
+        }
+        if (other.hasTeam) {
+            try mergeTeam(other.team)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -2657,6 +3004,25 @@ public extension Services.Post.Containers {
 
           case 112 :
             totalItems = try input.readUInt32()
+
+          case 122 :
+            displayName = try input.readString()
+
+          case 130 :
+            let subBuilder:Services.Profile.Containers.ProfileV1.Builder = Services.Profile.Containers.ProfileV1.Builder()
+            if hasProfile {
+              try subBuilder.mergeFrom(profile)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            profile = subBuilder.buildPartial()
+
+          case 138 :
+            let subBuilder:Services.Team.Containers.TeamV1.Builder = Services.Team.Containers.TeamV1.Builder()
+            if hasTeam {
+              try subBuilder.mergeFrom(team)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            team = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

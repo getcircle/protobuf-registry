@@ -20,6 +20,7 @@ public func == (lhs: Services.Team.Actions.JoinTeam.ResponseV1, rhs: Services.Te
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasMember == rhs.hasMember) && (!lhs.hasMember || lhs.member == rhs.member)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -37,6 +38,7 @@ public extension Services.Team.Actions.JoinTeam {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Services.Team.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
@@ -239,6 +241,8 @@ public extension Services.Team.Actions.JoinTeam {
   }
 
   final public class ResponseV1 : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hasMember:Bool = false
+    public private(set) var member:Services.Team.Containers.TeamMemberV1!
     required public init() {
          super.init()
     }
@@ -246,6 +250,9 @@ public extension Services.Team.Actions.JoinTeam {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasMember {
+        try output.writeMessage(1, value:member)
+      }
       try unknownFields.writeToCodedOutputStream(output)
     }
     override public func serializedSize() -> Int32 {
@@ -255,6 +262,11 @@ public extension Services.Team.Actions.JoinTeam {
       }
 
       serialize_size = 0
+      if hasMember {
+          if let varSizemember = member?.computeMessageSize(1) {
+              serialize_size += varSizemember
+          }
+      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -306,11 +318,21 @@ public extension Services.Team.Actions.JoinTeam {
       return try Services.Team.Actions.JoinTeam.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasMember {
+        output += "\(indent) member {\n"
+        try member?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
+            if hasMember {
+                if let hashValuemember = member?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuemember
+                }
+            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -339,6 +361,57 @@ public extension Services.Team.Actions.JoinTeam {
       required override public init () {
          super.init()
       }
+      public var hasMember:Bool {
+           get {
+               return builderResult.hasMember
+           }
+      }
+      public var member:Services.Team.Containers.TeamMemberV1! {
+           get {
+               if memberBuilder_ != nil {
+                  builderResult.member = memberBuilder_.getMessage()
+               }
+               return builderResult.member
+           }
+           set (value) {
+               builderResult.hasMember = true
+               builderResult.member = value
+           }
+      }
+      private var memberBuilder_:Services.Team.Containers.TeamMemberV1.Builder! {
+           didSet {
+              builderResult.hasMember = true
+           }
+      }
+      public func getMemberBuilder() -> Services.Team.Containers.TeamMemberV1.Builder {
+        if memberBuilder_ == nil {
+           memberBuilder_ = Services.Team.Containers.TeamMemberV1.Builder()
+           builderResult.member = memberBuilder_.getMessage()
+           if member != nil {
+              try! memberBuilder_.mergeFrom(member)
+           }
+        }
+        return memberBuilder_
+      }
+      public func setMember(value:Services.Team.Containers.TeamMemberV1!) -> Services.Team.Actions.JoinTeam.ResponseV1.Builder {
+        self.member = value
+        return self
+      }
+      public func mergeMember(value:Services.Team.Containers.TeamMemberV1) throws -> Services.Team.Actions.JoinTeam.ResponseV1.Builder {
+        if builderResult.hasMember {
+          builderResult.member = try Services.Team.Containers.TeamMemberV1.builderWithPrototype(builderResult.member).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.member = value
+        }
+        builderResult.hasMember = true
+        return self
+      }
+      public func clearMember() -> Services.Team.Actions.JoinTeam.ResponseV1.Builder {
+        memberBuilder_ = nil
+        builderResult.hasMember = false
+        builderResult.member = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -363,6 +436,9 @@ public extension Services.Team.Actions.JoinTeam {
         if other == Services.Team.Actions.JoinTeam.ResponseV1() {
          return self
         }
+        if (other.hasMember) {
+            try mergeMember(other.member)
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -377,6 +453,14 @@ public extension Services.Team.Actions.JoinTeam {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
+
+          case 10 :
+            let subBuilder:Services.Team.Containers.TeamMemberV1.Builder = Services.Team.Containers.TeamMemberV1.Builder()
+            if hasMember {
+              try subBuilder.mergeFrom(member)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            member = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

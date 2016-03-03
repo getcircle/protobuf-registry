@@ -1,8 +1,12 @@
 syntax = "proto3";
 package services.team.actions.join_team;
 
+import "protobufs/services/team/containers.proto";
+
 message RequestV1 {
     string team_id = 1;
 }
 
-message ResponseV1 {}
+message ResponseV1 {
+    services.team.containers.TeamMemberV1 member = 1;
+}

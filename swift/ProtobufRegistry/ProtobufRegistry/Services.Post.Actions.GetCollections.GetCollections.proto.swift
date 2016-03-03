@@ -18,6 +18,9 @@ public func == (lhs: Services.Post.Actions.GetCollections.RequestV1, rhs: Servic
   fieldCheck = fieldCheck && (lhs.hasItemsPerCollection == rhs.hasItemsPerCollection) && (!lhs.hasItemsPerCollection || lhs.itemsPerCollection == rhs.itemsPerCollection)
   fieldCheck = fieldCheck && (lhs.hasSource == rhs.hasSource) && (!lhs.hasSource || lhs.source == rhs.source)
   fieldCheck = fieldCheck && (lhs.hasSourceId == rhs.hasSourceId) && (!lhs.hasSourceId || lhs.sourceId == rhs.sourceId)
+  fieldCheck = fieldCheck && (lhs.ids == rhs.ids)
+  fieldCheck = fieldCheck && (lhs.hasProfileId == rhs.hasProfileId) && (!lhs.hasProfileId || lhs.profileId == rhs.profileId)
+  fieldCheck = fieldCheck && (lhs.hasPermissions == rhs.hasPermissions) && (!lhs.hasPermissions || lhs.permissions == rhs.permissions)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -73,6 +76,12 @@ public extension Services.Post.Actions.GetCollections {
     public private(set) var hasSourceId:Bool = false
     public private(set) var sourceId:String = ""
 
+    public private(set) var ids:Array<String> = Array<String>()
+    public private(set) var hasProfileId:Bool = false
+    public private(set) var profileId:String = ""
+
+    public private(set) var hasPermissions:Bool = false
+    public private(set) var permissions:Services.Common.Containers.PermissionsV1!
     required public init() {
          super.init()
     }
@@ -103,6 +112,17 @@ public extension Services.Post.Actions.GetCollections {
       }
       if hasSourceId {
         try output.writeString(8, value:sourceId)
+      }
+      if !ids.isEmpty {
+        for oneValueids in ids {
+          try output.writeString(9, value:oneValueids)
+        }
+      }
+      if hasProfileId {
+        try output.writeString(10, value:profileId)
+      }
+      if hasPermissions {
+        try output.writeMessage(11, value:permissions)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -140,6 +160,20 @@ public extension Services.Post.Actions.GetCollections {
       }
       if hasSourceId {
         serialize_size += sourceId.computeStringSize(8)
+      }
+      var dataSizeIds:Int32 = 0
+      for oneValueids in ids {
+          dataSizeIds += oneValueids.computeStringSizeNoTag()
+      }
+      serialize_size += dataSizeIds
+      serialize_size += 1 * Int32(ids.count)
+      if hasProfileId {
+        serialize_size += profileId.computeStringSize(10)
+      }
+      if hasPermissions {
+          if let varSizepermissions = permissions?.computeMessageSize(11) {
+              serialize_size += varSizepermissions
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -220,6 +254,19 @@ public extension Services.Post.Actions.GetCollections {
       if hasSourceId {
         output += "\(indent) sourceId: \(sourceId) \n"
       }
+      var idsElementIndex:Int = 0
+      for oneValueids in ids  {
+          output += "\(indent) ids[\(idsElementIndex)]: \(oneValueids)\n"
+          idsElementIndex++
+      }
+      if hasProfileId {
+        output += "\(indent) profileId: \(profileId) \n"
+      }
+      if hasPermissions {
+        output += "\(indent) permissions {\n"
+        try permissions?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -252,6 +299,17 @@ public extension Services.Post.Actions.GetCollections {
             }
             if hasSourceId {
                hashCode = (hashCode &* 31) &+ sourceId.hashValue
+            }
+            for oneValueids in ids {
+                hashCode = (hashCode &* 31) &+ oneValueids.hashValue
+            }
+            if hasProfileId {
+               hashCode = (hashCode &* 31) &+ profileId.hashValue
+            }
+            if hasPermissions {
+                if let hashValuepermissions = permissions?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuepermissions
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -521,6 +579,96 @@ public extension Services.Post.Actions.GetCollections {
            builderResult.sourceId = ""
            return self
       }
+      public var ids:Array<String> {
+           get {
+               return builderResult.ids
+           }
+           set (array) {
+               builderResult.ids = array
+           }
+      }
+      public func setIds(value:Array<String>) -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+        self.ids = value
+        return self
+      }
+      public func clearIds() -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+         builderResult.ids.removeAll(keepCapacity: false)
+         return self
+      }
+      public var hasProfileId:Bool {
+           get {
+                return builderResult.hasProfileId
+           }
+      }
+      public var profileId:String {
+           get {
+                return builderResult.profileId
+           }
+           set (value) {
+               builderResult.hasProfileId = true
+               builderResult.profileId = value
+           }
+      }
+      public func setProfileId(value:String) -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+        self.profileId = value
+        return self
+      }
+      public func clearProfileId() -> Services.Post.Actions.GetCollections.RequestV1.Builder{
+           builderResult.hasProfileId = false
+           builderResult.profileId = ""
+           return self
+      }
+      public var hasPermissions:Bool {
+           get {
+               return builderResult.hasPermissions
+           }
+      }
+      public var permissions:Services.Common.Containers.PermissionsV1! {
+           get {
+               if permissionsBuilder_ != nil {
+                  builderResult.permissions = permissionsBuilder_.getMessage()
+               }
+               return builderResult.permissions
+           }
+           set (value) {
+               builderResult.hasPermissions = true
+               builderResult.permissions = value
+           }
+      }
+      private var permissionsBuilder_:Services.Common.Containers.PermissionsV1.Builder! {
+           didSet {
+              builderResult.hasPermissions = true
+           }
+      }
+      public func getPermissionsBuilder() -> Services.Common.Containers.PermissionsV1.Builder {
+        if permissionsBuilder_ == nil {
+           permissionsBuilder_ = Services.Common.Containers.PermissionsV1.Builder()
+           builderResult.permissions = permissionsBuilder_.getMessage()
+           if permissions != nil {
+              try! permissionsBuilder_.mergeFrom(permissions)
+           }
+        }
+        return permissionsBuilder_
+      }
+      public func setPermissions(value:Services.Common.Containers.PermissionsV1!) -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+        self.permissions = value
+        return self
+      }
+      public func mergePermissions(value:Services.Common.Containers.PermissionsV1) throws -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+        if builderResult.hasPermissions {
+          builderResult.permissions = try Services.Common.Containers.PermissionsV1.builderWithPrototype(builderResult.permissions).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.permissions = value
+        }
+        builderResult.hasPermissions = true
+        return self
+      }
+      public func clearPermissions() -> Services.Post.Actions.GetCollections.RequestV1.Builder {
+        permissionsBuilder_ = nil
+        builderResult.hasPermissions = false
+        builderResult.permissions = nil
+        return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -568,6 +716,15 @@ public extension Services.Post.Actions.GetCollections {
         }
         if other.hasSourceId {
              sourceId = other.sourceId
+        }
+        if !other.ids.isEmpty {
+            builderResult.ids += other.ids
+        }
+        if other.hasProfileId {
+             profileId = other.profileId
+        }
+        if (other.hasPermissions) {
+            try mergePermissions(other.permissions)
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -627,6 +784,20 @@ public extension Services.Post.Actions.GetCollections {
 
           case 66 :
             sourceId = try input.readString()
+
+          case 74 :
+            ids += [try input.readString()]
+
+          case 82 :
+            profileId = try input.readString()
+
+          case 90 :
+            let subBuilder:Services.Common.Containers.PermissionsV1.Builder = Services.Common.Containers.PermissionsV1.Builder()
+            if hasPermissions {
+              try subBuilder.mergeFrom(permissions)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            permissions = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

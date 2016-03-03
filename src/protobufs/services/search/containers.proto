@@ -1,10 +1,10 @@
 syntax = "proto3";
 package services.search.containers;
 
-import "protobufs/services/organization/containers.proto";
 import "protobufs/services/post/containers.proto";
 import "protobufs/services/profile/containers.proto";
 import "protobufs/services/search/containers/search.proto";
+import "protobufs/services/team/containers.proto";
 
 message TrackingDetailsV1 {
     string document_id = 1;
@@ -12,12 +12,12 @@ message TrackingDetailsV1 {
 }
 
 message SearchResultV1 {
-    reserved 4;
+    reserved 3, 4;
     oneof result_object {
         services.profile.containers.ProfileV1 profile = 1;
-        services.organization.containers.TeamV1 team = 2;
-        services.organization.containers.LocationV1 location = 3;
+        services.team.containers.TeamV1 team = 2;
         services.post.containers.PostV1 post = 5;
+        services.post.containers.CollectionV1 collection = 9;
     }
     float score = 6;
     map<string, string> highlight = 7;
@@ -25,11 +25,11 @@ message SearchResultV1 {
 }
 
 message RecentResultV1 {
-    reserved 4;
+    reserved 3, 4;
     oneof result_object {
         services.profile.containers.ProfileV1 profile = 1;
-        services.organization.containers.TeamV1 team = 2;
-        services.organization.containers.LocationV1 location = 3;
+        services.team.containers.TeamV1 team = 2;
         services.post.containers.PostV1 post = 5;
+        services.post.containers.CollectionV1 collection = 6;
     }
 }

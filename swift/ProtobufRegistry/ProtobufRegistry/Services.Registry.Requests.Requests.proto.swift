@@ -458,14 +458,14 @@ public var ServicesRegistryRequestsPostdeleteCollection:ConcreateExtensionField 
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostdeleteCollectionStatic
    }
 }
-public var ServicesRegistryRequestsPostaddToCollection:ConcreateExtensionField {
+public var ServicesRegistryRequestsPostaddToCollections:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostaddToCollectionStatic
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostaddToCollectionsStatic
    }
 }
-public var ServicesRegistryRequestsPostremoveFromCollection:ConcreateExtensionField {
+public var ServicesRegistryRequestsPostremoveFromCollections:ConcreateExtensionField {
    get {
-       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostremoveFromCollectionStatic
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsPostremoveFromCollectionsStatic
    }
 }
 public var ServicesRegistryRequestsPostgetCollection:ConcreateExtensionField {
@@ -568,6 +568,11 @@ public var ServicesRegistryRequestsTeamupdateTeam:ConcreateExtensionField {
        return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamupdateTeamStatic
    }
 }
+public var ServicesRegistryRequestsTeamgetTeams:ConcreateExtensionField {
+   get {
+       return Services.Registry.Requests.RequestsRoot.sharedInstance.ServicesRegistryRequestsTeamgetTeamsStatic
+   }
+}
 public extension Services.Registry.Requests {
   public struct RequestsRoot {
     public static var sharedInstance : RequestsRoot {
@@ -645,8 +650,8 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsPostcreateCollectionStatic:ConcreateExtensionField
     var ServicesRegistryRequestsPostupdateCollectionStatic:ConcreateExtensionField
     var ServicesRegistryRequestsPostdeleteCollectionStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsPostaddToCollectionStatic:ConcreateExtensionField
-    var ServicesRegistryRequestsPostremoveFromCollectionStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPostaddToCollectionsStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsPostremoveFromCollectionsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsPostgetCollectionStatic:ConcreateExtensionField
     var ServicesRegistryRequestsPostgetCollectionsStatic:ConcreateExtensionField
     var ServicesRegistryRequestsPostreorderCollectionStatic:ConcreateExtensionField
@@ -667,6 +672,7 @@ public extension Services.Registry.Requests {
     var ServicesRegistryRequestsTeamremoveMembersStatic:ConcreateExtensionField
     var ServicesRegistryRequestsTeamupdateMembersStatic:ConcreateExtensionField
     var ServicesRegistryRequestsTeamupdateTeamStatic:ConcreateExtensionField
+    var ServicesRegistryRequestsTeamgetTeamsStatic:ConcreateExtensionField
     public var extensionRegistry:ExtensionRegistry
 
     init() {
@@ -739,8 +745,8 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsPostcreateCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1605, defaultValue:Services.Post.Actions.CreateCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.CreateCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsPostupdateCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1606, defaultValue:Services.Post.Actions.UpdateCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.UpdateCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsPostdeleteCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1607, defaultValue:Services.Post.Actions.DeleteCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.DeleteCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsPostaddToCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1608, defaultValue:Services.Post.Actions.AddToCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.AddToCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
-      ServicesRegistryRequestsPostremoveFromCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1609, defaultValue:Services.Post.Actions.RemoveFromCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.RemoveFromCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPostaddToCollectionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1608, defaultValue:Services.Post.Actions.AddToCollections.RequestV1(), messageOrGroupClass:Services.Post.Actions.AddToCollections.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsPostremoveFromCollectionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1609, defaultValue:Services.Post.Actions.RemoveFromCollections.RequestV1(), messageOrGroupClass:Services.Post.Actions.RemoveFromCollections.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsPostgetCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1610, defaultValue:Services.Post.Actions.GetCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.GetCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsPostgetCollectionsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1611, defaultValue:Services.Post.Actions.GetCollections.RequestV1(), messageOrGroupClass:Services.Post.Actions.GetCollections.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsPostreorderCollectionStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1612, defaultValue:Services.Post.Actions.ReorderCollection.RequestV1(), messageOrGroupClass:Services.Post.Actions.ReorderCollection.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
@@ -761,6 +767,7 @@ public extension Services.Registry.Requests {
       ServicesRegistryRequestsTeamremoveMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1906, defaultValue:Services.Team.Actions.RemoveMembers.RequestV1(), messageOrGroupClass:Services.Team.Actions.RemoveMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsTeamupdateMembersStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1907, defaultValue:Services.Team.Actions.UpdateMembers.RequestV1(), messageOrGroupClass:Services.Team.Actions.UpdateMembers.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       ServicesRegistryRequestsTeamupdateTeamStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1908, defaultValue:Services.Team.Actions.UpdateTeam.RequestV1(), messageOrGroupClass:Services.Team.Actions.UpdateTeam.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
+      ServicesRegistryRequestsTeamgetTeamsStatic = ConcreateExtensionField(type:ExtensionType.ExtensionTypeMessage, extendedClass:Soa.ActionRequestParamsV1.self, fieldNumber: 1909, defaultValue:Services.Team.Actions.GetTeams.RequestV1(), messageOrGroupClass:Services.Team.Actions.GetTeams.RequestV1.self, isRepeated:false, isPacked:false, isMessageSetWireFormat:false)
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
       Soa.SoaRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -833,8 +840,8 @@ public extension Services.Registry.Requests {
       Services.Post.Actions.CreateCollection.CreateCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.UpdateCollection.UpdateCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.DeleteCollection.DeleteCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Post.Actions.AddToCollection.AddToCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Services.Post.Actions.RemoveFromCollection.RemoveFromCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.AddToCollections.AddToCollectionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Post.Actions.RemoveFromCollections.RemoveFromCollectionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.GetCollection.GetCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.GetCollections.GetCollectionsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Post.Actions.ReorderCollection.ReorderCollectionRoot.sharedInstance.registerAllExtensions(extensionRegistry)
@@ -855,6 +862,7 @@ public extension Services.Registry.Requests {
       Services.Team.Actions.RemoveMembers.RemoveMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.UpdateMembers.UpdateMembersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
       Services.Team.Actions.UpdateTeam.UpdateTeamRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      Services.Team.Actions.GetTeams.GetTeamsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
       registry.addExtension(ServicesRegistryRequestsUsercreateUserStatic)
@@ -926,8 +934,8 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsPostcreateCollectionStatic)
       registry.addExtension(ServicesRegistryRequestsPostupdateCollectionStatic)
       registry.addExtension(ServicesRegistryRequestsPostdeleteCollectionStatic)
-      registry.addExtension(ServicesRegistryRequestsPostaddToCollectionStatic)
-      registry.addExtension(ServicesRegistryRequestsPostremoveFromCollectionStatic)
+      registry.addExtension(ServicesRegistryRequestsPostaddToCollectionsStatic)
+      registry.addExtension(ServicesRegistryRequestsPostremoveFromCollectionsStatic)
       registry.addExtension(ServicesRegistryRequestsPostgetCollectionStatic)
       registry.addExtension(ServicesRegistryRequestsPostgetCollectionsStatic)
       registry.addExtension(ServicesRegistryRequestsPostreorderCollectionStatic)
@@ -948,6 +956,7 @@ public extension Services.Registry.Requests {
       registry.addExtension(ServicesRegistryRequestsTeamremoveMembersStatic)
       registry.addExtension(ServicesRegistryRequestsTeamupdateMembersStatic)
       registry.addExtension(ServicesRegistryRequestsTeamupdateTeamStatic)
+      registry.addExtension(ServicesRegistryRequestsTeamgetTeamsStatic)
     }
   }
 
@@ -2375,11 +2384,11 @@ public extension Services.Registry.Requests {
     public class func deleteCollection() -> ConcreateExtensionField {
          return ServicesRegistryRequestsPostdeleteCollection
     }
-    public class func addToCollection() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsPostaddToCollection
+    public class func addToCollections() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPostaddToCollections
     }
-    public class func removeFromCollection() -> ConcreateExtensionField {
-         return ServicesRegistryRequestsPostremoveFromCollection
+    public class func removeFromCollections() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsPostremoveFromCollections
     }
     public class func getCollection() -> ConcreateExtensionField {
          return ServicesRegistryRequestsPostgetCollection
@@ -2896,6 +2905,9 @@ public extension Services.Registry.Requests {
     }
     public class func updateTeam() -> ConcreateExtensionField {
          return ServicesRegistryRequestsTeamupdateTeam
+    }
+    public class func getTeams() -> ConcreateExtensionField {
+         return ServicesRegistryRequestsTeamgetTeams
     }
     required public init() {
          super.init()

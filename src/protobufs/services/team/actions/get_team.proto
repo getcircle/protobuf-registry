@@ -12,5 +12,5 @@ message RequestV1 {
 
 message ResponseV1 {
     services.team.containers.TeamV1 team = 1;
-    bool is_member = 2;
+    services.team.containers.TeamMemberV1 member = 2;
 }
