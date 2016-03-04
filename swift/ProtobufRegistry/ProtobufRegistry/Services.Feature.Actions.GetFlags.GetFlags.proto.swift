@@ -19,7 +19,7 @@ public func == (lhs: Services.Feature.Actions.GetFlags.ResponseV1, rhs: Services
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.flags == rhs.flags)
+  fieldCheck = fieldCheck && (lhs.hasFlags == rhs.hasFlags) && (!lhs.hasFlags || lhs.flags == rhs.flags)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -452,7 +452,9 @@ public extension Services.Feature.Actions.GetFlags {
 
     //Nested type declaration end
 
-    public private(set) var flags:Array<Services.Feature.Actions.GetFlags.ResponseV1.FlagsEntry>  = Array<Services.Feature.Actions.GetFlags.ResponseV1.FlagsEntry>()
+    public private(set) var hasFlags:Bool = false
+    public private(set) var flags:Dictionary<String,Bool> = Dictionary<String,Bool>()
+
     required public init() {
          super.init()
     }
@@ -460,8 +462,11 @@ public extension Services.Feature.Actions.GetFlags {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      for oneElementflags in flags {
-          try output.writeMessage(1, value:oneElementflags)
+      if hasFlags {
+          for (keyFlags, valueFlags) in flags {
+              let valueOfFlags = try! Services.Feature.Actions.GetFlags.ResponseV1.FlagsEntry.Builder().setKey(keyFlags).setValue(valueFlags).build()
+              try output.writeMessage(1, value:valueOfFlags)
+          }
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -472,8 +477,11 @@ public extension Services.Feature.Actions.GetFlags {
       }
 
       serialize_size = 0
-      for oneElementflags in flags {
-          serialize_size += oneElementflags.computeMessageSize(1)
+      if hasFlags {
+          for (keyFlags, valueFlags) in flags {
+              let valueOfFlags = try! Services.Feature.Actions.GetFlags.ResponseV1.FlagsEntry.Builder().setKey(keyFlags).setValue(valueFlags).build()
+              serialize_size += valueOfFlags.computeMessageSize(1)
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -526,20 +534,19 @@ public extension Services.Feature.Actions.GetFlags {
       return try Services.Feature.Actions.GetFlags.ResponseV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      var flagsElementIndex:Int = 0
-      for oneElementflags in flags {
-          output += "\(indent) flags[\(flagsElementIndex)] {\n"
-          try oneElementflags.writeDescriptionTo(&output, indent:"\(indent)  ")
-          output += "\(indent)}\n"
-          flagsElementIndex++
+      if hasFlags {
+        output += "\(indent) flags: \(flags) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            for oneElementflags in flags {
-                hashCode = (hashCode &* 31) &+ oneElementflags.hashValue
+            if hasFlags {
+                for (keyFlags, valueFlags) in flags {
+                    hashCode = (hashCode &* 31) &+ keyFlags.hashValue
+                    hashCode = (hashCode &* 31) &+ valueFlags.hashValue
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -569,21 +576,28 @@ public extension Services.Feature.Actions.GetFlags {
       required override public init () {
          super.init()
       }
-      public var flags:Array<Services.Feature.Actions.GetFlags.ResponseV1.FlagsEntry> {
+      public var hasFlags:Bool {
            get {
-               return builderResult.flags
+                return builderResult.hasFlags
+           }
+      }
+      public var flags:Dictionary<String,Bool> {
+           get {
+                return builderResult.flags
            }
            set (value) {
+               builderResult.hasFlags = true
                builderResult.flags = value
            }
       }
-      public func setFlags(value:Array<Services.Feature.Actions.GetFlags.ResponseV1.FlagsEntry>) -> Services.Feature.Actions.GetFlags.ResponseV1.Builder {
+      public func setFlags(value:Dictionary<String,Bool>) -> Services.Feature.Actions.GetFlags.ResponseV1.Builder {
         self.flags = value
         return self
       }
-      public func clearFlags() -> Services.Feature.Actions.GetFlags.ResponseV1.Builder {
-        builderResult.flags.removeAll(keepCapacity: false)
-        return self
+      public func clearFlags() -> Services.Feature.Actions.GetFlags.ResponseV1.Builder{
+           builderResult.hasFlags = false
+           builderResult.flags = Dictionary<String,Bool>()
+           return self
       }
       override public var internalGetResult:GeneratedMessage {
            get {
@@ -609,8 +623,8 @@ public extension Services.Feature.Actions.GetFlags {
         if other == Services.Feature.Actions.GetFlags.ResponseV1() {
          return self
         }
-        if !other.flags.isEmpty  {
-           builderResult.flags += other.flags
+        if other.hasFlags {
+             flags = other.flags
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -630,7 +644,8 @@ public extension Services.Feature.Actions.GetFlags {
           case 10 :
             let subBuilder = Services.Feature.Actions.GetFlags.ResponseV1.FlagsEntry.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            flags += [subBuilder.buildPartial()]
+            let buildOfFlags = subBuilder.buildPartial()
+            flags[buildOfFlags.key] = buildOfFlags.value
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
