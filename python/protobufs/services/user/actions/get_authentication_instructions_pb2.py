@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/user/actions/get_authentication_instructions.proto',
   package='services.user.actions.get_authentication_instructions',
   syntax='proto3',
-  serialized_pb=b'\nEprotobufs/services/user/actions/get_authentication_instructions.proto\x12\x35services.user.actions.get_authentication_instructions\x1a.protobufs/services/user/containers/token.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\"M\n\tRequestV1\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x14\n\x0credirect_uri\x18\x02 \x01(\t\x12\x1b\n\x13organization_domain\x18\x03 \x01(\t\"\xb1\x01\n\nResponseV1\x12Q\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32@.services.user.actions.authenticate_user.RequestV1.AuthBackendV1\x12\x19\n\x11\x61uthorization_url\x18\x02 \x01(\t\x12\x15\n\rprovider_name\x18\x03 \x01(\t\x12\x1e\n\x16organization_image_url\x18\x04 \x01(\tb\x06proto3'
+  serialized_pb=b'\nEprotobufs/services/user/actions/get_authentication_instructions.proto\x12\x35services.user.actions.get_authentication_instructions\x1a.protobufs/services/user/containers/token.proto\x1a\x37protobufs/services/user/actions/authenticate_user.proto\"`\n\tRequestV1\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x14\n\x0credirect_uri\x18\x02 \x01(\t\x12\x1b\n\x13organization_domain\x18\x03 \x01(\t\x12\x11\n\tnext_path\x18\x04 \x01(\t\"\xb1\x01\n\nResponseV1\x12Q\n\x07\x62\x61\x63kend\x18\x01 \x01(\x0e\x32@.services.user.actions.authenticate_user.RequestV1.AuthBackendV1\x12\x19\n\x11\x61uthorization_url\x18\x02 \x01(\t\x12\x15\n\rprovider_name\x18\x03 \x01(\t\x12\x1e\n\x16organization_image_url\x18\x04 \x01(\tb\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_user_dot_containers_dot_token__pb2.DESCRIPTOR,protobufs_dot_services_dot_user_dot_actions_dot_authenticate__user__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -55,6 +55,13 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='next_path', full_name='services.user.actions.get_authentication_instructions.RequestV1.next_path', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -68,7 +75,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=233,
-  serialized_end=310,
+  serialized_end=329,
 )
 
 
@@ -119,8 +126,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=313,
-  serialized_end=490,
+  serialized_start=332,
+  serialized_end=509,
 )
 
 _RESPONSEV1.fields_by_name['backend'].enum_type = protobufs_dot_services_dot_user_dot_actions_dot_authenticate__user__pb2._REQUESTV1_AUTHBACKENDV1

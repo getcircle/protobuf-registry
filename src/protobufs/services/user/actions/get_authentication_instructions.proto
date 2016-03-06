@@ -8,6 +8,7 @@ message RequestV1 {
     string email = 1;
     string redirect_uri = 2;
     string organization_domain = 3;
+    string next_path = 4;
 }
 
 message ResponseV1 {

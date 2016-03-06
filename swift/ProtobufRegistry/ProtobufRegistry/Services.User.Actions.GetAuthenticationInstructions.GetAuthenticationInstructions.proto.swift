@@ -13,6 +13,7 @@ public func == (lhs: Services.User.Actions.GetAuthenticationInstructions.Request
   fieldCheck = fieldCheck && (lhs.hasEmail == rhs.hasEmail) && (!lhs.hasEmail || lhs.email == rhs.email)
   fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
   fieldCheck = fieldCheck && (lhs.hasOrganizationDomain == rhs.hasOrganizationDomain) && (!lhs.hasOrganizationDomain || lhs.organizationDomain == rhs.organizationDomain)
+  fieldCheck = fieldCheck && (lhs.hasNextPath == rhs.hasNextPath) && (!lhs.hasNextPath || lhs.nextPath == rhs.nextPath)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -60,6 +61,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
     public private(set) var hasOrganizationDomain:Bool = false
     public private(set) var organizationDomain:String = ""
 
+    public private(set) var hasNextPath:Bool = false
+    public private(set) var nextPath:String = ""
+
     required public init() {
          super.init()
     }
@@ -75,6 +79,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       }
       if hasOrganizationDomain {
         try output.writeString(3, value:organizationDomain)
+      }
+      if hasNextPath {
+        try output.writeString(4, value:nextPath)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -93,6 +100,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       }
       if hasOrganizationDomain {
         serialize_size += organizationDomain.computeStringSize(3)
+      }
+      if hasNextPath {
+        serialize_size += nextPath.computeStringSize(4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -154,6 +164,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
       if hasOrganizationDomain {
         output += "\(indent) organizationDomain: \(organizationDomain) \n"
       }
+      if hasNextPath {
+        output += "\(indent) nextPath: \(nextPath) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -167,6 +180,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
             }
             if hasOrganizationDomain {
                hashCode = (hashCode &* 31) &+ organizationDomain.hashValue
+            }
+            if hasNextPath {
+               hashCode = (hashCode &* 31) &+ nextPath.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -265,6 +281,29 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
            builderResult.organizationDomain = ""
            return self
       }
+      public var hasNextPath:Bool {
+           get {
+                return builderResult.hasNextPath
+           }
+      }
+      public var nextPath:String {
+           get {
+                return builderResult.nextPath
+           }
+           set (value) {
+               builderResult.hasNextPath = true
+               builderResult.nextPath = value
+           }
+      }
+      public func setNextPath(value:String) -> Services.User.Actions.GetAuthenticationInstructions.RequestV1.Builder {
+        self.nextPath = value
+        return self
+      }
+      public func clearNextPath() -> Services.User.Actions.GetAuthenticationInstructions.RequestV1.Builder{
+           builderResult.hasNextPath = false
+           builderResult.nextPath = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -298,6 +337,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
         if other.hasOrganizationDomain {
              organizationDomain = other.organizationDomain
         }
+        if other.hasNextPath {
+             nextPath = other.nextPath
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -321,6 +363,9 @@ public extension Services.User.Actions.GetAuthenticationInstructions {
 
           case 26 :
             organizationDomain = try input.readString()
+
+          case 34 :
+            nextPath = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
