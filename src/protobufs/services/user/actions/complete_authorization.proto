@@ -21,4 +21,5 @@ message ResponseV1 {
         services.user.containers.GoogleCredentialsV1 google_credentials = 5;
         services.user.containers.SAMLCredentialsV1 saml_credentials = 6;
     }
+    string next_path = 7;
 }

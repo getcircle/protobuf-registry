@@ -30,6 +30,7 @@ public func == (lhs: Services.User.Actions.CompleteAuthorization.ResponseV1, rhs
   fieldCheck = fieldCheck && (lhs.hasRedirectUri == rhs.hasRedirectUri) && (!lhs.hasRedirectUri || lhs.redirectUri == rhs.redirectUri)
   fieldCheck = fieldCheck && (lhs.hasGoogleCredentials == rhs.hasGoogleCredentials) && (!lhs.hasGoogleCredentials || lhs.googleCredentials == rhs.googleCredentials)
   fieldCheck = fieldCheck && (lhs.hasSamlCredentials == rhs.hasSamlCredentials) && (!lhs.hasSamlCredentials || lhs.samlCredentials == rhs.samlCredentials)
+  fieldCheck = fieldCheck && (lhs.hasNextPath == rhs.hasNextPath) && (!lhs.hasNextPath || lhs.nextPath == rhs.nextPath)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -596,6 +597,9 @@ public extension Services.User.Actions.CompleteAuthorization {
               storageCredentials = ResponseV1.Credentials.SamlCredentials(newvalue)
          }
     }
+    public private(set) var hasNextPath:Bool = false
+    public private(set) var nextPath:String = ""
+
     required public init() {
          super.init()
     }
@@ -620,6 +624,9 @@ public extension Services.User.Actions.CompleteAuthorization {
       }
       if hasSamlCredentials {
         try output.writeMessage(6, value:samlCredentials)
+      }
+      if hasNextPath {
+        try output.writeString(7, value:nextPath)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -655,6 +662,9 @@ public extension Services.User.Actions.CompleteAuthorization {
           if let varSizesamlCredentials = samlCredentials?.computeMessageSize(6) {
               serialize_size += varSizesamlCredentials
           }
+      }
+      if hasNextPath {
+        serialize_size += nextPath.computeStringSize(7)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -733,6 +743,9 @@ public extension Services.User.Actions.CompleteAuthorization {
         try samlCredentials?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasNextPath {
+        output += "\(indent) nextPath: \(nextPath) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -763,6 +776,9 @@ public extension Services.User.Actions.CompleteAuthorization {
                 if let hashValuesamlCredentials = samlCredentials?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuesamlCredentials
                 }
+            }
+            if hasNextPath {
+               hashCode = (hashCode &* 31) &+ nextPath.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1042,6 +1058,29 @@ public extension Services.User.Actions.CompleteAuthorization {
         builderResult.samlCredentials = nil
         return self
       }
+      public var hasNextPath:Bool {
+           get {
+                return builderResult.hasNextPath
+           }
+      }
+      public var nextPath:String {
+           get {
+                return builderResult.nextPath
+           }
+           set (value) {
+               builderResult.hasNextPath = true
+               builderResult.nextPath = value
+           }
+      }
+      public func setNextPath(value:String) -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder {
+        self.nextPath = value
+        return self
+      }
+      public func clearNextPath() -> Services.User.Actions.CompleteAuthorization.ResponseV1.Builder{
+           builderResult.hasNextPath = false
+           builderResult.nextPath = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1083,6 +1122,9 @@ public extension Services.User.Actions.CompleteAuthorization {
         }
         if (other.hasSamlCredentials) {
             try mergeSamlCredentials(other.samlCredentials)
+        }
+        if other.hasNextPath {
+             nextPath = other.nextPath
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -1136,6 +1178,9 @@ public extension Services.User.Actions.CompleteAuthorization {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             samlCredentials = subBuilder.buildPartial()
+
+          case 58 :
+            nextPath = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
