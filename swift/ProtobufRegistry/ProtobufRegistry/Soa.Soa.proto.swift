@@ -30,6 +30,7 @@ public func == (lhs: Soa.PaginatorV1, rhs: Soa.PaginatorV1) -> Bool {
   fieldCheck = fieldCheck && (lhs.hasPageSize == rhs.hasPageSize) && (!lhs.hasPageSize || lhs.pageSize == rhs.pageSize)
   fieldCheck = fieldCheck && (lhs.hasPage == rhs.hasPage) && (!lhs.hasPage || lhs.page == rhs.page)
   fieldCheck = fieldCheck && (lhs.hasTotalPages == rhs.hasTotalPages) && (!lhs.hasTotalPages || lhs.totalPages == rhs.totalPages)
+  fieldCheck = fieldCheck && (lhs.hasDisabled == rhs.hasDisabled) && (!lhs.hasDisabled || lhs.disabled == rhs.disabled)
   fieldCheck = fieldCheck && lhs.isEqualExtensionsInOther(rhs, startInclusive:Int32(1000), endExclusive:Int32(536870912))
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -471,6 +472,9 @@ public extension Soa {
     public private(set) var hasTotalPages:Bool = false
     public private(set) var totalPages:UInt32 = UInt32(0)
 
+    public private(set) var hasDisabled:Bool = false
+    public private(set) var disabled:Bool = false
+
     required public init() {
          super.init()
     }
@@ -502,6 +506,9 @@ public extension Soa {
       if hasTotalPages {
         try output.writeUInt32(7, value:totalPages)
       }
+      if hasDisabled {
+        try output.writeBool(8, value:disabled)
+      }
       try writeExtensionsToCodedOutputStream(output, startInclusive:Int32(1000), endExclusive:Int32(536870912))
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -532,6 +539,9 @@ public extension Soa {
       }
       if hasTotalPages {
         serialize_size += totalPages.computeUInt32Size(7)
+      }
+      if hasDisabled {
+        serialize_size += disabled.computeBoolSize(8)
       }
       serialize_size += extensionsSerializedSize()
       serialize_size += unknownFields.serializedSize()
@@ -606,6 +616,9 @@ public extension Soa {
       if hasTotalPages {
         output += "\(indent) totalPages: \(totalPages) \n"
       }
+      if hasDisabled {
+        output += "\(indent) disabled: \(disabled) \n"
+      }
       try writeExtensionDescription(&output, startInclusive:Int32(1000), endExclusive:Int32(536870912), indent:indent)
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
@@ -632,6 +645,9 @@ public extension Soa {
             }
             if hasTotalPages {
                hashCode = (hashCode &* 31) &+ totalPages.hashValue
+            }
+            if hasDisabled {
+               hashCode = (hashCode &* 31) &+ disabled.hashValue
             }
             hashCode = (hashCode &* 31) &+ Int(hashExtensionsFrom(Int32(1000), endExclusive:Int32(536870912)))
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
@@ -823,6 +839,29 @@ public extension Soa {
            builderResult.totalPages = UInt32(0)
            return self
       }
+      public var hasDisabled:Bool {
+           get {
+                return builderResult.hasDisabled
+           }
+      }
+      public var disabled:Bool {
+           get {
+                return builderResult.disabled
+           }
+           set (value) {
+               builderResult.hasDisabled = true
+               builderResult.disabled = value
+           }
+      }
+      public func setDisabled(value:Bool) -> Soa.PaginatorV1.Builder {
+        self.disabled = value
+        return self
+      }
+      public func clearDisabled() -> Soa.PaginatorV1.Builder{
+           builderResult.hasDisabled = false
+           builderResult.disabled = false
+           return self
+      }
       override public var internalGetResult:ExtendableMessage {
            get {
                return builderResult
@@ -868,6 +907,9 @@ public extension Soa {
         if other.hasTotalPages {
              totalPages = other.totalPages
         }
+        if other.hasDisabled {
+             disabled = other.disabled
+        }
         try mergeExtensionFields(other)
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -904,6 +946,9 @@ public extension Soa {
 
           case 56 :
             totalPages = try input.readUInt32()
+
+          case 64 :
+            disabled = try input.readBool()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
