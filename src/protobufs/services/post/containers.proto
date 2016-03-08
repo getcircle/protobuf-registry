@@ -87,4 +87,6 @@ message CollectionV1 {
         services.profile.containers.ProfileV1 profile = 16 [(services.common.containers.inflation) = true];
         services.team.containers.TeamV1 team = 17 [(services.common.containers.inflation) = true];
     }
+
+    uint32 position = 18;
 }

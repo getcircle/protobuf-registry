@@ -71,6 +71,7 @@ public func == (lhs: Services.Post.Containers.CollectionV1, rhs: Services.Post.C
   fieldCheck = fieldCheck && (lhs.hasDisplayName == rhs.hasDisplayName) && (!lhs.hasDisplayName || lhs.displayName == rhs.displayName)
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
+  fieldCheck = fieldCheck && (lhs.hasPosition == rhs.hasPosition) && (!lhs.hasPosition || lhs.position == rhs.position)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1989,6 +1990,9 @@ public extension Services.Post.Containers {
               storageOwner = CollectionV1.Owner.Team(newvalue)
          }
     }
+    public private(set) var hasPosition:Bool = false
+    public private(set) var position:UInt32 = UInt32(0)
+
     required public init() {
          super.init()
     }
@@ -2046,6 +2050,9 @@ public extension Services.Post.Containers {
       }
       if hasTeam {
         try output.writeMessage(17, value:team)
+      }
+      if hasPosition {
+        try output.writeUInt32(18, value:position)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -2116,6 +2123,9 @@ public extension Services.Post.Containers {
           if let varSizeteam = team?.computeMessageSize(17) {
               serialize_size += varSizeteam
           }
+      }
+      if hasPosition {
+        serialize_size += position.computeUInt32Size(18)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2233,6 +2243,9 @@ public extension Services.Post.Containers {
         try team?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasPosition {
+        output += "\(indent) position: \(position) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2298,6 +2311,9 @@ public extension Services.Post.Containers {
                 if let hashValueteam = team?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueteam
                 }
+            }
+            if hasPosition {
+               hashCode = (hashCode &* 31) &+ position.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2851,6 +2867,29 @@ public extension Services.Post.Containers {
         builderResult.team = nil
         return self
       }
+      public var hasPosition:Bool {
+           get {
+                return builderResult.hasPosition
+           }
+      }
+      public var position:UInt32 {
+           get {
+                return builderResult.position
+           }
+           set (value) {
+               builderResult.hasPosition = true
+               builderResult.position = value
+           }
+      }
+      public func setPosition(value:UInt32) -> Services.Post.Containers.CollectionV1.Builder {
+        self.position = value
+        return self
+      }
+      public func clearPosition() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasPosition = false
+           builderResult.position = UInt32(0)
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -2925,6 +2964,9 @@ public extension Services.Post.Containers {
         }
         if (other.hasTeam) {
             try mergeTeam(other.team)
+        }
+        if other.hasPosition {
+             position = other.position
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -3023,6 +3065,9 @@ public extension Services.Post.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             team = subBuilder.buildPartial()
+
+          case 144 :
+            position = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
