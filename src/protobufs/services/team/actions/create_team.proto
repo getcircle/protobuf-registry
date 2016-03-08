@@ -12,4 +12,5 @@ message RequestV1 {
 message ResponseV1 {
     services.team.containers.TeamV1 team = 1;
     services.post.containers.CollectionV1 collection = 2;
+    repeated services.team.containers.TeamMemberV1 members = 3;
 }
