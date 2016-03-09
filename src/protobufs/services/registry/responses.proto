@@ -89,6 +89,7 @@ import "protobufs/services/post/actions/get_collection.proto";
 import "protobufs/services/post/actions/get_collections.proto";
 import "protobufs/services/post/actions/reorder_collection.proto";
 import "protobufs/services/post/actions/get_collection_items.proto";
+import "protobufs/services/post/actions/reorder_collections.proto";
 
 import "protobufs/services/feature/actions/get_flags.proto";
 
@@ -237,6 +238,7 @@ message Post {
         optional services.post.actions.get_collections.ResponseV1 get_collections = 1611;
         optional services.post.actions.reorder_collection.ResponseV1 reorder_collection = 1612;
         optional services.post.actions.get_collection_items.ResponseV1 get_collection_items = 1613;
+        optional services.post.actions.reorder_collections.ResponseV1 reorder_collections = 1614;
     }
 }
 
