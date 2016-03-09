@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/reorder_collections.proto',
   package='services.post.actions.reorder_collections',
   syntax='proto3',
-  serialized_pb=b'\n9protobufs/services/post/actions/reorder_collections.proto\x12)services.post.actions.reorder_collections\x1a(protobufs/services/post/containers.proto\"[\n\tRequestV1\x12\x15\n\rcollection_id\x18\x01 \x01(\t\x12\x37\n\x05\x64iffs\x18\x02 \x03(\x0b\x32(.services.post.containers.PositionDiffV1\"\x0c\n\nResponseV1b\x06proto3'
+  serialized_pb=b'\n9protobufs/services/post/actions/reorder_collections.proto\x12)services.post.actions.reorder_collections\x1a(protobufs/services/post/containers.proto\"D\n\tRequestV1\x12\x37\n\x05\x64iffs\x18\x01 \x03(\x0b\x32(.services.post.containers.PositionDiffV1\"\x0c\n\nResponseV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -34,15 +34,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='collection_id', full_name='services.post.actions.reorder_collections.RequestV1.collection_id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='diffs', full_name='services.post.actions.reorder_collections.RequestV1.diffs', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='diffs', full_name='services.post.actions.reorder_collections.RequestV1.diffs', index=0,
+      number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -60,7 +53,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=146,
-  serialized_end=237,
+  serialized_end=214,
 )
 
 
@@ -83,8 +76,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=239,
-  serialized_end=251,
+  serialized_start=216,
+  serialized_end=228,
 )
 
 _REQUESTV1.fields_by_name['diffs'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._POSITIONDIFFV1

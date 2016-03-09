@@ -10,7 +10,6 @@ public func == (lhs: Services.Post.Actions.ReorderCollections.RequestV1, rhs: Se
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasCollectionId == rhs.hasCollectionId) && (!lhs.hasCollectionId || lhs.collectionId == rhs.collectionId)
   fieldCheck = fieldCheck && (lhs.diffs == rhs.diffs)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -45,9 +44,6 @@ public extension Services.Post.Actions.ReorderCollections {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasCollectionId:Bool = false
-    public private(set) var collectionId:String = ""
-
     public private(set) var diffs:Array<Services.Post.Containers.PositionDiffV1>  = Array<Services.Post.Containers.PositionDiffV1>()
     required public init() {
          super.init()
@@ -56,11 +52,8 @@ public extension Services.Post.Actions.ReorderCollections {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasCollectionId {
-        try output.writeString(1, value:collectionId)
-      }
       for oneElementdiffs in diffs {
-          try output.writeMessage(2, value:oneElementdiffs)
+          try output.writeMessage(1, value:oneElementdiffs)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -71,11 +64,8 @@ public extension Services.Post.Actions.ReorderCollections {
       }
 
       serialize_size = 0
-      if hasCollectionId {
-        serialize_size += collectionId.computeStringSize(1)
-      }
       for oneElementdiffs in diffs {
-          serialize_size += oneElementdiffs.computeMessageSize(2)
+          serialize_size += oneElementdiffs.computeMessageSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -128,9 +118,6 @@ public extension Services.Post.Actions.ReorderCollections {
       return try Services.Post.Actions.ReorderCollections.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasCollectionId {
-        output += "\(indent) collectionId: \(collectionId) \n"
-      }
       var diffsElementIndex:Int = 0
       for oneElementdiffs in diffs {
           output += "\(indent) diffs[\(diffsElementIndex)] {\n"
@@ -143,9 +130,6 @@ public extension Services.Post.Actions.ReorderCollections {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasCollectionId {
-               hashCode = (hashCode &* 31) &+ collectionId.hashValue
-            }
             for oneElementdiffs in diffs {
                 hashCode = (hashCode &* 31) &+ oneElementdiffs.hashValue
             }
@@ -176,29 +160,6 @@ public extension Services.Post.Actions.ReorderCollections {
 
       required override public init () {
          super.init()
-      }
-      public var hasCollectionId:Bool {
-           get {
-                return builderResult.hasCollectionId
-           }
-      }
-      public var collectionId:String {
-           get {
-                return builderResult.collectionId
-           }
-           set (value) {
-               builderResult.hasCollectionId = true
-               builderResult.collectionId = value
-           }
-      }
-      public func setCollectionId(value:String) -> Services.Post.Actions.ReorderCollections.RequestV1.Builder {
-        self.collectionId = value
-        return self
-      }
-      public func clearCollectionId() -> Services.Post.Actions.ReorderCollections.RequestV1.Builder{
-           builderResult.hasCollectionId = false
-           builderResult.collectionId = ""
-           return self
       }
       public var diffs:Array<Services.Post.Containers.PositionDiffV1> {
            get {
@@ -240,9 +201,6 @@ public extension Services.Post.Actions.ReorderCollections {
         if other == Services.Post.Actions.ReorderCollections.RequestV1() {
          return self
         }
-        if other.hasCollectionId {
-             collectionId = other.collectionId
-        }
         if !other.diffs.isEmpty  {
            builderResult.diffs += other.diffs
         }
@@ -262,9 +220,6 @@ public extension Services.Post.Actions.ReorderCollections {
             return self
 
           case 10 :
-            collectionId = try input.readString()
-
-          case 18 :
             let subBuilder = Services.Post.Containers.PositionDiffV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             diffs += [subBuilder.buildPartial()]
