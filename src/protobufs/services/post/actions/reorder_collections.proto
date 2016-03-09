@@ -1,5 +1,5 @@
 syntax = "proto3";
-package services.post.actions.reorder_collection;
+package services.post.actions.reorder_collections;
 
 import "protobufs/services/post/containers.proto";
 

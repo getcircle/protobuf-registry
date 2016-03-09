@@ -90,3 +90,9 @@ message CollectionV1 {
 
     uint32 position = 18;
 }
+
+message PositionDiffV1 {
+    string item_id = 1;
+    uint32 current_position = 2;
+    uint32 new_position = 3;
+}
