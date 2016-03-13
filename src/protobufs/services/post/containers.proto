@@ -87,4 +87,12 @@ message CollectionV1 {
         services.profile.containers.ProfileV1 profile = 16 [(services.common.containers.inflation) = true];
         services.team.containers.TeamV1 team = 17 [(services.common.containers.inflation) = true];
     }
+
+    uint32 position = 18;
+}
+
+message PositionDiffV1 {
+    string item_id = 1;
+    uint32 current_position = 2;
+    uint32 new_position = 3;
 }

@@ -71,6 +71,19 @@ public func == (lhs: Services.Post.Containers.CollectionV1, rhs: Services.Post.C
   fieldCheck = fieldCheck && (lhs.hasDisplayName == rhs.hasDisplayName) && (!lhs.hasDisplayName || lhs.displayName == rhs.displayName)
   fieldCheck = fieldCheck && (lhs.hasProfile == rhs.hasProfile) && (!lhs.hasProfile || lhs.profile == rhs.profile)
   fieldCheck = fieldCheck && (lhs.hasTeam == rhs.hasTeam) && (!lhs.hasTeam || lhs.team == rhs.team)
+  fieldCheck = fieldCheck && (lhs.hasPosition == rhs.hasPosition) && (!lhs.hasPosition || lhs.position == rhs.position)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
+public func == (lhs: Services.Post.Containers.PositionDiffV1, rhs: Services.Post.Containers.PositionDiffV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasItemId == rhs.hasItemId) && (!lhs.hasItemId || lhs.itemId == rhs.itemId)
+  fieldCheck = fieldCheck && (lhs.hasCurrentPosition == rhs.hasCurrentPosition) && (!lhs.hasCurrentPosition || lhs.currentPosition == rhs.currentPosition)
+  fieldCheck = fieldCheck && (lhs.hasNewPosition == rhs.hasNewPosition) && (!lhs.hasNewPosition || lhs.newPosition == rhs.newPosition)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1989,6 +2002,9 @@ public extension Services.Post.Containers {
               storageOwner = CollectionV1.Owner.Team(newvalue)
          }
     }
+    public private(set) var hasPosition:Bool = false
+    public private(set) var position:UInt32 = UInt32(0)
+
     required public init() {
          super.init()
     }
@@ -2046,6 +2062,9 @@ public extension Services.Post.Containers {
       }
       if hasTeam {
         try output.writeMessage(17, value:team)
+      }
+      if hasPosition {
+        try output.writeUInt32(18, value:position)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -2116,6 +2135,9 @@ public extension Services.Post.Containers {
           if let varSizeteam = team?.computeMessageSize(17) {
               serialize_size += varSizeteam
           }
+      }
+      if hasPosition {
+        serialize_size += position.computeUInt32Size(18)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -2233,6 +2255,9 @@ public extension Services.Post.Containers {
         try team?.writeDescriptionTo(&output, indent:"\(indent)  ")
         output += "\(indent) }\n"
       }
+      if hasPosition {
+        output += "\(indent) position: \(position) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -2298,6 +2323,9 @@ public extension Services.Post.Containers {
                 if let hashValueteam = team?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueteam
                 }
+            }
+            if hasPosition {
+               hashCode = (hashCode &* 31) &+ position.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -2851,6 +2879,29 @@ public extension Services.Post.Containers {
         builderResult.team = nil
         return self
       }
+      public var hasPosition:Bool {
+           get {
+                return builderResult.hasPosition
+           }
+      }
+      public var position:UInt32 {
+           get {
+                return builderResult.position
+           }
+           set (value) {
+               builderResult.hasPosition = true
+               builderResult.position = value
+           }
+      }
+      public func setPosition(value:UInt32) -> Services.Post.Containers.CollectionV1.Builder {
+        self.position = value
+        return self
+      }
+      public func clearPosition() -> Services.Post.Containers.CollectionV1.Builder{
+           builderResult.hasPosition = false
+           builderResult.position = UInt32(0)
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -2925,6 +2976,9 @@ public extension Services.Post.Containers {
         }
         if (other.hasTeam) {
             try mergeTeam(other.team)
+        }
+        if other.hasPosition {
+             position = other.position
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -3023,6 +3077,293 @@ public extension Services.Post.Containers {
             }
             try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
             team = subBuilder.buildPartial()
+
+          case 144 :
+            position = try input.readUInt32()
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class PositionDiffV1 : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hasItemId:Bool = false
+    public private(set) var itemId:String = ""
+
+    public private(set) var hasCurrentPosition:Bool = false
+    public private(set) var currentPosition:UInt32 = UInt32(0)
+
+    public private(set) var hasNewPosition:Bool = false
+    public private(set) var newPosition:UInt32 = UInt32(0)
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasItemId {
+        try output.writeString(1, value:itemId)
+      }
+      if hasCurrentPosition {
+        try output.writeUInt32(2, value:currentPosition)
+      }
+      if hasNewPosition {
+        try output.writeUInt32(3, value:newPosition)
+      }
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasItemId {
+        serialize_size += itemId.computeStringSize(1)
+      }
+      if hasCurrentPosition {
+        serialize_size += currentPosition.computeUInt32Size(2)
+      }
+      if hasNewPosition {
+        serialize_size += newPosition.computeUInt32Size(3)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Post.Containers.PositionDiffV1> {
+      var mergedArray = Array<Services.Post.Containers.PositionDiffV1>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Post.Containers.PositionDiffV1? {
+      return try Services.Post.Containers.PositionDiffV1.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.Post.Containers.PositionDiffV1 {
+      return try Services.Post.Containers.PositionDiffV1.Builder().mergeFromData(data, extensionRegistry:Services.Post.Containers.ContainersRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.PositionDiffV1 {
+      return try Services.Post.Containers.PositionDiffV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Post.Containers.PositionDiffV1 {
+      return try Services.Post.Containers.PositionDiffV1.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.PositionDiffV1 {
+      return try Services.Post.Containers.PositionDiffV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Post.Containers.PositionDiffV1 {
+      return try Services.Post.Containers.PositionDiffV1.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.PositionDiffV1 {
+      return try Services.Post.Containers.PositionDiffV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.Post.Containers.PositionDiffV1.Builder {
+      return Services.Post.Containers.PositionDiffV1.classBuilder() as! Services.Post.Containers.PositionDiffV1.Builder
+    }
+    public func getBuilder() -> Services.Post.Containers.PositionDiffV1.Builder {
+      return classBuilder() as! Services.Post.Containers.PositionDiffV1.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Post.Containers.PositionDiffV1.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Post.Containers.PositionDiffV1.Builder()
+    }
+    public func toBuilder() throws -> Services.Post.Containers.PositionDiffV1.Builder {
+      return try Services.Post.Containers.PositionDiffV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Post.Containers.PositionDiffV1) throws -> Services.Post.Containers.PositionDiffV1.Builder {
+      return try Services.Post.Containers.PositionDiffV1.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasItemId {
+        output += "\(indent) itemId: \(itemId) \n"
+      }
+      if hasCurrentPosition {
+        output += "\(indent) currentPosition: \(currentPosition) \n"
+      }
+      if hasNewPosition {
+        output += "\(indent) newPosition: \(newPosition) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasItemId {
+               hashCode = (hashCode &* 31) &+ itemId.hashValue
+            }
+            if hasCurrentPosition {
+               hashCode = (hashCode &* 31) &+ currentPosition.hashValue
+            }
+            if hasNewPosition {
+               hashCode = (hashCode &* 31) &+ newPosition.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Post.Containers.PositionDiffV1"
+    }
+    override public func className() -> String {
+        return "Services.Post.Containers.PositionDiffV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Post.Containers.PositionDiffV1.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.Post.Containers.PositionDiffV1 = Services.Post.Containers.PositionDiffV1()
+      public func getMessage() -> Services.Post.Containers.PositionDiffV1 {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      public var hasItemId:Bool {
+           get {
+                return builderResult.hasItemId
+           }
+      }
+      public var itemId:String {
+           get {
+                return builderResult.itemId
+           }
+           set (value) {
+               builderResult.hasItemId = true
+               builderResult.itemId = value
+           }
+      }
+      public func setItemId(value:String) -> Services.Post.Containers.PositionDiffV1.Builder {
+        self.itemId = value
+        return self
+      }
+      public func clearItemId() -> Services.Post.Containers.PositionDiffV1.Builder{
+           builderResult.hasItemId = false
+           builderResult.itemId = ""
+           return self
+      }
+      public var hasCurrentPosition:Bool {
+           get {
+                return builderResult.hasCurrentPosition
+           }
+      }
+      public var currentPosition:UInt32 {
+           get {
+                return builderResult.currentPosition
+           }
+           set (value) {
+               builderResult.hasCurrentPosition = true
+               builderResult.currentPosition = value
+           }
+      }
+      public func setCurrentPosition(value:UInt32) -> Services.Post.Containers.PositionDiffV1.Builder {
+        self.currentPosition = value
+        return self
+      }
+      public func clearCurrentPosition() -> Services.Post.Containers.PositionDiffV1.Builder{
+           builderResult.hasCurrentPosition = false
+           builderResult.currentPosition = UInt32(0)
+           return self
+      }
+      public var hasNewPosition:Bool {
+           get {
+                return builderResult.hasNewPosition
+           }
+      }
+      public var newPosition:UInt32 {
+           get {
+                return builderResult.newPosition
+           }
+           set (value) {
+               builderResult.hasNewPosition = true
+               builderResult.newPosition = value
+           }
+      }
+      public func setNewPosition(value:UInt32) -> Services.Post.Containers.PositionDiffV1.Builder {
+        self.newPosition = value
+        return self
+      }
+      public func clearNewPosition() -> Services.Post.Containers.PositionDiffV1.Builder{
+           builderResult.hasNewPosition = false
+           builderResult.newPosition = UInt32(0)
+           return self
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.Post.Containers.PositionDiffV1.Builder {
+        builderResult = Services.Post.Containers.PositionDiffV1()
+        return self
+      }
+      public override func clone() throws -> Services.Post.Containers.PositionDiffV1.Builder {
+        return try Services.Post.Containers.PositionDiffV1.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.Post.Containers.PositionDiffV1 {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.Post.Containers.PositionDiffV1 {
+        let returnMe:Services.Post.Containers.PositionDiffV1 = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.Post.Containers.PositionDiffV1) throws -> Services.Post.Containers.PositionDiffV1.Builder {
+        if other == Services.Post.Containers.PositionDiffV1() {
+         return self
+        }
+        if other.hasItemId {
+             itemId = other.itemId
+        }
+        if other.hasCurrentPosition {
+             currentPosition = other.currentPosition
+        }
+        if other.hasNewPosition {
+             newPosition = other.newPosition
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Post.Containers.PositionDiffV1.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Post.Containers.PositionDiffV1.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 10 :
+            itemId = try input.readString()
+
+          case 16 :
+            currentPosition = try input.readUInt32()
+
+          case 24 :
+            newPosition = try input.readUInt32()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
