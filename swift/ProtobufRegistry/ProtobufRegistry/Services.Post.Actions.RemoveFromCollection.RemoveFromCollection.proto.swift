@@ -11,7 +11,6 @@ public func == (lhs: Services.Post.Actions.RemoveFromCollection.RequestV1, rhs: 
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.items == rhs.items)
-  fieldCheck = fieldCheck && (lhs.collection == rhs.collection)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -46,7 +45,6 @@ public extension Services.Post.Actions.RemoveFromCollection {
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
     public private(set) var items:Array<Services.Post.Containers.CollectionItemV1>  = Array<Services.Post.Containers.CollectionItemV1>()
-    public private(set) var collection:Array<Services.Post.Containers.CollectionV1>  = Array<Services.Post.Containers.CollectionV1>()
     required public init() {
          super.init()
     }
@@ -56,9 +54,6 @@ public extension Services.Post.Actions.RemoveFromCollection {
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       for oneElementitems in items {
           try output.writeMessage(1, value:oneElementitems)
-      }
-      for oneElementcollection in collection {
-          try output.writeMessage(2, value:oneElementcollection)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -71,9 +66,6 @@ public extension Services.Post.Actions.RemoveFromCollection {
       serialize_size = 0
       for oneElementitems in items {
           serialize_size += oneElementitems.computeMessageSize(1)
-      }
-      for oneElementcollection in collection {
-          serialize_size += oneElementcollection.computeMessageSize(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -133,13 +125,6 @@ public extension Services.Post.Actions.RemoveFromCollection {
           output += "\(indent)}\n"
           itemsElementIndex++
       }
-      var collectionElementIndex:Int = 0
-      for oneElementcollection in collection {
-          output += "\(indent) collection[\(collectionElementIndex)] {\n"
-          try oneElementcollection.writeDescriptionTo(&output, indent:"\(indent)  ")
-          output += "\(indent)}\n"
-          collectionElementIndex++
-      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -147,9 +132,6 @@ public extension Services.Post.Actions.RemoveFromCollection {
             var hashCode:Int = 7
             for oneElementitems in items {
                 hashCode = (hashCode &* 31) &+ oneElementitems.hashValue
-            }
-            for oneElementcollection in collection {
-                hashCode = (hashCode &* 31) &+ oneElementcollection.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -195,22 +177,6 @@ public extension Services.Post.Actions.RemoveFromCollection {
         builderResult.items.removeAll(keepCapacity: false)
         return self
       }
-      public var collection:Array<Services.Post.Containers.CollectionV1> {
-           get {
-               return builderResult.collection
-           }
-           set (value) {
-               builderResult.collection = value
-           }
-      }
-      public func setCollection(value:Array<Services.Post.Containers.CollectionV1>) -> Services.Post.Actions.RemoveFromCollection.RequestV1.Builder {
-        self.collection = value
-        return self
-      }
-      public func clearCollection() -> Services.Post.Actions.RemoveFromCollection.RequestV1.Builder {
-        builderResult.collection.removeAll(keepCapacity: false)
-        return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -238,9 +204,6 @@ public extension Services.Post.Actions.RemoveFromCollection {
         if !other.items.isEmpty  {
            builderResult.items += other.items
         }
-        if !other.collection.isEmpty  {
-           builderResult.collection += other.collection
-        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -260,11 +223,6 @@ public extension Services.Post.Actions.RemoveFromCollection {
             let subBuilder = Services.Post.Containers.CollectionItemV1.Builder()
             try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
             items += [subBuilder.buildPartial()]
-
-          case 18 :
-            let subBuilder = Services.Post.Containers.CollectionV1.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            collection += [subBuilder.buildPartial()]
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {

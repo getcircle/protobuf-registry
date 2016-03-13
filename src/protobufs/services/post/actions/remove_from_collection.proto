@@ -5,7 +5,6 @@ import "protobufs/services/post/containers.proto";
 
 message RequestV1 {
     repeated services.post.containers.CollectionItemV1 items = 1;
-    repeated services.post.containers.CollectionV1 collection = 2;
 }
 
 message ResponseV1 {}

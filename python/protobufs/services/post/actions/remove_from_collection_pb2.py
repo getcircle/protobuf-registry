@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/post/actions/remove_from_collection.proto',
   package='services.post.actions.remove_from_collection',
   syntax='proto3',
-  serialized_pb=b'\n<protobufs/services/post/actions/remove_from_collection.proto\x12,services.post.actions.remove_from_collection\x1a(protobufs/services/post/containers.proto\"\x82\x01\n\tRequestV1\x12\x39\n\x05items\x18\x01 \x03(\x0b\x32*.services.post.containers.CollectionItemV1\x12:\n\ncollection\x18\x02 \x03(\x0b\x32&.services.post.containers.CollectionV1\"\x0c\n\nResponseV1b\x06proto3'
+  serialized_pb=b'\n<protobufs/services/post/actions/remove_from_collection.proto\x12,services.post.actions.remove_from_collection\x1a(protobufs/services/post/containers.proto\"F\n\tRequestV1\x12\x39\n\x05items\x18\x01 \x03(\x0b\x32*.services.post.containers.CollectionItemV1\"\x0c\n\nResponseV1b\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_post_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -40,13 +40,6 @@ _REQUESTV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='collection', full_name='services.post.actions.remove_from_collection.RequestV1.collection', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -59,8 +52,8 @@ _REQUESTV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=153,
-  serialized_end=283,
+  serialized_start=152,
+  serialized_end=222,
 )
 
 
@@ -83,12 +76,11 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=285,
-  serialized_end=297,
+  serialized_start=224,
+  serialized_end=236,
 )
 
 _REQUESTV1.fields_by_name['items'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONITEMV1
-_REQUESTV1.fields_by_name['collection'].message_type = protobufs_dot_services_dot_post_dot_containers__pb2._COLLECTIONV1
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1
 DESCRIPTOR.message_types_by_name['ResponseV1'] = _RESPONSEV1
 
