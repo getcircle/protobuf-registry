@@ -35,4 +35,5 @@ message SlackWebApiDetailsV1 {
 message SlackBotDetailsV1 {
     string user_id = 1;
     string token = 2;
+    string team_id = 3;
 }

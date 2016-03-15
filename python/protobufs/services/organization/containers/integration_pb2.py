@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/organization/containers/integration.proto',
   package='services.organization.containers.integration',
   syntax='proto3',
-  serialized_pb=b'\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\xcc\x03\n\rIntegrationV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12Y\n\x10integration_type\x18\x03 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12g\n\x13slack_slash_command\x18\x04 \x01(\x0b\x32H.services.organization.containers.integration.SlackSlashCommandDetailsV1H\x00\x12[\n\rslack_web_api\x18\x05 \x01(\x0b\x32\x42.services.organization.containers.integration.SlackWebApiDetailsV1H\x00\x12T\n\tslack_bot\x18\x07 \x01(\x0b\x32?.services.organization.containers.integration.SlackBotDetailsV1H\x00\x12\x14\n\x0cprovider_uid\x18\x06 \x01(\tB\t\n\x07\x64\x65tails\"+\n\x1aSlackSlashCommandDetailsV1\x12\r\n\x05token\x18\x01 \x01(\t\"]\n\x14SlackWebApiDetailsV1\x12\r\n\x05token\x18\x01 \x01(\t\x12\x15\n\rby_profile_id\x18\x02 \x01(\t\x12\x0e\n\x06scopes\x18\x03 \x03(\t\x12\x0f\n\x07team_id\x18\x04 \x01(\t\"3\n\x11SlackBotDetailsV1\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t*N\n\x11IntegrationTypeV1\x12\x17\n\x13SLACK_SLASH_COMMAND\x10\x00\x12\x11\n\rSLACK_WEB_API\x10\x01\x12\r\n\tSLACK_BOT\x10\x02\x62\x06proto3'
+  serialized_pb=b'\n<protobufs/services/organization/containers/integration.proto\x12,services.organization.containers.integration\x1a*protobufs/services/common/containers.proto\"\xcc\x03\n\rIntegrationV1\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0forganization_id\x18\x02 \x01(\t\x12Y\n\x10integration_type\x18\x03 \x01(\x0e\x32?.services.organization.containers.integration.IntegrationTypeV1\x12g\n\x13slack_slash_command\x18\x04 \x01(\x0b\x32H.services.organization.containers.integration.SlackSlashCommandDetailsV1H\x00\x12[\n\rslack_web_api\x18\x05 \x01(\x0b\x32\x42.services.organization.containers.integration.SlackWebApiDetailsV1H\x00\x12T\n\tslack_bot\x18\x07 \x01(\x0b\x32?.services.organization.containers.integration.SlackBotDetailsV1H\x00\x12\x14\n\x0cprovider_uid\x18\x06 \x01(\tB\t\n\x07\x64\x65tails\"+\n\x1aSlackSlashCommandDetailsV1\x12\r\n\x05token\x18\x01 \x01(\t\"]\n\x14SlackWebApiDetailsV1\x12\r\n\x05token\x18\x01 \x01(\t\x12\x15\n\rby_profile_id\x18\x02 \x01(\t\x12\x0e\n\x06scopes\x18\x03 \x03(\t\x12\x0f\n\x07team_id\x18\x04 \x01(\t\"D\n\x11SlackBotDetailsV1\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x0f\n\x07team_id\x18\x03 \x01(\t*N\n\x11IntegrationTypeV1\x12\x17\n\x13SLACK_SLASH_COMMAND\x10\x00\x12\x11\n\rSLACK_WEB_API\x10\x01\x12\r\n\tSLACK_BOT\x10\x02\x62\x06proto3'
   ,
   dependencies=[protobufs_dot_services_dot_common_dot_containers__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -45,8 +45,8 @@ _INTEGRATIONTYPEV1 = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=810,
-  serialized_end=888,
+  serialized_start=827,
+  serialized_end=905,
 )
 _sym_db.RegisterEnumDescriptor(_INTEGRATIONTYPEV1)
 
@@ -237,6 +237,13 @@ _SLACKBOTDETAILSV1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='team_id', full_name='services.organization.containers.integration.SlackBotDetailsV1.team_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -250,7 +257,7 @@ _SLACKBOTDETAILSV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=757,
-  serialized_end=808,
+  serialized_end=825,
 )
 
 _INTEGRATIONV1.fields_by_name['integration_type'].enum_type = _INTEGRATIONTYPEV1

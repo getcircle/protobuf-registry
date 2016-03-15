@@ -51,6 +51,7 @@ public func == (lhs: Services.Organization.Containers.Integration.SlackBotDetail
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
   fieldCheck = fieldCheck && (lhs.hasToken == rhs.hasToken) && (!lhs.hasToken || lhs.token == rhs.token)
+  fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -1291,6 +1292,9 @@ public extension Services.Organization.Containers.Integration {
     public private(set) var hasToken:Bool = false
     public private(set) var token:String = ""
 
+    public private(set) var hasTeamId:Bool = false
+    public private(set) var teamId:String = ""
+
     required public init() {
          super.init()
     }
@@ -1303,6 +1307,9 @@ public extension Services.Organization.Containers.Integration {
       }
       if hasToken {
         try output.writeString(2, value:token)
+      }
+      if hasTeamId {
+        try output.writeString(3, value:teamId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -1318,6 +1325,9 @@ public extension Services.Organization.Containers.Integration {
       }
       if hasToken {
         serialize_size += token.computeStringSize(2)
+      }
+      if hasTeamId {
+        serialize_size += teamId.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1376,6 +1386,9 @@ public extension Services.Organization.Containers.Integration {
       if hasToken {
         output += "\(indent) token: \(token) \n"
       }
+      if hasTeamId {
+        output += "\(indent) teamId: \(teamId) \n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -1386,6 +1399,9 @@ public extension Services.Organization.Containers.Integration {
             }
             if hasToken {
                hashCode = (hashCode &* 31) &+ token.hashValue
+            }
+            if hasTeamId {
+               hashCode = (hashCode &* 31) &+ teamId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1461,6 +1477,29 @@ public extension Services.Organization.Containers.Integration {
            builderResult.token = ""
            return self
       }
+      public var hasTeamId:Bool {
+           get {
+                return builderResult.hasTeamId
+           }
+      }
+      public var teamId:String {
+           get {
+                return builderResult.teamId
+           }
+           set (value) {
+               builderResult.hasTeamId = true
+               builderResult.teamId = value
+           }
+      }
+      public func setTeamId(value:String) -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+        self.teamId = value
+        return self
+      }
+      public func clearTeamId() -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder{
+           builderResult.hasTeamId = false
+           builderResult.teamId = ""
+           return self
+      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1491,6 +1530,9 @@ public extension Services.Organization.Containers.Integration {
         if other.hasToken {
              token = other.token
         }
+        if other.hasTeamId {
+             teamId = other.teamId
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
@@ -1511,6 +1553,9 @@ public extension Services.Organization.Containers.Integration {
 
           case 18 :
             token = try input.readString()
+
+          case 26 :
+            teamId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
