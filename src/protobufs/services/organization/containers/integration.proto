@@ -6,6 +6,7 @@ import "protobufs/services/common/containers.proto";
 enum IntegrationTypeV1 {
     SLACK_SLASH_COMMAND = 0;
     SLACK_WEB_API = 1;
+    SLACK_BOT = 2;
 }
 
 message IntegrationV1 {
@@ -15,6 +16,7 @@ message IntegrationV1 {
     oneof details {
         SlackSlashCommandDetailsV1 slack_slash_command = 4;
         SlackWebApiDetailsV1 slack_web_api = 5;
+        SlackBotDetailsV1 slack_bot = 7;
     }
     string provider_uid = 6;
 }
@@ -28,4 +30,9 @@ message SlackWebApiDetailsV1 {
     string by_profile_id = 2;
     repeated string scopes = 3;
     string team_id = 4;
+}
+
+message SlackBotDetailsV1 {
+    string user_id = 1;
+    string token = 2;
 }
