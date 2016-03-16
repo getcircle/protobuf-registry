@@ -2,7 +2,7 @@ syntax = "proto3";
 package services.team.actions.delete_team;
 
 message RequestV1 {
-    string id = 1;
+    string team_id = 1;
 }
 
 message ResponseV1 {}

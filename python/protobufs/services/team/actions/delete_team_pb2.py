@@ -17,7 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='protobufs/services/team/actions/delete_team.proto',
   package='services.team.actions.delete_team',
   syntax='proto3',
-  serialized_pb=b'\n1protobufs/services/team/actions/delete_team.proto\x12!services.team.actions.delete_team\"\x17\n\tRequestV1\x12\n\n\x02id\x18\x01 \x01(\t\"\x0c\n\nResponseV1b\x06proto3'
+  serialized_pb=b'\n1protobufs/services/team/actions/delete_team.proto\x12!services.team.actions.delete_team\"\x1c\n\tRequestV1\x12\x0f\n\x07team_id\x18\x01 \x01(\t\"\x0c\n\nResponseV1b\x06proto3'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -32,7 +32,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='services.team.actions.delete_team.RequestV1.id', index=0,
+      name='team_id', full_name='services.team.actions.delete_team.RequestV1.team_id', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -51,7 +51,7 @@ _REQUESTV1 = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=88,
-  serialized_end=111,
+  serialized_end=116,
 )
 
 
@@ -74,8 +74,8 @@ _RESPONSEV1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=113,
-  serialized_end=125,
+  serialized_start=118,
+  serialized_end=130,
 )
 
 DESCRIPTOR.message_types_by_name['RequestV1'] = _REQUESTV1

@@ -10,7 +10,7 @@ public func == (lhs: Services.Team.Actions.DeleteTeam.RequestV1, rhs: Services.T
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasId == rhs.hasId) && (!lhs.hasId || lhs.id == rhs.id)
+  fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -43,8 +43,8 @@ public extension Services.Team.Actions.DeleteTeam {
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasId:Bool = false
-    public private(set) var id:String = ""
+    public private(set) var hasTeamId:Bool = false
+    public private(set) var teamId:String = ""
 
     required public init() {
          super.init()
@@ -53,8 +53,8 @@ public extension Services.Team.Actions.DeleteTeam {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasId {
-        try output.writeString(1, value:id)
+      if hasTeamId {
+        try output.writeString(1, value:teamId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -65,8 +65,8 @@ public extension Services.Team.Actions.DeleteTeam {
       }
 
       serialize_size = 0
-      if hasId {
-        serialize_size += id.computeStringSize(1)
+      if hasTeamId {
+        serialize_size += teamId.computeStringSize(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -119,16 +119,16 @@ public extension Services.Team.Actions.DeleteTeam {
       return try Services.Team.Actions.DeleteTeam.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      if hasId {
-        output += "\(indent) id: \(id) \n"
+      if hasTeamId {
+        output += "\(indent) teamId: \(teamId) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasId {
-               hashCode = (hashCode &* 31) &+ id.hashValue
+            if hasTeamId {
+               hashCode = (hashCode &* 31) &+ teamId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -158,27 +158,27 @@ public extension Services.Team.Actions.DeleteTeam {
       required override public init () {
          super.init()
       }
-      public var hasId:Bool {
+      public var hasTeamId:Bool {
            get {
-                return builderResult.hasId
+                return builderResult.hasTeamId
            }
       }
-      public var id:String {
+      public var teamId:String {
            get {
-                return builderResult.id
+                return builderResult.teamId
            }
            set (value) {
-               builderResult.hasId = true
-               builderResult.id = value
+               builderResult.hasTeamId = true
+               builderResult.teamId = value
            }
       }
-      public func setId(value:String) -> Services.Team.Actions.DeleteTeam.RequestV1.Builder {
-        self.id = value
+      public func setTeamId(value:String) -> Services.Team.Actions.DeleteTeam.RequestV1.Builder {
+        self.teamId = value
         return self
       }
-      public func clearId() -> Services.Team.Actions.DeleteTeam.RequestV1.Builder{
-           builderResult.hasId = false
-           builderResult.id = ""
+      public func clearTeamId() -> Services.Team.Actions.DeleteTeam.RequestV1.Builder{
+           builderResult.hasTeamId = false
+           builderResult.teamId = ""
            return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -205,8 +205,8 @@ public extension Services.Team.Actions.DeleteTeam {
         if other == Services.Team.Actions.DeleteTeam.RequestV1() {
          return self
         }
-        if other.hasId {
-             id = other.id
+        if other.hasTeamId {
+             teamId = other.teamId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -224,7 +224,7 @@ public extension Services.Team.Actions.DeleteTeam {
             return self
 
           case 10 :
-            id = try input.readString()
+            teamId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
