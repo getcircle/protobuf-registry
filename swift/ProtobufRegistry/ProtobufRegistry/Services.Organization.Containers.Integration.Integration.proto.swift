@@ -16,6 +16,7 @@ public func == (lhs: Services.Organization.Containers.Integration.IntegrationV1,
   fieldCheck = fieldCheck && (lhs.hasSlackSlashCommand == rhs.hasSlackSlashCommand) && (!lhs.hasSlackSlashCommand || lhs.slackSlashCommand == rhs.slackSlashCommand)
   fieldCheck = fieldCheck && (lhs.hasSlackWebApi == rhs.hasSlackWebApi) && (!lhs.hasSlackWebApi || lhs.slackWebApi == rhs.slackWebApi)
   fieldCheck = fieldCheck && (lhs.hasProviderUid == rhs.hasProviderUid) && (!lhs.hasProviderUid || lhs.providerUid == rhs.providerUid)
+  fieldCheck = fieldCheck && (lhs.hasSlackBot == rhs.hasSlackBot) && (!lhs.hasSlackBot || lhs.slackBot == rhs.slackBot)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -38,6 +39,18 @@ public func == (lhs: Services.Organization.Containers.Integration.SlackWebApiDet
   fieldCheck = fieldCheck && (lhs.hasToken == rhs.hasToken) && (!lhs.hasToken || lhs.token == rhs.token)
   fieldCheck = fieldCheck && (lhs.hasByProfileId == rhs.hasByProfileId) && (!lhs.hasByProfileId || lhs.byProfileId == rhs.byProfileId)
   fieldCheck = fieldCheck && (lhs.scopes == rhs.scopes)
+  fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
+public func == (lhs: Services.Organization.Containers.Integration.SlackBotDetailsV1, rhs: Services.Organization.Containers.Integration.SlackBotDetailsV1) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.hasUserId == rhs.hasUserId) && (!lhs.hasUserId || lhs.userId == rhs.userId)
+  fieldCheck = fieldCheck && (lhs.hasToken == rhs.hasToken) && (!lhs.hasToken || lhs.token == rhs.token)
   fieldCheck = fieldCheck && (lhs.hasTeamId == rhs.hasTeamId) && (!lhs.hasTeamId || lhs.teamId == rhs.teamId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
@@ -69,6 +82,7 @@ public extension Services.Organization.Containers.Integration {
   public enum IntegrationTypeV1:Int32 {
     case SlackSlashCommand = 0
     case SlackWebApi = 1
+    case SlackBot = 2
 
   }
 
@@ -105,6 +119,16 @@ public extension Services.Organization.Containers.Integration {
       public static func getSlackWebApi(value:Details) -> Services.Organization.Containers.Integration.SlackWebApiDetailsV1? {
            switch value {
            case .SlackWebApi(let enumValue):
+                return enumValue
+           default:
+                return nil
+           }
+      }
+      case SlackBot(Services.Organization.Containers.Integration.SlackBotDetailsV1)
+
+      public static func getSlackBot(value:Details) -> Services.Organization.Containers.Integration.SlackBotDetailsV1? {
+           switch value {
+           case .SlackBot(let enumValue):
                 return enumValue
            default:
                 return nil
@@ -158,6 +182,24 @@ public extension Services.Organization.Containers.Integration {
               storageDetails = IntegrationV1.Details.SlackWebApi(newvalue)
          }
     }
+    public private(set) var hasSlackBot:Bool {
+          get {
+               if IntegrationV1.Details.getSlackBot(storageDetails) == nil {
+                   return false
+               }
+               return true
+          }
+          set(newValue) {
+          }
+    }
+    public private(set) var slackBot:Services.Organization.Containers.Integration.SlackBotDetailsV1!{
+         get {
+              return IntegrationV1.Details.getSlackBot(storageDetails)
+         }
+         set (newvalue) {
+              storageDetails = IntegrationV1.Details.SlackBot(newvalue)
+         }
+    }
     public private(set) var hasProviderUid:Bool = false
     public private(set) var providerUid:String = ""
 
@@ -185,6 +227,9 @@ public extension Services.Organization.Containers.Integration {
       }
       if hasProviderUid {
         try output.writeString(6, value:providerUid)
+      }
+      if hasSlackBot {
+        try output.writeMessage(7, value:slackBot)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -216,6 +261,11 @@ public extension Services.Organization.Containers.Integration {
       }
       if hasProviderUid {
         serialize_size += providerUid.computeStringSize(6)
+      }
+      if hasSlackBot {
+          if let varSizeslackBot = slackBot?.computeMessageSize(7) {
+              serialize_size += varSizeslackBot
+          }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -290,6 +340,11 @@ public extension Services.Organization.Containers.Integration {
       if hasProviderUid {
         output += "\(indent) providerUid: \(providerUid) \n"
       }
+      if hasSlackBot {
+        output += "\(indent) slackBot {\n"
+        try slackBot?.writeDescriptionTo(&output, indent:"\(indent)  ")
+        output += "\(indent) }\n"
+      }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
@@ -316,6 +371,11 @@ public extension Services.Organization.Containers.Integration {
             }
             if hasProviderUid {
                hashCode = (hashCode &* 31) &+ providerUid.hashValue
+            }
+            if hasSlackBot {
+                if let hashValueslackBot = slackBot?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueslackBot
+                }
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -516,6 +576,57 @@ public extension Services.Organization.Containers.Integration {
         builderResult.slackWebApi = nil
         return self
       }
+      public var hasSlackBot:Bool {
+           get {
+               return builderResult.hasSlackBot
+           }
+      }
+      public var slackBot:Services.Organization.Containers.Integration.SlackBotDetailsV1! {
+           get {
+               if slackBotBuilder_ != nil {
+                  builderResult.slackBot = slackBotBuilder_.getMessage()
+               }
+               return builderResult.slackBot
+           }
+           set (value) {
+               builderResult.hasSlackBot = true
+               builderResult.slackBot = value
+           }
+      }
+      private var slackBotBuilder_:Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder! {
+           didSet {
+              builderResult.hasSlackBot = true
+           }
+      }
+      public func getSlackBotBuilder() -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+        if slackBotBuilder_ == nil {
+           slackBotBuilder_ = Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder()
+           builderResult.slackBot = slackBotBuilder_.getMessage()
+           if slackBot != nil {
+              try! slackBotBuilder_.mergeFrom(slackBot)
+           }
+        }
+        return slackBotBuilder_
+      }
+      public func setSlackBot(value:Services.Organization.Containers.Integration.SlackBotDetailsV1!) -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
+        self.slackBot = value
+        return self
+      }
+      public func mergeSlackBot(value:Services.Organization.Containers.Integration.SlackBotDetailsV1) throws -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
+        if builderResult.hasSlackBot {
+          builderResult.slackBot = try Services.Organization.Containers.Integration.SlackBotDetailsV1.builderWithPrototype(builderResult.slackBot).mergeFrom(value).buildPartial()
+        } else {
+          builderResult.slackBot = value
+        }
+        builderResult.hasSlackBot = true
+        return self
+      }
+      public func clearSlackBot() -> Services.Organization.Containers.Integration.IntegrationV1.Builder {
+        slackBotBuilder_ = nil
+        builderResult.hasSlackBot = false
+        builderResult.slackBot = nil
+        return self
+      }
       public var hasProviderUid:Bool {
            get {
                 return builderResult.hasProviderUid
@@ -578,6 +689,9 @@ public extension Services.Organization.Containers.Integration {
         if (other.hasSlackWebApi) {
             try mergeSlackWebApi(other.slackWebApi)
         }
+        if (other.hasSlackBot) {
+            try mergeSlackBot(other.slackBot)
+        }
         if other.hasProviderUid {
              providerUid = other.providerUid
         }
@@ -628,6 +742,14 @@ public extension Services.Organization.Containers.Integration {
 
           case 50 :
             providerUid = try input.readString()
+
+          case 58 :
+            let subBuilder:Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder = Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder()
+            if hasSlackBot {
+              try subBuilder.mergeFrom(slackBot)
+            }
+            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            slackBot = subBuilder.buildPartial()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
@@ -1149,6 +1271,290 @@ public extension Services.Organization.Containers.Integration {
             scopes += [try input.readString()]
 
           case 34 :
+            teamId = try input.readString()
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class SlackBotDetailsV1 : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hasUserId:Bool = false
+    public private(set) var userId:String = ""
+
+    public private(set) var hasToken:Bool = false
+    public private(set) var token:String = ""
+
+    public private(set) var hasTeamId:Bool = false
+    public private(set) var teamId:String = ""
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      if hasUserId {
+        try output.writeString(1, value:userId)
+      }
+      if hasToken {
+        try output.writeString(2, value:token)
+      }
+      if hasTeamId {
+        try output.writeString(3, value:teamId)
+      }
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if hasUserId {
+        serialize_size += userId.computeStringSize(1)
+      }
+      if hasToken {
+        serialize_size += token.computeStringSize(2)
+      }
+      if hasTeamId {
+        serialize_size += teamId.computeStringSize(3)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Services.Organization.Containers.Integration.SlackBotDetailsV1> {
+      var mergedArray = Array<Services.Organization.Containers.Integration.SlackBotDetailsV1>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1? {
+      return try Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder().mergeFromData(data, extensionRegistry:Services.Organization.Containers.Integration.IntegrationRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1 {
+      return try Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+      return Services.Organization.Containers.Integration.SlackBotDetailsV1.classBuilder() as! Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder
+    }
+    public func getBuilder() -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+      return classBuilder() as! Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder()
+    }
+    public func toBuilder() throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+      return try Services.Organization.Containers.Integration.SlackBotDetailsV1.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Services.Organization.Containers.Integration.SlackBotDetailsV1) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+      return try Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder().mergeFrom(prototype)
+    }
+    override public func writeDescriptionTo(inout output:String, indent:String) throws {
+      if hasUserId {
+        output += "\(indent) userId: \(userId) \n"
+      }
+      if hasToken {
+        output += "\(indent) token: \(token) \n"
+      }
+      if hasTeamId {
+        output += "\(indent) teamId: \(teamId) \n"
+      }
+      unknownFields.writeDescriptionTo(&output, indent:indent)
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasUserId {
+               hashCode = (hashCode &* 31) &+ userId.hashValue
+            }
+            if hasToken {
+               hashCode = (hashCode &* 31) &+ token.hashValue
+            }
+            if hasTeamId {
+               hashCode = (hashCode &* 31) &+ teamId.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Services.Organization.Containers.Integration.SlackBotDetailsV1"
+    }
+    override public func className() -> String {
+        return "Services.Organization.Containers.Integration.SlackBotDetailsV1"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Services.Organization.Containers.Integration.SlackBotDetailsV1.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Services.Organization.Containers.Integration.SlackBotDetailsV1 = Services.Organization.Containers.Integration.SlackBotDetailsV1()
+      public func getMessage() -> Services.Organization.Containers.Integration.SlackBotDetailsV1 {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      public var hasUserId:Bool {
+           get {
+                return builderResult.hasUserId
+           }
+      }
+      public var userId:String {
+           get {
+                return builderResult.userId
+           }
+           set (value) {
+               builderResult.hasUserId = true
+               builderResult.userId = value
+           }
+      }
+      public func setUserId(value:String) -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+        self.userId = value
+        return self
+      }
+      public func clearUserId() -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder{
+           builderResult.hasUserId = false
+           builderResult.userId = ""
+           return self
+      }
+      public var hasToken:Bool {
+           get {
+                return builderResult.hasToken
+           }
+      }
+      public var token:String {
+           get {
+                return builderResult.token
+           }
+           set (value) {
+               builderResult.hasToken = true
+               builderResult.token = value
+           }
+      }
+      public func setToken(value:String) -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+        self.token = value
+        return self
+      }
+      public func clearToken() -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder{
+           builderResult.hasToken = false
+           builderResult.token = ""
+           return self
+      }
+      public var hasTeamId:Bool {
+           get {
+                return builderResult.hasTeamId
+           }
+      }
+      public var teamId:String {
+           get {
+                return builderResult.teamId
+           }
+           set (value) {
+               builderResult.hasTeamId = true
+               builderResult.teamId = value
+           }
+      }
+      public func setTeamId(value:String) -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+        self.teamId = value
+        return self
+      }
+      public func clearTeamId() -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder{
+           builderResult.hasTeamId = false
+           builderResult.teamId = ""
+           return self
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+        builderResult = Services.Organization.Containers.Integration.SlackBotDetailsV1()
+        return self
+      }
+      public override func clone() throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+        return try Services.Organization.Containers.Integration.SlackBotDetailsV1.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1 {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Services.Organization.Containers.Integration.SlackBotDetailsV1 {
+        let returnMe:Services.Organization.Containers.Integration.SlackBotDetailsV1 = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Services.Organization.Containers.Integration.SlackBotDetailsV1) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+        if other == Services.Organization.Containers.Integration.SlackBotDetailsV1() {
+         return self
+        }
+        if other.hasUserId {
+             userId = other.userId
+        }
+        if other.hasToken {
+             token = other.token
+        }
+        if other.hasTeamId {
+             teamId = other.teamId
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Services.Organization.Containers.Integration.SlackBotDetailsV1.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let tag = try input.readTag()
+          switch tag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 10 :
+            userId = try input.readString()
+
+          case 18 :
+            token = try input.readString()
+
+          case 26 :
             teamId = try input.readString()
 
           default:
