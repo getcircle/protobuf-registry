@@ -10,7 +10,8 @@ public func == (lhs: Services.Post.Actions.DeleteCollections.RequestV1, rhs: Ser
     return true
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.collectionIds == rhs.collectionIds)
+  fieldCheck = fieldCheck && (lhs.hasOwnerType == rhs.hasOwnerType) && (!lhs.hasOwnerType || lhs.ownerType == rhs.ownerType)
+  fieldCheck = fieldCheck && (lhs.hasOwnerId == rhs.hasOwnerId) && (!lhs.hasOwnerId || lhs.ownerId == rhs.ownerId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -37,13 +38,18 @@ public extension Services.Post.Actions.DeleteCollections {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
+      Services.Post.Containers.ContainersRoot.sharedInstance.registerAllExtensions(extensionRegistry)
     }
     public func registerAllExtensions(registry:ExtensionRegistry) {
     }
   }
 
   final public class RequestV1 : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var collectionIds:Array<String> = Array<String>()
+    public private(set) var ownerType:Services.Post.Containers.CollectionV1.OwnerTypeV1 = Services.Post.Containers.CollectionV1.OwnerTypeV1.Profile
+    public private(set) var hasOwnerType:Bool = false
+    public private(set) var hasOwnerId:Bool = false
+    public private(set) var ownerId:String = ""
+
     required public init() {
          super.init()
     }
@@ -51,10 +57,11 @@ public extension Services.Post.Actions.DeleteCollections {
      return true
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if !collectionIds.isEmpty {
-        for oneValuecollectionIds in collectionIds {
-          try output.writeString(1, value:oneValuecollectionIds)
-        }
+      if hasOwnerType {
+        try output.writeEnum(1, value:ownerType.rawValue)
+      }
+      if hasOwnerId {
+        try output.writeString(2, value:ownerId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -65,12 +72,12 @@ public extension Services.Post.Actions.DeleteCollections {
       }
 
       serialize_size = 0
-      var dataSizeCollectionIds:Int32 = 0
-      for oneValuecollectionIds in collectionIds {
-          dataSizeCollectionIds += oneValuecollectionIds.computeStringSizeNoTag()
+      if (hasOwnerType) {
+        serialize_size += ownerType.rawValue.computeEnumSize(1)
       }
-      serialize_size += dataSizeCollectionIds
-      serialize_size += 1 * Int32(collectionIds.count)
+      if hasOwnerId {
+        serialize_size += ownerId.computeStringSize(2)
+      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -122,18 +129,22 @@ public extension Services.Post.Actions.DeleteCollections {
       return try Services.Post.Actions.DeleteCollections.RequestV1.Builder().mergeFrom(prototype)
     }
     override public func writeDescriptionTo(inout output:String, indent:String) throws {
-      var collectionIdsElementIndex:Int = 0
-      for oneValuecollectionIds in collectionIds  {
-          output += "\(indent) collectionIds[\(collectionIdsElementIndex)]: \(oneValuecollectionIds)\n"
-          collectionIdsElementIndex++
+      if (hasOwnerType) {
+        output += "\(indent) ownerType: \(ownerType.rawValue)\n"
+      }
+      if hasOwnerId {
+        output += "\(indent) ownerId: \(ownerId) \n"
       }
       unknownFields.writeDescriptionTo(&output, indent:indent)
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            for oneValuecollectionIds in collectionIds {
-                hashCode = (hashCode &* 31) &+ oneValuecollectionIds.hashValue
+            if hasOwnerType {
+               hashCode = (hashCode &* 31) &+ Int(ownerType.rawValue)
+            }
+            if hasOwnerId {
+               hashCode = (hashCode &* 31) &+ ownerId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -163,21 +174,51 @@ public extension Services.Post.Actions.DeleteCollections {
       required override public init () {
          super.init()
       }
-      public var collectionIds:Array<String> {
+        public var hasOwnerType:Bool{
+            get {
+                return builderResult.hasOwnerType
+            }
+        }
+        public var ownerType:Services.Post.Containers.CollectionV1.OwnerTypeV1 {
+            get {
+                return builderResult.ownerType
+            }
+            set (value) {
+                builderResult.hasOwnerType = true
+                builderResult.ownerType = value
+            }
+        }
+        public func setOwnerType(value:Services.Post.Containers.CollectionV1.OwnerTypeV1) -> Services.Post.Actions.DeleteCollections.RequestV1.Builder {
+          self.ownerType = value
+          return self
+        }
+        public func clearOwnerType() -> Services.Post.Actions.DeleteCollections.RequestV1.Builder {
+           builderResult.hasOwnerType = false
+           builderResult.ownerType = .Profile
+           return self
+        }
+      public var hasOwnerId:Bool {
            get {
-               return builderResult.collectionIds
-           }
-           set (array) {
-               builderResult.collectionIds = array
+                return builderResult.hasOwnerId
            }
       }
-      public func setCollectionIds(value:Array<String>) -> Services.Post.Actions.DeleteCollections.RequestV1.Builder {
-        self.collectionIds = value
+      public var ownerId:String {
+           get {
+                return builderResult.ownerId
+           }
+           set (value) {
+               builderResult.hasOwnerId = true
+               builderResult.ownerId = value
+           }
+      }
+      public func setOwnerId(value:String) -> Services.Post.Actions.DeleteCollections.RequestV1.Builder {
+        self.ownerId = value
         return self
       }
-      public func clearCollectionIds() -> Services.Post.Actions.DeleteCollections.RequestV1.Builder {
-         builderResult.collectionIds.removeAll(keepCapacity: false)
-         return self
+      public func clearOwnerId() -> Services.Post.Actions.DeleteCollections.RequestV1.Builder{
+           builderResult.hasOwnerId = false
+           builderResult.ownerId = ""
+           return self
       }
       override public var internalGetResult:GeneratedMessage {
            get {
@@ -203,8 +244,11 @@ public extension Services.Post.Actions.DeleteCollections {
         if other == Services.Post.Actions.DeleteCollections.RequestV1() {
          return self
         }
-        if !other.collectionIds.isEmpty {
-            builderResult.collectionIds += other.collectionIds
+        if other.hasOwnerType {
+             ownerType = other.ownerType
+        }
+        if other.hasOwnerId {
+             ownerId = other.ownerId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -221,8 +265,16 @@ public extension Services.Post.Actions.DeleteCollections {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 10 :
-            collectionIds += [try input.readString()]
+          case 8 :
+            let valueIntownerType = try input.readEnum()
+            if let enumsownerType = Services.Post.Containers.CollectionV1.OwnerTypeV1(rawValue:valueIntownerType){
+                 ownerType = enumsownerType
+            } else {
+                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntownerType))
+            }
+
+          case 18 :
+            ownerId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:tag))) {
