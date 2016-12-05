@@ -1,0 +1,12 @@
+syntax = "proto3";
+package services.post.actions.create_collection;
+
+import "protobufs/services/post/containers.proto";
+
+message RequestV1 {
+    services.post.containers.CollectionV1 collection = 1;
+}
+
+message ResponseV1 {
+    services.post.containers.CollectionV1 collection = 1;
+}

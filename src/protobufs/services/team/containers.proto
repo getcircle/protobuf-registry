@@ -1,0 +1,48 @@
+syntax = "proto3";
+package services.team.containers;
+
+import "protobufs/services/common/containers.proto";
+import "protobufs/services/common/containers/description.proto";
+import "protobufs/services/profile/containers.proto";
+
+message ContactMethodV1 {
+    enum TypeV1 {
+        EMAIL = 0;
+        SLACK = 1;
+    }
+
+    string id = 1;
+    string label = 2;
+    string value = 3;
+    TypeV1 type = 4;
+}
+
+message TeamV1 {
+    string id = 1;
+    string name = 2;
+    services.common.containers.description.DescriptionV1 description = 3;
+    services.common.containers.PermissionsV1 permissions = 4 [(services.common.containers.inflation) = true];
+    string organization_id = 5;
+    services.common.containers.InflationsV1 inflations = 6;
+    services.common.containers.FieldsV1 fields = 7;
+    repeated ContactMethodV1 contact_methods = 8 [(services.common.containers.inflation) = true];
+    uint32 total_members = 9 [(services.common.containers.inflation) = true];
+    string by_profile_id = 10;
+}
+
+message TeamMemberV1 {
+
+    enum RoleV1 {
+        MEMBER = 0;
+        COORDINATOR = 1;
+    }
+
+    string id = 1;
+    string profile_id = 2;
+    RoleV1 role = 3;
+    services.profile.containers.ProfileV1 profile = 4 [(services.common.containers.inflation) = true];
+    services.common.containers.InflationsV1 inflations = 5;
+    services.common.containers.FieldsV1 fields = 6;
+    TeamV1 team = 7 [(services.common.containers.inflation) = true];
+    string team_id = 8;
+}

@@ -1,0 +1,98 @@
+syntax = "proto3";
+package services.post.containers;
+
+import "protobufs/services/common/containers.proto";
+import "protobufs/services/file/containers.proto";
+import "protobufs/services/profile/containers.proto";
+import "protobufs/services/team/containers.proto";
+
+enum PostStateV1 {
+    DRAFT = 0;
+    LISTED = 1;
+    UNLISTED = 2;
+}
+
+enum PostSourceV1 {
+    WEB = 0;
+    EMAIL = 1;
+    SLACK = 2;
+}
+
+message PostV1 {
+    string id = 1;
+    string organization_id = 2;
+    string by_profile_id = 3;
+    string title = 4;
+    string content = 5;
+    string created = 6;
+    string changed = 7;
+    services.profile.containers.ProfileV1 by_profile = 8 [(services.common.containers.inflation) = true];
+    PostStateV1 state = 9;
+    services.common.containers.InflationsV1 inflations = 10;
+    services.common.containers.FieldsV1 fields = 11;
+    services.common.containers.PermissionsV1 permissions = 12;
+    repeated string file_ids = 13;
+    repeated services.file.containers.FileV1 files = 14 [(services.common.containers.inflation) = true];
+    string snippet = 15;
+    string html_document = 16 [(services.common.containers.inflation) = true];
+    PostSourceV1 source = 17;
+    string source_id = 18;
+}
+
+message CollectionItemV1 {
+
+    enum SourceV1 {
+        LUNO = 0;
+    }
+
+    string id = 1;
+    uint32 position = 2;
+    string by_profile_id = 3;
+    SourceV1 source = 4 [(services.common.containers.inflation) = true];
+    string source_id = 5;
+
+    oneof item {
+        PostV1 post = 6;
+    }
+
+    string collection_id = 7;
+    CollectionV1 collection = 8 [(services.common.containers.inflation) = true];
+
+}
+
+message CollectionV1 {
+
+    enum OwnerTypeV1 {
+        PROFILE = 0;
+        TEAM = 1;
+    }
+
+    string id = 1;
+    string organization_id = 2;
+    string name = 3;
+    string created = 4;
+    string changed = 5;
+    services.common.containers.PermissionsV1 permissions = 6 [(services.common.containers.inflation) = true];
+    repeated CollectionItemV1 items = 7 [(services.common.containers.inflation) = true];
+    OwnerTypeV1 owner_type = 8;
+    string owner_id = 9;
+    bool is_default = 10;
+    services.common.containers.InflationsV1 inflations = 11;
+    services.common.containers.FieldsV1 fields = 12;
+    string by_profile_id = 13;
+    uint32 total_items = 14 [(services.common.containers.inflation) = true];
+    string display_name = 15 [(services.common.containers.inflation) = true];
+
+    oneof owner {
+        services.profile.containers.ProfileV1 profile = 16 [(services.common.containers.inflation) = true];
+        services.team.containers.TeamV1 team = 17 [(services.common.containers.inflation) = true];
+    }
+
+    uint32 position = 18;
+}
+
+message PositionDiffV1 {
+    string item_id = 1;
+    uint32 current_position = 2;
+    uint32 new_position = 3;
+}

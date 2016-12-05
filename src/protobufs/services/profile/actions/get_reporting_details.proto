@@ -1,0 +1,15 @@
+syntax = "proto3";
+package services.profile.actions.get_reporting_details;
+
+import "protobufs/services/common/containers.proto";
+import "protobufs/services/profile/containers.proto";
+
+message RequestV1 {
+    string profile_id = 1;
+    services.common.containers.InflationsV1 inflations = 2;
+    services.common.containers.FieldsV1 fields = 3;
+}
+
+message ResponseV1 {
+    services.profile.containers.ReportingDetailsV1 details = 1;
+}

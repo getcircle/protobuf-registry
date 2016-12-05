@@ -1,0 +1,23 @@
+syntax = "proto3";
+package services.post.actions.get_collections;
+
+import "protobufs/services/common/containers.proto";
+import "protobufs/services/post/containers.proto";
+
+message RequestV1 {
+    services.post.containers.CollectionV1.OwnerTypeV1 owner_type = 1;
+    string owner_id = 2;
+    bool is_default = 3;
+    services.common.containers.InflationsV1 inflations = 4;
+    services.common.containers.FieldsV1 fields = 5;
+    uint32 items_per_collection = 6;
+    services.post.containers.CollectionItemV1.SourceV1 source = 7;
+    string source_id = 8;
+    repeated string ids = 9;
+    string profile_id = 10;
+    services.common.containers.PermissionsV1 permissions = 11;
+}
+
+message ResponseV1 {
+    repeated services.post.containers.CollectionV1 collections = 1;
+}

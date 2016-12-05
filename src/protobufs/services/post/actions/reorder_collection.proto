@@ -1,0 +1,11 @@
+syntax = "proto3";
+package services.post.actions.reorder_collection;
+
+import "protobufs/services/post/containers.proto";
+
+message RequestV1 {
+    string collection_id = 1;
+    repeated services.post.containers.PositionDiffV1 diffs = 2;
+}
+
+message ResponseV1 {}
